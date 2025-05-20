@@ -1,14 +1,10 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - nickhuangcyh
 
 repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - nickhuangcyh/Android-Architecture-Templates-Generator
+  - nickhuangcyh/XCode-Templates
+  - nickhuangcyh/docker-android-build-base-on-openjdk11-env
+  - nickhuangcyh/advent-of-code-in-kotlin
