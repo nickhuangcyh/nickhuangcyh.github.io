@@ -141,16 +141,119 @@
   ],
   "skills": [
     {
-      "name": "Physics",
-      "level": "Master",
+      "name": "Programming Languages",
+      "level": "Advanced",
       "icon": "fa-solid fa-hashtag",
       "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
+        "Objective-C",
+        "Swift",
+        "Kotlin"
+      ]
+    }, 
+    {
+      "name": "Programming Languages",
+      "level": "Intermediate",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "Python",
+        "Java",
+        "JavaScript", 
+        "C",
+        "C++",
+        "Shell Script",
+        "HTML",
+        "CSS"
+      ]
+    }, 
+    {
+      "name": "Architecture",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "MVC",
+        "MVP",
+        "MVVM", 
+        "VIPER"
+      ]
+    }, 
+    {
+      "name": "Programming Design",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "OOP",
+        "POP",
+        "FP"
+      ]
+    }, 
+    {
+      "name": "Version Control",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "Git"
+      ]
+    }, 
+    {
+      "name": "Network Protocols",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "TCP", 
+        "UDP",
+        "MQTT",
+        "HTTP",
+        "TLS",
+        "RTSP",
+        "WebSocket"
+      ]
+    }, 
+    {
+      "name": "Network",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "Socket", 
+        "WebSocket",
+        "Socket.IO",
+        "P2P",
+        "STUN",
+        "TURN",
+        "ICE",
+        "WebRTC",
+        "AWS KVS"
+      ]
+    }, 
+    {
+      "name": "Custom Network Protocol",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "RS485 (self-defined protocol containing handshake, ack, encryption packet, and more, similar to TCP/UDP)"
+      ]
+    }, 
+    {
+      "name": "Video/Audio",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "H.264", 
+        "FFMpeg",
+        "Mjpeg"
+      ]
+    }, 
+    {
+      "name": "CI/CD",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "Jenkins (Android build on master, iOS build on slave)", 
+        "TravisCI",
+        "Fastlane (iOS)",
+        "Gradle (Android)",
+        "Pipeline (Groovy)"
+      ]
+    }, 
+    {
+      "name": "Others",
+      "icon": "fa-solid fa-hashtag",
+      "keywords": [
+        "Docker", 
+        "ARKit",
+        "ARCore",
+        "BluetoothLE"
       ]
     }
   ],
