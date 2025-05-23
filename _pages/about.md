@@ -9,7 +9,7 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>DREAM BIG</p>
+    <p>DREAM BIG.</p>
     <p>Start small.</p>
     <p>Make it real.</p>
 
