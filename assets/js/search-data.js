@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "books-the-godfather",
+        },{id: "post-用-octopress-架設靜態部落格-github-pages-實戰教學",
+        
+          title: "用 Octopress 架設靜態部落格｜GitHub Pages 實戰教學",
+        
+        description: "想不到架一個部落格，其實可以這麼簡單又有趣！",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2020/octopress-setup/";
+          
+        },
+      },{id: "books-the-godfather",
           title: 'The Godfather',
           description: "",
           section: "Books",handler: () => {
