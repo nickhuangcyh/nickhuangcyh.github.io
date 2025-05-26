@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-用-octopress-架設靜態部落格-github-pages-實戰教學",
+        },{id: "post-如何讓-octopress-網站被-google-找到-search-console-實作教學",
+        
+          title: "如何讓 Octopress 網站被 Google 找到｜Search Console 實作教學",
+        
+        description: "Google 大大，你把我的網頁藏哪去了？",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2020/how-to-add-your-octopress-blog-website-to-google-search-console/";
+          
+        },
+      },{id: "post-用-octopress-架設靜態部落格-github-pages-實戰教學",
         
           title: "用 Octopress 架設靜態部落格｜GitHub Pages 實戰教學",
         
