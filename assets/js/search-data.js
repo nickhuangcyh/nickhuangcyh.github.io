@@ -44,7 +44,29 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-如何讓-octopress-網站被-google-找到-search-console-實作教學",
+        },{id: "post-如何讓-jekyll-網站被-google-搜尋到-search-console-sitemap-教學",
+        
+          title: "如何讓 Jekyll 網站被 Google 搜尋到｜Search Console + Sitemap 教學",
+        
+        description: "Google 大大，你把我的網頁藏哪去了？教你兩步驟：提交 Search Console、啟用 Sitemap！",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2021/how-to-add-your-jekyll-blog-website-to-google-search-console/";
+          
+        },
+      },{id: "post-使用-jekyll-minimal-mistakes-在-github-pages-上架設自己的部落格",
+        
+          title: "使用 Jekyll + minimal-mistakes 在 GitHub Pages 上架設自己的部落格",
+        
+        description: "原來架設 Blog 也能如此輕鬆簡單！這篇文章手把手教你從 0 開始，用 Jekyll + Minimal Mistakes 架站。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2021/creating_a_github_pages_with_jekyll_and_minimal_mistakes/";
+          
+        },
+      },{id: "post-如何讓-octopress-網站被-google-找到-search-console-實作教學",
         
           title: "如何讓 Octopress 網站被 Google 找到｜Search Console 實作教學",
         
