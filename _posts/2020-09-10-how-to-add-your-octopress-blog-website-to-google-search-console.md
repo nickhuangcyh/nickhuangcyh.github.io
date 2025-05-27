@@ -7,8 +7,8 @@ tags: [Octopress, SEO, Google Search Console]
 categories: [Blog]
 thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 toc:
-  beginning: true
-  # sidebar: right
+#   beginning: true
+  sidebar: right
 ---
 
 ## 在 Google 搜尋不到我的 Blog？
@@ -56,5 +56,4 @@ rake gen_deploy
 
 有了這一步，你的網站才真正踏上 SEO 的起點！
 
-**Note:** 如果你有不同的方法、遇到什麼問題，或想交流更多 SEO 技巧，歡迎留言或寄信給我，我們一起研究、一起進步 🙂
-{: .notice--success}
+> 如果你有不同的方法、遇到什麼問題，或想交流更多 SEO 技巧，歡迎留言或寄信給我，我們一起研究、一起進步 🙂

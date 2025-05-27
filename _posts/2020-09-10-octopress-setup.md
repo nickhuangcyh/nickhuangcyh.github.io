@@ -7,8 +7,8 @@ tags: [Octopress, 靜態網站, GitHub Pages, 部落格架設]
 categories: [Blog]
 thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 toc:
-  beginning: true
-  # sidebar: right
+  # beginning: true
+  sidebar: right
 ---
 
 ## 為什麼我開始寫 Blog？
@@ -154,4 +154,5 @@ git push origin source
 
 以上就是用 Octopress 架設 GitHub Pages 靜態部落格的完整流程。未來我也會繼續研究更多進階設定與佈景客製技巧，再陸續分享給大家。
 
-**Note:** 如果你有不同的作法、碰到問題，或有想交流的經驗，歡迎留言或寫信給我，一起切磋交流 🙂
+
+> 如果你有不同的作法、碰到問題，或有想交流的經驗，歡迎留言或寫信給我，一起切磋交流 🙂
