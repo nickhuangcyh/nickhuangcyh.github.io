@@ -5,10 +5,10 @@ date: 2020-09-10 23:29:22 +0800
 description: Google 大大，你把我的網頁藏哪去了？
 tags: [Octopress, SEO, Google Search Console]
 categories: [Blog]
-thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 toc:
 #   beginning: true
   sidebar: right
+thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 ---
 
 ## 在 Google 搜尋不到我的 Blog？

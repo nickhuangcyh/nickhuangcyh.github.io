@@ -5,10 +5,10 @@ date: 2020-09-10 23:18:16 +0800
 description: 想不到架一個部落格，其實可以這麼簡單又有趣！
 tags: [Octopress, 靜態網站, GitHub Pages, 部落格架設]
 categories: [Blog]
-thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 toc:
   # beginning: true
   sidebar: right
+thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 ---
 
 ## 為什麼我開始寫 Blog？

@@ -5,10 +5,10 @@ date: 2021-12-29 15:45:03 +0800
 description: 原來架設 Blog 也能如此輕鬆簡單！這篇文章手把手教你從 0 開始，用 Jekyll + Minimal Mistakes 架站。
 tags: [Jekyll, Minimal-Mistakes, GitHub Pages, Theme]
 categories: [Blog]
-thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 toc:
 #   beginning: true
   sidebar: right
+thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 ---
 
 ## 為什麼寫 Blog？
