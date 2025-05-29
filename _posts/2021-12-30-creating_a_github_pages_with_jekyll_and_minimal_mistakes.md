@@ -312,7 +312,7 @@ bundle install
 - 將 `index.md` 替換為 Minimal Mistakes 提供的範本（或建立新頁面）  
 - 修改 `_posts/0000-00-00-welcome-to-jekyll.markdown`：
   ```yaml
-  layout: single
+  layout: post
   ```
 - 刪除 `about.md`（如果你不打算使用）
 
