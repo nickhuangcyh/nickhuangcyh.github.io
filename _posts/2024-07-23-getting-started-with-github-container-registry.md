@@ -6,7 +6,7 @@ description: A Guide to Using and Managing Container Images
 tags: [Docker, Container Registry, GitHub Actions, CI/CD, DevOps Tools]
 categories: [DevOps]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/github_container_registry.png
 ---
@@ -54,16 +54,16 @@ vim app.js
 ```
 
 ```javascript
-const express = require('express');
+const express = require("express");
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
 });
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at http://localhost:${port}`);
 });
 ```
 
@@ -72,9 +72,9 @@ app.listen(port, () => {
 ### Create a `.gitignore` file
 
 > ##### TIP
-> 
+>
 > 請至 [gitignore.io](https://gitignore.io/) 產生 `.gitignore` 檔案，選擇 Node 類型即可。
-{: .block-tip }
+> {: .block-tip }
 
 ---
 
@@ -110,6 +110,7 @@ CMD ["node", "app.js"]
 ## 上傳 Docker Image 到 Github Container Registry
 
 寫完 Dockerfile 後有兩種方式可以將 image 上傳到 GitHub Container Registry：
+
 1. 用 Command line 手動上傳
 2. 使用 GitHub Actions 自動化上傳
 
@@ -146,9 +147,9 @@ docker tag node_sample:latest ghcr.io/{NAMESPACE}/node_sample:latest
 ```
 
 > ##### TIP
-> 
+>
 > 記得將 `{NAMESPACE}` 替換為你的 GitHub 帳號名稱。
-{: .block-tip }
+> {: .block-tip }
 
 ---
 
@@ -279,6 +280,6 @@ FROM ghcr.io/nickhuangcyh/node_sample:TAG
 {% include figure.liquid path="assets/img/github_container_registry_download_image.png" title="Download Image" %}
 
 > ##### TIP
-> 
+>
 > 您可於此 [node_sample](https://github.com/nickhuangcyh/design_pattern) 下載 `node_sample` 的程式碼。
-{: .block-tip }
+> {: .block-tip }

@@ -6,7 +6,7 @@ description: 模板方法模式提供了一個框架，允許子類別重新定�
 tags: [Template Method Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

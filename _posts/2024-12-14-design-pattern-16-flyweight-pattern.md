@@ -6,7 +6,7 @@ description: 探索享元模式如何透過共享技術有效減少記憶體使�
 tags: [Flyweight Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

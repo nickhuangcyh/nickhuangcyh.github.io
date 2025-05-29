@@ -6,7 +6,7 @@ description: Google 大大，你把我的網頁藏哪去了？
 tags: [Octopress, SEO, Google Search Console]
 categories: [Blog]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 ---
@@ -38,6 +38,7 @@ Google 會要求你下載一個 HTML 檔案，像這樣：
     octopress/source/
 
 接著記得 commit 並推送到 GitHub 上：
+
 ```bash
 rake gen_deploy
 ```

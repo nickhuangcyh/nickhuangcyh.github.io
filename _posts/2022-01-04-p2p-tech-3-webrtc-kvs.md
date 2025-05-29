@@ -6,7 +6,7 @@ description: 深入解析 WebRTC 架構、Signaling Server 設計、ICE 協議�
 tags: [iOS, Android, WebRTC, KVS, ICE, SDP, Signaling]
 categories: [P2P, AWS]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/nasa-1lfI7wkGWZ4-unsplash.jpg
 ---
@@ -32,7 +32,7 @@ WebRTC（Web Real-Time Communication）是一套原生於瀏覽器的 API，能�
 > ##### TIP
 >
 > Signaling Server 並不參與音訊/影像資料的傳輸，只做連線資訊交換，因此可依需求選擇通訊協定。
-{: .block-tip }
+> {: .block-tip }
 
 ---
 
@@ -106,9 +106,9 @@ AWS Kinesis Video Streams for WebRTC（簡稱 KVS）是 Amazon 提供的 WebRTC 
 [📖 AWS 官方文件](https://docs.aws.amazon.com/zh_tw/kinesisvideostreams-webrtc-dg/latest/devguide/what-is-kvswebrtc.html)
 
 > ##### TIP
-> 
+>
 > KVS 適合用於 IoT、遠端監控、IPCam 等場景，不需要自己維護 signaling 或 relay server，節省大量開發與維運成本。
-{: .block-tip }
+> {: .block-tip }
 
 ---
 
@@ -148,7 +148,7 @@ https://github.com/awslabs/amazon-kinesis-video-streams-webrtc-sdk-android/issue
 > ##### TIP
 >
 > 如果你在開發 WebRTC 或整合 AWS KVS 時有遇到實作瓶頸，歡迎留言或寫信交流，我會持續整理實戰經驗幫助更多開發者。
-{: .block-tip }
+> {: .block-tip }
 
 ---
 

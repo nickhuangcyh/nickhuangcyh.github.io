@@ -6,7 +6,7 @@ description: 教你如何使用 rvictl 與 Wireshark 抓取 iOS 裝置封包，�
 tags: [iOS, Network, Packet, Wireshark, rvictl]
 categories: [Tools]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/jordan-harrison-40XgDxBfYXM-unsplash.jpg
 ---
@@ -22,8 +22,8 @@ thumbnail: /assets/img/jordan-harrison-40XgDxBfYXM-unsplash.jpg
 
 你需要準備以下工具：
 
-1. 一台 iOS Device  
-2. `rvictl` 工具（通常安裝 Xcode 後會內建）  
+1. 一台 iOS Device
+2. `rvictl` 工具（通常安裝 Xcode 後會內建）
 3. [Wireshark](https://www.wireshark.org/download.html)
 
 ---
@@ -44,8 +44,8 @@ lo0 gif0 stf0 anpi1 anpi0 anpi2 en4 en5 en6 en1 en2 en3 ap1 en0 awdl0 bridge0 ut
 
 ## 查詢 iOS 裝置 UUID
 
-1. 將 iPhone 透過 USB 接上 Mac  
-2. 開啟 Xcode ➜ Window ➜ Devices and Simulators  
+1. 將 iPhone 透過 USB 接上 Mac
+2. 開啟 Xcode ➜ Window ➜ Devices and Simulators
 3. 找到裝置 UUID，如下圖所示
 
 {% include figure.liquid path="assets/img/ios_uuid.png" title="iOS 裝置 UUID 查詢" %}
@@ -119,7 +119,7 @@ rvictl -x 00xxxxxx-xxxxxxxxxxxxxx1E
 > ##### TIP
 >
 > 封包不會騙人，尤其在 IoT 整合與多平台通訊環境中，是最可靠的 debug 工具之一。如果你遇到神祕的連線問題，Wireshark + rvictl 是你的神兵利器。
-{: .block-tip }
+> {: .block-tip }
 
 ---
 

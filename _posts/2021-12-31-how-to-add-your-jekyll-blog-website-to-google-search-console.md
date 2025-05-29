@@ -6,7 +6,7 @@ description: Google 大大，你把我的網頁藏哪去了？教你兩步驟：
 tags: [Jekyll, Google, SEO, Search Console, Sitemap]
 categories: [Blog]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 ---
@@ -109,6 +109,6 @@ sitemap.xml
 Google 現在會開始爬取你的網站內容，雖然不會馬上就出現在搜尋結果中，但只要持續更新、讓內容具備價值，自然就會慢慢被收錄了。
 
 > ##### TIP
-> 
+>
 > 如果你有不同的驗證方法、想了解更多 SEO 設定，歡迎留言或寫信給我，一起研究提升部落格能見度 🙂
-{: .block-tip }
+> {: .block-tip }

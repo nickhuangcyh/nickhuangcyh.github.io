@@ -6,7 +6,7 @@ description: 深入解析 P2P 穿透技術、NAT 類型與通訊限制，掌握�
 tags: [iOS, Android, IPv4, NAT, P2P, NAT Traversal]
 categories: [P2P]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/nasa-1lfI7wkGWZ4-unsplash.jpg
 ---
@@ -36,7 +36,7 @@ P2P 目的是讓裝置之間**不依賴中心伺服器也能直接建立連線**
 所有 client 都連接至單一 server，由 server 統一管理與分發訊息。  
 這就像國家中央銀行發行貨幣，所有人都從央行取得錢。
 
-- ✅ 優點：部署簡單、易於維護、集中管理資料  
+- ✅ 優點：部署簡單、易於維護、集中管理資料
 - ❌ 缺點：單點故障風險高、隱私問題、延遲受限於地理位置
 
 ---
@@ -47,7 +47,7 @@ P2P 目的是讓裝置之間**不依賴中心伺服器也能直接建立連線**
 
 有多台伺服器共用資料，client 可以從任一伺服器取得資訊。
 
-- ✅ 容錯率較高，性能彈性好  
+- ✅ 容錯率較高，性能彈性好
 - ❌ 系統設計複雜、維運成本較高、安全風險仍在
 
 ---
@@ -60,7 +60,7 @@ P2P 目的是讓裝置之間**不依賴中心伺服器也能直接建立連線**
 
 > 如區塊鏈，每個節點都有完整資訊，不需信任中心機構
 
-- ✅ 高容錯性、透明、安全、節省成本  
+- ✅ 高容錯性、透明、安全、節省成本
 - ❌ 系統架構與部署更複雜、程式需考慮設備差異
 
 ---
@@ -71,14 +71,14 @@ P2P 目的是讓裝置之間**不依賴中心伺服器也能直接建立連線**
 
 {% include figure.liquid path="assets/img/p2p_centralized_connect.png" title="中心化控制 IPCam" %}
 
-- 優點：Server 可控、部署快速、維護集中  
+- 優點：Server 可控、部署快速、維護集中
 - 缺點：Server 故障即癱瘓、租機/頻寬成本高
 
 📌 **分佈式控制：**
 
 {% include figure.liquid path="assets/img/p2p_distributed_connect.png" title="分佈式控制 IPCam" %}
 
-- 優點：不依賴 Server、不需租費  
+- 優點：不依賴 Server、不需租費
 - 缺點：程式複雜、App/Firmware 更新困難、頻繁斷線需重連
 
 > 疑問：既然 Server 不參與，那麼「分佈式架構下手機與 IPCam 怎麼直接通訊？」  
@@ -115,10 +115,10 @@ NAT 是讓多台裝置共用一個公共 IP 的技術。它透過內部 IP ↔ �
 
 {% include figure.liquid path="assets/img/p2p_nat_6.png" title="雙 NAT 情境下的 P2P 穿透過程" %}
 
-1. A 發出封包 → 建立 A NAT 對映  
-2. A 封包被 B NAT 阻擋 → 失敗  
-3. B 發出封包 → 建立 B NAT 對映  
-4. B 封包通過 A NAT → 成功連通  
+1. A 發出封包 → 建立 A NAT 對映
+2. A 封包被 B NAT 阻擋 → 失敗
+3. B 發出封包 → 建立 B NAT 對映
+4. B 封包通過 A NAT → 成功連通
 5. 兩方皆有 NAT 記錄 → 後續雙向 P2P 成立
 
 ---
@@ -137,7 +137,7 @@ NAT 是讓多台裝置共用一個公共 IP 的技術。它透過內部 IP ↔ �
 > ##### TIP
 >
 > 若你在開發初期無法判斷使用者 NAT 類型，建議預設優化邏輯為 Full Cone，可搭配 STUN server 回報 NAT 屬性。
-{: .block-tip }
+> {: .block-tip }
 
 ---
 
@@ -145,7 +145,7 @@ NAT 是讓多台裝置共用一個公共 IP 的技術。它透過內部 IP ↔ �
 
 {% include figure.liquid path="assets/img/p2p_restricted_cone_nat.png" title="Restricted Cone NAT" %}
 
-- 僅曾被內部主機連過的外部主機可回傳封包  
+- 僅曾被內部主機連過的外部主機可回傳封包
 - 還算可接受，但需先有 outbound 流量建立 mapping
 
 ---
@@ -154,7 +154,7 @@ NAT 是讓多台裝置共用一個公共 IP 的技術。它透過內部 IP ↔ �
 
 {% include figure.liquid path="assets/img/p2p_port_restricted_cone_nat.png" title="Port Restricted Cone NAT" %}
 
-- 與 Restricted 相似，但進一步要求 port 完全對應  
+- 與 Restricted 相似，但進一步要求 port 完全對應
 - 穿透難度較高
 
 ---
@@ -166,7 +166,7 @@ NAT 是讓多台裝置共用一個公共 IP 的技術。它透過內部 IP ↔ �
 > ##### WARNING
 >
 > Symmetric NAT 幾乎無法直接打洞成功，需結合 TURN 伺服器作為中繼，否則雙方 mapping table 無法建立連通。
-{: .block-warning }
+> {: .block-warning }
 
 ---
 
@@ -178,7 +178,7 @@ P2P 架構與 NAT 類型是 IoT 裝置通訊不可忽視的底層核心。
 > ##### TIP
 >
 > 如果你有更多實作經驗、遇到穿透失敗等問題，歡迎留言討論或寫信交流，我會持續更新這系列文章，也歡迎分享給有需要的朋友或團隊 🙌
-{: .block-tip }
+> {: .block-tip }
 
 ---
 

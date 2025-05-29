@@ -6,7 +6,7 @@ description: 學習如何使用 Docker 映像檔來架設 Jenkins 伺服器，�
 tags: [Jenkins, CI/CD, DevOps, Docker]
 categories: [DevOps]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/jenkins.jpg
 ---
@@ -41,7 +41,7 @@ docker pull ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17 # j
 docker run -d -v ${volume path}:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts-jdk17 # 單純 jenkins 環境
 ```
 
-or 
+or
 
 ```bash
 docker run -d -v ${volume path}:/var/jenkins_home -p 8080:8080 -p 50000:50000 ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17 # jenkins 環境 + Android 建構環境
@@ -62,7 +62,7 @@ docker run -d -v ${volume path}:/var/jenkins_home -p 8080:8080 -p 50000:50000 gh
 > 還記得我們剛剛在 run container 時有設定 `${volume path}` 嗎？你可以透過以下路徑找到初始密碼：
 >
 > `/var/jenkins_home/secrets/initialAdminPassword`
-{: .block-tip }
+> {: .block-tip }
 
 輸入密碼後，按照指示安裝 Plugin 並完成初始設定，你就成功架設好 Jenkins 啦！🎉
 
@@ -77,4 +77,4 @@ docker run -d -v ${volume path}:/var/jenkins_home -p 8080:8080 -p 50000:50000 gh
 > ##### TIP
 >
 > 想了解更多關於 Jenkins 的資訊，請參考 [Jenkins 官方文件](https://jenkins.io/doc/)。
-{: .block-tip }
+> {: .block-tip }

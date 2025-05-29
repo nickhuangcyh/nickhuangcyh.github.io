@@ -6,7 +6,7 @@ description: 了解命令模式如何將操作與執行解耦，讓程式具備�
 tags: [Command Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

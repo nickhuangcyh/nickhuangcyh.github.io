@@ -6,7 +6,7 @@ description: 如何在 OpenSSH 8.8 中重新啟用 RSA 加密支援，確保可�
 tags: [RSA Encryption, OpenSSH 8.8, Encryption Support]
 categories: [Cryptography, OpenSSH, Security]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/rsa-algorithm.jpg
 ---
@@ -21,9 +21,10 @@ thumbnail: /assets/img/rsa-algorithm.jpg
 
 ## 準備作業
 
-> ##### TIP  
+> ##### TIP
+>
 > 如果你已有環境，可略過此步驟，直接進入測試與修正段落。  
-{: .block-tip }
+> {: .block-tip }
 
 首先，我用 Docker 啟動一台 Debian 12 container：
 

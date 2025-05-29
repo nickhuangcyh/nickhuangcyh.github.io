@@ -6,7 +6,7 @@ description: 訪問者模式提供了一種方式，讓我們能在不修改物�
 tags: [Visitor Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

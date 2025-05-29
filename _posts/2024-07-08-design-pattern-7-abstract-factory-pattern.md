@@ -6,7 +6,7 @@ description: 探索如何使用抽象工廠模式創建一系列相關或依賴�
 tags: [Abstract Factory Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 tabs: true
@@ -33,7 +33,7 @@ tabs: true
 ```swift
 public func createBeverage(beverageName: String) -> Beverage? {
     var beverage: Beverage?
-    
+
     switch beverageName {
     case "black tea":
         beverage = EarlGreyBlackTea()
@@ -42,7 +42,7 @@ public func createBeverage(beverageName: String) -> Beverage? {
     default:
         break
     }
-    
+
     return beverage
 }
 ```
@@ -110,22 +110,22 @@ public protocol BlackTea {
 }
 
 public class CeylonBlackTea: BlackTea {
-    
+
 }
 
 public class EarlGreyBlackTea: BlackTea {
-    
+
 }
 
 public protocol GreenTea {
 }
 
 public class GyokuroGreenTea: GreenTea {
-    
+
 }
 
 public class SenchaGreenTea: GreenTea {
-    
+
 }
 
 public protocol BeverageFactory {
@@ -134,26 +134,26 @@ public protocol BeverageFactory {
 }
 
 open class USBeverageFactory: BeverageFactory {
-    
+
     public init() {}
-    
+
     public func createBlackTea() -> BlackTea? {
         return CeylonBlackTea()
     }
-    
+
     public func createGreenTea() -> GreenTea? {
         return GyokuroGreenTea()
     }
 }
 
 open class EUBeverageFactory: BeverageFactory {
-    
+
     public init() {}
-    
+
     public func createBlackTea() -> BlackTea? {
         return EarlGreyBlackTea()
     }
-    
+
     public func createGreenTea() -> GreenTea? {
         return SenchaGreenTea()
     }
@@ -289,21 +289,21 @@ print("euGreenTea is $euGreenTea")
 
 我們來看看工廠方法用到哪些 [Design Principle]({{ site.baseurl }}/design%20pattern/design-pattern-1-design-principle/)
 
-* Encapsulate What Varies
-* Loose Coupling
-* Program to Interfaces
-* Single Responsibility Principle
-* Open Closed Principle
-* Dependency Inversion Principle
+- Encapsulate What Varies
+- Loose Coupling
+- Program to Interfaces
+- Single Responsibility Principle
+- Open Closed Principle
+- Dependency Inversion Principle
 
 ## 參考
 
-* [Head First Design Patterns](https://www.tenlong.com.tw/products/9789867794529)
-* [大話設計模式](https://www.tenlong.com.tw/products/9789866761799)
-* [Advanced Design Patterns: Design Principles](https://www.linkedin.com/learning/advanced-design-patterns-design-principles/what-are-design-principles?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-* [Programming Foundations: Design Patterns](https://www.linkedin.com/learning/programming-foundations-design-patterns-2/trying-interfaces?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-* [Design Patterns: Creational](https://www.linkedin.com/learning/design-patterns-creational/think-about-how-you-create-objects?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-* [refactoring](https://refactoring.guru/design-patterns/factory-method)
+- [Head First Design Patterns](https://www.tenlong.com.tw/products/9789867794529)
+- [大話設計模式](https://www.tenlong.com.tw/products/9789866761799)
+- [Advanced Design Patterns: Design Principles](https://www.linkedin.com/learning/advanced-design-patterns-design-principles/what-are-design-principles?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
+- [Programming Foundations: Design Patterns](https://www.linkedin.com/learning/programming-foundations-design-patterns-2/trying-interfaces?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
+- [Design Patterns: Creational](https://www.linkedin.com/learning/design-patterns-creational/think-about-how-you-create-objects?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
+- [refactoring](https://refactoring.guru/design-patterns/factory-method)
 
 **Note:** 如果有任何建議、問題或不同想法，歡迎留言或寄信給我，可以一起討論進步成長🙂
 {: .notice--success}

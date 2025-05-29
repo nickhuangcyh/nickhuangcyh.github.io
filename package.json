@@ -1,6 +1,24 @@
 {
   "devDependencies": {
-    "@shopify/prettier-plugin-liquid": "1.4.0",
-    "prettier": "3.1.1"
-  }
+    "@shopify/prettier-plugin-liquid": "^1.4.0",
+    "prettier": "^3.1.1"
+  },
+  "name": "nickhuangcyh.github.io",
+  "description": "<div align=\"center\">",
+  "version": "1.0.0",
+  "main": "purgecss.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickhuangcyh/nickhuangcyh.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickhuangcyh/nickhuangcyh.github.io/issues"
+  },
+  "homepage": "https://github.com/nickhuangcyh/nickhuangcyh.github.io#readme"
 }

@@ -6,7 +6,7 @@ description: 了解中介者模式如何協調物件之間的交互，減少物�
 tags: [Mediator Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

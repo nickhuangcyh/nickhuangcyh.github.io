@@ -6,7 +6,7 @@ description: 解析 STUN、TURN 與 ICE 協議，搞懂 P2P 穿透技術，突�
 tags: [iOS, Android, STUN, TURN, ICE, NAT Traversal]
 categories: [P2P]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/nasa-1lfI7wkGWZ4-unsplash.jpg
 ---
@@ -41,7 +41,7 @@ STUN（Session Traversal Utilities for NAT）是一種協定，
 > ##### TIP
 >
 > STUN 是實作 P2P 通訊不可或缺的第一步，但若遇到 Symmetric NAT，它就無能為力了。
-{: .block-tip }
+> {: .block-tip }
 
 ---
 
@@ -64,7 +64,7 @@ TURN（Traversal Using Relay NAT）是一種「中繼協定」，
 > ##### WARNING
 >
 > TURN 解決連線問題，但所有資料都會繞過 TURN server，因此會增加頻寬成本與延遲，商業服務通常需部署自有 TURN 伺服器。
-{: .block-warning }
+> {: .block-warning }
 
 ---
 
@@ -75,8 +75,8 @@ ICE（Interactive Connectivity Establishment）是一種綜合性 NAT 穿透框�
 
 運作邏輯：
 
-1. 優先嘗試使用 STUN 建立 P2P 直連  
-2. 若 STUN 失敗，再自動 fallback 至 TURN 中繼通訊  
+1. 優先嘗試使用 STUN 建立 P2P 直連
+2. 若 STUN 失敗，再自動 fallback 至 TURN 中繼通訊
 3. 判斷路徑最佳解後，確立穩定連線
 
 📖 [ICE Wiki](https://zh.wikipedia.org/wiki/%E4%BA%92%E5%8B%95%E5%BC%8F%E9%80%A3%E6%8E%A5%E5%BB%BA%E7%AB%8B)
@@ -86,7 +86,7 @@ ICE（Interactive Connectivity Establishment）是一種綜合性 NAT 穿透框�
 > ##### TIP
 >
 > ICE 是現代 P2P 通訊的主流做法，像 WebRTC、Zoom、Google Meet 都內建 ICE 機制處理 NAT 穿透。
-{: .block-tip }
+> {: .block-tip }
 
 ---
 
@@ -94,16 +94,16 @@ ICE（Interactive Connectivity Establishment）是一種綜合性 NAT 穿透框�
 
 三個技術的角色如下：
 
-| 協定 | 功能說明 |
-|------|----------|
-| STUN | 幫你知道「我在外部網路的樣子」 |
-| TURN | 幫你中繼資料，當打洞失敗時使用 |
+| 協定 | 功能說明                              |
+| ---- | ------------------------------------- |
+| STUN | 幫你知道「我在外部網路的樣子」        |
+| TURN | 幫你中繼資料，當打洞失敗時使用        |
 | ICE  | 幫你選擇最好的通訊方式，自動 fallback |
 
 > ##### TIP
 >
 > 建議所有即時影音 / 裝置連線服務都導入 ICE 框架，確保連線成功率最大化，並保留 STUN / TURN 備援機制。
-{: .block-tip }
+> {: .block-tip }
 
 ---
 
@@ -114,7 +114,7 @@ ICE（Interactive Connectivity Establishment）是一種綜合性 NAT 穿透框�
 > ##### TIP
 >
 > 如果你對 STUN、TURN、ICE 的實作流程有其他理解，或正在嘗試 WebRTC、AWS KVS 等技術，歡迎留言或來信交流，一起討論 P2P 的各種應用與挑戰！
-{: .block-tip }
+> {: .block-tip }
 
 ---
 

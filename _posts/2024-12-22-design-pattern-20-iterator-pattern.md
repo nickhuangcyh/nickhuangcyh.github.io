@@ -6,7 +6,7 @@ description: 了解迭代器模式如何提供一種順序來訪問集合內元�
 tags: [Iterator Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

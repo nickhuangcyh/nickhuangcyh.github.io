@@ -6,7 +6,7 @@ description: 透過觀察者模式，實現安全系統主機的警報通知機�
 tags: [Observer Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

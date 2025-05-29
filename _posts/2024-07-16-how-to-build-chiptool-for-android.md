@@ -6,7 +6,7 @@ description: 本篇文章我將介紹如何按照步驟 Build 出 CHIPTool apk
 tags: [Android, CHIP, Matter]
 categories: [Tools]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/matter.jpg
 ---
@@ -176,16 +176,16 @@ out/android-arm64-chip-tool/outputs/apk/debug/app-debug.apk
 ```
 
 > ##### TIP
-> 
+>
 > 如果你在 Build 過程中遇到 `build.ninja` 相關錯誤，記得先手動 `gn gen .` 一下再繼續，這是目前官方文件中未提到但必要的步驟！
-{: .block-tip }
+> {: .block-tip }
 
 ---
 
 ## 參考資料
 
-- [CHIP Android Building](https://github.com/project-chip/connectedhomeip/blob/master/docs/guides/android_building.md)  
-- [CHIP Issue #28317](https://github.com/project-chip/connectedhomeip/issues/28317)  
-- [CHIP Issue #21093](https://github.com/project-chip/connectedhomeip/issues/21093)  
-- [CHIP Issue #32794](https://github.com/project-chip/connectedhomeip/issues/32795)  
+- [CHIP Android Building](https://github.com/project-chip/connectedhomeip/blob/master/docs/guides/android_building.md)
+- [CHIP Issue #28317](https://github.com/project-chip/connectedhomeip/issues/28317)
+- [CHIP Issue #21093](https://github.com/project-chip/connectedhomeip/issues/21093)
+- [CHIP Issue #32794](https://github.com/project-chip/connectedhomeip/issues/32795)
 - [CHIP Docker Versions](https://github.com/project-chip/connectedhomeip/pkgs/container/chip-build-android/versions?filters%5Bversion_type%5D=tagged)

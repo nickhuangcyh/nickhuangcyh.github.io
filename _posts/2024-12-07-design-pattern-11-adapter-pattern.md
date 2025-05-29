@@ -6,7 +6,7 @@ description: 了解如何使用轉接器模式來解決介面不兼容問題，�
 tags: [Adapter Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

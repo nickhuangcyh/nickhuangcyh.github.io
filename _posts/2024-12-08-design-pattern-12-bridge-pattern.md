@@ -6,7 +6,7 @@ description: 深入了解橋接模式如何解耦抽象與實現，打造更靈�
 tags: [Bridge Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

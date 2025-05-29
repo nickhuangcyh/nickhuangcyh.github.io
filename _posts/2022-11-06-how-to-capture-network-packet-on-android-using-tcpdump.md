@@ -6,7 +6,7 @@ description: 實戰教你如何使用 tcpdump 搭配 Wireshark 抓取 Android �
 tags: [Android, Network, Packet, Wireshark, tcpdump]
 categories: [Tools]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/jordan-harrison-40XgDxBfYXM-unsplash.jpg
 ---
@@ -31,7 +31,7 @@ thumbnail: /assets/img/jordan-harrison-40XgDxBfYXM-unsplash.jpg
 > ##### WARNING
 >
 > 如果沒有 root 權限，也能用 [tPacketCapture](https://play.google.com/store/apps/details?id=jp.co.taosoftware.android.packetcapture&hl=zh_TW&gl=US)，但它會以 VPN 方式攔截封包，我實測會有封包漏掉問題，不建議依賴。
-{: .block-warning }
+> {: .block-warning }
 
 ---
 
@@ -102,7 +102,7 @@ adb pull /sdcard/capture.pcap
 > ##### TIP
 >
 > 當 log 看不到東西、console 沉默不語時，封包永遠會說實話。會抓封包，能讓你在 debug 上省下好幾倍時間。
-{: .block-tip }
+> {: .block-tip }
 
 ---
 

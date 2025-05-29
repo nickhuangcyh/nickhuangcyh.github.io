@@ -6,7 +6,7 @@ description: 深入了解組合模式如何以一致的方式操作單個物件�
 tags: [Composite Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

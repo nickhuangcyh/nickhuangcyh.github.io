@@ -6,7 +6,7 @@ description: 了解備忘錄模式如何幫助我們實現狀態恢復，像是�
 tags: [Memento Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

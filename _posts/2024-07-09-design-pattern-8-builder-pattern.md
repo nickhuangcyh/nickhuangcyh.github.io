@@ -6,7 +6,7 @@ description: 探索建造者模式，學習如何分步構建複雜對象，使�
 tags: [Builder Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

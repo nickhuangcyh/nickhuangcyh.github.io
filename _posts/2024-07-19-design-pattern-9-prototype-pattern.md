@@ -6,7 +6,7 @@ description: 深入原型模式：探索如何透過物件複製技術，有效�
 tags: [Prototype Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

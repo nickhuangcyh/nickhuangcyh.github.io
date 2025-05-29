@@ -6,7 +6,7 @@ description: Step-by-step guide to setting up a mobile development environment o
 tags: [macOS, Development, Mobile Development]
 categories: [Setup Guide]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/raul-per-e-K2w9VegUIb0-unsplash.jpg
 ---

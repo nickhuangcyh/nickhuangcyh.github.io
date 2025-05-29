@@ -6,7 +6,7 @@ description: 透過狀態模式，設計一個飲水機的運作機制，根據�
 tags: [State Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

@@ -6,7 +6,7 @@ description: 深入探討設計模式的概念及其應用步驟，助你高效�
 tags: [Design Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
@@ -53,39 +53,39 @@ Design Pattern 可以分為三種基本的類型
 
 創建實例化物件有關的 Patterns
 
-* Factory Method Pattern
-* Abstract Factory Pattern
-* Builder Pattern
-* Prototype Pattern
-* Singleton Pattern
+- Factory Method Pattern
+- Abstract Factory Pattern
+- Builder Pattern
+- Prototype Pattern
+- Singleton Pattern
 
 ### Structural 結構型
 
 物件之間如何組成更大結構的 Patterns
 
-* Adapter Pattern
-* Bridge Pattern
-* Decorator Pattern
-* Facade Pattern
-* Proxy Pattern
-* Flyweight Pattern
-* Composite Pattern
+- Adapter Pattern
+- Bridge Pattern
+- Decorator Pattern
+- Facade Pattern
+- Proxy Pattern
+- Flyweight Pattern
+- Composite Pattern
 
 ### Behavioural 行為型
 
 物件之間行為交互的 Patterns
 
-* Chain of Responsibility Pattern
-* Mediator Pattern
-* Iterator Pattern
-* State Pattern
-* Observer Pattern
-* Command Pattern
-* Strategy Pattern
-* Template Pattern
-* Interpreter Pattern
-* Memento Pattern
-* Visitor Pattern
+- Chain of Responsibility Pattern
+- Mediator Pattern
+- Iterator Pattern
+- State Pattern
+- Observer Pattern
+- Command Pattern
+- Strategy Pattern
+- Template Pattern
+- Interpreter Pattern
+- Memento Pattern
+- Visitor Pattern
 
 ## 總結
 
@@ -101,12 +101,12 @@ Design Pattern 可以分為三種基本的類型
 
 ## 參考
 
-* [Head First Design Patterns](https://www.tenlong.com.tw/products/9789867794529)
-* [大話設計模式](https://www.tenlong.com.tw/products/9789866761799)
-* [Advanced Design Patterns: Design Principles](https://www.linkedin.com/learning/advanced-design-patterns-design-principles/what-are-design-principles?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-* [Programming Foundations: Design Patterns](https://www.linkedin.com/learning/programming-foundations-design-patterns-2/trying-interfaces?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-* [Design Patterns: Creational](https://www.linkedin.com/learning/design-patterns-creational/think-about-how-you-create-objects?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-* [水球潘 - Design Pattern 之路](https://www.youtube.com/watch?v=yOe-uywb2qs&list=PLicQRHHL75d7EXEI9nWfUYJyrPdI79M70&pp=iAQB)
+- [Head First Design Patterns](https://www.tenlong.com.tw/products/9789867794529)
+- [大話設計模式](https://www.tenlong.com.tw/products/9789866761799)
+- [Advanced Design Patterns: Design Principles](https://www.linkedin.com/learning/advanced-design-patterns-design-principles/what-are-design-principles?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
+- [Programming Foundations: Design Patterns](https://www.linkedin.com/learning/programming-foundations-design-patterns-2/trying-interfaces?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
+- [Design Patterns: Creational](https://www.linkedin.com/learning/design-patterns-creational/think-about-how-you-create-objects?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
+- [水球潘 - Design Pattern 之路](https://www.youtube.com/watch?v=yOe-uywb2qs&list=PLicQRHHL75d7EXEI9nWfUYJyrPdI79M70&pp=iAQB)
 
 **Note:** 如果有任何建議、問題或不同想法，歡迎留言或寄信給我，可以一起討論進步成長 🙂
 {: .notice--success}

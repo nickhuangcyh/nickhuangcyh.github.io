@@ -6,7 +6,7 @@ description: 解譯器模式用於構建一個可解讀特定語言或語法的�
 tags: [Interpreter Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

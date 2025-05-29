@@ -6,7 +6,7 @@ description: 寫 3D 繪圖程式必需要知道的知識，這篇帶你快速掌
 tags: [iOS, Android, 3D, OpenGL, ARKit, ARCore, Sceneform, SceneKit]
 categories: [Mobile]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/nick-brunner-k4xDXNskVsQ-unsplash.jpg
 ---
@@ -45,7 +45,7 @@ UV 座標以 (U, V) 表示，U 為橫軸，V 為縱軸，左上為 (0,0)，右�
 
 在電腦繪圖中，我們不會直接畫三角形，而是透過記錄「哪些頂點構成哪些三角形」，這就需要：
 
-- **Vertices（頂點）**：記錄每個空間位置  
+- **Vertices（頂點）**：記錄每個空間位置
 - **Indices（索引）**：定義三角形的連接關係
 
 {% include figure.liquid path="https://www.oreilly.com/api/v2/epubs/9781788629690/files/assets/1ccc3e64-684e-4098-b910-505346c4b396.png" title="頂點與索引" %}
@@ -62,7 +62,7 @@ UV 座標以 (U, V) 表示，U 為橫軸，V 為縱軸，左上為 (0,0)，右�
 若希望同時呈現正反兩面，可以定義兩組索引：
 
 ```text
-正面： [0, 2, 1]  
+正面： [0, 2, 1]
 背面： [0, 1, 2]
 ```
 
@@ -75,6 +75,6 @@ UV 座標以 (U, V) 表示，U 為橫軸，V 為縱軸，左上為 (0,0)，右�
 不管是 iOS、Android 還是 Web，只要涉及 3D 技術、遊戲開發、AR 或 VR，這些基礎觀念都是不可或缺的。希望這篇筆記能幫助你入門 3D 世界的繪圖邏輯 🚀
 
 > ##### TIP
-> 
+>
 > 如果你有不同觀點、技術經驗或想要討論進一步的 3D 架構設計，歡迎留言或寄信給我，我們一起交流成長 🙂
-{: .block-tip }
+> {: .block-tip }

@@ -6,7 +6,7 @@ description: 深入了解裝飾者模式如何動態為物件增加功能，同�
 tags: [Decorator Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

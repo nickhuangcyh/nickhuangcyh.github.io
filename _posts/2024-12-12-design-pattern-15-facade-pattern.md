@@ -6,7 +6,7 @@ description: 探索外觀模式如何簡化系統複雜性，提供一個統一�
 tags: [Facade Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

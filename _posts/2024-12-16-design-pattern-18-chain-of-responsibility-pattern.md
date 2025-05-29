@@ -6,7 +6,7 @@ description: 了解責任鏈模式如何讓請求能被多個對象動態處理�
 tags: [Chain of Responsibility Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

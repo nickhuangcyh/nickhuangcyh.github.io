@@ -47,11 +47,13 @@ brew install git
 ---
 
 ### 安裝 [Ruby](https://www.ruby-lang.org/zh_tw/documentation/installation/)
+
 ```bash
 brew install ruby
 ```
 
 確認安裝是否成功：
+
 ```bash
 ruby --version
 ```
@@ -59,12 +61,14 @@ ruby --version
 ---
 
 ## Octopress 架站流程
+
 ```bash
 git clone git://github.com/imathis/octopress.git octopress
 cd octopress
 ```
 
 接著安裝相關套件：
+
 ```bash
 gem install bundler
 rbenv rehash
@@ -72,6 +76,7 @@ bundle install
 ```
 
 安裝預設主題：
+
 ```bash
 rake install
 ```
@@ -104,6 +109,7 @@ rake setup_github_pages
 ```
 
 輸入剛剛的 SSH 路徑：
+
 ```bash
 git@github.com:username/username.github.io.git
 ```
@@ -138,6 +144,7 @@ Octopress 的文章都放在 `source/_posts` 資料夾下。
 ---
 
 ### 建立新文章：
+
 ```bash
 rake new_post["文章標題"]
 ```
@@ -159,6 +166,7 @@ rake deploy
 ```
 
 或使用簡化流程：
+
 ```bash
 rake gen_deploy
 ```
@@ -180,6 +188,5 @@ git push origin source
 ## 總結
 
 以上就是用 Octopress 架設 GitHub Pages 靜態部落格的完整流程。未來我也會繼續研究更多進階設定與佈景客製技巧，再陸續分享給大家。
-
 
 > 如果你有不同的作法、碰到問題，或有想交流的經驗，歡迎留言或寫信給我，一起切磋交流 🙂

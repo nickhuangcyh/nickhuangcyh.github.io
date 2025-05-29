@@ -6,7 +6,7 @@ description: 探索封裝、繼承、多態和抽象的力量，為理解複雜�
 tags: [Object-Oriented Concepts]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

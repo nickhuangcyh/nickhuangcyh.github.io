@@ -6,7 +6,7 @@ description: 讓你的電腦同時操作多個 GitHub 帳號，適合有多個�
 tags: [GitHub, SSH, Git]
 categories: [DevOps, Productivity, GitHub]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/github.jpg
 ---

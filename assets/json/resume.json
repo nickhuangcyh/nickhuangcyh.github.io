@@ -144,117 +144,58 @@
       "name": "Programming Languages",
       "level": "Advanced",
       "icon": "fa-brands fa-swift",
-      "keywords": [
-        "Objective-C",
-        "Swift",
-        "Kotlin"
-      ]
-    }, 
+      "keywords": ["Objective-C", "Swift", "Kotlin"]
+    },
     {
       "name": "Programming Languages",
       "level": "Intermediate",
       "icon": "fa-brands fa-python",
-      "keywords": [
-        "Python",
-        "Java",
-        "JavaScript", 
-        "C",
-        "C++",
-        "Shell Script",
-        "HTML",
-        "CSS"
-      ]
-    }, 
+      "keywords": ["Python", "Java", "JavaScript", "C", "C++", "Shell Script", "HTML", "CSS"]
+    },
     {
       "name": "Architecture",
       "icon": "fa-solid fa-sitemap",
-      "keywords": [
-        "MVC",
-        "MVP",
-        "MVVM", 
-        "VIPER"
-      ]
-    }, 
+      "keywords": ["MVC", "MVP", "MVVM", "VIPER"]
+    },
     {
       "name": "Programming Design",
       "icon": "fa-solid fa-sitemap",
-      "keywords": [
-        "OOP",
-        "POP",
-        "FP"
-      ]
-    }, 
+      "keywords": ["OOP", "POP", "FP"]
+    },
     {
       "name": "Version Control",
       "icon": "fa-brands fa-git",
-      "keywords": [
-        "Git"
-      ]
-    }, 
+      "keywords": ["Git"]
+    },
     {
       "name": "Network Protocols",
       "icon": "fa-solid fa-network-wired",
-      "keywords": [
-        "TCP", 
-        "UDP",
-        "MQTT",
-        "HTTP",
-        "TLS",
-        "RTSP",
-        "WebSocket"
-      ]
-    }, 
+      "keywords": ["TCP", "UDP", "MQTT", "HTTP", "TLS", "RTSP", "WebSocket"]
+    },
     {
       "name": "Network",
       "icon": "fa-solid fa-network-wired",
-      "keywords": [
-        "Socket", 
-        "WebSocket",
-        "Socket.IO",
-        "P2P",
-        "STUN",
-        "TURN",
-        "ICE",
-        "WebRTC",
-        "AWS KVS"
-      ]
-    }, 
+      "keywords": ["Socket", "WebSocket", "Socket.IO", "P2P", "STUN", "TURN", "ICE", "WebRTC", "AWS KVS"]
+    },
     {
       "name": "Custom Network Protocol",
       "icon": "fa-solid fa-network-wired",
-      "keywords": [
-        "RS485 (self-defined protocol containing handshake, ack, encryption packet, and more, similar to TCP/UDP)"
-      ]
-    }, 
+      "keywords": ["RS485 (self-defined protocol containing handshake, ack, encryption packet, and more, similar to TCP/UDP)"]
+    },
     {
       "name": "Video/Audio",
       "icon": "fa-solid fa-video",
-      "keywords": [
-        "H.264", 
-        "FFMpeg",
-        "Mjpeg"
-      ]
-    }, 
+      "keywords": ["H.264", "FFMpeg", "Mjpeg"]
+    },
     {
       "name": "CI/CD",
       "icon": "fa-solid fa-hashtag",
-      "keywords": [
-        "Jenkins (Android build on master, iOS build on slave)", 
-        "TravisCI",
-        "Fastlane (iOS)",
-        "Gradle (Android)",
-        "Pipeline (Groovy)"
-      ]
-    }, 
+      "keywords": ["Jenkins (Android build on master, iOS build on slave)", "TravisCI", "Fastlane (iOS)", "Gradle (Android)", "Pipeline (Groovy)"]
+    },
     {
       "name": "Others",
       "icon": "fa-solid fa-hashtag",
-      "keywords": [
-        "Docker", 
-        "ARKit",
-        "ARCore",
-        "BluetoothLE"
-      ]
+      "keywords": ["Docker", "ARKit", "ARCore", "BluetoothLE"]
     }
   ],
   "languages": [
@@ -273,10 +214,7 @@
     {
       "name": "Marathon",
       "icon": "fa-solid fa-person-running",
-      "keywords": [
-        "Half Marathon",
-        "2025 National Geographic Marathon - 21k"
-      ]
+      "keywords": ["Half Marathon", "2025 National Geographic Marathon - 21k"]
     }
   ],
   "references": [

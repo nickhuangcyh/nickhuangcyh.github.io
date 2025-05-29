@@ -6,7 +6,7 @@ description: 了解代理模式如何通過控制對物件的訪問來提升系�
 tags: [Proxy Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

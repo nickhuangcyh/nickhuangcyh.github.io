@@ -6,7 +6,7 @@ description: 學習如何在 Jenkins 中配置憑證（Credentials），以便�
 tags: [Jenkins, CI/CD, DevOps, Credentials, SSH]
 categories: [DevOps]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/jenkins.jpg
 ---
@@ -41,18 +41,18 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
 ### 步驟三：在 Jenkins 中添加憑證
 
-1. 打開 Jenkins 管理介面：瀏覽器開啟 `http://localhost:8080/`，使用管理員帳號登入。  
-2. 進入憑證管理：點擊左側選單「Credentials」→「System」。  
-3. 創建新的 Domain：點擊「Domains」旁的「Add domain」，填寫名稱（如 GitHub），點擊「OK」。  
-4. 新增憑證：選擇剛新增的 Domain，點選「Add Credentials」。  
-5. 填寫憑證資訊：  
+1. 打開 Jenkins 管理介面：瀏覽器開啟 `http://localhost:8080/`，使用管理員帳號登入。
+2. 進入憑證管理：點擊左側選單「Credentials」→「System」。
+3. 創建新的 Domain：點擊「Domains」旁的「Add domain」，填寫名稱（如 GitHub），點擊「OK」。
+4. 新增憑證：選擇剛新增的 Domain，點選「Add Credentials」。
+5. 填寫憑證資訊：
 
-- Kind：選擇「SSH Username with private key」  
-- Scope：選擇「Global」  
-- ID：可選，設定唯一識別用  
-- Description：輸入描述以便未來管理  
-- Username：通常為 `git`  
-- Private Key：選擇「Enter directly」，貼上私鑰內容  
+- Kind：選擇「SSH Username with private key」
+- Scope：選擇「Global」
+- ID：可選，設定唯一識別用
+- Description：輸入描述以便未來管理
+- Username：通常為 `git`
+- Private Key：選擇「Enter directly」，貼上私鑰內容
 
 6. 點擊「OK」保存憑證設定。
 
@@ -60,14 +60,15 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
 ### 步驟四：配置 Jenkins Job 使用憑證
 
-1. 進入 Jenkins 首頁，建立或編輯一個 Job。  
-2. 在「Source Code Management」區塊選擇「Git」。  
-3. 在「Repository URL」輸入 SSH 格式的 Git 倉庫連結，例如：  
+1. 進入 Jenkins 首頁，建立或編輯一個 Job。
+2. 在「Source Code Management」區塊選擇「Git」。
+3. 在「Repository URL」輸入 SSH 格式的 Git 倉庫連結，例如：
+
 ```bash
 git@github.com:username/repository.git
 ```
 
-4. 在「Credentials」下拉選單中，選擇剛剛設定的 SSH 憑證。  
+4. 在「Credentials」下拉選單中，選擇剛剛設定的 SSH 憑證。
 5. 儲存設定並開始 Build！
 
 ---
@@ -77,6 +78,6 @@ git@github.com:username/repository.git
 透過上述步驟，我們完成了 Jenkins 使用 SSH 拉取 Git 程式碼的完整配置流程。這不僅提升安全性，也讓 CI/CD 過程更順暢。建議每個 Jenkins 環境都配妥正確的 SSH 憑證，避免未來授權問題造成建置中斷。
 
 > ##### TIP
-> 
+>
 > 想進一步了解 Jenkins 憑證系統與進階配置，請參考 [Jenkins 官方文件](https://jenkins.io/doc/)。
-{: .block-tip }
+> {: .block-tip }

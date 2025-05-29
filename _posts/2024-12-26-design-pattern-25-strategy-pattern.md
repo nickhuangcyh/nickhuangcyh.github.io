@@ -6,7 +6,7 @@ description: 策略模式提供了一種靈活的解決方案，讓系統能根�
 tags: [Strategy Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

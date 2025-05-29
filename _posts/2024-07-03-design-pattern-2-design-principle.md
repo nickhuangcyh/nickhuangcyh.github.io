@@ -6,7 +6,7 @@ description: 學習如何透過單一職責和開放封閉等設計原則提升�
 tags: [Design Principle]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 tabs: true

@@ -6,7 +6,7 @@ description: 深入單例模式：如何確保一個類別只有一個實體，�
 tags: [Singleton Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---

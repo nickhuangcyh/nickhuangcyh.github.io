@@ -6,7 +6,7 @@ description: 深入探討工廠方法模式，通過實例展示其應用，提�
 tags: [Factory Method Pattern]
 categories: [Design Pattern]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 tabs: true
@@ -24,9 +24,9 @@ tabs: true
 
 飲料點餐系統受到客戶的喜愛，業績非常好，於是客戶在世界各地迅速擴店。但很快的問題出現了——不同地區的顧客有著不同的偏好。
 
-* **案例分析**:
-  + 美國喜歡錫蘭紅茶
-  + 歐洲喜歡伯爵紅茶
+- **案例分析**:
+  - 美國喜歡錫蘭紅茶
+  - 歐洲喜歡伯爵紅茶
 
 我們的目標是，不增加過多成本的同時，滿足這些多樣化的需求。
 (成本考量我們不將所有紅茶種類都加入菜單，只用最符合當地口味的茶葉製作紅茶)
@@ -39,7 +39,7 @@ tabs: true
 
 {% tabs data-struct %}
 
-{% tab data-struct Swift %} 
+{% tab data-struct Swift %}
 
 ```swift
 public class CeylonBlackTea: Beverage {
@@ -272,24 +272,24 @@ val euGreenTea = euBeverageShop.order("green tea")
 
 我們來看看工廠方法用到哪些 [Design Principle]({{ site.baseurl }}/design%20pattern/design-pattern-1-design-principle/)
 
-* Encapsulate What Varies
-* Loose Coupling
-* Program to Interfaces
-* Single Responsibility Principle
-* Open Closed Principle
-* Dependency Inversion Principle
+- Encapsulate What Varies
+- Loose Coupling
+- Program to Interfaces
+- Single Responsibility Principle
+- Open Closed Principle
+- Dependency Inversion Principle
 
 下一篇要介紹最後一個工廠模式 Abstract Factory Pattern 抽象工廠模式
 
 ## 參考
 
-* [Head First Design Patterns](https://www.tenlong.com.tw/products/9789867794529)
-* [大話設計模式](https://www.tenlong.com.tw/products/9789866761799)
-* [Advanced Design Patterns: Design Principles](https://www.linkedin.com/learning/advanced-design-patterns-design-principles/what-are-design-principles?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-* [Programming Foundations: Design Patterns](https://www.linkedin.com/learning/programming-foundations-design-patterns-2/trying-interfaces?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-* [Design Patterns: Creational](https://www.linkedin.com/learning/design-patterns-creational/think-about-how-you-create-objects?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-* [refactoring](https://refactoring.guru/design-patterns/factory-method)
-* [水球潘 - Design Pattern 之路](https://www.youtube.com/watch?v=yOe-uywb2qs&list=PLicQRHHL75d7EXEI9nWfUYJyrPdI79M70&pp=iAQB)
+- [Head First Design Patterns](https://www.tenlong.com.tw/products/9789867794529)
+- [大話設計模式](https://www.tenlong.com.tw/products/9789866761799)
+- [Advanced Design Patterns: Design Principles](https://www.linkedin.com/learning/advanced-design-patterns-design-principles/what-are-design-principles?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
+- [Programming Foundations: Design Patterns](https://www.linkedin.com/learning/programming-foundations-design-patterns-2/trying-interfaces?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
+- [Design Patterns: Creational](https://www.linkedin.com/learning/design-patterns-creational/think-about-how-you-create-objects?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
+- [refactoring](https://refactoring.guru/design-patterns/factory-method)
+- [水球潘 - Design Pattern 之路](https://www.youtube.com/watch?v=yOe-uywb2qs&list=PLicQRHHL75d7EXEI9nWfUYJyrPdI79M70&pp=iAQB)
 
 **Note:** 如果有任何建議、問題或不同想法，歡迎留言或寄信給我，可以一起討論進步成長🙂
 {: .notice--success}

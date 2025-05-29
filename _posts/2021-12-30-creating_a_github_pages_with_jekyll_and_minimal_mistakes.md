@@ -6,7 +6,7 @@ description: 原來架設 Blog 也能如此輕鬆簡單！這篇文章手把手�
 tags: [Jekyll, Minimal-Mistakes, GitHub Pages, Theme]
 categories: [Blog]
 toc:
-#   beginning: true
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 ---
@@ -22,6 +22,7 @@ thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 ---
 
 ### Jekyll 的優點：
+
 1. 支援 Markdown 寫作，轉換為 HTML 靜態頁面
 2. 社群活躍、主題豐富
 3. 可高度自訂
@@ -29,6 +30,7 @@ thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 ---
 
 ### Minimal Mistakes 的特色：
+
 1. 超過 9k GitHub stars，使用者眾多
 2. 支援 Dark Mode（暗黑主題）
 3. 圖片可放大，體驗類似 Medium
@@ -51,6 +53,7 @@ thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 ---
 
 ### 註冊 GitHub 帳號
+
 👉 [前往註冊](https://github.com)
 
 ---
@@ -107,9 +110,9 @@ make -v
 ```
 
 > ##### WARNING
-> 
+>
 > 上述環境若有缺漏，可能導致 Jekyll 安裝過程中錯誤。
-{: .block-warning }
+> {: .block-warning }
 
 ---
 
@@ -309,7 +312,7 @@ bundle install
 
 ### 4️⃣ 調整必要檔案結構
 
-- 將 `index.md` 替換為 Minimal Mistakes 提供的範本（或建立新頁面）  
+- 將 `index.md` 替換為 Minimal Mistakes 提供的範本（或建立新頁面）
 - 修改 `_posts/0000-00-00-welcome-to-jekyll.md`：
   ```yaml
   layout: post
@@ -341,4 +344,3 @@ git push origin gh-pages
 🎉🎉🎉 Done！你已經成功使用 Jekyll + Minimal Mistakes 在 GitHub Pages 上架設一個現代化技術 Blog！
 
 > 如果你有不同的方法、問題或想進一步客製佈景，歡迎留言或寄信給我，一起成長與交流 🙂
-
