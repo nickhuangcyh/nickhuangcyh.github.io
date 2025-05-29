@@ -48,7 +48,7 @@ UV 座標以 (U, V) 表示，U 為橫軸，V 為縱軸，左上為 (0,0)，右�
 - **Vertices（頂點）**：記錄每個空間位置  
 - **Indices（索引）**：定義三角形的連接關係
 
-{% include figure.liquid path="https://www.oreilly.com/library/view/real-time-3d-graphics/9781788629690/assets/1ccc3e64-684e-4098-b910-505346c4b396.png" title="頂點與索引" %}
+{% include figure.liquid path="https://www.oreilly.com/api/v2/epubs/9781788629690/files/assets/1ccc3e64-684e-4098-b910-505346c4b396.png" title="頂點與索引" %}
 
 例如三角形順序為 [0, 2, 1]，代表從第 0 個頂點連接到第 2、再到第 1。
 
