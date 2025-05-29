@@ -44,7 +44,40 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-jenkins-3-如何配置-credentials-以透過-ssh-從-git-上拉取程式碼",
+        },{id: "post-一台電腦操作多個-github-帳號-最簡單快速的-ssh-設定方法",
+        
+          title: "💡 一台電腦操作多個 GitHub 帳號：最簡單快速的 SSH 設定方法",
+        
+        description: "讓你的電腦同時操作多個 GitHub 帳號，適合有多個身分或工作/個人帳號的開發者使用。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/how-to-use-multiple-github-accounts-using-ssh/";
+          
+        },
+      },{id: "post-如何使用-excalidraw-ai-快速生成專業級圖表-提升工作效率",
+        
+          title: "🚀 如何使用 Excalidraw AI 快速生成專業級圖表，提升工作效率！",
+        
+        description: "使用 Excalidraw AI 只需輸入文字描述，即可快速生成流程圖、技術架構圖、心智圖等，提升工作效率！",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/ai-tools-excalidraw-chart-guide/";
+          
+        },
+      },{id: "post-setup-development-environment-on-a-new-macos",
+        
+          title: "Setup Development Environment on a New macOS",
+        
+        description: "Step-by-step guide to setting up a mobile development environment on a new macOS system.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/setup-development-environment-on-a-new-macos/";
+          
+        },
+      },{id: "post-jenkins-3-如何配置-credentials-以透過-ssh-從-git-上拉取程式碼",
         
           title: "Jenkins (3) - 如何配置 Credentials 以透過 SSH 從 git 上拉取程式碼",
         
@@ -53,6 +86,17 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2024/jenkins-3-configure-credentials-ssh/";
+          
+        },
+      },{id: "post-google-adsense",
+        
+          title: "Google AdSense",
+        
+        description: "如何透過 Google AdSense 爲我們的網站加入廣告賺取收益",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/google-adsense/";
           
         },
       },{id: "post-jenkins-2-如何架設-jenkins-伺服器",
@@ -108,6 +152,17 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2024/how-to-build-chiptool-for-android/";
+          
+        },
+      },{id: "post-深入解析-google-wallet-smart-tap-未來的支付方式",
+        
+          title: "深入解析 Google Wallet Smart Tap：未來的支付方式",
+        
+        description: "探索 Google Wallet Smart Tap 的運作原理和它如何改變我們的支付習慣。本文將帶你了解其背後的技術，以及它對未來支付生態系統的影響。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/google-wallet-smart-tap-exploring/";
           
         },
       },{id: "post-如何抓取-ios-的網路封包",
