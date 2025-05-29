@@ -1,4 +1,4 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> 深入解析 Google Wallet Smart Tap：未來的支付方式 | Nick Huang </title> <meta name="author" content="Nick Huang"> <meta name="description" content="探索 Google Wallet Smart Tap 的運作原理和它如何改變我們的支付習慣。本文將帶你了解其背後的技術，以及它對未來支付生態系統的影響。"> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://nickhuangcyh.github.io/blog/pay/technology/google-wallet-smart-tap-exploring/"> <script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA"> <meta http-equiv="Permissions-Policy" content="interest-cohort=()"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> 深入解析 Google Wallet Smart Tap：未來的支付方式 | Nick Huang </title> <meta name="author" content="Nick Huang"> <meta name="description" content="探索 Google Wallet Smart Tap 的運作原理和它如何改變我們的支付習慣。本文將帶你了解其背後的技術，以及它對未來支付生態系統的影響。"> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%E2%9A%9B%EF%B8%8F&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://nickhuangcyh.github.io/blog/pay/technology/google-wallet-smart-tap-exploring/"> <script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
     initTheme();
   </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Nick</span> Huang </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item "> <a class="nav-link" href="/books/">bookshelf </a> </li> <li class="nav-item"> <button id="search-toggle" title="Search" onclick="openSearchModal()"> <span class="nav-link">ctrl k <i class="ti ti-search"></i></span> </button> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="ti ti-sun-moon" id="light-toggle-system"></i> <i class="ti ti-moon-filled" id="light-toggle-dark"></i> <i class="ti ti-sun-filled" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title">深入解析 Google Wallet Smart Tap：未來的支付方式</h1> <p class="post-meta"> Created on July 05, 2024 </p> <p class="post-tags"> <a href="/blog/2024"> <i class="fa-solid fa-calendar fa-sm"></i> 2024 </a>   ·   <a href="/blog/tag/google-wallet"> <i class="fa-solid fa-hashtag fa-sm"></i> Google Wallet</a>   <a href="/blog/tag/smart-tap"> <i class="fa-solid fa-hashtag fa-sm"></i> Smart Tap</a>   <a href="/blog/tag/nfc"> <i class="fa-solid fa-hashtag fa-sm"></i> NFC</a>   <a href="/blog/tag/payment-systems"> <i class="fa-solid fa-hashtag fa-sm"></i> Payment Systems</a>   ·   <a href="/blog/category/pay"> <i class="fa-solid fa-tag fa-sm"></i> Pay</a>   <a href="/blog/category/technology"> <i class="fa-solid fa-tag fa-sm"></i> Technology</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <h2 id="前言">前言</h2> <p>最近因工作之需，深入研究了 Google Wallet Smart Tap 相關技術，因此想撰寫這篇文章來記錄所學。這不僅能幫助我自己進行複習，也希望能對其他開發者提供幫助。🙂</p> <hr> <h2 id="什麼是-nfc">什麼是 NFC</h2> <p>NFC（Near Field Communication，近場通訊）是一種使兩個裝置在幾厘米距離內進行通訊的短距離無線通訊技術。它被廣泛應用於支付、票務、資料交換等領域。</p> <hr> <h2 id="google-wallet-smart-tap-簡介">Google Wallet Smart Tap 簡介</h2> <p>Smart Tap 是 Google 利用 NFC 技術開發的一種專有通訊協議。它允許用戶通過移動裝置在支持的終端機上進行快速且安全的交易和資料交換。</p> <blockquote> <p>如果你們公司是實作 Terminal 端，必須獲得認證才能使用此協議，這部分我有寫信問 Google 得到如下回覆，需要提供資訊簽署協議，Google 才會提供機密文件讓你實作。</p> </blockquote> <blockquote> <p>If you are a terminal provider and would like to certify your terminal for use with Google Wallet, please provide more details about your terminal, intended functionality and target country/region. The documentation needed for Smart Tap certification is locked behind an NDA.</p> </blockquote> <blockquote> <p>Once I have this information, my team and I will review and if the decision is to move forward with your request, we will begin the process of onboarding, starting with an NDA.</p> </blockquote> <hr> <h2 id="事前條件">事前條件</h2> <p>我們需要完成兩個條件才能開始設置 Smart Tap：</p> <ol> <li>創建 pass class 與 pass object(s)</li> <li>與支援 Smart Tap 的終端供應商建立合作關係</li> </ol> <p>目前支援 Smart Tap 的供應商包含：</p> <ul> <li>Verifone</li> <li>Ingenico</li> <li>Pax</li> <li>HID</li> <li>Equinox</li> <li>XAC<br> …（其餘略）</li> </ul> <hr> <h2 id="identifiers">Identifiers</h2> <p>在創建 pass class 跟 pass object(s) 之前，我們需要先知道一些 Smart Tap protocol 所使用的 Identifiers</p> <ul> <li>Redemption Issuer ID (兌換核發機構 ID)</li> <li>Collector ID</li> <li>Pass class ID</li> </ul> <hr> <h3 id="issuer-id-核發機構-id">Issuer ID (核發機構 ID)</h3> <p>Issuer ID 是 Google Wallet 發卡機構唯一識別碼，可以在 <a href="https://pay.google.com/business/console/home?hl=zh-cn" rel="external nofollow noopener" target="_blank">Google Pay &amp; Wallet Console</a> 中找到</p> <hr> <h3 id="redemption-issuer-id-兌換核發機構-id">Redemption Issuer ID (兌換核發機構 ID)</h3> <p>Redemption Issuer ID 是一種特定的 Issuer ID，可以把 Redemption Issuer ID 當成是單一商家，Issuer 是儲存多個商家的 pass class 平台的”集合商家”</p> <p>Issuer ID 可以代表商家、優惠提供方、商場(e.g. SOGO)、終端機製造商等等…，pass class &amp; object(s) 開發出來後，會與 Redemption Issuer ID 相關聯，Issuer ID 包含了 pass class IDs 跟 object IDs</p> <table> <thead> <tr> <th>ID</th> <th>Format</th> <th>Notes</th> </tr> </thead> <tbody> <tr> <td>Class ID</td> <td>issuerId.classSuffix</td> <td>The classSuffix is a unique, developer-defined value for a specific pass class (e.g. a loyalty tier)</td> </tr> <tr> <td>Object ID</td> <td>issuerId.objectSuffix</td> <td>The objectSuffix is a unique, developer-defined value for a specific pass object (such as a user ID)</td> </tr> </tbody> </table> <hr> <h3 id="collector-id-收款方-id">Collector ID (收款方 ID)</h3> <ul> <li>當商家的終端機支持 Smart Tap, 則 Redemption Issuer 將有一組 Collector ID</li> <li>Collector ID 是一個 8 位數字的 ID</li> <li>當 User 將設備觸碰支援 Smart Tap 的終端時，終端會將 Collector ID 發送到 User 的設備。然後設備使用該 Collector ID 的 public key 向終端進行身份驗證(後面等等會提到通訊流程)</li> </ul> <blockquote> <ol> <li>一個 Issuer ID 只能分配一組 Collector ID</li> <li>Collector ID 在所有 Issuer IDs 都是唯一的</li> </ol> </blockquote> <hr> <h3 id="pass-class-id-票證類-id">Pass Class ID (票證類 ID)</h3> <p>用於標示特定層級或票證類型。採用以下格式</p> <blockquote> <p>issuerId.classSuffix</p> </blockquote> <p>classSuffix 是由開發者定義此 pass class 獨有的值，透過此 pass class 所建立出來的 object class 可以被保存到 Google Wallet App 中。</p> <blockquote> <p>Pass Class ID 為單一的 Issuer 帳號所有，但可以與多個 Redemption Issuer 相關聯</p> </blockquote> <hr> <h2 id="communication-flow-通訊流程">Communication Flow (通訊流程)</h2> <p>終端會使用 Collector ID 來標示自身，Collector ID 會 mapping 到一個 Redemption Issuer ID，當發生 Smart Tap 時，終端會將自身的 Collector ID 傳輸給 User 的設備。然後 Google Wallet App 會檢查每個儲存在設備中的 pass class ID 及 Collector ID。找到一個或多個匹配的票證，然後 Google Wallet App 會將這些匹配的票證傳輸到終端。</p> <hr> <h3 id="範例-1-一個-redemption-issuer">範例 1: 一個 Redemption Issuer</h3> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/google_wallet_smart_tap_communication_flow_example1-480.webp 480w,/assets/img/google_wallet_smart_tap_communication_flow_example1-800.webp 800w,/assets/img/google_wallet_smart_tap_communication_flow_example1-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/google_wallet_smart_tap_communication_flow_example1.png" width="100%" height="auto" title="單一 Redemption Issuer 通訊流程" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <p>上圖有兩個不同的 Issuer</p> <ul> <li>Issuer <code class="language-plaintext highlighter-rouge">2018</code> 是 pass 開發者 (Aggregator)</li> <li>Issuer <code class="language-plaintext highlighter-rouge">1990</code> 是商家 fooPizza (Redemption Issuer)</li> </ul> <p>Redemption Issuer - fooPizza 想要為他們的票證啟用 Smart Tap 功能，Aggregator 及 Redemption Issuer 必須完成下面的步驟，才能為商家終端啟用 Smart Tap</p> <table> <thead> <tr> <th style="text-align: center">步驟</th> <th style="text-align: center">角色</th> <th style="text-align: left">說明</th> </tr> </thead> <tbody> <tr> <td style="text-align: center">1</td> <td style="text-align: center">Aggregator</td> <td style="text-align: left">創建票證類和對象（在圖中分別為 abc 和 123）。</td> </tr> <tr> <td style="text-align: center">2</td> <td style="text-align: center">Aggregator</td> <td style="text-align: left">將 Redemption Issuer 的 ID 添加到票證類的 <code class="language-plaintext highlighter-rouge">redemptionIssuers</code> 屬性中。這會告知 Google 錢包，發卡機構 ID 1990 可以兌換引用此類的票證對象。</td> </tr> <tr> <td style="text-align: center">3</td> <td style="text-align: center">Redemption Issuer</td> <td style="text-align: left">獲取 Collector ID（在圖中，12345678）。</td> </tr> <tr> <td style="text-align: center">4</td> <td style="text-align: center">Redemption Issuer</td> <td style="text-align: left">在要使用的每個支持 Smart Tap 的終端上設置 Collector ID 12345678。任何類 ID 為 abc 且 Collector ID 為 12345678 的物件都將傳送給 Reader</td> </tr> </tbody> </table> <hr> <h3 id="範例-2-多個-redemption-issuer">範例 2: 多個 Redemption Issuer</h3> <p>一個 pass class 可以有多個 Redemption Issuer，為了能夠兌換特定 pass class，Redemption Issuer ID 必須包含在 pass class 創建時的 <code class="language-plaintext highlighter-rouge">redemptionIssuers</code> 屬性中，然後每個 Redemption Issuer 都有自己的 Collector ID，此 ID 會在終端上配置</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/google_wallet_smart_tap_communication_flow_example2-480.webp 480w,/assets/img/google_wallet_smart_tap_communication_flow_example2-800.webp 800w,/assets/img/google_wallet_smart_tap_communication_flow_example2-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/google_wallet_smart_tap_communication_flow_example2.png" width="100%" height="auto" title="多個 Redemption Issuer 通訊流程" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <p>上圖有三個不同的 Issuer</p> <ul> <li>Issuer <code class="language-plaintext highlighter-rouge">8088</code> 是 pass 開發者 (Aggregator)</li> <li>Issuer <code class="language-plaintext highlighter-rouge">1990</code> 是商家 fooPizza (Redemption Issuer)</li> <li>Issuer <code class="language-plaintext highlighter-rouge">2018</code> 是商家 yumPie (Redemption Issuer)</li> </ul> <p>Aggregator 跟 Redemption Issuers 必須完成下面的步驟，才能為商家終端啟用 Smart Tap</p> <table> <thead> <tr> <th style="text-align: center">步驟</th> <th style="text-align: center">角色</th> <th style="text-align: left">說明</th> </tr> </thead> <tbody> <tr> <td style="text-align: center">1</td> <td style="text-align: center">Aggregator</td> <td style="text-align: left">建立票證類別和物件 (分別在圖中為 abc 和 123)。</td> </tr> <tr> <td style="text-align: center">2</td> <td style="text-align: center">Aggregator</td> <td style="text-align: left">請在票證類別的 <code class="language-plaintext highlighter-rouge">redemptionIssuers</code> 屬性中加入 Redemption Issuer ID。這會讓 Google 錢包瞭解 Issuer ID 1990 和 2018 可兌換參照這個類別的票證物件。</td> </tr> <tr> <td style="text-align: center">3</td> <td style="text-align: center">Redemption Issuer</td> <td style="text-align: left">取得 Collector ID (在圖表中，是 fooPizza 的 12345678，以及 yumPie 的 18802001)。</td> </tr> <tr> <td style="text-align: center">4</td> <td style="text-align: center">Redemption Issuer</td> <td style="text-align: left">在支援 Smart Tap 的每個終端機上設定對應的 Collector ID。只要物件具有類別 ID abc 且有相符的 Collector ID，系統就會將該物件傳達給 Reader。</td> </tr> </tbody> </table> <hr> <h3 id="範例-3-沒有集合商家-no-aggregator">範例 3: 沒有集合商家 (No Aggregator)</h3> <p>我們也可以使用同一個 Issuer 帳戶開發及核發票證類，沒有 Aggregator 管理多個 Redemption Issuer 的票證類。如果要兌換特定票證類，開發者必須在類別的 <code class="language-plaintext highlighter-rouge">redemptionIssuers</code> 屬性中加入 Issuer ID。開發人員必須取得 Collector ID，並在 Smart Tap 終端上設定 Collector ID。</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/google_wallet_smart_tap_communication_flow_example3-480.webp 480w,/assets/img/google_wallet_smart_tap_communication_flow_example3-800.webp 800w,/assets/img/google_wallet_smart_tap_communication_flow_example3-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/google_wallet_smart_tap_communication_flow_example3.png" width="100%" height="auto" title="無 Aggregator 模式" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <p>票證開發者必須完成下列步驟，為商家終端機啟用 Smart Tap。</p> <table> <thead> <tr> <th style="text-align: center">步驟</th> <th style="text-align: center">角色</th> <th style="text-align: left">說明</th> </tr> </thead> <tbody> <tr> <td style="text-align: center">1</td> <td style="text-align: center">Pass Developer</td> <td style="text-align: left">建立票證類別和物件 (分別在圖中為 abc 和 123)。</td> </tr> <tr> <td style="text-align: center">2</td> <td style="text-align: center">Pass Developer</td> <td style="text-align: left">在票證類別的 <code class="language-plaintext highlighter-rouge">redemptionIssuers</code> 屬性中加入他們的 Issuer ID。這會讓 Google Wallet 瞭解 Issuer ID 2018 已獲準兌換參照這個類別的票證物件。</td> </tr> <tr> <td style="text-align: center">3</td> <td style="text-align: center">Pass Developer</td> <td style="text-align: left">取得 Collector ID (圖中的 12345678)。</td> </tr> <tr> <td style="text-align: center">4</td> <td style="text-align: center">Pass Developer</td> <td style="text-align: left">在支援 Smart Tap 的每個終端機上設定對應的 Collector ID。只要物件具有類別 ID abc 且有相符的 Collector ID，系統就會將該物件傳達給 Reader。</td> </tr> </tbody> </table> <hr> <h2 id="user-experience-and-behavior">User experience and behavior</h2> <p>終端機和 Google 錢包應用程式之間傳輸的內容行為，視使用者和他們當下與 Google 錢包應用程式互動的方式而定。</p> <hr> <h3 id="情境-1使用者開啟特定票證">情境 1：使用者開啟特定票證</h3> <table> <thead> <tr> <th style="text-align: center">步驟</th> <th style="text-align: center">角色</th> <th style="text-align: left">說明</th> </tr> </thead> <tbody> <tr> <td style="text-align: center">1</td> <td style="text-align: center">User</td> <td style="text-align: left">在 Google 錢包應用程式中選取特定票證。</td> </tr> <tr> <td style="text-align: center">2</td> <td style="text-align: center">User</td> <td style="text-align: left">輕觸支援 Smart Tap 的感應式刷卡機。</td> </tr> <tr> <td style="text-align: center">3</td> <td style="text-align: center">Terminal</td> <td style="text-align: left">(Collector ID 相符) 票證會傳送至終端機。<br>(Collector ID 不相符) 票證不會傳送至終端機。</td> </tr> </tbody> </table> <blockquote> <p>如果票證上的 Collector ID 與終端機的 Collector ID 相符，無論票證是否有效 (例如票證物件已過期)，系統依然會傳送票證。</p> </blockquote> <hr> <h3 id="情境-2google-錢包首頁分頁或解鎖的螢幕檢視畫面">情境 2：Google 錢包首頁分頁或解鎖的螢幕檢視畫面</h3> <table> <thead> <tr> <th style="text-align: center">步驟</th> <th style="text-align: center">角色</th> <th style="text-align: left">說明</th> </tr> </thead> <tbody> <tr> <td style="text-align: center">1</td> <td style="text-align: center">User</td> <td style="text-align: left">在 Google 錢包應用程式中開啟「首頁」分頁，或解鎖裝置的螢幕。</td> </tr> <tr> <td style="text-align: center">2</td> <td style="text-align: center">User</td> <td style="text-align: left">輕觸支援 Smart Tap 的感應式刷卡機。</td> </tr> <tr> <td style="text-align: center">3</td> <td style="text-align: center">Terminal</td> <td style="text-align: left">(單一有效的 Collector ID 相符) 票證會傳送至終端機。<br>(多個有效的 Collector ID 相符) 顯示有效票證的輪轉介面，並傳送使用者選取的項目。</td> </tr> </tbody> </table> <hr> <h2 id="setup">Setup</h2> <hr> <h3 id="enable-the-google-wallet-api">Enable the Google Wallet API</h3> <ol> <li>登入 <a href="https://console.cloud.google.com/" rel="external nofollow noopener" target="_blank">Google Cloud console</a> </li> <li>如果你沒有 Google Cloud project, 創建一個新的 (see <a href="https://cloud.google.com/resource-manager/docs/creating-managing-projects" rel="external nofollow noopener" target="_blank">Creating and managing projects</a> for more information)</li> <li>為你的專案啟動 <a href="https://console.cloud.google.com/apis/library/walletobjects.googleapis.com" rel="external nofollow noopener" target="_blank">Google Wallet API</a> (also referred to as Google Pay for Passes API)</li> </ol> <hr> <h3 id="create-a-service-account-and-key">Create a service account and key</h3> <p>要調用 Google Wallet API，需要一個 service account 和一個 service account key。service account 是調用 Google Wallet API 的身份識別。service account key 包含一個 private key，用於將您的應用程式識別為該 service account。這個 key 非常敏感，因此需要妥善保管。</p> <hr> <h4 id="create-a-service-account">Create a service account</h4> <ol> <li>在 Google Cloud console 中打開 <a href="https://console.cloud.google.com/iam-admin/serviceaccounts/create" rel="external nofollow noopener" target="_blank">Service Accounts</a> </li> <li>為你的 service account 輸入名稱、ID、描述。</li> <li>選擇 <strong>CREATE AND CONTINUE</strong> </li> <li>選擇 <strong>DONE</strong> </li> </ol> <hr> <h4 id="create-a-service-account-key">Create a service account key</h4> <ol> <li>選擇你的 service account</li> <li>選擇 <strong>KEYS</strong> menu</li> <li>選擇 <strong>ADD KEY</strong>, then <strong>Create new key</strong> </li> <li>選擇 the <strong>JSON</strong> key type</li> <li>選擇 <strong>CREATE</strong> </li> </ol> <hr> <h4 id="set-the-google_application_credentials-environment-variable">Set the GOOGLE_APPLICATION_CREDENTIALS environment variable</h4> <p>GOOGLE_APPLICATION_CREDENTIALS 環境變數被 Google SDK 使用來作為 Service Account 的身份驗證以及訪問 Google Cloud 項目的不同 API。</p> <ol> <li>按照 <a href="https://cloud.google.com/docs/authentication/provide-credentials-adc#local-key" rel="external nofollow noopener" target="_blank">Google Cloud Service account 密鑰文件</a> 中的指示設置 GOOGLE_APPLICATION_CREDENTIALS 環境變數。</li> </ol> <p>可以在 terminal 輸入下面指令，或直接加到 .bashrc or .zshrc 即可</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">GOOGLE_APPLICATION_CREDENTIALS</span><span class="o">=</span><span class="s2">"/Users/nickhuang/Documents/wallet_serviceaccount_key.json"</span>
 </code></pre></div></div> <ol> <li>在 Terminal 輸入下面指令來確定有正確配置</li> </ol> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="nv">$GOOGLE_APPLICATION_CREDENTIALS</span>
@@ -6,213 +6,213 @@
 MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEchyXj869zfmKhRi9xP7f2AK07kEo
 4lE7ZlWTN14jh4YBTny+hRGRXcUzevV9zSSPJlPHpqqu5pEwlv1xyFvE1w==
 -----END PUBLIC KEY-----
-</code></pre> <p>🗂️ [add_a_smart_tap_key.js]</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span>
-    <span class="nx">GoogleAuth</span>
-<span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">google-auth-library</span><span class="dl">"</span><span class="p">);</span>
+</code></pre> <p>🗂️ [add_a_smart_tap_key.js]</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">GoogleAuth</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">google-auth-library</span><span class="dl">"</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">keyFilePath</span> <span class="o">=</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GOOGLE_APPLICATION_CREDENTIALS</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">/path/to/key.json</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">keyFilePath</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GOOGLE_APPLICATION_CREDENTIALS</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">/path/to/key.json</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">baseUrl</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://walletobjects.googleapis.com/walletobjects/v1</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">credentials</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="nx">keyFilePath</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">httpClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GoogleAuth</span><span class="p">({</span>
-    <span class="na">credentials</span><span class="p">:</span> <span class="nx">credentials</span><span class="p">,</span>
-    <span class="na">scopes</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.googleapis.com/auth/wallet_object.issuer</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">credentials</span><span class="p">:</span> <span class="nx">credentials</span><span class="p">,</span>
+  <span class="na">scopes</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.googleapis.com/auth/wallet_object.issuer</span><span class="dl">"</span><span class="p">,</span>
 <span class="p">});</span>
 
 <span class="p">(</span><span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="cm">/**
-     * Add a new public key to an Issuer account.
-     *
-     * @param {string} issuerId The issuer ID being used for this request.
-     */</span>
-    <span class="k">async</span> <span class="kd">function</span> <span class="nf">addSmartTapKey</span><span class="p">(</span><span class="nx">issuerId</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// New smart tap key information</span>
-        <span class="kd">let</span> <span class="nx">patchBody</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="na">smartTapMerchantData</span><span class="p">:</span> <span class="p">{</span>
-                <span class="na">authenticationKeys</span><span class="p">:</span> <span class="p">[{</span>
-                    <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-                    <span class="na">publicKeyPem</span><span class="p">:</span> <span class="dl">"</span><span class="s2">-----BEGIN PUBLIC KEY-----</span><span class="se">\n</span><span class="s2">MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEchyXj869zfmKhRi9xP7f2AK07kEo</span><span class="se">\n</span><span class="s2">4lE7ZlWTN14jh4YBTny+hRGRXcUzevV9zSSPJlPHpqqu5pEwlv1xyFvE1w==</span><span class="se">\n</span><span class="s2">-----END PUBLIC KEY-----</span><span class="dl">"</span><span class="p">,</span>
-                <span class="p">},</span> <span class="p">],</span>
-            <span class="p">},</span>
-        <span class="p">};</span>
+  <span class="cm">/**
+   * Add a new public key to an Issuer account.
+   *
+   * @param {string} issuerId The issuer ID being used for this request.
+   */</span>
+  <span class="k">async</span> <span class="kd">function</span> <span class="nf">addSmartTapKey</span><span class="p">(</span><span class="nx">issuerId</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// New smart tap key information</span>
+    <span class="kd">let</span> <span class="nx">patchBody</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">smartTapMerchantData</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">authenticationKeys</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="na">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="na">publicKeyPem</span><span class="p">:</span>
+              <span class="dl">"</span><span class="s2">-----BEGIN PUBLIC KEY-----</span><span class="se">\n</span><span class="s2">MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEchyXj869zfmKhRi9xP7f2AK07kEo</span><span class="se">\n</span><span class="s2">4lE7ZlWTN14jh4YBTny+hRGRXcUzevV9zSSPJlPHpqqu5pEwlv1xyFvE1w==</span><span class="se">\n</span><span class="s2">-----END PUBLIC KEY-----</span><span class="dl">"</span><span class="p">,</span>
+          <span class="p">},</span>
+        <span class="p">],</span>
+      <span class="p">},</span>
+    <span class="p">};</span>
 
-        <span class="k">try</span> <span class="p">{</span>
-            <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">httpClient</span><span class="p">.</span><span class="nf">request</span><span class="p">({</span>
-                <span class="na">url</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">baseUrl</span><span class="p">}</span><span class="s2">/issuer/</span><span class="p">${</span><span class="nx">issuerId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
-                <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PATCH</span><span class="dl">"</span><span class="p">,</span>
-                <span class="na">data</span><span class="p">:</span> <span class="nx">patchBody</span><span class="p">,</span>
-            <span class="p">});</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">httpClient</span><span class="p">.</span><span class="nf">request</span><span class="p">({</span>
+        <span class="na">url</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">baseUrl</span><span class="p">}</span><span class="s2">/issuer/</span><span class="p">${</span><span class="nx">issuerId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+        <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">PATCH</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">data</span><span class="p">:</span> <span class="nx">patchBody</span><span class="p">,</span>
+      <span class="p">});</span>
 
-            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Issuer patch response</span><span class="dl">"</span><span class="p">);</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
-        <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error adding Smart Tap key:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
-        <span class="p">}</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Issuer patch response</span><span class="dl">"</span><span class="p">);</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error adding Smart Tap key:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
     <span class="p">}</span>
+  <span class="p">}</span>
 
-    <span class="c1">// 使用您要測試的 issuerId 調用 addSmartTapKey 函數</span>
-    <span class="kd">let</span> <span class="nx">issuerId</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Your issuer ID</span><span class="dl">"</span><span class="p">;</span>
-    <span class="k">await</span> <span class="nf">addSmartTapKey</span><span class="p">(</span><span class="nx">issuerId</span><span class="p">);</span>
+  <span class="c1">// 使用您要測試的 issuerId 調用 addSmartTapKey 函數</span>
+  <span class="kd">let</span> <span class="nx">issuerId</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Your issuer ID</span><span class="dl">"</span><span class="p">;</span>
+  <span class="k">await</span> <span class="nf">addSmartTapKey</span><span class="p">(</span><span class="nx">issuerId</span><span class="p">);</span>
 <span class="p">})();</span>
 </code></pre></div></div> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node add_a_smart_tap_key.js
-</code></pre></div></div> <p>到 Google Pay &amp; Wallet Console 的 Google Wallet API -&gt; 其他功能，就會看到 public key 已成功上傳且產生出 Collector ID</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/google_wallet_smart_tap_public_key-480.webp 480w,/assets/img/google_wallet_smart_tap_public_key-800.webp 800w,/assets/img/google_wallet_smart_tap_public_key-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/google_wallet_smart_tap_public_key.png" width="100%" height="auto" title="Smart Tap 公鑰上傳後顯示畫面" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <hr> <h3 id="取得-collector-id">取得 Collector ID</h3> <p>🗂️ [get_collector_id.js]</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span>
-    <span class="nx">GoogleAuth</span>
-<span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">google-auth-library</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div> <p>到 Google Pay &amp; Wallet Console 的 Google Wallet API -&gt; 其他功能，就會看到 public key 已成功上傳且產生出 Collector ID</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/google_wallet_smart_tap_public_key-480.webp 480w,/assets/img/google_wallet_smart_tap_public_key-800.webp 800w,/assets/img/google_wallet_smart_tap_public_key-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/google_wallet_smart_tap_public_key.png" width="100%" height="auto" title="Smart Tap 公鑰上傳後顯示畫面" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <hr> <h3 id="取得-collector-id">取得 Collector ID</h3> <p>🗂️ [get_collector_id.js]</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">GoogleAuth</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">google-auth-library</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="c1">// TODO: Define issuer ID</span>
 <span class="kd">let</span> <span class="nx">issuerId</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Your issuer ID</span><span class="dl">"</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">keyFilePath</span> <span class="o">=</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GOOGLE_APPLICATION_CREDENTIALS</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">/path/to/key.json</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">keyFilePath</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GOOGLE_APPLICATION_CREDENTIALS</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">/path/to/key.json</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">baseUrl</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://walletobjects.googleapis.com/walletobjects/v1</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">credentials</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="nx">keyFilePath</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">httpClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GoogleAuth</span><span class="p">({</span>
-    <span class="na">credentials</span><span class="p">:</span> <span class="nx">credentials</span><span class="p">,</span>
-    <span class="na">scopes</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.googleapis.com/auth/wallet_object.issuer</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">credentials</span><span class="p">:</span> <span class="nx">credentials</span><span class="p">,</span>
+  <span class="na">scopes</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.googleapis.com/auth/wallet_object.issuer</span><span class="dl">"</span><span class="p">,</span>
 <span class="p">});</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nf">getCollectorId</span><span class="p">(</span><span class="nx">issuerId</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">try</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">httpClient</span><span class="p">.</span><span class="nf">request</span><span class="p">({</span>
-            <span class="na">url</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">baseUrl</span><span class="p">}</span><span class="s2">/issuer/</span><span class="p">${</span><span class="nx">issuerId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
-            <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
-        <span class="p">});</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">httpClient</span><span class="p">.</span><span class="nf">request</span><span class="p">({</span>
+      <span class="na">url</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">baseUrl</span><span class="p">}</span><span class="s2">/issuer/</span><span class="p">${</span><span class="nx">issuerId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+      <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">});</span>
 
-        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Issuer response</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Issuer response</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">smartTapMerchantData</span><span class="p">.</span><span class="nx">smartTapMerchantId</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error fetching collector ID:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
-        <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
-    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">smartTapMerchantData</span><span class="p">.</span><span class="nx">smartTapMerchantId</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">catch </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Error fetching collector ID:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+    <span class="k">throw</span> <span class="nx">error</span><span class="p">;</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 
 <span class="c1">// Call the function and log the result</span>
 <span class="nf">getCollectorId</span><span class="p">(</span><span class="nx">issuerId</span><span class="p">)</span>
-    <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">collectorId</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Collector ID:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">collectorId</span><span class="p">);</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Failed to get Collector ID:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
-    <span class="p">});</span>
+  <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">collectorId</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Collector ID:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">collectorId</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">error</span><span class="p">(</span><span class="dl">"</span><span class="s2">Failed to get Collector ID:</span><span class="dl">"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">});</span>
 </code></pre></div></div> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node get_collector_id.js
-</code></pre></div></div> <hr> <h2 id="merchant-configuration-商家設定">Merchant configuration (商家設定)</h2> <ul> <li>特定商家的 Issuer account ID</li> <li>要啟用智慧感應功能的 Redemption Issuer ID</li> <li>已設定 smart tap 的票證類別</li> </ul> <hr> <h3 id="merchant-configuration-商家設定-1">Merchant configuration (商家設定)</h3> <p>下列步驟概述商家設定智慧感應功能的設定：</p> <ol> <li>向感應式刷卡機供應商索取公開金鑰和金鑰版本。終端機供應商可能會先要求收集器 ID。在這種情況下，請完成核發者設定中所述的步驟產生收集器 ID，然後返回這個頁面。</li> <li>將收集器 ID 提供給感應式刷卡機供應商。</li> <li>將以下資訊提供給商家： <ul> <li>Redemption Issuer ID，以及 Google Pay &amp; Wallet Console 的 Link</li> <li>Collector ID</li> </ul> </li> <li>通知商家應永久儲存 Redemption Issuer ID 和 Collector ID。如果票證開發人員需要啟用類別以進行智慧感應兌換功能，商家就必須提供 Redemption Issuer ID。</li> </ol> <hr> <h3 id="終端機設定">終端機設定</h3> <p>感應式刷卡機供應商必須負責為商家位置使用的所有終端機設定下列屬性。這些值是由 Redemption Issuer 提供。</p> <ul> <li>Collector ID</li> <li>Key version</li> <li>Private key</li> </ul> <p>為感應式刷卡機設定智慧感應功能後，票證開發人員就能讓更多票證類別在商家的感應式刷卡機兌換。如要新增票證類別的支援，您不需要進行額外的終端機設定。</p> <hr> <h2 id="pass-configuration-票證設定">Pass configuration (票證設定)</h2> <hr> <h3 id="pass-class-configuration-票證類別設定">Pass class configuration (票證類別設定)</h3> <p>您必須在票證類別上設定下列屬性：</p> <ul> <li> <code class="language-plaintext highlighter-rouge">enableSmartTap</code> 設為 True</li> <li> <code class="language-plaintext highlighter-rouge">redemptionIssuers</code> 設為將透過 Smart Tap 兌換與這個類別相關聯的票證物件</li> </ul> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span>
-    <span class="nx">GoogleAuth</span>
-<span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">google-auth-library</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div> <hr> <h2 id="merchant-configuration-商家設定">Merchant configuration (商家設定)</h2> <ul> <li>特定商家的 Issuer account ID</li> <li>要啟用智慧感應功能的 Redemption Issuer ID</li> <li>已設定 smart tap 的票證類別</li> </ul> <hr> <h3 id="merchant-configuration-商家設定-1">Merchant configuration (商家設定)</h3> <p>下列步驟概述商家設定智慧感應功能的設定：</p> <ol> <li>向感應式刷卡機供應商索取公開金鑰和金鑰版本。終端機供應商可能會先要求收集器 ID。在這種情況下，請完成核發者設定中所述的步驟產生收集器 ID，然後返回這個頁面。</li> <li>將收集器 ID 提供給感應式刷卡機供應商。</li> <li>將以下資訊提供給商家： <ul> <li>Redemption Issuer ID，以及 Google Pay &amp; Wallet Console 的 Link</li> <li>Collector ID</li> </ul> </li> <li>通知商家應永久儲存 Redemption Issuer ID 和 Collector ID。如果票證開發人員需要啟用類別以進行智慧感應兌換功能，商家就必須提供 Redemption Issuer ID。</li> </ol> <hr> <h3 id="終端機設定">終端機設定</h3> <p>感應式刷卡機供應商必須負責為商家位置使用的所有終端機設定下列屬性。這些值是由 Redemption Issuer 提供。</p> <ul> <li>Collector ID</li> <li>Key version</li> <li>Private key</li> </ul> <p>為感應式刷卡機設定智慧感應功能後，票證開發人員就能讓更多票證類別在商家的感應式刷卡機兌換。如要新增票證類別的支援，您不需要進行額外的終端機設定。</p> <hr> <h2 id="pass-configuration-票證設定">Pass configuration (票證設定)</h2> <hr> <h3 id="pass-class-configuration-票證類別設定">Pass class configuration (票證類別設定)</h3> <p>您必須在票證類別上設定下列屬性：</p> <ul> <li> <code class="language-plaintext highlighter-rouge">enableSmartTap</code> 設為 True</li> <li> <code class="language-plaintext highlighter-rouge">redemptionIssuers</code> 設為將透過 Smart Tap 兌換與這個類別相關聯的票證物件</li> </ul> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">GoogleAuth</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">google-auth-library</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="c1">// TODO: Define issuer ID</span>
 <span class="kd">let</span> <span class="nx">issuerId</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Your issuer ID</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">classSuffix</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Your classSuffix</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">classId</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">issuerId</span><span class="p">}</span><span class="s2">.</span><span class="p">${</span><span class="nx">classSuffix</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">keyFilePath</span> <span class="o">=</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GOOGLE_APPLICATION_CREDENTIALS</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">/path/to/key.json</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">keyFilePath</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GOOGLE_APPLICATION_CREDENTIALS</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">/path/to/key.json</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">baseUrl</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://walletobjects.googleapis.com/walletobjects/v1</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">credentials</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="nx">keyFilePath</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">httpClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GoogleAuth</span><span class="p">({</span>
-    <span class="na">credentials</span><span class="p">:</span> <span class="nx">credentials</span><span class="p">,</span>
-    <span class="na">scopes</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.googleapis.com/auth/wallet_object.issuer</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">credentials</span><span class="p">:</span> <span class="nx">credentials</span><span class="p">,</span>
+  <span class="na">scopes</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.googleapis.com/auth/wallet_object.issuer</span><span class="dl">"</span><span class="p">,</span>
 <span class="p">});</span>
 
 <span class="c1">// Create a Loyalty SmartTap pass class</span>
 <span class="kd">let</span> <span class="nx">loyaltyClass</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">id</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">classId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
-    <span class="na">issuerName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Climax technology</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">programName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Climax Loyalty SmartTap 2 Program Test</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">enableSmartTap</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// Enable Smart Tap</span>
-    <span class="na">redemptionIssuers</span><span class="p">:</span> <span class="p">[</span>
-        <span class="c1">// Add any Redemption Issuer IDs</span>
-        <span class="dl">"</span><span class="s2">Your Redemption issuer ID</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">id</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">classId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+  <span class="na">issuerName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Climax technology</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">programName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Climax Loyalty SmartTap 2 Program Test</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">enableSmartTap</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> <span class="c1">// Enable Smart Tap</span>
+  <span class="na">redemptionIssuers</span><span class="p">:</span> <span class="p">[</span>
+    <span class="c1">// Add any Redemption Issuer IDs</span>
+    <span class="dl">"</span><span class="s2">Your Redemption issuer ID</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">],</span>
+  <span class="na">reviewStatus</span><span class="p">:</span> <span class="dl">"</span><span class="s2">underReview</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">programLogo</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">sourceUri</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">uri</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.sourcesecurity.com/img/companies/300/climax-logo_1560425415.jpg</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">contentDescription</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">defaultValue</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">language</span><span class="p">:</span> <span class="dl">"</span><span class="s2">en-US</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">value</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Program Logo</span><span class="dl">"</span><span class="p">,</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">textModulesData</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">header</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Welcome to Your Loyalty SmartTap 2 Program</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">body</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Thank you for joining our loyalty SmartTap 2 program. Enjoy exclusive rewards and benefits.</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">welcome_message</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">],</span>
+  <span class="na">linksModuleData</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">uris</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="na">uri</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.climax.com.tw/</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Visit our loyalty SmartTap 2 program</span><span class="dl">"</span><span class="p">,</span>
+        <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">website</span><span class="dl">"</span><span class="p">,</span>
+      <span class="p">},</span>
     <span class="p">],</span>
-    <span class="na">reviewStatus</span><span class="p">:</span> <span class="dl">"</span><span class="s2">underReview</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">programLogo</span><span class="p">:</span> <span class="p">{</span>
+  <span class="p">},</span>
+  <span class="na">imageModulesData</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">mainImage</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">sourceUri</span><span class="p">:</span> <span class="p">{</span>
-            <span class="na">uri</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.sourcesecurity.com/img/companies/300/climax-logo_1560425415.jpg</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">uri</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.sourcesecurity.com/img/companies/300/climax-logo_1560425415.jpg</span><span class="dl">"</span><span class="p">,</span>
         <span class="p">},</span>
         <span class="na">contentDescription</span><span class="p">:</span> <span class="p">{</span>
-            <span class="na">defaultValue</span><span class="p">:</span> <span class="p">{</span>
-                <span class="na">language</span><span class="p">:</span> <span class="dl">"</span><span class="s2">en-US</span><span class="dl">"</span><span class="p">,</span>
-                <span class="na">value</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Program Logo</span><span class="dl">"</span><span class="p">,</span>
-            <span class="p">},</span>
+          <span class="na">defaultValue</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">language</span><span class="p">:</span> <span class="dl">"</span><span class="s2">en-US</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">value</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Loyalty SmartTap 2 Program Banner</span><span class="dl">"</span><span class="p">,</span>
+          <span class="p">},</span>
         <span class="p">},</span>
+      <span class="p">},</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">loyalty_banner</span><span class="dl">"</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="na">textModulesData</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="na">header</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Welcome to Your Loyalty SmartTap 2 Program</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">body</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Thank you for joining our loyalty SmartTap 2 program. Enjoy exclusive rewards and benefits.</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">welcome_message</span><span class="dl">"</span><span class="p">,</span>
-    <span class="p">},</span> <span class="p">],</span>
-    <span class="na">linksModuleData</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">uris</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="na">uri</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.climax.com.tw/</span><span class="dl">"</span><span class="p">,</span>
-            <span class="na">description</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Visit our loyalty SmartTap 2 program</span><span class="dl">"</span><span class="p">,</span>
-            <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">website</span><span class="dl">"</span><span class="p">,</span>
-        <span class="p">},</span> <span class="p">],</span>
+  <span class="p">],</span>
+  <span class="na">messages</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">header</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Welcome</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">body</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Thanks for joining our loyalty SmartTap 2 program!</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">welcome_message</span><span class="dl">"</span><span class="p">,</span>
     <span class="p">},</span>
-    <span class="na">imageModulesData</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="na">mainImage</span><span class="p">:</span> <span class="p">{</span>
-            <span class="na">sourceUri</span><span class="p">:</span> <span class="p">{</span>
-                <span class="na">uri</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.sourcesecurity.com/img/companies/300/climax-logo_1560425415.jpg</span><span class="dl">"</span><span class="p">,</span>
-            <span class="p">},</span>
-            <span class="na">contentDescription</span><span class="p">:</span> <span class="p">{</span>
-                <span class="na">defaultValue</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="na">language</span><span class="p">:</span> <span class="dl">"</span><span class="s2">en-US</span><span class="dl">"</span><span class="p">,</span>
-                    <span class="na">value</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Loyalty SmartTap 2 Program Banner</span><span class="dl">"</span><span class="p">,</span>
-                <span class="p">},</span>
-            <span class="p">},</span>
-        <span class="p">},</span>
-        <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">loyalty_banner</span><span class="dl">"</span><span class="p">,</span>
-    <span class="p">},</span> <span class="p">],</span>
-    <span class="na">messages</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="na">header</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Welcome</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">body</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Thanks for joining our loyalty SmartTap 2 program!</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">welcome_message</span><span class="dl">"</span><span class="p">,</span>
-    <span class="p">},</span> <span class="p">],</span>
+  <span class="p">],</span>
 <span class="p">};</span>
 
 <span class="c1">// Check if the class exists already</span>
 <span class="nx">httpClient</span>
-    <span class="p">.</span><span class="nf">request</span><span class="p">({</span>
-        <span class="na">url</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">baseUrl</span><span class="p">}</span><span class="s2">/loyaltyClass/</span><span class="p">${</span><span class="nx">classId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
-        <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Class already exists</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+  <span class="p">.</span><span class="nf">request</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">baseUrl</span><span class="p">}</span><span class="s2">/loyaltyClass/</span><span class="p">${</span><span class="nx">classId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Class already exists</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Class ID</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="k">if </span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">response</span> <span class="o">&amp;&amp;</span> <span class="nx">err</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">404</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// Class does not exist</span>
-            <span class="c1">// Create it now</span>
-            <span class="nx">httpClient</span>
-                <span class="p">.</span><span class="nf">request</span><span class="p">({</span>
-                    <span class="na">url</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">baseUrl</span><span class="p">}</span><span class="s2">/loyaltyClass`</span><span class="p">,</span>
-                    <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
-                    <span class="na">data</span><span class="p">:</span> <span class="nx">loyaltyClass</span><span class="p">,</span>
-                <span class="p">})</span>
-                <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-                    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Class insert response</span><span class="dl">"</span><span class="p">);</span>
-                    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Class ID</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">response</span> <span class="o">&amp;&amp;</span> <span class="nx">err</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">404</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Class does not exist</span>
+      <span class="c1">// Create it now</span>
+      <span class="nx">httpClient</span>
+        <span class="p">.</span><span class="nf">request</span><span class="p">({</span>
+          <span class="na">url</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">baseUrl</span><span class="p">}</span><span class="s2">/loyaltyClass`</span><span class="p">,</span>
+          <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">data</span><span class="p">:</span> <span class="nx">loyaltyClass</span><span class="p">,</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Class insert response</span><span class="dl">"</span><span class="p">);</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-                    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Class ID</span><span class="dl">"</span><span class="p">);</span>
-                    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-                <span class="p">});</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="c1">// Something else went wrong</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
-</code></pre></div></div> <hr> <h3 id="pass-object-configuration-票證物件設定">Pass object configuration (票證物件設定)</h3> <p>若是傳遞物件，則必須設定 <code class="language-plaintext highlighter-rouge">smartTapRedemptionValue</code> 。</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span>
-    <span class="nx">GoogleAuth</span>
-<span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">google-auth-library</span><span class="dl">"</span><span class="p">);</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Class ID</span><span class="dl">"</span><span class="p">);</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// Something else went wrong</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+</code></pre></div></div> <hr> <h3 id="pass-object-configuration-票證物件設定">Pass object configuration (票證物件設定)</h3> <p>若是傳遞物件，則必須設定 <code class="language-plaintext highlighter-rouge">smartTapRedemptionValue</code> 。</p> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">GoogleAuth</span> <span class="p">}</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">google-auth-library</span><span class="dl">"</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">jwt</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">jsonwebtoken</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="c1">// TODO: Define issuer ID</span>
@@ -220,104 +220,113 @@ MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEchyXj869zfmKhRi9xP7f2AK07kEo
 <span class="kd">let</span> <span class="nx">classSuffix</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Your classSuffix</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// Use the loyalty class ID</span>
 <span class="kd">let</span> <span class="nx">objectSuffix</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Your objectSuffix</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">objectId</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">issuerId</span><span class="p">}</span><span class="s2">.</span><span class="p">${</span><span class="nx">objectSuffix</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">keyFilePath</span> <span class="o">=</span>
-    <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GOOGLE_APPLICATION_CREDENTIALS</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">/path/to/key.json</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">keyFilePath</span> <span class="o">=</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">GOOGLE_APPLICATION_CREDENTIALS</span> <span class="o">||</span> <span class="dl">"</span><span class="s2">/path/to/key.json</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">baseUrl</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://walletobjects.googleapis.com/walletobjects/v1</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">credentials</span> <span class="o">=</span> <span class="nf">require</span><span class="p">(</span><span class="nx">keyFilePath</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">httpClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">GoogleAuth</span><span class="p">({</span>
-    <span class="na">credentials</span><span class="p">:</span> <span class="nx">credentials</span><span class="p">,</span>
-    <span class="na">scopes</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.googleapis.com/auth/wallet_object.issuer</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">credentials</span><span class="p">:</span> <span class="nx">credentials</span><span class="p">,</span>
+  <span class="na">scopes</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://www.googleapis.com/auth/wallet_object.issuer</span><span class="dl">"</span><span class="p">,</span>
 <span class="p">});</span>
 
 <span class="c1">// Create a Loyalty SmartTap pass object with Smart Tap support</span>
 <span class="kd">let</span> <span class="nx">loyaltyObject</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">id</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">objectId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
-    <span class="na">classId</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">issuerId</span><span class="p">}</span><span class="s2">.</span><span class="p">${</span><span class="nx">classSuffix</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
-    <span class="na">state</span><span class="p">:</span> <span class="dl">"</span><span class="s2">active</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">accountId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">123</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">accountName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Nick Huang</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">textModulesData</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="na">header</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Your Loyalty Points</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">body</span><span class="p">:</span> <span class="dl">"</span><span class="s2">You have 500 points.</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">loyalty_points</span><span class="dl">"</span><span class="p">,</span>
-    <span class="p">},</span> <span class="p">],</span>
-    <span class="na">locations</span><span class="p">:</span> <span class="p">[{</span>
-        <span class="na">latitude</span><span class="p">:</span> <span class="mf">37.422</span><span class="p">,</span>
-        <span class="na">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mf">122.084</span><span class="p">,</span>
-    <span class="p">},</span> <span class="p">],</span>
-    <span class="na">smartTapRedemptionValue</span><span class="p">:</span> <span class="dl">"</span><span class="s2">500</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">infoModuleData</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">labelValueRows</span><span class="p">:</span> <span class="p">[{</span>
-            <span class="na">columns</span><span class="p">:</span> <span class="p">[{</span>
-                <span class="na">label</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Smart Tap ID</span><span class="dl">"</span><span class="p">,</span>
-                <span class="na">value</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234567890</span><span class="dl">"</span><span class="p">,</span>
-            <span class="p">},</span> <span class="p">],</span>
-        <span class="p">},</span> <span class="p">],</span>
+  <span class="na">id</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">objectId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+  <span class="na">classId</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">issuerId</span><span class="p">}</span><span class="s2">.</span><span class="p">${</span><span class="nx">classSuffix</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+  <span class="na">state</span><span class="p">:</span> <span class="dl">"</span><span class="s2">active</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">accountId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">123</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">accountName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Nick Huang</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">textModulesData</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">header</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Your Loyalty Points</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">body</span><span class="p">:</span> <span class="dl">"</span><span class="s2">You have 500 points.</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">loyalty_points</span><span class="dl">"</span><span class="p">,</span>
     <span class="p">},</span>
+  <span class="p">],</span>
+  <span class="na">locations</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">latitude</span><span class="p">:</span> <span class="mf">37.422</span><span class="p">,</span>
+      <span class="na">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mf">122.084</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">],</span>
+  <span class="na">smartTapRedemptionValue</span><span class="p">:</span> <span class="dl">"</span><span class="s2">500</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">infoModuleData</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">labelValueRows</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="na">columns</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="na">label</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Smart Tap ID</span><span class="dl">"</span><span class="p">,</span>
+            <span class="na">value</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1234567890</span><span class="dl">"</span><span class="p">,</span>
+          <span class="p">},</span>
+        <span class="p">],</span>
+      <span class="p">},</span>
+    <span class="p">],</span>
+  <span class="p">},</span>
 <span class="p">};</span>
 
 <span class="c1">// Check if the object exists already</span>
 <span class="nx">httpClient</span>
-    <span class="p">.</span><span class="nf">request</span><span class="p">({</span>
-        <span class="na">url</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">baseUrl</span><span class="p">}</span><span class="s2">/loyaltyObject/</span><span class="p">${</span><span class="nx">objectId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
-        <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Object already exists</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+  <span class="p">.</span><span class="nf">request</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">baseUrl</span><span class="p">}</span><span class="s2">/loyaltyObject/</span><span class="p">${</span><span class="nx">objectId</span><span class="p">}</span><span class="s2">`</span><span class="p">,</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Object already exists</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Object ID</span><span class="dl">"</span><span class="p">);</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
-    <span class="p">})</span>
-    <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="k">if </span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">response</span> <span class="o">&amp;&amp;</span> <span class="nx">err</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">404</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// Object does not exist</span>
-            <span class="c1">// Create it now</span>
-            <span class="nx">httpClient</span>
-                <span class="p">.</span><span class="nf">request</span><span class="p">({</span>
-                    <span class="na">url</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">baseUrl</span><span class="p">}</span><span class="s2">/loyaltyObject`</span><span class="p">,</span>
-                    <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
-                    <span class="na">data</span><span class="p">:</span> <span class="nx">loyaltyObject</span><span class="p">,</span>
-                <span class="p">})</span>
-                <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-                    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Object insert response</span><span class="dl">"</span><span class="p">);</span>
-                    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Object ID</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">err</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">err</span><span class="p">.</span><span class="nx">response</span> <span class="o">&amp;&amp;</span> <span class="nx">err</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">404</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// Object does not exist</span>
+      <span class="c1">// Create it now</span>
+      <span class="nx">httpClient</span>
+        <span class="p">.</span><span class="nf">request</span><span class="p">({</span>
+          <span class="na">url</span><span class="p">:</span> <span class="s2">`</span><span class="p">${</span><span class="nx">baseUrl</span><span class="p">}</span><span class="s2">/loyaltyObject`</span><span class="p">,</span>
+          <span class="na">method</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">data</span><span class="p">:</span> <span class="nx">loyaltyObject</span><span class="p">,</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nf">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Object insert response</span><span class="dl">"</span><span class="p">);</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">);</span>
 
-                    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Object ID</span><span class="dl">"</span><span class="p">);</span>
-                    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Object ID</span><span class="dl">"</span><span class="p">);</span>
+          <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
 
-                    <span class="c1">// Generate the "Add to Google Wallet" link</span>
-                    <span class="nf">generateAddToWalletLink</span><span class="p">(</span><span class="nx">objectId</span><span class="p">);</span>
-                <span class="p">});</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="c1">// Something else went wrong</span>
-            <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
+          <span class="c1">// Generate the "Add to Google Wallet" link</span>
+          <span class="nf">generateAddToWalletLink</span><span class="p">(</span><span class="nx">objectId</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="c1">// Something else went wrong</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
 
 <span class="kd">function</span> <span class="nf">generateAddToWalletLink</span><span class="p">(</span><span class="nx">objectId</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="na">iss</span><span class="p">:</span> <span class="nx">credentials</span><span class="p">.</span><span class="nx">client_email</span><span class="p">,</span> <span class="c1">// `client_email` in service account file.</span>
-        <span class="na">aud</span><span class="p">:</span> <span class="dl">"</span><span class="s2">google</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">origins</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">http://localhost:3000</span><span class="dl">"</span><span class="p">],</span>
-        <span class="na">typ</span><span class="p">:</span> <span class="dl">"</span><span class="s2">savetowallet</span><span class="dl">"</span><span class="p">,</span>
-        <span class="na">payload</span><span class="p">:</span> <span class="p">{</span>
-            <span class="na">loyaltyObjects</span><span class="p">:</span> <span class="p">[{</span>
-                <span class="na">id</span><span class="p">:</span> <span class="nx">objectId</span><span class="p">,</span>
-            <span class="p">},</span> <span class="p">],</span>
+  <span class="kd">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">iss</span><span class="p">:</span> <span class="nx">credentials</span><span class="p">.</span><span class="nx">client_email</span><span class="p">,</span> <span class="c1">// `client_email` in service account file.</span>
+    <span class="na">aud</span><span class="p">:</span> <span class="dl">"</span><span class="s2">google</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">origins</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">http://localhost:3000</span><span class="dl">"</span><span class="p">],</span>
+    <span class="na">typ</span><span class="p">:</span> <span class="dl">"</span><span class="s2">savetowallet</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">payload</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">loyaltyObjects</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">id</span><span class="p">:</span> <span class="nx">objectId</span><span class="p">,</span>
         <span class="p">},</span>
-    <span class="p">};</span>
+      <span class="p">],</span>
+    <span class="p">},</span>
+  <span class="p">};</span>
 
-    <span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">jwt</span><span class="p">.</span><span class="nf">sign</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span> <span class="nx">credentials</span><span class="p">.</span><span class="nx">private_key</span><span class="p">,</span> <span class="p">{</span>
-        <span class="na">algorithm</span><span class="p">:</span> <span class="dl">"</span><span class="s2">RS256</span><span class="dl">"</span><span class="p">,</span>
-    <span class="p">});</span>
-    <span class="kd">const</span> <span class="nx">addToWalletLink</span> <span class="o">=</span> <span class="s2">`https://pay.google.com/gp/v/save/</span><span class="p">${</span><span class="nx">token</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="nx">jwt</span><span class="p">.</span><span class="nf">sign</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span> <span class="nx">credentials</span><span class="p">.</span><span class="nx">private_key</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">algorithm</span><span class="p">:</span> <span class="dl">"</span><span class="s2">RS256</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">});</span>
+  <span class="kd">const</span> <span class="nx">addToWalletLink</span> <span class="o">=</span> <span class="s2">`https://pay.google.com/gp/v/save/</span><span class="p">${</span><span class="nx">token</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
 
-    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Add to Google Wallet link:</span><span class="dl">"</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">addToWalletLink</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Add to Google Wallet link:</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">addToWalletLink</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div> <p>執行完成會得到一組 JWT，在網頁上填入 https://pay.google.com/gp/v/save/{JWT} 即可將卡券加入你的 Google account 中</p> <hr> <h2 id="展示">展示</h2> <p>下載 <a href="https://github.com/google-wallet/smart-tap-sample-app" rel="external nofollow noopener" target="_blank">Smart tap sample app</a>，並將 sample code 中的 Collector ID 改為自己的 Collector ID 當成刷卡機．</p> <div class="row mt-3"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/google_wallet_smart_tap_result1-480.webp 480w,/assets/img/google_wallet_smart_tap_result1-800.webp 800w,/assets/img/google_wallet_smart_tap_result1-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/google_wallet_smart_tap_result1.png" width="100%" height="auto" title="Smart Tap 成功畫面 1" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/google_wallet_smart_tap_result2-480.webp 480w,/assets/img/google_wallet_smart_tap_result2-800.webp 800w,/assets/img/google_wallet_smart_tap_result2-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/google_wallet_smart_tap_result2.png" width="100%" height="auto" title="Smart Tap 成功畫面 2" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/google_wallet_smart_tap_result3-480.webp 480w,/assets/img/google_wallet_smart_tap_result3-800.webp 800w,/assets/img/google_wallet_smart_tap_result3-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/google_wallet_smart_tap_result3.png" width="100%" height="auto" title="Smart Tap 成功畫面 3" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <hr> <h2 id="參考">參考</h2> <ul> <li><a href="https://developers.google.com/wallet/smart-tap/introduction/overview" rel="external nofollow noopener" target="_blank">Smart Tap overview</a></li> <li><a href="https://github.com/google-wallet/smart-tap-sample-app" rel="external nofollow noopener" target="_blank">Smart tap sample app</a></li> <li><a href="https://pay.google.com/business/console/home" rel="external nofollow noopener" target="_blank">Google Pay &amp; Wallet Console</a></li> <li><a href="https://codelabs.developers.google.com/add-to-wallet-android#1" rel="external nofollow noopener" target="_blank">Create passes on Android using the Google Wallet API</a></li> <li><a href="https://codelabs.developers.google.com/add-to-wallet-web#1" rel="external nofollow noopener" target="_blank">Create passes on Web using the Google Wallet API</a></li> </ul> <blockquote> <h5 id="tip">TIP</h5> <p>如果有任何建議、問題或不同想法，歡迎留言或寄信給我，可以一起討論進步成長 🙂</p> </blockquote> </div> </article> <br> <hr> <br> <ul class="list-disc pl-8"></ul> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/devops/productivity/github/how-to-use-multiple-github-accounts-using-ssh/">💡 一台電腦操作多個 GitHub 帳號：最簡單快速的 SSH 設定方法</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai%20tools/visualization/productivity/ai-tools-excalidraw-chart-guide/">🚀 如何使用 Excalidraw AI 快速生成專業級圖表，提升工作效率！</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/setup%20guide/setup-development-environment-on-a-new-macos/">Setup Development Environment on a New macOS</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/design%20pattern/design-pattern-28-interpreter-pattern/">Design Pattern (28) - Interpreter Pattern (解譯器模式)</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/design%20pattern/design-pattern-27-visitor-pattern/">Design Pattern (27) - Visitor Pattern (訪問者模式)</a> </li> </div> </div> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top"></nav> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2025 Nick Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script> <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script> <script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script> <script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script> <script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script> <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script> <script>
     addBackToTop();
