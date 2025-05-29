@@ -58,6 +58,8 @@ Sitemap 是一份 XML 文件，告訴搜尋引擎你網站的所有內容，包�
 
 📖 [Google 官方說明：Sitemap 是什麼？](https://developers.google.com/search/docs/advanced/sitemaps/overview?hl=zh-tw)
 
+---
+
 ### 1️⃣ 編輯 `Gemfile`，加入 sitemap 外掛
 
 ```bash
@@ -66,12 +68,16 @@ group :jekyll_plugins do
 end
 ```
 
+---
+
 ### 2️⃣ 在 `_config.yml` 中加入 plugin
 
 ```bash
 plugins:
   - jekyll-sitemap
 ```
+
+---
 
 ### 3️⃣ 安裝 plugin 並重新編譯網站
 
@@ -81,6 +87,8 @@ bundle exec jekyll serve
 ```
 
 此時你會發現在 `_site/` 資料夾中出現 `sitemap.xml`，代表 sitemap 已成功產生。
+
+---
 
 ### 4️⃣ 提交 Sitemap 到 Google
 

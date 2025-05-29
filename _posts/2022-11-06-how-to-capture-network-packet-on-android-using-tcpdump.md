@@ -104,6 +104,8 @@ adb pull /sdcard/capture.pcap
 > 當 log 看不到東西、console 沉默不語時，封包永遠會說實話。會抓封包，能讓你在 debug 上省下好幾倍時間。
 {: .block-tip }
 
+---
+
 ## 參考資源
 
 - [tcpdump for Android](https://www.androidtcpdump.com/)

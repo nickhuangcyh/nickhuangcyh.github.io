@@ -27,6 +27,8 @@ P2P 目的是讓裝置之間**不依賴中心伺服器也能直接建立連線**
 
 ## Centralized vs Decentralized vs Distributed
 
+---
+
 ### 中心化網路（Centralized）
 
 {% include figure.liquid path="assets/img/p2p_centralized.png" title="中心化架構" %}
@@ -122,6 +124,8 @@ NAT 是讓多台裝置共用一個公共 IP 的技術。它透過內部 IP ↔ �
 ---
 
 ## 常見的 NAT 類型解析
+
+---
 
 ### ✅ Full Cone NAT（完全錐型）
 

@@ -121,6 +121,8 @@ rvictl -x 00xxxxxx-xxxxxxxxxxxxxx1E
 > 封包不會騙人，尤其在 IoT 整合與多平台通訊環境中，是最可靠的 debug 工具之一。如果你遇到神祕的連線問題，Wireshark + rvictl 是你的神兵利器。
 {: .block-tip }
 
+---
+
 ## 參考資源
 
 - [Wireshark](https://www.wireshark.org/)

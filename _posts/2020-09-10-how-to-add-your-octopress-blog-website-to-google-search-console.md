@@ -17,6 +17,8 @@ thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 
 別擔心，其實這並不是網站出了什麼問題，而是因為我們還沒有主動將它提交給 Google 的搜尋引擎。
 
+---
+
 ## 將網站加入 Google Search Console
 
 首先，打開 [Google Search Console](https://search.google.com/search-console/welcome?hl=zh-CN&utm_source=about-page&pli=1)
@@ -49,6 +51,8 @@ rake gen_deploy
 <div>
     {% include figure.liquid loading="eager" path="assets/img/google_search_console_verified.png" title="example image" class="img-fluid rounded z-depth-1" %}
 </div>
+
+---
 
 ## 下一步呢？
 

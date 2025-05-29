@@ -15,6 +15,8 @@ thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 
 工作中，我經常受益於許多教學網站與技術部落格（像是簡書、CSDN、Medium 等），這些資源幫助我解決了不少問題。為了整理學習心得，也希望回饋社群，我決定開始經營自己的技術部落格。
 
+---
+
 ## 為什麼選 Octopress 架站？
 
 市面上有很多免費平台可用，例如 Medium、Blogger 等，不過我最後還是選擇 Octopress，主要原因有幾點：
@@ -26,14 +28,23 @@ thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 
 對軟體開發者來說，Git 和 GitHub 幾乎是日常工具；而透過 Markdown 寫文章，也提升我撰寫 README 或技術文件的熟練度。綜合這些考量，我選擇了 Octopress。
 
+---
+
 ## 開始前的準備
 
+---
+
 ### 註冊 [GitHub](https://github.com) 帳號
+
+---
+
 ### 安裝 [Git](https://git-scm.com)
 
 ```bash
 brew install git
 ```
+
+---
 
 ### 安裝 [Ruby](https://www.ruby-lang.org/zh_tw/documentation/installation/)
 ```bash
@@ -44,6 +55,8 @@ brew install ruby
 ```bash
 ruby --version
 ```
+
+---
 
 ## Octopress 架站流程
 ```bash
@@ -63,6 +76,8 @@ bundle install
 rake install
 ```
 
+---
+
 ## GitHub Pages 是什麼？
 
 [GitHub Pages](https://pages.github.com/) 提供免費的靜態網站託管服務，不需伺服器設定或資料庫支援，非常適合用來架設個人部落格或技術頁面。
@@ -76,7 +91,11 @@ rake install
 
 這個 URL 就是你日後部署部落格所需的遠端位置。
 
+---
+
 ## 部署到 GitHub Pages
+
+---
 
 ### 設定遠端儲存庫位置：
 
@@ -88,6 +107,8 @@ rake setup_github_pages
 ```bash
 git@github.com:username/username.github.io.git
 ```
+
+---
 
 ### 產生與部署網站內容：
 
@@ -108,9 +129,13 @@ git commit -m 'init commit'
 git push origin source
 ```
 
+---
+
 ## 如何發布文章？
 
 Octopress 的文章都放在 `source/_posts` 資料夾下。
+
+---
 
 ### 建立新文章：
 ```bash
@@ -149,6 +174,8 @@ git push origin source
 <div>
     {% include figure.liquid loading="eager" path="assets/img/octopress_github_pages.png" title="example image" class="img-fluid rounded z-depth-1" %}
 </div>
+
+---
 
 ## 總結
 
