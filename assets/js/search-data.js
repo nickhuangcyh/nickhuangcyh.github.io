@@ -77,6 +77,182 @@ ninja.data = [{
             window.location.href = "/blog/2025/setup-development-environment-on-a-new-macos/";
           
         },
+      },{id: "post-design-pattern-28-interpreter-pattern-解譯器模式",
+        
+          title: "Design Pattern (28) - Interpreter Pattern (解譯器模式)",
+        
+        description: "解譯器模式用於構建一個可解讀特定語言或語法的系統，適合於處理複雜的規則判斷或指令語法。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-28-interpreter-pattern/";
+          
+        },
+      },{id: "post-design-pattern-27-visitor-pattern-訪問者模式",
+        
+          title: "Design Pattern (27) - Visitor Pattern (訪問者模式)",
+        
+        description: "訪問者模式提供了一種方式，讓我們能在不修改物件結構的前提下，為其增加新的操作邏輯，實現高擴展性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-27-visitor-pattern/";
+          
+        },
+      },{id: "post-design-pattern-26-template-method-pattern-模板方法模式",
+        
+          title: "Design Pattern (26) - Template Method Pattern (模板方法模式)",
+        
+        description: "模板方法模式提供了一個框架，允許子類別重新定義特定步驟的實作，保持核心流程的一致性，實現高復用性與靈活性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-26-template-method-pattern/";
+          
+        },
+      },{id: "post-design-pattern-25-strategy-pattern-策略模式",
+        
+          title: "Design Pattern (25) - Strategy Pattern (策略模式)",
+        
+        description: "策略模式提供了一種靈活的解決方案，讓系統能根據需求動態切換不同的行為邏輯，實現高可擴展性與低耦合性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-25-strategy-pattern/";
+          
+        },
+      },{id: "post-design-pattern-24-state-pattern-狀態模式",
+        
+          title: "Design Pattern (24) - State Pattern (狀態模式)",
+        
+        description: "透過狀態模式，設計一個飲水機的運作機制，根據不同狀態執行加熱、冷卻或待機的行為。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-24-state-pattern/";
+          
+        },
+      },{id: "post-design-pattern-23-observer-pattern-觀察者模式",
+        
+          title: "Design Pattern (23) - Observer Pattern (觀察者模式)",
+        
+        description: "透過觀察者模式，實現安全系統主機的警報通知機制，當警報觸發時，主機自動通知平板、iOS 和 Android 手機。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-23-observer-pattern/";
+          
+        },
+      },{id: "post-design-pattern-22-memento-pattern-備忘錄模式",
+        
+          title: "Design Pattern (22) - Memento Pattern (備忘錄模式)",
+        
+        description: "了解備忘錄模式如何幫助我們實現狀態恢復，像是常見的 Ctrl+Z 功能，讓我們回到之前的操作狀態。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-22-memento-pattern/";
+          
+        },
+      },{id: "post-design-pattern-21-mediator-pattern-中介者模式",
+        
+          title: "Design Pattern (21) - Mediator Pattern (中介者模式)",
+        
+        description: "了解中介者模式如何協調物件之間的交互，減少物件之間的耦合性並促進系統的可擴展性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-21-mediator-pattern/";
+          
+        },
+      },{id: "post-design-pattern-20-iterator-pattern-迭代器模式",
+        
+          title: "Design Pattern (20) - Iterator Pattern (迭代器模式)",
+        
+        description: "了解迭代器模式如何提供一種順序來訪問集合內元素的方法，而不需要暴露集合的底層表示。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-20-iterator-pattern/";
+          
+        },
+      },{id: "post-design-pattern-19-command-pattern-命令模式",
+        
+          title: "Design Pattern (19) - Command Pattern (命令模式)",
+        
+        description: "了解命令模式如何將操作與執行解耦，讓程式具備更高的靈活性與可擴展性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-19-command-pattern/";
+          
+        },
+      },{id: "post-design-pattern-18-chain-of-responsibility-pattern-責任鏈模式",
+        
+          title: "Design Pattern (18) - Chain of Responsibility Pattern (責任鏈模式)",
+        
+        description: "了解責任鏈模式如何讓請求能被多個對象動態處理，提升系統靈活性與可擴展性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-18-chain-of-responsibility-pattern/";
+          
+        },
+      },{id: "post-design-pattern-17-proxy-pattern-代理模式",
+        
+          title: "Design Pattern (17) - Proxy Pattern (代理模式)",
+        
+        description: "了解代理模式如何通過控制對物件的訪問來提升系統的安全性、效能及靈活性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-17-proxy-pattern/";
+          
+        },
+      },{id: "post-design-pattern-16-flyweight-pattern-享元模式",
+        
+          title: "Design Pattern (16) - Flyweight Pattern (享元模式)",
+        
+        description: "探索享元模式如何透過共享技術有效減少記憶體使用，提升應用效能。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-16-flyweight-pattern/";
+          
+        },
+      },{id: "post-design-pattern-15-facade-pattern-外觀模式",
+        
+          title: "Design Pattern (15) - Facade Pattern (外觀模式)",
+        
+        description: "探索外觀模式如何簡化系統複雜性，提供一個統一的介面來訪問子系統的功能，提升程式碼的可讀性與維護性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-15-facade-pattern/";
+          
+        },
+      },{id: "post-design-pattern-14-decorator-pattern-裝飾者模式",
+        
+          title: "Design Pattern (14) - Decorator Pattern (裝飾者模式)",
+        
+        description: "深入了解裝飾者模式如何動態為物件增加功能，同時保持系統的靈活性與開放性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-14-decorator-pattern/";
+          
+        },
+      },{id: "post-design-pattern-13-composite-pattern-組合模式",
+        
+          title: "Design Pattern (13) - Composite Pattern (組合模式)",
+        
+        description: "深入了解組合模式如何以一致的方式操作單個物件與物件集合，實現對樹狀結構的靈活管理。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-13-composite-pattern/";
+          
+        },
       },{id: "post-jenkins-3-如何配置-credentials-以透過-ssh-從-git-上拉取程式碼",
         
           title: "Jenkins (3) - 如何配置 Credentials 以透過 SSH 從 git 上拉取程式碼",
@@ -86,6 +262,28 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2024/jenkins-3-configure-credentials-ssh/";
+          
+        },
+      },{id: "post-design-pattern-12-bridge-pattern-橋接模式",
+        
+          title: "Design Pattern (12) - Bridge Pattern (橋接模式)",
+        
+        description: "深入了解橋接模式如何解耦抽象與實現，打造更靈活且易於擴展的系統設計，滿足複雜需求的同時降低維護成本。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-12-bridge-pattern/";
+          
+        },
+      },{id: "post-design-pattern-11-adapter-pattern-轉接器模式",
+        
+          title: "Design Pattern (11) - Adapter Pattern (轉接器模式)",
+        
+        description: "了解如何使用轉接器模式來解決介面不兼容問題，讓不同類別無縫合作，增強程式設計靈活性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-11-adapter-pattern/";
           
         },
       },{id: "post-google-adsense",
@@ -121,6 +319,17 @@ ninja.data = [{
             window.location.href = "/blog/2024/jenkins-1-what-is-jenkins/";
           
         },
+      },{id: "post-design-pattern-10-singleton-pattern-單例模式",
+        
+          title: "Design Pattern (10) - Singleton Pattern (單例模式)",
+        
+        description: "深入單例模式：如何確保一個類別只有一個實體，提供一個全域",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-10-singleton-pattern/";
+          
+        },
       },{id: "post-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8",
         
           title: "How to Enable RSA Encryption Algorithm Key in OpenSSH 8.8",
@@ -143,6 +352,17 @@ ninja.data = [{
             window.location.href = "/blog/2024/getting-started-with-github-container-registry/";
           
         },
+      },{id: "post-design-pattern-9-prototype-pattern-原型模式",
+        
+          title: "Design Pattern (9) - Prototype Pattern (原型模式)",
+        
+        description: "深入原型模式：探索如何透過物件複製技術，有效提升軟體開發中的資源管理與設計模式的靈活性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-9-prototype-pattern/";
+          
+        },
       },{id: "post-how-to-build-chiptool-for-android",
         
           title: "How to build CHIPTool for Android",
@@ -154,6 +374,61 @@ ninja.data = [{
             window.location.href = "/blog/2024/how-to-build-chiptool-for-android/";
           
         },
+      },{id: "post-design-pattern-8-builder-pattern-建造者模式",
+        
+          title: "Design Pattern (8) - Builder Pattern (建造者模式)",
+        
+        description: "探索建造者模式，學習如何分步構建複雜對象，使程式碼更加靈活和易於維護。通過實例展示如何使用建造者模式簡化對象創建過程，提升程式碼的可讀性和可擴展性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-8-builder-pattern/";
+          
+        },
+      },{id: "post-design-pattern-7-abstract-factory-pattern-抽象工廠模式",
+        
+          title: "Design Pattern (7) - Abstract Factory Pattern (抽象工廠模式)",
+        
+        description: "探索如何使用抽象工廠模式創建一系列相關或依賴的物件，提升設計靈活性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-7-abstract-factory-pattern/";
+          
+        },
+      },{id: "post-design-pattern-6-factory-method-pattern-工廠方法模式",
+        
+          title: "Design Pattern (6) - Factory Method Pattern (工廠方法模式)",
+        
+        description: "深入探討工廠方法模式，通過實例展示其應用，提升程式碼的靈活性和可擴展性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-6-factory-method-pattern/";
+          
+        },
+      },{id: "post-design-pattern-5-simple-factory-pattern-簡單工廠模式",
+        
+          title: "Design Pattern (5) - Simple Factory Pattern (簡單工廠模式)",
+        
+        description: "通過飲料點餐系統案例，學習如何使用簡單工廠模式提升程式碼的可讀性和維護性。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-5-simple-factory-pattern/";
+          
+        },
+      },{id: "post-design-pattern-4-uml-統一建模語言",
+        
+          title: "Design Pattern (4) - UML (統一建模語言)",
+        
+        description: "深入了解UML，學習如何用UML圖清晰展現設計模式，提升軟體設計能力。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-4-uml/";
+          
+        },
       },{id: "post-深入解析-google-wallet-smart-tap-未來的支付方式",
         
           title: "深入解析 Google Wallet Smart Tap：未來的支付方式",
@@ -163,6 +438,39 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2024/google-wallet-smart-tap-exploring/";
+          
+        },
+      },{id: "post-design-pattern-3-design-patterns-設計模式",
+        
+          title: "Design Pattern (3) - Design Patterns (設計模式)",
+        
+        description: "深入探討設計模式的概念及其應用步驟，助你高效解決軟體問題。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-3-design-pattern/";
+          
+        },
+      },{id: "post-design-pattern-2-design-principles-設計原則",
+        
+          title: "Design Pattern (2) - Design Principles (設計原則)",
+        
+        description: "學習如何透過單一職責和開放封閉等設計原則提升程式碼質量，打造靈活、可維護的軟體系統。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-2-design-principle/";
+          
+        },
+      },{id: "post-design-pattern-1-object-oriented-concepts-物件導向概念",
+        
+          title: "Design Pattern (1) - Object-Oriented Concepts (物件導向概念)",
+        
+        description: "探索封裝、繼承、多態和抽象的力量，為理解複雜設計模式奠定基礎。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/design-pattern-1-object-oriented-concepts/";
           
         },
       },{id: "post-如何抓取-ios-的網路封包",
