@@ -44,7 +44,73 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-如何抓取-ios-的網路封包",
+        },{id: "post-jenkins-3-如何配置-credentials-以透過-ssh-從-git-上拉取程式碼",
+        
+          title: "Jenkins (3) - 如何配置 Credentials 以透過 SSH 從 git 上拉取程式碼",
+        
+        description: "學習如何在 Jenkins 中配置憑證（Credentials），以便透過 SSH 安全地拉取程式碼。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/jenkins-3-configure-credentials-ssh/";
+          
+        },
+      },{id: "post-jenkins-2-如何架設-jenkins-伺服器",
+        
+          title: "Jenkins (2) - 如何架設 Jenkins 伺服器",
+        
+        description: "學習如何使用 Docker 映像檔來架設 Jenkins 伺服器，提升開發團隊的自動化能力。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/jenkins-2-how-to-setup-jenkins-server/";
+          
+        },
+      },{id: "post-jenkins-1-什麼是-jenkins",
+        
+          title: "Jenkins (1) - 什麼是 Jenkins",
+        
+        description: "了解Jenkins這個強大的自動化伺服器，如何幫助開發團隊實現持續整合與持續交付，提升軟體開發效率。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/jenkins-1-what-is-jenkins/";
+          
+        },
+      },{id: "post-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8",
+        
+          title: "How to Enable RSA Encryption Algorithm Key in OpenSSH 8.8",
+        
+        description: "如何在 OpenSSH 8.8 中重新啟用 RSA 加密支援，確保可以繼續使用 RSA 金鑰。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8/";
+          
+        },
+      },{id: "post-getting-started-with-github-container-registry",
+        
+          title: "Getting Started with GitHub Container Registry",
+        
+        description: "A Guide to Using and Managing Container Images",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/getting-started-with-github-container-registry/";
+          
+        },
+      },{id: "post-how-to-build-chiptool-for-android",
+        
+          title: "How to build CHIPTool for Android",
+        
+        description: "本篇文章我將介紹如何按照步驟 Build 出 CHIPTool apk",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2024/how-to-build-chiptool-for-android/";
+          
+        },
+      },{id: "post-如何抓取-ios-的網路封包",
         
           title: "如何抓取 iOS 的網路封包",
         
