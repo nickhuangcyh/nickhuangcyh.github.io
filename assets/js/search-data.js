@@ -52,7 +52,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/how-to-use-multiple-github-accounts-using-ssh/";
+            window.location.href = "/blog/devops/productivity/github/how-to-use-multiple-github-accounts-using-ssh/";
           
         },
       },{id: "post-如何使用-excalidraw-ai-快速生成專業級圖表-提升工作效率",
@@ -63,7 +63,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/ai-tools-excalidraw-chart-guide/";
+            window.location.href = "/blog/ai%20tools/visualization/productivity/ai-tools-excalidraw-chart-guide/";
           
         },
       },{id: "post-setup-development-environment-on-a-new-macos",
@@ -74,7 +74,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/setup-development-environment-on-a-new-macos/";
+            window.location.href = "/blog/setup%20guide/setup-development-environment-on-a-new-macos/";
           
         },
       },{id: "post-design-pattern-28-interpreter-pattern-解譯器模式",
@@ -85,7 +85,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-28-interpreter-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-28-interpreter-pattern/";
           
         },
       },{id: "post-design-pattern-27-visitor-pattern-訪問者模式",
@@ -96,7 +96,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-27-visitor-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-27-visitor-pattern/";
           
         },
       },{id: "post-design-pattern-26-template-method-pattern-模板方法模式",
@@ -107,7 +107,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-26-template-method-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-26-template-method-pattern/";
           
         },
       },{id: "post-design-pattern-25-strategy-pattern-策略模式",
@@ -118,7 +118,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-25-strategy-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-25-strategy-pattern/";
           
         },
       },{id: "post-design-pattern-24-state-pattern-狀態模式",
@@ -129,7 +129,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-24-state-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-24-state-pattern/";
           
         },
       },{id: "post-design-pattern-23-observer-pattern-觀察者模式",
@@ -140,7 +140,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-23-observer-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-23-observer-pattern/";
           
         },
       },{id: "post-design-pattern-22-memento-pattern-備忘錄模式",
@@ -151,7 +151,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-22-memento-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-22-memento-pattern/";
           
         },
       },{id: "post-design-pattern-21-mediator-pattern-中介者模式",
@@ -162,7 +162,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-21-mediator-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-21-mediator-pattern/";
           
         },
       },{id: "post-design-pattern-20-iterator-pattern-迭代器模式",
@@ -173,7 +173,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-20-iterator-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-20-iterator-pattern/";
           
         },
       },{id: "post-design-pattern-19-command-pattern-命令模式",
@@ -184,7 +184,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-19-command-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-19-command-pattern/";
           
         },
       },{id: "post-design-pattern-18-chain-of-responsibility-pattern-責任鏈模式",
@@ -195,7 +195,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-18-chain-of-responsibility-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-18-chain-of-responsibility-pattern/";
           
         },
       },{id: "post-design-pattern-17-proxy-pattern-代理模式",
@@ -206,7 +206,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-17-proxy-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-17-proxy-pattern/";
           
         },
       },{id: "post-design-pattern-16-flyweight-pattern-享元模式",
@@ -217,7 +217,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-16-flyweight-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-16-flyweight-pattern/";
           
         },
       },{id: "post-design-pattern-15-facade-pattern-外觀模式",
@@ -228,7 +228,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-15-facade-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-15-facade-pattern/";
           
         },
       },{id: "post-design-pattern-14-decorator-pattern-裝飾者模式",
@@ -239,7 +239,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-14-decorator-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-14-decorator-pattern/";
           
         },
       },{id: "post-design-pattern-13-composite-pattern-組合模式",
@@ -250,7 +250,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-13-composite-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-13-composite-pattern/";
           
         },
       },{id: "post-jenkins-3-如何配置-credentials-以透過-ssh-從-git-上拉取程式碼",
@@ -261,7 +261,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/jenkins-3-configure-credentials-ssh/";
+            window.location.href = "/blog/devops/jenkins-3-configure-credentials-ssh/";
           
         },
       },{id: "post-design-pattern-12-bridge-pattern-橋接模式",
@@ -272,7 +272,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-12-bridge-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-12-bridge-pattern/";
           
         },
       },{id: "post-design-pattern-11-adapter-pattern-轉接器模式",
@@ -283,7 +283,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-11-adapter-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-11-adapter-pattern/";
           
         },
       },{id: "post-google-adsense",
@@ -294,7 +294,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/google-adsense/";
+            window.location.href = "/blog/google/google-adsense/";
           
         },
       },{id: "post-jenkins-2-如何架設-jenkins-伺服器",
@@ -305,7 +305,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/jenkins-2-how-to-setup-jenkins-server/";
+            window.location.href = "/blog/devops/jenkins-2-how-to-setup-jenkins-server/";
           
         },
       },{id: "post-jenkins-1-什麼是-jenkins",
@@ -316,7 +316,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/jenkins-1-what-is-jenkins/";
+            window.location.href = "/blog/devops/jenkins-1-what-is-jenkins/";
           
         },
       },{id: "post-design-pattern-10-singleton-pattern-單例模式",
@@ -327,7 +327,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-10-singleton-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-10-singleton-pattern/";
           
         },
       },{id: "post-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8",
@@ -338,7 +338,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8/";
+            window.location.href = "/blog/cryptography/openssh/security/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8/";
           
         },
       },{id: "post-getting-started-with-github-container-registry",
@@ -349,7 +349,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/getting-started-with-github-container-registry/";
+            window.location.href = "/blog/devops/getting-started-with-github-container-registry/";
           
         },
       },{id: "post-design-pattern-9-prototype-pattern-原型模式",
@@ -360,7 +360,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-9-prototype-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-9-prototype-pattern/";
           
         },
       },{id: "post-how-to-build-chiptool-for-android",
@@ -371,7 +371,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/how-to-build-chiptool-for-android/";
+            window.location.href = "/blog/tools/how-to-build-chiptool-for-android/";
           
         },
       },{id: "post-design-pattern-8-builder-pattern-建造者模式",
@@ -382,7 +382,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-8-builder-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-8-builder-pattern/";
           
         },
       },{id: "post-design-pattern-7-abstract-factory-pattern-抽象工廠模式",
@@ -393,7 +393,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-7-abstract-factory-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-7-abstract-factory-pattern/";
           
         },
       },{id: "post-design-pattern-6-factory-method-pattern-工廠方法模式",
@@ -404,7 +404,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-6-factory-method-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-6-factory-method-pattern/";
           
         },
       },{id: "post-design-pattern-5-simple-factory-pattern-簡單工廠模式",
@@ -415,7 +415,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-5-simple-factory-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-5-simple-factory-pattern/";
           
         },
       },{id: "post-design-pattern-4-uml-統一建模語言",
@@ -426,7 +426,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-4-uml/";
+            window.location.href = "/blog/design%20pattern/design-pattern-4-uml/";
           
         },
       },{id: "post-深入解析-google-wallet-smart-tap-未來的支付方式",
@@ -437,7 +437,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/google-wallet-smart-tap-exploring/";
+            window.location.href = "/blog/pay/technology/google-wallet-smart-tap-exploring/";
           
         },
       },{id: "post-design-pattern-3-design-patterns-設計模式",
@@ -448,7 +448,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-3-design-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-3-design-pattern/";
           
         },
       },{id: "post-design-pattern-2-design-principles-設計原則",
@@ -459,7 +459,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-2-design-principle/";
+            window.location.href = "/blog/design%20pattern/design-pattern-2-design-principle/";
           
         },
       },{id: "post-design-pattern-1-object-oriented-concepts-物件導向概念",
@@ -470,7 +470,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2024/design-pattern-1-object-oriented-concepts/";
+            window.location.href = "/blog/design%20pattern/design-pattern-1-object-oriented-concepts/";
           
         },
       },{id: "post-如何抓取-ios-的網路封包",
@@ -481,7 +481,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2022/how-to-capture-network-packet-on-ios/";
+            window.location.href = "/blog/tools/how-to-capture-network-packet-on-ios/";
           
         },
       },{id: "post-如何抓取-android-的網路封包",
@@ -492,7 +492,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2022/how-to-capture-network-packet-on-android-using-tcpdump/";
+            window.location.href = "/blog/tools/how-to-capture-network-packet-on-android-using-tcpdump/";
           
         },
       },{id: "post-搞懂-p2p-技術-3-webrtc-x-aws-x-kvs",
@@ -503,7 +503,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2022/p2p-tech-3-webrtc-kvs/";
+            window.location.href = "/blog/p2p/aws/p2p-tech-3-webrtc-kvs/";
           
         },
       },{id: "post-搞懂-p2p-技術-2-stun-x-turn-x-ice",
@@ -514,7 +514,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2022/p2p-tech-2-stun-turn-ice/";
+            window.location.href = "/blog/p2p/p2p-tech-2-stun-turn-ice/";
           
         },
       },{id: "post-搞懂-p2p-技術-1-p2p-x-ipv4-x-nat",
@@ -525,7 +525,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2022/p2p-tech-1-ipv4-nat/";
+            window.location.href = "/blog/p2p/p2p-tech-1-ipv4-nat/";
           
         },
       },{id: "post-3d-graphic-engine-tips-三角形-x-uv-mapping-x-vertices-amp-indices",
@@ -536,7 +536,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2022/3d_graphic_tips/";
+            window.location.href = "/blog/mobile/3d_graphic_tips/";
           
         },
       },{id: "post-如何讓-jekyll-網站被-google-搜尋到-search-console-sitemap-教學",
@@ -547,7 +547,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2021/how-to-add-your-jekyll-blog-website-to-google-search-console/";
+            window.location.href = "/blog/blog/how-to-add-your-jekyll-blog-website-to-google-search-console/";
           
         },
       },{id: "post-使用-jekyll-minimal-mistakes-在-github-pages-上架設自己的部落格",
@@ -558,7 +558,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2021/creating_a_github_pages_with_jekyll_and_minimal_mistakes/";
+            window.location.href = "/blog/blog/creating_a_github_pages_with_jekyll_and_minimal_mistakes/";
           
         },
       },{id: "post-如何讓-octopress-網站被-google-找到-search-console-實作教學",
@@ -569,7 +569,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2020/how-to-add-your-octopress-blog-website-to-google-search-console/";
+            window.location.href = "/blog/blog/how-to-add-your-octopress-blog-website-to-google-search-console/";
           
         },
       },{id: "post-用-octopress-架設靜態部落格-github-pages-實戰教學",
@@ -580,7 +580,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2020/octopress-setup/";
+            window.location.href = "/blog/blog/octopress-setup/";
           
         },
       },{id: "books-the-godfather",
