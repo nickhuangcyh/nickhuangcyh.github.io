@@ -41,7 +41,7 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
 ### 步驟三：在 Jenkins 中添加憑證
 
-1. 打開 Jenkins 管理介面：瀏覽器開啟 http://localhost:8080，使用管理員帳號登入。  
+1. 打開 Jenkins 管理介面：瀏覽器開啟 `http://localhost:8080/`，使用管理員帳號登入。  
 2. 進入憑證管理：點擊左側選單「Credentials」→「System」。  
 3. 創建新的 Domain：點擊「Domains」旁的「Add domain」，填寫名稱（如 GitHub），點擊「OK」。  
 4. 新增憑證：選擇剛新增的 Domain，點選「Add Credentials」。  
