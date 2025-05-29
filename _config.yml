@@ -81,17 +81,17 @@ pirsch_analytics: # your Pirsch analytics site ID (length 32 characters)
 openpanel_analytics: # your Openpanel analytics client ID (format: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX)
 
 # For Google Search Console, see https://support.google.com/webmasters/answer/9008080?hl=en#meta_tag_verification&zippy=%2Chtml-tag
-google_site_verification: # your google-site-verification ID (Google Search Console)
+google_site_verification: lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA # your google-site-verification ID (Google Search Console)
 bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 
 # -----------------------------------------------------------------------------
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: al-folio # blog_name will be displayed in your blog page
-blog_description: a simple whitespace theme for academics
+blog_name: Nick in Progress # blog_name will be displayed in your blog page
+blog_description: A builder's journal of software, startups, and self-evolution.
 # permalink: /blog/:year/:title/
-permalink: /blog/:categories/:title/
+permalink: /blog/:categories/:slug/
 lsi: false # produce an index for related posts
 
 # Pagination
