@@ -338,7 +338,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/cryptography/openssh/security/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8/";
+            window.location.href = "/blog/cryptography/openssh/security/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8/";
           
         },
       },{id: "post-getting-started-with-github-container-registry",
@@ -536,7 +536,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/mobile/3d_graphic_tips/";
+            window.location.href = "/blog/mobile/3d-graphic-tips/";
           
         },
       },{id: "post-如何讓-jekyll-網站被-google-搜尋到-search-console-sitemap-教學",
@@ -558,7 +558,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/blog/creating_a_github_pages_with_jekyll_and_minimal_mistakes/";
+            window.location.href = "/blog/blog/creating-a-github-pages-with-jekyll-and-minimal-mistakes/";
           
         },
       },{id: "post-如何讓-octopress-網站被-google-找到-search-console-實作教學",
