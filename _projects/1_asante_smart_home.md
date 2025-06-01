@@ -3,8 +3,8 @@ layout: page
 title: Asante Smart Home
 description: Simply make your home smarter
 img: assets/img/project_asante_smart_home.jpg
-importance: 6
-category: work
+importance: 3
+category: Work At Asante
 related_publications: false
 published: true
 ---

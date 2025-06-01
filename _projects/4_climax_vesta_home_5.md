@@ -3,8 +3,8 @@ layout: page
 title: Vesta Home 5
 description: A secure and modern smart home app serving international users
 img: assets/img/project_climax_vesta_home.jpg
-importance: 3
-category: work
+importance: 4
+category: Work At Climax
 related_publications: false
 published: true
 ---

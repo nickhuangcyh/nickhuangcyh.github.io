@@ -4,7 +4,7 @@ title: TSP-3 Touchscreen Keypad
 description: A high-resolution touchscreen keypad for security and home automation control
 img: assets/img/project_climax_tsp3.jpg
 importance: 3
-category: work
+category: Work At Climax
 related_publications: false
 published: true
 ---
