@@ -2,7 +2,7 @@
 layout: book-review
 title: Principles - Life and Work
 author: Ray Dalio
-cover: assets/img/book_covers/principle_ray_dalio.jpg
+cover: assets/img/book_covers/book_1501124021.jpg
 olid: OL18147675W # use Open Library ID to fetch cover (if no `cover` is provided)
 isbn: 1501124021 # use ISBN to fetch cover (if no `olid` is provided, dashes are optional)
 categories: [Investment advisors, Conduct of life, Success, Biography, Success in business, nyt:advice-how-to-and-miscellaneous=2017-10-08, New York Times bestseller, Decision making, Ethics, Management, Unternehmen, Corporate culture, Problemlösen, Dalio, Ray, 1949-, Investment advisors -- United States -- Biography, BUSINESS & ECONOMICS -- Leadership, BUSINESS & ECONOMICS -- Management, BUSINESS & ECONOMICS -- Personal Success, Problemlösen, United States, Long Now Manual for Civilization]
