@@ -3,7 +3,7 @@ layout: page
 title: Asante 2.0 - GarageViewer
 description: Next-generation smart garage opener with camera and voice control
 img: assets/img/asante_garage_viewer.jpg
-importance: 2
+importance: 5
 category: work
 related_publications: false
 published: true

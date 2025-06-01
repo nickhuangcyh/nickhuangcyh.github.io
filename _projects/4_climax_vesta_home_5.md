@@ -2,8 +2,8 @@
 layout: page
 title: Vesta Home 5
 description: A secure and modern smart home app serving international users
-img: assets/img/climax_vest_home.gif
-importance: 4
+img: assets/img/climax_vesta_home.jpg
+importance: 3
 category: work
 related_publications: false
 published: true
