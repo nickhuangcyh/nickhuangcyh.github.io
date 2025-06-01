@@ -3,7 +3,7 @@ layout: page
 title: Asante Smart Home
 description: Simply make your home smarter
 img: assets/img/project_asante_smart_home.jpg
-importance: 5
+importance: 2
 category: work
 related_publications: false
 published: true
@@ -21,6 +21,7 @@ It’s a smart home system that lets users control devices like a garage door op
 Through this project, I gained hands-on experience with IoT technologies and taught myself how to design a clean, maintainable codebase that’s easy to understand and scale.
 
 Official Website: [https://asante.com](https://asante.com)
+Amazon Link: [View Product on Amazon](https://www.amazon.com/Asante-99-00900-US-remotely-smartphone-streaming/dp/B00KBDV4SI)
 
 ---
 

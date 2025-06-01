@@ -3,7 +3,7 @@ layout: page
 title: Asante TapTap 3
 description: Create stunning AI-powered musical light shows with just a tap
 img: assets/img/asante_taptap.jpg
-importance: 5
+importance: 2
 category: work
 related_publications: false
 published: true
@@ -21,7 +21,7 @@ This was a solo project where I took full ownership—from architecture, network
 The TapTap 3 app is available on both iOS and Android and pairs with a smart hardware device to deliver immersive light shows.
 
 Official Website: [https://www.asante.com/asante-taptap-light-show-creator/](https://www.asante.com/asante-taptap-light-show-creator/)
-
+Amazon Link: [View Product on Amazon](https://www.amazon.com/Asante-Generation-Creator-Empowered-Technology/dp/B09JGBXMXS)
 ---
 
 ## 🔥 Features
