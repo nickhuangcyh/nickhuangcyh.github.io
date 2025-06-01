@@ -18,7 +18,7 @@ ninja.data = [{
           },
         },{id: "nav-cv",
           title: "cv",
-          description: "This is a description of the page. You can modify it in &#39;_pages/cv.md&#39;. You can also change or remove the top pdf download button.",
+          description: "Hi, I’m Nick — a software engineer based in Taipei who enjoys building apps that make life a little easier. I specialize in iOS and Android development, with 9+ years of experience in Swift and Objective-C, and 6+ years with Kotlin.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/cv/";
@@ -583,11 +583,16 @@ ninja.data = [{
             window.location.href = "/blog/blog/octopress-setup/";
           
         },
-      },{id: "books-the-godfather",
-          title: 'The Godfather',
+      },{id: "books-die-kunst-über-geld-nachzudenken",
+          title: 'Die Kunst über Geld nachzudenken',
           description: "",
           section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather/";
+              window.location.href = "/books/Die_Kunst_%C3%BCber_Geld_nachzudenken_by_Andr%C3%A9_Kostolany/";
+            },},{id: "books-principles-life-and-work",
+          title: 'Principles - Life and Work',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/principle_ray_dalio/";
             },},{id: "news-a-simple-inline-announcement",
           title: 'A simple inline announcement.',
           description: "",
@@ -599,7 +604,47 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
-          section: "News",},{
+          section: "News",},{id: "projects-asante-smart-home",
+          title: 'Asante Smart Home',
+          description: "Simply make your home smarter",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/1_asante_smart_home/";
+            },},{id: "projects-asante-taptap-3",
+          title: 'Asante TapTap 3',
+          description: "Create stunning AI-powered musical light shows with just a tap",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/2_asante_taptap/";
+            },},{id: "projects-asante-2-0-garageviewer",
+          title: 'Asante 2.0 - GarageViewer',
+          description: "Next-generation smart garage opener with camera and voice control",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/3_asante_smart_home_2_0/";
+            },},{id: "projects-vesta-home-5",
+          title: 'Vesta Home 5',
+          description: "A secure and modern smart home app serving international users",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/4_climax_vesta_home_5/";
+            },},{id: "projects-care-alert",
+          title: 'Care Alert',
+          description: "A healthcare-focused smart home solution for families and elders",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/5_climax_care_alert/";
+            },},{id: "projects-tsp-3-touchscreen-keypad",
+          title: 'TSP-3 Touchscreen Keypad',
+          description: "A high-resolution touchscreen keypad for security and home automation control",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/6_climax_tsp3/";
+            },},{id: "projects-tsp-1-bus-touchscreen-keypad",
+          title: 'TSP-1-BUS Touchscreen Keypad',
+          description: "A hardwired 7&quot; touchscreen keypad with RS485 BUS communication and smart home integration",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/7_climax_tsp1_bus/";
+            },},{id: "projects-touchpanel-3",
+          title: 'TouchPanel-3',
+          description: "A 7&quot; high resolution color graphic touchscreen to control devices in the system via one single intuitive interface, with IP camera integration for real-time visual verification.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/8_climax_touchpanel_3/";
+            },},{
         id: 'social-github',
         title: 'GitHub',
         section: 'Socials',
