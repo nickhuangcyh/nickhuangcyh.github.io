@@ -2,7 +2,7 @@
 layout: page
 title: Care Alert
 description: A healthcare-focused smart home solution for families and elders
-img: assets/img/climax_care_alert.jpg
+img: assets/img/project_climax_care_alert.jpg
 importance: 4
 category: work
 related_publications: false

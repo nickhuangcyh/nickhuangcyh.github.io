@@ -2,7 +2,7 @@
 layout: page
 title: Asante TapTap 3
 description: Create stunning AI-powered musical light shows with just a tap
-img: assets/img/asante_taptap.jpg
+img: assets/img/project_asante_taptap.jpg
 importance: 5
 category: work
 related_publications: false
