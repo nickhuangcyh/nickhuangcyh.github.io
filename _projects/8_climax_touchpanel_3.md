@@ -4,7 +4,7 @@ title: TouchPanel-3
 description: A 7" high resolution color graphic touchscreen to control devices in the system via one single intuitive interface, with IP camera integration for real-time visual verification.
 img: assets/img/project_climax_touchpanel_3.jpg
 importance: 1
-category: work
+category: Work At Climax
 related_publications: false
 published: true
 ---
