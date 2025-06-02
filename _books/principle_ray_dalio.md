@@ -5,11 +5,36 @@ author: Ray Dalio
 cover: assets/img/book_covers/book_1501124021.jpg
 olid: OL18147675W # use Open Library ID to fetch cover (if no `cover` is provided)
 isbn: 1501124021 # use ISBN to fetch cover (if no `olid` is provided, dashes are optional)
-categories: [Investment advisors, Conduct of life, Success, Biography, Success in business, nyt:advice-how-to-and-miscellaneous=2017-10-08, New York Times bestseller, Decision making, Ethics, Management, Unternehmen, Corporate culture, Problemlösen, Dalio, Ray, 1949-, Investment advisors -- United States -- Biography, BUSINESS & ECONOMICS -- Leadership, BUSINESS & ECONOMICS -- Management, BUSINESS & ECONOMICS -- Personal Success, Problemlösen, United States, Long Now Manual for Civilization]
+categories:
+  [
+    Investment advisors,
+    Conduct of life,
+    Success,
+    Biography,
+    Success in business,
+    nyt:advice-how-to-and-miscellaneous=2017-10-08,
+    New York Times bestseller,
+    Decision making,
+    Ethics,
+    Management,
+    Unternehmen,
+    Corporate culture,
+    Problemlösen,
+    Dalio,
+    Ray,
+    1949-,
+    Investment advisors -- United States -- Biography,
+    BUSINESS & ECONOMICS -- Leadership,
+    BUSINESS & ECONOMICS -- Management,
+    BUSINESS & ECONOMICS -- Personal Success,
+    Problemlösen,
+    United States,
+    Long Now Manual for Civilization,
+  ]
 tags: top-100
 buy_link: https://www.amazon.com/gp/product/1501124021/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=1501124021&linkCode=as2&tag=principles00-20&linkId=c28b7b5430e581a3384015c701bd21a8
 started: 2024-12-01
-finished: 
+finished:
 released: 2017
 stars: 5
 goodreads_review: 34536488

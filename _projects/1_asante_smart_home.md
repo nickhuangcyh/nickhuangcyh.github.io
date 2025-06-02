@@ -13,7 +13,7 @@ published: true
 
 Asante SmartHome was the first project I worked on after entering the industry—and also my very first job.
 
-It’s a smart home system that lets users control devices like a garage door opener, irrigation controller, and smoke detector via a mobile app.  
+It’s a smart home system that lets users control devices like a garage door opener, irrigation controller, and smoke detector via a mobile app.
 
 > 💡 **This entire iOS app was independently designed and built by me from the ground up.**  
 > I handled everything from architecture to implementation — including working with `TCP/UDP`, `HTTPS`, `p2p`, `Mjpeg streaming`, and `APNS` using `MVC`.

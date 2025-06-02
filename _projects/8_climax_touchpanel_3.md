@@ -19,15 +19,15 @@ published: true
 
 ### 📌 Key Features
 
-- **7-inch touchscreen** with intuitive UI  
-- **IP / LTE / WiFi (2.4GHz / 5GHz)** connectivity  
-- **Z-Wave Plus (800 Series)** home automation  
-- **AI intruder detection** with 5.0MP front camera  
-- **Two-way voice communication**  
-- **Bluetooth disarming**  
-- **Siren output 95dB @ 1m**  
-- **Up to 128 RF devices, 240 user codes per area**  
-- **Live visual streaming** via IP CAM or video door phone  
+- **7-inch touchscreen** with intuitive UI
+- **IP / LTE / WiFi (2.4GHz / 5GHz)** connectivity
+- **Z-Wave Plus (800 Series)** home automation
+- **AI intruder detection** with 5.0MP front camera
+- **Two-way voice communication**
+- **Bluetooth disarming**
+- **Siren output 95dB @ 1m**
+- **Up to 128 RF devices, 240 user codes per area**
+- **Live visual streaming** via IP CAM or video door phone
 - **Remote control and event alert** through [Vesta Home 5 App](https://apps.apple.com/tw/developer/climax-technology-co-ltd/id438141751)
 
 ---
@@ -46,12 +46,11 @@ I was responsible for the **development of all core features** of this project, 
 
 ### 🛠️ Technologies & Tools
 
-- **Architecture:** MVP  
-- **Communication:** TCP, UDP, HTTPS, MQTT  
-- **Media:** FFMpeg, RTSP, H.264  
-- **Automation:** Z-Wave 800 Series, UDM  
-- **Bluetooth:** Bluetooth 5.0  
+- **Architecture:** MVP
+- **Communication:** TCP, UDP, HTTPS, MQTT
+- **Media:** FFMpeg, RTSP, H.264
+- **Automation:** Z-Wave 800 Series, UDM
+- **Bluetooth:** Bluetooth 5.0
 - **Testing:** mockito, mockK
 
 ---
-

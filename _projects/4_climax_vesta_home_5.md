@@ -76,6 +76,6 @@ Vesta Home 5 powers smart homes and security systems across:
 - 🇪🇸 Spain
 - 🇺🇸 USA
 - 🇯🇵 Japan
-...
+  ...
 
 Helping thousands of families manage their home security and automation with reliability and ease.

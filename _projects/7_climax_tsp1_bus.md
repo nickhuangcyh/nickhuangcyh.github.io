@@ -13,8 +13,9 @@ published: true
 
 **TSP-1-BUS** is a hardwired touchscreen keypad that connects to Climax’s **Hybrid Panel** via **RS485 BUS**, providing reliable security control and smart home access. Featuring a **7” full-color, high-resolution touchscreen**, it delivers intuitive and fast operation for **arming/disarming the system**, automation control, and video verification through **IP cameras or video phones**.
 
-Official Links:  
-- [Product Page](https://www.climax.com.tw/tsp-1-bus.php)  
+Official Links:
+
+- [Product Page](https://www.climax.com.tw/tsp-1-bus.php)
 - [Wired BUS Security System Brochure (PDF)](https://www.climax.com.tw/new/downloads/Climax_Wired_BUS_Security_System_Brochure_20250304.pdf)
 
 ---
@@ -43,12 +44,13 @@ Official Links:
 I independently **planned and implemented the entire BUS communication module**, including:
 
 - Developed **custom RS485 protocol**:
+
   - Handshake & Acknowledgment
   - Encrypted packet structure
   - Custom packet framing & error detection (like TCP/UDP)
 
-- Built **core system logic and integration** with Hybrid Panel  
-- Coordinated with backend and hardware teams for end-to-end system validation  
+- Built **core system logic and integration** with Hybrid Panel
+- Coordinated with backend and hardware teams for end-to-end system validation
 - Developed **UI workflow and network logic** in a scalable MVP architecture
 
 ---
@@ -64,4 +66,3 @@ I independently **planned and implemented the entire BUS communication module**,
 > 📡 “In TSP-1-BUS, I built a robust RS485 communication stack from the ground up to ensure hardwired stability with real-time performance.”
 
 ---
-

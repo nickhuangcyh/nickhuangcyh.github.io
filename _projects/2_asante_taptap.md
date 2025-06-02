@@ -22,6 +22,7 @@ The TapTap 3 app is available on both iOS and Android and pairs with a smart har
 
 Official Website: [https://www.asante.com/asante-taptap-light-show-creator/](https://www.asante.com/asante-taptap-light-show-creator/)
 Amazon Link: [View Product on Amazon](https://www.amazon.com/Asante-Generation-Creator-Empowered-Technology/dp/B09JGBXMXS)
+
 ---
 
 ## 🔥 Features

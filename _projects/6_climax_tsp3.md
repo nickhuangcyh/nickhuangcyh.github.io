@@ -63,4 +63,3 @@ I led the software development **from scratch**, including:
 > This project challenged me to integrate network security, video streaming, and embedded device control into one seamless product experience.
 
 ---
-

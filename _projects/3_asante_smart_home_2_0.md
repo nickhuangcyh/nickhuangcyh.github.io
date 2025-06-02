@@ -29,7 +29,7 @@ Amazon Link: [View Product on Amazon](https://www.amazon.com/99-00859-US-Asante-
   Live view of your garage area from anywhere, anytime, for maximum peace of mind.
 
 - 🗣 **Amazon Alexa Voice Control**  
-  Easily open and close your garage using voice commands via Alexa. *(Sensor required)*
+  Easily open and close your garage using voice commands via Alexa. _(Sensor required)_
 
 - 🌙 **High-Performance Night Vision**  
   Market-leading night vision with wide angle and deep coverage.
