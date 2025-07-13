@@ -1,126 +1,228 @@
 ---
 layout: post
-title: Design Pattern (24) - State Pattern (狀態模式)
+title: "Design Pattern 24: State Pattern - Complete Guide with Real-World Examples"
 date: 2024-12-22 15:00:00 +0800
-description: 透過狀態模式，設計一個飲水機的運作機制，根據不同狀態執行加熱、冷卻或待機的行為。
-tags: [State Pattern]
-categories: [Design Pattern]
+description: "Master the State Pattern with practical examples. Learn how to implement state machines, manage object behavior based on state, and create flexible state-driven applications."
+tags: [State Pattern, Design Patterns, State Machine, Object-Oriented Design, Software Architecture, Kotlin, Programming, Behavioral Patterns]
+categories: [Design Pattern, Software Engineering, Programming]
 toc:
-  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
+> 📁 **Download the complete Design Pattern series code** from our [design_pattern repository](https://github.com/nickhuangcyh/design_pattern).
 
 ---
 
-## 需求
+## 🎯 **What is the State Pattern?**
 
-我們的任務是設計一個 **飲水機**，需求如下：
+The **State Pattern** is a behavioral design pattern that allows an object to alter its behavior when its internal state changes. The object will appear to change its class, making it perfect for implementing state machines and managing complex state-dependent behavior.
 
-- 飲水機有三種狀態：
-  - **加熱中**：提升水溫至熱水。
-  - **冷卻中**：降低水溫至冷水。
-  - **待機中**：維持現有水溫。
-- 使用者可透過按鈕切換飲水機的狀態。
-- 飲水機需要根據當前狀態執行正確的行為，例如加熱狀態時加熱水，但不可冷卻。
-
----
-
-## 物件導向分析 (OOA)
-
-理解需求後，讓我們來快速實作物件導向分析吧!
-
-{% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_1.png" title="design_pattern_state_pattern_uml_1" %}
-
-### 察覺 Forces
-
-在未使用設計模式的情況下，我們可能面臨以下挑戰：
-
-1. **高耦合性 (High Coupling)**
-
-   - 狀態邏輯與飲水機核心功能混合在一起，導致程式碼難以維護。
-
-2. **違反單一職責原則 (SRP)**
-
-   - 飲水機類別需要同時處理狀態邏輯與主要功能，責任過於繁重。
-
-3. **難以擴展 (Hard to Extend)**
-   - 新增或修改狀態行為需更改飲水機核心邏輯，違反開放關閉原則 (OCP)。
+**Key Use Cases:**
+- ✅ **State machines** and workflow engines
+- ✅ **Game development** (character states, AI behavior)
+- ✅ **UI components** (button states, form validation)
+- ✅ **Network protocols** (connection states)
+- ✅ **Business logic** (order processing, workflow management)
 
 ---
 
-## 套用 State Pattern (Solution) 得到新的 Context (Resulting Context)
+## 🚀 **Real-World Problem: Water Dispenser State Management**
 
-做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 State Pattern 解決這個問題
+Let's design a **water dispenser** system with the following requirements:
 
-察覺 Forces 後，我們可以套用 **State Pattern**，將狀態邏輯封裝成獨立的類別，達到以下效果：
+### **System Requirements:**
+- **Three operational states:**
+  - **Heating**: Raises water temperature to hot
+  - **Cooling**: Lowers water temperature to cold
+  - **Standby**: Maintains current water temperature
+- **User interaction**: Button presses to switch states
+- **State-specific behavior**: Each state performs appropriate actions
 
-{% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_2.png" title="design_pattern_state_pattern_uml_2" %}
-
-狀態模式有三個角色:
-
-1. **State (狀態介面)**  
-   定義所有具體狀態需要實現的行為。
-
-2. **ConcreteState (具體狀態)**  
-   每個具體狀態類別實現 State 介面，並負責該狀態下的具體行為邏輯。
-
-3. **Context (上下文)**  
-   負責維護當前狀態，並提供介面讓外部操作。在執行操作時，將請求委派給當前狀態物件。
-
-- 飲水機類別負責狀態管理，而非具體行為實現，降低耦合度。
-- 每個狀態專注於自身行為，符合單一職責原則。
-- 新增或修改狀態無需影響飲水機核心邏輯，符合開放關閉原則。
-
-將 State Pattern 套用到我們的應用吧
-
-{% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_3.png" title="design_pattern_state_pattern_uml_3" %}
+### **Business Rules:**
+- Heating state cannot cool water simultaneously
+- Cooling state cannot heat water simultaneously
+- Standby state maintains current temperature
+- State transitions should be smooth and predictable
 
 ---
 
-## 物件導向設計 (OOP)
+## 🏗️ **Object-Oriented Analysis (OOA)**
 
-[State: WaterDispenserState]
+Let's analyze the problem and identify the core components:
+
+{% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_1.png" title="State Pattern - Problem Analysis" %}
+
+### **Identified Forces:**
+
+1. **High Coupling**
+   - State logic mixed with water dispenser core functionality
+   - Difficult to maintain and modify state behavior
+
+2. **Single Responsibility Principle Violation**
+   - Water dispenser class handles both state logic and core functionality
+   - Class becomes overloaded with responsibilities
+
+3. **Extension Challenges**
+   - Adding or modifying states requires changing core logic
+   - Violates Open-Closed Principle (OCP)
+
+---
+
+## 💡 **State Pattern Solution**
+
+After analyzing the forces, we can apply the **State Pattern** to encapsulate state logic into separate classes:
+
+{% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_2.png" title="State Pattern - General Structure" %}
+
+### **State Pattern Components:**
+
+1. **State Interface**
+   - Defines common interface for all states
+   - Ensures consistent behavior across states
+
+2. **Concrete States**
+   - Each state implements the interface
+   - Contains state-specific behavior logic
+
+3. **Context**
+   - Maintains current state reference
+   - Delegates requests to current state object
+
+**Benefits:**
+- **Reduced coupling** between context and state logic
+- **Single responsibility** for each state class
+- **Easy extension** without modifying existing code
+
+---
+
+## 🛠️ **Implementation: Water Dispenser State Machine**
+
+Here's the complete implementation using the State Pattern:
+
+{% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_3.png" title="Water Dispenser State Implementation" %}
+
+### **1. State Interface**
 
 ```kotlin
 interface WaterDispenserState {
     fun handleRequest()
+    fun getStateName(): String
 }
 ```
 
-[ConcreteStates: HeatingState, CoolingState, StandbyState]
+### **2. Concrete State Classes**
 
 ```kotlin
 class HeatingState : WaterDispenserState {
     override fun handleRequest() {
-        println("加熱中：水溫正在提升，請稍候...")
+        println("🔥 Heating: Water temperature is rising, please wait...")
     }
+    
+    override fun getStateName(): String = "Heating"
 }
 
 class CoolingState : WaterDispenserState {
     override fun handleRequest() {
-        println("冷卻中：水溫正在降低，請稍候...")
+        println("❄️ Cooling: Water temperature is decreasing, please wait...")
     }
+    
+    override fun getStateName(): String = "Cooling"
 }
 
 class StandbyState : WaterDispenserState {
     override fun handleRequest() {
-        println("待機中：飲水機維持現有水溫，隨時可用。")
+        println("⏸️ Standby: Water dispenser maintains current temperature, ready to use.")
     }
+    
+    override fun getStateName(): String = "Standby"
 }
 ```
 
-[Context: WaterDispenser]
+### **3. Context Class**
 
 ```kotlin
 class WaterDispenser {
     private var currentState: WaterDispenserState = StandbyState()
+    private var temperature: Int = 25 // Default room temperature
 
     fun setState(state: WaterDispenserState) {
         currentState = state
-        println("狀態切換：${state::class.simpleName}")
+        println("🔄 State Transition: ${state.getStateName()}")
+    }
+
+    fun pressButton() {
+        currentState.handleRequest()
+    }
+    
+    fun getCurrentState(): String = currentState.getStateName()
+    
+    fun getTemperature(): Int = temperature
+}
+```
+
+### **4. Client Code**
+
+```kotlin
+fun main() {
+    val dispenser = WaterDispenser()
+
+    // Initial state: Standby
+    println("=== Water Dispenser State Machine Demo ===")
+    dispenser.pressButton()
+
+    // Switch to heating state
+    dispenser.setState(HeatingState())
+    dispenser.pressButton()
+
+    // Switch to cooling state
+    dispenser.setState(CoolingState())
+    dispenser.pressButton()
+
+    // Return to standby state
+    dispenser.setState(StandbyState())
+    dispenser.pressButton()
+}
+```
+
+**Expected Output:**
+```
+=== Water Dispenser State Machine Demo ===
+⏸️ Standby: Water dispenser maintains current temperature, ready to use.
+🔄 State Transition: Heating
+🔥 Heating: Water temperature is rising, please wait...
+🔄 State Transition: Cooling
+❄️ Cooling: Water temperature is decreasing, please wait...
+🔄 State Transition: Standby
+⏸️ Standby: Water dispenser maintains current temperature, ready to use.
+```
+
+---
+
+## 🔧 **Advanced Implementation: Enhanced State Machine**
+
+Let's create a more sophisticated version with state transitions and validation:
+
+```kotlin
+interface State {
+    fun enter()
+    fun exit()
+    fun handleRequest()
+    fun canTransitionTo(newState: State): Boolean
+}
+
+class EnhancedWaterDispenser {
+    private var currentState: State = StandbyState()
+    private var temperature: Int = 25
+
+    fun setState(newState: State) {
+        if (currentState.canTransitionTo(newState)) {
+            currentState.exit()
+            currentState = newState
+            currentState.enter()
+        } else {
+            println("❌ Invalid state transition from ${currentState::class.simpleName} to ${newState::class.simpleName}")
+        }
     }
 
     fun pressButton() {
@@ -129,61 +231,169 @@ class WaterDispenser {
 }
 ```
 
-[Client]
+---
 
+## 📊 **State Pattern vs Alternative Approaches**
+
+| Approach | Pros | Cons |
+|----------|------|------|
+| **State Pattern** | ✅ Clean separation of concerns<br>✅ Easy to extend<br>✅ Follows OCP | ❌ More classes<br>❌ Slight overhead |
+| **If-Else Chains** | ✅ Simple for few states | ❌ Hard to maintain<br>❌ Violates OCP |
+| **Enum-Based** | ✅ Type-safe<br>✅ Compact | ❌ Mixed responsibilities<br>❌ Hard to extend |
+
+---
+
+## 🎯 **When to Use the State Pattern**
+
+### **✅ Perfect For:**
+- **Complex state machines** with many states
+- **Objects with state-dependent behavior**
+- **UI components** with multiple states
+- **Game development** (character states, AI)
+- **Workflow engines** and business processes
+
+### **❌ Avoid When:**
+- **Simple state logic** (use if-else instead)
+- **Performance-critical** applications
+- **Few states** with simple transitions
+
+---
+
+## 🔗 **Related Design Patterns**
+
+- **Strategy Pattern**: Similar structure, but for algorithms rather than states
+- **Command Pattern**: Can be used together for state transitions
+- **Observer Pattern**: For notifying about state changes
+- **Memento Pattern**: For saving and restoring state
+
+---
+
+## 📈 **Real-World Applications**
+
+### **1. Game Development**
 ```kotlin
-fun main() {
-    val dispenser = WaterDispenser()
+// Character states in a game
+interface CharacterState {
+    fun move()
+    fun attack()
+    fun defend()
+}
 
-    // 初始狀態為待機中
-    dispenser.pressButton()
+class IdleState : CharacterState { /* Implementation */ }
+class WalkingState : CharacterState { /* Implementation */ }
+class FightingState : CharacterState { /* Implementation */ }
+```
 
-    // 切換到加熱狀態
-    dispenser.setState(HeatingState())
-    dispenser.pressButton()
+### **2. Network Connection Management**
+```kotlin
+// Network connection states
+interface ConnectionState {
+    fun connect()
+    fun disconnect()
+    fun send(data: String)
+}
 
-    // 切換到冷卻狀態
-    dispenser.setState(CoolingState())
-    dispenser.pressButton()
+class DisconnectedState : ConnectionState { /* Implementation */ }
+class ConnectingState : ConnectionState { /* Implementation */ }
+class ConnectedState : ConnectionState { /* Implementation */ }
+```
 
-    // 回到待機狀態
-    dispenser.setState(StandbyState())
-    dispenser.pressButton()
+### **3. Order Processing System**
+```kotlin
+// E-commerce order states
+interface OrderState {
+    fun process()
+    fun cancel()
+    fun ship()
+}
+
+class PendingState : OrderState { /* Implementation */ }
+class ProcessingState : OrderState { /* Implementation */ }
+class ShippedState : OrderState { /* Implementation */ }
+```
+
+---
+
+## 🚨 **Common Pitfalls and Best Practices**
+
+### **1. State Transition Validation**
+```kotlin
+// ❌ Avoid: No validation
+fun setState(newState: State) {
+    currentState = newState
+}
+
+// ✅ Prefer: Validate transitions
+fun setState(newState: State) {
+    if (currentState.canTransitionTo(newState)) {
+        currentState = newState
+    }
 }
 ```
 
-[Output]
-
+### **2. State Encapsulation**
 ```kotlin
-待機中：飲水機維持現有水溫，隨時可用。
-狀態切換：HeatingState
-加熱中：水溫正在提升，請稍候...
-狀態切換：CoolingState
-冷卻中：水溫正在降低，請稍候...
-狀態切換：StandbyState
-待機中：飲水機維持現有水溫，隨時可用。
+// ❌ Avoid: Exposing state directly
+class Context {
+    var state: State = IdleState()
+}
+
+// ✅ Prefer: Encapsulate state
+class Context {
+    private var state: State = IdleState()
+    fun setState(newState: State) { /* Implementation */ }
+}
 ```
 
-## 結論
+### **3. State-Specific Data**
+```kotlin
+// ✅ Good: State-specific data handling
+class HeatingState : WaterDispenserState {
+    private var targetTemperature: Int = 80
+    
+    override fun handleRequest() {
+        // Use targetTemperature for heating logic
+    }
+}
+```
 
-透過 State Pattern，我們成功將飲水機的狀態邏輯與核心功能分離，實現以下優勢：
+---
 
-1. 降低耦合度
+## 🔗 **Related Articles**
 
-- 飲水機類別專注於狀態切換，具體行為由狀態類別負責。
+- [Design Pattern 1: Object-Oriented Concepts](/2024-07-02-design-pattern-1-object-oriented-concepts)
+- [Design Pattern 2: Design Principles](/2024-07-03-design-pattern-2-design-principle)
+- [Strategy Pattern](/2024-12-26-design-pattern-25-strategy-pattern)
+- [Command Pattern](/2024-12-21-design-pattern-19-command-pattern)
+- [Observer Pattern](/2024-12-24-design-pattern-23-observer-pattern)
 
-2. 符合設計原則
+---
 
-- 單一職責原則 (SRP)：每個狀態類別專注於自身行為。
-- 開放關閉原則 (OCP)：新增狀態無需修改現有程式碼。
+## ✅ **Conclusion**
 
-3. 易於擴展
+Through the State Pattern, we successfully separated the water dispenser's state logic from its core functionality, achieving the following benefits:
 
-- 新增或修改狀態行為時，不影響其他部分。
+**Key Advantages:**
+- 🎯 **Reduced coupling** - State logic isolated from main class
+- 🔧 **Single responsibility** - Each state class focuses on its behavior
+- 📈 **Easy extension** - Add new states without modifying existing code
+- 🛡️ **Better maintainability** - Clear separation of concerns
 
-此模式特別適合處理複雜的狀態轉換場景，例如：
+**Design Principles Followed:**
+- **Single Responsibility Principle (SRP)**: Each state class has one responsibility
+- **Open-Closed Principle (OCP)**: Open for extension, closed for modification
+- **Dependency Inversion Principle (DIP)**: Depend on abstractions, not concretions
 
-- ATM 機的插卡、操作、取卡狀態。
-- 文檔編輯器的編輯、檢視、列印模式。
+**Perfect For:**
+- **ATM machines** (card inserted, processing, card ejected)
+- **Document editors** (editing, viewing, printing modes)
+- **Game characters** (idle, walking, fighting states)
+- **Network protocols** (connecting, connected, disconnected)
 
-狀態模式讓程式結構更具彈性，是開發狀態機制應用的最佳選擇！
+The State Pattern makes your code structure more flexible and is the best choice for developing state-driven applications!
+
+---
+
+**💡 Pro Tip:** Combine the State Pattern with the Observer Pattern to notify other objects when state changes occur.
+
+**🔔 Stay Updated:** Follow our Design Pattern series for more software architecture insights!

@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Design Pattern (6) - Factory Method Pattern (工廠方法模式)
+title: "Design Pattern 6: Factory Method Pattern - Flexible Object Creation for Multi-Region Applications"
 date: 2024-07-07 23:00:00 +0800
-description: 深入探討工廠方法模式，通過實例展示其應用，提升程式碼的靈活性和可擴展性。
-tags: [Factory Method Pattern]
-categories: [Design Pattern]
+description: "Master the Factory Method Pattern to create objects without specifying exact classes. Learn how to implement region-specific factories, improve flexibility, and support global application expansion."
+tags: [Factory Method Pattern, Design Patterns, Object Creation, Globalization, Software Architecture, Kotlin, Java, Swift, Polymorphism, Extensibility]
+categories: [Design Patterns, Software Development, Object-Oriented Programming, Globalization]
 toc:
   #   beginning: true
   sidebar: right
@@ -12,30 +12,29 @@ thumbnail: /assets/img/design_patterns.jpg
 tabs: true
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
+> Download the complete Design Pattern series code from the [design_pattern repo](https://github.com/nickhuangcyh/design_pattern).
 
-## 引言：一個全球化的挑戰
+## Introduction: The Challenge of Global Expansion
 
-想像一下，你的飲料點餐系統在全球範圍內大受歡迎。隨著業務的擴展，你面臨著一個挑戰：如何滿足不同地區顧客的特定偏好？
+Imagine your beverage ordering system becoming wildly popular worldwide. As your business expands, you face a challenge: how to satisfy the specific preferences of customers in different regions?
 
-上一篇我們利用[簡單工廠模式]({% post_url 2024-07-06-design-pattern-5-simple-factory-pattern %})模式成功地將**需要變動** 以及 **不需變動** 的程式碼分離。今天，我們將探討如何進一步提升我們系統的靈活性和擴展性。
+In our previous article, we successfully used the [Simple Factory Pattern](/2024-07-06-design-pattern-5-simple-factory-pattern/) to separate **variable code** from **constant code**. Today, we'll explore how to further enhance our system's flexibility and extensibility.
 
-## 需求：滿足全球化的味蕾
+## Problem Statement: Satisfying Global Taste Preferences
 
-飲料點餐系統受到客戶的喜愛，業績非常好，於是客戶在世界各地迅速擴店。但很快的問題出現了——不同地區的顧客有著不同的偏好。
+The beverage ordering system has become very popular with customers, leading to rapid expansion worldwide. However, a problem quickly emerged—customers in different regions have different preferences.
 
-- **案例分析**:
-  - 美國喜歡錫蘭紅茶
-  - 歐洲喜歡伯爵紅茶
+**Case Analysis:**
+- **US customers** prefer Ceylon black tea
+- **EU customers** prefer Earl Grey black tea
 
-我們的目標是，不增加過多成本的同時，滿足這些多樣化的需求。
-(成本考量我們不將所有紅茶種類都加入菜單，只用最符合當地口味的茶葉製作紅茶)
+Our goal is to satisfy these diverse requirements without significantly increasing costs. (For cost considerations, we won't add all tea varieties to the menu, but use only the tea leaves that best suit local tastes.)
 
-## 物件導向分析(OOA)
+## Object-Oriented Analysis (OOA)
 
-{% include figure.liquid path="assets/img/design_pattern_factory_method_pattern_uml_1.png" title="design_pattern_factory_method_pattern_uml_1" %}
+{% include figure.liquid path="assets/img/design_pattern_factory_method_pattern_uml_1.png" title="Initial multi-region beverage system design" %}
 
-於是我們修改簡單工廠的程式碼，新增 USBeverageFactory 及 EUBeverageFactory 來製作符合美國及歐洲當地口味的飲品
+We modify the simple factory code by adding `USBeverageFactory` and `EUBeverageFactory` to create beverages that match local tastes in the US and EU regions.
 
 {% tabs data-struct %}
 
@@ -43,23 +42,22 @@ tabs: true
 
 ```swift
 public class CeylonBlackTea: Beverage {
-
+    // Ceylon black tea specific implementation
 }
 
 public class EarlGreyBlackTea: Beverage {
-
+    // Earl Grey black tea specific implementation
 }
 
 public class GyokuroGreenTea: Beverage {
-
+    // Gyokuro green tea specific implementation
 }
 
 public class SenchaGreenTea: Beverage {
-
+    // Sencha green tea specific implementation
 }
 
 open class USBeverageFactory {
-
     public init() {}
 
     func createBeverage(beverageName: String) -> Beverage? {
@@ -79,7 +77,6 @@ open class USBeverageFactory {
 }
 
 open class EUBeverageFactory {
-
     public init() {}
 
     class func createBeverage(beverageName: String) -> Beverage? {
@@ -105,15 +102,19 @@ open class EUBeverageFactory {
 
 ```kotlin
 class CeylonBlackTea: Beverage {
+    // Ceylon black tea specific implementation
 }
 
 class EarlGreyBlackTea: Beverage {
+    // Earl Grey black tea specific implementation
 }
 
 class GyokuroGreenTea: Beverage {
+    // Gyokuro green tea specific implementation
 }
 
 class SenchaGreenTea: Beverage {
+    // Sencha green tea specific implementation
 }
 
 class USBeverageFactory {
@@ -141,28 +142,27 @@ class EUBeverageFactory {
 
 {% endtabs %}
 
-## 察覺 Forces
+## Identifying Design Forces
 
-這樣做雖然可以滿足分店從不同工廠取得該地區的飲品，但每當有新的分店加入，就必須動到 BeverageShop 的程式碼來添加新的分店工廠，違反了 **Open Closed Principle**
+While this approach can satisfy different regional factories for different stores, every time a new store is added, we must modify the `BeverageShop` code to add new regional factories, violating the **Open-Closed Principle**.
 
-## 套用 Solution
+## Applying Factory Method Pattern Solution
 
-看清楚整個 Context，察覺 Forces 後，就可以套用 Factory Method Pattern 來解決這個問題
+After understanding the Context and identifying Forces, we can apply the Factory Method Pattern to solve this problem.
 
-先來看一下 Factory Method Pattern 的 UML
+### Factory Method Pattern UML Structure
 
-{% include figure.liquid path="assets/img/design_pattern_factory_method_pattern_uml_2.png" title="design_pattern_factory_method_pattern_uml_2" %}
+{% include figure.liquid path="assets/img/design_pattern_factory_method_pattern_uml_2.png" title="Factory Method Pattern UML diagram" %}
 
-提供一個介面用來創建物件，真正實體化的類別由子類別實作決定。
-讓我們修改一下上面的 UML
+The Factory Method Pattern provides an interface for creating objects, letting subclasses decide which class to instantiate.
 
-{% include figure.liquid path="assets/img/design_pattern_factory_method_pattern_uml_3.png" title="design_pattern_factory_method_pattern_uml_3" %}
+### Applied to Beverage System
 
-如此我們就得到了一個全新的 Resulting Context
+{% include figure.liquid path="assets/img/design_pattern_factory_method_pattern_uml_3.png" title="Beverage system with Factory Method Pattern" %}
 
-## 物件導向程式設計 (OOP)
+## Implementation: Object-Oriented Programming (OOP)
 
-再來我們就可以開始進行物件導向程式開發
+### Abstract Factory Interface
 
 {% tabs data-struct %}
 
@@ -174,7 +174,6 @@ public protocol BeverageFactory {
 }
 
 open class USBeverageFactory: BeverageFactory {
-
     public init() {}
 
     public func createBeverage(beverageName: String) -> Beverage? {
@@ -194,7 +193,6 @@ open class USBeverageFactory: BeverageFactory {
 }
 
 open class EUBeverageFactory: BeverageFactory {
-
     public init() {}
 
     public func createBeverage(beverageName: String) -> Beverage? {
@@ -212,14 +210,6 @@ open class EUBeverageFactory: BeverageFactory {
         return beverage
     }
 }
-
-let usBeverageShop = BeverageShop(factory: USBeverageFactory())
-let usBlackTea = usBeverageShop.order(beverageName: "black tea")
-let usGreenTea = usBeverageShop.order(beverageName: "green tea")
-
-let euBeverageShop = BeverageShop(factory: EUBeverageFactory())
-let euBlackTea = euBeverageShop.order(beverageName: "black tea")
-let euGreenTea = euBeverageShop.order(beverageName: "green tea")
 ```
 
 {% endtab %}
@@ -250,46 +240,271 @@ class EUBeverageFactory: BeverageFactory {
         }
     }
 }
-
-val usBeverageShop = BeverageShop(USBeverageFactory())
-val usBlackTea = usBeverageShop.order("black tea")
-val usGreenTea = usBeverageShop.order("green tea")
-
-val euBeverageShop = BeverageShop(EUBeverageFactory())
-val euBlackTea = euBeverageShop.order("black tea")
-val euGreenTea = euBeverageShop.order("green tea")
 ```
 
 {% endtab %}
 
 {% endtabs %}
 
-透過工廠方法模式，我們透過將工廠抽象化，達到可擴充性，之後如果要拓展其他分店像是日本分店，只需新增一個 JPBeverageFactory ，就能創建能做出符合日本人口味的飲料工廠，而不需修改到其他不需變動的程式碼。
+### Updated Client
 
-## 總結
+{% tabs data-struct %}
 
-通過工廠方法模式，我們可以在不犧牲系統整體架構的前提下，靈活地擴展我們的產品線，滿足全球化市場的需求。這不僅提升了我們系統的可維護性和擴展性，也為我們的業務帶來了更大的機會。
+{% tab data-struct Swift %}
 
-我們來看看工廠方法用到哪些 [Design Principle]({{ site.baseurl }}/design%20pattern/design-pattern-1-design-principle/)
+```swift
+public class BeverageShop {
+    private let factory: BeverageFactory
+    
+    public init(factory: BeverageFactory) {
+        self.factory = factory
+    }
+    
+    public func order(beverageName: String) -> Beverage? {
+        let beverage = factory.createBeverage(beverageName: beverageName)
+        
+        beverage?.addSugar(level: 5)
+        beverage?.addIce(level: 5)
+        beverage?.shake()
+        beverage?.packageUp()
+        
+        return beverage
+    }
+}
 
-- Encapsulate What Varies
-- Loose Coupling
-- Program to Interfaces
-- Single Responsibility Principle
-- Open Closed Principle
-- Dependency Inversion Principle
+// Usage
+let usFactory = USBeverageFactory()
+let usShop = BeverageShop(factory: usFactory)
+let usBlackTea = usShop.order(beverageName: "black tea")
 
-下一篇要介紹最後一個工廠模式 Abstract Factory Pattern 抽象工廠模式
+let euFactory = EUBeverageFactory()
+let euShop = BeverageShop(factory: euFactory)
+let euBlackTea = euShop.order(beverageName: "black tea")
+```
 
-## 參考
+{% endtab %}
 
-- [Head First Design Patterns](https://www.tenlong.com.tw/products/9789867794529)
-- [大話設計模式](https://www.tenlong.com.tw/products/9789866761799)
-- [Advanced Design Patterns: Design Principles](https://www.linkedin.com/learning/advanced-design-patterns-design-principles/what-are-design-principles?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-- [Programming Foundations: Design Patterns](https://www.linkedin.com/learning/programming-foundations-design-patterns-2/trying-interfaces?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-- [Design Patterns: Creational](https://www.linkedin.com/learning/design-patterns-creational/think-about-how-you-create-objects?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-- [refactoring](https://refactoring.guru/design-patterns/factory-method)
-- [水球潘 - Design Pattern 之路](https://www.youtube.com/watch?v=yOe-uywb2qs&list=PLicQRHHL75d7EXEI9nWfUYJyrPdI79M70&pp=iAQB)
+{% tab data-struct Kotlin %}
 
-**Note:** 如果有任何建議、問題或不同想法，歡迎留言或寄信給我，可以一起討論進步成長🙂
-{: .notice--success}
+```kotlin
+class BeverageShop(private val factory: BeverageFactory) {
+    fun order(beverageName: String): Beverage? {
+        val beverage = factory.createBeverage(beverageName)
+        
+        beverage?.addSugar(5)
+        beverage?.addIce(5)
+        beverage?.shake()
+        beverage?.packageUp()
+        
+        return beverage
+    }
+}
+
+// Usage
+val usFactory = USBeverageFactory()
+val usShop = BeverageShop(usFactory)
+val usBlackTea = usShop.order("black tea")
+
+val euFactory = EUBeverageFactory()
+val euShop = BeverageShop(euFactory)
+val euBlackTea = euShop.order("black tea")
+```
+
+{% endtab %}
+
+{% endtabs %}
+
+## Advanced Implementation: Configuration-Driven Factory Selection
+
+```kotlin
+class BeverageShopFactory {
+    fun createShop(region: String): BeverageShop {
+        val factory = when (region.lowercase()) {
+            "us" -> USBeverageFactory()
+            "eu" -> EUBeverageFactory()
+            "jp" -> JPBeverageFactory()
+            else -> USBeverageFactory() // Default
+        }
+        return BeverageShop(factory)
+    }
+}
+
+class JPBeverageFactory: BeverageFactory {
+    override fun createBeverage(beverageName: String): Beverage? {
+        return when (beverageName) {
+            "black tea" -> AssamBlackTea()
+            "green tea" -> MatchaGreenTea()
+            else -> null
+        }
+    }
+}
+
+class AssamBlackTea: Beverage {
+    override fun toString(): String = "AssamBlackTea"
+}
+
+class MatchaGreenTea: Beverage {
+    override fun toString(): String = "MatchaGreenTea"
+}
+```
+
+## Real-World Example: Database Connection Factory
+
+```kotlin
+interface DatabaseConnection {
+    fun connect(): Boolean
+    fun disconnect()
+    fun executeQuery(query: String): List<Map<String, Any>>
+}
+
+class MySQLConnection: DatabaseConnection {
+    override fun connect(): Boolean {
+        println("Connecting to MySQL database")
+        return true
+    }
+    
+    override fun disconnect() {
+        println("Disconnecting from MySQL database")
+    }
+    
+    override fun executeQuery(query: String): List<Map<String, Any>> {
+        println("Executing query on MySQL: $query")
+        return emptyList()
+    }
+}
+
+class PostgreSQLConnection: DatabaseConnection {
+    override fun connect(): Boolean {
+        println("Connecting to PostgreSQL database")
+        return true
+    }
+    
+    override fun disconnect() {
+        println("Disconnecting from PostgreSQL database")
+    }
+    
+    override fun executeQuery(query: String): List<Map<String, Any>> {
+        println("Executing query on PostgreSQL: $query")
+        return emptyList()
+    }
+}
+
+interface DatabaseFactory {
+    fun createConnection(): DatabaseConnection
+}
+
+class MySQLFactory: DatabaseFactory {
+    override fun createConnection(): DatabaseConnection = MySQLConnection()
+}
+
+class PostgreSQLFactory: DatabaseFactory {
+    override fun createConnection(): DatabaseConnection = PostgreSQLConnection()
+}
+
+class DatabaseManager(private val factory: DatabaseFactory) {
+    fun performOperation(query: String): List<Map<String, Any>> {
+        val connection = factory.createConnection()
+        connection.connect()
+        val result = connection.executeQuery(query)
+        connection.disconnect()
+        return result
+    }
+}
+```
+
+## Best Practices and Considerations
+
+### 1. **Factory Selection Strategy**
+
+```kotlin
+// Good: Configuration-based factory selection
+class BeverageService {
+    private val factory: BeverageFactory
+    
+    constructor(region: String) {
+        factory = when (region.lowercase()) {
+            "us" -> USBeverageFactory()
+            "eu" -> EUBeverageFactory()
+            "jp" -> JPBeverageFactory()
+            else -> USBeverageFactory() // Default
+        }
+    }
+    
+    fun createBeverageMenu(): List<Beverage> {
+        return listOf(
+            factory.createBeverage("black tea"),
+            factory.createBeverage("green tea")
+        ).filterNotNull()
+    }
+}
+```
+
+### 2. **Parameterized Factory Methods**
+
+```kotlin
+// Good: Factory methods with parameters
+interface AdvancedBeverageFactory {
+    fun createBeverage(beverageName: String, sweetness: Int, iceLevel: Int): Beverage?
+}
+
+class USBeverageFactory: AdvancedBeverageFactory {
+    override fun createBeverage(beverageName: String, sweetness: Int, iceLevel: Int): Beverage? {
+        return when (beverageName) {
+            "black tea" -> CeylonBlackTea(sweetness, iceLevel)
+            "green tea" -> GyokuroGreenTea(sweetness, iceLevel)
+            else -> null
+        }
+    }
+}
+```
+
+### 3. **Factory Method with Caching**
+
+```kotlin
+// Good: Factory with object caching
+abstract class CachedBeverageFactory: BeverageFactory {
+    private val cache = mutableMapOf<String, Beverage>()
+    
+    override fun createBeverage(beverageName: String): Beverage? {
+        return cache.getOrPut(beverageName) {
+            createBeverageImpl(beverageName) ?: return null
+        }
+    }
+    
+    protected abstract fun createBeverageImpl(beverageName: String): Beverage?
+}
+```
+
+## Performance Considerations
+
+| Approach | Memory Usage | Performance | Flexibility | Extensibility |
+|----------|--------------|-------------|-------------|---------------|
+| Simple Factory | Low | High | Low | Low |
+| Factory Method | Medium | Medium | High | High |
+| Abstract Factory | High | Medium | High | High |
+| Direct Instantiation | Low | High | Low | Low |
+
+## Related Design Patterns
+
+- **Simple Factory**: Centralizes object creation logic
+- **Abstract Factory**: Creates families of related objects
+- **Builder**: Constructs complex objects step by step
+- **Prototype**: Creates new objects by cloning existing ones
+
+## Conclusion
+
+The Factory Method Pattern provides a powerful way to create objects without specifying their exact classes. Key benefits include:
+
+- **Flexibility**: Easy to add new product types without modifying existing code
+- **Extensibility**: New factories can be added without changing client code
+- **Polymorphism**: Client code works with abstract interfaces
+- **Maintainability**: Object creation logic is centralized and organized
+
+This pattern is essential for building flexible applications that need to support multiple product variants or regional differences.
+
+## Related Articles
+
+- [Design Pattern 5: Simple Factory Pattern](/2024-07-06-design-pattern-5-simple-factory-pattern/)
+- [Design Pattern 7: Abstract Factory Pattern](/2024-07-08-design-pattern-7-abstract-factory-pattern/)
+- [Design Pattern 8: Builder Pattern](/2024-07-09-design-pattern-8-builder-pattern/)
+- [Object-Oriented Design Principles](/2024-07-03-design-pattern-2-design-principle/)

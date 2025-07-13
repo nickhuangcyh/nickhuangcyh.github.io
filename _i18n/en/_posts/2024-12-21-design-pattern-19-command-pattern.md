@@ -1,104 +1,86 @@
 ---
 layout: post
-title: Design Pattern (19) - Command Pattern (命令模式)
+title: "Design Pattern 19: Command Pattern - Complete Guide with Undo/Redo and Remote Control Examples"
 date: 2024-12-21 15:00:00 +0800
-description: 了解命令模式如何將操作與執行解耦，讓程式具備更高的靈活性與可擴展性。
-tags: [Command Pattern]
-categories: [Design Pattern]
+description: "Master the Command Pattern with practical remote control and undo/redo examples. Learn how to decouple operations, implement flexible controls, and support extensible command history."
+tags: [Command Pattern, Design Patterns, Undo Redo, Remote Control, Object-Oriented Design, Software Architecture, Kotlin, Programming, Behavioral Patterns, Command History]
+categories: [Design Pattern, Software Engineering, Programming]
 toc:
-  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
-
-## 需求
-
-我們需要一個音樂播放器控制系統，需求如下：
-
-- 使用者可以透過遙控器控制音樂播放器執行「播放」、「暫停」和「停止」操作。
-- 支援撤銷 (Undo) 功能，例如撤銷暫停會恢復播放。
-- 按鈕行為應保持靈活，方便未來擴充新功能，例如「下一首」或「重播」。
+> 📁 **Download the complete Design Pattern series code** from our [design_pattern repository](https://github.com/nickhuangcyh/design_pattern).
 
 ---
 
-## **物件導向分析 (OOA)**
+## 🎯 **What is the Command Pattern?**
 
-理解需求後，讓我們來快速實作物件導向分析吧！
+The **Command Pattern** is a behavioral design pattern that encapsulates a request as an object, allowing you to parameterize clients, queue or log requests, and support undoable operations. It decouples the object that invokes the operation from the one that knows how to perform it.
 
-{% include figure.liquid path="assets/img/design_pattern_command_pattern_uml_1.png" title="design_pattern_command_pattern_uml_1" %}
-
-## 察覺 Forces
-
-在未使用設計模式的情況下，我們可能面臨以下挑戰：
-
-1. **高耦合性 (High Coupling)**：
-
-   - 客戶端需要直接操作每個具體設備的功能，導致耦合度過高，不利於系統擴展。
-
-2. **缺乏靈活性 (Lack of Flexibility)**：
-
-   - 如果需要新增設備或操作，客戶端需要修改大量程式碼，增加了維護成本。
-
-3. **撤銷/重做困難 (Undo/Redo Complexity)**：
-   - 系統沒有統一的方式處理操作歷史，導致撤銷和重做功能難以實現。
-
-## 套用 Command Pattern (Solution) 得到新的 Context (Resulting Context)
-
-做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Command Pattern 解決這個問題。
-
-先來看一下 Command Pattern 的 UML：
-
-{% include figure.liquid path="assets/img/design_pattern_command_pattern_uml_2.png" title="design_pattern_command_pattern_uml_2" %}
-
-以下是 Command Pattern 的主要角色：
-
-### **角色與職責**
-
-1. **Receiver (接收者)**  
-   實際執行音樂播放邏輯的物件，例如播放、暫停和停止操作。
-
-2. **Command (命令介面)**  
-   定義命令的共同介面，保證命令的可執行性 (Execute) 與可撤銷性 (Undo)。
-
-3. **ConcreteCommand (具體命令)**  
-   將具體的播放控制操作封裝到命令物件中，例如「播放命令」、「暫停命令」和「停止命令」。
-
-4. **Invoker (呼叫者)**  
-   遙控器，負責執行命令並追蹤命令歷史，以支援撤銷操作。
-
-5. **Client (客戶端)**  
-   負責初始化命令、接收者與遙控器之間的對應關係。
-
-將 Command Pattern 套用到我們的應用吧
-
-{% include figure.liquid path="assets/img/design_pattern_command_pattern_uml_3.png" title="design_pattern_command_pattern_uml_3" %}
+**Key Benefits:**
+- ✅ **Decouples sender and receiver**
+- ✅ **Supports undo/redo**
+- ✅ **Flexible command history**
+- ✅ **Extensible for new commands**
+- ✅ **Centralizes control logic**
 
 ---
 
-## **物件導向程式設計 (OOP)**
+## 🚀 **Real-World Problem: Music Player Remote Control**
 
-### [Receiver: 音樂播放器]
+Suppose you are building a **music player remote control system** with the following requirements:
+- Users can control play, pause, and stop via remote
+- Support for undo (e.g., undo pause resumes play)
+- Button actions should be flexible for future features (e.g., next, repeat)
 
+### **Business Rules:**
+- All actions are encapsulated as command objects
+- Remote control manages command history for undo
+- Easy to add new commands without changing existing code
+
+---
+
+## 🏗️ **Object-Oriented Analysis (OOA)**
+
+{% include figure.liquid path="assets/img/design_pattern_command_pattern_uml_1.png" title="Command Pattern - Problem Analysis" %}
+
+### **Identified Forces:**
+1. **High coupling** - Client must know all device details
+2. **Lack of flexibility** - Hard to add new devices or actions
+3. **Undo/redo complexity** - No unified way to manage history
+
+---
+
+## 💡 **Command Pattern Solution**
+
+By encapsulating actions as command objects, we decouple the invoker from the receiver and enable flexible, extensible control.
+
+{% include figure.liquid path="assets/img/design_pattern_command_pattern_uml_2.png" title="Command Pattern - General Structure" %}
+
+### **Command Pattern Components:**
+- **Receiver** - Executes the actual operation
+- **Command Interface** - Defines execute/undo
+- **Concrete Command** - Implements specific actions
+- **Invoker** - Triggers commands and manages history
+- **Client** - Sets up relationships
+
+---
+
+## 🛠️ **Implementation: Music Player Remote Control**
+
+{% include figure.liquid path="assets/img/design_pattern_command_pattern_uml_3.png" title="Command Pattern - Remote Control Example" %}
+
+### **1. Receiver: Music Player**
 ```kotlin
 class MusicPlayer {
-    fun play() {
-        println("Music is playing")
-    }
-
-    fun pause() {
-        println("Music is paused")
-    }
-
-    fun stop() {
-        println("Music is stopped")
-    }
+    fun play() { println("Music is playing") }
+    fun pause() { println("Music is paused") }
+    fun stop() { println("Music is stopped") }
 }
 ```
 
-### [Command: 命令介面]
-
+### **2. Command Interface**
 ```kotlin
 interface Command {
     fun execute()
@@ -106,51 +88,30 @@ interface Command {
 }
 ```
 
-### [ConcreteCommand: 具體命令]
-
+### **3. Concrete Commands**
 ```kotlin
 class PlayCommand(private val player: MusicPlayer) : Command {
-    override fun execute() {
-        player.play()
-    }
-
-    override fun undo() {
-        player.pause() // 撤銷播放則暫停
-    }
+    override fun execute() { player.play() }
+    override fun undo() { player.pause() }
 }
-
 class PauseCommand(private val player: MusicPlayer) : Command {
-    override fun execute() {
-        player.pause()
-    }
-
-    override fun undo() {
-        player.play() // 撤銷暫停則播放
-    }
+    override fun execute() { player.pause() }
+    override fun undo() { player.play() }
 }
-
 class StopCommand(private val player: MusicPlayer) : Command {
-    override fun execute() {
-        player.stop()
-    }
-
-    override fun undo() {
-        println("Cannot undo stop") // 撤銷停止通常無法恢復
-    }
+    override fun execute() { player.stop() }
+    override fun undo() { println("Cannot undo stop") }
 }
 ```
 
-### [Invoker: 遙控器]
-
+### **4. Invoker: Remote Control**
 ```kotlin
 class RemoteControl {
     private val commandHistory = mutableListOf<Command>()
-
     fun pressButton(command: Command) {
         command.execute()
         commandHistory.add(command)
     }
-
     fun pressUndo() {
         if (commandHistory.isNotEmpty()) {
             val lastCommand = commandHistory.removeLast()
@@ -162,45 +123,114 @@ class RemoteControl {
 }
 ```
 
-### [Client: 客戶端]
-
+### **5. Client Code**
 ```kotlin
 fun main() {
     val player = MusicPlayer()
-
     val playCommand = PlayCommand(player)
     val pauseCommand = PauseCommand(player)
     val stopCommand = StopCommand(player)
-
     val remoteControl = RemoteControl()
-
-    // Play music
     remoteControl.pressButton(playCommand)
-
-    // Pause music
     remoteControl.pressButton(pauseCommand)
-
-    // Undo
     remoteControl.pressUndo()
-
-    // Stop music
     remoteControl.pressButton(stopCommand)
-
-    // Undo
     remoteControl.pressUndo()
 }
 ```
 
-### Output
-
-```bash
+**Expected Output:**
+```
 Music is playing
 Music is paused
 Music is playing
 Music is stopped
-Cannot undo stop
 ```
 
-## 結論
+---
 
-透過 Command Pattern，我們成功解除了客戶端與具體設備的耦合，讓系統更具靈活性。此外，命令模式還方便了操作的撤銷與重做功能的實現，大大提升了系統的擴展性與維護性。此模式特別適用於需要排程請求、記錄操作歷史或提供撤銷/重做功能的場景。
+## 📊 **Command Pattern vs Alternative Approaches**
+
+| Approach | Pros | Cons |
+|----------|------|------|
+| **Command Pattern** | ✅ Decouples sender/receiver<br>✅ Undo/redo support | ❌ More classes<br>❌ Command management overhead |
+| **Direct Calls** | ✅ Simple for small apps | ❌ High coupling<br>❌ No undo/redo |
+| **Event Bus** | ✅ Decoupled communication | ❌ Harder to trace logic<br>❌ Global state |
+
+---
+
+## 🎯 **When to Use the Command Pattern**
+
+### **✅ Perfect For:**
+- **Remote controls** (music, TV, smart home)
+- **Undo/redo systems**
+- **Macro recording/playback**
+- **Task scheduling and queuing**
+- **GUI button actions**
+
+### **❌ Avoid When:**
+- **Simple, one-off actions**
+- **Small, stateless systems**
+
+---
+
+## 🔧 **Advanced Command Pattern Implementations**
+- **Macro commands** (batch actions)
+- **Command logging and replay**
+- **Asynchronous command execution**
+- **Command queues and scheduling**
+
+---
+
+## 📈 **Real-World Applications**
+- Remote controls (TV, music, smart home)
+- Text editors (undo/redo)
+- Transaction management
+- Workflow engines
+
+---
+
+## 🚨 **Common Pitfalls and Best Practices**
+- Avoid excessive command classes (use parameterized commands)
+- Document command history logic
+- Use clear naming for commands
+
+---
+
+## 🔗 **Related Articles**
+- [Design Pattern 1: Object-Oriented Concepts](/2024-07-02-design-pattern-1-object-oriented-concepts)
+- [Design Pattern 2: Design Principles](/2024-07-03-design-pattern-2-design-principle)
+- [Memento Pattern](/2024-12-23-design-pattern-22-memento-pattern)
+- [State Pattern](/2024-12-25-design-pattern-24-state-pattern)
+- [Observer Pattern](/2024-12-24-design-pattern-23-observer-pattern)
+
+---
+
+## ✅ **Conclusion**
+
+Through the Command Pattern, we successfully decoupled operations, enabled undo/redo, and made the system more flexible and extensible.
+
+**Key Advantages:**
+- 🎯 **Decouples sender and receiver**
+- 🔧 **Undo/redo support**
+- 📈 **Flexible command history**
+- 🛡️ **Maintainability**
+- ⚡ **Extensibility**
+
+**Design Principles Followed:**
+- **Single Responsibility Principle (SRP)**: Each command has one responsibility
+- **Open-Closed Principle (OCP)**: Add new commands easily
+- **Don't Repeat Yourself (DRY)**: Centralize command logic
+
+**Perfect For:**
+- **Remote controls**
+- **Undo/redo systems**
+- **Workflow engines**
+
+The Command Pattern provides an elegant solution for flexible, extensible control in modern applications!
+
+---
+
+**💡 Pro Tip:** Use macro commands and command logging for advanced automation and debugging.
+
+**🔔 Stay Updated:** Follow our Design Pattern series for more software architecture insights!

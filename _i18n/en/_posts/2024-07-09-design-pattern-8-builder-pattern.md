@@ -1,73 +1,83 @@
 ---
 layout: post
-title: Design Pattern (8) - Builder Pattern (建造者模式)
+title: "Design Pattern 8: Builder Pattern - Step-by-Step Construction of Complex Objects for Flexible Configuration"
 date: 2024-07-09 23:00:00 +0800
-description: 探索建造者模式，學習如何分步構建複雜對象，使程式碼更加靈活和易於維護。通過實例展示如何使用建造者模式簡化對象創建過程，提升程式碼的可讀性和可擴展性。
-tags: [Builder Pattern]
-categories: [Design Pattern]
+description: "Master the Builder Pattern to construct complex objects step by step. Learn how to create flexible object construction with optional parameters, improve code readability, and handle complex initialization scenarios."
+tags: [Builder Pattern, Design Patterns, Object Construction, Complex Objects, Fluent Interface, Software Architecture, Kotlin, Java, Swift, Telescoping Constructor]
+categories: [Design Patterns, Software Development, Object-Oriented Programming, Code Quality]
 toc:
   #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
+> Download the complete Design Pattern series code from the [design_pattern repo](https://github.com/nickhuangcyh/design_pattern).
 
-## 需求
+## Introduction: The Challenge of Complex Object Construction
 
-今天我們要設計一個能自動做出手搖飲的機器，但如果手搖飲店只賣紅茶、綠茶，肯定滿足不了廣大的客群需求，因此我們要能夠讓手搖飲加入各種配料，來吸引顧客。
+The Builder Pattern is a creational design pattern that allows you to construct complex objects step by step. This pattern is particularly useful when you need to create objects with many optional parameters or when the construction process involves multiple steps.
 
-- 珍珠 (Pearls)
-- 椰果 (Coconut Jelly)
-- 紅豆 (Red Beans)
-- 仙草凍 (Grass Jelly)
-- 布丁 (Pudding)
+## Real-World Applications
 
-## 物件導向分析 (OOA)
+The Builder Pattern is widely used in:
 
-理解需求後，讓我們來快速實作物件導向分析吧!
+- **Configuration Objects**: Building complex configuration with optional parameters
+- **Database Queries**: Constructing SQL queries with dynamic conditions
+- **UI Components**: Building complex UI elements with multiple properties
+- **API Requests**: Creating HTTP requests with various headers and parameters
+- **Game Development**: Constructing game objects with different attributes
 
-{% include figure.liquid path="assets/img/design_pattern_builder_pattern_uml_1.png" title="design_pattern_builder_pattern_uml_1" %}
+## Problem Statement: Beverage Machine Configuration
 
-但這麼做會有一個問題，假如我們今天只要加入紅豆以及布丁，就必須在其他用不到的參數傳入 false or null，參數越多越難以維護且可讀性也不高。
+We need to design an automated beverage machine that can create various bubble tea combinations. The machine should support multiple toppings and ingredients to attract a wide customer base.
 
-因此聰明的你可能想到了，可以利用寫多個不同的 constructor 來解決，如此就不需傳入不需要的參數。
+**Available Toppings:**
+- Pearls (珍珠)
+- Coconut Jelly (椰果)
+- Red Beans (紅豆)
+- Grass Jelly (仙草凍)
+- Pudding (布丁)
 
-{% include figure.liquid path="assets/img/design_pattern_builder_pattern_uml_2.png" title="design_pattern_builder_pattern_uml_2" %}
+## Object-Oriented Analysis (OOA)
 
-## 察覺 Forces
+Let's analyze the requirements and design our initial solution:
 
-這邊我們會發現當參數越多, 所需寫的 constructor 就越多，這樣既不好維護，也使得類別的實例化過程錯綜複雜，這個現象可以稱為 `telescoping constructor`
+{% include figure.liquid path="assets/img/design_pattern_builder_pattern_uml_1.png" title="Initial beverage design with multiple parameters" %}
 
-> Telescoping constructor 是當一個類別有多個構造器，每個構造器參數數量不同，導致類別難以維護和使用的問題。
+However, this approach has a problem: if we only want to add red beans and pudding, we must pass `false` or `null` for other unused parameters. This becomes difficult to maintain and reduces readability as the number of parameters increases.
 
-## 套用 Builder Pattern ( `Solution` ) 得到新的 Context ( `Resulting Context` )
+A smarter approach might be to use multiple constructors to avoid passing unnecessary parameters:
 
-做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Builder Pattern 解決這個問題
+{% include figure.liquid path="assets/img/design_pattern_builder_pattern_uml_2.png" title="Multiple constructors approach" %}
 
-先來看一下 Builder Pattern 的 UML
+## Identifying Design Forces
 
-{% include figure.liquid path="assets/img/design_pattern_builder_pattern_uml_3.png" title="design_pattern_builder_pattern_uml_3" %}
+As the number of parameters increases, we need more constructors, making the class difficult to maintain and the instantiation process complex. This phenomenon is known as the **telescoping constructor** problem.
 
-建構者模式主要包含以下四個角色：
+> **Telescoping Constructor**: When a class has multiple constructors with different parameter counts, leading to difficult maintenance and usage.
 
-1. **Product（產品）**：Product 是 Builder Pattern 負責構建的複雜對象。它可能包含多個組件或部分，其結構根據實現的不同而變化。Product 通常是一個類，其屬性代表 Builder 構建的不同部分。
-2. **Builder（建造者）**：Builder 是一個介面或抽象類，宣告了構建複雜對象的步驟。它通常包括用於構建產品各個部分的方法。通過定義一個介面，Builder 允許創建不同的具體建造者，這些建造者可以生產產品的不同變體 1。
-3. **ConcreteBuilder（具體建造者）**：ConcreteBuilder 類實現了 Builder 介面，提供了構建產品每個部分的具體實現。每個 ConcreteBuilder 都是為創建產品的特定變體而量身定制的。它跟踪正在構建的產品，並提供設置或構建每個部分的方法 1。
-4. **Director（指導者）**：Director 負責管理複雜對象的構建過程。它與 Builder 合作，但不知道對象的每個部分是如何構建的。它提供了一個高級介面，用於構建產品和管理創建複雜對象所需的步驟 1。
-5. **Client（客戶端）**：Client 是啟動複雜對象構建過程的程式碼。它創建一個 Builder 對象並將其傳遞給 Director 以啟動構建過程。在構建完成後，Client 可能會從 Builder 那裡檢索最終產品 1。
+## Applying Builder Pattern Solution
 
-我們來將製作手搖飲套用 Builder Pattern
+The Builder Pattern provides an elegant solution by separating object construction from its representation.
 
-{% include figure.liquid path="assets/img/design_pattern_builder_pattern_uml_4.png" title="design_pattern_builder_pattern_uml_4" %}
+### Builder Pattern UML Structure
 
-如此我們就得到了一個全新的 `Resulting Context`
+{% include figure.liquid path="assets/img/design_pattern_builder_pattern_uml_3.png" title="Builder Pattern UML diagram" %}
 
-## 物件導向程式設計 (OOP)
+**Key Components:**
+- **Product**: The complex object being built
+- **Builder**: Interface defining construction steps
+- **ConcreteBuilder**: Implements specific construction logic
+- **Director**: Manages the construction process
+- **Client**: Initiates the building process
 
-再來我們就可以開始進行物件導向程式開發
+### Applied to Beverage System
 
-[Beverage]
+{% include figure.liquid path="assets/img/design_pattern_builder_pattern_uml_4.png" title="Beverage system with Builder Pattern" %}
+
+## Implementation: Object-Oriented Programming (OOP)
+
+### Product Interface
 
 ```kotlin
 interface Beverage {
@@ -76,61 +86,121 @@ interface Beverage {
     var hasRedBeans: Boolean
     var hasGrassJelly: Boolean
     var hasPudding: Boolean
+    
+    fun getDescription(): String
+    fun getPrice(): Double
 }
 ```
 
-[BubbleTea]
+### Concrete Products
 
 ```kotlin
-data class BubbleTea(override var hasPearls: Boolean,
-                     override var hasCoconutJelly: Boolean = false,
-                     override var hasRedBeans: Boolean = false,
-                     override var hasGrassJelly: Boolean = false,
-                     override var hasPudding: Boolean = false
+data class BubbleTea(
+    override var hasPearls: Boolean = false,
+    override var hasCoconutJelly: Boolean = false,
+    override var hasRedBeans: Boolean = false,
+    override var hasGrassJelly: Boolean = false,
+    override var hasPudding: Boolean = false
 ): Beverage {
+    override fun getDescription(): String {
+        val toppings = mutableListOf<String>()
+        if (hasPearls) toppings.add("Pearls")
+        if (hasCoconutJelly) toppings.add("Coconut Jelly")
+        if (hasRedBeans) toppings.add("Red Beans")
+        if (hasGrassJelly) toppings.add("Grass Jelly")
+        if (hasPudding) toppings.add("Pudding")
+        
+        return "Bubble Tea with: ${toppings.joinToString(", ")}"
+    }
+    
+    override fun getPrice(): Double {
+        var basePrice = 5.0
+        if (hasPearls) basePrice += 1.0
+        if (hasCoconutJelly) basePrice += 0.5
+        if (hasRedBeans) basePrice += 0.8
+        if (hasGrassJelly) basePrice += 0.6
+        if (hasPudding) basePrice += 1.2
+        return basePrice
+    }
 }
-```
 
-[GrassJellyPuddingTea]
-
-```kotlin
-data class GrassJellyPuddingTea(override var hasPearls: Boolean = false,
-                     override var hasCoconutJelly: Boolean = false,
-                     override var hasRedBeans: Boolean = false,
-                     override var hasGrassJelly: Boolean,
-                     override var hasPudding: Boolean
+data class GrassJellyPuddingTea(
+    override var hasPearls: Boolean = false,
+    override var hasCoconutJelly: Boolean = false,
+    override var hasRedBeans: Boolean = false,
+    override var hasGrassJelly: Boolean = false,
+    override var hasPudding: Boolean = false
 ): Beverage {
+    override fun getDescription(): String {
+        val toppings = mutableListOf<String>()
+        if (hasPearls) toppings.add("Pearls")
+        if (hasCoconutJelly) toppings.add("Coconut Jelly")
+        if (hasRedBeans) toppings.add("Red Beans")
+        if (hasGrassJelly) toppings.add("Grass Jelly")
+        if (hasPudding) toppings.add("Pudding")
+        
+        return "Grass Jelly Pudding Tea with: ${toppings.joinToString(", ")}"
+    }
+    
+    override fun getPrice(): Double {
+        var basePrice = 6.0
+        if (hasPearls) basePrice += 1.0
+        if (hasCoconutJelly) basePrice += 0.5
+        if (hasRedBeans) basePrice += 0.8
+        if (hasGrassJelly) basePrice += 0.6
+        if (hasPudding) basePrice += 1.2
+        return basePrice
+    }
 }
 ```
 
-[Builder]
+### Builder Interface
 
 ```kotlin
-interface Builder {
-    fun addPearls(): Builder
-    fun addPudding(): Builder
-    fun addGrassJelly(): Builder
-
+interface BeverageBuilder {
+    fun addPearls(): BeverageBuilder
+    fun addCoconutJelly(): BeverageBuilder
+    fun addRedBeans(): BeverageBuilder
+    fun addGrassJelly(): BeverageBuilder
+    fun addPudding(): BeverageBuilder
+    fun reset(): BeverageBuilder
     fun build(): Beverage
 }
 ```
 
-[BubbleTeaBuilder]
+### Concrete Builders
 
 ```kotlin
-class BubbleTeaBuilder: Builder {
-    private var bubbleTea = BubbleTea(false)
+class BubbleTeaBuilder: BeverageBuilder {
+    private var bubbleTea = BubbleTea()
 
     override fun addPearls(): BubbleTeaBuilder {
         bubbleTea.hasPearls = true
         return this
     }
 
-    override fun addPudding(): Builder {
+    override fun addCoconutJelly(): BubbleTeaBuilder {
+        bubbleTea.hasCoconutJelly = true
         return this
     }
 
-    override fun addGrassJelly(): Builder {
+    override fun addRedBeans(): BubbleTeaBuilder {
+        bubbleTea.hasRedBeans = true
+        return this
+    }
+
+    override fun addGrassJelly(): BubbleTeaBuilder {
+        bubbleTea.hasGrassJelly = true
+        return this
+    }
+
+    override fun addPudding(): BubbleTeaBuilder {
+        bubbleTea.hasPudding = true
+        return this
+    }
+
+    override fun reset(): BubbleTeaBuilder {
+        bubbleTea = BubbleTea()
         return this
     }
 
@@ -138,22 +208,22 @@ class BubbleTeaBuilder: Builder {
         return bubbleTea
     }
 }
-```
 
-[GrassJellyPuddingTeaBuilder]
+class GrassJellyPuddingTeaBuilder: BeverageBuilder {
+    private var grassJellyPuddingTea = GrassJellyPuddingTea()
 
-```kotlin
-class GrassJellyPuddingTeaBuilder: Builder {
+    override fun addPearls(): GrassJellyPuddingTeaBuilder {
+        grassJellyPuddingTea.hasPearls = true
+        return this
+    }
 
-    private var grassJellyPuddingTea = GrassJellyPuddingTea(
-        false,
-        hasCoconutJelly = false,
-        hasRedBeans = false,
-        hasGrassJelly = false,
-        hasPudding = false
-    )
+    override fun addCoconutJelly(): GrassJellyPuddingTeaBuilder {
+        grassJellyPuddingTea.hasCoconutJelly = true
+        return this
+    }
 
-    override fun addPearls(): Builder {
+    override fun addRedBeans(): GrassJellyPuddingTeaBuilder {
+        grassJellyPuddingTea.hasRedBeans = true
         return this
     }
 
@@ -167,40 +237,281 @@ class GrassJellyPuddingTeaBuilder: Builder {
         return this
     }
 
+    override fun reset(): GrassJellyPuddingTeaBuilder {
+        grassJellyPuddingTea = GrassJellyPuddingTea()
+        return this
+    }
+
     override fun build(): GrassJellyPuddingTea {
         return grassJellyPuddingTea
     }
 }
 ```
 
-[BeverageMaker]
+### Director (Optional)
 
 ```kotlin
-class BeverageMaker(val builder: Builder) {
-    fun makeBubbleTea(): Beverage {
-        return builder.addPearls().build()
+class BeverageMaker(private val builder: BeverageBuilder) {
+    fun makeClassicBubbleTea(): Beverage {
+        return builder.reset()
+            .addPearls()
+            .build()
+    }
+
+    fun makeDeluxeBubbleTea(): Beverage {
+        return builder.reset()
+            .addPearls()
+            .addCoconutJelly()
+            .addPudding()
+            .build()
     }
 
     fun makeGrassJellyPuddingTea(): Beverage {
-        return builder.addGrassJelly().addPudding().build()
+        return builder.reset()
+            .addGrassJelly()
+            .addPudding()
+            .build()
+    }
+
+    fun makeCustomBeverage(configuration: (BeverageBuilder) -> BeverageBuilder): Beverage {
+        return configuration(builder.reset()).build()
     }
 }
 ```
 
-[BuilderPattern.kt]
+### Client Usage
 
 ```kotlin
 fun main() {
+    // Using Builder directly
     val bubbleTeaBuilder = BubbleTeaBuilder()
-    val bubbleTeaBeverageMaker = BeverageMaker(bubbleTeaBuilder)
-    val bubbleTea = bubbleTeaBeverageMaker.makeBubbleTea()
-    println(bubbleTea)
+    val classicBubbleTea = bubbleTeaBuilder
+        .addPearls()
+        .build()
+    
+    println("Classic Bubble Tea: ${classicBubbleTea.getDescription()}")
+    println("Price: $${classicBubbleTea.getPrice()}")
 
-    val grassJellyPuddingTeaBuilder = GrassJellyPuddingTeaBuilder()
-    val grassJellyPuddingTeaBeverageMaker = BeverageMaker(grassJellyPuddingTeaBuilder)
-    val grassJellyPuddingTea = grassJellyPuddingTeaBeverageMaker.makeGrassJellyPuddingTea()
-    println(grassJellyPuddingTea)
+    // Using Director
+    val beverageMaker = BeverageMaker(BubbleTeaBuilder())
+    val deluxeBubbleTea = beverageMaker.makeDeluxeBubbleTea()
+    
+    println("Deluxe Bubble Tea: ${deluxeBubbleTea.getDescription()}")
+    println("Price: $${deluxeBubbleTea.getPrice()}")
+
+    // Custom configuration
+    val customBeverage = beverageMaker.makeCustomBeverage { builder ->
+        builder.addPearls()
+            .addRedBeans()
+            .addPudding()
+    }
+    
+    println("Custom Beverage: ${customBeverage.getDescription()}")
+    println("Price: $${customBeverage.getPrice()}")
 }
 ```
 
-如此就能很清楚的分步驟製作手搖飲了 🙌
+## Advanced Implementation: Fluent Builder with Validation
+
+```kotlin
+class AdvancedBeverageBuilder {
+    private var hasPearls = false
+    private var hasCoconutJelly = false
+    private var hasRedBeans = false
+    private var hasGrassJelly = false
+    private var hasPudding = false
+    private var sweetness: SweetnessLevel = SweetnessLevel.NORMAL
+    private var iceLevel: IceLevel = IceLevel.NORMAL
+
+    fun addPearls(): AdvancedBeverageBuilder {
+        hasPearls = true
+        return this
+    }
+
+    fun addCoconutJelly(): AdvancedBeverageBuilder {
+        hasCoconutJelly = true
+        return this
+    }
+
+    fun addRedBeans(): AdvancedBeverageBuilder {
+        hasRedBeans = true
+        return this
+    }
+
+    fun addGrassJelly(): AdvancedBeverageBuilder {
+        hasGrassJelly = true
+        return this
+    }
+
+    fun addPudding(): AdvancedBeverageBuilder {
+        hasPudding = true
+        return this
+    }
+
+    fun setSweetness(level: SweetnessLevel): AdvancedBeverageBuilder {
+        sweetness = level
+        return this
+    }
+
+    fun setIceLevel(level: IceLevel): AdvancedBeverageBuilder {
+        iceLevel = level
+        return this
+    }
+
+    fun build(): AdvancedBeverage {
+        // Validation
+        if (!hasPearls && !hasCoconutJelly && !hasRedBeans && !hasGrassJelly && !hasPudding) {
+            throw IllegalArgumentException("At least one topping must be selected")
+        }
+        
+        return AdvancedBeverage(
+            hasPearls, hasCoconutJelly, hasRedBeans, hasGrassJelly, hasPudding,
+            sweetness, iceLevel
+        )
+    }
+}
+
+enum class SweetnessLevel { NO_SUGAR, LESS, NORMAL, MORE, EXTRA }
+enum class IceLevel { NO_ICE, LESS, NORMAL, MORE, EXTRA }
+
+data class AdvancedBeverage(
+    val hasPearls: Boolean,
+    val hasCoconutJelly: Boolean,
+    val hasRedBeans: Boolean,
+    val hasGrassJelly: Boolean,
+    val hasPudding: Boolean,
+    val sweetness: SweetnessLevel,
+    val iceLevel: IceLevel
+) {
+    fun getDescription(): String {
+        val toppings = mutableListOf<String>()
+        if (hasPearls) toppings.add("Pearls")
+        if (hasCoconutJelly) toppings.add("Coconut Jelly")
+        if (hasRedBeans) toppings.add("Red Beans")
+        if (hasGrassJelly) toppings.add("Grass Jelly")
+        if (hasPudding) toppings.add("Pudding")
+        
+        return "Beverage with: ${toppings.joinToString(", ")}, " +
+               "Sweetness: ${sweetness.name}, Ice: ${iceLevel.name}"
+    }
+}
+```
+
+## Best Practices and Considerations
+
+### 1. **Fluent Interface Design**
+
+```kotlin
+// Good: Fluent interface with method chaining
+class FluentBuilder {
+    private var property1 = ""
+    private var property2 = 0
+    
+    fun setProperty1(value: String): FluentBuilder {
+        property1 = value
+        return this
+    }
+    
+    fun setProperty2(value: Int): FluentBuilder {
+        property2 = value
+        return this
+    }
+    
+    fun build(): Product {
+        return Product(property1, property2)
+    }
+}
+
+// Usage
+val product = FluentBuilder()
+    .setProperty1("value")
+    .setProperty2(42)
+    .build()
+```
+
+### 2. **Validation and Error Handling**
+
+```kotlin
+// Good: Validation in build method
+class ValidatedBuilder {
+    private var requiredField = ""
+    private var optionalField = ""
+    
+    fun setRequiredField(value: String): ValidatedBuilder {
+        requiredField = value
+        return this
+    }
+    
+    fun setOptionalField(value: String): ValidatedBuilder {
+        optionalField = value
+        return this
+    }
+    
+    fun build(): Product {
+        if (requiredField.isEmpty()) {
+            throw IllegalStateException("Required field must be set")
+        }
+        return Product(requiredField, optionalField)
+    }
+}
+```
+
+### 3. **Immutable Products**
+
+```kotlin
+// Good: Immutable product with builder
+data class ImmutableProduct(
+    val name: String,
+    val description: String,
+    val price: Double,
+    val tags: List<String>
+) {
+    class Builder {
+        private var name = ""
+        private var description = ""
+        private var price = 0.0
+        private var tags = mutableListOf<String>()
+        
+        fun name(value: String) = apply { name = value }
+        fun description(value: String) = apply { description = value }
+        fun price(value: Double) = apply { price = value }
+        fun addTag(tag: String) = apply { tags.add(tag) }
+        
+        fun build() = ImmutableProduct(name, description, price, tags.toList())
+    }
+}
+```
+
+## Performance Considerations
+
+| Approach | Memory Usage | Performance | Readability | Maintainability |
+|----------|--------------|-------------|-------------|-----------------|
+| Telescoping Constructor | Low | High | Low | Low |
+| Builder Pattern | Medium | Medium | High | High |
+| Setter Methods | Low | High | Medium | Medium |
+| Factory Method | Low | High | Medium | Medium |
+
+## Related Design Patterns
+
+- **Factory Method**: Creates objects without specifying exact classes
+- **Abstract Factory**: Creates families of related objects
+- **Prototype**: Creates new objects by cloning existing ones
+- **Singleton**: Ensures only one instance exists
+
+## Conclusion
+
+The Builder Pattern provides a powerful way to construct complex objects step by step. Key benefits include:
+
+- **Improved Readability**: Clear, fluent interface for object construction
+- **Flexible Configuration**: Easy to handle optional parameters
+- **Validation Support**: Built-in validation during construction
+- **Maintainability**: Easy to add new construction steps
+
+This pattern is essential for building complex objects with many optional parameters or when the construction process involves multiple steps.
+
+## Related Articles
+
+- [Design Pattern 7: Abstract Factory Pattern](/2024-07-08-design-pattern-7-abstract-factory-pattern/)
+- [Design Pattern 9: Prototype Pattern](/2024-07-19-design-pattern-9-prototype-pattern/)
+- [Design Pattern 10: Singleton Pattern](/2024-08-10-design-pattern-10-singleton-pattern/)
+- [Object-Oriented Design Principles](/2024-07-03-design-pattern-2-design-principle/)

@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Design Pattern (5) - Simple Factory Pattern (簡單工廠模式)
+title: "Design Pattern 5: Simple Factory Pattern - Centralized Object Creation for Dynamic Beverage Ordering Systems"
 date: 2024-07-06 23:00:00 +0800
-description: 通過飲料點餐系統案例，學習如何使用簡單工廠模式提升程式碼的可讀性和維護性。
-tags: [Simple Factory Pattern]
-categories: [Design Pattern]
+description: "Master the Simple Factory Pattern to centralize object creation logic. Learn how to separate variable and constant code, improve maintainability, and create flexible object instantiation systems."
+tags: [Simple Factory Pattern, Design Patterns, Object Creation, Factory Pattern, Software Architecture, Kotlin, Java, Swift, Code Separation, Maintainability]
+categories: [Design Patterns, Software Development, Object-Oriented Programming, Code Quality]
 toc:
   #   beginning: true
   sidebar: right
@@ -12,15 +12,29 @@ thumbnail: /assets/img/design_patterns.jpg
 tabs: true
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
+> Download the complete Design Pattern series code from the [design_pattern repo](https://github.com/nickhuangcyh/design_pattern).
 
-## 需求
+## Introduction: The Power of Centralized Object Creation
 
-我們的目標是創建一套能夠根據用戶選擇動態生成飲料對象的點餐系統。首先，讓我們通過UML來分析系統的基本結構。
+The Simple Factory Pattern is a creational design pattern that provides a centralized way to create objects without exposing the instantiation logic to the client. This pattern is particularly useful when you need to separate object creation logic from the rest of your application code.
 
-## 物件導向分析 (OOA)
+## Real-World Applications
 
-{% include figure.liquid path="assets/img/design_pattern_simple_factory_pattern_uml_1.png" title="design_pattern_simple_factory_pattern_uml_1" %}
+The Simple Factory Pattern is widely used in:
+
+- **Beverage Ordering Systems**: Creating different types of drinks based on customer orders
+- **Payment Processing**: Creating different payment gateways (PayPal, Stripe, etc.)
+- **Database Connections**: Creating different database adapters
+- **UI Components**: Creating different types of UI elements
+- **Game Development**: Creating different types of game objects
+
+## Problem Statement: Dynamic Beverage Ordering System
+
+Our goal is to create a beverage ordering system that can dynamically generate beverage objects based on user selections. Let's start by analyzing the basic system structure through UML.
+
+## Object-Oriented Analysis (OOA)
+
+{% include figure.liquid path="assets/img/design_pattern_simple_factory_pattern_uml_1.png" title="Initial beverage ordering system design" %}
 
 {% tabs simple-factory-pattern-1 %}
 
@@ -28,15 +42,15 @@ tabs: true
 
 ```swift
 public protocol Beverage {
-    func addSuger(level: Int)
+    func addSugar(level: Int)
     func addIce(level: Int)
     func shake()
     func packageUp()
 }
 
 public extension Beverage {
-    func addSuger(level: Int) {
-        print("[\(self)] addSuger \(level)")
+    func addSugar(level: Int) {
+        print("[\(self)] addSugar \(level)")
     }
 
     func addIce(level: Int) {
@@ -53,11 +67,11 @@ public extension Beverage {
 }
 
 public class BlackTea: Beverage {
-
+    // Black tea specific implementation
 }
 
 public class GreenTea: Beverage {
-
+    // Green tea specific implementation
 }
 
 public class BeverageShop {
@@ -75,7 +89,7 @@ public class BeverageShop {
             break
         }
 
-        beverage?.addSuger(level: 5)
+        beverage?.addSugar(level: 5)
         beverage?.addIce(level: 5)
         beverage?.shake()
         beverage?.packageUp()
@@ -84,6 +98,7 @@ public class BeverageShop {
     }
 }
 
+// Usage
 let beverageShop = BeverageShop()
 let blackTea = beverageShop.order(beverageName: "black tea")
 let greenTea = beverageShop.order(beverageName: "green tea")
@@ -95,8 +110,8 @@ let greenTea = beverageShop.order(beverageName: "green tea")
 
 ```kotlin
 interface Beverage {
-    fun addSuger(level: Int) {
-        println("[$this] addSuger $level")
+    fun addSugar(level: Int) {
+        println("[$this] addSugar $level")
     }
 
     fun addIce(level: Int) {
@@ -113,9 +128,11 @@ interface Beverage {
 }
 
 class BlackTea: Beverage {
+    // Black tea specific implementation
 }
 
 class GreenTea: Beverage {
+    // Green tea specific implementation
 }
 
 class BeverageShop {
@@ -126,25 +143,30 @@ class BeverageShop {
             else -> null
         }
 
-        beverage?.addSuger(5)
+        beverage?.addSugar(5)
         beverage?.addIce(5)
         beverage?.shake()
         beverage?.packageUp()
 
-        return  beverage
+        return beverage
     }
 }
+
+// Usage
+val beverageShop = BeverageShop()
+val blackTea = beverageShop.order("black tea")
+val greenTea = beverageShop.order("green tea")
 ```
 
 {% endtab %}
 
 {% endtabs %}
 
-## 察覺 Forces
+## Identifying Design Forces
 
-隨著飲料店越來越多新飲品，我們也需要修改 order 方法，但這樣容易影響不會變動的程式碼，於是我們需要找出 **需要變動** 以及 **不需變動** 的程式碼，把它們分隔開來
+As the beverage shop adds more new drinks, we need to modify the `order` method, which can easily affect code that shouldn't change. We need to identify and separate **variable code** from **constant code**.
 
-需要變動的程式碼
+### Variable Code (Code that changes)
 
 {% tabs simple-factory-pattern-2 %}
 
@@ -171,6 +193,7 @@ default:
 val beverage: Beverage? = when (beverageName) {
     "black tea" -> BlackTea()
     "green tea" -> GreenTea()
+    // "milk tea" -> MilkTea()
     else -> null
 }
 ```
@@ -179,14 +202,14 @@ val beverage: Beverage? = when (beverageName) {
 
 {% endtabs %}
 
-不需變動的程式碼
+### Constant Code (Code that doesn't change)
 
 {% tabs simple-factory-pattern-3 %}
 
 {% tab simple-factory-pattern-3 Swift %}
 
 ```swift
-beverage?.addSuger(level: 5)
+beverage?.addSugar(level: 5)
 beverage?.addIce(level: 5)
 beverage?.shake()
 beverage?.packageUp()
@@ -197,7 +220,7 @@ beverage?.packageUp()
 {% tab simple-factory-pattern-3 Kotlin %}
 
 ```kotlin
-beverage?.addSuger(5)
+beverage?.addSugar(5)
 beverage?.addIce(5)
 beverage?.shake()
 beverage?.packageUp()
@@ -207,140 +230,273 @@ beverage?.packageUp()
 
 {% endtabs %}
 
-找出後該如何做呢，這時候需要用到 **簡單工廠模式** 來將其分離
+## Applying Simple Factory Pattern Solution
 
-## 套用 Solution
+The Simple Factory Pattern provides an elegant solution by centralizing the object creation logic in a separate factory class.
 
-套用 Simple Factory Pattern 得到新的 Context (Resulting Context)
+### Simple Factory Pattern UML Structure
 
-先來看一下 Simple Factory Pattern 的 UML
+{% include figure.liquid path="assets/img/design_pattern_simple_factory_pattern_uml_2.png" title="Simple Factory Pattern UML diagram" %}
 
-{% include figure.liquid path="assets/img/design_pattern_simple_factory_pattern_uml_3.png" title="design_pattern_simple_factory_pattern_uml_3" %}
+**Key Components:**
+- **Product**: The interface for the objects being created
+- **Concrete Products**: Specific implementations of the product
+- **Factory**: Centralized class responsible for creating objects
+- **Client**: Uses the factory to create objects
 
-其實就是定義一個工廠類別來專門處理創建物件的邏輯
-我們來將飲料點餐系統套用 Simple Factory Pattern
+## Implementation: Object-Oriented Programming (OOP)
 
-{% include figure.liquid path="assets/img/design_pattern_simple_factory_pattern_uml_2.png" title="design_pattern_simple_factory_pattern_uml_2" %}
+### Product Interface
 
-## 物件導向程式設計 (OOP)
+```kotlin
+interface Beverage {
+    fun addSugar(level: Int) {
+        println("[$this] addSugar $level")
+    }
 
-再來我們就可以開始進行物件導向程式開發
+    fun addIce(level: Int) {
+        println("[$this] addIce $level")
+    }
 
-{% tabs simple-factory-pattern-4 %}
+    fun shake() {
+        println("[$this] shake")
+    }
 
-{% tab simple-factory-pattern-4 Swift %}
-
-```swift
-open class BeverageFactory {
-    public init() {}
-
-    func createBeverage(beverageName: String) -> Beverage? {
-        var beverage: Beverage?
-
-        switch beverageName {
-        case "black tea":
-            beverage = BlackTea()
-        case "green tea":
-            beverage = GreenTea()
-        default:
-            break
-        }
-
-        return beverage
+    fun packageUp() {
+        println("[$this] packageUp")
     }
 }
-
-public class BeverageShop {
-
-    private let factory: BeverageFactory
-
-    public init(factory: BeverageFactory) {
-        self.factory = factory
-    }
-
-    public func order(beverageName: String) -> Beverage? {
-        let beverage: Beverage? = factory.createBeverage(beverageName: beverageName)
-
-        beverage?.addSuger(level: 5)
-        beverage?.addIce(level: 5)
-        beverage?.shake()
-        beverage?.packageUp()
-
-        return beverage
-    }
-}
-
-let beverageShop = BeverageShop(factory: BeverageFactory())
-let blackTea = beverageShop.order(beverageName: "black tea")
-let greenTea = beverageShop.order(beverageName: "green tea")
 ```
 
-{% endtab %}
+### Concrete Products
 
-{% tab simple-factory-pattern-4 Kotlin %}
+```kotlin
+class BlackTea: Beverage {
+    override fun toString(): String = "BlackTea"
+}
+
+class GreenTea: Beverage {
+    override fun toString(): String = "GreenTea"
+}
+
+class MilkTea: Beverage {
+    override fun toString(): String = "MilkTea"
+}
+```
+
+### Simple Factory
 
 ```kotlin
 class BeverageFactory {
     fun createBeverage(beverageName: String): Beverage? {
-        return when (beverageName) {
+        return when (beverageName.lowercase()) {
             "black tea" -> BlackTea()
             "green tea" -> GreenTea()
+            "milk tea" -> MilkTea()
+            else -> null
+        }
+    }
+}
+```
+
+### Updated Client
+
+```kotlin
+class BeverageShop(private val factory: BeverageFactory) {
+    fun order(beverageName: String): Beverage? {
+        val beverage = factory.createBeverage(beverageName)
+        
+        beverage?.addSugar(5)
+        beverage?.addIce(5)
+        beverage?.shake()
+        beverage?.packageUp()
+        
+        return beverage
+    }
+}
+
+// Usage
+fun main() {
+    val factory = BeverageFactory()
+    val shop = BeverageShop(factory)
+    
+    val blackTea = shop.order("black tea")
+    val greenTea = shop.order("green tea")
+    val milkTea = shop.order("milk tea")
+}
+```
+
+## Advanced Implementation: Enhanced Factory with Validation
+
+```kotlin
+class EnhancedBeverageFactory {
+    private val supportedBeverages = setOf("black tea", "green tea", "milk tea", "oolong tea")
+    
+    fun createBeverage(beverageName: String): Beverage? {
+        if (!supportedBeverages.contains(beverageName.lowercase())) {
+            println("Unsupported beverage: $beverageName")
+            return null
+        }
+        
+        return when (beverageName.lowercase()) {
+            "black tea" -> BlackTea()
+            "green tea" -> GreenTea()
+            "milk tea" -> MilkTea()
+            "oolong tea" -> OolongTea()
+            else -> null
+        }
+    }
+    
+    fun getSupportedBeverages(): Set<String> = supportedBeverages.toSet()
+}
+
+class OolongTea: Beverage {
+    override fun toString(): String = "OolongTea"
+}
+```
+
+## Real-World Example: Payment Gateway Factory
+
+```kotlin
+interface PaymentGateway {
+    fun processPayment(amount: Double): Boolean
+    fun getGatewayName(): String
+}
+
+class PayPalGateway: PaymentGateway {
+    override fun processPayment(amount: Double): Boolean {
+        println("Processing $amount via PayPal")
+        return true
+    }
+    
+    override fun getGatewayName(): String = "PayPal"
+}
+
+class StripeGateway: PaymentGateway {
+    override fun processPayment(amount: Double): Boolean {
+        println("Processing $amount via Stripe")
+        return true
+    }
+    
+    override fun getGatewayName(): String = "Stripe"
+}
+
+class PaymentGatewayFactory {
+    fun createGateway(gatewayType: String): PaymentGateway? {
+        return when (gatewayType.lowercase()) {
+            "paypal" -> PayPalGateway()
+            "stripe" -> StripeGateway()
             else -> null
         }
     }
 }
 
-class BeverageShop(private val factory: BeverageFactory) {
+class PaymentProcessor(private val factory: PaymentGatewayFactory) {
+    fun processPayment(gatewayType: String, amount: Double): Boolean {
+        val gateway = factory.createGateway(gatewayType)
+        return gateway?.processPayment(amount) ?: false
+    }
+}
+```
 
-    fun order(beverageName: String): Beverage? {
-        val beverage: Beverage? = factory.createBeverage(beverageName)
+## Best Practices and Considerations
 
-        beverage?.addSuger(5)
-        beverage?.addIce(5)
-        beverage?.shake()
-        beverage?.packageUp()
+### 1. **Error Handling**
 
-        return  beverage
+```kotlin
+// Good: Proper error handling
+class RobustBeverageFactory {
+    fun createBeverage(beverageName: String): Result<Beverage> {
+        return try {
+            val beverage = when (beverageName.lowercase()) {
+                "black tea" -> BlackTea()
+                "green tea" -> GreenTea()
+                "milk tea" -> MilkTea()
+                else -> throw IllegalArgumentException("Unsupported beverage: $beverageName")
+            }
+            Result.success(beverage)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+}
+```
+
+### 2. **Factory Method with Caching**
+
+```kotlin
+// Good: Factory with object caching
+class CachedBeverageFactory {
+    private val cache = mutableMapOf<String, Beverage>()
+    
+    fun createBeverage(beverageName: String): Beverage? {
+        return cache.getOrPut(beverageName.lowercase()) {
+            when (beverageName.lowercase()) {
+                "black tea" -> BlackTea()
+                "green tea" -> GreenTea()
+                "milk tea" -> MilkTea()
+                else -> return null
+            }
+        }
+    }
+}
+```
+
+### 3. **Configuration-Based Factory**
+
+```kotlin
+// Good: Configuration-driven factory
+class ConfigurableBeverageFactory(private val config: Map<String, String>) {
+    fun createBeverage(beverageName: String): Beverage? {
+        val className = config[beverageName.lowercase()] ?: return null
+        
+        return try {
+            Class.forName(className).getDeclaredConstructor().newInstance() as Beverage
+        } catch (e: Exception) {
+            null
+        }
     }
 }
 
-val beverage = BeverageShop(BeverageFactory())
-val blackTea = beverage.order("black tea")
-val greenTea = beverage.order("green tea")
+// Usage
+val config = mapOf(
+    "black tea" to "com.example.BlackTea",
+    "green tea" to "com.example.GreenTea",
+    "milk tea" to "com.example.MilkTea"
+)
+val factory = ConfigurableBeverageFactory(config)
 ```
 
-{% endtab %}
+## Performance Considerations
 
-{% endtabs %}
+| Approach | Memory Usage | Performance | Maintainability | Extensibility |
+|----------|--------------|-------------|-----------------|---------------|
+| Direct Instantiation | Low | High | Low | Low |
+| Simple Factory | Medium | Medium | High | Medium |
+| Factory Method | Medium | Medium | High | High |
+| Abstract Factory | High | Medium | High | High |
 
-透過簡單工廠模式，我們就將 **需要變動** 以及 **不需變動** 的程式碼成功分隔開來，當要修改菜單時，只需修改 **BeverageFactory** 即可，不會影響到其他程式碼。
+## Related Design Patterns
 
-> 簡單工廠其實不是設計模式，反而比較像是一種編成習慣
->
-> 有些開發者的確是把這個編成習慣誤認為 **工廠模式 (Factory Pattern)**
->
-> 不要因為簡單工廠不是一個 **真正的** 模式，就忽略了它的用法。
->
-> -- Head First Design Pattern Ch.4 P.117
+- **Factory Method**: Creates objects without specifying exact classes
+- **Abstract Factory**: Creates families of related objects
+- **Builder**: Constructs complex objects step by step
+- **Singleton**: Ensures only one instance exists
 
-## 總結
+## Conclusion
 
-簡單工廠雖然不是 23 個設計模式之中的一種，但它非常簡單，且能訓練我們將變動及不會變動的程式碼分離的習慣
-來看一下我們在簡單工廠用到了哪些 [Design Principle]({{ site.baseurl }}/design%20pattern/design-pattern-1-design-principle/)
+The Simple Factory Pattern provides a powerful way to centralize object creation logic while separating variable code from constant code. Key benefits include:
 
-- Encapsulate What Varies
-- Single Responsibility Principle
+- **Code Separation**: Clear separation between object creation and business logic
+- **Maintainability**: Easy to modify object creation logic in one place
+- **Flexibility**: Easy to add new product types
+- **Testability**: Easier to test object creation logic separately
 
-下一篇正式進入 23 個 Design Pattern 的第一個 Factory Method Pattern 工廠方法模式
+This pattern is essential for building maintainable applications where object creation logic needs to be centralized and managed effectively.
 
-## 參考
+## Related Articles
 
-- [Head First Design Patterns](https://www.tenlong.com.tw/products/9789867794529)
-- [大話設計模式](https://www.tenlong.com.tw/products/9789866761799)
-- [Advanced Design Patterns: Design Principles](https://www.linkedin.com/learning/advanced-design-patterns-design-principles/what-are-design-principles?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-- [Programming Foundations: Design Patterns](https://www.linkedin.com/learning/programming-foundations-design-patterns-2/trying-interfaces?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-- [Design Patterns: Creational](https://www.linkedin.com/learning/design-patterns-creational/think-about-how-you-create-objects?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-- [水球潘 - Design Pattern 之路](https://www.youtube.com/watch?v=yOe-uywb2qs&list=PLicQRHHL75d7EXEI9nWfUYJyrPdI79M70&pp=iAQB)
-
-**Note:** 如果有任何建議、問題或不同想法，歡迎留言或寄信給我，可以一起討論進步成長🙂
-{: .notice--success}
+- [Design Pattern 6: Factory Method Pattern](/2024-07-07-design-pattern-6-factory-method-pattern/)
+- [Design Pattern 7: Abstract Factory Pattern](/2024-07-08-design-pattern-7-abstract-factory-pattern/)
+- [Design Pattern 8: Builder Pattern](/2024-07-09-design-pattern-8-builder-pattern/)
+- [Object-Oriented Design Principles](/2024-07-03-design-pattern-2-design-principle/)

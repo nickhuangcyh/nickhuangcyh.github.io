@@ -1,132 +1,395 @@
 ---
 layout: post
-title: Design Pattern (10) - Singleton Pattern (單例模式)
+title: "Design Pattern 10: Singleton Pattern - Ensuring Single Instance Access for Database Connections and Global State Management"
 date: 2024-08-10 15:00:00 +0800
-description: 深入單例模式：如何確保一個類別只有一個實體，提供一個全域
-tags: [Singleton Pattern]
-categories: [Design Pattern]
+description: "Master the Singleton Pattern to ensure only one instance of a class exists. Learn how to implement thread-safe singletons for database connections, logging systems, and global configuration management with best practices."
+tags: [Singleton Pattern, Design Patterns, Global State, Database Connection, Thread Safety, Resource Management, Software Architecture, Kotlin, Java, Swift, Lazy Initialization]
+categories: [Design Patterns, Software Development, Object-Oriented Programming, Database]
 toc:
   #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
+> Download the complete Design Pattern series code from the [design_pattern repo](https://github.com/nickhuangcyh/design_pattern).
 
-## 需求
+## Introduction: The Power of Single Instance Control
 
-我們收到了一個需求：開發一個應用程式，該應用程式需要與資料庫進行頻繁的交互。為了確保資料庫連接的效率和資源的合理使用，我們需要設計一個系統來管理資料庫連接。
+The Singleton Pattern is a creational design pattern that ensures a class has only one instance and provides a global point of access to that instance. This pattern is essential for managing shared resources, global state, and ensuring consistent behavior across an application.
 
-## 物件導向分析 (OOA)
+## Real-World Applications
 
-理解需求後，讓我們來快速實作物件導向分析吧!
+The Singleton Pattern is widely used in:
 
-{% include figure.liquid path="assets/img/design_pattern_singleton_pattern_uml_1.png" title="design_pattern_singleton_pattern_uml_1" %}
+- **Database Connections**: Managing connection pools and ensuring single connection instance
+- **Logging Systems**: Centralized logging with consistent configuration
+- **Configuration Management**: Global application settings and preferences
+- **Cache Management**: Shared cache instances across the application
+- **Service Locators**: Centralized service management and dependency injection
 
-我們有 CRUD 四個 function 以及 constructor 用來建立 DatabaseClient
+## Problem Statement: Database Connection Management
 
-## 察覺 Forces
+We need to develop an application that frequently interacts with a database. To ensure efficient database connections and proper resource management, we need to design a system that manages database connections effectively.
 
-來看看上面這樣的設計會有哪些問題
+## Object-Oriented Analysis (OOA)
 
-1. 資源管理：多個資料庫連接會消耗大量資源，導致性能下降。
-2. 一致性：需要確保所有資料庫操作使用相同的連接，以避免數據不一致。
-3. 效率：頻繁創建和銷毀資料庫連接會降低系統效率。
+Let's analyze the requirements and design our initial solution:
 
-## 套用 Singleton Pattern ( Solution ) 得到新的 Context ( Resulting Context )
+{% include figure.liquid path="assets/img/design_pattern_singleton_pattern_uml_1.png" title="Initial database client design without Singleton Pattern" %}
 
-做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Singleton Pattern 解決這個問題
+We have CRUD operations and a constructor to create DatabaseClient instances.
 
-先來看一下 Singleton Pattern 的 UML
+## Identifying Design Forces
 
-{% include figure.liquid path="assets/img/design_pattern_singleton_pattern_uml_2.png" title="design_pattern_singleton_pattern_uml_2" %}
+Without the Singleton Pattern, we encounter several challenges:
 
-我們可以發現，單例模式其實就是透過 getInstance() 方法去取得實體，而每次取的時都會去判斷內部 property instance 是否為 null，如果是 null 就創建一個新的，如果不是就回傳 instance property 的值，如此就能保證此 class 的實體只會有一個。
+1. **Resource Management**: Multiple database connections consume excessive resources, leading to performance degradation
+2. **Consistency**: Need to ensure all database operations use the same connection to avoid data inconsistency
+3. **Efficiency**: Frequent creation and destruction of database connections reduces system efficiency
+4. **Connection Limits**: Database servers often have connection limits that can be exceeded
 
-我們來將 DatabaseClient 套用 Singleton Pattern
+## Applying Singleton Pattern Solution
 
-{% include figure.liquid path="assets/img/design_pattern_singleton_pattern_uml_3.png" title="design_pattern_singleton_pattern_uml_3" %}
+The Singleton Pattern provides an elegant solution by ensuring only one instance exists throughout the application lifecycle.
 
-如此我們就得到了一個全新的 `Resulting Context`
+### Singleton Pattern UML Structure
 
-## 物件導向程式設計 (OOP)
+{% include figure.liquid path="assets/img/design_pattern_singleton_pattern_uml_2.png" title="Singleton Pattern UML diagram" %}
 
-再來我們就可以開始進行物件導向程式開發
+The Singleton pattern uses a `getInstance()` method to retrieve the instance, checking if the internal `instance` property is null. If null, it creates a new instance; otherwise, it returns the existing instance, ensuring only one instance exists.
 
-[DatabaseClient]
+### Applied to Database Client
+
+{% include figure.liquid path="assets/img/design_pattern_singleton_pattern_uml_3.png" title="Database client with Singleton Pattern" %}
+
+## Implementation: Object-Oriented Programming (OOP)
+
+### Basic Singleton Implementation
 
 ```kotlin
 class DatabaseClient {
-
-    fun create(tableName:String, data: Map<String, Any>): Int {
-        return 0
+    fun create(tableName: String, data: Map<String, Any>): Int {
+        println("Creating record in $tableName")
+        return 1
     }
 
-    fun read(tableName:String, conditions: Map<String, Any>): Int {
-        return 0
+    fun read(tableName: String, conditions: Map<String, Any>): Int {
+        println("Reading from $tableName")
+        return 1
     }
 
-    fun update(tableName:String, data: Map<String, Any>, conditions: Map<String, Any>): Int {
-        return 0
+    fun update(tableName: String, data: Map<String, Any>, conditions: Map<String, Any>): Int {
+        println("Updating $tableName")
+        return 1
     }
 
-    fun delete(tableName:String, conditions: Map<String, Any>): Int {
-        return 0
+    fun delete(tableName: String, conditions: Map<String, Any>): Int {
+        println("Deleting from $tableName")
+        return 1
     }
 
     companion object {
-        var mInstance: DatabaseClient? = null
+        @Volatile
+        private var instance: DatabaseClient? = null
+        
         fun getInstance(): DatabaseClient {
-            if (mInstance == null) {
-                mInstance = DatabaseClient()
+            return instance ?: synchronized(this) {
+                instance ?: DatabaseClient().also { instance = it }
             }
-            return mInstance!!
         }
     }
 }
 ```
 
-[Client]
+### Client Usage
 
 ```kotlin
 fun main() {
-    val db = DatabaseClient.getInstance()
-    db.create("test", mapOf(Pair("test", "123")))
+    val db1 = DatabaseClient.getInstance()
+    val db2 = DatabaseClient.getInstance()
+    
+    println("Are instances the same? ${db1 === db2}") // true
+    
+    db1.create("users", mapOf("name" to "John", "email" to "john@example.com"))
+    db2.read("users", mapOf("name" to "John"))
 }
 ```
 
-這樣就完成了，這邊稍微提一下，其實 kotlin 語言有提供 `object` 來讓我們輕鬆實作 Singleton Pattern，如下
+### Kotlin Object Declaration (Simplified Singleton)
 
-[DatabaseClient]
+Kotlin provides a built-in `object` declaration that automatically implements the Singleton pattern:
 
 ```kotlin
 object DatabaseClient {
-
-    fun create(tableName:String, data: Map<String, Any>): Int {
-        return 0
+    fun create(tableName: String, data: Map<String, Any>): Int {
+        println("Creating record in $tableName")
+        return 1
     }
 
-    fun read(tableName:String, conditions: Map<String, Any>): Int {
-        return 0
+    fun read(tableName: String, conditions: Map<String, Any>): Int {
+        println("Reading from $tableName")
+        return 1
     }
 
-    fun update(tableName:String, data: Map<String, Any>, conditions: Map<String, Any>): Int {
-        return 0
+    fun update(tableName: String, data: Map<String, Any>, conditions: Map<String, Any>): Int {
+        println("Updating $tableName")
+        return 1
     }
 
-    fun delete(tableName:String, conditions: Map<String, Any>): Int {
-        return 0
+    fun delete(tableName: String, conditions: Map<String, Any>): Int {
+        println("Deleting from $tableName")
+        return 1
     }
 }
 ```
 
-[Client]
+### Client Usage with Object Declaration
 
 ```kotlin
 fun main() {
-    val db = DatabaseClient
-    db.create("test", mapOf(Pair("test", "123")))
+    val db = DatabaseClient // Direct access, no getInstance() needed
+    db.create("users", mapOf("name" to "John", "email" to "john@example.com"))
 }
 ```
 
-如此就能更簡單的操作 Singleton 的單例類別了!
+## Advanced Implementation: Thread-Safe Singleton
+
+### Double-Checked Locking Pattern
+
+```kotlin
+class ThreadSafeDatabaseClient private constructor() {
+    fun create(tableName: String, data: Map<String, Any>): Int {
+        println("Creating record in $tableName")
+        return 1
+    }
+
+    fun read(tableName: String, conditions: Map<String, Any>): Int {
+        println("Reading from $tableName")
+        return 1
+    }
+
+    fun update(tableName: String, data: Map<String, Any>, conditions: Map<String, Any>): Int {
+        println("Updating $tableName")
+        return 1
+    }
+
+    fun delete(tableName: String, conditions: Map<String, Any>): Int {
+        println("Deleting from $tableName")
+        return 1
+    }
+
+    companion object {
+        @Volatile
+        private var instance: ThreadSafeDatabaseClient? = null
+        
+        fun getInstance(): ThreadSafeDatabaseClient {
+            return instance ?: synchronized(this) {
+                instance ?: ThreadSafeDatabaseClient().also { instance = it }
+            }
+        }
+    }
+}
+```
+
+### Lazy Initialization with Delegate
+
+```kotlin
+class LazyDatabaseClient private constructor() {
+    fun create(tableName: String, data: Map<String, Any>): Int {
+        println("Creating record in $tableName")
+        return 1
+    }
+
+    fun read(tableName: String, conditions: Map<String, Any>): Int {
+        println("Reading from $tableName")
+        return 1
+    }
+
+    fun update(tableName: String, data: Map<String, Any>, conditions: Map<String, Any>): Int {
+        println("Updating $tableName")
+        return 1
+    }
+
+    fun delete(tableName: String, conditions: Map<String, Any>): Int {
+        println("Deleting from $tableName")
+        return 1
+    }
+
+    companion object {
+        val instance: LazyDatabaseClient by lazy { LazyDatabaseClient() }
+    }
+}
+```
+
+## Real-World Example: Configuration Manager
+
+```kotlin
+object ConfigurationManager {
+    private val properties = mutableMapOf<String, String>()
+    
+    init {
+        // Load configuration from file or environment
+        properties["database.url"] = System.getenv("DB_URL") ?: "localhost:5432"
+        properties["database.username"] = System.getenv("DB_USERNAME") ?: "default"
+        properties["database.password"] = System.getenv("DB_PASSWORD") ?: "password"
+        properties["app.environment"] = System.getenv("APP_ENV") ?: "development"
+    }
+    
+    fun getProperty(key: String): String? {
+        return properties[key]
+    }
+    
+    fun setProperty(key: String, value: String) {
+        properties[key] = value
+    }
+    
+    fun getAllProperties(): Map<String, String> {
+        return properties.toMap()
+    }
+}
+
+// Usage
+fun main() {
+    val dbUrl = ConfigurationManager.getProperty("database.url")
+    println("Database URL: $dbUrl")
+    
+    ConfigurationManager.setProperty("app.debug", "true")
+    println("Debug mode: ${ConfigurationManager.getProperty("app.debug")}")
+}
+```
+
+## Best Practices and Considerations
+
+### 1. **Thread Safety**
+
+```kotlin
+// Good: Thread-safe singleton
+object ThreadSafeSingleton {
+    private val lock = Any()
+    @Volatile
+    private var instance: ThreadSafeSingleton? = null
+    
+    fun getInstance(): ThreadSafeSingleton {
+        return instance ?: synchronized(lock) {
+            instance ?: ThreadSafeSingleton().also { instance = it }
+        }
+    }
+}
+
+// Avoid: Non-thread-safe singleton
+class BadSingleton {
+    companion object {
+        private var instance: BadSingleton? = null
+        
+        fun getInstance(): BadSingleton {
+            if (instance == null) {
+                instance = BadSingleton() // Race condition!
+            }
+            return instance!!
+        }
+    }
+}
+```
+
+### 2. **Lazy Initialization**
+
+```kotlin
+// Good: Lazy initialization
+object LazySingleton {
+    val instance by lazy {
+        // Expensive initialization
+        ExpensiveObject()
+    }
+}
+
+// Avoid: Eager initialization
+object EagerSingleton {
+    val instance = ExpensiveObject() // Created immediately
+}
+```
+
+### 3. **Testing Considerations**
+
+```kotlin
+// Good: Testable singleton
+class TestableDatabaseClient private constructor() {
+    companion object {
+        @Volatile
+        private var instance: TestableDatabaseClient? = null
+        
+        fun getInstance(): TestableDatabaseClient {
+            return instance ?: synchronized(this) {
+                instance ?: TestableDatabaseClient().also { instance = it }
+            }
+        }
+        
+        // For testing
+        fun resetInstance() {
+            instance = null
+        }
+    }
+}
+```
+
+## Performance Comparison
+
+| Implementation | Thread Safety | Performance | Memory Usage | Complexity |
+|----------------|---------------|-------------|--------------|------------|
+| Eager Singleton | Yes | High | High | Low |
+| Lazy Singleton | Yes | Medium | Low | Medium |
+| Double-Checked Locking | Yes | High | Low | High |
+| Kotlin Object | Yes | High | Low | Low |
+
+## Common Anti-Patterns to Avoid
+
+### 1. **Global State Abuse**
+```kotlin
+// Avoid: Using singleton for everything
+object GlobalState {
+    var userData: MutableMap<String, Any> = mutableMapOf()
+    var appSettings: MutableMap<String, Any> = mutableMapOf()
+    var cache: MutableMap<String, Any> = mutableMapOf()
+}
+```
+
+### 2. **Tight Coupling**
+```kotlin
+// Avoid: Direct singleton dependency
+class UserService {
+    fun createUser(user: User) {
+        DatabaseClient.getInstance().create("users", user.toMap())
+    }
+}
+
+// Better: Dependency injection
+class UserService(private val databaseClient: DatabaseClient) {
+    fun createUser(user: User) {
+        databaseClient.create("users", user.toMap())
+    }
+}
+```
+
+## Related Design Patterns
+
+- **Factory Method**: Creates objects without specifying exact classes
+- **Abstract Factory**: Creates families of related objects
+- **Builder**: Constructs complex objects step by step
+- **Prototype**: Creates new objects by cloning existing ones
+
+## Conclusion
+
+The Singleton Pattern provides a powerful way to ensure only one instance of a class exists while providing global access. Key benefits include:
+
+- **Resource Management**: Efficient use of system resources
+- **Consistency**: Ensures consistent state across the application
+- **Global Access**: Provides easy access to shared resources
+- **Performance**: Avoids repeated object creation overhead
+
+This pattern is essential for managing shared resources like database connections, logging systems, and configuration management.
+
+## Related Articles
+
+- [Design Pattern 9: Prototype Pattern](/2024-07-19-design-pattern-9-prototype-pattern/)
+- [Design Pattern 11: Adapter Pattern](/2024-12-07-design-pattern-11-adapter-pattern/)
+- [Design Pattern 7: Abstract Factory Pattern](/2024-07-08-design-pattern-7-abstract-factory-pattern/)
+- [Object-Oriented Design Principles](/2024-07-03-design-pattern-2-design-principle/)

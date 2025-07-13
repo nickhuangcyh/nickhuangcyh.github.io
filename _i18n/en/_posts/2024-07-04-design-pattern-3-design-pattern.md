@@ -1,112 +1,346 @@
 ---
 layout: post
-title: Design Pattern (3) - Design Patterns (設計模式)
+title: "Design Pattern 3: Design Patterns Overview - Systematic Approach to Solving Common Software Design Problems"
 date: 2024-07-04 23:00:00 +0800
-description: 深入探討設計模式的概念及其應用步驟，助你高效解決軟體問題。
-tags: [Design Pattern]
-categories: [Design Pattern]
+description: "Master the systematic approach to applying design patterns. Learn the Context-Forces-Problem-Solution framework, pattern categories, and step-by-step methodology for solving software design challenges."
+tags: [Design Patterns, Software Architecture, Object-Oriented Design, Problem Solving, Software Development, Design Methodology, Context-Forces-Problem-Solution, Creational Patterns, Structural Patterns, Behavioral Patterns]
+categories: [Design Patterns, Software Development, Object-Oriented Programming, Software Architecture]
 toc:
   #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
+> Download the complete Design Pattern series code from the [design_pattern repo](https://github.com/nickhuangcyh/design_pattern).
 
-## Design Pattern 是什麼？
+## Introduction: The Power of Proven Solutions
 
-Design Pattern 是在軟體工程中，用於常見問題解決的一種標準化方法。它們是經過驗證的解決方案，可以用來解決設計中的特定問題。
+Design Patterns are standardized solutions to common problems in software engineering. They represent proven approaches that have been tested and refined over time, providing developers with reliable templates for solving recurring design challenges.
 
-## 設計模式的組成要素
+## Real-World Applications
+
+Design patterns are fundamental to:
+
+- **Software Architecture**: Building scalable, maintainable systems
+- **Framework Development**: Creating reusable software components
+- **API Design**: Designing clean, intuitive interfaces
+- **Legacy System Maintenance**: Refactoring existing code
+- **Team Collaboration**: Establishing common design vocabulary
+
+## What Are Design Patterns?
+
+Design Patterns are standardized methods used in software engineering to solve common problems. They are proven solutions that can be used to address specific design challenges.
+
+## Core Components of Design Patterns
 
 ### Context
 
-Context是指設計模式應用的具體場景或背景。它描述了模式應用的環境和條件。
+Context refers to the specific scenario or background where a design pattern is applied. It describes the environment and conditions under which the pattern is used.
 
 ### Forces
 
-Forces是指在設計過程中需要考慮的各種因素，包括但不限於性能需求、可擴展性、維護性等。
+Forces are the various factors that need to be considered during the design process, including performance requirements, scalability, maintainability, and other constraints.
 
 ### Problem
 
-Problem是指在特定Context和Forces下，開發者面臨的具體設計問題。
+Problem refers to the specific design challenge that developers face under particular Context and Forces.
 
 ### Solution
 
-Solution是指設計模式提供的解決方案，它幫助開發者解決Problem，並考慮到了Forces的影響。
+Solution is the design pattern that provides a proven approach to solve the Problem while considering the Forces.
 
-## 設計模式的應用步驟
+## Systematic Application Methodology
 
-1. **物件導向程式分析（OOA）**：從高層次理解應用的需求和結構。(此步驟需要劃出UML圖)
-2. **看清楚Context**：透過UML圖理解模式應用的具體場景。
-3. **察覺Forces**：識別影響設計的關鍵因素。
-4. **找到Problem**：明確需要解決的設計問題。
-5. **套用模式**：根據Problem及Forces選擇合適的設計模式。
-6. **得到新的Resulting Context**：應用模式後，獲得改進後的設計方案。(此步驟需要劃出UML圖)
-7. **誤記導向程式設計 (OOP)**：透過新的Resulting Context UML圖，開始撰寫程式碼實作。
+The systematic approach to applying design patterns involves seven key steps:
 
-## Design Patterns Categories
+### 1. Object-Oriented Analysis (OOA)
 
-Design Pattern 可以分為三種基本的類型
+Start with a high-level understanding of application requirements and structure. This step requires creating UML diagrams to visualize the system.
 
-### Creational 創建型
+### 2. Understand the Context
 
-創建實例化物件有關的 Patterns
+Use UML diagrams to understand the specific scenario where the pattern will be applied.
 
-- Factory Method Pattern
-- Abstract Factory Pattern
-- Builder Pattern
-- Prototype Pattern
-- Singleton Pattern
+### 3. Identify Forces
 
-### Structural 結構型
+Recognize the key factors that influence the design decisions.
 
-物件之間如何組成更大結構的 Patterns
+### 4. Define the Problem
 
-- Adapter Pattern
-- Bridge Pattern
-- Decorator Pattern
-- Facade Pattern
-- Proxy Pattern
-- Flyweight Pattern
-- Composite Pattern
+Clearly articulate the specific design challenge that needs to be solved.
 
-### Behavioural 行為型
+### 5. Apply the Pattern
 
-物件之間行為交互的 Patterns
+Select and implement the appropriate design pattern based on the Problem and Forces.
 
-- Chain of Responsibility Pattern
-- Mediator Pattern
-- Iterator Pattern
-- State Pattern
-- Observer Pattern
-- Command Pattern
-- Strategy Pattern
-- Template Pattern
-- Interpreter Pattern
-- Memento Pattern
-- Visitor Pattern
+### 6. Achieve Resulting Context
 
-## 總結
+After applying the pattern, obtain an improved design solution. This step requires creating new UML diagrams.
 
-在本篇文章中，我們深入探討了設計模式的核心概念，包括Context、Forces、Problem和Solution。我們也學習了如何透過一系列的步驟來應用設計模式，從物件導向程式分析（OOA）開始，到最終透過UML圖來視覺化設計方案的改進。這些步驟不僅幫助我們更清晰地理解設計模式的應用過程，也為我們提供了一個結構化的方法來解決軟體開發中遇到的設計問題。
+### 7. Object-Oriented Programming (OOP)
 
-在接下來的文章中，我們將專注於UML圖的介紹和應用。UML（統一建模語言）是一種標準的圖形語言，用於規劃和視覺化軟體系統的設計。我們將學習如何使用UML圖來表示系統的結構和行為，這將進一步加深我們對設計模式應用的理解。敬請期待！
+Begin writing code based on the new Resulting Context UML diagrams.
 
-> 下一篇：深入UML圖 - 設計模式的視覺化工具
+## Design Pattern Categories
 
-{% include figure.liquid path="assets/img/design_pattern_design_principle_architecture.png" title="design_pattern_design_principle_architecture" %}
+Design patterns can be classified into three fundamental types:
 
-> Object-Oriented Concepts -> Design Principle -> Design Pattern
+### Creational Patterns
 
-## 參考
+Patterns related to object instantiation and creation:
 
-- [Head First Design Patterns](https://www.tenlong.com.tw/products/9789867794529)
-- [大話設計模式](https://www.tenlong.com.tw/products/9789866761799)
-- [Advanced Design Patterns: Design Principles](https://www.linkedin.com/learning/advanced-design-patterns-design-principles/what-are-design-principles?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-- [Programming Foundations: Design Patterns](https://www.linkedin.com/learning/programming-foundations-design-patterns-2/trying-interfaces?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-- [Design Patterns: Creational](https://www.linkedin.com/learning/design-patterns-creational/think-about-how-you-create-objects?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-- [水球潘 - Design Pattern 之路](https://www.youtube.com/watch?v=yOe-uywb2qs&list=PLicQRHHL75d7EXEI9nWfUYJyrPdI79M70&pp=iAQB)
+- **Factory Method Pattern**: Creates objects without specifying exact classes
+- **Abstract Factory Pattern**: Creates families of related objects
+- **Builder Pattern**: Constructs complex objects step by step
+- **Prototype Pattern**: Creates new objects by cloning existing ones
+- **Singleton Pattern**: Ensures only one instance exists
 
-**Note:** 如果有任何建議、問題或不同想法，歡迎留言或寄信給我，可以一起討論進步成長 🙂
-{: .notice--success}
+### Structural Patterns
+
+Patterns that define how objects are composed to form larger structures:
+
+- **Adapter Pattern**: Allows incompatible interfaces to work together
+- **Bridge Pattern**: Separates abstraction from implementation
+- **Decorator Pattern**: Adds responsibilities to objects dynamically
+- **Facade Pattern**: Provides a simplified interface to a complex subsystem
+- **Proxy Pattern**: Controls access to another object
+- **Flyweight Pattern**: Reduces memory usage by sharing common parts
+- **Composite Pattern**: Treats individual objects and compositions uniformly
+
+### Behavioral Patterns
+
+Patterns that define communication between objects:
+
+- **Chain of Responsibility Pattern**: Passes requests along a chain of handlers
+- **Mediator Pattern**: Reduces coupling between components
+- **Iterator Pattern**: Accesses elements of a collection without exposing its structure
+- **State Pattern**: Allows objects to alter behavior when internal state changes
+- **Observer Pattern**: Defines a one-to-many dependency between objects
+- **Command Pattern**: Encapsulates a request as an object
+- **Strategy Pattern**: Defines a family of algorithms and makes them interchangeable
+- **Template Method Pattern**: Defines the skeleton of an algorithm
+- **Interpreter Pattern**: Provides a way to evaluate language grammar
+- **Memento Pattern**: Captures and externalizes object state
+- **Visitor Pattern**: Separates algorithms from objects
+
+## Practical Example: Applying Design Patterns
+
+### Scenario: E-commerce Payment System
+
+**Context**: Building a payment processing system for an e-commerce platform that needs to support multiple payment methods.
+
+**Forces**:
+- Support for multiple payment gateways (PayPal, Stripe, etc.)
+- Easy addition of new payment methods
+- Consistent interface for all payment operations
+- Maintainable and testable code
+
+**Problem**: How to design a system that can handle different payment methods without tightly coupling the business logic to specific payment implementations?
+
+**Solution**: Apply the Strategy Pattern to encapsulate different payment algorithms.
+
+### Implementation Steps
+
+#### Step 1: OOA - Initial Analysis
+
+```kotlin
+// Initial design without patterns
+class PaymentProcessor {
+    fun processPayment(amount: Double, paymentType: String): Boolean {
+        return when (paymentType) {
+            "paypal" -> processPayPalPayment(amount)
+            "stripe" -> processStripePayment(amount)
+            "credit_card" -> processCreditCardPayment(amount)
+            else -> false
+        }
+    }
+    
+    private fun processPayPalPayment(amount: Double): Boolean {
+        // PayPal specific logic
+        return true
+    }
+    
+    private fun processStripePayment(amount: Double): Boolean {
+        // Stripe specific logic
+        return true
+    }
+    
+    private fun processCreditCardPayment(amount: Double): Boolean {
+        // Credit card specific logic
+        return true
+    }
+}
+```
+
+#### Step 2: Identify Forces
+
+- Adding new payment methods requires modifying existing code
+- Business logic is tightly coupled to payment implementations
+- Testing individual payment methods is difficult
+- Violates Open-Closed Principle
+
+#### Step 3: Apply Strategy Pattern
+
+```kotlin
+// Strategy Pattern implementation
+interface PaymentStrategy {
+    fun processPayment(amount: Double): Boolean
+    fun getPaymentType(): String
+}
+
+class PayPalStrategy : PaymentStrategy {
+    override fun processPayment(amount: Double): Boolean {
+        println("Processing $amount via PayPal")
+        return true
+    }
+    
+    override fun getPaymentType(): String = "PayPal"
+}
+
+class StripeStrategy : PaymentStrategy {
+    override fun processPayment(amount: Double): Boolean {
+        println("Processing $amount via Stripe")
+        return true
+    }
+    
+    override fun getPaymentType(): String = "Stripe"
+}
+
+class CreditCardStrategy : PaymentStrategy {
+    override fun processPayment(amount: Double): Boolean {
+        println("Processing $amount via Credit Card")
+        return true
+    }
+    
+    override fun getPaymentType(): String = "Credit Card"
+}
+
+class PaymentProcessor {
+    private var strategy: PaymentStrategy? = null
+    
+    fun setPaymentStrategy(strategy: PaymentStrategy) {
+        this.strategy = strategy
+    }
+    
+    fun processPayment(amount: Double): Boolean {
+        return strategy?.processPayment(amount) ?: false
+    }
+}
+```
+
+#### Step 4: Resulting Context
+
+The new design provides:
+- **Extensibility**: New payment methods can be added without modifying existing code
+- **Maintainability**: Each payment strategy is isolated and easy to maintain
+- **Testability**: Individual strategies can be tested independently
+- **Flexibility**: Payment strategies can be changed at runtime
+
+## Best Practices for Pattern Application
+
+### 1. **Understand Before Applying**
+
+- Don't force patterns where they're not needed
+- Understand the problem thoroughly before selecting a pattern
+- Consider the trade-offs of each pattern
+
+### 2. **Start Simple**
+
+- Begin with simple solutions
+- Apply patterns only when complexity demands it
+- Refactor existing code gradually
+
+### 3. **Consider Context**
+
+- Patterns work best in specific contexts
+- Adapt patterns to your specific needs
+- Don't be afraid to combine patterns
+
+### 4. **Document Your Decisions**
+
+- Document why you chose a specific pattern
+- Explain the trade-offs and alternatives considered
+- Keep documentation updated as the system evolves
+
+## Common Anti-Patterns
+
+### 1. **Pattern Overuse**
+
+```kotlin
+// Avoid: Using patterns unnecessarily
+class SimpleCalculator {
+    // Don't need Strategy Pattern for simple operations
+    fun add(a: Int, b: Int): Int = a + b
+    fun subtract(a: Int, b: Int): Int = a - b
+}
+```
+
+### 2. **Ignoring Context**
+
+```kotlin
+// Avoid: Applying patterns without understanding context
+class UserService {
+    // Don't use Singleton if you need multiple instances for testing
+    companion object {
+        private var instance: UserService? = null
+        
+        fun getInstance(): UserService {
+            if (instance == null) {
+                instance = UserService()
+            }
+            return instance!!
+        }
+    }
+}
+```
+
+### 3. **Complex Pattern Combinations**
+
+```kotlin
+// Avoid: Over-complicating with multiple patterns
+class ComplexService {
+    // Using Factory + Strategy + Observer + Decorator for simple functionality
+    // This makes the code harder to understand and maintain
+}
+```
+
+## Performance Considerations
+
+| Pattern Category | Memory Usage | Performance | Complexity | Maintainability |
+|------------------|--------------|-------------|------------|-----------------|
+| Creational | Medium | Medium | Low | High |
+| Structural | Medium | Medium | Medium | High |
+| Behavioral | Low | High | Medium | High |
+
+## Related Design Patterns
+
+- **Factory Method**: Often used with Strategy for object creation
+- **Observer**: Commonly combined with Command for event handling
+- **Decorator**: Frequently used with Component for dynamic behavior
+- **Adapter**: Often used with Facade for interface compatibility
+
+## Conclusion
+
+Design patterns provide a systematic approach to solving common software design problems. By understanding the Context-Forces-Problem-Solution framework and following the step-by-step methodology, developers can create more maintainable, extensible, and robust software systems.
+
+Key benefits of using design patterns include:
+
+- **Proven Solutions**: Leverage tested and refined approaches
+- **Common Vocabulary**: Establish shared understanding across teams
+- **Maintainability**: Create code that's easier to modify and extend
+- **Reusability**: Build components that can be reused across projects
+
+In the upcoming articles, we'll focus on UML diagrams and their application. UML (Unified Modeling Language) is a standard graphical language used for planning and visualizing software system designs. We'll learn how to use UML diagrams to represent system structure and behavior, which will deepen our understanding of design pattern applications.
+
+> Next: Deep Dive into UML Diagrams - The Visual Tool for Design Patterns
+
+{% include figure.liquid path="assets/img/design_pattern_design_principle_architecture.png" title="Design pattern learning progression" %}
+
+> Object-Oriented Concepts → Design Principles → Design Patterns
+
+## Related Articles
+
+- [Design Pattern 1: Object-Oriented Concepts](/2024-07-02-design-pattern-1-object-oriented-concepts/)
+- [Design Pattern 2: Object-Oriented Design Principles](/2024-07-03-design-pattern-2-design-principle/)
+- [Design Pattern 4: UML Diagrams](/2024-07-05-design-pattern-4-uml/)
+- [Design Pattern 5: Simple Factory Pattern](/2024-07-06-design-pattern-5-simple-factory-pattern/)

@@ -1,182 +1,350 @@
 ---
 layout: post
-title: Design Pattern (4) - UML (統一建模語言)
+title: "Design Pattern 4: UML Diagrams - Visual Modeling Language for Software Architecture and Design Patterns"
 date: 2024-07-05 23:00:00 +0800
-description: 深入了解UML，學習如何用UML圖清晰展現設計模式，提升軟體設計能力。
-tags: [UML]
-categories: [Design Pattern]
+description: "Master UML (Unified Modeling Language) to visualize software architecture and design patterns. Learn class diagrams, relationships, and how to effectively communicate software design concepts."
+tags: [UML, Unified Modeling Language, Class Diagrams, Software Architecture, Design Patterns, Visual Modeling, Software Design, Object-Oriented Design, Relationships, Inheritance, Association]
+categories: [Design Patterns, Software Development, Object-Oriented Programming, Software Architecture]
 toc:
   #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
+> Download the complete Design Pattern series code from the [design_pattern repo](https://github.com/nickhuangcyh/design_pattern).
 
-## UML (Unified Modeling Language)
+## Introduction: The Power of Visual Software Design
 
-UML 是一種用視覺圖形化來規劃建構軟體的方法。
+UML (Unified Modeling Language) is a standardized visual language for planning and constructing software systems. It provides a common vocabulary for software developers to communicate design concepts effectively.
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml.png" title="design_pattern_4_uml" %}
+{% include figure.liquid path="assets/img/design_pattern_4_uml.png" title="UML overview and its role in software design" %}
 
-> 不要急著寫程式，尤其是遇到較複雜的功能，先思考如何設計架構畫出 UML 圖，程式才會具有可讀性、維護性及擴展性。
+> **Best Practice**: Don't rush to write code, especially for complex functionality. First, think about how to design the architecture and draw UML diagrams. This ensures your code will be readable, maintainable, and extensible.
 
-## Class 類別
+## Real-World Applications
 
-如圖分為三列依序是
+UML diagrams are essential for:
 
-1. Class 名稱
-2. Attribute 屬性
-3. Operations 方法
+- **Software Architecture**: Planning system structure before implementation
+- **Design Patterns**: Visualizing pattern relationships and interactions
+- **Team Communication**: Sharing design ideas across development teams
+- **Documentation**: Creating clear, visual documentation of systems
+- **Code Review**: Understanding complex system interactions
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_class.png" title="design_pattern_4_uml_class" %}
+## Core UML Elements
 
-## Interface 介面
+### Class Representation
 
-Interface 有兩種表示法
+A class in UML is divided into three sections:
 
-### 一般表示法
+1. **Class Name**
+2. **Attributes (Properties)**
+3. **Operations (Methods)**
 
-一般型式與 Class 並無太大區別，只要在 Class Name 上方標註 `<<interface>>` 即可
+{% include figure.liquid path="assets/img/design_pattern_4_uml_class.png" title="UML class structure with name, attributes, and operations" %}
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_interface_1.png" title="design_pattern_4_uml_interface_1" %}
+### Interface Representation
 
-### 棒棒糖表示法
+Interfaces can be represented in two ways:
 
-用球狀來表示介面
+#### Standard Notation
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_interface_2.png" title="design_pattern_4_uml_interface_2" %}
+Similar to classes but with `<<interface>>` annotation above the class name.
 
-## Attribute 屬性
+{% include figure.liquid path="assets/img/design_pattern_4_uml_interface_1.png" title="Standard interface notation with <<interface>> annotation" %}
 
-### Visibility 可視範圍
+#### Lollipop Notation
 
-| Sign | Modifiers |
-| ---- | --------- |
-| `+`  | Public    |
-| `#`  | Protected |
-| `~`  | Package   |
-| `-`  | Private   |
+Uses a circle to represent the interface.
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_attribute.png" title="design_pattern_4_uml_interface_2" %}
+{% include figure.liquid path="assets/img/design_pattern_4_uml_interface_2.png" title="Lollipop interface notation with circle representation" %}
 
-## Multiplicity 關聯多重性
+## Visibility Modifiers
 
-Object 之間的數量關係，預設為 1
+Visibility modifiers control access to class members:
 
-| Sign    | amount               |
-| ------- | -------------------- |
-| `1`     | 1 個                 |
-| `*`     | 無限多個             |
-| `n...m` | 至少 n 個，至多 m 個 |
+| Symbol | Modifier | Description |
+|--------|----------|-------------|
+| `+` | Public | Accessible from anywhere |
+| `#` | Protected | Accessible within class and subclasses |
+| `~` | Package | Accessible within the same package |
+| `-` | Private | Accessible only within the class |
 
-## Dependency 依賴
+{% include figure.liquid path="assets/img/design_pattern_4_uml_attribute.png" title="UML attributes with visibility modifiers" %}
 
-- 表示不同對象之間相互依賴關係
-- 通常用於方法的參數或回傳值
-- A uses a B
-- 箭頭指向要依賴的對象
-- 以 `虛線` + `箭頭` 表示
+## Multiplicity in Relationships
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_dependency_sign.png" title="design_pattern_4_uml_dependency_sign" %}
+Multiplicity defines the number of objects in a relationship:
 
-動物使用(依賴)氧氣呼吸生存
+| Symbol | Meaning | Description |
+|--------|---------|-------------|
+| `1` | Exactly one | Default relationship |
+| `*` | Zero or many | Unlimited number |
+| `0..1` | Zero or one | Optional relationship |
+| `1..*` | One or many | At least one required |
+| `n..m` | Range | Between n and m objects |
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_dependency.png" title="design_pattern_4_uml_dependency" %}
+## UML Relationships
 
-## Association 關聯
+### 1. Dependency Relationship
 
-- 表示一個對象擁有另一個對象
-- 通常用於屬性、全域變數
-- A has a C
-- Aggregation、Composition 為子集
-- 箭頭指向要關聯的對象
-- 以 `實線` + `箭頭` 表示
+- **Purpose**: Shows that one object depends on another
+- **Usage**: Method parameters, return values, local variables
+- **Notation**: `A uses a B`
+- **Visual**: Dotted line with arrow pointing to the dependent object
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_association_sign.png" title="design_pattern_4_uml_association_sign" %}
+{% include figure.liquid path="assets/img/design_pattern_4_uml_dependency_sign.png" title="Dependency relationship notation" %}
 
-每個人有(關聯)一個地址
+**Example**: Animals depend on oxygen to breathe and survive.
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_association.png" title="design_pattern_4_uml_association" %}
+{% include figure.liquid path="assets/img/design_pattern_4_uml_dependency.png" title="Animal dependency on oxygen example" %}
 
-## Aggregation 聚合
+### 2. Association Relationship
 
-- 表示一個對象擁有另一個對象
-- A owns a B
-- Association 為超集、Composition 為子集
-- 菱形指向要聚合的對象
-- 弱關聯，關聯及被關聯對象可互相獨立存在
-- 以 `實線` + `空心菱形` 表示
+- **Purpose**: Shows that one object owns another object
+- **Usage**: Class attributes, global variables
+- **Notation**: `A has a C`
+- **Visual**: Solid line with arrow pointing to the associated object
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_aggregation_sign.png" title="design_pattern_4_uml_aggregation_sign" %}
+{% include figure.liquid path="assets/img/design_pattern_4_uml_association_sign.png" title="Association relationship notation" %}
 
-人擁有(聚合)衣服，人和衣服可以單獨存在
+**Example**: Each person has (associates with) one address.
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_aggregation.png" title="design_pattern_4_uml_aggregation" %}
+{% include figure.liquid path="assets/img/design_pattern_4_uml_association.png" title="Person association with address example" %}
 
-## Composition 組合
+### 3. Aggregation Relationship
 
-- 表示一個對象擁有另一個對象
-- C is a part of A
-- Association、Aggregation 為超集
-- 菱形指向要組合的對象
-- 強關聯，被關聯對象不可獨立存在
-- 以 `實線` + `實心菱形` 表示
+- **Purpose**: Shows ownership where objects can exist independently
+- **Notation**: `A owns a B`
+- **Visual**: Solid line with hollow diamond pointing to the aggregated object
+- **Characteristics**: Weak relationship, objects can exist independently
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_composition_sign.png" title="design_pattern_4_uml_composition_sign" %}
+{% include figure.liquid path="assets/img/design_pattern_4_uml_aggregation_sign.png" title="Aggregation relationship notation" %}
 
-人類有器官，人死了器官就無作用不存在了
+**Example**: A person owns (aggregates) clothes. Both person and clothes can exist independently.
 
-> (這邊先不討論器官可移植到別人身上的情況 😂 )
+{% include figure.liquid path="assets/img/design_pattern_4_uml_aggregation.png" title="Person aggregation with clothes example" %}
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_composition.png" title="design_pattern_4_uml_composition" %}
+### 4. Composition Relationship
 
-## Association、Aggregation 及 Composition 三者關係
+- **Purpose**: Shows ownership where objects cannot exist independently
+- **Notation**: `C is a part of A`
+- **Visual**: Solid line with filled diamond pointing to the composed object
+- **Characteristics**: Strong relationship, composed object cannot exist independently
 
-> Aggregation and Composition are subsets of association meaning they are specific cases of association. In both aggregation and composition object of one class "owns" object of another class. But there is a subtle difference:
+{% include figure.liquid path="assets/img/design_pattern_4_uml_composition_sign.png" title="Composition relationship notation" %}
+
+**Example**: Humans have organs. When a person dies, the organs become non-functional and cease to exist.
+
+> Note: We're not considering organ transplantation scenarios here 😂
+
+{% include figure.liquid path="assets/img/design_pattern_4_uml_composition.png" title="Human composition with organs example" %}
+
+## Relationship Hierarchy
+
+> Aggregation and Composition are subsets of association, meaning they are specific cases of association. In both aggregation and composition, an object of one class "owns" an object of another class. But there is a subtle difference:
 >
-> - Aggregation implies a relationship where the child can exist independently of the parent. Example: Class (parent) and Student (child). Delete the Class and the Students still exist.
-> - Composition implies a relationship where the child cannot exist independent of the parent. Example: House (parent) and Room (child). Rooms don't exist separate to a House.
+> - **Aggregation** implies a relationship where the child can exist independently of the parent. Example: Class (parent) and Student (child). Delete the Class and the Students still exist.
+> - **Composition** implies a relationship where the child cannot exist independent of the parent. Example: House (parent) and Room (child). Rooms don't exist separate from a House.
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_compare_association_aggregation_composition.png" title="design_pattern_4_uml_compare_association_aggregation_composition" %}
+{% include figure.liquid path="assets/img/design_pattern_4_uml_compare_association_aggregation_composition.png" title="Comparison of association, aggregation, and composition relationships" %}
 
-## Realization / Implementation 實現 / 實作
+## Implementation Relationships
 
-- 表示一個對象實作另一個對象
-- B implements A
-- 箭頭指向 interface
-- 以 `虛線` + `空心箭頭` 表示
+### Realization/Implementation
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_realization_implementation_sign.png" title="design_pattern_4_uml_realization_implementation_sign" %}
+- **Purpose**: Shows that one object implements another object
+- **Notation**: `B implements A`
+- **Visual**: Dotted line with hollow arrow pointing to the interface
 
-心、肝、胃、腸要實作器官
+{% include figure.liquid path="assets/img/design_pattern_4_uml_realization_implementation_sign.png" title="Realization/Implementation relationship notation" %}
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_realization_implementation.png" title="design_pattern_4_uml_realization_implementation" %}
+**Example**: Heart, liver, stomach, and intestines implement the Organ interface.
 
-## Generalization / Inheritance 泛化 / 繼承
+{% include figure.liquid path="assets/img/design_pattern_4_uml_realization_implementation.png" title="Organ implementation example" %}
 
-- 表示一個對象繼承另一個對象
-- C is-a A
-- 箭頭指向 父類別
-- 以 `實線` + `空心箭頭` 表示
+### Generalization/Inheritance
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_generalization_inheritance_sign.png" title="design_pattern_4_uml_generalization_inheritance_sign" %}
+- **Purpose**: Shows that one object inherits from another object
+- **Notation**: `C is-a A`
+- **Visual**: Solid line with hollow arrow pointing to the parent class
 
-人是一種動物
+{% include figure.liquid path="assets/img/design_pattern_4_uml_generalization_inheritance_sign.png" title="Generalization/Inheritance relationship notation" %}
 
-{% include figure.liquid path="assets/img/design_pattern_4_uml_generalization_inheritance.png" title="design_pattern_4_uml_generalization_inheritance" %}
+**Example**: A person is a type of animal.
 
-## 總結
+{% include figure.liquid path="assets/img/design_pattern_4_uml_generalization_inheritance.png" title="Person inheritance from animal example" %}
 
-之後的 Design Pattern 系列文章會大量使用到 UML 圖，搞懂這些圖及箭頭的含義在軟體設計上是非常有幫助的，下一篇終於要進入第一個 Design Pattern。
+## Practical UML Examples
 
-## 參考
+### 1. Simple Class Diagram
 
-- [【UML】Class Diagram 類別圖 (上)：Introduction 簡介](https://spicyboyd.blogspot.com/2018/07/umlclass-diagram-introduction.html)
-- [【UML】Class Diagram 類別圖 (下)：Relationships 關係](https://spicyboyd.blogspot.com/2018/07/umlclass-diagram-relationships.html)
-- [UML Relationships Types: Association, Dependency, Generalization](https://www.guru99.com/uml-relationships-with-example.html#5)
-- [What is the difference between association, aggregation and composition?](https://stackoverflow.com/questions/885937/what-is-the-difference-between-association-aggregation-and-composition)
-- [UML Association vs Aggregation vs Composition](https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-aggregation-vs-composition/)
+```kotlin
+class User {
+    private var id: String
+    private var name: String
+    private var email: String
+    
+    fun createPost(content: String): Post
+    fun updateProfile(newName: String)
+    fun deleteAccount()
+}
+
+class Post {
+    private var id: String
+    private var content: String
+    private var author: User
+    
+    fun edit(newContent: String)
+    fun delete()
+}
+```
+
+**UML Representation:**
+- User has a composition relationship with Post (posts belong to users)
+- Post has a dependency on User (author parameter)
+
+### 2. Design Pattern Example: Factory Method
+
+```kotlin
+interface Product {
+    fun operation(): String
+}
+
+class ConcreteProductA : Product {
+    override fun operation(): String = "ConcreteProductA"
+}
+
+class ConcreteProductB : Product {
+    override fun operation(): String = "ConcreteProductB"
+}
+
+abstract class Creator {
+    abstract fun createProduct(): Product
+    
+    fun someOperation(): String {
+        val product = createProduct()
+        return product.operation()
+    }
+}
+
+class ConcreteCreatorA : Creator() {
+    override fun createProduct(): Product = ConcreteProductA()
+}
+
+class ConcreteCreatorB : Creator() {
+    override fun createProduct(): Product = ConcreteProductB()
+}
+```
+
+**UML Relationships:**
+- Creator has generalization relationship with ConcreteCreatorA and ConcreteCreatorB
+- Creator has dependency on Product interface
+- ConcreteProductA and ConcreteProductB implement Product interface
+
+## Best Practices for UML Modeling
+
+### 1. **Keep Diagrams Simple**
+
+- Focus on the most important relationships
+- Avoid cluttering with unnecessary details
+- Use multiple diagrams for different perspectives
+
+### 2. **Use Consistent Naming**
+
+- Follow naming conventions consistently
+- Use clear, descriptive names for classes and relationships
+- Include multiplicity when relationships are not 1:1
+
+### 3. **Show Only Relevant Information**
+
+- Include only attributes and methods relevant to the current context
+- Use stereotypes (`<<interface>>`, `<<abstract>>`) appropriately
+- Consider the audience when choosing detail level
+
+### 4. **Validate Relationships**
+
+- Ensure relationships accurately reflect the code
+- Verify multiplicity constraints
+- Check that inheritance hierarchies make sense
+
+## Common UML Tools
+
+| Tool | Platform | Features | Best For |
+|------|----------|----------|----------|
+| **Lucidchart** | Web-based | Collaboration, templates | Team projects |
+| **Draw.io** | Web-based | Free, integration | Quick diagrams |
+| **Visual Paradigm** | Desktop | Advanced features | Enterprise projects |
+| **StarUML** | Desktop | Open source | Individual developers |
+| **PlantUML** | Text-based | Version control friendly | Code-first approach |
+
+## Performance Considerations
+
+| Diagram Type | Complexity | Readability | Maintenance |
+|--------------|------------|-------------|-------------|
+| Simple Class | Low | High | Easy |
+| Complex Class | High | Medium | Difficult |
+| Package | Medium | High | Medium |
+| Component | High | Medium | Difficult |
+
+## Anti-Patterns to Avoid
+
+### 1. **Over-Engineering**
+```kotlin
+// Avoid: Too many relationships
+class A
+class B
+class C
+class D
+// ... 20 more classes with complex relationships
+```
+
+### 2. **Inconsistent Notation**
+```kotlin
+// Avoid: Mixing different UML styles
+class User {
+    +name: String  // Public
+    -id: String    // Private
+    #email: String // Protected
+    ~password: String // Package - inconsistent!
+}
+```
+
+### 3. **Missing Relationships**
+```kotlin
+// Avoid: Not showing important dependencies
+class UserService {
+    fun createUser(user: User) {
+        val validator = UserValidator() // Hidden dependency
+        val repository = UserRepository() // Hidden dependency
+    }
+}
+```
+
+## Related Design Patterns
+
+- **Factory Method**: Uses inheritance and dependency relationships
+- **Strategy**: Uses composition and interface realization
+- **Observer**: Uses association and dependency relationships
+- **Decorator**: Uses inheritance and composition
+
+## Conclusion
+
+UML is an essential tool for software design and communication. Understanding UML diagrams will significantly help in software design, especially when working with design patterns. Key benefits include:
+
+- **Clear Communication**: Visual representation of complex concepts
+- **Better Planning**: Identify design issues before implementation
+- **Documentation**: Create lasting documentation of system architecture
+- **Team Collaboration**: Share design ideas effectively
+
+The subsequent Design Pattern series articles will extensively use UML diagrams. Understanding these diagrams and arrow meanings is very helpful in software design.
+
+## Related Articles
+
+- [Design Pattern 1: Object-Oriented Concepts](/2024-07-02-design-pattern-1-object-oriented-concepts/)
+- [Design Pattern 2: Object-Oriented Design Principles](/2024-07-03-design-pattern-2-design-principle/)
+- [Design Pattern 5: Simple Factory Pattern](/2024-07-06-design-pattern-5-simple-factory-pattern/)
+- [Design Pattern 6: Factory Method Pattern](/2024-07-07-design-pattern-6-factory-method-pattern/)
 
 **Note:** 如果有任何建議、問題或不同想法，歡迎留言或寄信給我，可以一起討論進步成長 🙂
 {: .notice--success}

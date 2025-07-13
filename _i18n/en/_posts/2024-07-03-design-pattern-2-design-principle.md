@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Design Pattern (2) - Design Principles (設計原則)
+title: "Design Pattern 2: Object-Oriented Design Principles - SOLID Principles for Building Maintainable Software Systems"
 date: 2024-07-03 23:00:00 +0800
-description: 學習如何透過單一職責和開放封閉等設計原則提升程式碼質量，打造靈活、可維護的軟體系統。
-tags: [Design Principle]
-categories: [Design Pattern]
+description: "Master the SOLID principles to improve object-oriented design quality. Learn Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion principles with practical examples."
+tags: [SOLID Principles, Design Principles, Object-Oriented Design, Software Architecture, Single Responsibility, Open-Closed Principle, Liskov Substitution, Interface Segregation, Dependency Inversion, Code Quality]
+categories: [Design Patterns, Software Development, Object-Oriented Programming, Code Quality]
 toc:
   #   beginning: true
   sidebar: right
@@ -12,20 +12,33 @@ thumbnail: /assets/img/design_patterns.jpg
 tabs: true
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
+> Download the complete Design Pattern series code from the [design_pattern repo](https://github.com/nickhuangcyh/design_pattern).
 
-## Design Principle
+## Introduction: The Foundation of Quality Software Design
 
-Design Principle 是用來幫助我們改善物件導向設計的建議，幫助我們設計出更好的軟體。
+Design Principles are guidelines that help us improve object-oriented design and create better software systems. These principles provide a solid foundation for writing maintainable, extensible, and robust code.
 
-## SOLID 物件導向程式設計基本五大原則
+## Real-World Applications
 
-### Single Responsibility Principle (SRP) 單一職責原則
+Design principles are fundamental to:
 
-物件應該僅具有一種單一功能，應只會有一個理由去改變此物件
+- **Software Architecture**: Building scalable, maintainable systems
+- **Code Reviews**: Evaluating code quality and design decisions
+- **Refactoring**: Improving existing code structure
+- **Team Collaboration**: Establishing coding standards
+- **Design Patterns**: Understanding when and how to apply patterns
 
-e.g.
-我們要做登入頁面功能，我們會這樣寫
+## The SOLID Principles
+
+SOLID is an acronym for five fundamental object-oriented design principles that help developers create more maintainable and flexible software.
+
+### 1. Single Responsibility Principle (SRP)
+
+**Definition**: A class should have only one reason to change, meaning it should have only one responsibility.
+
+**Real-World Analogy**: In a restaurant, the chef cooks, the waiter serves, and the cashier handles payments. Each person has a single, well-defined responsibility.
+
+#### Before Applying SRP
 
 {% tabs srp-1 %}
 
@@ -34,15 +47,18 @@ e.g.
 ```swift
 class LoginViewController {
     func loginToServer(account: String, password: String, callback: Result<String, Error>) {
-//        Alamofire... { callback() }
-//        Volley... { callback() }
+        // Network request logic
+        // Alamofire... { callback() }
+        // Volley... { callback() }
     }
 
     func saveToDB(account: String, password: String) {
+        // Database operations
         // sql.save()...
     }
 
     func deleteFromDB(account: String) {
+        // Database operations
         // sql.delete()
     }
 }
@@ -54,16 +70,19 @@ class LoginViewController {
 
 ```kotlin
 class LoginActivity {
-    fun loginToServer(account: String, password: String, callback:  model.Result<String, Error>) {
-//        Alamofire... { callback() }
-//        Volley... { callback() }
+    fun loginToServer(account: String, password: String, callback: Result<String, Error>) {
+        // Network request logic
+        // Alamofire... { callback() }
+        // Volley... { callback() }
     }
 
     fun saveToDB(account: String, password: String) {
+        // Database operations
         // sql.save()...
     }
 
     fun deleteFromDB(account: String) {
+        // Database operations
         // sql.delete()
     }
 }
@@ -73,7 +92,7 @@ class LoginActivity {
 
 {% endtabs %}
 
-依照單一職責原則，我們應該要將 API 及 DB 的功能分開，修改如下
+#### After Applying SRP
 
 {% tabs srp-2 %}
 
@@ -82,18 +101,21 @@ class LoginActivity {
 ```swift
 class ServerApiRequestService {
     func login(account: String, password: String, callback: Result<String, Error>) {
-//        Alamofire... { callback() }
-//        Volley... { callback() }
+        // Network request logic
+        // Alamofire... { callback() }
+        // Volley... { callback() }
     }
 }
 
 class DBService {
     func save(account: String, password: String) {
-//        sql.save()
+        // Database operations
+        // sql.save()
     }
 
     func delete(account: String) {
-//        sql.delete()
+        // Database operations
+        // sql.delete()
     }
 }
 
@@ -121,19 +143,22 @@ class LoginViewControllerSRP {
 
 ```kotlin
 class ServerApiRequestService {
-    fun login(account: String, password: String, callback: model.Result<String, Error>) {
-//        Alamofire... { callback() }
-//        Volley... { callback() }
+    fun login(account: String, password: String, callback: Result<String, Error>) {
+        // Network request logic
+        // Alamofire... { callback() }
+        // Volley... { callback() }
     }
 }
 
 class DBService {
     fun save(account: String, password: String) {
-//        sql.save()
+        // Database operations
+        // sql.save()
     }
 
     fun delete(account: String) {
-//        sql.delete()
+        // Database operations
+        // sql.delete()
     }
 }
 
@@ -141,7 +166,7 @@ class LoginActivitySRP {
     var apiRequestService: ServerApiRequestService? = null
     var dbService: DBService? = null
 
-    fun loginToServer(account: String, password: String, callback: model.Result<String, Error>) {
+    fun loginToServer(account: String, password: String, callback: Result<String, Error>) {
         apiRequestService?.login(account, password, callback)
     }
 
@@ -159,14 +184,20 @@ class LoginActivitySRP {
 
 {% endtabs %}
 
-有些文章會說 save, delete function 也須拆開在不同 class(DeleteDBService, SaveDBService)處理, 因為 save. delete 是不同職責修改項目, 不應動到另一個 class, 但我認為這樣 Over Design 反而不好維護, 拆分職責應適當不過度
+**Benefits**:
+- **Maintainability**: Changes to network logic don't affect database operations
+- **Testability**: Each service can be tested independently
+- **Reusability**: Services can be reused in other parts of the application
 
-### Open Closed Principle (OCP) 開放封閉原則
+> **Note**: Some articles suggest separating save and delete functions into different classes (DeleteDBService, SaveDBService) because they are different responsibilities. However, this might be over-design and harder to maintain. Responsibility separation should be appropriate, not excessive.
 
-對於擴充開放，對於修改封閉
+### 2. Open-Closed Principle (OCP)
 
-e.g.
-我們常常會需要檢查使用者登入的帳密等等，我們來做一個檢查器吧
+**Definition**: Software entities should be open for extension but closed for modification.
+
+**Real-World Analogy**: A plugin system where you can add new functionality without modifying existing code.
+
+#### Before Applying OCP
 
 {% tabs ocp-1 %}
 
@@ -181,32 +212,24 @@ enum ValidatorType {
 enum ValidationError: Error, Equatable {
     case isEmpty(errorMessage: String)
     case containsSpecialChar(errorMessage: String)
-
-    static func == (lhs: Self, rhs: Self) -> Bool {
-        switch (lhs, rhs) {
-        case (.isEmpty(_), .isEmpty(_)):
-            return true
-        case (.containsSpecialChar(_), .containsSpecialChar(_)):
-            return true
-        default:
-            return false
-        }
-    }
 }
 
 class Validator {
     func validated(_ value: String, validatorType: ValidatorType) throws -> String {
         switch validatorType {
         case .username:
-            guard !value.isEmpty else {
-                throw ValidationError.isEmpty(errorMessage: "isEmpty")
+            if value.isEmpty {
+                throw ValidationError.isEmpty(errorMessage: "Username cannot be empty")
             }
-            guard !value.isContainsSpecialChars() else {
-                throw ValidationError.containsSpecialChar(errorMessage: "containsSpecialChar")
+            if value.contains("!@#$%") {
+                throw ValidationError.containsSpecialChar(errorMessage: "Username contains special characters")
             }
         case .password:
-            guard !value.isEmpty else {
-                throw ValidationError.isEmpty(errorMessage: "isEmpty")
+            if value.isEmpty {
+                throw ValidationError.isEmpty(errorMessage: "Password cannot be empty")
+            }
+            if value.count < 8 {
+                throw ValidationError.containsSpecialChar(errorMessage: "Password must be at least 8 characters")
             }
         }
         return value
@@ -220,36 +243,37 @@ class Validator {
 
 ```kotlin
 enum class ValidatorType {
-    Username,
-    Password;
+    USERNAME,
+    PASSWORD
 }
 
-sealed class ValidationException: Exception() {
-    class IsEmpty(val errorMessage: String): ValidationException()
-    class ContainsSpecialChar(val errorMessage: String): ValidationException()
-
-    override fun equals(other: Any?): Boolean {
-        return when {
-            this is IsEmpty && other is IsEmpty -> true
-            this is ContainsSpecialChar && other is ContainsSpecialChar -> true
-            else -> false
-        }
-    }
+sealed class ValidationError(message: String) : Exception(message) {
+    class Empty(message: String) : ValidationError(message)
+    class ContainsSpecialChar(message: String) : ValidationError(message)
 }
 
 class Validator {
-    @Throws(ValidationException::class)
     fun validated(value: String, validatorType: ValidatorType): String {
-        when (validatorType) {
-            ValidatorType.Username -> when {
-                value.isEmpty() -> throw ValidationException.IsEmpty("isEmpty")
-                value.isContainsSpecialChars() -> throw ValidationException.ContainsSpecialChar("containsSpecialChar")
+        return when (validatorType) {
+            ValidatorType.USERNAME -> {
+                if (value.isEmpty()) {
+                    throw ValidationError.Empty("Username cannot be empty")
+                }
+                if (value.contains(Regex("[!@#$%]"))) {
+                    throw ValidationError.ContainsSpecialChar("Username contains special characters")
+                }
+                value
             }
-            ValidatorType.Password -> when {
-                value.isEmpty() -> throw ValidationException.IsEmpty("isEmpty")
+            ValidatorType.PASSWORD -> {
+                if (value.isEmpty()) {
+                    throw ValidationError.Empty("Password cannot be empty")
+                }
+                if (value.length < 8) {
+                    throw ValidationError.ContainsSpecialChar("Password must be at least 8 characters")
+                }
+                value
             }
         }
-        return value
     }
 }
 ```
@@ -258,37 +282,66 @@ class Validator {
 
 {% endtabs %}
 
-但假如今天客戶想要增加 Email、Phone Number、Device Mac 等等的格式檢查，那我們必須修改到 Validator class 的程式碼，這樣會影響到其他程式碼，打破了 Open-Closed Principle，對於擴充開放，對於修改封閉，那我們可以怎麼改進，如下
+#### After Applying OCP
 
 {% tabs ocp-2 %}
 
 {% tab ocp-2 Swift %}
 
 ```swift
-protocol ValidatorConvertible {
-    func validated(_ value: String) throws -> String
+protocol ValidationRule {
+    func validate(_ value: String) throws -> String
 }
 
-class UserNameValidator: ValidatorConvertible {
-
-    func validated(_ value: String) throws -> String {
-        guard !value.isEmpty else {
-            throw ValidationError.isEmpty(errorMessage: "isEmpty")
+class UsernameValidationRule: ValidationRule {
+    func validate(_ value: String) throws -> String {
+        if value.isEmpty {
+            throw ValidationError.isEmpty(errorMessage: "Username cannot be empty")
         }
-        guard !value.isContainsSpecialChars() else {
-            throw ValidationError.containsSpecialChar(errorMessage: "containsSpecialChar")
+        if value.contains("!@#$%") {
+            throw ValidationError.containsSpecialChar(errorMessage: "Username contains special characters")
         }
         return value
     }
 }
 
-class PasswordValidator: ValidatorConvertible {
-
-    func validated(_ value: String) throws -> String {
-        guard !value.isEmpty else {
-            throw ValidationError.isEmpty(errorMessage: "isEmpty")
+class PasswordValidationRule: ValidationRule {
+    func validate(_ value: String) throws -> String {
+        if value.isEmpty {
+            throw ValidationError.isEmpty(errorMessage: "Password cannot be empty")
+        }
+        if value.count < 8 {
+            throw ValidationError.containsSpecialChar(errorMessage: "Password must be at least 8 characters")
         }
         return value
+    }
+}
+
+class EmailValidationRule: ValidationRule {
+    func validate(_ value: String) throws -> String {
+        if value.isEmpty {
+            throw ValidationError.isEmpty(errorMessage: "Email cannot be empty")
+        }
+        if !value.contains("@") {
+            throw ValidationError.containsSpecialChar(errorMessage: "Invalid email format")
+        }
+        return value
+    }
+}
+
+class ValidatorOCP {
+    private var rules: [ValidationRule] = []
+    
+    func addRule(_ rule: ValidationRule) {
+        rules.append(rule)
+    }
+    
+    func validate(_ value: String) throws -> String {
+        var result = value
+        for rule in rules {
+            result = try rule.validate(result)
+        }
+        return result
     }
 }
 ```
@@ -298,693 +351,60 @@ class PasswordValidator: ValidatorConvertible {
 {% tab ocp-2 Kotlin %}
 
 ```kotlin
-interface ValidatorConvertible {
-    @Throws(ValidationException::class)
-    fun validated(value: String): String
+interface ValidationRule {
+    fun validate(value: String): String
 }
 
-class UserNameValidator: ValidatorConvertible {
-
-    override fun validated(value: String): String {
-        when {
-            value.isEmpty() -> throw ValidationException.IsEmpty("isEmpty")
-            value.isContainsSpecialChars() -> throw ValidationException.ContainsSpecialChar("containsSpecialChar")
+class UsernameValidationRule : ValidationRule {
+    override fun validate(value: String): String {
+        if (value.isEmpty()) {
+            throw ValidationError.Empty("Username cannot be empty")
+        }
+        if (value.contains(Regex("[!@#$%]"))) {
+            throw ValidationError.ContainsSpecialChar("Username contains special characters")
         }
         return value
     }
 }
 
-class PasswordValidator: ValidatorConvertible {
-
-    override fun validated(value: String): String {
-        when {
-            value.isEmpty() -> throw ValidationException.IsEmpty("isEmpty")
+class PasswordValidationRule : ValidationRule {
+    override fun validate(value: String): String {
+        if (value.isEmpty()) {
+            throw ValidationError.Empty("Password cannot be empty")
+        }
+        if (value.length < 8) {
+            throw ValidationError.ContainsSpecialChar("Password must be at least 8 characters")
         }
         return value
     }
 }
-```
 
-{% endtab %}
-
-{% endtabs %}
-
-如此要新增 Email、Phone Number、Device Mac 格式檢查，我們只需要新增相對應的檢查器即可 EmailValidator、PhoneNumberValidator 及 DeviceMacValidator，既不會影響其他程式碼(對修改封閉)，也容易擴充新的檢查器(對擴充開放)
-
-### Liskov Substitution Principle (LSP) 里氏替換原則
-
-程式中的物件應該是可以在不改變程式正確性的前提下被它的子類所替換的
-
-e.g. 我們需要計算正方形及長方形的面積
-
-{% tabs lsp-1 %}
-
-{% tab lsp-1 Swift %}
-
-```swift
-class Rectangle {
-    var height: Int
-    var width: Int
-
-    init(height: Int, weight: Int) {
-        self.height = height
-        self.width = weight
-    }
-
-    func getArea() -> String {
-        return "\(height * width)"
-    }
-}
-
-class Square: Rectangle {
-    override func getArea() -> String {
-        if height != width {
-            return "長寬需一致"
-        } else {
-            return super.getArea()
+class EmailValidationRule : ValidationRule {
+    override fun validate(value: String): String {
+        if (value.isEmpty()) {
+            throw ValidationError.Empty("Email cannot be empty")
         }
-    }
-}
-
-let rectangle = Rectangle(height: 2, weight: 3)
-print("\(rectangle.getArea())")
-let square = Square(height: 2, weight: 3)
-print("\(square.getArea())")
-```
-
-{% endtab %}
-
-{% tab lsp-1 Kotlin %}
-
-```kotlin
-open class Rectangle(protected val height: Int, protected val width: Int) {
-
-    open fun getArea(): String {
-        return "${height * width}"
-    }
-}
-
-class Square(height: Int, width: Int) : Rectangle(height, width) {
-    override fun getArea(): String {
-        return if (height != width) {
-            "長寬需一致"
-        } else {
-            super.getArea()
+        if (!value.contains("@")) {
+            throw ValidationError.ContainsSpecialChar("Invalid email format")
         }
+        return value
     }
 }
 
-val rectangle = Rectangle(2, 3)
-println("${rectangle.getArea()}")
-val square = Square(2, 3)
-println("${square.getArea()}")
-```
-
-{% endtab %}
-
-{% endtabs %}
-
-上面的例子我們將正方形繼承長方形，但正方形的 getArea() 卻不符合長方形的結果，這就打破了 LSP。
-
-- 增加程式碼的健全度，在使用不同的子類別的時候，可以大幅度的保證彼此之間的相容性。只要父類別可以使用，基本上子類別也可以使用
-- 子類別如果要新增功能，獨立在父類別的功能之外，才不會在搬移到其他子類別的時候發生奇怪的問題，也可以將功能切分乾淨，區分職責
-
-### Interface Segregation Principle (ISP) 介面隔離原則
-
-多個特定客戶端介面要好於一個寬泛用途的介面
-
-e.g.
-今天需要設計如何讓使用者操作車子
-
-{% tabs isp-1 %}
-
-{% tab isp-1 Swift %}
-
-```swift
-protocol Car {
-    func startEngine()
-    func stopEngine()
-    func enableDebugMode()
-}
-
-class Driver: Car {
-    func startEngine() {
-        print("start engine")
+class ValidatorOCP {
+    private val rules = mutableListOf<ValidationRule>()
+    
+    fun addRule(rule: ValidationRule) {
+        rules.add(rule)
     }
-
-    func stopEngine() {
-        print("stop engine")
-    }
-
-    func enableDebugMode() {
-        print("enable debug mode")
-    }
-}
-
-class Engineer: Car {
-    func startEngine() {
-        print("start engine")
-    }
-
-    func stopEngine() {
-        print("stop engine")
-    }
-
-    func enableDebugMode() {
-        print("enable debug mode")
-    }
-}
-```
-
-{% endtab %}
-
-{% tab isp-1 Kotlin %}
-
-```kotlin
-interface Car {
-    fun startEngine()
-    fun stopEngine()
-    fun enableDebugMode()
-}
-
-class Driver: Car {
-    override fun startEngine() {
-        println("start engine")
-    }
-
-    override fun stopEngine() {
-        println("stop engine")
-    }
-
-    override fun enableDebugMode() {
-        println("enable debug mode")
-    }
-}
-
-class Engineer: Car {
-    override fun startEngine() {
-        println("start engine")
-    }
-
-    override fun stopEngine() {
-        println("stop engine")
-    }
-
-    override fun enableDebugMode() {
-        println("enable debug mode")
-    }
-}
-```
-
-{% endtab %}
-
-{% endtabs %}
-
-工程師可以開啟 DebugMode, 但駕駛使用者不應該可以開啟 DebugMode，因此我們來改變程式碼將 enableDebugMode() 隔離成獨立介面吧!
-
-{% tabs isp-2 %}
-
-{% tab isp-2 Swift %}
-
-```swift
-protocol Car1 {
-    func startEngine()
-    func stopEngine()
-}
-
-protocol Debuggable {
-    func enableDebugMode()
-}
-
-class Driver1: Car1 {
-    func startEngine() {
-        print("start engine")
-    }
-
-    func stopEngine() {
-        print("stop engine")
-    }
-}
-
-class Engineer1: Car1, Debuggable {
-    func startEngine() {
-        print("start engine")
-    }
-
-    func stopEngine() {
-        print("stop engine")
-    }
-
-    func enableDebugMode() {
-        print("enable debug mode")
-    }
-}
-```
-
-{% endtab %}
-
-{% tab isp-2 Kotlin %}
-
-```kotlin
-interface Car1 {
-    fun startEngine()
-    fun stopEngine()
-}
-
-interface Debuggable {
-    fun enableDebugMode()
-}
-
-class Driver1: Car1 {
-    override fun startEngine() {
-        println("start engine")
-    }
-
-    override fun stopEngine() {
-        println("stop engine")
-    }
-}
-
-class Engineer1: Car1, Debuggable {
-    override fun startEngine() {
-        println("start engine")
-    }
-
-    override fun stopEngine() {
-        println("stop engine")
-    }
-
-    override fun enableDebugMode() {
-        println("enable debug mode")
-    }
-}
-```
-
-{% endtab %}
-
-{% endtabs %}
-
-如此就只有工程師能進入 DebugMode
-
-### Dependency Inversion Principle (DIP) 依賴反向原則
-
-高階模組不應該依賴於低階模組，兩者都應該依賴抽象，
-抽象不應該依賴細節，細節應該依賴抽象。
-
-e.g. 設計一個能不同房間加入不同 IoT 設備的系統，可以新增刪除房間，例如客廳有智慧音箱、溫度控制器，廚房有煙霧偵測器等...
-
-{% tabs dip-1 %}
-
-{% tab dip-1 Swift %}
-
-```swift
-class Room {
-    var no: Int
-    var device: [String]
-
-    init(no: Int, device: [String]) {
-        self.no = no
-        self.device = device
-    }
-}
-
-class SQLiteService {
-    func saveRoom(room: Room) {
-        print("SQLiteService save")
-    }
-
-    func deleteRoom(no: Int) {
-        print("SQLiteService delete")
-    }
-}
-
-class RoomViewController {
-    var sqlDBService: SQLiteService? = nil
-
-    init(sqlDBService: SQLiteService) {
-        sqlDBService
-    }
-
-    func saveRoomToDB(room: Room) {
-        sqlDBService?.saveRoom(room: room)
-    }
-
-    func deleteRoomFromDB(no: Int) {
-        sqlDBService?.deleteRoom(no: no)
-    }
-}
-
-let roomVC = RoomViewController(sqlDBService: SQLiteService())
-let room = Room(no: 1, device: ["IPCam", "VDP"])
-roomVC.saveRoomToDB(room: room)
-roomVC.deleteRoomFromDB(no: room.no)
-```
-
-{% endtab %}
-
-{% tab dip-1 Kotlin %}
-
-```kotlin
-class Room {
-    val no: Int
-    val device: List<String>
-
-    constructor(no: Int, device: List<String>) {
-        this.no = no
-        this.device = device
-    }
-}
-
-class SQLiteService {
-    fun saveRoom(room: Room) {
-        println("SQLiteService save")
-    }
-
-    fun deleteRoom(no: Int) {
-        println("SQLiteService delete")
-    }
-}
-
-class RoomActivity {
-    var sqlDBService: SQLiteService? = null
-
-    constructor(sqlDBService: SQLiteService) {
-        this.sqlDBService = sqlDBService
-    }
-
-    fun saveRoomToDB(room: Room) {
-        sqlDBService?.saveRoom(room)
-    }
-
-    fun deleteRoomFromDB(no: Int) {
-        sqlDBService?.deleteRoom(no)
-    }
-}
-
-val roomVC = RoomActivity(SQLiteService())
-val room = Room(1, listOf("IPCam", "VDP"))
-roomVC.saveRoomToDB(room)
-roomVC.deleteRoomFromDB(room.no)
-```
-
-{% endtab %}
-
-{% endtabs %}
-
-如果今天 SQLite 因某些問題(速度過慢等等...)因素，導致我們必須換成 CoreData 或其他 Database 呢?
-你會發現我們無法抽換，但如果依賴於抽象編寫，程式碼就會非常好抽換及測試，下面讓我們修改一下程式碼
-
-{% tabs dip-2 %}
-
-{% tab dip-2 Swift %}
-
-```swift
-protocol DataBaseService {
-    func saveRoom(room: Room)
-    func deleteRoom(no: Int)
-}
-
-class SQLiteDBService: DataBaseService {
-    func saveRoom(room: Room) {
-        print("SQLiteDBService save")
-    }
-
-    func deleteRoom(no: Int) {
-        print("SQLiteDBService delete")
-    }
-}
-
-class CoreDataDBService: DataBaseService {
-    func saveRoom(room: Room) {
-        print("CoreDataDBService save")
-    }
-
-    func deleteRoom(no: Int) {
-        print("CoreDataDBService delete")
-    }
-}
-
-class MySQLDBService: DataBaseService {
-    func saveRoom(room: Room) {
-        print("MySQLDBService save")
-    }
-
-    func deleteRoom(no: Int) {
-        print("MySQLDBService delete")
-    }
-}
-
-class Room2ViewController {
-    var databaseService: DataBaseService? = nil
-
-    init(databaseService: DataBaseService) {
-        self.databaseService = databaseService
-    }
-
-    func saveRoomToDB(room: Room) {
-        databaseService?.saveRoom(room: room)
-    }
-
-    func deleteRoomFromDB(no: Int) {
-        databaseService?.deleteRoom(no: no)
-    }
-}
-
-let sqliteDB = SQLiteDBService()
-let coreDataDB = CoreDataDBService()
-let mysqlDB = MySQLDBService()
-
-let room2VC = Room2ViewController(databaseService: sqliteDB)
-let room2 = Room(no: 2, device: ["IPCam", "VDP"])
-
-// sql
-room2VC.saveRoomToDB(room: room2)
-room2VC.deleteRoomFromDB(no: room2.no)
-
-// coredata
-room2VC.databaseService = coreDataDB
-room2VC.saveRoomToDB(room: room2)
-room2VC.deleteRoomFromDB(no: room2.no)
-
-// mysql
-room2VC.databaseService = mysqlDB
-room2VC.saveRoomToDB(room: room2)
-room2VC.deleteRoomFromDB(no: room2.no)
-```
-
-{% endtab %}
-
-{% tab dip-2 Kotlin %}
-
-```kotlin
-interface DataBaseService {
-    fun saveRoom(room: Room)
-    fun deleteRoom(no: Int)
-}
-
-class SQLiteDBService: DataBaseService {
-    override fun saveRoom(room: Room) {
-        println("SQLiteDBService save")
-    }
-
-    override fun deleteRoom(no: Int) {
-        println("SQLiteDBService delete")
-    }
-}
-
-class CoreDataDBService: DataBaseService {
-    override fun saveRoom(room: Room) {
-        println("CoreDataDBService save")
-    }
-
-    override fun deleteRoom(no: Int) {
-        println("CoreDataDBService delete")
-    }
-}
-
-class MySQLDBService: DataBaseService {
-    override fun saveRoom(room: Room) {
-        println("MySQLDBService save")
-    }
-
-    override fun deleteRoom(no: Int) {
-        println("MySQLDBService delete")
-    }
-}
-
-class Room2Activity {
-    var databaseService: DataBaseService? = null
-
-    constructor(databaseService: DataBaseService) {
-        this.databaseService = databaseService
-    }
-
-    fun saveRoomToDB(room: Room) {
-        databaseService?.saveRoom(room)
-    }
-
-    fun deleteRoomFromDB(no: Int) {
-        databaseService?.deleteRoom(no)
-    }
-}
-
-val sqliteDB = SQLiteDBService()
-val coreDataDB = CoreDataDBService()
-val mysqlDB = MySQLDBService()
-
-val room2VC = Room2Activity(sqliteDB)
-val room2 = Room(2, listOf("IPCam", "VDP"))
-
-// sql
-room2VC.saveRoomToDB(room2)
-room2VC.deleteRoomFromDB(room2.no)
-
-// coredata
-room2VC.databaseService = coreDataDB
-room2VC.saveRoomToDB(room2)
-room2VC.deleteRoomFromDB(room2.no)
-
-// mysql
-room2VC.databaseService = mysqlDB
-room2VC.saveRoomToDB(room2)
-room2VC.deleteRoomFromDB(room2.no)
-```
-
-{% endtab %}
-
-{% endtabs %}
-
-抽象 - interface, protocol, abstract class
-
-- 依賴於抽象可以使我們的程式碼更加有彈性, 也更好抽換依賴物件
-- 養成多寫一層抽象成能使程式碼更好維護、測試
-- 抽象層能使我們非常容易的製作假物件快速測試程式邏輯
-
-## Encapsulate What Varies 封裝變化
-
-找出程式中可能需要更動之處，把它們獨立出來，不要和那些不需要更動的程式碼混再一起。
-
-假設今天要設計一間鬆餅店，可以訂購鬆餅
-
-{% tabs encapsulate-what-varies-1 %}
-
-{% tab encapsulate-what-varies-1 Swift %}
-
-```swift
-func orderPancake(type: String) {
-    var pancake: Pancake?
-
-    // Code that is varying
-    switch type {
-    case "classic":
-        pancake = ClassicPancake()
-    case "blueberry":
-        pancake = BlueberryPancake()
-    case "banana":
-        pancake = BananaPancake()
-//    case "chocolate chip":
-//        pancake = ChocolateChipPancake()
-    default:
-        pancake = ClassicPancake()
-    }
-
-    // Important code that does not vary
-    pancake?.cook()
-    pancake?.plate()
-    pancake?.addButter()
-}
-```
-
-{% endtab %}
-
-{% tab encapsulate-what-varies-1 Kotlin %}
-
-```kotlin
-fun orderPancake(type: String) {
-
-    // Code that is varying
-    val pancake: Pancake = when (type) {
-        "classic" -> ClassicPancake()
-        "blueberry" -> BlueberryPancake()
-        "banana" -> BananaPancake()
-//        "chocolate chip" -> ChocolateChipPancake()
-        else -> ClassicPancake()
-    }
-
-    // Important code that does not vary
-    pancake.cook()
-    pancake.plate()
-    pancake.addButter()
-}
-```
-
-{% endtab %}
-
-{% endtabs %}
-
-但老闆今天想增加新口味 `ChocolateChip` ，但 cook(), plate(), addButter() 這些程式並不需要修改，所以我們應該將會變化的程式碼抽出來封裝，減少對不需變動的程式碼產生影響。
-
-{% tabs encapsulate-what-varies-2 %}
-
-{% tab encapsulate-what-varies-2 Swift %}
-
-```swift
-public class SimplePancakeFactory {
-    public class func createPancake(type: String) -> Pancake? {
-        var pancake: Pancake?
-
-        // Code that is varying
-        switch type {
-        case "classic":
-            pancake = ClassicPancake()
-        case "blueberry":
-            pancake = BlueberryPancake()
-        case "banana":
-            pancake = BananaPancake()
-        //    case "chocolate chip":
-        //        pancake = ChocolateChipPancake()
-        default:
-            pancake = ClassicPancake()
+    
+    fun validate(value: String): String {
+        var result = value
+        for (rule in rules) {
+            result = rule.validate(result)
         }
-
-        return pancake
+        return result
     }
-}
-
-func orderPancakeWithFactory(type: String) {
-    let pancake = SimplePancakeFactory.createPancake(type: type)
-
-    // Important code that does not vary
-    pancake?.cook()
-    pancake?.plate()
-    pancake?.addButter()
-}
-```
-
-{% endtab %}
-
-{% tab encapsulate-what-varies-2 Kotlin %}
-
-```kotlin
-object SimplePancakeFactory {
-    fun createPancake(type: String): Pancake {
-        return when (type) {
-            "classic" -> ClassicPancake()
-            "blueberry" -> BlueberryPancake()
-            "banana" -> BananaPancake()
-//        "chocolate chip" -> ChocolateChipPancake()
-            else -> ClassicPancake()
-        }
-    }
-}
-
-fun orderPancakeWithFactory(type: String) {
-    val pancake = SimplePancakeFactory.createPancake(type)
-
-    // Important code that does not vary
-    pancake.cook()
-    pancake.plate()
-    pancake.addButter()
 }
 ```
 
@@ -992,89 +412,391 @@ fun orderPancakeWithFactory(type: String) {
 
 {% endtabs %}
 
-如此我們就可以隨時添加新口味且不會影響其他不會變動的程式碼。
+**Benefits**:
+- **Extensibility**: New validation rules can be added without modifying existing code
+- **Maintainability**: Each validation rule is isolated and easy to maintain
+- **Flexibility**: Validation rules can be combined dynamically
 
-## Favor composition over inheritance 多用合成，少用繼承
+### 3. Liskov Substitution Principle (LSP)
 
-HAS-A (composition) can be better than IS-A (inheritance)
+**Definition**: Subtypes must be substitutable for their base types without altering the correctness of the program.
 
-盡量使用合成來取代繼承，並不是完全不使用繼承，而是多數情況下你應該考慮使用合成而不是繼承
+**Real-World Analogy**: If you have a program that works with rectangles, it should also work with squares (since a square is a type of rectangle).
 
-假設今天要設計一間咖啡店，裡面有賣很多咖啡，我們可以這樣設計
+#### Violating LSP
 
-{% include figure.liquid path="assets/img/design_pattern_design_principle_favor_composition_over_inheritance_1.png" title="design_pattern_design_principle_favor_composition_over_inheritance_1" %}
+```kotlin
+open class Rectangle {
+    open var width: Int = 0
+    open var height: Int = 0
+    
+    fun getArea(): Int = width * height
+}
 
-但如果今天客人要加 Butter 及 Milk，我們又要定義一個新的 class CoffeeWithButterAndMilk 繼承 Coffee
-我們會發現，隨著調味料種類越多，咖啡的組合也會越來越多，以及牛奶價格上漲，那所有包含牛奶的 Coffee 都必須修改
+class Square : Rectangle() {
+    override var width: Int = 0
+        set(value) {
+            field = value
+            height = value // This violates LSP
+        }
+    
+    override var height: Int = 0
+        set(value) {
+            field = value
+            width = value // This violates LSP
+        }
+}
 
-如果我們用合成取代繼承呢，從牛奶咖啡是(is-A)咖啡，變成咖啡有(has-A)各種調味料
+// This function expects a Rectangle but breaks with Square
+fun calculateArea(rectangle: Rectangle): Int {
+    rectangle.width = 5
+    rectangle.height = 4
+    return rectangle.getArea() // Expected 20, but with Square it might be 16
+}
+```
 
-{% include figure.liquid path="assets/img/design_pattern_design_principle_favor_composition_over_inheritance_2.png" title="design_pattern_design_principle_favor_composition_over_inheritance_2" %}
+#### Following LSP
 
-你會發現使用合成取代繼承有下列好處
+```kotlin
+interface Shape {
+    fun getArea(): Int
+}
 
-1. 可以在 Run time 替換不同的調料物件
-2. 新增一種新調料只需新增一個對應的 class
-3. 沒有重複的程式碼
-4. 避免 class 數量爆炸性增加
+class Rectangle : Shape {
+    var width: Int = 0
+    var height: Int = 0
+    
+    override fun getArea(): Int = width * height
+}
 
-> 再次強調不是完全不用繼承，而是"盡量"用合成取代繼承，像圖中例子 Mocha、Butter 及 Milk 也是有使用到繼承去繼承 Condiment
+class Square : Shape {
+    var side: Int = 0
+    
+    override fun getArea(): Int = side * side
+}
 
-## Loose Coupling 鬆耦合
+// This function works with any Shape
+fun calculateArea(shape: Shape): Int {
+    return shape.getArea()
+}
+```
 
-將每個組件獨立開來，使部件之間的相互影響降低
+### 4. Interface Segregation Principle (ISP)
 
-再來看一個範例，今天要做一個 Weather App，他可以取得溫度並顯示在螢幕上。
+**Definition**: Clients should not be forced to depend on interfaces they do not use.
 
-{% include figure.liquid path="assets/img/design_pattern_design_principle_loose_coupling_1.png" title="design_pattern_design_principle_loose_coupling_1" %}
+**Real-World Analogy**: A restaurant menu where you can order individual items instead of being forced to buy a complete meal.
 
-你會發現 WeatherApp 與 LCDScreen 緊密耦合，今天如果老闆想改成在 Widget 或 LED 上來顯示，WeatherApp 的 screen 屬性及 display 方法都要修改，且不能在 Run time 任意替換。
+#### Violating ISP
 
-我們改一下 UML 來將兩者之間做解耦
+```kotlin
+interface Worker {
+    fun work()
+    fun eat()
+    fun sleep()
+}
 
-{% include figure.liquid path="assets/img/design_pattern_design_principle_loose_coupling_2.png" title="design_pattern_design_principle_loose_coupling_2" %}
+class Robot : Worker {
+    override fun work() {
+        println("Robot working")
+    }
+    
+    override fun eat() {
+        // Robots don't eat - forced to implement unused method
+        throw UnsupportedOperationException("Robots don't eat")
+    }
+    
+    override fun sleep() {
+        // Robots don't sleep - forced to implement unused method
+        throw UnsupportedOperationException("Robots don't sleep")
+    }
+}
+```
 
-這樣不管老闆想改成什麼螢幕都能夠很輕易替換，因為 WeatherApp 依賴的是介面，不再是實體，善用抽象介面解耦兩個實體物件吧!
+#### Following ISP
 
-## Program to Interfaces 基於介面編程
+```kotlin
+interface Workable {
+    fun work()
+}
 
-寫程式是針對介面而寫，而不是針對實踐方式而寫。
+interface Eatable {
+    fun eat()
+}
 
-當你針對介面編寫，你會發現任何物件都變得非常好抽換，當你需要注入假資料測試，你可以作假物件實作此介面即可，當你在做 MVC MVP 等架構，只需要實作此介面就能輕易替換組件，當你開始已介面去思考，你會發現程式碼變得非常有彈性、且好擴充測試，Apple 甚至在 WWDC15 中提到 Swift 的 [Protocol-Oriented Programming](https://developer.apple.com/videos/play/wwdc2015/408/)，代表介面(協議)思考的重要性，所以從現在起開始從介面思考吧!
+interface Sleepable {
+    fun sleep()
+}
 
-來個例子，今天我們要設計一個基本網站，有一個 WebSystem 及 DB 來存讀資料
+class Human : Workable, Eatable, Sleepable {
+    override fun work() {
+        println("Human working")
+    }
+    
+    override fun eat() {
+        println("Human eating")
+    }
+    
+    override fun sleep() {
+        println("Human sleeping")
+    }
+}
 
-{% include figure.liquid path="assets/img/design_pattern_design_principle_program_to_interface_1.png" title="design_pattern_design_principle_program_to_interface_1" %}
+class Robot : Workable {
+    override fun work() {
+        println("Robot working")
+    }
+    // No need to implement eat() or sleep()
+}
+```
 
-今天我們想在上 Production 前，將 CommercialDB 換成 TestDB
-做測試，但目前 KillerWebSystem 的 db 型別為 CommercialDB 無法抽換
+### 5. Dependency Inversion Principle (DIP)
 
-讓我們修改一下
+**Definition**: High-level modules should not depend on low-level modules. Both should depend on abstractions.
 
-{% include figure.liquid path="assets/img/design_pattern_design_principle_program_to_interface_2.png" title="design_pattern_design_principle_program_to_interface_2" %}
+**Real-World Analogy**: A light switch (high-level) doesn't depend on a specific light bulb (low-level), but on the concept of a switchable device (abstraction).
 
-寫一個 AbstractDB 的介面或抽象類別，讓 CommercialDB 及 TestDB 都實作此介面，這樣就能很輕鬆的在測試環境替換 DB
+#### Violating DIP
 
-## 總結
+```kotlin
+class EmailNotifier {
+    fun sendEmail(to: String, message: String) {
+        println("Sending email to $to: $message")
+    }
+}
 
-在本篇文章中，我們深入探討了設計原則的重要性，並透過實際的例子，如何在不同環境下靈活切換數據庫實例，展示了這些原則在實際開發中的應用。通過引入 AbstractDB 介面，我們看到了如何將具體的數據庫實現（如 CommercialDB 和 TestDB）與系統的其他部分解耦，從而提高了程式碼的靈活性和可維護性。
+class UserService {
+    private val emailNotifier = EmailNotifier() // Direct dependency
+    
+    fun createUser(email: String) {
+        // User creation logic
+        emailNotifier.sendEmail(email, "Welcome!")
+    }
+}
+```
 
-這一過程不僅鞏固了我們對物件導向概念的理解，也為我們進一步探索設計模式鋪平了道路。設計原則是構建健壯、可擴展和靈活系統的基石，而設計模式則提供了一套解決特定設計問題的模板和最佳實踐。
+#### Following DIP
 
-隨著我們即將進入設計模式的探索，期待您能夠將這些原則與即將學習的模式結合起來，進一步提升您的軟件設計和開發能力。下一篇文章將帶您深入設計模式的世界，探索如何通過這些模式解決更加複雜的設計挑戰，敬請期待。
+```kotlin
+interface Notifier {
+    fun send(to: String, message: String)
+}
 
-{% include figure.liquid path="assets/img/design_pattern_design_principle_architecture.png" title="design_pattern_design_principle_architecture" %}
+class EmailNotifier : Notifier {
+    override fun send(to: String, message: String) {
+        println("Sending email to $to: $message")
+    }
+}
 
-> Object-Oriented Concepts -> Design Principle -> Design Pattern
+class SMSNotifier : Notifier {
+    override fun send(to: String, message: String) {
+        println("Sending SMS to $to: $message")
+    }
+}
 
-## 參考
+class UserService(private val notifier: Notifier) { // Depends on abstraction
+    fun createUser(email: String) {
+        // User creation logic
+        notifier.send(email, "Welcome!")
+    }
+}
 
-- [Head First Design Patterns](https://www.tenlong.com.tw/products/9789867794529)
-- [大話設計模式](https://www.tenlong.com.tw/products/9789866761799)
-- [Advanced Design Patterns: Design Principles](https://www.linkedin.com/learning/advanced-design-patterns-design-principles/what-are-design-principles?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-- [Programming Foundations: Design Patterns](https://www.linkedin.com/learning/programming-foundations-design-patterns-2/trying-interfaces?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-- [Design Patterns: Creational](https://www.linkedin.com/learning/design-patterns-creational/think-about-how-you-create-objects?autoAdvance=true&autoSkip=false&autoplay=true&resume=true)
-- [水球潘 - Design Pattern 之路](https://www.youtube.com/watch?v=yOe-uywb2qs&list=PLicQRHHL75d7EXEI9nWfUYJyrPdI79M70&pp=iAQB)
+// Usage
+val emailNotifier = EmailNotifier()
+val smsNotifier = SMSNotifier()
 
-**Note:** 如果有任何建議、問題或不同想法，歡迎留言或寄信給我，可以一起討論進步成長 🙂
-{: .notice--success}
+val userService1 = UserService(emailNotifier)
+val userService2 = UserService(smsNotifier)
+```
+
+## Advanced Design Principles
+
+### 1. **Don't Repeat Yourself (DRY)**
+
+```kotlin
+// Bad: Repeated code
+class UserService {
+    fun validateUser(user: User): Boolean {
+        if (user.name.isEmpty()) return false
+        if (user.email.isEmpty()) return false
+        if (user.age < 0) return false
+        return true
+    }
+}
+
+class ProductService {
+    fun validateProduct(product: Product): Boolean {
+        if (product.name.isEmpty()) return false
+        if (product.price < 0) return false
+        if (product.category.isEmpty()) return false
+        return true
+    }
+}
+
+// Good: Reusable validation
+interface Validatable {
+    fun validate(): Boolean
+}
+
+class User : Validatable {
+    val name: String = ""
+    val email: String = ""
+    val age: Int = 0
+    
+    override fun validate(): Boolean {
+        return name.isNotEmpty() && email.isNotEmpty() && age >= 0
+    }
+}
+
+class Product : Validatable {
+    val name: String = ""
+    val price: Double = 0.0
+    val category: String = ""
+    
+    override fun validate(): Boolean {
+        return name.isNotEmpty() && price >= 0 && category.isNotEmpty()
+    }
+}
+
+class ValidationService {
+    fun validate(validatable: Validatable): Boolean {
+        return validatable.validate()
+    }
+}
+```
+
+### 2. **Composition Over Inheritance**
+
+```kotlin
+// Prefer composition
+interface Flyable {
+    fun fly()
+}
+
+interface Swimmable {
+    fun swim()
+}
+
+class Duck {
+    private val flyable: Flyable = SimpleFlyable()
+    private val swimmable: Swimmable = SimpleSwimmable()
+    
+    fun fly() = flyable.fly()
+    fun swim() = swimmable.swim()
+}
+
+// Avoid deep inheritance hierarchies
+open class Animal
+open class Bird : Animal()
+open class FlyingBird : Bird()
+open class Duck : FlyingBird() // Too deep!
+```
+
+## Best Practices and Considerations
+
+### 1. **Start Simple**
+
+- Begin with simple solutions
+- Apply principles only when complexity demands it
+- Don't over-engineer simple problems
+
+### 2. **Consider Context**
+
+- Principles work best in specific contexts
+- Adapt principles to your specific needs
+- Balance between flexibility and simplicity
+
+### 3. **Refactor Gradually**
+
+- Apply principles incrementally
+- Test thoroughly after each change
+- Document your design decisions
+
+### 4. **Team Consensus**
+
+- Establish coding standards with your team
+- Use code reviews to enforce principles
+- Provide training and examples
+
+## Performance Considerations
+
+| Principle | Memory Usage | Performance | Maintainability | Extensibility |
+|-----------|--------------|-------------|-----------------|---------------|
+| SRP | Low | High | High | Medium |
+| OCP | Medium | Medium | High | High |
+| LSP | Low | High | High | High |
+| ISP | Low | High | High | High |
+| DIP | Medium | Medium | High | High |
+
+## Common Anti-Patterns
+
+### 1. **God Classes**
+```kotlin
+// Avoid: Classes with too many responsibilities
+class UserManager {
+    fun createUser() { /* ... */ }
+    fun updateUser() { /* ... */ }
+    fun deleteUser() { /* ... */ }
+    fun sendEmail() { /* ... */ }
+    fun generateReport() { /* ... */ }
+    fun backupData() { /* ... */ }
+    // ... 20 more methods
+}
+```
+
+### 2. **Tight Coupling**
+```kotlin
+// Avoid: Direct dependencies on concrete classes
+class OrderService {
+    private val database = MySQLDatabase() // Tight coupling
+    private val emailService = GmailService() // Tight coupling
+    
+    fun processOrder(order: Order) {
+        database.save(order)
+        emailService.sendConfirmation(order)
+    }
+}
+```
+
+### 3. **Interface Pollution**
+```kotlin
+// Avoid: Interfaces with too many methods
+interface FileOperations {
+    fun read(): String
+    fun write(data: String)
+    fun delete()
+    fun compress()
+    fun encrypt()
+    fun backup()
+    fun restore()
+    fun validate()
+    // ... 10 more methods
+}
+```
+
+## Related Design Patterns
+
+- **Strategy**: Uses DIP to define interchangeable algorithms
+- **Observer**: Uses DIP for loose coupling between components
+- **Decorator**: Uses OCP to add functionality without modification
+- **Adapter**: Uses ISP to create compatible interfaces
+
+## Conclusion
+
+Understanding and applying design principles is essential for creating maintainable, extensible, and robust software systems. The SOLID principles provide a solid foundation for object-oriented design and help developers write better code.
+
+Key benefits of following design principles include:
+
+- **Maintainability**: Code is easier to modify and extend
+- **Testability**: Components can be tested independently
+- **Reusability**: Code can be reused across different parts of the application
+- **Flexibility**: Systems can adapt to changing requirements
+
+These principles form the foundation for understanding and implementing design patterns effectively.
+
+## Related Articles
+
+- [Design Pattern 1: Object-Oriented Concepts](/2024-07-02-design-pattern-1-object-oriented-concepts/)
+- [Design Pattern 3: Design Patterns Overview](/2024-07-04-design-pattern-3-design-pattern/)
+- [Design Pattern 4: UML Diagrams](/2024-07-05-design-pattern-4-uml/)
+- [Design Pattern 5: Simple Factory Pattern](/2024-07-06-design-pattern-5-simple-factory-pattern/)

@@ -1,76 +1,84 @@
 ---
 layout: post
-title: Design Pattern (9) - Prototype Pattern (原型模式)
+title: "Design Pattern 9: Prototype Pattern - Efficient Object Cloning for Resource Management and Performance Optimization"
 date: 2024-07-21 23:00:00 +0800
-description: 深入原型模式：探索如何透過物件複製技術，有效提升軟體開發中的資源管理與設計模式的靈活性。
-tags: [Prototype Pattern]
-categories: [Design Pattern]
+description: "Master the Prototype Pattern to create object copies efficiently. Learn how to implement cloning mechanisms for complex objects, reduce resource overhead, and improve application performance with practical examples."
+tags: [Prototype Pattern, Design Patterns, Object Cloning, Performance Optimization, Resource Management, Software Architecture, Kotlin, Java, Swift, Deep Copy, Shallow Copy]
+categories: [Design Patterns, Software Development, Object-Oriented Programming, Performance]
 toc:
   #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
+> Download the complete Design Pattern series code from the [design_pattern repo](https://github.com/nickhuangcyh/design_pattern).
 
-## 前言
+## Introduction: The Power of Object Cloning
 
-這次的 Pattern 讓我想到以前做過的一個 App，但當時還沒有學習到 Pattern，所以沒有用 Pattern 來處理，現在發現這個功能很適合套用 prototype pattern
+The Prototype Pattern is a creational design pattern that allows you to create new objects by cloning existing ones, avoiding the overhead of creating objects from scratch. This pattern is particularly useful when object creation is expensive or when you need to create objects with similar initial states.
 
-這是一個用來編輯音樂燈光秀的 App，有興趣的讀者可以下載玩玩看 🙂
+## Real-World Applications
+
+The Prototype Pattern is widely used in:
+
+- **Graphics Applications**: Cloning shapes, sprites, and UI elements
+- **Game Development**: Creating multiple instances of game objects
+- **Document Editors**: Copying and pasting complex objects
+- **Configuration Management**: Creating variations of configuration objects
+- **Database Operations**: Cloning data transfer objects (DTOs)
+
+## Case Study: Music Light Show App
+
+This pattern reminds me of a music light show editing app I developed. The app allows users to create complex light sequences, and users often need to copy and paste light patterns to save time.
 
 - [Asante TapTap 3](https://apps.apple.com/tw/app/asante-taptap-3/id1581054107?platform=iphone)
 
-{% include figure.liquid path="assets/img/taptap_app_edit.png" title="taptap_app_edit" %}
+{% include figure.liquid path="assets/img/taptap_app_edit.png" title="Light show editing interface" %}
 
-## 需求
+## Problem Statement: Copy & Paste Functionality
 
-今天收到了客人的需求，客人反應編輯完一條燈光還要編輯另外六條好浪費時間，能不能新增 Copy & Paste 的功能，加快編輯以節省時間，如下圖
+Users requested a copy & paste feature to avoid recreating similar light patterns from scratch:
 
-{% include figure.liquid path="assets/img/taptap_app_copy.png" title="taptap_app_copy" %}
+{% include figure.liquid path="assets/img/taptap_app_copy.png" title="Copy functionality in light show app" %}
 
-{% include figure.liquid path="assets/img/taptap_app_paste.png" title="taptap_app_paste" %}
+{% include figure.liquid path="assets/img/taptap_app_paste.png" title="Paste functionality in light show app" %}
 
-## 物件導向分析 (OOA)
+## Object-Oriented Analysis (OOA)
 
-理解需求後，讓我們來快速實作物件導向分析吧!
+Let's analyze the requirements and design our initial solution:
 
-{% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_1.png" title="design_pattern_prototype_pattern_uml_1" %}
+{% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_1.png" title="Initial design without Prototype Pattern" %}
 
-當我們需要複製 `LightShowData` 時，只需要同樣的 jsonObject 資料重新 new 一個 `LightShowData` 即可複製一份
+When we need to copy `LightShowData`, we can simply create a new instance with the same JSON data.
 
-## 察覺 Forces
+## Identifying Design Forces
 
-來看看上面這樣的設計會有哪些問題
+Without the Prototype Pattern, we encounter several challenges:
 
-1. 如果我們的 constructor 很複雜，參數非常多，那麼重新 new 一個實體會需要知道很多細節。
-2. 如果 constructor 創建實體的過程，是很耗時複雜的計算，重新 new 一個實體會讓創建過程效率變差。
+1. **Complex Constructors**: If constructors have many parameters, creating new instances requires detailed knowledge
+2. **Performance Overhead**: If object creation involves expensive computations, recreating objects becomes inefficient
+3. **State Management**: Ensuring copied objects have the same state as originals can be complex
+4. **Memory Usage**: Creating objects from scratch may involve unnecessary resource allocation
 
-## 套用 Prototype Pattern ( Solution ) 得到新的 Context ( Resulting Context )
+## Applying Prototype Pattern Solution
 
-做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Prototype Pattern 解決這個問題
+The Prototype Pattern provides an elegant solution by allowing objects to clone themselves.
 
-先來看一下 Prototype Pattern 的 UML
+### Prototype Pattern UML Structure
 
-{% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_2.png" title="design_pattern_prototype_pattern_uml_2" %}
+{% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_2.png" title="Prototype Pattern UML diagram" %}
 
-原型模式主要包含以下兩個角色：
+**Key Components:**
+- **Prototype**: Abstract interface defining the clone method
+- **Concrete Prototype**: Implements the clone method to create exact copies
 
-1. **Prototype（原型）**：這是一個抽象介面，定義了複製自身的方法。在實體實現中，這個介面可以是一個抽象類或者實體類，主要目的是提供一個複製自己的方法。這使得在不需要知道物件實體類別的情況下也能創建物件的副本。
+### Applied to Light Show App
 
-2. **Concrete Prototype（實體原型）**：實現或繼承自原型介面的類。這個類實現了在原型介面中定義的複製（clone）方法，用於創建自身的一個精確副本。在實體實現時，這個類需要提供一個方法來複製自身的屬性，確保新創建的物件與原有物件在狀態上是相同的，但在記憶體中是獨立的。
+{% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_3.png" title="Light show app with Prototype Pattern" %}
 
-我們來將 LightShow App 套用 Prototype Pattern
+## Implementation: Object-Oriented Programming (OOP)
 
-{% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_3.png" title="design_pattern_prototype_pattern_uml_3" %}
-
-如此我們就得到了一個全新的 `Resulting Context`
-
-## 物件導向程式設計 (OOP)
-
-再來我們就可以開始進行物件導向程式開發
-
-[LightShowDataPrototype]
+### Prototype Interface
 
 ```kotlin
 interface LightShowDataPrototype {
@@ -80,13 +88,10 @@ interface LightShowDataPrototype {
 }
 ```
 
-[LightShowData]
+### Concrete Prototype Implementation
 
 ```kotlin
-package prototypepattern.source
-
 class LightShowData: LightShowDataPrototype {
-
     override val startIndex: Int
     override val lightDataList: List<Int>
 
@@ -106,29 +111,214 @@ class LightShowData: LightShowDataPrototype {
 }
 ```
 
-[main]
+### Client Usage
 
 ```kotlin
 fun main() {
     val originalData = listOf(1, 2, 3, 4, 5)
 
-    // Before using prototype pattern
+    // Before using prototype pattern - expensive recreation
     val originalLightShowData: LightShowDataPrototype = LightShowData(originalData)
     val newLightShowData: LightShowDataPrototype = LightShowData(originalData)
 
-    println(originalLightShowData)
-    println(newLightShowData)
+    println("Original: $originalLightShowData")
+    println("New (expensive): $newLightShowData")
 
-    // After using prototype pattern
-    val clonedLightShowData: LightShowDataPrototype = LightShowData(originalData)
+    // After using prototype pattern - efficient cloning
+    val clonedLightShowData: LightShowDataPrototype = originalLightShowData.clone()
 
-    println(originalLightShowData)
-    println(clonedLightShowData)
+    println("Original: $originalLightShowData")
+    println("Cloned (efficient): $clonedLightShowData")
 }
 ```
 
-我們可以發現，透過 clone() 方法複製，就可以不重複執行下面的程式碼，提升程式碼效能了
-
+By using the `clone()` method, we avoid repeating the expensive computation:
 ```kotlin
 originalDataList.subList(1, originalDataList.size).map { it * 2 }
 ```
+
+## Advanced Implementation: Deep vs Shallow Copy
+
+### Shallow Copy Implementation
+
+```kotlin
+class UserProfile: Cloneable {
+    var name: String = ""
+    var email: String = ""
+    var preferences: MutableList<String> = mutableListOf()
+    
+    public override fun clone(): UserProfile {
+        return super.clone() as UserProfile
+    }
+}
+```
+
+### Deep Copy Implementation
+
+```kotlin
+class UserProfile: Cloneable {
+    var name: String = ""
+    var email: String = ""
+    var preferences: MutableList<String> = mutableListOf()
+    
+    public override fun clone(): UserProfile {
+        val cloned = super.clone() as UserProfile
+        cloned.preferences = preferences.toMutableList() // Deep copy of list
+        return cloned
+    }
+}
+```
+
+## Real-World Example: Graphics System
+
+```kotlin
+abstract class Shape: Cloneable {
+    var color: String = "black"
+    var x: Int = 0
+    var y: Int = 0
+    
+    abstract fun draw()
+    
+    public override fun clone(): Shape {
+        return super.clone() as Shape
+    }
+}
+
+class Circle: Shape() {
+    var radius: Int = 10
+    
+    override fun draw() {
+        println("Drawing circle at ($x, $y) with radius $radius and color $color")
+    }
+    
+    override fun clone(): Circle {
+        val cloned = super.clone() as Circle
+        cloned.radius = this.radius
+        return cloned
+    }
+}
+
+class Rectangle: Shape() {
+    var width: Int = 20
+    var height: Int = 15
+    
+    override fun draw() {
+        println("Drawing rectangle at ($x, $y) with size ${width}x${height} and color $color")
+    }
+    
+    override fun clone(): Rectangle {
+        val cloned = super.clone() as Rectangle
+        cloned.width = this.width
+        cloned.height = this.height
+        return cloned
+    }
+}
+```
+
+## Best Practices and Considerations
+
+### 1. **Clone Method Implementation**
+
+```kotlin
+// Good: Proper clone implementation
+class ComplexObject: Cloneable {
+    private var data: MutableList<String> = mutableListOf()
+    private var metadata: Map<String, Any> = mapOf()
+    
+    public override fun clone(): ComplexObject {
+        val cloned = super.clone() as ComplexObject
+        cloned.data = data.toMutableList() // Deep copy
+        cloned.metadata = metadata.toMap() // Deep copy
+        return cloned
+    }
+}
+
+// Avoid: Incomplete cloning
+class BadClone: Cloneable {
+    private var data: MutableList<String> = mutableListOf()
+    
+    public override fun clone(): BadClone {
+        return super.clone() as BadClone // Shallow copy of mutable list!
+    }
+}
+```
+
+### 2. **Prototype Registry**
+
+```kotlin
+class PrototypeRegistry {
+    private val prototypes = mutableMapOf<String, Cloneable>()
+    
+    fun addPrototype(name: String, prototype: Cloneable) {
+        prototypes[name] = prototype
+    }
+    
+    fun getClone(name: String): Cloneable? {
+        return prototypes[name]?.let { it.clone() }
+    }
+}
+
+// Usage
+val registry = PrototypeRegistry()
+registry.addPrototype("default-user", UserProfile())
+val newUser = registry.getClone("default-user") as UserProfile
+```
+
+### 3. **Performance Optimization**
+
+```kotlin
+class ExpensiveObject: Cloneable {
+    private var computedValue: String? = null
+    
+    private fun computeExpensiveValue(): String {
+        // Expensive computation
+        return "computed result"
+    }
+    
+    fun getValue(): String {
+        if (computedValue == null) {
+            computedValue = computeExpensiveValue()
+        }
+        return computedValue!!
+    }
+    
+    public override fun clone(): ExpensiveObject {
+        val cloned = super.clone() as ExpensiveObject
+        cloned.computedValue = this.computedValue // Preserve computed value
+        return cloned
+    }
+}
+```
+
+## Performance Comparison
+
+| Approach | Memory Usage | Performance | Complexity |
+|----------|--------------|-------------|------------|
+| New Constructor | High | Low | High |
+| Prototype Clone | Low | High | Low |
+| Factory Method | Medium | Medium | Medium |
+
+## Related Design Patterns
+
+- **Factory Method**: Creates objects without specifying exact classes
+- **Abstract Factory**: Creates families of related objects
+- **Builder**: Constructs complex objects step by step
+- **Singleton**: Ensures only one instance exists
+
+## Conclusion
+
+The Prototype Pattern provides an efficient way to create object copies while avoiding the overhead of object creation from scratch. Key benefits include:
+
+- **Performance Improvement**: Avoids expensive object creation processes
+- **Simplified Object Creation**: Reduces complexity of object instantiation
+- **State Preservation**: Ensures copied objects maintain the same state
+- **Memory Efficiency**: Reduces resource allocation overhead
+
+This pattern is particularly valuable in scenarios where object creation is expensive or when you need to create multiple similar objects efficiently.
+
+## Related Articles
+
+- [Design Pattern 8: Builder Pattern](/2024-07-09-design-pattern-8-builder-pattern/)
+- [Design Pattern 10: Singleton Pattern](/2024-08-10-design-pattern-10-singleton-pattern/)
+- [Design Pattern 7: Abstract Factory Pattern](/2024-07-08-design-pattern-7-abstract-factory-pattern/)
+- [Object-Oriented Design Principles](/2024-07-03-design-pattern-2-design-principle/)

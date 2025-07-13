@@ -1,80 +1,392 @@
 ---
 layout: post
-title: Jenkins (2) - 如何架設 Jenkins 伺服器
+title: "Jenkins Server Setup: Complete Docker Installation Guide"
 date: 2024-08-15 17:00:00 +0800
-description: 學習如何使用 Docker 映像檔來架設 Jenkins 伺服器，提升開發團隊的自動化能力。
-tags: [Jenkins, CI/CD, DevOps, Docker]
-categories: [DevOps]
+description: "Learn how to set up Jenkins server using Docker containers. Step-by-step guide for CI/CD automation, including Android build environment setup and best practices."
+tags: [Jenkins, CI/CD, DevOps, Docker, Container, Automation, Build Server, GitHub Container Registry, Android Development]
+categories: [DevOps, CI/CD, Docker, Automation]
 toc:
-  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/jenkins.jpg
 ---
 
-## 如何架設 Jenkins 伺服器
+## 🚀 **Jenkins Server Setup Overview**
 
-在這篇文章中，我們將介紹如何使用 Docker 映像檔來架設 Jenkins 伺服器。這種方法不僅簡單快捷，還能確保環境的一致性。
+In this comprehensive guide, we'll walk you through setting up a Jenkins server using Docker containers. This approach is not only simple and fast but also ensures environment consistency across different deployments.
 
----
-
-### 步驟一：拉取 Docker 映像檔
-
-首先，我們需要從 GitHub Container Registry 拉取 Jenkins 的 Docker 映像檔。打開終端機並執行以下指令：
-
-```bash
-docker pull jenkins/jenkins:lts-jdk17 # 單純 jenkins 環境
-```
-
-or
-
-```bash
-docker pull ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17 # jenkins 環境 + Android 建構環境
-```
+**What You'll Learn:**
+- 🐳 **Docker-based Jenkins installation** for consistency
+- 🔧 **Step-by-step setup process** with detailed instructions
+- 📱 **Android build environment** integration
+- 🛡️ **Best practices** for production deployment
+- 🔍 **Troubleshooting** common setup issues
 
 ---
 
-### 步驟二：運行 Jenkins 容器
+## 🎯 **Why Use Docker for Jenkins Setup?**
 
-接下來，我們將運行 Jenkins 容器。請確保替換 `${volume path}` 為你希望 Jenkins 資料儲存的本地路徑。執行以下指令：
+### **Benefits of Docker-Based Jenkins:**
+- ✅ **Environment Consistency** - Same setup across development, staging, and production
+- ✅ **Easy Deployment** - Quick setup and teardown
+- ✅ **Version Control** - Specific Jenkins versions for different projects
+- ✅ **Resource Isolation** - No conflicts with other applications
+- ✅ **Scalability** - Easy to replicate for multiple environments
 
-```bash
-docker run -d -v ${volume path}:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts-jdk17 # 單純 jenkins 環境
-```
-
-or
-
-```bash
-docker run -d -v ${volume path}:/var/jenkins_home -p 8080:8080 -p 50000:50000 ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17 # jenkins 環境 + Android 建構環境
-```
-
-這個指令會在背景運行 Jenkins 容器，並將 Jenkins 的資料儲存在你指定的路徑中。同時，容器會綁定本地的 8080 端口和 50000 端口，分別用於 Jenkins 的 Web 介面和代理通訊。
+### **Available Jenkins Images:**
+- **Standard Jenkins**: `jenkins/jenkins:lts-jdk17`
+- **Android-Enabled Jenkins**: `ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17`
 
 ---
 
-### 步驟三：訪問 Jenkins
+## 🛠️ **Step-by-Step Jenkins Setup**
 
-容器啟動後，你可以在瀏覽器中打開 [http://localhost:8080](http://localhost:8080) 來訪問 Jenkins 的 Web 介面。首次訪問時，系統會要求你輸入初始管理員密碼。
+### **Step 1: Pull Docker Image**
 
-{% include figure.liquid path="assets/img/jenkins_setup_initialAdminPassword.png" title="Jenkins 初始密碼頁面" %}
+First, we need to pull the Jenkins Docker image from GitHub Container Registry. Open your terminal and execute one of the following commands:
 
-> ##### TIP
+#### **Option A: Standard Jenkins Environment**
+```bash
+docker pull jenkins/jenkins:lts-jdk17
+```
+
+#### **Option B: Jenkins with Android Build Environment**
+```bash
+docker pull ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17
+```
+
+**Image Comparison:**
+| Image | Description | Use Case |
+|-------|-------------|----------|
+| `jenkins/jenkins:lts-jdk17` | Standard Jenkins with JDK 17 | General CI/CD pipelines |
+| `ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17` | Jenkins + Android SDK + Build tools | Android app development |
+
+### **Step 2: Run Jenkins Container**
+
+Next, we'll run the Jenkins container. Make sure to replace `${volume_path}` with your desired local path for Jenkins data storage.
+
+#### **Option A: Standard Jenkins Container**
+```bash
+docker run -d \
+  --name jenkins-server \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  jenkins/jenkins:lts-jdk17
+```
+
+#### **Option B: Android-Enabled Jenkins Container**
+```bash
+docker run -d \
+  --name jenkins-android-server \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17
+```
+
+**Command Explanation:**
+- `-d`: Run container in detached mode (background)
+- `--name`: Assign a name to the container for easy management
+- `-v`: Mount local directory to container's Jenkins home
+- `-p 8080:8080`: Map container port 8080 to host port 8080 (Web UI)
+- `-p 50000:50000`: Map container port 50000 to host port 50000 (Agent communication)
+
+### **Step 3: Access Jenkins Web Interface**
+
+After the container starts, you can access Jenkins through your browser at [http://localhost:8080](http://localhost:8080). On first access, you'll be prompted to enter the initial administrator password.
+
+{% include figure.liquid path="assets/img/jenkins_setup_initialAdminPassword.png" title="Jenkins Initial Password Page" %}
+
+#### **Finding the Initial Password**
+
+> **💡 Pro Tip:** Remember the `${volume_path}` we set during container creation? You can find the initial password at:
 >
-> 還記得我們剛剛在 run container 時有設定 `${volume path}` 嗎？你可以透過以下路徑找到初始密碼：
->
-> `/var/jenkins_home/secrets/initialAdminPassword`
-> {: .block-tip }
+> ```bash
+> cat ${volume_path}/secrets/initialAdminPassword
+> ```
 
-輸入密碼後，按照指示安裝 Plugin 並完成初始設定，你就成功架設好 Jenkins 啦！🎉
+**Alternative Methods to Get Password:**
+```bash
+# Method 1: Check container logs
+docker logs jenkins-server
 
-{% include figure.liquid path="assets/img/jenkins_setup_main_page.png" title="Jenkins 初始主頁" %}
+# Method 2: Execute command inside container
+docker exec jenkins-server cat /var/jenkins_home/secrets/initialAdminPassword
+
+# Method 3: Direct file access (if volume is mounted)
+cat ${volume_path}/secrets/initialAdminPassword
+```
+
+### **Step 4: Complete Initial Setup**
+
+1. **Enter the initial password** from the previous step
+2. **Install recommended plugins** or choose custom installation
+3. **Create admin user** with secure credentials
+4. **Configure Jenkins URL** (use `http://localhost:8080` for local setup)
+5. **Start using Jenkins!** 🎉
+
+{% include figure.liquid path="assets/img/jenkins_setup_main_page.png" title="Jenkins Main Dashboard" %}
 
 ---
 
-## 總結
+## 🔧 **Advanced Configuration Options**
 
-通過以上步驟，我們成功地使用 Docker 映像檔架設了一個 Jenkins 伺服器。這種方法不僅快速，而且能確保環境一致性，對開發團隊來說是一個實用又穩定的解決方案。如果你還沒使用 Jenkins，現在就是開始的好時機！
+### **Custom Docker Run Command with Additional Options**
 
-> ##### TIP
->
-> 想了解更多關於 Jenkins 的資訊，請參考 [Jenkins 官方文件](https://jenkins.io/doc/)。
-> {: .block-tip }
+```bash
+docker run -d \
+  --name jenkins-server \
+  --restart unless-stopped \
+  -v jenkins_home:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /usr/bin/docker:/usr/bin/docker \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -e JAVA_OPTS="-Djenkins.install.runSetupWizard=false" \
+  -e JENKINS_OPTS="--prefix=/jenkins" \
+  jenkins/jenkins:lts-jdk17
+```
+
+**Advanced Options Explained:**
+- `--restart unless-stopped`: Automatically restart container on system reboot
+- `-v /var/run/docker.sock:/var/run/docker.sock`: Enable Docker-in-Docker capabilities
+- `-e JAVA_OPTS`: Customize JVM options
+- `-e JENKINS_OPTS`: Customize Jenkins startup options
+
+### **Docker Compose Setup**
+
+Create a `docker-compose.yml` file for easier management:
+
+```yaml
+version: '3.8'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk17
+    container_name: jenkins-server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    networks:
+      - jenkins-network
+
+volumes:
+  jenkins_home:
+
+networks:
+  jenkins-network:
+    driver: bridge
+```
+
+**Start with Docker Compose:**
+```bash
+docker-compose up -d
+```
+
+---
+
+## 🚨 **Troubleshooting Common Issues**
+
+### **Issue 1: Container Won't Start**
+```bash
+# Check container status
+docker ps -a
+
+# View container logs
+docker logs jenkins-server
+
+# Common solutions:
+# 1. Port already in use
+sudo lsof -i :8080
+# 2. Permission issues with volume
+sudo chown -R 1000:1000 ${volume_path}
+```
+
+### **Issue 2: Can't Access Jenkins Web UI**
+```bash
+# Check if container is running
+docker ps
+
+# Verify port mapping
+docker port jenkins-server
+
+# Test connectivity
+curl http://localhost:8080
+```
+
+### **Issue 3: Permission Denied Errors**
+```bash
+# Fix volume permissions
+sudo chown -R 1000:1000 ${volume_path}
+
+# Or run container with different user
+docker run -d \
+  --name jenkins-server \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  --user root \
+  jenkins/jenkins:lts-jdk17
+```
+
+### **Issue 4: Out of Memory Errors**
+```bash
+# Increase container memory limit
+docker run -d \
+  --name jenkins-server \
+  --memory=2g \
+  --memory-swap=4g \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  jenkins/jenkins:lts-jdk17
+```
+
+---
+
+## 📊 **Performance Optimization**
+
+### **Resource Recommendations**
+
+| Environment | CPU | Memory | Storage |
+|-------------|-----|--------|---------|
+| **Development** | 1 core | 2GB | 10GB |
+| **Testing** | 2 cores | 4GB | 20GB |
+| **Production** | 4+ cores | 8GB+ | 50GB+ |
+
+### **JVM Tuning**
+
+```bash
+# Optimize JVM settings for production
+docker run -d \
+  --name jenkins-server \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -e JAVA_OPTS="-Xmx4g -Xms2g -XX:+UseG1GC" \
+  jenkins/jenkins:lts-jdk17
+```
+
+---
+
+## 🔒 **Security Best Practices**
+
+### **1. Use HTTPS in Production**
+```bash
+# Mount SSL certificates
+docker run -d \
+  --name jenkins-server \
+  -v ${volume_path}:/var/jenkins_home \
+  -v /path/to/ssl:/var/jenkins_ssl \
+  -p 443:8080 \
+  -e JENKINS_OPTS="--httpPort=-1 --httpsPort=8080 --httpsCertificate=/var/jenkins_ssl/cert.pem --httpsPrivateKey=/var/jenkins_ssl/key.pem" \
+  jenkins/jenkins:lts-jdk17
+```
+
+### **2. Implement Authentication**
+- Use LDAP/Active Directory integration
+- Enable Jenkins security features
+- Regular password updates
+- Two-factor authentication (if available)
+
+### **3. Network Security**
+```bash
+# Use custom network with firewall rules
+docker network create --driver bridge --subnet=172.20.0.0/16 jenkins-network
+
+docker run -d \
+  --name jenkins-server \
+  --network jenkins-network \
+  --ip 172.20.0.2 \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  jenkins/jenkins:lts-jdk17
+```
+
+---
+
+## 📈 **Monitoring and Maintenance**
+
+### **Health Checks**
+```bash
+# Add health check to container
+docker run -d \
+  --name jenkins-server \
+  --health-cmd="curl -f http://localhost:8080 || exit 1" \
+  --health-interval=30s \
+  --health-timeout=10s \
+  --health-retries=3 \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  jenkins/jenkins:lts-jdk17
+```
+
+### **Backup Strategy**
+```bash
+# Create backup script
+#!/bin/bash
+BACKUP_DIR="/backup/jenkins"
+DATE=$(date +%Y%m%d_%H%M%S)
+
+# Stop Jenkins container
+docker stop jenkins-server
+
+# Create backup
+tar -czf "${BACKUP_DIR}/jenkins_backup_${DATE}.tar.gz" -C ${volume_path} .
+
+# Start Jenkins container
+docker start jenkins-server
+
+echo "Backup completed: jenkins_backup_${DATE}.tar.gz"
+```
+
+---
+
+## 🔗 **Related Articles**
+
+- [What is Jenkins?](/2024-08-15-jenkins-1-what-is-jenkins)
+- [Jenkins SSH Credentials Configuration](/2024-08-16-jenkins-3-configure-credentials-ssh)
+- [GitHub Container Registry Setup](/2024-07-23-getting-started-with-github-container-registry)
+- [macOS Development Environment](/2024-01-11-setup-development-environment-on-a-new-macos)
+
+---
+
+## ✅ **Conclusion**
+
+Congratulations! You've successfully set up a Jenkins server using Docker. This approach provides:
+
+**Key Benefits Achieved:**
+- 🚀 **Quick deployment** with Docker containers
+- 🔧 **Environment consistency** across different setups
+- 📱 **Android development support** (with custom image)
+- 🛡️ **Easy backup and restore** capabilities
+- 📈 **Scalable architecture** for team growth
+
+**Next Steps:**
+1. **Configure your first pipeline** in Jenkins
+2. **Set up build agents** for distributed builds
+3. **Integrate with version control** systems
+4. **Implement security measures** for production use
+5. **Set up monitoring and alerting**
+
+> **💡 Pro Tip:** Use Docker Compose for easier Jenkins management in development environments, and consider implementing automated backups for production deployments.
+
+---
+
+**💡 Pro Tip:** Consider using Jenkins Blue Ocean plugin for a more modern and intuitive pipeline visualization experience.
+
+**🔔 Stay Updated:** Follow our DevOps series for more CI/CD and automation insights!
+
+---
+
+**📚 Additional Resources:**
+- [Jenkins Official Documentation](https://jenkins.io/doc/)
+- [Docker Jenkins Image](https://hub.docker.com/r/jenkins/jenkins/)
+- [Jenkins Best Practices](https://jenkins.io/doc/book/architecting-for-scale/)
+- [CI/CD Pipeline Design](https://jenkins.io/doc/book/pipeline/)

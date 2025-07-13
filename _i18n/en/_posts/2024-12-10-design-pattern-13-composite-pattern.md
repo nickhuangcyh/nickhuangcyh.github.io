@@ -1,68 +1,75 @@
 ---
 layout: post
-title: Design Pattern (13) - Composite Pattern (組合模式)
+title: "Design Pattern 13: Composite Pattern - Unified Tree Structure Management for File Systems and UI Components"
 date: 2024-12-10 22:28:00 +0800
-description: 深入了解組合模式如何以一致的方式操作單個物件與物件集合，實現對樹狀結構的靈活管理。
-tags: [Composite Pattern]
-categories: [Design Pattern]
+description: "Master the Composite Pattern to treat individual objects and collections uniformly. Learn how to implement tree structures for file systems, UI components, and organizational hierarchies with practical examples and best practices."
+tags: [Composite Pattern, Design Patterns, Tree Structure, File System, UI Components, Object-Oriented Design, Software Architecture, Kotlin, Java, Swift]
+categories: [Design Patterns, Software Development, Object-Oriented Programming]
 toc:
   #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
+> Download the complete Design Pattern series code from the [design_pattern repo](https://github.com/nickhuangcyh/design_pattern).
 
-## 需求
+## Introduction: The Power of Unified Tree Structures
 
-我們收到了一個需求：實作一個檔案系統，其目錄可以包含檔案或子目錄，並且需要提供統一的操作介面來列出目錄內容。此系統應支援以下功能：
+The Composite Pattern is a structural design pattern that allows you to compose objects into tree structures and treat individual objects and compositions uniformly. This pattern is essential for building complex hierarchical systems like file systems, UI component trees, and organizational structures.
 
-- 支援樹狀結構的表示。
-- 可操作單一檔案和目錄。
-- 新增檔案或目錄時無需大幅修改現有程式碼。
+## Real-World Applications
 
-## 物件導向分析 (OOA)
+The Composite Pattern is widely used in:
 
-理解需求後，讓我們來快速實作物件導向分析吧!
+- **File Systems**: Directories containing files and subdirectories
+- **UI Frameworks**: Widget trees with containers and leaf components
+- **Organization Charts**: Departments with employees and sub-departments
+- **Graphics Systems**: Shapes that can contain other shapes
+- **Menu Systems**: Menus with submenus and menu items
 
-{% include figure.liquid path="assets/img/design_pattern_composite_pattern_uml_1.png" title="design_pattern_composite_pattern_uml_1" %}
+## Problem Statement: File System Management
 
-## 察覺 Forces
+We need to implement a file system where directories can contain files or subdirectories, providing a unified interface to list directory contents. The system should support:
 
-在未使用設計模式的情況下，上述需求可能會遇到以下問題：
+- Tree structure representation
+- Operations on both individual files and directories
+- Easy addition of new file or directory types without major code modifications
 
-1. **高耦合性 (Tight Coupling)**：
-   - 單一檔案和目錄集合的操作邏輯分散在多個類別中，導致系統維護困難。
-2. **重複代碼 (Code Duplication)**：
+## Object-Oriented Analysis (OOA)
 
-   - 每次操作目錄內容時，需分別處理檔案與子目錄，導致相似邏輯多處重複。
+Let's analyze the requirements and design our initial solution:
 
-3. **難以擴展 (Difficulty in Extending)**：
+{% include figure.liquid path="assets/img/design_pattern_composite_pattern_uml_1.png" title="Initial file system design without Composite Pattern" %}
 
-   - 新增檔案或目錄類型時，需大幅修改程式碼，影響系統穩定性。
+## Identifying Design Forces
 
-4. **靈活性差 (Lack of Flexibility)**：
-   - 操作層需清楚區分單一檔案與目錄集合，增加程式碼複雜度。
+Without using design patterns, we encounter several challenges:
 
-## 套用 Composite Pattern ( Solution ) 得到新的 Context ( Resulting Context )
+1. **High Coupling**: File and directory operations are scattered across multiple classes, making maintenance difficult
+2. **Code Duplication**: Similar logic is repeated when handling files vs. directories
+3. **Poor Extensibility**: Adding new file or directory types requires significant code changes
+4. **Lack of Flexibility**: Client code must distinguish between individual files and directory collections
 
-做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Composite Pattern 解決這個問題。
+## Applying Composite Pattern Solution
 
-先來看一下 Composite Pattern 的 UML：
+The Composite Pattern provides an elegant solution by creating a unified interface for both individual objects and collections.
 
-{% include figure.liquid path="assets/img/design_pattern_composite_pattern_uml_2.png" title="design_pattern_composite_pattern_uml_2" %}
+### Composite Pattern UML Structure
 
-- **Component (組件介面)**：定義統一的操作介面，單一檔案與目錄都需實作此介面。
-- **Leaf (葉子節點)**：表示檔案，不能再包含子節點。
-- **Composite (組合節點)**：表示目錄，可包含子節點（檔案或子目錄），並實作遞迴操作的邏輯。
+{% include figure.liquid path="assets/img/design_pattern_composite_pattern_uml_2.png" title="Composite Pattern UML diagram" %}
 
-將 Composite Pattern 套用到我們的應用吧
+**Key Components:**
+- **Component**: Defines the unified interface for both individual objects and collections
+- **Leaf**: Represents individual objects (files) that cannot contain children
+- **Composite**: Represents collections (directories) that can contain children and implement recursive operations
 
-{% include figure.liquid path="assets/img/design_pattern_composite_pattern_uml_3.png" title="design_pattern_composite_pattern_uml_3" %}
+### Applied to File System
 
-## 物件導向程式設計 (OOP)
+{% include figure.liquid path="assets/img/design_pattern_composite_pattern_uml_3.png" title="File system with Composite Pattern" %}
 
-[Component: FileSystemComponent]
+## Implementation: Object-Oriented Programming (OOP)
+
+### Component Interface
 
 ```kotlin
 abstract class FileSystemComponent(val name: String) {
@@ -77,20 +84,26 @@ abstract class FileSystemComponent(val name: String) {
     open fun remove(component: FileSystemComponent) {
         throw UnsupportedOperationException("Cannot remove component from a leaf.")
     }
-}
-```
-
-[Leaf: File]
-
-```kotlin
-class File(name: String) : FileSystemComponent(name) {
-    override fun display(indent: String) {
-        println("$indent- File: $name")
+    
+    open fun getSize(): Long {
+        throw UnsupportedOperationException("Size not implemented for this component.")
     }
 }
 ```
 
-[Composite: Directory]
+### Leaf Implementation (File)
+
+```kotlin
+class File(name: String, private val size: Long = 0) : FileSystemComponent(name) {
+    override fun display(indent: String) {
+        println("$indent- File: $name (${size} bytes)")
+    }
+    
+    override fun getSize(): Long = size
+}
+```
+
+### Composite Implementation (Directory)
 
 ```kotlin
 class Directory(name: String) : FileSystemComponent(name) {
@@ -108,47 +121,194 @@ class Directory(name: String) : FileSystemComponent(name) {
         println("$indent+ Directory: $name")
         children.forEach { it.display("$indent  ") }
     }
+    
+    override fun getSize(): Long {
+        return children.sumOf { it.getSize() }
+    }
+    
+    fun getChildCount(): Int = children.size
 }
 ```
 
-[Client]
+### Client Usage
 
 ```kotlin
 fun main() {
-    // Build Directories and files
+    // Build directory structure
     val root = Directory("Root")
-    val folder1 = Directory("Folder1")
-    val folder2 = Directory("Folder2")
+    val documents = Directory("Documents")
+    val images = Directory("Images")
+    val work = Directory("Work")
 
-    val file1 = File("File1.txt")
-    val file2 = File("File2.txt")
-    val file3 = File("File3.txt")
+    val readme = File("README.md", 1024)
+    val config = File("config.json", 512)
+    val photo1 = File("photo1.jpg", 2048576)
+    val photo2 = File("photo2.jpg", 1536000)
+    val report = File("report.pdf", 1048576)
 
-    // Add files & directories into directories
-    root.add(folder1)
-    root.add(file1)
+    // Build hierarchy
+    root.add(documents)
+    root.add(images)
+    root.add(readme)
+    root.add(config)
 
-    folder1.add(folder2)
-    folder1.add(file2)
+    documents.add(work)
+    work.add(report)
 
-    folder2.add(file3)
+    images.add(photo1)
+    images.add(photo2)
 
-    // display file structure
+    // Display structure
+    println("File System Structure:")
     root.display()
+    
+    println("\nSize Analysis:")
+    println("Root size: ${root.getSize()} bytes")
+    println("Documents size: ${documents.getSize()} bytes")
+    println("Images size: ${images.getSize()} bytes")
 }
 ```
 
-[Output]
-
+**Output:**
 ```bash
+File System Structure:
 + Directory: Root
-  + Directory: Folder1
-    + Directory: Folder2
-      - File: File3.txt
-    - File: File2.txt
-  - File: File1.txt
+  + Directory: Documents
+    + Directory: Work
+      - File: report.pdf (1048576 bytes)
+  + Directory: Images
+    - File: photo1.jpg (2048576 bytes)
+    - File: photo2.jpg (1536000 bytes)
+  - File: README.md (1024 bytes)
+  - File: config.json (512 bytes)
+
+Size Analysis:
+Root size: 4634688 bytes
+Documents size: 1048576 bytes
+Images size: 3584576 bytes
 ```
 
-## 結論
+## Advanced Implementation: UI Component Tree
 
-通過套用 Composite Pattern，我們成功實現了單一檔案與目錄集合的統一操作。有效降低了系統的耦合性，並且提供了高效的擴展性，當需要新增新的檔案類型或目錄結構時，無需大幅修改現有程式碼。透過此模式，開發者能夠以簡潔且一致的方式處理樹狀結構的邏輯，提升了程式的靈活性與可維護性。
+The Composite Pattern is also perfect for UI frameworks:
+
+```kotlin
+abstract class UIComponent(val name: String) {
+    abstract fun render(): String
+    abstract fun getBounds(): Rectangle
+    
+    open fun add(component: UIComponent) {
+        throw UnsupportedOperationException("Cannot add to leaf component")
+    }
+    
+    open fun remove(component: UIComponent) {
+        throw UnsupportedOperationException("Cannot remove from leaf component")
+    }
+}
+
+class Button(name: String, private val text: String) : UIComponent(name) {
+    override fun render(): String = "<button>$text</button>"
+    override fun getBounds(): Rectangle = Rectangle(0, 0, 100, 30)
+}
+
+class Panel(name: String) : UIComponent(name) {
+    private val children = mutableListOf<UIComponent>()
+    
+    override fun render(): String {
+        val childRenders = children.joinToString("\n") { "  ${it.render()}" }
+        return "<div class='panel'>\n$childRenders\n</div>"
+    }
+    
+    override fun getBounds(): Rectangle {
+        // Calculate bounds based on children
+        return Rectangle(0, 0, 200, 150)
+    }
+    
+    override fun add(component: UIComponent) {
+        children.add(component)
+    }
+    
+    override fun remove(component: UIComponent) {
+        children.remove(component)
+    }
+}
+```
+
+## Best Practices and Considerations
+
+### 1. **Type Safety**
+```kotlin
+// Good: Type-safe operations
+abstract class Component {
+    abstract fun operation()
+    open fun add(component: Component) {
+        throw UnsupportedOperationException()
+    }
+}
+
+// Avoid: Runtime type checking
+fun processComponent(component: Component) {
+    if (component is Composite) {
+        // Handle composite
+    } else if (component is Leaf) {
+        // Handle leaf
+    }
+}
+```
+
+### 2. **Memory Management**
+```kotlin
+class Composite(name: String) : Component(name) {
+    private val children = WeakHashMap<Component, Boolean>()
+    
+    override fun add(component: Component) {
+        children[component] = true
+    }
+}
+```
+
+### 3. **Visitor Pattern Integration**
+```kotlin
+interface ComponentVisitor {
+    fun visitFile(file: File)
+    fun visitDirectory(directory: Directory)
+}
+
+abstract class FileSystemComponent(val name: String) {
+    abstract fun accept(visitor: ComponentVisitor)
+}
+```
+
+## Performance Considerations
+
+| Operation | Leaf | Composite | Notes |
+|-----------|------|-----------|-------|
+| Add/Remove | O(1) | O(1) | Direct operation |
+| Search | O(1) | O(n) | Linear search through children |
+| Traversal | O(1) | O(n) | Visit all children |
+| Memory | Low | Higher | Stores child references |
+
+## Related Design Patterns
+
+- **Decorator Pattern**: Adds responsibilities to individual objects
+- **Chain of Responsibility**: Passes requests along a chain of handlers
+- **Visitor Pattern**: Separates algorithms from object structure
+- **Iterator Pattern**: Traverses composite structures
+
+## Conclusion
+
+The Composite Pattern provides a powerful way to build tree structures while treating individual objects and collections uniformly. Key benefits include:
+
+- **Unified Interface**: Same operations work on both individual objects and collections
+- **Simplified Client Code**: Clients don't need to distinguish between leaf and composite objects
+- **Easy Extension**: New component types can be added without changing existing code
+- **Recursive Operations**: Natural support for operations that traverse the entire tree
+
+This pattern is essential for building complex hierarchical systems and is widely used in file systems, UI frameworks, and organizational structures.
+
+## Related Articles
+
+- [Design Pattern 12: Bridge Pattern](/2024-12-08-design-pattern-12-bridge-pattern/)
+- [Design Pattern 14: Decorator Pattern](/2024-12-11-design-pattern-14-decorator-pattern/)
+- [Design Pattern 15: Facade Pattern](/2024-12-12-design-pattern-15-facade-pattern/)
+- [Object-Oriented Design Principles](/2024-07-03-design-pattern-2-design-principle/)

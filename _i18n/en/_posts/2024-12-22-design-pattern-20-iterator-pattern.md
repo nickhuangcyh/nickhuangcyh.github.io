@@ -1,71 +1,99 @@
 ---
 layout: post
-title: Design Pattern (20) - Iterator Pattern (迭代器模式)
+title: "Design Pattern 20: Iterator Pattern - Complete Guide with Real-World File System Examples"
 date: 2024-12-22 14:00:00 +0800
-description: 了解迭代器模式如何提供一種順序來訪問集合內元素的方法，而不需要暴露集合的底層表示。
-tags: [Iterator Pattern]
-categories: [Design Pattern]
+description: "Master the Iterator Pattern with practical file system traversal examples. Learn how to provide sequential access to collection elements without exposing internal structure, improving code flexibility and maintainability."
+tags: [Iterator Pattern, Design Patterns, Collection Traversal, Object-Oriented Design, Software Architecture, Kotlin, Programming, Behavioral Patterns, File System, BFS, DFS]
+categories: [Design Pattern, Software Engineering, Programming]
 toc:
-  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
+> 📁 **Download the complete Design Pattern series code** from our [design_pattern repository](https://github.com/nickhuangcyh/design_pattern).
 
-## 需求
+---
 
-我們的任務是設計一個檔案系統搜尋工具，需求如下：
+## 🎯 **What is the Iterator Pattern?**
 
-- 使用者可以選擇不同的檔案搜尋方式，例如 **廣度優先搜尋 (BFS)** 或 **深度優先搜尋 (DFS)**。
-- 客戶端不需要關心搜尋邏輯的實現細節，只需使用統一的迭代器介面來遍歷搜尋結果。
-- 系統需要具備擴展性，方便新增其他搜尋法，例如基於檔案大小排序的搜尋。
+The **Iterator Pattern** is a behavioral design pattern that provides a way to access elements of a collection sequentially without exposing its underlying representation. It encapsulates the traversal logic and provides a uniform interface for accessing collection elements.
 
-## 物件導向分析 (OOA)
+**Key Benefits:**
+- ✅ **Encapsulation** - Hide internal collection structure from clients
+- ✅ **Uniform interface** - Consistent access method across different collections
+- ✅ **Multiple traversal strategies** - Support different iteration algorithms (BFS, DFS, etc.)
+- ✅ **Single Responsibility** - Separate traversal logic from collection logic
+- ✅ **Extensibility** - Easy to add new traversal methods
 
-理解需求後，讓我們來快速實作物件導向分析吧！
+---
 
-{% include figure.liquid path="assets/img/design_pattern_iterator_pattern_uml_1.png" title="design_pattern_iterator_pattern_uml_1" %}
+## 🚀 **Real-World Problem: File System Search Tool**
 
-## 察覺 Forces
+Let's design a **file system search tool** with the following requirements:
 
-在未使用設計模式的情況下，我們可能面臨以下挑戰：
+### **System Requirements:**
+- **Support multiple search strategies** (Breadth-First Search, Depth-First Search)
+- **Client transparency** - Clients shouldn't need to know search implementation details
+- **Unified interface** - Consistent way to access search results
+- **Extensibility** - Easy to add new search methods (e.g., size-based sorting)
+- **Performance optimization** - Efficient traversal for large file systems
 
-1. **高耦合性 (High Coupling)**：
+### **Business Rules:**
+- All search results should be accessible through a common iterator interface
+- Search strategies should be interchangeable without client code changes
+- System should handle different file system structures efficiently
+- Support for filtering and sorting during traversal
 
-   - 客戶端需要直接操作每種搜尋方式的實現細節，導致代碼臃腫且難以維護。
+---
 
-2. **缺乏一致性 (Lack of Consistency)**：
+## 🏗️ **Object-Oriented Analysis (OOA)**
 
-   - 不同搜尋方式的結果訪問方式可能不一致。
+Let's analyze the problem and identify the core components:
 
-3. **違反開放關閉原則 (Violates OCP)**：
-   - 若新增搜尋法或更改現有搜尋邏輯，需要修改客戶端程式碼。
+{% include figure.liquid path="assets/img/design_pattern_iterator_pattern_uml_1.png" title="Iterator Pattern - Problem Analysis" %}
 
-## 套用 Iterator Pattern (Solution) 得到新的 Context (Resulting Context)
+### **Identified Forces:**
 
-做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Iterator Pattern 解決這個問題。
+1. **High Coupling**
+   - Client code directly depends on specific search implementation details
+   - Changes to search logic require client code modifications
 
-迭代器模式允許我們對搜尋結果進行順序訪問，而不需要暴露搜尋邏輯的細節。
+2. **Lack of Consistency**
+   - Different search methods may have inconsistent result access patterns
+   - No standardized way to traverse search results
 
-先來看一下 Iterator Pattern 的 UML：
+3. **Violation of Open-Closed Principle (OCP)**
+   - Adding new search methods requires modifying existing client code
+   - System becomes rigid and hard to extend
 
-{% include figure.liquid path="assets/img/design_pattern_iterator_pattern_uml_2.png" title="design_pattern_iterator_pattern_uml_2" %}
+---
 
-以下是 Iterator Pattern 的主要角色：
+## 💡 **Iterator Pattern Solution**
 
-- **Iterator (迭代器介面)**：定義訪問搜尋結果的方法，例如 `hasNext()` 和 `next()`。
-- **ConcreteIterator (具體迭代器)**：實現不同的搜尋邏輯，如 BFS 或 DFS。
-- **Aggregate (聚合介面)**：定義方法來創建迭代器。
-- **ConcreteAggregate (具體聚合類別)**：實現聚合介面，提供檔案系統資料的具體實現。
+After analyzing the forces, we can apply the **Iterator Pattern** to decouple traversal logic from collection structure:
 
-將 Iterator Pattern 套用到我們的應用吧
+{% include figure.liquid path="assets/img/design_pattern_iterator_pattern_uml_2.png" title="Iterator Pattern - General Structure" %}
 
-{% include figure.liquid path="assets/img/design_pattern_iterator_pattern_uml_3.png" title="design_pattern_iterator_pattern_uml_3" %}
+### **Iterator Pattern Components:**
 
-## 物件導向程式設計 (OOP)
+1. **Iterator Interface** - Defines methods for accessing collection elements
+2. **Concrete Iterators** - Implement specific traversal strategies (BFS, DFS)
+3. **Aggregate Interface** - Defines method to create iterator
+4. **Concrete Aggregate** - Implements aggregate interface and provides collection data
 
-[Iterator]
+**Benefits:**
+- **Encapsulated traversal logic** - Clients don't need to know implementation details
+- **Multiple traversal strategies** - Easy to switch between BFS, DFS, etc.
+- **Consistent interface** - Uniform access pattern across all iterators
+- **Easy extension** - Add new traversal methods without changing existing code
+
+---
+
+## 🛠️ **Implementation: File System Search Tool**
+
+{% include figure.liquid path="assets/img/design_pattern_iterator_pattern_uml_3.png" title="File System Iterator Pattern Implementation" %}
+
+### **1. Iterator Interface**
 
 ```kotlin
 interface Iterator<T> {
@@ -74,7 +102,7 @@ interface Iterator<T> {
 }
 ```
 
-[Aggregate: FileSystem]
+### **2. Aggregate Interface**
 
 ```kotlin
 interface FileSystem {
@@ -82,7 +110,7 @@ interface FileSystem {
 }
 ```
 
-[ConcreteIterator: BFSIterator, DFSIterator]
+### **3. Concrete Iterators**
 
 ```kotlin
 class BFSIterator(private val root: File) : Iterator<File> {
@@ -126,34 +154,75 @@ class DFSIterator(private val root: File) : Iterator<File> {
         return current
     }
 }
+
+class SizeBasedIterator(private val root: File) : Iterator<File> {
+    private val files = mutableListOf<File>()
+    private var currentIndex = 0
+
+    init {
+        collectFiles(root)
+        files.sortBy { it.size }
+    }
+
+    private fun collectFiles(directory: File) {
+        if (directory.isDirectory) {
+            directory.listFiles()?.forEach { file ->
+                if (file.isFile) {
+                    files.add(file)
+                } else {
+                    collectFiles(file)
+                }
+            }
+        }
+    }
+
+    override fun hasNext(): Boolean {
+        return currentIndex < files.size
+    }
+
+    override fun next(): File {
+        if (!hasNext()) throw NoSuchElementException()
+        return files[currentIndex++]
+    }
+}
 ```
 
-[ConcreteAggregate: DefaultFileSystem]
+### **4. Concrete Aggregate**
 
 ```kotlin
-class DefaultFileSystem(private val root: File, private val searchMethod: SearchMethod) : FileSystem {
+class DefaultFileSystem(
+    private val root: File, 
+    private val searchMethod: SearchMethod
+) : FileSystem {
+    
     override fun createIterator(): Iterator<File> {
         return when (searchMethod) {
             SearchMethod.BFS -> BFSIterator(root)
             SearchMethod.DFS -> DFSIterator(root)
+            SearchMethod.SIZE_BASED -> SizeBasedIterator(root)
         }
     }
 }
 
 enum class SearchMethod {
-    BFS, DFS
+    BFS, DFS, SIZE_BASED
 }
 ```
 
-[File]
+### **5. File Model**
 
 ```kotlin
-data class File(val name: String, val isDirectory: Boolean, val children: List<File> = emptyList()) {
+data class File(
+    val name: String, 
+    val isDirectory: Boolean, 
+    val size: Long = 0,
+    val children: List<File> = emptyList()
+) {
     fun listFiles(): List<File> = if (isDirectory) children else emptyList()
 }
 ```
 
-[Client]
+### **6. Client Code**
 
 ```kotlin
 fun main() {
@@ -162,13 +231,13 @@ fun main() {
             name = "root",
             isDirectory = true,
             children = listOf(
-                File("file1.txt", false),
-                File("folder1", true, listOf(
-                    File("file2.txt", false),
-                    File("file3.txt", false)
+                File("file1.txt", false, 1024),
+                File("folder1", true, children = listOf(
+                    File("file2.txt", false, 2048),
+                    File("file3.txt", false, 512)
                 )),
-                File("folder2", true, listOf(
-                    File("file4.txt", false)
+                File("folder2", true, children = listOf(
+                    File("file4.txt", false, 3072)
                 ))
             )
         ),
@@ -176,26 +245,230 @@ fun main() {
     )
 
     val iterator = fileSystem.createIterator()
-    println("Files:")
+    println("BFS Traversal:")
     while (iterator.hasNext()) {
-        println("- ${iterator.next().name}")
+        val file = iterator.next()
+        println("- ${file.name} (${if (file.isDirectory) "DIR" else "${file.size} bytes"})")
     }
 }
 ```
 
-[Output]
-
-```bash
-Files:
-- root
-- file1.txt
-- folder1
-- folder2
-- file2.txt
-- file3.txt
-- file4.txt
+**Expected Output:**
+```
+BFS Traversal:
+- root (DIR)
+- file1.txt (1024 bytes)
+- folder1 (DIR)
+- folder2 (DIR)
+- file2.txt (2048 bytes)
+- file3.txt (512 bytes)
+- file4.txt (3072 bytes)
 ```
 
-## 結論
+---
 
-透過 Iterator Pattern，我們成功實現了不同搜尋法的整合，讓客戶端能以一致的方式訪問搜尋結果。此模式提升了系統的靈活性與擴展性，特別適合處理多種遍歷邏輯的場景，例如檔案搜尋、樹狀結構遍歷等。
+## 📊 **Iterator Pattern vs Alternative Approaches**
+
+| Approach | Pros | Cons |
+|----------|------|------|
+| **Iterator Pattern** | ✅ Encapsulated traversal logic<br>✅ Multiple strategies<br>✅ Consistent interface | ❌ Additional complexity<br>❌ Memory overhead for large collections |
+| **Direct Collection Access** | ✅ Simple implementation<br>✅ No overhead | ❌ Exposes internal structure<br>❌ Tight coupling<br>❌ Hard to extend |
+| **Strategy Pattern** | ✅ Runtime strategy switching<br>✅ Clean separation | ❌ No standardized traversal interface<br>❌ More complex for simple cases |
+
+---
+
+## 🎯 **When to Use the Iterator Pattern**
+
+### **✅ Perfect For:**
+- **Complex collections** (trees, graphs, custom data structures)
+- **Multiple traversal strategies** (BFS, DFS, inorder, etc.)
+- **Encapsulation requirements** (hide internal structure)
+- **Framework development** (provide consistent APIs)
+- **Large datasets** (lazy evaluation, memory efficiency)
+
+### **❌ Avoid When:**
+- **Simple linear collections** (arrays, lists)
+- **Single traversal strategy**
+- **Performance-critical applications** (iterator overhead)
+- **Small, static collections**
+
+---
+
+## 🔧 **Advanced Iterator Pattern Implementations**
+
+### **1. Lazy Iterator for Large Collections**
+
+```kotlin
+class LazyFileIterator(private val root: File) : Iterator<File> {
+    private val stack = ArrayDeque<File>()
+    private var currentFile: File? = null
+
+    init {
+        if (root.exists()) {
+            stack.push(root)
+        }
+    }
+
+    override fun hasNext(): Boolean {
+        if (currentFile != null) return true
+        
+        while (stack.isNotEmpty()) {
+            val file = stack.pop()
+            if (file.isDirectory) {
+                file.listFiles()?.forEach { stack.push(it) }
+            } else {
+                currentFile = file
+                return true
+            }
+        }
+        return false
+    }
+
+    override fun next(): File {
+        if (!hasNext()) throw NoSuchElementException()
+        val file = currentFile!!
+        currentFile = null
+        return file
+    }
+}
+```
+
+### **2. Filtering Iterator**
+
+```kotlin
+class FilteringIterator<T>(
+    private val iterator: Iterator<T>,
+    private val predicate: (T) -> Boolean
+) : Iterator<T> {
+    private var nextElement: T? = null
+    private var hasNextElement = false
+
+    override fun hasNext(): Boolean {
+        if (hasNextElement) return true
+        
+        while (iterator.hasNext()) {
+            val element = iterator.next()
+            if (predicate(element)) {
+                nextElement = element
+                hasNextElement = true
+                return true
+            }
+        }
+        return false
+    }
+
+    override fun next(): T {
+        if (!hasNext()) throw NoSuchElementException()
+        val element = nextElement!!
+        nextElement = null
+        hasNextElement = false
+        return element
+    }
+}
+```
+
+### **3. Composite Iterator**
+
+```kotlin
+class CompositeIterator(private val iterators: List<Iterator<File>>) : Iterator<File> {
+    private var currentIteratorIndex = 0
+
+    override fun hasNext(): Boolean {
+        while (currentIteratorIndex < iterators.size) {
+            if (iterators[currentIteratorIndex].hasNext()) {
+                return true
+            }
+            currentIteratorIndex++
+        }
+        return false
+    }
+
+    override fun next(): File {
+        if (!hasNext()) throw NoSuchElementException()
+        return iterators[currentIteratorIndex].next()
+    }
+}
+```
+
+---
+
+## 🚀 **Real-World Applications**
+
+### **1. File System Browsers**
+- **Windows Explorer, macOS Finder** - Use iterators for file traversal
+- **IDE file trees** - Navigate project structure efficiently
+- **Backup systems** - Traverse file hierarchies for backup operations
+
+### **2. Database Query Results**
+- **JDBC ResultSet** - Iterator pattern for database results
+- **ORM frameworks** - Lazy loading of related objects
+- **Stream processing** - Handle large result sets efficiently
+
+### **3. Collection Frameworks**
+- **Java Collections Framework** - Standard iterator implementations
+- **C++ STL** - Iterator-based algorithms
+- **Python generators** - Iterator pattern for memory efficiency
+
+---
+
+## 📈 **Performance Considerations**
+
+### **Memory Efficiency**
+- **Lazy evaluation** - Load elements only when needed
+- **Stream processing** - Handle large datasets without loading everything into memory
+- **Iterator pooling** - Reuse iterator objects for better performance
+
+### **Time Complexity**
+- **BFS vs DFS** - Choose based on search requirements
+- **Caching** - Cache frequently accessed elements
+- **Parallel iteration** - Use multiple threads for large collections
+
+---
+
+## 🔗 **Related Design Patterns**
+
+- **[Strategy Pattern](/2024-12-26-design-pattern-25-strategy-pattern/)** - For different traversal algorithms
+- **[Composite Pattern](/2024-12-10-design-pattern-13-composite-pattern/)** - For tree-like structures
+- **[Factory Method Pattern](/2024-07-07-design-pattern-6-factory-method-pattern/)** - For creating appropriate iterators
+- **[Command Pattern](/2024-12-21-design-pattern-19-command-pattern/)** - For undoable traversal operations
+
+---
+
+## 📚 **Best Practices**
+
+### **1. Iterator Design**
+- **Keep iterators lightweight** - Avoid storing large amounts of state
+- **Handle concurrent modification** - Detect when collection changes during iteration
+- **Provide fail-fast behavior** - Fail immediately when collection is modified
+
+### **2. Performance Optimization**
+- **Use lazy evaluation** for large collections
+- **Implement caching** for expensive operations
+- **Consider parallel iteration** for CPU-intensive operations
+
+### **3. Error Handling**
+- **Validate iterator state** before operations
+- **Handle empty collections** gracefully
+- **Provide meaningful error messages**
+
+---
+
+## 🎯 **Conclusion**
+
+The **Iterator Pattern** provides a powerful way to traverse collections while maintaining encapsulation and flexibility. By separating traversal logic from collection structure, it enables:
+
+- **Clean, maintainable code** with clear separation of concerns
+- **Multiple traversal strategies** without changing client code
+- **Consistent interfaces** across different collection types
+- **Easy extension** for new traversal methods
+
+This pattern is essential for building robust, scalable systems that need to handle complex data structures efficiently. Whether you're building file system tools, database applications, or collection frameworks, the Iterator Pattern provides the foundation for flexible and maintainable traversal logic.
+
+**Next Steps:**
+- Explore the **[Strategy Pattern](/2024-12-26-design-pattern-25-strategy-pattern/)** for different traversal algorithms
+- Learn about the **[Composite Pattern](/2024-12-10-design-pattern-13-composite-pattern/)** for tree-like structures
+- Discover the **[Factory Method Pattern](/2024-07-07-design-pattern-6-factory-method-pattern/)** for creating iterators
+
+---
+
+*Ready to implement the Iterator Pattern in your projects? Download the complete code examples from our [design_pattern repository](https://github.com/nickhuangcyh/design_pattern) and start building more flexible, maintainable systems today!*

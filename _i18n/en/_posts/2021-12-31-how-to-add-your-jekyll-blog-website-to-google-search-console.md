@@ -1,114 +1,305 @@
 ---
 layout: post
-title: 如何讓 Jekyll 網站被 Google 搜尋到｜Search Console + Sitemap 教學
+title: "SEO Guide: Add Your Jekyll Blog to Google Search Console and Submit Sitemap"
 date: 2021-12-31 11:26:00 +0800
-description: Google 大大，你把我的網頁藏哪去了？教你兩步驟：提交 Search Console、啟用 Sitemap！
-tags: [Jekyll, Google, SEO, Search Console, Sitemap]
-categories: [Blog]
+description: "Complete step-by-step guide to make your Jekyll blog discoverable on Google. Learn how to verify site ownership with Google Search Console and submit XML sitemaps for better SEO indexing."
+tags: [Jekyll, Google Search Console, SEO, Sitemap, XML, Web Development, Blog Optimization, Search Engine]
+categories: [SEO, Web Development]
 toc:
   #   beginning: true
   sidebar: right
 thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 ---
 
-## 在 Google 找不到我的 Blog？
+## Can't Find Your Blog on Google?
 
-你是不是也遇到過剛建好的 Jekyll 網站，在 Google 上怎麼搜尋都找不到？別擔心，這不是網站壞掉，而是因為我們還沒向 Google 「自我介紹」。
+Have you ever experienced the frustration of building a Jekyll website only to find it completely invisible on Google search results? Don't worry - this doesn't mean your site is broken. It simply means you haven't properly introduced your website to Google's search engine yet.
 
-要讓搜尋引擎知道你的網站存在，需要做兩件事：
+To make search engines aware of your website's existence, you need to complete two essential steps:
 
-1. 將網站提交給 **Google Search Console**
-2. 提交 **Sitemap（網站地圖）**
+1. **Submit your site to Google Search Console**
+2. **Submit your Sitemap (XML site map)**
 
 ---
 
-## 步驟一：將網站加入 Google Search Console
+## Why SEO Matters for Your Blog
 
-前往 👉 [Google Search Console](https://search.google.com/search-console/welcome?hl=zh-CN&utm_source=about-page&pli=1)
+Search Engine Optimization (SEO) is crucial for any website's success:
 
-選擇「網址前綴」方式，輸入你的 blog 網址（建議使用 HTTPS 格式），點擊繼續。
+- **Increased Visibility**: Help users find your content
+- **Organic Traffic**: Drive free, targeted visitors
+- **Credibility**: Higher rankings build trust
+- **Long-term Growth**: Sustainable traffic source
 
-{% include figure.liquid path="assets/img/google_search_console.png" title="新增網站到 Google Search Console" %}
+---
 
-接著會要求你下載驗證檔 `googlexxxxxxxxxx.html`，請將它放入你的 Jekyll 根目錄。
+## Step 1: Add Your Site to Google Search Console
+
+Visit 👉 [Google Search Console](https://search.google.com/search-console/welcome?hl=en&utm_source=about-page&pli=1)
+
+Choose the "URL prefix" method and enter your blog URL (recommended to use HTTPS format), then click continue.
+
+{% include figure.liquid path="assets/img/google_search_console.png" title="Add Website to Google Search Console" %}
+
+Google will ask you to download a verification file named `googlexxxxxxxxxx.html`. Place this file in your Jekyll root directory.
 
 ```bash
-# 放到專案根目錄
+# Move to project root directory
 mv ~/Downloads/googlexxxxxxxxxx.html ./googlexxxxxxxxxx.html
 
-# 確認檔案已進入版本控制並推送
+# Ensure file is in version control and push
 git add googlexxxxxxxxxx.html
 git commit -m "[seo] Add Google Search Console verification file"
-git push origin main  # 或你使用的 branch 名稱
+git push origin main  # or your branch name
 ```
 
-回到 Search Console，點選「驗證」按鈕。
+Return to Search Console and click the "Verify" button.
 
-{% include figure.liquid path="assets/img/google_search_console_verify.png" title="驗證網站擁有權" %}
+{% include figure.liquid path="assets/img/google_search_console_verify.png" title="Verify Website Ownership" %}
 
-成功驗證後，會看到這個畫面：
+After successful verification, you'll see this confirmation:
 
-{% include figure.liquid path="assets/img/google_search_console_verified.png" title="驗證成功！" %}
-
----
-
-## 步驟二：提交 Sitemap
-
-Sitemap 是一份 XML 文件，告訴搜尋引擎你網站的所有內容，包含每個頁面的連結、最後更新時間等。這會幫助 Google 更快、更全面地收錄你的部落格。
-
-📖 [Google 官方說明：Sitemap 是什麼？](https://developers.google.com/search/docs/advanced/sitemaps/overview?hl=zh-tw)
+{% include figure.liquid path="assets/img/google_search_console_verified.png" title="Verification Successful!" %}
 
 ---
 
-### 1️⃣ 編輯 `Gemfile`，加入 sitemap 外掛
+## Step 2: Submit Your Sitemap
 
-```bash
+A Sitemap is an XML file that tells search engines about all your website content, including each page's URL, last update time, and more. This helps Google crawl and index your blog faster and more comprehensively.
+
+📖 [Google Official Documentation: What is a Sitemap?](https://developers.google.com/search/docs/advanced/sitemaps/overview?hl=en)
+
+### What is an XML Sitemap?
+
+An XML sitemap is a structured file that:
+- Lists all your website pages
+- Provides metadata about each page
+- Helps search engines understand your site structure
+- Improves crawling efficiency
+
+### 1️⃣ Edit `Gemfile` to Add Sitemap Plugin
+
+```ruby
 group :jekyll_plugins do
   gem "jekyll-sitemap"
 end
 ```
 
----
+### 2️⃣ Add Plugin to `_config.yml`
 
-### 2️⃣ 在 `_config.yml` 中加入 plugin
-
-```bash
+```yaml
 plugins:
   - jekyll-sitemap
 ```
 
----
-
-### 3️⃣ 安裝 plugin 並重新編譯網站
+### 3️⃣ Install Plugin and Rebuild Site
 
 ```bash
 bundle install
 bundle exec jekyll serve
 ```
 
-此時你會發現在 `_site/` 資料夾中出現 `sitemap.xml`，代表 sitemap 已成功產生。
+You'll now find `sitemap.xml` in your `_site/` folder, indicating successful sitemap generation.
 
----
+### 4️⃣ Submit Sitemap to Google
 
-### 4️⃣ 提交 Sitemap 到 Google
-
-回到 Search Console 的「Sitemaps」區塊，填入：
+Return to Search Console's "Sitemaps" section and enter:
 
 ```
 sitemap.xml
 ```
 
-然後按下提交。
+Then click submit.
 
-{% include figure.liquid path="assets/img/google_search_console_sitemap.png" title="提交 sitemap" %}
+{% include figure.liquid path="assets/img/google_search_console_sitemap.png" title="Submit Sitemap" %}
 
 ---
 
-## ✅ 恭喜！你已經完成最基本的 SEO 設定！
+## Advanced SEO Configuration
 
-Google 現在會開始爬取你的網站內容，雖然不會馬上就出現在搜尋結果中，但只要持續更新、讓內容具備價值，自然就會慢慢被收錄了。
+### Custom Sitemap Configuration
+
+```yaml
+# _config.yml
+sitemap:
+  exclude: ["/admin/", "/private/"]
+  include: ["/important-page/"]
+  changefreq: weekly
+  priority: 0.8
+```
+
+### Robots.txt Setup
+
+Create a `robots.txt` file in your root directory:
+
+```txt
+User-agent: *
+Allow: /
+
+Sitemap: https://yourdomain.com/sitemap.xml
+```
+
+### Meta Tags Optimization
+
+```yaml
+# In your post front matter
+title: "Your SEO-Optimized Title"
+description: "Compelling meta description under 160 characters"
+keywords: "relevant, keywords, for, your, content"
+```
+
+---
+
+## Monitoring Your SEO Performance
+
+### Google Search Console Features
+
+- **Performance Reports**: Track search queries and clicks
+- **Coverage Reports**: Monitor indexed pages
+- **Core Web Vitals**: Check page speed metrics
+- **Mobile Usability**: Ensure mobile-friendly design
+
+### Key Metrics to Monitor
+
+- **Search Impressions**: How often your site appears in search
+- **Click-Through Rate (CTR)**: Percentage of clicks from impressions
+- **Average Position**: Your ranking position in search results
+- **Indexed Pages**: Number of pages Google has indexed
+
+---
+
+## Common SEO Issues and Solutions
+
+### Site Not Indexed
+
+**Problem**: Your site doesn't appear in search results
+**Solutions**:
+- Verify Google Search Console setup
+- Check robots.txt for blocking directives
+- Ensure site is accessible to crawlers
+- Submit sitemap manually
+
+### Low Search Rankings
+
+**Problem**: Site appears but ranks poorly
+**Solutions**:
+- Optimize page titles and meta descriptions
+- Improve content quality and relevance
+- Build quality backlinks
+- Enhance page loading speed
+
+### Duplicate Content Issues
+
+**Problem**: Multiple URLs with similar content
+**Solutions**:
+- Use canonical tags
+- Implement proper redirects
+- Consolidate similar content
+- Use hreflang for multilingual sites
+
+---
+
+## Best Practices for Jekyll SEO
+
+### Content Optimization
+
+- **Keyword Research**: Use relevant, searchable terms
+- **Quality Content**: Provide valuable, comprehensive information
+- **Regular Updates**: Keep content fresh and current
+- **Internal Linking**: Connect related posts and pages
+
+### Technical SEO
+
+- **Fast Loading**: Optimize images and minimize HTTP requests
+- **Mobile Responsive**: Ensure mobile-friendly design
+- **Structured Data**: Implement schema markup
+- **Clean URLs**: Use descriptive, keyword-rich URLs
+
+### Performance Optimization
+
+```yaml
+# _config.yml optimization
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  profile: false
+  blanklines: false
+  ignore:
+    envs: []
+```
+
+---
+
+## Troubleshooting SEO Issues
+
+### Verification File Not Working
+
+```bash
+# Check if file is accessible
+curl https://yourdomain.com/googlexxxxxxxxxx.html
+
+# Ensure proper file permissions
+chmod 644 googlexxxxxxxxxx.html
+```
+
+### Sitemap Generation Errors
+
+```bash
+# Check Jekyll build logs
+bundle exec jekyll build --verbose
+
+# Verify plugin installation
+bundle list | grep sitemap
+```
+
+### Search Console Errors
+
+- Check for DNS propagation delays
+- Verify HTTPS certificate validity
+- Ensure no redirect chains
+- Confirm proper canonical URLs
+
+---
+
+## SEO Tools and Resources
+
+### Free SEO Tools
+
+- **Google Search Console**: Official SEO monitoring
+- **Google PageSpeed Insights**: Performance analysis
+- **Google Mobile-Friendly Test**: Mobile optimization
+- **Schema.org Validator**: Structured data testing
+
+### Paid SEO Tools
+
+- **Ahrefs**: Comprehensive SEO analysis
+- **SEMrush**: Keyword research and competitor analysis
+- **Moz Pro**: SEO metrics and tracking
+- **Screaming Frog**: Technical SEO audit
+
+---
+
+## Related Articles
+
+- [Complete Guide: Build a Professional Blog with Jekyll + Minimal Mistakes on GitHub Pages](/2021-12-30-creating_a_github_pages_with_jekyll_and_minimal_mistakes/)
+- [How to Optimize Images for Web Performance](/2024-01-27-advanced-images/)
+- [Setting Up Custom Domains for GitHub Pages](/2022-02-01-redirect/)
+
+---
+
+## ✅ Congratulations! You've Completed Basic SEO Setup!
+
+Google will now begin crawling your website content. While it won't appear in search results immediately, with consistent updates and valuable content, your site will gradually be indexed and ranked.
+
+### Next Steps
+
+1. **Monitor Performance**: Check Search Console regularly
+2. **Optimize Content**: Focus on quality and relevance
+3. **Build Backlinks**: Earn links from reputable sites
+4. **Track Progress**: Monitor rankings and traffic
 
 > ##### TIP
 >
-> 如果你有不同的驗證方法、想了解更多 SEO 設定，歡迎留言或寫信給我，一起研究提升部落格能見度 🙂
+> If you have different verification methods, want to learn more about SEO settings, or need help with advanced optimization, feel free to leave a comment or email me. Let's work together to improve your blog's visibility! ��
 > {: .block-tip }

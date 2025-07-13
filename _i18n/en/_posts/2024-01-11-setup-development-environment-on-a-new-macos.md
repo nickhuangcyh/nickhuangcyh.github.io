@@ -1,259 +1,433 @@
 ---
 layout: post
-title: Setup Development Environment on a New macOS
+title: "Complete macOS Development Environment Setup Guide for 2024"
 date: 2025-01-11 15:00:00 +0800
-description: Step-by-step guide to setting up a mobile development environment on a new macOS system.
-tags: [macOS, Development, Mobile Development]
-categories: [Setup Guide]
+description: "Master the complete setup of a professional development environment on macOS. Step-by-step guide covering Homebrew, Git, iTerm2, Zsh, and mobile development tools for maximum productivity."
+tags: [macOS, Development Environment, Homebrew, Git, iTerm2, Zsh, Oh-My-Zsh, Powerlevel10k, Xcode, Mobile Development, Setup Guide, Productivity]
+categories: [Setup Guide, Development, macOS, Productivity]
 toc:
-  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/raul-per-e-K2w9VegUIb0-unsplash.jpg
 ---
 
-# Setup Development Environment on a New macOS
+## 🚀 **Why a Proper Development Environment Matters**
+
+Setting up a new Mac for development can be overwhelming, but having the right tools configured from the start will save you countless hours and boost your productivity. This comprehensive guide will transform your fresh macOS installation into a powerful development machine.
+
+**What You'll Achieve:**
+- ⚡ **Lightning-fast terminal** with advanced features
+- 🎨 **Beautiful, customizable shell** with syntax highlighting
+- 🔧 **Package management** for easy software installation
+- 📱 **Mobile development** environment ready to go
+- 🎯 **Professional workflow** optimized for productivity
 
 ---
 
-## Install [Homebrew](https://brew.sh/index_zh-tw)
+## 📋 **Prerequisites Checklist**
+
+Before we begin, ensure you have:
+- ✅ **macOS** (preferably latest version)
+- ✅ **Administrator privileges**
+- ✅ **Stable internet connection**
+- ✅ **Patience** for the setup process
+
+---
+
+## 🍺 **Step 1: Install Homebrew Package Manager**
+
+**Homebrew** is the essential package manager for macOS that will make installing and managing software incredibly easy.
+
+### **Installation Command**
 
 ```zsh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
----
+### **Verify Installation**
 
-### Common Issue
+```zsh
+brew --version
+```
 
+**Expected Output:**
+```zsh
+Homebrew 4.1.0
+Homebrew/homebrew-core (git revision 1234567890; last commit 2024-01-11)
+```
+
+### **🚨 Common Issue: PATH Configuration**
+
+If you encounter this warning:
 ```zsh
 Warning: /opt/homebrew/bin is not in your PATH
 ```
 
-To resolve this, add Homebrew's bin directory to your PATH:
+**Solution:** Add Homebrew to your PATH:
 
 ```zsh
+# Edit your shell configuration
 vim ~/.zshrc
+
+# Add this line to the file
 export PATH=/opt/homebrew/bin:$PATH
+
+# Save and reload
 :wq
 source ~/.zshrc
 ```
 
-Refer to [this StackOverflow thread](https://stackoverflow.com/questions/65487249/getting-a-warning-when-installing-homebrew-on-macos-big-sur-m1-chip) for more details.
+**💡 Pro Tip:** This issue commonly occurs on Apple Silicon Macs (M1/M2/M3). The solution above ensures Homebrew works correctly on all Mac architectures.
 
 ---
 
-## Install Git
+## 🔧 **Step 2: Install and Configure Git**
+
+Git is essential for version control and collaboration.
+
+### **Install Git**
 
 ```zsh
 brew install git
 ```
 
----
-
-### [Setup Git Email & Name](https://stackoverflow.com/questions/46941346/how-to-know-the-git-username-and-email-saved-during-configuration/53940971)
+### **Configure Git Identity**
 
 ```zsh
-git config --global user.email "you@example.com"
-git config --global user.name "Your Name"
+# Set your email and name
+git config --global user.email "your.email@example.com"
+git config --global user.name "Your Full Name"
+
+# Verify configuration
+git config --list
 ```
 
----
-
-### [Setup Git Alias](https://stackoverflow.com/questions/2553786/how-do-i-alias-commands-in-git)
+### **Setup Useful Git Aliases**
 
 ```zsh
+# Common aliases for faster Git workflow
 git config --global alias.co checkout
 git config --global alias.ci commit
 git config --global alias.st status
 git config --global alias.br branch
+git config --global alias.lg "log --oneline --graph --decorate"
+git config --global alias.unstage "reset HEAD --"
+```
+
+**Usage Examples:**
+```zsh
+git st          # Instead of git status
+git co main     # Instead of git checkout main
+git ci -m "msg" # Instead of git commit -m "msg"
 ```
 
 ---
 
-## Install [iTerm2](https://formulae.brew.sh/cask/iterm2)
+## 🖥️ **Step 3: Install iTerm2 Terminal**
+
+Replace the default Terminal with the powerful iTerm2 for a better development experience.
+
+### **Install iTerm2**
 
 ```zsh
-brew tap homebrew/cask
 brew install --cask iterm2
 ```
 
-Switch from the default Terminal to iTerm2.
+### **Why iTerm2 is Superior:**
+
+| Feature | Default Terminal | iTerm2 |
+|---------|------------------|--------|
+| **Split Panes** | ❌ | ✅ |
+| **Search** | Basic | Advanced |
+| **Profiles** | Limited | Extensive |
+| **Performance** | Good | Excellent |
+| **Customization** | Minimal | Extensive |
 
 ---
 
-## iTerm2 + Zsh Setup
+## 🎨 **Step 4: Configure Zsh with Oh-My-Zsh**
 
----
+Transform your shell into a powerful, beautiful development environment.
 
-### Install [Zsh](https://formulae.brew.sh/formula/zsh#default)
+### **Install Zsh (if not already installed)**
 
 ```zsh
 brew install zsh
 ```
 
----
-
-### Install [Oh-My-Zsh](https://ohmyz.sh/#install)
+### **Install Oh-My-Zsh**
 
 ```zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
----
+### **Configure iTerm2 Colors**
 
-### Setup Colors
+1. Open iTerm2
+2. Go to **Preferences** → **Profiles** → **Colors**
+3. Select **Solarized** color scheme
+4. Adjust **Background** and **Foreground** as needed
 
-Navigate to Preferences -> Profiles -> Colors -> Select 'Solarized'.
-
----
-
-### Install Fonts
+### **Install Nerd Fonts**
 
 ```zsh
+# Add font repository
 brew tap homebrew/cask-fonts
-brew search font-meslo-lg-nerd-font
+
+# Install Meslo Nerd Font
 brew install --cask font-meslo-lg-nerd-font
 ```
 
-Set your terminal font to `font-meslo-lg-nerd-font` in Preferences.
+**Configure Font in iTerm2:**
+1. **Preferences** → **Profiles** → **Text**
+2. Set font to **MesloLGS NF**
+3. Size: **14pt** (adjust as needed)
 
 ---
 
-### Install [Powerlevel10k](https://github.com/romkatv/powerlevel10k) Theme
+## ⚡ **Step 5: Install Powerlevel10k Theme**
+
+Powerlevel10k is the most popular and feature-rich Zsh theme.
+
+### **Install Powerlevel10k**
 
 ```zsh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 ```
 
-Update your `~/.zshrc` to use Powerlevel10k:
+### **Configure Theme**
 
 ```zsh
+# Edit your Zsh configuration
+vim ~/.zshrc
+
+# Change the theme line to:
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Reload configuration
+source ~/.zshrc
 ```
 
-Run the following to configure the theme:
+### **Run Configuration Wizard**
 
 ```zsh
 p10k configure
 ```
 
+**Follow the interactive prompts** to customize your prompt appearance and features.
+
 ---
 
-### Install [Zsh-Syntax-Highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+## 🔌 **Step 6: Install Essential Zsh Plugins**
+
+Enhance your shell with powerful plugins for better productivity.
+
+### **Install Zsh-Syntax-Highlighting**
 
 ```zsh
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 ```
 
-Activate the plugin in `~/.zshrc`:
-
-```zsh
-plugins=(... zsh-syntax-highlighting)
-```
-
----
-
-### Install [Zsh-Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+### **Install Zsh-Autosuggestions**
 
 ```zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 ```
 
-Activate the plugin in `~/.zshrc`:
+### **Configure Plugins**
 
 ```zsh
-plugins=(... zsh-autosuggestions)
+# Edit your Zsh configuration
+vim ~/.zshrc
+
+# Update the plugins line:
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+
+# Reload configuration
+source ~/.zshrc
 ```
 
-Restart your terminal to apply changes.
+**Plugin Benefits:**
+- **Syntax Highlighting**: Commands are color-coded for better readability
+- **Autosuggestions**: See command suggestions as you type
+- **Git Integration**: Built-in Git status and aliases
 
 ---
 
-## iOS Environment: Install Xcode
+## 📱 **Step 7: Setup iOS Development Environment**
 
----
+### **Install Xcode Command Line Tools**
 
-### Install Xcodes Tool
+```zsh
+xcode-select --install
+```
+
+### **Install Xcodes Tool (Recommended)**
 
 ```zsh
 brew install robotsandpencils/made/xcodes
 ```
 
----
+**Xcodes Tool Benefits:**
+- Manage multiple Xcode versions
+- Easy installation and switching
+- Command-line interface
 
-### Common Issue
+### **🚨 Common Xcode Issues**
 
+**Issue:** `xcrun: error: unable to find utility "xctest"`
+
+**Solution:**
 ```zsh
-error: terminated(72): /usr/bin/xcrun --sdk macosx --find xctest output:
-    xcrun: error: unable to find utility "xctest", not a developer tool or in PATH
+# Reset Xcode command line tools
+sudo xcode-select --reset
+
+# Or specify the correct path
+sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
 ```
 
-Refer to [this GitHub issue](https://github.com/RobotsAndPencils/xcodes/issues/148) for resolution.
+### **Alternative: Install Xcode from App Store**
+
+If you encounter persistent issues:
+1. Open **App Store**
+2. Search for **Xcode**
+3. Download and install (large file, ~15GB)
 
 ---
 
-### Alternative: Use XcodesApp
+## 🛠️ **Step 8: Install Additional Development Tools**
 
-If issues persist, download Xcode via the [App Store](https://apps.apple.com/).
-
----
-
-## Install JetBrains Toolbox
+### **Node.js and npm**
 
 ```zsh
-brew install --cask jetbrains-toolbox
+brew install node
 ```
 
-Use JetBrains Toolbox to manage IDEs like Android Studio, IntelliJ IDEA, and PyCharm.
-
----
-
-## Install OpenJDK
+### **Python (if needed)**
 
 ```zsh
-brew install openjdk@11
+brew install python
 ```
 
-Add OpenJDK to your PATH:
+### **Docker**
 
 ```zsh
-echo 'export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"' >> ~/.zshrc
+brew install --cask docker
 ```
 
-For compilers, set:
+### **Visual Studio Code**
 
 ```zsh
-export CPPFLAGS="-I/opt/homebrew/opt/openjdk@11/include"
+brew install --cask visual-studio-code
 ```
 
 ---
 
-## SSH Key Setup
+## 📊 **Performance Optimization Tips**
 
-Create unique keys for each platform (e.g., GitHub, GitLab).
-
----
-
-### GitHub
-
-Follow [GitHub's guide](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
-
----
-
-### GitLab
-
-Follow [GitLab's SSH setup guide](http://10.1.2.150:53180/help/ssh/README).
-
----
-
-## Android Build Issue
+### **Terminal Performance**
 
 ```zsh
-Caused by: java.lang.Exception: No native library is found for os.name=Mac and os.arch=aarch64. path=/org/sqlite/native/Mac/aarch64
+# Add to ~/.zshrc for faster startup
+skip_global_compinit=1
 ```
 
-Refer to [this StackOverflow solution](https://stackoverflow.com/questions/68884589/caused-by-java-lang-exception-no-native-library-is-found-for-os-name-mac-and-o).
+### **iTerm2 Settings**
+
+1. **Profiles** → **Terminal** → **Scrollback Buffer**: 10000 lines
+2. **Profiles** → **Terminal** → **Unlimited scrollback**: ✅
+3. **Profiles** → **Terminal** → **Save lines to scrollback in alternate screen mode**: ✅
+
+### **Zsh Performance**
+
+```zsh
+# Add to ~/.zshrc for faster plugin loading
+DISABLE_AUTO_UPDATE=true
+DISABLE_UPDATE_PROMPT=true
+```
 
 ---
 
-🎉 Your macOS development environment setup is complete!
+## 🎯 **Final Configuration Checklist**
+
+| Component | Status | Test Command |
+|-----------|--------|--------------|
+| **Homebrew** | ✅ | `brew --version` |
+| **Git** | ✅ | `git --version` |
+| **iTerm2** | ✅ | Open iTerm2 |
+| **Zsh** | ✅ | `echo $SHELL` |
+| **Oh-My-Zsh** | ✅ | Check prompt appearance |
+| **Powerlevel10k** | ✅ | `p10k configure` |
+| **Plugins** | ✅ | Type commands to see highlighting |
+| **Xcode** | ✅ | `xcode-select --print-path` |
+
+---
+
+## 🚨 **Troubleshooting Common Issues**
+
+### **Issue: Homebrew Commands Not Found**
+```zsh
+# Solution: Check PATH
+echo $PATH | grep homebrew
+
+# If not found, add to ~/.zshrc
+export PATH="/opt/homebrew/bin:$PATH"
+```
+
+### **Issue: Zsh Theme Not Loading**
+```zsh
+# Solution: Check theme configuration
+cat ~/.zshrc | grep ZSH_THEME
+
+# Ensure theme is correctly set
+ZSH_THEME="powerlevel10k/powerlevel10k"
+```
+
+### **Issue: Plugins Not Working**
+```zsh
+# Solution: Check plugin configuration
+cat ~/.zshrc | grep plugins
+
+# Ensure plugins are correctly listed
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+```
+
+---
+
+## 🔗 **Related Articles**
+
+- [Complete Git Workflow Guide](/2025-05-18-how-to-use-multiple-github-accounts-using-ssh)
+- [GitHub Pages Setup](/2020-09-10-octopress-setup)
+- [SSH Key Management](/2024-08-02-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8)
+
+---
+
+## ✅ **Conclusion**
+
+Congratulations! You've successfully set up a professional development environment on macOS. Your new setup includes:
+
+**Key Achievements:**
+- 🚀 **High-performance terminal** with iTerm2
+- 🎨 **Beautiful shell** with Powerlevel10k theme
+- 🔧 **Efficient package management** with Homebrew
+- 📱 **Mobile development** environment ready
+- ⚡ **Productivity-boosting** plugins and aliases
+
+**Next Steps:**
+1. **Customize your theme** further with `p10k configure`
+2. **Install project-specific tools** as needed
+3. **Set up your preferred code editor**
+4. **Configure additional Git aliases** for your workflow
+
+---
+
+**💡 Pro Tip:** Consider using a dotfiles repository to backup and sync your configuration across multiple machines.
+
+**🔔 Stay Updated:** Follow our blog for more development environment and productivity tips!
+
+---
+
+**📚 Additional Resources:**
+- [Homebrew Documentation](https://docs.brew.sh/)
+- [Oh-My-Zsh Wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
+- [Powerlevel10k Documentation](https://github.com/romkatv/powerlevel10k)
+- [iTerm2 Documentation](https://iterm2.com/documentation.html)
