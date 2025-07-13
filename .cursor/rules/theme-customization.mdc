@@ -1,0 +1,69 @@
+# Theme Customization Guidelines
+
+## SCSS Structure
+The theme uses SCSS for styling with the following structure:
+- `_sass/_base.scss` - Base styles and typography
+- `_sass/_cv.scss` - CV/resume specific styles
+- `_sass/_distill.scss` - Distill post styles
+- `_sass/font-awesome/` - Font Awesome icon styles
+- `_sass/tabler-icons/` - Tabler icon styles
+
+## Customization Points
+
+### Colors and Typography
+Modify `_sass/_base.scss` for:
+- Primary and secondary colors
+- Font families and sizes
+- Link colors and hover states
+- Background colors
+
+### Layout Modifications
+- **Header**: Edit `_includes/header.liquid`
+- **Footer**: Edit `_includes/footer.liquid`
+- **Navigation**: Modify navigation structure in header
+- **Sidebar**: Customize sidebar components
+
+### Component Styling
+- **Posts**: Customize `_layouts/post.liquid`
+- **Pages**: Modify `_layouts/page.liquid`
+- **Projects**: Edit `_layouts/profiles.liquid`
+- **CV**: Update `_layouts/cv.liquid`
+
+## Asset Management
+- **Images**: Store in `assets/img/`
+- **CSS**: Custom styles in `assets/css/`
+- **JavaScript**: Custom scripts in `assets/js/`
+- **Fonts**: Web fonts in `assets/fonts/`
+
+## Icon Usage
+- **Font Awesome**: Use Font Awesome icons for general UI
+- **Tabler Icons**: Use Tabler icons for modern interface elements
+- **Academic Icons**: Use academicons for academic-specific icons
+
+## Responsive Design
+- Follow mobile-first approach
+- Test on various screen sizes
+- Use Bootstrap grid system
+- Ensure accessibility compliance
+
+## Custom Components
+Create reusable components in `_includes/`:
+- Custom figure layouts
+- Specialized content blocks
+- Interactive elements
+- Social media integrations
+
+## Performance Optimization
+- Minimize CSS and JavaScript
+- Optimize images and assets
+- Use CDN for external resources
+- Implement lazy loading where appropriate
+
+## Key Style Files
+- [base.scss](mdc:_sass/_base.scss) - Main styling foundation
+- [cv.scss](mdc:_sass/_cv.scss) - CV page styles
+- [distill.scss](mdc:_sass/_distill.scss) - Distill post styles
+description:
+globs:
+alwaysApply: false
+---

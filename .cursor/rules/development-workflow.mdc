@@ -1,0 +1,49 @@
+# Development Workflow Guidelines
+
+## Local Development Setup
+1. Install Ruby and Jekyll dependencies: `bundle install`
+2. Install Node.js dependencies: `npm install`
+3. Start local server: `bundle exec jekyll serve`
+4. Access site at: `http://localhost:4000`
+
+## File Structure Conventions
+- **Layouts**: `_layouts/` - Page templates and structure
+- **Includes**: `_includes/` - Reusable components and snippets
+- **Styles**: `_sass/` - SCSS files for styling
+- **Assets**: `assets/` - Images, CSS, JS, and other static files
+- **Plugins**: `_plugins/` - Custom Jekyll plugins
+
+## Key Layout Files
+- [default.liquid](mdc:_layouts/default.liquid) - Base layout template
+- [post.liquid](mdc:_layouts/post.liquid) - Blog post layout
+- [page.liquid](mdc:_layouts/page.liquid) - Static page layout
+- [about.liquid](mdc:_layouts/about.liquid) - About page layout
+
+## Key Include Files
+- [head.liquid](mdc:_includes/head.liquid) - HTML head section
+- [header.liquid](mdc:_includes/header.liquid) - Site navigation
+- [footer.liquid](mdc:_includes/footer.liquid) - Site footer
+- [scripts.liquid](mdc:_includes/scripts.liquid) - JavaScript includes
+
+## Content Management
+- Use [optimize_seo.py](mdc:optimize_seo.py) for SEO optimization
+- Follow the established front matter structure
+- Maintain consistent file naming conventions
+- Update both English and Chinese versions when applicable
+
+## Build and Deployment
+- Test locally before pushing changes
+- Ensure all links work correctly
+- Validate YAML front matter syntax
+- Check for broken images or assets
+- Deploy to GitHub Pages via main branch
+
+## Customization Points
+- Theme colors: Modify `_sass/_base.scss`
+- Typography: Update `_sass/_base.scss` font settings
+- Layout modifications: Edit layout files in `_layouts/`
+- Component changes: Modify files in `_includes/`
+description:
+globs:
+alwaysApply: false
+---

@@ -1,0 +1,73 @@
+# Jekyll Plugins and Extensions
+
+## Core Plugins (from Gemfile)
+The site uses several Jekyll plugins for enhanced functionality:
+
+### Content Management
+- `jekyll-archives-v2` - Archive pages for posts
+- `jekyll-paginate-v2` - Pagination for blog posts
+- `jekyll-multiple-languages-plugin` - Multi-language support
+- `jekyll-scholar` - Academic citations and bibliography
+
+### SEO and Performance
+- `jekyll-sitemap` - Generate XML sitemap
+- `jekyll-minifier` - Minify HTML, CSS, and JS
+- `jekyll-terser` - JavaScript minification
+- `jekyll-link-attributes` - Add attributes to external links
+
+### Content Enhancement
+- `jekyll-jupyter-notebook` - Embed Jupyter notebooks
+- `jekyll-tabs` - Create tabbed content
+- `jekyll-toc` - Table of contents generation
+- `jemoji` - GitHub-style emoji support
+
+## Custom Plugins
+Located in `_plugins/` directory:
+- [cache-bust.rb](mdc:_plugins/cache-bust.rb) - Cache busting for assets
+- [details.rb](mdc:_plugins/details.rb) - HTML5 details element support
+- [external-posts.rb](mdc:_plugins/external-posts.rb) - External post integration
+- [google-scholar-citations.rb](mdc:_plugins/google-scholar-citations.rb) - Google Scholar integration
+
+## Plugin Configuration
+Configure plugins in `_config.yml`:
+```yaml
+# Pagination settings
+pagination:
+  enabled: true
+
+# Giscus comments
+giscus:
+  repo: your-repo
+  repo_id: your-repo-id
+  category: Comments
+  mapping: title
+  theme: preferred_color_scheme
+
+# External sources
+external_sources:
+  - name: medium.com
+    rss_url: https://medium.com/@username/feed
+```
+
+## Custom Liquid Tags
+The site includes custom Liquid tags for:
+- Citations and bibliography
+- Figure and image handling
+- Social media integration
+- Analytics and tracking
+
+## Development Guidelines
+- Test plugins locally before deployment
+- Keep plugin versions updated
+- Monitor for conflicts between plugins
+- Document custom plugin functionality
+- Follow Jekyll plugin development best practices
+
+## Key Plugin Files
+- [Gemfile](mdc:Gemfile) - Plugin dependencies
+- [config.yml](mdc:_config.yml) - Plugin configuration
+- `_plugins/` directory - Custom plugin implementations
+description:
+globs:
+alwaysApply: false
+---

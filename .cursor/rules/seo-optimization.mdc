@@ -1,0 +1,86 @@
+# SEO Optimization Guidelines
+
+## Front Matter SEO Fields
+Always include these SEO-related fields in your front matter:
+
+```yaml
+---
+title: "Descriptive Title with Keywords"
+description: "A compelling 150-160 character description of the content"
+keywords: "keyword1, keyword2, keyword3"
+author: "Nick Huang"
+last_modified_at: YYYY-MM-DD
+canonical_url: "https://nickhuangcyh.github.io/zh/blog/your-post/"
+---
+```
+
+## Content Optimization
+- **Titles**: Include primary keywords, keep under 60 characters
+- **Headings**: Use H1 for main title, H2-H6 for structure
+- **Meta descriptions**: Write compelling summaries (150-160 characters)
+- **Keywords**: Focus on relevant technical terms and concepts
+
+## URL Structure
+- Use descriptive, keyword-rich URLs
+- Follow the pattern: `/blog/category/post-name/`
+- Avoid special characters and use hyphens for spaces
+
+## Image Optimization
+- Use descriptive alt text for all images
+- Compress images for faster loading
+- Use appropriate file formats (JPG for photos, PNG for graphics)
+- Include image dimensions in HTML
+
+## Internal Linking
+- Link to related posts and pages
+- Use descriptive anchor text
+- Create topic clusters around main themes
+- Include breadcrumb navigation
+
+## Technical SEO
+- Ensure mobile responsiveness
+- Optimize page load speed
+- Use proper heading hierarchy
+- Include structured data where appropriate
+- Set up Google Search Console and Analytics
+
+## Content Categories
+Focus on these main topic areas:
+- **Design Patterns**: Software architecture and design principles
+- **DevOps**: Jenkins, CI/CD, automation
+- **Development Tools**: GitHub, development workflows
+- **Tutorials**: Step-by-step technical guides
+- **Academic**: Research and publications
+
+## Tags and Categories Guidelines
+**IMPORTANT**: Always use English for tags and categories to maintain consistent URLs across languages.
+
+### Tag Guidelines
+- Use English tags only: `tags: [Design Pattern, Software Engineering, Programming]`
+- Avoid Chinese characters in tags: ❌ `tags: [設計模式, 軟體工程]`
+- Use consistent terminology across all posts
+- Keep tags specific and relevant to the content
+
+### Category Guidelines
+- Use English categories only: `categories: [Design Pattern, DevOps]`
+- Avoid Chinese characters in categories: ❌ `categories: [設計模式, 開發工具]`
+- Use broad, consistent category names
+- Limit to 1-2 categories per post for better organization
+
+### URL Consistency Benefits
+- Maintains clean, SEO-friendly URLs
+- Prevents URL encoding issues
+- Ensures consistent navigation structure
+- Improves search engine indexing
+
+## SEO Script Usage
+Use the [optimize_seo.py](mdc:optimize_seo.py) script to:
+- Automatically generate keywords
+- Add canonical URLs
+- Optimize titles and descriptions
+- Ensure consistent front matter structure
+- Convert Chinese tags/categories to English equivalents
+description:
+globs:
+alwaysApply: false
+---
