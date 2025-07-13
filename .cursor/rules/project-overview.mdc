@@ -1,0 +1,41 @@
+# Jekyll Academic Website - Project Overview
+
+This is a Jekyll-based academic website using the al-folio theme. The site supports both English and Chinese content with a focus on software engineering, design patterns, and technical tutorials.
+
+## Key Configuration Files
+- [config.yml](mdc:_config.yml) - Main Jekyll configuration with site settings, plugins, and theme options
+- [Gemfile](mdc:Gemfile) - Ruby dependencies and Jekyll plugins
+- [package.json](mdc:package.json) - Node.js dependencies for development tools
+
+## Content Structure
+- `_posts/` - Main blog posts (English)
+- `_i18n/zh/_posts/` - Chinese blog posts
+- `_pages/` - Static pages (about, projects, publications, etc.)
+- `_projects/` - Project showcase pages
+- `_books/` - Book reviews and summaries
+- `_news/` - News and announcements
+
+## Layouts and Templates
+- `_layouts/` - Page templates (post, page, about, cv, etc.)
+- `_includes/` - Reusable components (header, footer, social links, etc.)
+- `_sass/` - SCSS stylesheets and theme customization
+
+## Key Features
+- Multi-language support (English/Chinese)
+- Academic publications with citations
+- Project portfolio
+- Blog with categories and tags
+- SEO optimization
+- Google Analytics integration
+- Comments system (Giscus)
+- Responsive design
+
+## Development Workflow
+- Posts use YAML front matter for metadata
+- Images stored in `assets/img/`
+- CSS/JS in `assets/css/` and `assets/js/`
+- Custom plugins in `_plugins/`
+description:
+globs:
+alwaysApply: false
+---

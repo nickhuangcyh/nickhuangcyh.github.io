@@ -1,0 +1,59 @@
+# Multi-Language Content Guidelines
+
+## Language Structure
+- **English content**: `_posts/` and `_pages/`
+- **Chinese content**: `_i18n/zh/_posts/` and `_i18n/zh/`
+- **Language configuration**: `_i18n/en.yml` and `_i18n/zh.yml`
+
+## Content Synchronization
+When creating content in both languages:
+1. Create English version first in `_posts/`
+2. Create corresponding Chinese version in `_i18n/zh/_posts/`
+3. Use same filename structure with appropriate language content
+4. Maintain consistent front matter structure
+
+## Front Matter Language Fields
+Include language-specific metadata:
+
+```yaml
+---
+layout: post
+title: "English Title"
+title_zh: "中文標題"
+date: YYYY-MM-DD
+categories: [Category]
+tags: [tag1, tag2]
+lang: en  # or zh for Chinese posts
+---
+```
+
+## File Naming Convention
+- **English**: `YYYY-MM-DD-title-with-hyphens.md`
+- **Chinese**: `YYYY-MM-DD-title-with-hyphens.md` (same structure)
+
+## Translation Guidelines
+- Maintain consistent terminology across languages
+- Adapt cultural references appropriately
+- Keep technical terms consistent
+- Ensure both versions have similar SEO optimization
+
+## Navigation and Links
+- Use language-specific navigation menus
+- Include language toggle functionality
+- Ensure internal links work for both languages
+- Maintain consistent URL structure
+
+## SEO for Multi-Language
+- Use `hreflang` tags for language alternatives
+- Set appropriate canonical URLs for each language
+- Include language-specific keywords and descriptions
+- Optimize content for each language's search patterns
+
+## Key Language Files
+- [en.yml](mdc:_i18n/en.yml) - English language configuration
+- [zh.yml](mdc:_i18n/zh.yml) - Chinese language configuration
+- [language-toggle.html](mdc:_includes/language-toggle.html) - Language switcher component
+description:
+globs:
+alwaysApply: false
+---

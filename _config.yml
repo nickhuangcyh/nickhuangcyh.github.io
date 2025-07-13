@@ -644,3 +644,21 @@ jsonresume:
   - languages
   - interests
   - references
+
+# -----------------------------------------------------------------------------
+# Multiple Languages Plugin Configuration
+# -----------------------------------------------------------------------------
+
+languages: ["en", "zh"]
+languages_default: "en"
+languages_names:
+  en: "English"
+  zh: "中文"
+languages_rtl:
+  - ar
+  - fa
+  - he
+  - ur
+
+# Build default language into a subfolder
+build_default_language: false

@@ -1,0 +1,107 @@
+# English translations
+# All content is in English for consistency
+
+# Navigation
+nav:
+  home: "Home"
+  about: "About"
+  blog: "Blog"
+  projects: "Projects"
+  publications: "Publications"
+  cv: "CV"
+  books: "Books"
+  news: "News"
+  repositories: "Repositories"
+  teaching: "Teaching"
+
+# Common
+common:
+  read_more: "Read More"
+  back_to_top: "Back to Top"
+  search: "Search"
+  loading: "Loading..."
+  no_results: "No results found"
+  error_404: "Page Not Found"
+  error_404_message: "The page you are looking for does not exist."
+
+# Footer
+footer:
+  powered_by: "Powered by"
+  hosted_by: "Hosted by"
+  photos_from: "Photos from"
+
+# Blog
+blog:
+  title: "Blog"
+  description: "Latest posts and articles"
+  read_time: "min read"
+  published_on: "Published on"
+  updated_on: "Updated on"
+  categories: "Categories"
+  tags: "Tags"
+  related_posts: "Related Posts"
+  no_posts: "No posts found"
+
+# Projects
+projects:
+  title: "Projects"
+  description: "Featured projects and work"
+  view_project: "View Project"
+  view_code: "View Code"
+  live_demo: "Live Demo"
+
+# Publications
+publications:
+  title: "Publications"
+  description: "Academic publications and research"
+  view_paper: "View Paper"
+  download_pdf: "Download PDF"
+  cite: "Cite"
+
+# About
+about:
+  title: "About"
+  description: "Learn more about me"
+  contact: "Contact"
+  get_in_touch: "Get in Touch"
+
+# CV
+cv:
+  title: "Curriculum Vitae"
+  download_cv: "Download CV"
+  experience: "Experience"
+  education: "Education"
+  skills: "Skills"
+  languages: "Languages"
+  interests: "Interests"
+
+# Books
+books:
+  title: "Books"
+  description: "Book reviews and recommendations"
+  read_review: "Read Review"
+  buy_book: "Buy Book"
+
+# News
+news:
+  title: "News"
+  description: "Latest updates and announcements"
+
+# Repositories
+repositories:
+  title: "Repositories"
+  description: "Open source projects and code"
+  view_repo: "View Repository"
+  stars: "Stars"
+  forks: "Forks"
+
+# Teaching
+teaching:
+  title: "Teaching"
+  description: "Courses and educational materials"
+
+# Language
+language:
+  english: "English"
+  chinese: "中文"
+  switch_language: "Switch Language" 
