@@ -1,0 +1,1 @@
+!function(){"use strict";function n(){const n=window.location.pathname,e=n.match(/^\/([a-z]{2})\//);return e&&t.includes(e[1])?n.substring(3):n}const t=["en","zh"],e="en";window.switchLanguage=function(o){if(t.includes(o)){localStorage.setItem("preferred-language",o);const t=n();let c;c=o===e?t:"/"+o+t,window.location.href=c}}}();

@@ -1,0 +1,347 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA"> <meta http-equiv="Permissions-Policy" content="interest-cohort=()"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Design Pattern 6: Factory Method Pattern - Flexible Object Creation for Multi-Region Applications | Nick Huang </title> <meta name="author" content="Nick Huang"> <meta name="description" content="Master the Factory Method Pattern to create objects without specifying exact classes. Learn how to implement region-specific factories, improve flexibility, and support global application expansion."> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://nickhuangcyh.github.io/blog/design%20patterns/software%20development/object-oriented%20programming/globalization/design-pattern-6-factory-method-pattern/"> <script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> <script src="/assets/js/language-detection.js?8628978c9c518d94dcb000b3ee754416"></script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Nick</span> Huang </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item "> <a class="nav-link" href="/books/">bookshelf </a> </li> <li class="nav-item"> <button id="search-toggle" title="Search" onclick="openSearchModal()"> <span class="nav-link">ctrl k <i class="ti ti-search"></i></span> </button> </li> <li class="nav-item"> <div class="language-toggle"> <div class="dropdown"> <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-globe"></i> EN </button> <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle"> <li> <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('zh')"> <span class="flag">🇹🇼</span> 中文 </a> </li> </ul> </div> </div> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="ti ti-sun-moon" id="light-toggle-system"></i> <i class="ti ti-moon-filled" id="light-toggle-dark"></i> <i class="ti ti-sun-filled" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title">Design Pattern 6: Factory Method Pattern - Flexible Object Creation for Multi-Region Applications</h1> <p class="post-meta"> Created on July 07, 2024 </p> <p class="post-tags"> <a href="/blog/2024"> <i class="fa-solid fa-calendar fa-sm"></i> 2024 </a>   ·   <a href="/blog/tag/factory-method-pattern"> <i class="fa-solid fa-hashtag fa-sm"></i> Factory Method Pattern</a>   <a href="/blog/tag/design-patterns"> <i class="fa-solid fa-hashtag fa-sm"></i> Design Patterns</a>   <a href="/blog/tag/object-creation"> <i class="fa-solid fa-hashtag fa-sm"></i> Object Creation</a>   <a href="/blog/tag/globalization"> <i class="fa-solid fa-hashtag fa-sm"></i> Globalization</a>   <a href="/blog/tag/software-architecture"> <i class="fa-solid fa-hashtag fa-sm"></i> Software Architecture</a>   <a href="/blog/tag/kotlin"> <i class="fa-solid fa-hashtag fa-sm"></i> Kotlin</a>   <a href="/blog/tag/java"> <i class="fa-solid fa-hashtag fa-sm"></i> Java</a>   <a href="/blog/tag/swift"> <i class="fa-solid fa-hashtag fa-sm"></i> Swift</a>   <a href="/blog/tag/polymorphism"> <i class="fa-solid fa-hashtag fa-sm"></i> Polymorphism</a>   <a href="/blog/tag/extensibility"> <i class="fa-solid fa-hashtag fa-sm"></i> Extensibility</a>   ·   <a href="/blog/category/design-patterns"> <i class="fa-solid fa-tag fa-sm"></i> Design Patterns</a>   <a href="/blog/category/software-development"> <i class="fa-solid fa-tag fa-sm"></i> Software Development</a>   <a href="/blog/category/object-oriented-programming"> <i class="fa-solid fa-tag fa-sm"></i> Object-Oriented Programming</a>   <a href="/blog/category/globalization"> <i class="fa-solid fa-tag fa-sm"></i> Globalization</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <blockquote> <p>Download the complete Design Pattern series code from the <a href="https://github.com/nickhuangcyh/design_pattern" rel="external nofollow noopener" target="_blank">design_pattern repo</a>.</p> </blockquote> <h2 id="introduction-the-challenge-of-global-expansion">Introduction: The Challenge of Global Expansion</h2> <p>Imagine your beverage ordering system becoming wildly popular worldwide. As your business expands, you face a challenge: how to satisfy the specific preferences of customers in different regions?</p> <p>In our previous article, we successfully used the <a href="/2024-07-06-design-pattern-5-simple-factory-pattern/">Simple Factory Pattern</a> to separate <strong>variable code</strong> from <strong>constant code</strong>. Today, we’ll explore how to further enhance our system’s flexibility and extensibility.</p> <h2 id="problem-statement-satisfying-global-taste-preferences">Problem Statement: Satisfying Global Taste Preferences</h2> <p>The beverage ordering system has become very popular with customers, leading to rapid expansion worldwide. However, a problem quickly emerged—customers in different regions have different preferences.</p> <p><strong>Case Analysis:</strong></p> <ul> <li> <strong>US customers</strong> prefer Ceylon black tea</li> <li> <strong>EU customers</strong> prefer Earl Grey black tea</li> </ul> <p>Our goal is to satisfy these diverse requirements without significantly increasing costs. (For cost considerations, we won’t add all tea varieties to the menu, but use only the tea leaves that best suit local tastes.)</p> <h2 id="object-oriented-analysis-ooa">Object-Oriented Analysis (OOA)</h2> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_factory_method_pattern_uml_1-480.webp 480w,/assets/img/design_pattern_factory_method_pattern_uml_1-800.webp 800w,/assets/img/design_pattern_factory_method_pattern_uml_1-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/design_pattern_factory_method_pattern_uml_1.png" width="100%" height="auto" title="Initial multi-region beverage system design" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <p>We modify the simple factory code by adding <code class="language-plaintext highlighter-rouge">USBeverageFactory</code> and <code class="language-plaintext highlighter-rouge">EUBeverageFactory</code> to create beverages that match local tastes in the US and EU regions.</p> <ul id="data-struct" class="tab" data-tab="5c017824-a9be-4e83-bc20-ac01db93b439" data-name="data-struct"> <li class="active" id="data-struct-swift"> <a href="#">Swift </a> </li> <li id="data-struct-kotlin"> <a href="#">Kotlin </a> </li> </ul> <ul class="tab-content" id="5c017824-a9be-4e83-bc20-ac01db93b439" data-name="data-struct"> <li class="active"> <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">CeylonBlackTea</span><span class="p">:</span> <span class="kt">Beverage</span> <span class="p">{</span>
+    <span class="c1">// Ceylon black tea specific implementation</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">EarlGreyBlackTea</span><span class="p">:</span> <span class="kt">Beverage</span> <span class="p">{</span>
+    <span class="c1">// Earl Grey black tea specific implementation</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">GyokuroGreenTea</span><span class="p">:</span> <span class="kt">Beverage</span> <span class="p">{</span>
+    <span class="c1">// Gyokuro green tea specific implementation</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">SenchaGreenTea</span><span class="p">:</span> <span class="kt">Beverage</span> <span class="p">{</span>
+    <span class="c1">// Sencha green tea specific implementation</span>
+<span class="p">}</span>
+
+<span class="kd">open</span> <span class="kd">class</span> <span class="kt">USBeverageFactory</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{}</span>
+
+    <span class="kd">func</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="nv">beverageName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Beverage</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">beverage</span><span class="p">:</span> <span class="kt">Beverage</span><span class="p">?</span>
+
+        <span class="k">switch</span> <span class="n">beverageName</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="s">"black tea"</span><span class="p">:</span>
+            <span class="n">beverage</span> <span class="o">=</span> <span class="kt">CeylonBlackTea</span><span class="p">()</span>
+        <span class="k">case</span> <span class="s">"green tea"</span><span class="p">:</span>
+            <span class="n">beverage</span> <span class="o">=</span> <span class="kt">GyokuroGreenTea</span><span class="p">()</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">beverage</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">open</span> <span class="kd">class</span> <span class="kt">EUBeverageFactory</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{}</span>
+
+    <span class="kd">class</span> <span class="kd">func</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="nv">beverageName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Beverage</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">beverage</span><span class="p">:</span> <span class="kt">Beverage</span><span class="p">?</span>
+
+        <span class="k">switch</span> <span class="n">beverageName</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="s">"black tea"</span><span class="p">:</span>
+            <span class="n">beverage</span> <span class="o">=</span> <span class="kt">EarlGreyBlackTea</span><span class="p">()</span>
+        <span class="k">case</span> <span class="s">"green tea"</span><span class="p">:</span>
+            <span class="n">beverage</span> <span class="o">=</span> <span class="kt">SenchaGreenTea</span><span class="p">()</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">beverage</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> </li> <li> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">CeylonBlackTea</span><span class="p">:</span> <span class="nc">Beverage</span> <span class="p">{</span>
+    <span class="c1">// Ceylon black tea specific implementation</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">EarlGreyBlackTea</span><span class="p">:</span> <span class="nc">Beverage</span> <span class="p">{</span>
+    <span class="c1">// Earl Grey black tea specific implementation</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">GyokuroGreenTea</span><span class="p">:</span> <span class="nc">Beverage</span> <span class="p">{</span>
+    <span class="c1">// Gyokuro green tea specific implementation</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">SenchaGreenTea</span><span class="p">:</span> <span class="nc">Beverage</span> <span class="p">{</span>
+    <span class="c1">// Sencha green tea specific implementation</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">USBeverageFactory</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="n">beverageName</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Beverage</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">when</span> <span class="p">(</span><span class="n">beverageName</span><span class="p">)</span> <span class="p">{</span>
+            <span class="s">"black tea"</span> <span class="p">-&gt;</span> <span class="nc">CeylonBlackTea</span><span class="p">()</span>
+            <span class="s">"green tea"</span> <span class="p">-&gt;</span> <span class="nc">GyokuroGreenTea</span><span class="p">()</span>
+            <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">null</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">EUBeverageFactory</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="n">beverageName</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Beverage</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">when</span> <span class="p">(</span><span class="n">beverageName</span><span class="p">)</span> <span class="p">{</span>
+            <span class="s">"black tea"</span> <span class="p">-&gt;</span> <span class="nc">EarlGreyBlackTea</span><span class="p">()</span>
+            <span class="s">"green tea"</span> <span class="p">-&gt;</span> <span class="nc">SenchaGreenTea</span><span class="p">()</span>
+            <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">null</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> </li> </ul> <h2 id="identifying-design-forces">Identifying Design Forces</h2> <p>While this approach can satisfy different regional factories for different stores, every time a new store is added, we must modify the <code class="language-plaintext highlighter-rouge">BeverageShop</code> code to add new regional factories, violating the <strong>Open-Closed Principle</strong>.</p> <h2 id="applying-factory-method-pattern-solution">Applying Factory Method Pattern Solution</h2> <p>After understanding the Context and identifying Forces, we can apply the Factory Method Pattern to solve this problem.</p> <h3 id="factory-method-pattern-uml-structure">Factory Method Pattern UML Structure</h3> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_factory_method_pattern_uml_2-480.webp 480w,/assets/img/design_pattern_factory_method_pattern_uml_2-800.webp 800w,/assets/img/design_pattern_factory_method_pattern_uml_2-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/design_pattern_factory_method_pattern_uml_2.png" width="100%" height="auto" title="Factory Method Pattern UML diagram" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <p>The Factory Method Pattern provides an interface for creating objects, letting subclasses decide which class to instantiate.</p> <h3 id="applied-to-beverage-system">Applied to Beverage System</h3> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_factory_method_pattern_uml_3-480.webp 480w,/assets/img/design_pattern_factory_method_pattern_uml_3-800.webp 800w,/assets/img/design_pattern_factory_method_pattern_uml_3-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/design_pattern_factory_method_pattern_uml_3.png" width="100%" height="auto" title="Beverage system with Factory Method Pattern" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <h2 id="implementation-object-oriented-programming-oop">Implementation: Object-Oriented Programming (OOP)</h2> <h3 id="abstract-factory-interface">Abstract Factory Interface</h3> <ul id="data-struct" class="tab" data-tab="9a6519d9-622a-4c57-b6b1-4fcb0df15cd0" data-name="data-struct"> <li class="active" id="data-struct-swift"> <a href="#">Swift </a> </li> <li id="data-struct-kotlin"> <a href="#">Kotlin </a> </li> </ul> <ul class="tab-content" id="9a6519d9-622a-4c57-b6b1-4fcb0df15cd0" data-name="data-struct"> <li class="active"> <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">BeverageFactory</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="nv">beverageName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Beverage</span><span class="p">?</span>
+<span class="p">}</span>
+
+<span class="kd">open</span> <span class="kd">class</span> <span class="kt">USBeverageFactory</span><span class="p">:</span> <span class="kt">BeverageFactory</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{}</span>
+
+    <span class="kd">public</span> <span class="kd">func</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="nv">beverageName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Beverage</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">beverage</span><span class="p">:</span> <span class="kt">Beverage</span><span class="p">?</span>
+
+        <span class="k">switch</span> <span class="n">beverageName</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="s">"black tea"</span><span class="p">:</span>
+            <span class="n">beverage</span> <span class="o">=</span> <span class="kt">CeylonBlackTea</span><span class="p">()</span>
+        <span class="k">case</span> <span class="s">"green tea"</span><span class="p">:</span>
+            <span class="n">beverage</span> <span class="o">=</span> <span class="kt">GyokuroGreenTea</span><span class="p">()</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">beverage</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">open</span> <span class="kd">class</span> <span class="kt">EUBeverageFactory</span><span class="p">:</span> <span class="kt">BeverageFactory</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{}</span>
+
+    <span class="kd">public</span> <span class="kd">func</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="nv">beverageName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Beverage</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">beverage</span><span class="p">:</span> <span class="kt">Beverage</span><span class="p">?</span>
+
+        <span class="k">switch</span> <span class="n">beverageName</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="s">"black tea"</span><span class="p">:</span>
+            <span class="n">beverage</span> <span class="o">=</span> <span class="kt">EarlGreyBlackTea</span><span class="p">()</span>
+        <span class="k">case</span> <span class="s">"green tea"</span><span class="p">:</span>
+            <span class="n">beverage</span> <span class="o">=</span> <span class="kt">SenchaGreenTea</span><span class="p">()</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">beverage</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> </li> <li> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">BeverageFactory</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="n">beverageName</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Beverage</span><span class="p">?</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">USBeverageFactory</span><span class="p">:</span> <span class="nc">BeverageFactory</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="n">beverageName</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Beverage</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">when</span> <span class="p">(</span><span class="n">beverageName</span><span class="p">)</span> <span class="p">{</span>
+            <span class="s">"black tea"</span> <span class="p">-&gt;</span> <span class="nc">CeylonBlackTea</span><span class="p">()</span>
+            <span class="s">"green tea"</span> <span class="p">-&gt;</span> <span class="nc">GyokuroGreenTea</span><span class="p">()</span>
+            <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">null</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">EUBeverageFactory</span><span class="p">:</span> <span class="nc">BeverageFactory</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="n">beverageName</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Beverage</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">when</span> <span class="p">(</span><span class="n">beverageName</span><span class="p">)</span> <span class="p">{</span>
+            <span class="s">"black tea"</span> <span class="p">-&gt;</span> <span class="nc">EarlGreyBlackTea</span><span class="p">()</span>
+            <span class="s">"green tea"</span> <span class="p">-&gt;</span> <span class="nc">SenchaGreenTea</span><span class="p">()</span>
+            <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">null</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> </li> </ul> <h3 id="updated-client">Updated Client</h3> <ul id="data-struct" class="tab" data-tab="95b43e49-4362-4053-b964-2947729431f3" data-name="data-struct"> <li class="active" id="data-struct-swift"> <a href="#">Swift </a> </li> <li id="data-struct-kotlin"> <a href="#">Kotlin </a> </li> </ul> <ul class="tab-content" id="95b43e49-4362-4053-b964-2947729431f3" data-name="data-struct"> <li class="active"> <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">BeverageShop</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">let</span> <span class="nv">factory</span><span class="p">:</span> <span class="kt">BeverageFactory</span>
+    
+    <span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">factory</span><span class="p">:</span> <span class="kt">BeverageFactory</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">self</span><span class="o">.</span><span class="n">factory</span> <span class="o">=</span> <span class="n">factory</span>
+    <span class="p">}</span>
+    
+    <span class="kd">public</span> <span class="kd">func</span> <span class="nf">order</span><span class="p">(</span><span class="nv">beverageName</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Beverage</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="nv">beverage</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="nf">createBeverage</span><span class="p">(</span><span class="nv">beverageName</span><span class="p">:</span> <span class="n">beverageName</span><span class="p">)</span>
+        
+        <span class="n">beverage</span><span class="p">?</span><span class="o">.</span><span class="nf">addSugar</span><span class="p">(</span><span class="nv">level</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">beverage</span><span class="p">?</span><span class="o">.</span><span class="nf">addIce</span><span class="p">(</span><span class="nv">level</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
+        <span class="n">beverage</span><span class="p">?</span><span class="o">.</span><span class="nf">shake</span><span class="p">()</span>
+        <span class="n">beverage</span><span class="p">?</span><span class="o">.</span><span class="nf">packageUp</span><span class="p">()</span>
+        
+        <span class="k">return</span> <span class="n">beverage</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="k">let</span> <span class="nv">usFactory</span> <span class="o">=</span> <span class="kt">USBeverageFactory</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">usShop</span> <span class="o">=</span> <span class="kt">BeverageShop</span><span class="p">(</span><span class="nv">factory</span><span class="p">:</span> <span class="n">usFactory</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">usBlackTea</span> <span class="o">=</span> <span class="n">usShop</span><span class="o">.</span><span class="nf">order</span><span class="p">(</span><span class="nv">beverageName</span><span class="p">:</span> <span class="s">"black tea"</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">euFactory</span> <span class="o">=</span> <span class="kt">EUBeverageFactory</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">euShop</span> <span class="o">=</span> <span class="kt">BeverageShop</span><span class="p">(</span><span class="nv">factory</span><span class="p">:</span> <span class="n">euFactory</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">euBlackTea</span> <span class="o">=</span> <span class="n">euShop</span><span class="o">.</span><span class="nf">order</span><span class="p">(</span><span class="nv">beverageName</span><span class="p">:</span> <span class="s">"black tea"</span><span class="p">)</span>
+</code></pre></div></div> </li> <li> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">BeverageShop</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">factory</span><span class="p">:</span> <span class="nc">BeverageFactory</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">order</span><span class="p">(</span><span class="n">beverageName</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Beverage</span><span class="p">?</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">beverage</span> <span class="p">=</span> <span class="n">factory</span><span class="p">.</span><span class="nf">createBeverage</span><span class="p">(</span><span class="n">beverageName</span><span class="p">)</span>
+        
+        <span class="n">beverage</span><span class="o">?.</span><span class="nf">addSugar</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">beverage</span><span class="o">?.</span><span class="nf">addIce</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="n">beverage</span><span class="o">?.</span><span class="nf">shake</span><span class="p">()</span>
+        <span class="n">beverage</span><span class="o">?.</span><span class="nf">packageUp</span><span class="p">()</span>
+        
+        <span class="k">return</span> <span class="n">beverage</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">val</span> <span class="py">usFactory</span> <span class="p">=</span> <span class="nc">USBeverageFactory</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">usShop</span> <span class="p">=</span> <span class="nc">BeverageShop</span><span class="p">(</span><span class="n">usFactory</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">usBlackTea</span> <span class="p">=</span> <span class="n">usShop</span><span class="p">.</span><span class="nf">order</span><span class="p">(</span><span class="s">"black tea"</span><span class="p">)</span>
+
+<span class="kd">val</span> <span class="py">euFactory</span> <span class="p">=</span> <span class="nc">EUBeverageFactory</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">euShop</span> <span class="p">=</span> <span class="nc">BeverageShop</span><span class="p">(</span><span class="n">euFactory</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">euBlackTea</span> <span class="p">=</span> <span class="n">euShop</span><span class="p">.</span><span class="nf">order</span><span class="p">(</span><span class="s">"black tea"</span><span class="p">)</span>
+</code></pre></div></div> </li> </ul> <h2 id="advanced-implementation-configuration-driven-factory-selection">Advanced Implementation: Configuration-Driven Factory Selection</h2> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">BeverageShopFactory</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">createShop</span><span class="p">(</span><span class="n">region</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">BeverageShop</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">factory</span> <span class="p">=</span> <span class="k">when</span> <span class="p">(</span><span class="n">region</span><span class="p">.</span><span class="nf">lowercase</span><span class="p">())</span> <span class="p">{</span>
+            <span class="s">"us"</span> <span class="p">-&gt;</span> <span class="nc">USBeverageFactory</span><span class="p">()</span>
+            <span class="s">"eu"</span> <span class="p">-&gt;</span> <span class="nc">EUBeverageFactory</span><span class="p">()</span>
+            <span class="s">"jp"</span> <span class="p">-&gt;</span> <span class="nc">JPBeverageFactory</span><span class="p">()</span>
+            <span class="k">else</span> <span class="p">-&gt;</span> <span class="nc">USBeverageFactory</span><span class="p">()</span> <span class="c1">// Default</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nc">BeverageShop</span><span class="p">(</span><span class="n">factory</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">JPBeverageFactory</span><span class="p">:</span> <span class="nc">BeverageFactory</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="n">beverageName</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Beverage</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">when</span> <span class="p">(</span><span class="n">beverageName</span><span class="p">)</span> <span class="p">{</span>
+            <span class="s">"black tea"</span> <span class="p">-&gt;</span> <span class="nc">AssamBlackTea</span><span class="p">()</span>
+            <span class="s">"green tea"</span> <span class="p">-&gt;</span> <span class="nc">MatchaGreenTea</span><span class="p">()</span>
+            <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">null</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">AssamBlackTea</span><span class="p">:</span> <span class="nc">Beverage</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">toString</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"AssamBlackTea"</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">MatchaGreenTea</span><span class="p">:</span> <span class="nc">Beverage</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">toString</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"MatchaGreenTea"</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="real-world-example-database-connection-factory">Real-World Example: Database Connection Factory</h2> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">DatabaseConnection</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">connect</span><span class="p">():</span> <span class="nc">Boolean</span>
+    <span class="k">fun</span> <span class="nf">disconnect</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">executeQuery</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;&gt;</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">MySQLConnection</span><span class="p">:</span> <span class="nc">DatabaseConnection</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">connect</span><span class="p">():</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Connecting to MySQL database"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">true</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">disconnect</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Disconnecting from MySQL database"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">executeQuery</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;&gt;</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Executing query on MySQL: $query"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nf">emptyList</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">PostgreSQLConnection</span><span class="p">:</span> <span class="nc">DatabaseConnection</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">connect</span><span class="p">():</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Connecting to PostgreSQL database"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">true</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">disconnect</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Disconnecting from PostgreSQL database"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">executeQuery</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;&gt;</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Executing query on PostgreSQL: $query"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nf">emptyList</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nc">DatabaseFactory</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">createConnection</span><span class="p">():</span> <span class="nc">DatabaseConnection</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">MySQLFactory</span><span class="p">:</span> <span class="nc">DatabaseFactory</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">createConnection</span><span class="p">():</span> <span class="nc">DatabaseConnection</span> <span class="p">=</span> <span class="nc">MySQLConnection</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">PostgreSQLFactory</span><span class="p">:</span> <span class="nc">DatabaseFactory</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">createConnection</span><span class="p">():</span> <span class="nc">DatabaseConnection</span> <span class="p">=</span> <span class="nc">PostgreSQLConnection</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">DatabaseManager</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">factory</span><span class="p">:</span> <span class="nc">DatabaseFactory</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">performOperation</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;&gt;</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">connection</span> <span class="p">=</span> <span class="n">factory</span><span class="p">.</span><span class="nf">createConnection</span><span class="p">()</span>
+        <span class="n">connection</span><span class="p">.</span><span class="nf">connect</span><span class="p">()</span>
+        <span class="kd">val</span> <span class="py">result</span> <span class="p">=</span> <span class="n">connection</span><span class="p">.</span><span class="nf">executeQuery</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">connection</span><span class="p">.</span><span class="nf">disconnect</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="best-practices-and-considerations">Best Practices and Considerations</h2> <h3 id="1-factory-selection-strategy">1. <strong>Factory Selection Strategy</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Good: Configuration-based factory selection</span>
+<span class="kd">class</span> <span class="nc">BeverageService</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">factory</span><span class="p">:</span> <span class="nc">BeverageFactory</span>
+    
+    <span class="k">constructor</span><span class="p">(</span><span class="n">region</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">factory</span> <span class="p">=</span> <span class="k">when</span> <span class="p">(</span><span class="n">region</span><span class="p">.</span><span class="nf">lowercase</span><span class="p">())</span> <span class="p">{</span>
+            <span class="s">"us"</span> <span class="p">-&gt;</span> <span class="nc">USBeverageFactory</span><span class="p">()</span>
+            <span class="s">"eu"</span> <span class="p">-&gt;</span> <span class="nc">EUBeverageFactory</span><span class="p">()</span>
+            <span class="s">"jp"</span> <span class="p">-&gt;</span> <span class="nc">JPBeverageFactory</span><span class="p">()</span>
+            <span class="k">else</span> <span class="p">-&gt;</span> <span class="nc">USBeverageFactory</span><span class="p">()</span> <span class="c1">// Default</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">fun</span> <span class="nf">createBeverageMenu</span><span class="p">():</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">Beverage</span><span class="p">&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">listOf</span><span class="p">(</span>
+            <span class="n">factory</span><span class="p">.</span><span class="nf">createBeverage</span><span class="p">(</span><span class="s">"black tea"</span><span class="p">),</span>
+            <span class="n">factory</span><span class="p">.</span><span class="nf">createBeverage</span><span class="p">(</span><span class="s">"green tea"</span><span class="p">)</span>
+        <span class="p">).</span><span class="nf">filterNotNull</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <h3 id="2-parameterized-factory-methods">2. <strong>Parameterized Factory Methods</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Good: Factory methods with parameters</span>
+<span class="kd">interface</span> <span class="nc">AdvancedBeverageFactory</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="n">beverageName</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">sweetness</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="n">iceLevel</span><span class="p">:</span> <span class="nc">Int</span><span class="p">):</span> <span class="nc">Beverage</span><span class="p">?</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">USBeverageFactory</span><span class="p">:</span> <span class="nc">AdvancedBeverageFactory</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="n">beverageName</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">sweetness</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span> <span class="n">iceLevel</span><span class="p">:</span> <span class="nc">Int</span><span class="p">):</span> <span class="nc">Beverage</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">when</span> <span class="p">(</span><span class="n">beverageName</span><span class="p">)</span> <span class="p">{</span>
+            <span class="s">"black tea"</span> <span class="p">-&gt;</span> <span class="nc">CeylonBlackTea</span><span class="p">(</span><span class="n">sweetness</span><span class="p">,</span> <span class="n">iceLevel</span><span class="p">)</span>
+            <span class="s">"green tea"</span> <span class="p">-&gt;</span> <span class="nc">GyokuroGreenTea</span><span class="p">(</span><span class="n">sweetness</span><span class="p">,</span> <span class="n">iceLevel</span><span class="p">)</span>
+            <span class="k">else</span> <span class="p">-&gt;</span> <span class="k">null</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <h3 id="3-factory-method-with-caching">3. <strong>Factory Method with Caching</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Good: Factory with object caching</span>
+<span class="k">abstract</span> <span class="kd">class</span> <span class="nc">CachedBeverageFactory</span><span class="p">:</span> <span class="nc">BeverageFactory</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">cache</span> <span class="p">=</span> <span class="n">mutableMapOf</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Beverage</span><span class="p">&gt;()</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">createBeverage</span><span class="p">(</span><span class="n">beverageName</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Beverage</span><span class="p">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">cache</span><span class="p">.</span><span class="nf">getOrPut</span><span class="p">(</span><span class="n">beverageName</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nf">createBeverageImpl</span><span class="p">(</span><span class="n">beverageName</span><span class="p">)</span> <span class="o">?:</span> <span class="k">return</span> <span class="k">null</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">createBeverageImpl</span><span class="p">(</span><span class="n">beverageName</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Beverage</span><span class="p">?</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="performance-considerations">Performance Considerations</h2> <table> <thead> <tr> <th>Approach</th> <th>Memory Usage</th> <th>Performance</th> <th>Flexibility</th> <th>Extensibility</th> </tr> </thead> <tbody> <tr> <td>Simple Factory</td> <td>Low</td> <td>High</td> <td>Low</td> <td>Low</td> </tr> <tr> <td>Factory Method</td> <td>Medium</td> <td>Medium</td> <td>High</td> <td>High</td> </tr> <tr> <td>Abstract Factory</td> <td>High</td> <td>Medium</td> <td>High</td> <td>High</td> </tr> <tr> <td>Direct Instantiation</td> <td>Low</td> <td>High</td> <td>Low</td> <td>Low</td> </tr> </tbody> </table> <h2 id="related-design-patterns">Related Design Patterns</h2> <ul> <li> <strong>Simple Factory</strong>: Centralizes object creation logic</li> <li> <strong>Abstract Factory</strong>: Creates families of related objects</li> <li> <strong>Builder</strong>: Constructs complex objects step by step</li> <li> <strong>Prototype</strong>: Creates new objects by cloning existing ones</li> </ul> <h2 id="conclusion">Conclusion</h2> <p>The Factory Method Pattern provides a powerful way to create objects without specifying their exact classes. Key benefits include:</p> <ul> <li> <strong>Flexibility</strong>: Easy to add new product types without modifying existing code</li> <li> <strong>Extensibility</strong>: New factories can be added without changing client code</li> <li> <strong>Polymorphism</strong>: Client code works with abstract interfaces</li> <li> <strong>Maintainability</strong>: Object creation logic is centralized and organized</li> </ul> <p>This pattern is essential for building flexible applications that need to support multiple product variants or regional differences.</p> <h2 id="related-articles">Related Articles</h2> <ul> <li><a href="/2024-07-06-design-pattern-5-simple-factory-pattern/">Design Pattern 5: Simple Factory Pattern</a></li> <li><a href="/2024-07-08-design-pattern-7-abstract-factory-pattern/">Design Pattern 7: Abstract Factory Pattern</a></li> <li><a href="/2024-07-09-design-pattern-8-builder-pattern/">Design Pattern 8: Builder Pattern</a></li> <li><a href="/2024-07-03-design-pattern-2-design-principle/">Object-Oriented Design Principles</a></li> </ul> </div> </article> <br> <hr> <br> <ul class="list-disc pl-8"></ul> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/devops/productivity/github/development/how-to-use-multiple-github-accounts-using-ssh/">How to Use Multiple GitHub Accounts on One Computer: Complete SSH Setup Guide</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai%20tools/visualization/productivity/development/ai-tools-excalidraw-chart-guide/">Excalidraw AI: Create Professional Diagrams with Text Commands - Complete Guide</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/setup%20guide/development/macos/productivity/setup-development-environment-on-a-new-macos/">Complete macOS Development Environment Setup Guide for 2024</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/design%20pattern/software%20engineering/programming/design-pattern-28-interpreter-pattern/">Design Pattern 28: Interpreter Pattern - Complete Guide with Examples</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/design%20pattern/software%20engineering/programming/design-pattern-27-visitor-pattern/">Design Pattern 27: Visitor Pattern - Complete Guide with Real-World IoT Examples</a> </li> </div> </div> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top"></nav> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2025 Nick Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script> <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script> <script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script> <script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script> <script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script async src="https://www.googletagmanager.com/gtag/js?id=G-446Z2KNTGH"></script> <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-446Z2KNTGH');
+  </script> <script defer src="/assets/js/google-analytics-setup.js"></script> <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script> <script src="/assets/js/tabs.min.js?b8748955e1076bbe0dabcf28f2549fdc"></script> <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script> <script src="/assets/js/search-data.js"></script> <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script> </body> </html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA"> <meta http-equiv="Permissions-Policy" content="interest-cohort=()"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Design Pattern 2: Object-Oriented Design Principles - SOLID Principles for Building Maintainable Software Systems | Nick Huang </title> <meta name="author" content="Nick Huang"> <meta name="description" content="Master the SOLID principles to improve object-oriented design quality. Learn Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion principles with practical examples."> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://nickhuangcyh.github.io/blog/design%20patterns/software%20development/object-oriented%20programming/code%20quality/design-pattern-2-design-principle/"> <script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> <script src="/assets/js/language-detection.js?8628978c9c518d94dcb000b3ee754416"></script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Nick</span> Huang </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item "> <a class="nav-link" href="/books/">bookshelf </a> </li> <li class="nav-item"> <button id="search-toggle" title="Search" onclick="openSearchModal()"> <span class="nav-link">ctrl k <i class="ti ti-search"></i></span> </button> </li> <li class="nav-item"> <div class="language-toggle"> <div class="dropdown"> <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-globe"></i> EN </button> <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle"> <li> <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('zh')"> <span class="flag">🇹🇼</span> 中文 </a> </li> </ul> </div> </div> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="ti ti-sun-moon" id="light-toggle-system"></i> <i class="ti ti-moon-filled" id="light-toggle-dark"></i> <i class="ti ti-sun-filled" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title">Design Pattern 2: Object-Oriented Design Principles - SOLID Principles for Building Maintainable Software Systems</h1> <p class="post-meta"> Created on July 03, 2024 </p> <p class="post-tags"> <a href="/blog/2024"> <i class="fa-solid fa-calendar fa-sm"></i> 2024 </a>   ·   <a href="/blog/tag/solid-principles"> <i class="fa-solid fa-hashtag fa-sm"></i> SOLID Principles</a>   <a href="/blog/tag/design-principles"> <i class="fa-solid fa-hashtag fa-sm"></i> Design Principles</a>   <a href="/blog/tag/object-oriented-design"> <i class="fa-solid fa-hashtag fa-sm"></i> Object-Oriented Design</a>   <a href="/blog/tag/software-architecture"> <i class="fa-solid fa-hashtag fa-sm"></i> Software Architecture</a>   <a href="/blog/tag/single-responsibility"> <i class="fa-solid fa-hashtag fa-sm"></i> Single Responsibility</a>   <a href="/blog/tag/open-closed-principle"> <i class="fa-solid fa-hashtag fa-sm"></i> Open-Closed Principle</a>   <a href="/blog/tag/liskov-substitution"> <i class="fa-solid fa-hashtag fa-sm"></i> Liskov Substitution</a>   <a href="/blog/tag/interface-segregation"> <i class="fa-solid fa-hashtag fa-sm"></i> Interface Segregation</a>   <a href="/blog/tag/dependency-inversion"> <i class="fa-solid fa-hashtag fa-sm"></i> Dependency Inversion</a>   <a href="/blog/tag/code-quality"> <i class="fa-solid fa-hashtag fa-sm"></i> Code Quality</a>   ·   <a href="/blog/category/design-patterns"> <i class="fa-solid fa-tag fa-sm"></i> Design Patterns</a>   <a href="/blog/category/software-development"> <i class="fa-solid fa-tag fa-sm"></i> Software Development</a>   <a href="/blog/category/object-oriented-programming"> <i class="fa-solid fa-tag fa-sm"></i> Object-Oriented Programming</a>   <a href="/blog/category/code-quality"> <i class="fa-solid fa-tag fa-sm"></i> Code Quality</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <blockquote> <p>Download the complete Design Pattern series code from the <a href="https://github.com/nickhuangcyh/design_pattern" rel="external nofollow noopener" target="_blank">design_pattern repo</a>.</p> </blockquote> <h2 id="introduction-the-foundation-of-quality-software-design">Introduction: The Foundation of Quality Software Design</h2> <p>Design Principles are guidelines that help us improve object-oriented design and create better software systems. These principles provide a solid foundation for writing maintainable, extensible, and robust code.</p> <h2 id="real-world-applications">Real-World Applications</h2> <p>Design principles are fundamental to:</p> <ul> <li> <strong>Software Architecture</strong>: Building scalable, maintainable systems</li> <li> <strong>Code Reviews</strong>: Evaluating code quality and design decisions</li> <li> <strong>Refactoring</strong>: Improving existing code structure</li> <li> <strong>Team Collaboration</strong>: Establishing coding standards</li> <li> <strong>Design Patterns</strong>: Understanding when and how to apply patterns</li> </ul> <h2 id="the-solid-principles">The SOLID Principles</h2> <p>SOLID is an acronym for five fundamental object-oriented design principles that help developers create more maintainable and flexible software.</p> <h3 id="1-single-responsibility-principle-srp">1. Single Responsibility Principle (SRP)</h3> <p><strong>Definition</strong>: A class should have only one reason to change, meaning it should have only one responsibility.</p> <p><strong>Real-World Analogy</strong>: In a restaurant, the chef cooks, the waiter serves, and the cashier handles payments. Each person has a single, well-defined responsibility.</p> <h4 id="before-applying-srp">Before Applying SRP</h4> <ul id="srp-1" class="tab" data-tab="d91ab9c9-79af-468f-b402-909b04f7a26e" data-name="srp-1"> <li class="active" id="srp-1-swift"> <a href="#">Swift </a> </li> <li id="srp-1-kotlin"> <a href="#">Kotlin </a> </li> </ul> <ul class="tab-content" id="d91ab9c9-79af-468f-b402-909b04f7a26e" data-name="srp-1"> <li class="active"> <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">LoginViewController</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">loginToServer</span><span class="p">(</span><span class="nv">account</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Network request logic</span>
+        <span class="c1">// Alamofire... { callback() }</span>
+        <span class="c1">// Volley... { callback() }</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">saveToDB</span><span class="p">(</span><span class="nv">account</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Database operations</span>
+        <span class="c1">// sql.save()...</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">deleteFromDB</span><span class="p">(</span><span class="nv">account</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Database operations</span>
+        <span class="c1">// sql.delete()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> </li> <li> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">LoginActivity</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">loginToServer</span><span class="p">(</span><span class="n">account</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="nc">Result</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Error</span><span class="p">&gt;)</span> <span class="p">{</span>
+        <span class="c1">// Network request logic</span>
+        <span class="c1">// Alamofire... { callback() }</span>
+        <span class="c1">// Volley... { callback() }</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">saveToDB</span><span class="p">(</span><span class="n">account</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Database operations</span>
+        <span class="c1">// sql.save()...</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">deleteFromDB</span><span class="p">(</span><span class="n">account</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Database operations</span>
+        <span class="c1">// sql.delete()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> </li> </ul> <h4 id="after-applying-srp">After Applying SRP</h4> <ul id="srp-2" class="tab" data-tab="639e708e-34f0-4def-88ab-82f57d5c0f67" data-name="srp-2"> <li class="active" id="srp-2-swift"> <a href="#">Swift </a> </li> <li id="srp-2-kotlin"> <a href="#">Kotlin </a> </li> </ul> <ul class="tab-content" id="639e708e-34f0-4def-88ab-82f57d5c0f67" data-name="srp-2"> <li class="active"> <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">ServerApiRequestService</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">login</span><span class="p">(</span><span class="nv">account</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Network request logic</span>
+        <span class="c1">// Alamofire... { callback() }</span>
+        <span class="c1">// Volley... { callback() }</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">DBService</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">save</span><span class="p">(</span><span class="nv">account</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Database operations</span>
+        <span class="c1">// sql.save()</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">account</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Database operations</span>
+        <span class="c1">// sql.delete()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">LoginViewControllerSRP</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nv">apiRequestService</span><span class="p">:</span> <span class="kt">ServerApiRequestService</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+    <span class="k">var</span> <span class="nv">dbService</span><span class="p">:</span> <span class="kt">DBService</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span>
+
+    <span class="kd">func</span> <span class="nf">loginToServer</span><span class="p">(</span><span class="nv">account</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kt">Result</span><span class="o">&lt;</span><span class="kt">String</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">apiRequestService</span><span class="p">?</span><span class="o">.</span><span class="nf">login</span><span class="p">(</span><span class="nv">account</span><span class="p">:</span> <span class="n">account</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="n">password</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="n">callback</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">saveToDB</span><span class="p">(</span><span class="nv">account</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dbService</span><span class="p">?</span><span class="o">.</span><span class="nf">save</span><span class="p">(</span><span class="nv">account</span><span class="p">:</span> <span class="n">account</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="n">password</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kd">func</span> <span class="nf">deleteFromDB</span><span class="p">(</span><span class="nv">account</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dbService</span><span class="p">?</span><span class="o">.</span><span class="nf">delete</span><span class="p">(</span><span class="nv">account</span><span class="p">:</span> <span class="n">account</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> </li> <li> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">ServerApiRequestService</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">login</span><span class="p">(</span><span class="n">account</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="nc">Result</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Error</span><span class="p">&gt;)</span> <span class="p">{</span>
+        <span class="c1">// Network request logic</span>
+        <span class="c1">// Alamofire... { callback() }</span>
+        <span class="c1">// Volley... { callback() }</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">DBService</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">save</span><span class="p">(</span><span class="n">account</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Database operations</span>
+        <span class="c1">// sql.save()</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">delete</span><span class="p">(</span><span class="n">account</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Database operations</span>
+        <span class="c1">// sql.delete()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">LoginActivitySRP</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="py">apiRequestService</span><span class="p">:</span> <span class="nc">ServerApiRequestService</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+    <span class="kd">var</span> <span class="py">dbService</span><span class="p">:</span> <span class="nc">DBService</span><span class="p">?</span> <span class="p">=</span> <span class="k">null</span>
+
+    <span class="k">fun</span> <span class="nf">loginToServer</span><span class="p">(</span><span class="n">account</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">callback</span><span class="p">:</span> <span class="nc">Result</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Error</span><span class="p">&gt;)</span> <span class="p">{</span>
+        <span class="n">apiRequestService</span><span class="o">?.</span><span class="nf">login</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">saveToDB</span><span class="p">(</span><span class="n">account</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">password</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dbService</span><span class="o">?.</span><span class="nf">save</span><span class="p">(</span><span class="n">account</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">fun</span> <span class="nf">deleteFromDB</span><span class="p">(</span><span class="n">account</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">dbService</span><span class="o">?.</span><span class="nf">delete</span><span class="p">(</span><span class="n">account</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> </li> </ul> <p><strong>Benefits</strong>:</p> <ul> <li> <strong>Maintainability</strong>: Changes to network logic don’t affect database operations</li> <li> <strong>Testability</strong>: Each service can be tested independently</li> <li> <strong>Reusability</strong>: Services can be reused in other parts of the application</li> </ul> <blockquote> <p><strong>Note</strong>: Some articles suggest separating save and delete functions into different classes (DeleteDBService, SaveDBService) because they are different responsibilities. However, this might be over-design and harder to maintain. Responsibility separation should be appropriate, not excessive.</p> </blockquote> <h3 id="2-open-closed-principle-ocp">2. Open-Closed Principle (OCP)</h3> <p><strong>Definition</strong>: Software entities should be open for extension but closed for modification.</p> <p><strong>Real-World Analogy</strong>: A plugin system where you can add new functionality without modifying existing code.</p> <h4 id="before-applying-ocp">Before Applying OCP</h4> <ul id="ocp-1" class="tab" data-tab="47d52f6a-3dd1-4cfe-a851-6edb067a090c" data-name="ocp-1"> <li class="active" id="ocp-1-swift"> <a href="#">Swift </a> </li> <li id="ocp-1-kotlin"> <a href="#">Kotlin </a> </li> </ul> <ul class="tab-content" id="47d52f6a-3dd1-4cfe-a851-6edb067a090c" data-name="ocp-1"> <li class="active"> <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">ValidatorType</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">username</span>
+    <span class="k">case</span> <span class="n">password</span>
+<span class="p">}</span>
+
+<span class="kd">enum</span> <span class="kt">ValidationError</span><span class="p">:</span> <span class="kt">Error</span><span class="p">,</span> <span class="kt">Equatable</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nf">isEmpty</span><span class="p">(</span><span class="nv">errorMessage</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span>
+    <span class="k">case</span> <span class="nf">containsSpecialChar</span><span class="p">(</span><span class="nv">errorMessage</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">Validator</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">validated</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">validatorType</span><span class="p">:</span> <span class="kt">ValidatorType</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="n">validatorType</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">username</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">isEmpty</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="kt">ValidationError</span><span class="o">.</span><span class="nf">isEmpty</span><span class="p">(</span><span class="nv">errorMessage</span><span class="p">:</span> <span class="s">"Username cannot be empty"</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"!@#$%"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="kt">ValidationError</span><span class="o">.</span><span class="nf">containsSpecialChar</span><span class="p">(</span><span class="nv">errorMessage</span><span class="p">:</span> <span class="s">"Username contains special characters"</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">password</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">isEmpty</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="kt">ValidationError</span><span class="o">.</span><span class="nf">isEmpty</span><span class="p">(</span><span class="nv">errorMessage</span><span class="p">:</span> <span class="s">"Password cannot be empty"</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">count</span> <span class="o">&lt;</span> <span class="mi">8</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="kt">ValidationError</span><span class="o">.</span><span class="nf">containsSpecialChar</span><span class="p">(</span><span class="nv">errorMessage</span><span class="p">:</span> <span class="s">"Password must be at least 8 characters"</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">value</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> </li> <li> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">enum</span> <span class="kd">class</span> <span class="nc">ValidatorType</span> <span class="p">{</span>
+    <span class="nc">USERNAME</span><span class="p">,</span>
+    <span class="nc">PASSWORD</span>
+<span class="p">}</span>
+
+<span class="k">sealed</span> <span class="kd">class</span> <span class="nc">ValidationError</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">Exception</span><span class="p">(</span><span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">class</span> <span class="nc">Empty</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">ValidationError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="kd">class</span> <span class="nc">ContainsSpecialChar</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">:</span> <span class="nc">ValidationError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Validator</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">validated</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">validatorType</span><span class="p">:</span> <span class="nc">ValidatorType</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">when</span> <span class="p">(</span><span class="n">validatorType</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nc">ValidatorType</span><span class="p">.</span><span class="nc">USERNAME</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+                    <span class="k">throw</span> <span class="nc">ValidationError</span><span class="p">.</span><span class="nc">Empty</span><span class="p">(</span><span class="s">"Username cannot be empty"</span><span class="p">)</span>
+                <span class="p">}</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="nc">Regex</span><span class="p">(</span><span class="s">"[!@#$%]"</span><span class="p">)))</span> <span class="p">{</span>
+                    <span class="k">throw</span> <span class="nc">ValidationError</span><span class="p">.</span><span class="nc">ContainsSpecialChar</span><span class="p">(</span><span class="s">"Username contains special characters"</span><span class="p">)</span>
+                <span class="p">}</span>
+                <span class="n">value</span>
+            <span class="p">}</span>
+            <span class="nc">ValidatorType</span><span class="p">.</span><span class="nc">PASSWORD</span> <span class="p">-&gt;</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+                    <span class="k">throw</span> <span class="nc">ValidationError</span><span class="p">.</span><span class="nc">Empty</span><span class="p">(</span><span class="s">"Password cannot be empty"</span><span class="p">)</span>
+                <span class="p">}</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="n">length</span> <span class="p">&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">throw</span> <span class="nc">ValidationError</span><span class="p">.</span><span class="nc">ContainsSpecialChar</span><span class="p">(</span><span class="s">"Password must be at least 8 characters"</span><span class="p">)</span>
+                <span class="p">}</span>
+                <span class="n">value</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> </li> </ul> <h4 id="after-applying-ocp">After Applying OCP</h4> <ul id="ocp-2" class="tab" data-tab="636bc7ba-05ec-49c9-a797-6128ad2d7598" data-name="ocp-2"> <li class="active" id="ocp-2-swift"> <a href="#">Swift </a> </li> <li id="ocp-2-kotlin"> <a href="#">Kotlin </a> </li> </ul> <ul class="tab-content" id="636bc7ba-05ec-49c9-a797-6128ad2d7598" data-name="ocp-2"> <li class="active"> <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">ValidationRule</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">String</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">UsernameValidationRule</span><span class="p">:</span> <span class="kt">ValidationRule</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">isEmpty</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="kt">ValidationError</span><span class="o">.</span><span class="nf">isEmpty</span><span class="p">(</span><span class="nv">errorMessage</span><span class="p">:</span> <span class="s">"Username cannot be empty"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"!@#$%"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="kt">ValidationError</span><span class="o">.</span><span class="nf">containsSpecialChar</span><span class="p">(</span><span class="nv">errorMessage</span><span class="p">:</span> <span class="s">"Username contains special characters"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">value</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">PasswordValidationRule</span><span class="p">:</span> <span class="kt">ValidationRule</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">isEmpty</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="kt">ValidationError</span><span class="o">.</span><span class="nf">isEmpty</span><span class="p">(</span><span class="nv">errorMessage</span><span class="p">:</span> <span class="s">"Password cannot be empty"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">count</span> <span class="o">&lt;</span> <span class="mi">8</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="kt">ValidationError</span><span class="o">.</span><span class="nf">containsSpecialChar</span><span class="p">(</span><span class="nv">errorMessage</span><span class="p">:</span> <span class="s">"Password must be at least 8 characters"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">value</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">EmailValidationRule</span><span class="p">:</span> <span class="kt">ValidationRule</span> <span class="p">{</span>
+    <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">isEmpty</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="kt">ValidationError</span><span class="o">.</span><span class="nf">isEmpty</span><span class="p">(</span><span class="nv">errorMessage</span><span class="p">:</span> <span class="s">"Email cannot be empty"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="o">!</span><span class="n">value</span><span class="o">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"@"</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="kt">ValidationError</span><span class="o">.</span><span class="nf">containsSpecialChar</span><span class="p">(</span><span class="nv">errorMessage</span><span class="p">:</span> <span class="s">"Invalid email format"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">value</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="kt">ValidatorOCP</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="k">var</span> <span class="nv">rules</span><span class="p">:</span> <span class="p">[</span><span class="kt">ValidationRule</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="kd">func</span> <span class="nf">addRule</span><span class="p">(</span><span class="n">_</span> <span class="nv">rule</span><span class="p">:</span> <span class="kt">ValidationRule</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rules</span><span class="o">.</span><span class="nf">append</span><span class="p">(</span><span class="n">rule</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="kd">func</span> <span class="nf">validate</span><span class="p">(</span><span class="n">_</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">String</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nv">result</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">for</span> <span class="n">rule</span> <span class="k">in</span> <span class="n">rules</span> <span class="p">{</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="k">try</span> <span class="n">rule</span><span class="o">.</span><span class="nf">validate</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> </li> <li> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">ValidationRule</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">validate</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">UsernameValidationRule</span> <span class="p">:</span> <span class="nc">ValidationRule</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">validate</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nc">ValidationError</span><span class="p">.</span><span class="nc">Empty</span><span class="p">(</span><span class="s">"Username cannot be empty"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="nc">Regex</span><span class="p">(</span><span class="s">"[!@#$%]"</span><span class="p">)))</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nc">ValidationError</span><span class="p">.</span><span class="nc">ContainsSpecialChar</span><span class="p">(</span><span class="s">"Username contains special characters"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">value</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">PasswordValidationRule</span> <span class="p">:</span> <span class="nc">ValidationRule</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">validate</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nc">ValidationError</span><span class="p">.</span><span class="nc">Empty</span><span class="p">(</span><span class="s">"Password cannot be empty"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="n">length</span> <span class="p">&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nc">ValidationError</span><span class="p">.</span><span class="nc">ContainsSpecialChar</span><span class="p">(</span><span class="s">"Password must be at least 8 characters"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">value</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">EmailValidationRule</span> <span class="p">:</span> <span class="nc">ValidationRule</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">validate</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">value</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nc">ValidationError</span><span class="p">.</span><span class="nc">Empty</span><span class="p">(</span><span class="s">"Email cannot be empty"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="n">value</span><span class="p">.</span><span class="nf">contains</span><span class="p">(</span><span class="s">"@"</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nc">ValidationError</span><span class="p">.</span><span class="nc">ContainsSpecialChar</span><span class="p">(</span><span class="s">"Invalid email format"</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">value</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">ValidatorOCP</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">rules</span> <span class="p">=</span> <span class="n">mutableListOf</span><span class="p">&lt;</span><span class="nc">ValidationRule</span><span class="p">&gt;()</span>
+    
+    <span class="k">fun</span> <span class="nf">addRule</span><span class="p">(</span><span class="n">rule</span><span class="p">:</span> <span class="nc">ValidationRule</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">rules</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">rule</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">fun</span> <span class="nf">validate</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="py">result</span> <span class="p">=</span> <span class="n">value</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">rule</span> <span class="k">in</span> <span class="n">rules</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">result</span> <span class="p">=</span> <span class="n">rule</span><span class="p">.</span><span class="nf">validate</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> </li> </ul> <p><strong>Benefits</strong>:</p> <ul> <li> <strong>Extensibility</strong>: New validation rules can be added without modifying existing code</li> <li> <strong>Maintainability</strong>: Each validation rule is isolated and easy to maintain</li> <li> <strong>Flexibility</strong>: Validation rules can be combined dynamically</li> </ul> <h3 id="3-liskov-substitution-principle-lsp">3. Liskov Substitution Principle (LSP)</h3> <p><strong>Definition</strong>: Subtypes must be substitutable for their base types without altering the correctness of the program.</p> <p><strong>Real-World Analogy</strong>: If you have a program that works with rectangles, it should also work with squares (since a square is a type of rectangle).</p> <h4 id="violating-lsp">Violating LSP</h4> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">open</span> <span class="kd">class</span> <span class="nc">Rectangle</span> <span class="p">{</span>
+    <span class="k">open</span> <span class="kd">var</span> <span class="py">width</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="k">open</span> <span class="kd">var</span> <span class="py">height</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
+    
+    <span class="k">fun</span> <span class="nf">getArea</span><span class="p">():</span> <span class="nc">Int</span> <span class="p">=</span> <span class="n">width</span> <span class="p">*</span> <span class="n">height</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Square</span> <span class="p">:</span> <span class="nc">Rectangle</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="kd">var</span> <span class="py">width</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
+        <span class="k">set</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">field</span> <span class="p">=</span> <span class="n">value</span>
+            <span class="n">height</span> <span class="p">=</span> <span class="n">value</span> <span class="c1">// This violates LSP</span>
+        <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="kd">var</span> <span class="py">height</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
+        <span class="k">set</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">field</span> <span class="p">=</span> <span class="n">value</span>
+            <span class="n">width</span> <span class="p">=</span> <span class="n">value</span> <span class="c1">// This violates LSP</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// This function expects a Rectangle but breaks with Square</span>
+<span class="k">fun</span> <span class="nf">calculateArea</span><span class="p">(</span><span class="n">rectangle</span><span class="p">:</span> <span class="nc">Rectangle</span><span class="p">):</span> <span class="nc">Int</span> <span class="p">{</span>
+    <span class="n">rectangle</span><span class="p">.</span><span class="n">width</span> <span class="p">=</span> <span class="mi">5</span>
+    <span class="n">rectangle</span><span class="p">.</span><span class="n">height</span> <span class="p">=</span> <span class="mi">4</span>
+    <span class="k">return</span> <span class="n">rectangle</span><span class="p">.</span><span class="nf">getArea</span><span class="p">()</span> <span class="c1">// Expected 20, but with Square it might be 16</span>
+<span class="p">}</span>
+</code></pre></div></div> <h4 id="following-lsp">Following LSP</h4> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Shape</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">getArea</span><span class="p">():</span> <span class="nc">Int</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Rectangle</span> <span class="p">:</span> <span class="nc">Shape</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="py">width</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
+    <span class="kd">var</span> <span class="py">height</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">getArea</span><span class="p">():</span> <span class="nc">Int</span> <span class="p">=</span> <span class="n">width</span> <span class="p">*</span> <span class="n">height</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Square</span> <span class="p">:</span> <span class="nc">Shape</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="py">side</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">getArea</span><span class="p">():</span> <span class="nc">Int</span> <span class="p">=</span> <span class="n">side</span> <span class="p">*</span> <span class="n">side</span>
+<span class="p">}</span>
+
+<span class="c1">// This function works with any Shape</span>
+<span class="k">fun</span> <span class="nf">calculateArea</span><span class="p">(</span><span class="n">shape</span><span class="p">:</span> <span class="nc">Shape</span><span class="p">):</span> <span class="nc">Int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">shape</span><span class="p">.</span><span class="nf">getArea</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div> <h3 id="4-interface-segregation-principle-isp">4. Interface Segregation Principle (ISP)</h3> <p><strong>Definition</strong>: Clients should not be forced to depend on interfaces they do not use.</p> <p><strong>Real-World Analogy</strong>: A restaurant menu where you can order individual items instead of being forced to buy a complete meal.</p> <h4 id="violating-isp">Violating ISP</h4> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Worker</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">work</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">eat</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">sleep</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Robot</span> <span class="p">:</span> <span class="nc">Worker</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">work</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Robot working"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">eat</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Robots don't eat - forced to implement unused method</span>
+        <span class="k">throw</span> <span class="nc">UnsupportedOperationException</span><span class="p">(</span><span class="s">"Robots don't eat"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">sleep</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Robots don't sleep - forced to implement unused method</span>
+        <span class="k">throw</span> <span class="nc">UnsupportedOperationException</span><span class="p">(</span><span class="s">"Robots don't sleep"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <h4 id="following-isp">Following ISP</h4> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Workable</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">work</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nc">Eatable</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">eat</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nc">Sleepable</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">sleep</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Human</span> <span class="p">:</span> <span class="nc">Workable</span><span class="p">,</span> <span class="nc">Eatable</span><span class="p">,</span> <span class="nc">Sleepable</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">work</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Human working"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">eat</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Human eating"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">sleep</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Human sleeping"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Robot</span> <span class="p">:</span> <span class="nc">Workable</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">work</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Robot working"</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1">// No need to implement eat() or sleep()</span>
+<span class="p">}</span>
+</code></pre></div></div> <h3 id="5-dependency-inversion-principle-dip">5. Dependency Inversion Principle (DIP)</h3> <p><strong>Definition</strong>: High-level modules should not depend on low-level modules. Both should depend on abstractions.</p> <p><strong>Real-World Analogy</strong>: A light switch (high-level) doesn’t depend on a specific light bulb (low-level), but on the concept of a switchable device (abstraction).</p> <h4 id="violating-dip">Violating DIP</h4> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">EmailNotifier</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">sendEmail</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Sending email to $to: $message"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">UserService</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">emailNotifier</span> <span class="p">=</span> <span class="nc">EmailNotifier</span><span class="p">()</span> <span class="c1">// Direct dependency</span>
+    
+    <span class="k">fun</span> <span class="nf">createUser</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// User creation logic</span>
+        <span class="n">emailNotifier</span><span class="p">.</span><span class="nf">sendEmail</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="s">"Welcome!"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <h4 id="following-dip">Following DIP</h4> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">Notifier</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">send</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">EmailNotifier</span> <span class="p">:</span> <span class="nc">Notifier</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">send</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Sending email to $to: $message"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">SMSNotifier</span> <span class="p">:</span> <span class="nc">Notifier</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">send</span><span class="p">(</span><span class="n">to</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Sending SMS to $to: $message"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">UserService</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">notifier</span><span class="p">:</span> <span class="nc">Notifier</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Depends on abstraction</span>
+    <span class="k">fun</span> <span class="nf">createUser</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// User creation logic</span>
+        <span class="n">notifier</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="s">"Welcome!"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">val</span> <span class="py">emailNotifier</span> <span class="p">=</span> <span class="nc">EmailNotifier</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">smsNotifier</span> <span class="p">=</span> <span class="nc">SMSNotifier</span><span class="p">()</span>
+
+<span class="kd">val</span> <span class="py">userService1</span> <span class="p">=</span> <span class="nc">UserService</span><span class="p">(</span><span class="n">emailNotifier</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">userService2</span> <span class="p">=</span> <span class="nc">UserService</span><span class="p">(</span><span class="n">smsNotifier</span><span class="p">)</span>
+</code></pre></div></div> <h2 id="advanced-design-principles">Advanced Design Principles</h2> <h3 id="1-dont-repeat-yourself-dry">1. <strong>Don’t Repeat Yourself (DRY)</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Bad: Repeated code</span>
+<span class="kd">class</span> <span class="nc">UserService</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">validateUser</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="nc">User</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">())</span> <span class="k">return</span> <span class="k">false</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">email</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">())</span> <span class="k">return</span> <span class="k">false</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">age</span> <span class="p">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="k">false</span>
+        <span class="k">return</span> <span class="k">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">ProductService</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">validateProduct</span><span class="p">(</span><span class="n">product</span><span class="p">:</span> <span class="nc">Product</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">product</span><span class="p">.</span><span class="n">name</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">())</span> <span class="k">return</span> <span class="k">false</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">product</span><span class="p">.</span><span class="n">price</span> <span class="p">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="k">false</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">product</span><span class="p">.</span><span class="n">category</span><span class="p">.</span><span class="nf">isEmpty</span><span class="p">())</span> <span class="k">return</span> <span class="k">false</span>
+        <span class="k">return</span> <span class="k">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Good: Reusable validation</span>
+<span class="kd">interface</span> <span class="nc">Validatable</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">validate</span><span class="p">():</span> <span class="nc">Boolean</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">User</span> <span class="p">:</span> <span class="nc">Validatable</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">name</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span>
+    <span class="kd">val</span> <span class="py">email</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span>
+    <span class="kd">val</span> <span class="py">age</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">validate</span><span class="p">():</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">.</span><span class="nf">isNotEmpty</span><span class="p">()</span> <span class="p">&amp;&amp;</span> <span class="n">email</span><span class="p">.</span><span class="nf">isNotEmpty</span><span class="p">()</span> <span class="p">&amp;&amp;</span> <span class="n">age</span> <span class="p">&gt;=</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Product</span> <span class="p">:</span> <span class="nc">Validatable</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">name</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span>
+    <span class="kd">val</span> <span class="py">price</span><span class="p">:</span> <span class="nc">Double</span> <span class="p">=</span> <span class="mf">0.0</span>
+    <span class="kd">val</span> <span class="py">category</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">validate</span><span class="p">():</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">.</span><span class="nf">isNotEmpty</span><span class="p">()</span> <span class="p">&amp;&amp;</span> <span class="n">price</span> <span class="p">&gt;=</span> <span class="mi">0</span> <span class="p">&amp;&amp;</span> <span class="n">category</span><span class="p">.</span><span class="nf">isNotEmpty</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">ValidationService</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">validate</span><span class="p">(</span><span class="n">validatable</span><span class="p">:</span> <span class="nc">Validatable</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">validatable</span><span class="p">.</span><span class="nf">validate</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <h3 id="2-composition-over-inheritance">2. <strong>Composition Over Inheritance</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Prefer composition</span>
+<span class="kd">interface</span> <span class="nc">Flyable</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">fly</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nc">Swimmable</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">swim</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Duck</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">flyable</span><span class="p">:</span> <span class="nc">Flyable</span> <span class="p">=</span> <span class="nc">SimpleFlyable</span><span class="p">()</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">swimmable</span><span class="p">:</span> <span class="nc">Swimmable</span> <span class="p">=</span> <span class="nc">SimpleSwimmable</span><span class="p">()</span>
+    
+    <span class="k">fun</span> <span class="nf">fly</span><span class="p">()</span> <span class="p">=</span> <span class="n">flyable</span><span class="p">.</span><span class="nf">fly</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">swim</span><span class="p">()</span> <span class="p">=</span> <span class="n">swimmable</span><span class="p">.</span><span class="nf">swim</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// Avoid deep inheritance hierarchies</span>
+<span class="k">open</span> <span class="kd">class</span> <span class="nc">Animal</span>
+<span class="k">open</span> <span class="kd">class</span> <span class="nc">Bird</span> <span class="p">:</span> <span class="nc">Animal</span><span class="p">()</span>
+<span class="k">open</span> <span class="kd">class</span> <span class="nc">FlyingBird</span> <span class="p">:</span> <span class="nc">Bird</span><span class="p">()</span>
+<span class="k">open</span> <span class="kd">class</span> <span class="nc">Duck</span> <span class="p">:</span> <span class="nc">FlyingBird</span><span class="p">()</span> <span class="c1">// Too deep!</span>
+</code></pre></div></div> <h2 id="best-practices-and-considerations">Best Practices and Considerations</h2> <h3 id="1-start-simple">1. <strong>Start Simple</strong> </h3> <ul> <li>Begin with simple solutions</li> <li>Apply principles only when complexity demands it</li> <li>Don’t over-engineer simple problems</li> </ul> <h3 id="2-consider-context">2. <strong>Consider Context</strong> </h3> <ul> <li>Principles work best in specific contexts</li> <li>Adapt principles to your specific needs</li> <li>Balance between flexibility and simplicity</li> </ul> <h3 id="3-refactor-gradually">3. <strong>Refactor Gradually</strong> </h3> <ul> <li>Apply principles incrementally</li> <li>Test thoroughly after each change</li> <li>Document your design decisions</li> </ul> <h3 id="4-team-consensus">4. <strong>Team Consensus</strong> </h3> <ul> <li>Establish coding standards with your team</li> <li>Use code reviews to enforce principles</li> <li>Provide training and examples</li> </ul> <h2 id="performance-considerations">Performance Considerations</h2> <table> <thead> <tr> <th>Principle</th> <th>Memory Usage</th> <th>Performance</th> <th>Maintainability</th> <th>Extensibility</th> </tr> </thead> <tbody> <tr> <td>SRP</td> <td>Low</td> <td>High</td> <td>High</td> <td>Medium</td> </tr> <tr> <td>OCP</td> <td>Medium</td> <td>Medium</td> <td>High</td> <td>High</td> </tr> <tr> <td>LSP</td> <td>Low</td> <td>High</td> <td>High</td> <td>High</td> </tr> <tr> <td>ISP</td> <td>Low</td> <td>High</td> <td>High</td> <td>High</td> </tr> <tr> <td>DIP</td> <td>Medium</td> <td>Medium</td> <td>High</td> <td>High</td> </tr> </tbody> </table> <h2 id="common-anti-patterns">Common Anti-Patterns</h2> <h3 id="1-god-classes">1. <strong>God Classes</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Avoid: Classes with too many responsibilities</span>
+<span class="kd">class</span> <span class="nc">UserManager</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">createUser</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+    <span class="k">fun</span> <span class="nf">updateUser</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+    <span class="k">fun</span> <span class="nf">deleteUser</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+    <span class="k">fun</span> <span class="nf">sendEmail</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+    <span class="k">fun</span> <span class="nf">generateReport</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+    <span class="k">fun</span> <span class="nf">backupData</span><span class="p">()</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+    <span class="c1">// ... 20 more methods</span>
+<span class="p">}</span>
+</code></pre></div></div> <h3 id="2-tight-coupling">2. <strong>Tight Coupling</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Avoid: Direct dependencies on concrete classes</span>
+<span class="kd">class</span> <span class="nc">OrderService</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">database</span> <span class="p">=</span> <span class="nc">MySQLDatabase</span><span class="p">()</span> <span class="c1">// Tight coupling</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">emailService</span> <span class="p">=</span> <span class="nc">GmailService</span><span class="p">()</span> <span class="c1">// Tight coupling</span>
+    
+    <span class="k">fun</span> <span class="nf">processOrder</span><span class="p">(</span><span class="n">order</span><span class="p">:</span> <span class="nc">Order</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">database</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+        <span class="n">emailService</span><span class="p">.</span><span class="nf">sendConfirmation</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <h3 id="3-interface-pollution">3. <strong>Interface Pollution</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Avoid: Interfaces with too many methods</span>
+<span class="kd">interface</span> <span class="nc">FileOperations</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">read</span><span class="p">():</span> <span class="nc">String</span>
+    <span class="k">fun</span> <span class="nf">write</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span>
+    <span class="k">fun</span> <span class="nf">delete</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">compress</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">encrypt</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">backup</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">restore</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">validate</span><span class="p">()</span>
+    <span class="c1">// ... 10 more methods</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="related-design-patterns">Related Design Patterns</h2> <ul> <li> <strong>Strategy</strong>: Uses DIP to define interchangeable algorithms</li> <li> <strong>Observer</strong>: Uses DIP for loose coupling between components</li> <li> <strong>Decorator</strong>: Uses OCP to add functionality without modification</li> <li> <strong>Adapter</strong>: Uses ISP to create compatible interfaces</li> </ul> <h2 id="conclusion">Conclusion</h2> <p>Understanding and applying design principles is essential for creating maintainable, extensible, and robust software systems. The SOLID principles provide a solid foundation for object-oriented design and help developers write better code.</p> <p>Key benefits of following design principles include:</p> <ul> <li> <strong>Maintainability</strong>: Code is easier to modify and extend</li> <li> <strong>Testability</strong>: Components can be tested independently</li> <li> <strong>Reusability</strong>: Code can be reused across different parts of the application</li> <li> <strong>Flexibility</strong>: Systems can adapt to changing requirements</li> </ul> <p>These principles form the foundation for understanding and implementing design patterns effectively.</p> <h2 id="related-articles">Related Articles</h2> <ul> <li><a href="/2024-07-02-design-pattern-1-object-oriented-concepts/">Design Pattern 1: Object-Oriented Concepts</a></li> <li><a href="/2024-07-04-design-pattern-3-design-pattern/">Design Pattern 3: Design Patterns Overview</a></li> <li><a href="/2024-07-05-design-pattern-4-uml/">Design Pattern 4: UML Diagrams</a></li> <li><a href="/2024-07-06-design-pattern-5-simple-factory-pattern/">Design Pattern 5: Simple Factory Pattern</a></li> </ul> </div> </article> <br> <hr> <br> <ul class="list-disc pl-8"></ul> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/devops/productivity/github/development/how-to-use-multiple-github-accounts-using-ssh/">How to Use Multiple GitHub Accounts on One Computer: Complete SSH Setup Guide</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai%20tools/visualization/productivity/development/ai-tools-excalidraw-chart-guide/">Excalidraw AI: Create Professional Diagrams with Text Commands - Complete Guide</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/setup%20guide/development/macos/productivity/setup-development-environment-on-a-new-macos/">Complete macOS Development Environment Setup Guide for 2024</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/design%20pattern/software%20engineering/programming/design-pattern-28-interpreter-pattern/">Design Pattern 28: Interpreter Pattern - Complete Guide with Examples</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/design%20pattern/software%20engineering/programming/design-pattern-27-visitor-pattern/">Design Pattern 27: Visitor Pattern - Complete Guide with Real-World IoT Examples</a> </li> </div> </div> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top"></nav> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2025 Nick Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script> <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script> <script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script> <script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script> <script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script async src="https://www.googletagmanager.com/gtag/js?id=G-446Z2KNTGH"></script> <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-446Z2KNTGH');
+  </script> <script defer src="/assets/js/google-analytics-setup.js"></script> <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script> <script src="/assets/js/tabs.min.js?b8748955e1076bbe0dabcf28f2549fdc"></script> <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script> <script src="/assets/js/search-data.js"></script> <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script> </body> </html>

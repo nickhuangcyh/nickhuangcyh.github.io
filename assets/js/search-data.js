@@ -44,543 +44,543 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-一台電腦操作多個-github-帳號-最簡單快速的-ssh-設定方法",
+        },{id: "post-how-to-use-multiple-github-accounts-on-one-computer-complete-ssh-setup-guide",
         
-          title: "💡 一台電腦操作多個 GitHub 帳號：最簡單快速的 SSH 設定方法",
+          title: "How to Use Multiple GitHub Accounts on One Computer: Complete SSH Setup Guide...",
         
-        description: "讓你的電腦同時操作多個 GitHub 帳號，適合有多個身分或工作/個人帳號的開發者使用。",
+        description: "Learn how to manage multiple GitHub accounts on a single computer using SSH keys. Perfect for developers who need to switch between work and personal accounts seamlessly. Step-by-step guide with practical examples.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/devops/productivity/github/how-to-use-multiple-github-accounts-using-ssh/";
+            window.location.href = "/blog/devops/productivity/github/development/how-to-use-multiple-github-accounts-using-ssh/";
           
         },
-      },{id: "post-如何使用-excalidraw-ai-快速生成專業級圖表-提升工作效率",
+      },{id: "post-excalidraw-ai-create-professional-diagrams-with-text-commands-complete-guide",
         
-          title: "🚀 如何使用 Excalidraw AI 快速生成專業級圖表，提升工作效率！",
+          title: "Excalidraw AI: Create Professional Diagrams with Text Commands - Complete Guide",
         
-        description: "使用 Excalidraw AI 只需輸入文字描述，即可快速生成流程圖、技術架構圖、心智圖等，提升工作效率！",
+        description: "Transform your workflow with Excalidraw AI. Generate professional diagrams, flowcharts, and technical architecture diagrams using simple text descriptions. Perfect for developers, designers, and business analysts.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/ai%20tools/visualization/productivity/ai-tools-excalidraw-chart-guide/";
+            window.location.href = "/blog/ai%20tools/visualization/productivity/development/ai-tools-excalidraw-chart-guide/";
           
         },
-      },{id: "post-setup-development-environment-on-a-new-macos",
+      },{id: "post-complete-macos-development-environment-setup-guide-for-2024",
         
-          title: "Setup Development Environment on a New macOS",
+          title: "Complete macOS Development Environment Setup Guide for 2024",
         
-        description: "Step-by-step guide to setting up a mobile development environment on a new macOS system.",
+        description: "Master the complete setup of a professional development environment on macOS. Step-by-step guide covering Homebrew, Git, iTerm2, Zsh, and mobile development tools for maximum productivity.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/setup%20guide/setup-development-environment-on-a-new-macos/";
+            window.location.href = "/blog/setup%20guide/development/macos/productivity/setup-development-environment-on-a-new-macos/";
           
         },
-      },{id: "post-design-pattern-28-interpreter-pattern-解譯器模式",
+      },{id: "post-design-pattern-28-interpreter-pattern-complete-guide-with-examples",
         
-          title: "Design Pattern (28) - Interpreter Pattern (解譯器模式)",
+          title: "Design Pattern 28: Interpreter Pattern - Complete Guide with Examples",
         
-        description: "解譯器模式用於構建一個可解讀特定語言或語法的系統，適合於處理複雜的規則判斷或指令語法。",
+        description: "Master the Interpreter Pattern with practical examples. Learn how to build language interpreters, parse expressions, and create flexible rule engines. Perfect for developers working with domain-specific languages.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-28-interpreter-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-28-interpreter-pattern/";
           
         },
-      },{id: "post-design-pattern-27-visitor-pattern-訪問者模式",
+      },{id: "post-design-pattern-27-visitor-pattern-complete-guide-with-real-world-iot-examples",
         
-          title: "Design Pattern (27) - Visitor Pattern (訪問者模式)",
+          title: "Design Pattern 27: Visitor Pattern - Complete Guide with Real-World IoT Examples",
         
-        description: "訪問者模式提供了一種方式，讓我們能在不修改物件結構的前提下，為其增加新的操作邏輯，實現高擴展性。",
+        description: "Master the Visitor Pattern with practical IoT and software examples. Learn how to add new operations to object structures, improve extensibility, and maintain clean code architecture.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-27-visitor-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-27-visitor-pattern/";
           
         },
-      },{id: "post-design-pattern-26-template-method-pattern-模板方法模式",
+      },{id: "post-design-pattern-26-template-method-pattern-complete-guide-with-real-world-examples",
         
-          title: "Design Pattern (26) - Template Method Pattern (模板方法模式)",
+          title: "Design Pattern 26: Template Method Pattern - Complete Guide with Real-World Examples",
         
-        description: "模板方法模式提供了一個框架，允許子類別重新定義特定步驟的實作，保持核心流程的一致性，實現高復用性與靈活性。",
+        description: "Master the Template Method Pattern with practical examples. Learn how to create reusable algorithm frameworks, implement data format conversions, and build extensible systems.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-26-template-method-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-26-template-method-pattern/";
           
         },
-      },{id: "post-design-pattern-25-strategy-pattern-策略模式",
+      },{id: "post-design-pattern-25-strategy-pattern-complete-guide-with-real-world-examples",
         
-          title: "Design Pattern (25) - Strategy Pattern (策略模式)",
+          title: "Design Pattern 25: Strategy Pattern - Complete Guide with Real-World Examples",
         
-        description: "策略模式提供了一種靈活的解決方案，讓系統能根據需求動態切換不同的行為邏輯，實現高可擴展性與低耦合性。",
+        description: "Master the Strategy Pattern with practical examples. Learn how to implement flexible algorithms, dynamic behavior switching, and create maintainable code with low coupling.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-25-strategy-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-25-strategy-pattern/";
           
         },
-      },{id: "post-design-pattern-24-state-pattern-狀態模式",
+      },{id: "post-design-pattern-24-state-pattern-complete-guide-with-real-world-examples",
         
-          title: "Design Pattern (24) - State Pattern (狀態模式)",
+          title: "Design Pattern 24: State Pattern - Complete Guide with Real-World Examples",
         
-        description: "透過狀態模式，設計一個飲水機的運作機制，根據不同狀態執行加熱、冷卻或待機的行為。",
+        description: "Master the State Pattern with practical examples. Learn how to implement state machines, manage object behavior based on state, and create flexible state-driven applications.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-24-state-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-24-state-pattern/";
           
         },
-      },{id: "post-design-pattern-23-observer-pattern-觀察者模式",
+      },{id: "post-design-pattern-23-observer-pattern-complete-guide-with-real-world-examples",
         
-          title: "Design Pattern (23) - Observer Pattern (觀察者模式)",
+          title: "Design Pattern 23: Observer Pattern - Complete Guide with Real-World Examples",
         
-        description: "透過觀察者模式，實現安全系統主機的警報通知機制，當警報觸發時，主機自動通知平板、iOS 和 Android 手機。",
+        description: "Master the Observer Pattern with practical examples. Learn how to implement event-driven systems, notification mechanisms, and create loosely coupled architectures.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-23-observer-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-23-observer-pattern/";
           
         },
-      },{id: "post-design-pattern-22-memento-pattern-備忘錄模式",
+      },{id: "post-design-pattern-22-memento-pattern-complete-guide-with-undo-redo-examples",
         
-          title: "Design Pattern (22) - Memento Pattern (備忘錄模式)",
+          title: "Design Pattern 22: Memento Pattern - Complete Guide with Undo/Redo Examples",
         
-        description: "了解備忘錄模式如何幫助我們實現狀態恢復，像是常見的 Ctrl+Z 功能，讓我們回到之前的操作狀態。",
+        description: "Master the Memento Pattern with practical undo/redo and state recovery examples. Learn how to implement state snapshots, history management, and robust data recovery.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-22-memento-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-22-memento-pattern/";
           
         },
-      },{id: "post-design-pattern-21-mediator-pattern-中介者模式",
+      },{id: "post-design-pattern-21-mediator-pattern-complete-guide-with-real-world-chatroom-example",
         
-          title: "Design Pattern (21) - Mediator Pattern (中介者模式)",
+          title: "Design Pattern 21: Mediator Pattern - Complete Guide with Real-World Chatroom Example",
         
-        description: "了解中介者模式如何協調物件之間的交互，減少物件之間的耦合性並促進系統的可擴展性。",
+        description: "Master the Mediator Pattern with practical chatroom and system coordination examples. Learn how to reduce coupling, improve extensibility, and centralize communication logic.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-21-mediator-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-21-mediator-pattern/";
           
         },
-      },{id: "post-design-pattern-20-iterator-pattern-迭代器模式",
+      },{id: "post-design-pattern-20-iterator-pattern-complete-guide-with-real-world-file-system-examples",
         
-          title: "Design Pattern (20) - Iterator Pattern (迭代器模式)",
+          title: "Design Pattern 20: Iterator Pattern - Complete Guide with Real-World File System Examples...",
         
-        description: "了解迭代器模式如何提供一種順序來訪問集合內元素的方法，而不需要暴露集合的底層表示。",
+        description: "Master the Iterator Pattern with practical file system traversal examples. Learn how to provide sequential access to collection elements without exposing internal structure, improving code flexibility and maintainability.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-20-iterator-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-20-iterator-pattern/";
           
         },
-      },{id: "post-design-pattern-19-command-pattern-命令模式",
+      },{id: "post-design-pattern-19-command-pattern-complete-guide-with-undo-redo-and-remote-control-examples",
         
-          title: "Design Pattern (19) - Command Pattern (命令模式)",
+          title: "Design Pattern 19: Command Pattern - Complete Guide with Undo/Redo and Remote Control...",
         
-        description: "了解命令模式如何將操作與執行解耦，讓程式具備更高的靈活性與可擴展性。",
+        description: "Master the Command Pattern with practical remote control and undo/redo examples. Learn how to decouple operations, implement flexible controls, and support extensible command history.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-19-command-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-19-command-pattern/";
           
         },
-      },{id: "post-design-pattern-18-chain-of-responsibility-pattern-責任鏈模式",
+      },{id: "post-design-pattern-18-chain-of-responsibility-pattern-complete-guide-with-real-world-logging-examples",
         
-          title: "Design Pattern (18) - Chain of Responsibility Pattern (責任鏈模式)",
+          title: "Design Pattern 18: Chain of Responsibility Pattern - Complete Guide with Real-World Logging...",
         
-        description: "了解責任鏈模式如何讓請求能被多個對象動態處理，提升系統靈活性與可擴展性。",
+        description: "Master the Chain of Responsibility Pattern with practical logging system examples. Learn how to create flexible request processing chains, implement dynamic handlers, and build extensible systems.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-18-chain-of-responsibility-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-18-chain-of-responsibility-pattern/";
           
         },
-      },{id: "post-design-pattern-17-proxy-pattern-代理模式",
+      },{id: "post-design-pattern-17-proxy-pattern-complete-guide-with-real-world-video-streaming-examples",
         
-          title: "Design Pattern (17) - Proxy Pattern (代理模式)",
+          title: "Design Pattern 17: Proxy Pattern - Complete Guide with Real-World Video Streaming Examples...",
         
-        description: "了解代理模式如何通過控制對物件的訪問來提升系統的安全性、效能及靈活性。",
+        description: "Master the Proxy Pattern with practical video streaming examples. Learn how to control object access for improved performance, security, and resource management in distributed systems.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-17-proxy-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-17-proxy-pattern/";
           
         },
-      },{id: "post-design-pattern-16-flyweight-pattern-享元模式",
+      },{id: "post-design-pattern-16-flyweight-pattern-complete-guide-with-real-world-forest-rendering-examples",
         
-          title: "Design Pattern (16) - Flyweight Pattern (享元模式)",
+          title: "Design Pattern 16: Flyweight Pattern - Complete Guide with Real-World Forest Rendering Examples...",
         
-        description: "探索享元模式如何透過共享技術有效減少記憶體使用，提升應用效能。",
+        description: "Master the Flyweight Pattern with practical forest rendering examples. Learn how to reduce memory usage through object sharing, optimize performance, and build efficient systems.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-16-flyweight-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-16-flyweight-pattern/";
           
         },
-      },{id: "post-design-pattern-15-facade-pattern-外觀模式",
+      },{id: "post-design-pattern-15-facade-pattern-complete-guide-with-real-world-home-theater-examples",
         
-          title: "Design Pattern (15) - Facade Pattern (外觀模式)",
+          title: "Design Pattern 15: Facade Pattern - Complete Guide with Real-World Home Theater Examples...",
         
-        description: "探索外觀模式如何簡化系統複雜性，提供一個統一的介面來訪問子系統的功能，提升程式碼的可讀性與維護性。",
+        description: "Master the Facade Pattern with practical home theater system examples. Learn how to simplify complex subsystems, provide unified interfaces, and improve code maintainability.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-15-facade-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-15-facade-pattern/";
           
         },
-      },{id: "post-design-pattern-14-decorator-pattern-裝飾者模式",
+      },{id: "post-design-pattern-14-decorator-pattern-complete-guide-with-real-world-coffee-shop-examples",
         
-          title: "Design Pattern (14) - Decorator Pattern (裝飾者模式)",
+          title: "Design Pattern 14: Decorator Pattern - Complete Guide with Real-World Coffee Shop Examples...",
         
-        description: "深入了解裝飾者模式如何動態為物件增加功能，同時保持系統的靈活性與開放性。",
+        description: "Master the Decorator Pattern with practical coffee shop POS system examples. Learn how to dynamically add functionality to objects while maintaining flexibility and extensibility.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-14-decorator-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-14-decorator-pattern/";
           
         },
-      },{id: "post-design-pattern-13-composite-pattern-組合模式",
+      },{id: "post-design-pattern-13-composite-pattern-unified-tree-structure-management-for-file-systems-and-ui-components",
         
-          title: "Design Pattern (13) - Composite Pattern (組合模式)",
+          title: "Design Pattern 13: Composite Pattern - Unified Tree Structure Management for File Systems...",
         
-        description: "深入了解組合模式如何以一致的方式操作單個物件與物件集合，實現對樹狀結構的靈活管理。",
+        description: "Master the Composite Pattern to treat individual objects and collections uniformly. Learn how to implement tree structures for file systems, UI components, and organizational hierarchies with practical examples and best practices.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-13-composite-pattern/";
+            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/design-pattern-13-composite-pattern/";
           
         },
-      },{id: "post-jenkins-3-如何配置-credentials-以透過-ssh-從-git-上拉取程式碼",
+      },{id: "post-jenkins-3-configure-ssh-credentials-for-secure-git-code-retrieval",
         
-          title: "Jenkins (3) - 如何配置 Credentials 以透過 SSH 從 git 上拉取程式碼",
+          title: "Jenkins 3: Configure SSH Credentials for Secure Git Code Retrieval",
         
-        description: "學習如何在 Jenkins 中配置憑證（Credentials），以便透過 SSH 安全地拉取程式碼。",
+        description: "Learn how to configure SSH credentials in Jenkins for secure Git repository access. Step-by-step guide for setting up SSH keys, adding credentials, and configuring Jenkins jobs for secure code retrieval.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/devops/jenkins-3-configure-credentials-ssh/";
+            window.location.href = "/blog/devops/ci/cd/security/jenkins/git/authentication/jenkins-3-configure-credentials-ssh/";
           
         },
-      },{id: "post-design-pattern-12-bridge-pattern-橋接模式",
+      },{id: "post-design-pattern-12-bridge-pattern-complete-guide-with-real-world-security-system-examples",
         
-          title: "Design Pattern (12) - Bridge Pattern (橋接模式)",
+          title: "Design Pattern 12: Bridge Pattern - Complete Guide with Real-World Security System Examples...",
         
-        description: "深入了解橋接模式如何解耦抽象與實現，打造更靈活且易於擴展的系統設計，滿足複雜需求的同時降低維護成本。",
+        description: "Master the Bridge Pattern with practical security system examples. Learn how to decouple abstraction from implementation, create flexible architectures, and build extensible systems.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-12-bridge-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-12-bridge-pattern/";
           
         },
-      },{id: "post-design-pattern-11-adapter-pattern-轉接器模式",
+      },{id: "post-design-pattern-11-adapter-pattern-complete-guide-with-real-world-stock-data-integration-examples",
         
-          title: "Design Pattern (11) - Adapter Pattern (轉接器模式)",
+          title: "Design Pattern 11: Adapter Pattern - Complete Guide with Real-World Stock Data Integration...",
         
-        description: "了解如何使用轉接器模式來解決介面不兼容問題，讓不同類別無縫合作，增強程式設計靈活性。",
+        description: "Master the Adapter Pattern with practical stock data integration examples. Learn how to make incompatible interfaces work together, integrate legacy systems, and build flexible architectures.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-11-adapter-pattern/";
+            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-11-adapter-pattern/";
           
         },
-      },{id: "post-google-adsense",
+      },{id: "post-how-to-monetize-your-website-with-google-adsense-complete-guide-for-developers",
         
-          title: "Google AdSense",
+          title: "How to Monetize Your Website with Google AdSense: Complete Guide for Developers",
         
-        description: "如何透過 Google AdSense 爲我們的網站加入廣告賺取收益",
+        description: "Learn how to earn passive income by integrating Google AdSense into your website. Step-by-step setup, optimization tips, and best practices for maximizing ad revenue.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/google/google-adsense/";
+            window.location.href = "/blog/monetization/google/web%20development/google-adsense/";
           
         },
-      },{id: "post-jenkins-2-如何架設-jenkins-伺服器",
+      },{id: "post-jenkins-server-setup-complete-docker-installation-guide",
         
-          title: "Jenkins (2) - 如何架設 Jenkins 伺服器",
+          title: "Jenkins Server Setup: Complete Docker Installation Guide",
         
-        description: "學習如何使用 Docker 映像檔來架設 Jenkins 伺服器，提升開發團隊的自動化能力。",
+        description: "Learn how to set up Jenkins server using Docker containers. Step-by-step guide for CI/CD automation, including Android build environment setup and best practices.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/devops/jenkins-2-how-to-setup-jenkins-server/";
+            window.location.href = "/blog/devops/ci/cd/docker/automation/jenkins-2-how-to-setup-jenkins-server/";
           
         },
-      },{id: "post-jenkins-1-什麼是-jenkins",
+      },{id: "post-jenkins-1-what-is-jenkins-complete-guide-to-ci-cd-automation-server",
         
-          title: "Jenkins (1) - 什麼是 Jenkins",
+          title: "Jenkins 1: What is Jenkins - Complete Guide to CI/CD Automation Server",
         
-        description: "了解Jenkins這個強大的自動化伺服器，如何幫助開發團隊實現持續整合與持續交付，提升軟體開發效率。",
+        description: "Learn about Jenkins, the powerful open-source automation server for continuous integration and continuous delivery. Discover its core concepts, benefits, and how it revolutionizes software development workflows.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/devops/jenkins-1-what-is-jenkins/";
+            window.location.href = "/blog/devops/ci/cd/software%20development/automation/build%20tools/jenkins-1-what-is-jenkins/";
           
         },
-      },{id: "post-design-pattern-10-singleton-pattern-單例模式",
+      },{id: "post-design-pattern-10-singleton-pattern-ensuring-single-instance-access-for-database-connections-and-global-state-management",
         
-          title: "Design Pattern (10) - Singleton Pattern (單例模式)",
+          title: "Design Pattern 10: Singleton Pattern - Ensuring Single Instance Access for Database Connections...",
         
-        description: "深入單例模式：如何確保一個類別只有一個實體，提供一個全域",
+        description: "Master the Singleton Pattern to ensure only one instance of a class exists. Learn how to implement thread-safe singletons for database connections, logging systems, and global configuration management with best practices.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-10-singleton-pattern/";
+            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/database/design-pattern-10-singleton-pattern/";
           
         },
-      },{id: "post-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8",
+      },{id: "post-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8-step-by-step-guide-for-secure-ssh-connections",
         
-          title: "How to Enable RSA Encryption Algorithm Key in OpenSSH 8.8",
+          title: "How to Enable RSA Encryption Algorithm Key in OpenSSH 8.8: Step-by-Step Guide for...",
         
-        description: "如何在 OpenSSH 8.8 中重新啟用 RSA 加密支援，確保可以繼續使用 RSA 金鑰。",
+        description: "Learn how to re-enable RSA encryption support in OpenSSH 8.8+ for legacy systems and Git servers. Step-by-step troubleshooting, security best practices, and configuration tips.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/cryptography/openssh/security/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8/";
+            window.location.href = "/blog/cryptography/openssh/security/devops/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8/";
           
         },
-      },{id: "post-getting-started-with-github-container-registry",
+      },{id: "post-complete-guide-getting-started-with-github-container-registry-ghcr",
         
-          title: "Getting Started with GitHub Container Registry",
+          title: "Complete Guide: Getting Started with GitHub Container Registry (GHCR)",
         
-        description: "A Guide to Using and Managing Container Images",
+        description: "Master GitHub Container Registry with step-by-step tutorials. Learn Docker image management, GitHub Actions automation, and CI/CD best practices for containerized applications.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/devops/getting-started-with-github-container-registry/";
+            window.location.href = "/blog/devops/github/container%20technology/ci/cd/getting-started-with-github-container-registry/";
           
         },
-      },{id: "post-design-pattern-9-prototype-pattern-原型模式",
+      },{id: "post-design-pattern-9-prototype-pattern-efficient-object-cloning-for-resource-management-and-performance-optimization",
         
-          title: "Design Pattern (9) - Prototype Pattern (原型模式)",
+          title: "Design Pattern 9: Prototype Pattern - Efficient Object Cloning for Resource Management and...",
         
-        description: "深入原型模式：探索如何透過物件複製技術，有效提升軟體開發中的資源管理與設計模式的靈活性。",
+        description: "Master the Prototype Pattern to create object copies efficiently. Learn how to implement cloning mechanisms for complex objects, reduce resource overhead, and improve application performance with practical examples.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-9-prototype-pattern/";
+            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/performance/design-pattern-9-prototype-pattern/";
           
         },
-      },{id: "post-how-to-build-chiptool-for-android",
+      },{id: "post-how-to-build-chiptool-for-android-complete-guide-to-matter-protocol-development",
         
-          title: "How to build CHIPTool for Android",
+          title: "How to Build CHIPTool for Android: Complete Guide to Matter Protocol Development",
         
-        description: "本篇文章我將介紹如何按照步驟 Build 出 CHIPTool apk",
+        description: "Learn how to build CHIPTool APK for Android from source code. Step-by-step guide for Matter protocol development, Docker setup, and troubleshooting common build issues.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/tools/how-to-build-chiptool-for-android/";
+            window.location.href = "/blog/android%20development/iot/smart%20home/development%20tools/protocol%20development/how-to-build-chiptool-for-android/";
           
         },
-      },{id: "post-design-pattern-8-builder-pattern-建造者模式",
+      },{id: "post-design-pattern-8-builder-pattern-step-by-step-construction-of-complex-objects-for-flexible-configuration",
         
-          title: "Design Pattern (8) - Builder Pattern (建造者模式)",
+          title: "Design Pattern 8: Builder Pattern - Step-by-Step Construction of Complex Objects for Flexible...",
         
-        description: "探索建造者模式，學習如何分步構建複雜對象，使程式碼更加靈活和易於維護。通過實例展示如何使用建造者模式簡化對象創建過程，提升程式碼的可讀性和可擴展性。",
+        description: "Master the Builder Pattern to construct complex objects step by step. Learn how to create flexible object construction with optional parameters, improve code readability, and handle complex initialization scenarios.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-8-builder-pattern/";
+            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/code%20quality/design-pattern-8-builder-pattern/";
           
         },
-      },{id: "post-design-pattern-7-abstract-factory-pattern-抽象工廠模式",
+      },{id: "post-design-pattern-7-abstract-factory-pattern-creating-families-of-related-objects-for-multi-region-applications",
         
-          title: "Design Pattern (7) - Abstract Factory Pattern (抽象工廠模式)",
+          title: "Design Pattern 7: Abstract Factory Pattern - Creating Families of Related Objects for...",
         
-        description: "探索如何使用抽象工廠模式創建一系列相關或依賴的物件，提升設計靈活性。",
+        description: "Master the Abstract Factory Pattern to create families of related objects. Learn how to implement region-specific product families for global applications with practical examples and best practices.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-7-abstract-factory-pattern/";
+            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/globalization/design-pattern-7-abstract-factory-pattern/";
           
         },
-      },{id: "post-design-pattern-6-factory-method-pattern-工廠方法模式",
+      },{id: "post-design-pattern-6-factory-method-pattern-flexible-object-creation-for-multi-region-applications",
         
-          title: "Design Pattern (6) - Factory Method Pattern (工廠方法模式)",
+          title: "Design Pattern 6: Factory Method Pattern - Flexible Object Creation for Multi-Region Applications...",
         
-        description: "深入探討工廠方法模式，通過實例展示其應用，提升程式碼的靈活性和可擴展性。",
+        description: "Master the Factory Method Pattern to create objects without specifying exact classes. Learn how to implement region-specific factories, improve flexibility, and support global application expansion.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-6-factory-method-pattern/";
+            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/globalization/design-pattern-6-factory-method-pattern/";
           
         },
-      },{id: "post-design-pattern-5-simple-factory-pattern-簡單工廠模式",
+      },{id: "post-design-pattern-5-simple-factory-pattern-centralized-object-creation-for-dynamic-beverage-ordering-systems",
         
-          title: "Design Pattern (5) - Simple Factory Pattern (簡單工廠模式)",
+          title: "Design Pattern 5: Simple Factory Pattern - Centralized Object Creation for Dynamic Beverage...",
         
-        description: "通過飲料點餐系統案例，學習如何使用簡單工廠模式提升程式碼的可讀性和維護性。",
+        description: "Master the Simple Factory Pattern to centralize object creation logic. Learn how to separate variable and constant code, improve maintainability, and create flexible object instantiation systems.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-5-simple-factory-pattern/";
+            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/code%20quality/design-pattern-5-simple-factory-pattern/";
           
         },
-      },{id: "post-design-pattern-4-uml-統一建模語言",
+      },{id: "post-design-pattern-4-uml-diagrams-visual-modeling-language-for-software-architecture-and-design-patterns",
         
-          title: "Design Pattern (4) - UML (統一建模語言)",
+          title: "Design Pattern 4: UML Diagrams - Visual Modeling Language for Software Architecture and...",
         
-        description: "深入了解UML，學習如何用UML圖清晰展現設計模式，提升軟體設計能力。",
+        description: "Master UML (Unified Modeling Language) to visualize software architecture and design patterns. Learn class diagrams, relationships, and how to effectively communicate software design concepts.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-4-uml/";
+            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/software%20architecture/design-pattern-4-uml/";
           
         },
-      },{id: "post-深入解析-google-wallet-smart-tap-未來的支付方式",
+      },{id: "post-google-wallet-smart-tap-deep-dive-exploring-the-future-of-contactless-payments",
         
-          title: "深入解析 Google Wallet Smart Tap：未來的支付方式",
+          title: "Google Wallet Smart Tap Deep Dive: Exploring the Future of Contactless Payments",
         
-        description: "探索 Google Wallet Smart Tap 的運作原理和它如何改變我們的支付習慣。本文將帶你了解其背後的技術，以及它對未來支付生態系統的影響。",
+        description: "Explore Google Wallet Smart Tap technology and how it&#39;s revolutionizing payment systems. Learn about NFC communication, terminal integration, and the future of contactless transactions.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/pay/technology/google-wallet-smart-tap-exploring/";
+            window.location.href = "/blog/payments/technology/mobile%20development/digital%20wallets/google-wallet-smart-tap-exploring/";
           
         },
-      },{id: "post-design-pattern-3-design-patterns-設計模式",
+      },{id: "post-design-pattern-3-design-patterns-overview-systematic-approach-to-solving-common-software-design-problems",
         
-          title: "Design Pattern (3) - Design Patterns (設計模式)",
+          title: "Design Pattern 3: Design Patterns Overview - Systematic Approach to Solving Common Software...",
         
-        description: "深入探討設計模式的概念及其應用步驟，助你高效解決軟體問題。",
+        description: "Master the systematic approach to applying design patterns. Learn the Context-Forces-Problem-Solution framework, pattern categories, and step-by-step methodology for solving software design challenges.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-3-design-pattern/";
+            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/software%20architecture/design-pattern-3-design-pattern/";
           
         },
-      },{id: "post-design-pattern-2-design-principles-設計原則",
+      },{id: "post-design-pattern-2-object-oriented-design-principles-solid-principles-for-building-maintainable-software-systems",
         
-          title: "Design Pattern (2) - Design Principles (設計原則)",
+          title: "Design Pattern 2: Object-Oriented Design Principles - SOLID Principles for Building Maintainable Software...",
         
-        description: "學習如何透過單一職責和開放封閉等設計原則提升程式碼質量，打造靈活、可維護的軟體系統。",
+        description: "Master the SOLID principles to improve object-oriented design quality. Learn Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion principles with practical examples.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-2-design-principle/";
+            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/code%20quality/design-pattern-2-design-principle/";
           
         },
-      },{id: "post-design-pattern-1-object-oriented-concepts-物件導向概念",
+      },{id: "post-design-pattern-1-object-oriented-concepts-foundation-for-understanding-complex-design-patterns",
         
-          title: "Design Pattern (1) - Object-Oriented Concepts (物件導向概念)",
+          title: "Design Pattern 1: Object-Oriented Concepts - Foundation for Understanding Complex Design Patterns",
         
-        description: "探索封裝、繼承、多態和抽象的力量，為理解複雜設計模式奠定基礎。",
+        description: "Master the four core object-oriented concepts: Encapsulation, Inheritance, Polymorphism, and Abstraction. Learn how these fundamental principles form the foundation for understanding and implementing design patterns.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/design-pattern-1-object-oriented-concepts/";
+            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/programming%20fundamentals/design-pattern-1-object-oriented-concepts/";
           
         },
-      },{id: "post-如何抓取-ios-的網路封包",
+      },{id: "post-how-to-capture-network-packets-on-ios-complete-guide-with-rvictl-and-wireshark",
         
-          title: "如何抓取 iOS 的網路封包",
+          title: "How to Capture Network Packets on iOS: Complete Guide with rvictl and Wireshark...",
         
-        description: "教你如何使用 rvictl 與 Wireshark 抓取 iOS 裝置封包，快速分析連線問題，是 iOS 與 IoT 開發必備技巧！",
+        description: "Master iOS network packet capture using rvictl and Wireshark. Learn debugging techniques for iOS apps, IoT development, and network troubleshooting with step-by-step instructions.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/tools/how-to-capture-network-packet-on-ios/";
+            window.location.href = "/blog/tools/ios%20development/network%20analysis/how-to-capture-network-packet-on-ios/";
           
         },
-      },{id: "post-如何抓取-android-的網路封包",
+      },{id: "post-android-network-packet-capture-complete-guide-with-tcpdump-and-wireshark",
         
-          title: "如何抓取 Android 的網路封包",
+          title: "Android Network Packet Capture: Complete Guide with tcpdump and Wireshark",
         
-        description: "實戰教你如何使用 tcpdump 搭配 Wireshark 抓取 Android 手機的封包資料，解決連線與串流問題的強大除錯技巧。",
+        description: "Master Android network packet capture using tcpdump and Wireshark. Step-by-step guide for debugging network issues, analyzing traffic, and troubleshooting connectivity problems.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/tools/how-to-capture-network-packet-on-android-using-tcpdump/";
+            window.location.href = "/blog/android%20development/network%20analysis/debugging/tools/how-to-capture-network-packet-on-android-using-tcpdump/";
           
         },
-      },{id: "post-搞懂-p2p-技術-3-webrtc-x-aws-x-kvs",
+      },{id: "post-complete-webrtc-guide-understanding-p2p-technology-with-aws-kvs-implementation",
         
-          title: "搞懂 P2P 技術 (3) - WebRTC x AWS x KVS",
+          title: "Complete WebRTC Guide: Understanding P2P Technology with AWS KVS Implementation",
         
-        description: "深入解析 WebRTC 架構、Signaling Server 設計、ICE 協議流程與 AWS KVS 串流實作，搞懂 P2P 在即時通訊與 IoT 中的應用。",
+        description: "Deep dive into WebRTC architecture, signaling server design, ICE protocol flow, and AWS Kinesis Video Streams implementation. Master P2P technology for real-time communication and IoT applications.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/p2p/aws/p2p-tech-3-webrtc-kvs/";
+            window.location.href = "/blog/web%20development/cloud%20computing/p2p-tech-3-webrtc-kvs/";
           
         },
-      },{id: "post-搞懂-p2p-技術-2-stun-x-turn-x-ice",
+      },{id: "post-stun-turn-and-ice-complete-guide-to-nat-traversal-protocols",
         
-          title: "搞懂 P2P 技術 (2) - STUN x TURN x ICE",
+          title: "STUN, TURN, and ICE: Complete Guide to NAT Traversal Protocols",
         
-        description: "解析 STUN、TURN 與 ICE 協議，搞懂 P2P 穿透技術，突破 NAT 限制建立穩定連線，打造強大 iOS / Android 即時通訊架構。",
+        description: "Master NAT traversal with STUN, TURN, and ICE protocols. Learn how to establish P2P connections, handle Symmetric NAT, and build robust real-time communication systems.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/p2p/p2p-tech-2-stun-turn-ice/";
+            window.location.href = "/blog/p2p/network%20technology/webrtc/development/p2p-tech-2-stun-turn-ice/";
           
         },
-      },{id: "post-搞懂-p2p-技術-1-p2p-x-ipv4-x-nat",
+      },{id: "post-p2p-technology-deep-dive-understanding-ipv4-nat-and-peer-to-peer-communication",
         
-          title: "搞懂 P2P 技術 (1) - P2P x IPv4 x NAT",
+          title: "P2P Technology Deep Dive: Understanding IPv4, NAT, and Peer-to-Peer Communication",
         
-        description: "深入解析 P2P 穿透技術、NAT 類型與通訊限制，掌握物聯網與分佈式架構下的網路連線原理。",
+        description: "Master P2P technology fundamentals: IPv4 addressing, NAT traversal techniques, and peer-to-peer communication protocols. Essential guide for IoT developers and network engineers.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/p2p/p2p-tech-1-ipv4-nat/";
+            window.location.href = "/blog/p2p/network%20technology/iot/development/p2p-tech-1-ipv4-nat/";
           
         },
-      },{id: "post-3d-graphic-engine-tips-三角形-x-uv-mapping-x-vertices-amp-indices",
+      },{id: "post-3d-graphics-engine-fundamentals-triangles-uv-mapping-vertices-amp-indices-explained",
         
-          title: "3D Graphic Engine Tips - 三角形 x UV mapping x Vertices &amp; Indices...",
+          title: "3D Graphics Engine Fundamentals: Triangles, UV Mapping, Vertices &amp; Indices Explained",
         
-        description: "寫 3D 繪圖程式必需要知道的知識，這篇帶你快速掌握基本建模邏輯與映射概念。",
+        description: "Essential knowledge for 3D graphics programming. Master basic modeling logic, UV mapping concepts, and vertex/index management for game development, AR, and 3D applications.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/mobile/3d-graphic-tips/";
+            window.location.href = "/blog/computer%20graphics/game%20development/3d-graphic-tips/";
           
         },
-      },{id: "post-如何讓-jekyll-網站被-google-搜尋到-search-console-sitemap-教學",
+      },{id: "post-seo-guide-add-your-jekyll-blog-to-google-search-console-and-submit-sitemap",
         
-          title: "如何讓 Jekyll 網站被 Google 搜尋到｜Search Console + Sitemap 教學",
+          title: "SEO Guide: Add Your Jekyll Blog to Google Search Console and Submit Sitemap...",
         
-        description: "Google 大大，你把我的網頁藏哪去了？教你兩步驟：提交 Search Console、啟用 Sitemap！",
+        description: "Complete step-by-step guide to make your Jekyll blog discoverable on Google. Learn how to verify site ownership with Google Search Console and submit XML sitemaps for better SEO indexing.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/blog/how-to-add-your-jekyll-blog-website-to-google-search-console/";
+            window.location.href = "/blog/seo/web%20development/how-to-add-your-jekyll-blog-website-to-google-search-console/";
           
         },
-      },{id: "post-使用-jekyll-minimal-mistakes-在-github-pages-上架設自己的部落格",
+      },{id: "post-complete-guide-build-a-professional-blog-with-jekyll-minimal-mistakes-on-github-pages",
         
-          title: "使用 Jekyll + minimal-mistakes 在 GitHub Pages 上架設自己的部落格",
+          title: "Complete Guide: Build a Professional Blog with Jekyll + Minimal Mistakes on GitHub...",
         
-        description: "原來架設 Blog 也能如此輕鬆簡單！這篇文章手把手教你從 0 開始，用 Jekyll + Minimal Mistakes 架站。",
+        description: "Step-by-step tutorial to create a modern, SEO-friendly blog using Jekyll and Minimal Mistakes theme on GitHub Pages. Learn Ruby setup, theme customization, and deployment best practices for developers.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/blog/creating-a-github-pages-with-jekyll-and-minimal-mistakes/";
+            window.location.href = "/blog/web%20development/tutorial/creating-a-github-pages-with-jekyll-and-minimal-mistakes/";
           
         },
-      },{id: "post-如何讓-octopress-網站被-google-找到-search-console-實作教學",
+      },{id: "post-seo-guide-add-your-octopress-blog-to-google-search-console-for-better-visibility",
         
-          title: "如何讓 Octopress 網站被 Google 找到｜Search Console 實作教學",
+          title: "SEO Guide: Add Your Octopress Blog to Google Search Console for Better Visibility...",
         
-        description: "Google 大大，你把我的網頁藏哪去了？",
+        description: "Step-by-step guide to make your Octopress or Jekyll blog discoverable on Google. Learn how to verify site ownership and submit your blog to Google Search Console for improved SEO.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/blog/how-to-add-your-octopress-blog-website-to-google-search-console/";
+            window.location.href = "/blog/seo/web%20development/how-to-add-your-octopress-blog-website-to-google-search-console/";
           
         },
-      },{id: "post-用-octopress-架設靜態部落格-github-pages-實戰教學",
+      },{id: "post-complete-guide-setting-up-a-static-blog-with-octopress-and-github-pages",
         
-          title: "用 Octopress 架設靜態部落格｜GitHub Pages 實戰教學",
+          title: "Complete Guide: Setting Up a Static Blog with Octopress and GitHub Pages",
         
-        description: "想不到架一個部落格，其實可以這麼簡單又有趣！",
+        description: "Learn how to create a professional static blog using Octopress and GitHub Pages. Step-by-step tutorial covering installation, configuration, deployment, and content management for developers.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/blog/octopress-setup/";
+            window.location.href = "/blog/blog/web%20development/tutorial/octopress-setup/";
           
         },
       },{id: "books-die-kunst-über-geld-nachzudenken",

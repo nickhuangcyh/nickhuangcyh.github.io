@@ -1,0 +1,313 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA"> <meta http-equiv="Permissions-Policy" content="interest-cohort=()"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Design Pattern 1: Object-Oriented Concepts - Foundation for Understanding Complex Design Patterns | Nick Huang </title> <meta name="author" content="Nick Huang"> <meta name="description" content="Master the four core object-oriented concepts: Encapsulation, Inheritance, Polymorphism, and Abstraction. Learn how these fundamental principles form the foundation for understanding and implementing design patterns."> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://nickhuangcyh.github.io/blog/design%20patterns/software%20development/object-oriented%20programming/programming%20fundamentals/design-pattern-1-object-oriented-concepts/"> <script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+    initTheme();
+  </script> <script src="/assets/js/language-detection.js?8628978c9c518d94dcb000b3ee754416"></script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Nick</span> Huang </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item "> <a class="nav-link" href="/books/">bookshelf </a> </li> <li class="nav-item"> <button id="search-toggle" title="Search" onclick="openSearchModal()"> <span class="nav-link">ctrl k <i class="ti ti-search"></i></span> </button> </li> <li class="nav-item"> <div class="language-toggle"> <div class="dropdown"> <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-globe"></i> EN </button> <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle"> <li> <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('zh')"> <span class="flag">🇹🇼</span> 中文 </a> </li> </ul> </div> </div> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="ti ti-sun-moon" id="light-toggle-system"></i> <i class="ti ti-moon-filled" id="light-toggle-dark"></i> <i class="ti ti-sun-filled" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title">Design Pattern 1: Object-Oriented Concepts - Foundation for Understanding Complex Design Patterns</h1> <p class="post-meta"> Created on July 02, 2024 </p> <p class="post-tags"> <a href="/blog/2024"> <i class="fa-solid fa-calendar fa-sm"></i> 2024 </a>   ·   <a href="/blog/tag/object-oriented-concepts"> <i class="fa-solid fa-hashtag fa-sm"></i> Object-Oriented Concepts</a>   <a href="/blog/tag/design-patterns"> <i class="fa-solid fa-hashtag fa-sm"></i> Design Patterns</a>   <a href="/blog/tag/encapsulation"> <i class="fa-solid fa-hashtag fa-sm"></i> Encapsulation</a>   <a href="/blog/tag/inheritance"> <i class="fa-solid fa-hashtag fa-sm"></i> Inheritance</a>   <a href="/blog/tag/polymorphism"> <i class="fa-solid fa-hashtag fa-sm"></i> Polymorphism</a>   <a href="/blog/tag/abstraction"> <i class="fa-solid fa-hashtag fa-sm"></i> Abstraction</a>   <a href="/blog/tag/software-architecture"> <i class="fa-solid fa-hashtag fa-sm"></i> Software Architecture</a>   <a href="/blog/tag/programming-fundamentals"> <i class="fa-solid fa-hashtag fa-sm"></i> Programming Fundamentals</a>   <a href="/blog/tag/oop"> <i class="fa-solid fa-hashtag fa-sm"></i> OOP</a>   <a href="/blog/tag/software-design"> <i class="fa-solid fa-hashtag fa-sm"></i> Software Design</a>   ·   <a href="/blog/category/design-patterns"> <i class="fa-solid fa-tag fa-sm"></i> Design Patterns</a>   <a href="/blog/category/software-development"> <i class="fa-solid fa-tag fa-sm"></i> Software Development</a>   <a href="/blog/category/object-oriented-programming"> <i class="fa-solid fa-tag fa-sm"></i> Object-Oriented Programming</a>   <a href="/blog/category/programming-fundamentals"> <i class="fa-solid fa-tag fa-sm"></i> Programming Fundamentals</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <blockquote> <p>Download the complete Design Pattern series code from the <a href="https://github.com/nickhuangcyh/design_pattern" rel="external nofollow noopener" target="_blank">design_pattern repo</a>.</p> </blockquote> <h2 id="introduction-the-foundation-of-modern-software-design">Introduction: The Foundation of Modern Software Design</h2> <p>Object-Oriented Programming (OOP) is the cornerstone of modern software development. Understanding the four core concepts—Encapsulation, Inheritance, Polymorphism, and Abstraction—is essential for mastering design patterns and building robust, maintainable software systems.</p> <h2 id="real-world-applications">Real-World Applications</h2> <p>Object-oriented concepts are fundamental to:</p> <ul> <li> <strong>Software Architecture</strong>: Building modular, scalable systems</li> <li> <strong>Design Patterns</strong>: Implementing proven solutions to common problems</li> <li> <strong>Framework Development</strong>: Creating reusable software components</li> <li> <strong>API Design</strong>: Designing clean, intuitive interfaces</li> <li> <strong>Database Design</strong>: Modeling complex data relationships</li> </ul> <h2 id="the-four-pillars-of-object-oriented-programming">The Four Pillars of Object-Oriented Programming</h2> <p>The four core concepts of object-oriented design provide the foundation for understanding complex design patterns. Let’s explore each concept with practical examples.</p> <h3 id="1-encapsulation-封裝">1. Encapsulation (封裝)</h3> <p>Encapsulation is the practice of hiding internal implementation details within a class, exposing only necessary methods to users. This protects internal properties and methods from unauthorized access.</p> <blockquote> <p><strong>Real-World Analogy</strong>: When driving a car, you only need to know that pressing the gas pedal accelerates and pressing the brake stops the car. You don’t need to understand the engine, battery, or transmission details—these are encapsulated under the hood.</p> </blockquote> <h4 id="code-example">Code Example</h4> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">BankAccount</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">balance</span><span class="p">:</span> <span class="nc">Double</span> <span class="p">=</span> <span class="mf">0.0</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">accountNumber</span><span class="p">:</span> <span class="nc">String</span>
+    
+    <span class="k">constructor</span><span class="p">(</span><span class="n">accountNumber</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">accountNumber</span> <span class="p">=</span> <span class="n">accountNumber</span>
+    <span class="p">}</span>
+    
+    <span class="k">fun</span> <span class="nf">deposit</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nc">Double</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">balance</span> <span class="p">+=</span> <span class="n">amount</span>
+            <span class="k">return</span> <span class="k">true</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">false</span>
+    <span class="p">}</span>
+    
+    <span class="k">fun</span> <span class="nf">withdraw</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nc">Double</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">amount</span> <span class="p">&gt;</span> <span class="mi">0</span> <span class="p">&amp;&amp;</span> <span class="n">balance</span> <span class="p">&gt;=</span> <span class="n">amount</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">balance</span> <span class="p">-=</span> <span class="n">amount</span>
+            <span class="k">return</span> <span class="k">true</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="k">false</span>
+    <span class="p">}</span>
+    
+    <span class="k">fun</span> <span class="nf">getBalance</span><span class="p">():</span> <span class="nc">Double</span> <span class="p">=</span> <span class="n">balance</span>
+    <span class="k">fun</span> <span class="nf">getAccountNumber</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="n">accountNumber</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">val</span> <span class="py">account</span> <span class="p">=</span> <span class="nc">BankAccount</span><span class="p">(</span><span class="s">"123456789"</span><span class="p">)</span>
+<span class="n">account</span><span class="p">.</span><span class="nf">deposit</span><span class="p">(</span><span class="mf">1000.0</span><span class="p">)</span>
+<span class="nf">println</span><span class="p">(</span><span class="s">"Balance: ${account.getBalance()}"</span><span class="p">)</span> <span class="c1">// 1000.0</span>
+<span class="c1">// account.balance = -500 // Compilation error - private access</span>
+</code></pre></div></div> <h3 id="2-inheritance-繼承">2. Inheritance (繼承)</h3> <p>Inheritance allows a subclass to inherit properties and methods from a parent class, enabling code reuse and establishing hierarchical relationships.</p> <blockquote> <p><strong>Real-World Analogy</strong>: In nature, dogs and cats are both animals that can breathe and move; flowers and trees are both plants that can perform photosynthesis. This represents the concept of inheritance.</p> </blockquote> <h4 id="code-example-1">Code Example</h4> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">open</span> <span class="kd">class</span> <span class="nc">Animal</span> <span class="p">{</span>
+    <span class="k">protected</span> <span class="kd">var</span> <span class="py">name</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span>
+    <span class="k">protected</span> <span class="kd">var</span> <span class="py">age</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">0</span>
+    
+    <span class="k">open</span> <span class="k">fun</span> <span class="nf">makeSound</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Some animal sound"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">open</span> <span class="k">fun</span> <span class="nf">move</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Moving like an animal"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Dog</span> <span class="p">:</span> <span class="nc">Animal</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">breed</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span>
+    
+    <span class="k">fun</span> <span class="nf">setBreed</span><span class="p">(</span><span class="n">breed</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">breed</span> <span class="p">=</span> <span class="n">breed</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">makeSound</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Woof! Woof!"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">move</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Running on four legs"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">fun</span> <span class="nf">fetch</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Fetching the ball"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Cat</span> <span class="p">:</span> <span class="nc">Animal</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">color</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span>
+    
+    <span class="k">fun</span> <span class="nf">setColor</span><span class="p">(</span><span class="n">color</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">color</span> <span class="p">=</span> <span class="n">color</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">makeSound</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Meow! Meow!"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">move</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Walking gracefully"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">fun</span> <span class="nf">climb</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Climbing the tree"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">val</span> <span class="py">dog</span> <span class="p">=</span> <span class="nc">Dog</span><span class="p">()</span>
+<span class="n">dog</span><span class="p">.</span><span class="nf">makeSound</span><span class="p">()</span> <span class="c1">// Woof! Woof!</span>
+<span class="n">dog</span><span class="p">.</span><span class="nf">fetch</span><span class="p">()</span> <span class="c1">// Fetching the ball</span>
+
+<span class="kd">val</span> <span class="py">cat</span> <span class="p">=</span> <span class="nc">Cat</span><span class="p">()</span>
+<span class="n">cat</span><span class="p">.</span><span class="nf">makeSound</span><span class="p">()</span> <span class="c1">// Meow! Meow!</span>
+<span class="n">cat</span><span class="p">.</span><span class="nf">climb</span><span class="p">()</span> <span class="c1">// Climbing the tree</span>
+</code></pre></div></div> <h3 id="3-polymorphism-多型">3. Polymorphism (多型)</h3> <p>Polymorphism provides a unified interface for different classes, allowing objects of different types to be treated uniformly.</p> <blockquote> <p><strong>Real-World Analogy</strong>: Consider the iPhone 6S—whether the chip is manufactured by TSMC or Samsung, users get the same iPhone 6S functionality. This is polymorphism in action.</p> </blockquote> <h4 id="code-example-2">Code Example</h4> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">PaymentMethod</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">processPayment</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nc">Double</span><span class="p">):</span> <span class="nc">Boolean</span>
+    <span class="k">fun</span> <span class="nf">getPaymentType</span><span class="p">():</span> <span class="nc">String</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">CreditCard</span> <span class="p">:</span> <span class="nc">PaymentMethod</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">cardNumber</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span>
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">expiryDate</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span>
+    
+    <span class="k">fun</span> <span class="nf">setCardDetails</span><span class="p">(</span><span class="n">cardNumber</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="n">expiryDate</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">cardNumber</span> <span class="p">=</span> <span class="n">cardNumber</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">expiryDate</span> <span class="p">=</span> <span class="n">expiryDate</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">processPayment</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nc">Double</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Processing $amount via Credit Card"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">true</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">getPaymentType</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"Credit Card"</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">PayPal</span> <span class="p">:</span> <span class="nc">PaymentMethod</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">email</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span>
+    
+    <span class="k">fun</span> <span class="nf">setEmail</span><span class="p">(</span><span class="n">email</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="n">email</span> <span class="p">=</span> <span class="n">email</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">processPayment</span><span class="p">(</span><span class="n">amount</span><span class="p">:</span> <span class="nc">Double</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Processing $amount via PayPal"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">true</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">getPaymentType</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"PayPal"</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">PaymentProcessor</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">processPayment</span><span class="p">(</span><span class="n">paymentMethod</span><span class="p">:</span> <span class="nc">PaymentMethod</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="nc">Double</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Using ${paymentMethod.getPaymentType()}"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">paymentMethod</span><span class="p">.</span><span class="nf">processPayment</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">val</span> <span class="py">processor</span> <span class="p">=</span> <span class="nc">PaymentProcessor</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">creditCard</span> <span class="p">=</span> <span class="nc">CreditCard</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">paypal</span> <span class="p">=</span> <span class="nc">PayPal</span><span class="p">()</span>
+
+<span class="n">processor</span><span class="p">.</span><span class="nf">processPayment</span><span class="p">(</span><span class="n">creditCard</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span> <span class="c1">// Using Credit Card</span>
+<span class="n">processor</span><span class="p">.</span><span class="nf">processPayment</span><span class="p">(</span><span class="n">paypal</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">)</span> <span class="c1">// Using PayPal</span>
+</code></pre></div></div> <h3 id="4-abstraction-抽象">4. Abstraction (抽象)</h3> <p>Abstraction hides implementation details and provides only essential features to users through interfaces or abstract classes.</p> <blockquote> <p><strong>Real-World Analogy</strong>: When you install apps on your phone, “App” is an abstract name for various applications. When you buy fruits at the market, “Fruit” is an abstract term for apples, bananas, etc.</p> </blockquote> <h4 id="code-example-3">Code Example</h4> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">abstract</span> <span class="kd">class</span> <span class="nc">Database</span> <span class="p">{</span>
+    <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">connect</span><span class="p">():</span> <span class="nc">Boolean</span>
+    <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">disconnect</span><span class="p">()</span>
+    <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">executeQuery</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;&gt;</span>
+    
+    <span class="k">fun</span> <span class="nf">isConnected</span><span class="p">():</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="c1">// Common implementation for all databases</span>
+        <span class="k">return</span> <span class="k">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">MySQLDatabase</span> <span class="p">:</span> <span class="nc">Database</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">connect</span><span class="p">():</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Connecting to MySQL database"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">true</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">disconnect</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Disconnecting from MySQL database"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">executeQuery</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;&gt;</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Executing query on MySQL: $query"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nf">emptyList</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">PostgreSQLDatabase</span> <span class="p">:</span> <span class="nc">Database</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">connect</span><span class="p">():</span> <span class="nc">Boolean</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Connecting to PostgreSQL database"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="k">true</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">disconnect</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Disconnecting from PostgreSQL database"</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">executeQuery</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;&gt;</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Executing query on PostgreSQL: $query"</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nf">emptyList</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">DatabaseManager</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">performOperation</span><span class="p">(</span><span class="n">database</span><span class="p">:</span> <span class="nc">Database</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;&gt;</span> <span class="p">{</span>
+        <span class="n">database</span><span class="p">.</span><span class="nf">connect</span><span class="p">()</span>
+        <span class="kd">val</span> <span class="py">result</span> <span class="p">=</span> <span class="n">database</span><span class="p">.</span><span class="nf">executeQuery</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="n">database</span><span class="p">.</span><span class="nf">disconnect</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">val</span> <span class="py">manager</span> <span class="p">=</span> <span class="nc">DatabaseManager</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">mysql</span> <span class="p">=</span> <span class="nc">MySQLDatabase</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">postgres</span> <span class="p">=</span> <span class="nc">PostgreSQLDatabase</span><span class="p">()</span>
+
+<span class="n">manager</span><span class="p">.</span><span class="nf">performOperation</span><span class="p">(</span><span class="n">mysql</span><span class="p">,</span> <span class="s">"SELECT * FROM users"</span><span class="p">)</span>
+<span class="n">manager</span><span class="p">.</span><span class="nf">performOperation</span><span class="p">(</span><span class="n">postgres</span><span class="p">,</span> <span class="s">"SELECT * FROM products"</span><span class="p">)</span>
+</code></pre></div></div> <h2 id="advanced-concepts-and-best-practices">Advanced Concepts and Best Practices</h2> <h3 id="1-composition-vs-inheritance">1. <strong>Composition vs Inheritance</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Prefer composition over inheritance</span>
+<span class="kd">class</span> <span class="nc">Engine</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">start</span><span class="p">()</span> <span class="p">=</span> <span class="nf">println</span><span class="p">(</span><span class="s">"Engine started"</span><span class="p">)</span>
+    <span class="k">fun</span> <span class="nf">stop</span><span class="p">()</span> <span class="p">=</span> <span class="nf">println</span><span class="p">(</span><span class="s">"Engine stopped"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Car</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">engine</span> <span class="p">=</span> <span class="nc">Engine</span><span class="p">()</span> <span class="c1">// Composition</span>
+    
+    <span class="k">fun</span> <span class="nf">start</span><span class="p">()</span> <span class="p">=</span> <span class="n">engine</span><span class="p">.</span><span class="nf">start</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">stop</span><span class="p">()</span> <span class="p">=</span> <span class="n">engine</span><span class="p">.</span><span class="nf">stop</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// vs Inheritance (less flexible)</span>
+<span class="k">open</span> <span class="kd">class</span> <span class="nc">Vehicle</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">start</span><span class="p">()</span> <span class="p">=</span> <span class="nf">println</span><span class="p">(</span><span class="s">"Vehicle started"</span><span class="p">)</span>
+    <span class="k">fun</span> <span class="nf">stop</span><span class="p">()</span> <span class="p">=</span> <span class="nf">println</span><span class="p">(</span><span class="s">"Vehicle stopped"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Car</span> <span class="p">:</span> <span class="nc">Vehicle</span><span class="p">()</span> <span class="c1">// Inheritance - less flexible</span>
+</code></pre></div></div> <h3 id="2-interface-segregation-principle">2. <strong>Interface Segregation Principle</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Good: Segregated interfaces</span>
+<span class="kd">interface</span> <span class="nc">Readable</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">read</span><span class="p">():</span> <span class="nc">String</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nc">Writable</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">write</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nc">Deletable</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">delete</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// Classes implement only what they need</span>
+<span class="kd">class</span> <span class="nc">ReadOnlyFile</span> <span class="p">:</span> <span class="nc">Readable</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">read</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"File content"</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">WritableFile</span> <span class="p">:</span> <span class="nc">Readable</span><span class="p">,</span> <span class="nc">Writable</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">read</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"File content"</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">write</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">=</span> <span class="nf">println</span><span class="p">(</span><span class="s">"Writing: $data"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// Avoid: Fat interface</span>
+<span class="kd">interface</span> <span class="nc">FileOperations</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">read</span><span class="p">():</span> <span class="nc">String</span>
+    <span class="k">fun</span> <span class="nf">write</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span>
+    <span class="k">fun</span> <span class="nf">delete</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">compress</span><span class="p">()</span>
+    <span class="k">fun</span> <span class="nf">encrypt</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div> <h3 id="3-dependency-inversion-principle">3. <strong>Dependency Inversion Principle</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Good: Depend on abstractions</span>
+<span class="kd">interface</span> <span class="nc">Logger</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">log</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">ConsoleLogger</span> <span class="p">:</span> <span class="nc">Logger</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">log</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">=</span> <span class="nf">println</span><span class="p">(</span><span class="s">"Console: $message"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">FileLogger</span> <span class="p">:</span> <span class="nc">Logger</span> <span class="p">{</span>
+    <span class="k">override</span> <span class="k">fun</span> <span class="nf">log</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">=</span> <span class="nf">println</span><span class="p">(</span><span class="s">"File: $message"</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">UserService</span><span class="p">(</span><span class="k">private</span> <span class="kd">val</span> <span class="py">logger</span><span class="p">:</span> <span class="nc">Logger</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">createUser</span><span class="p">(</span><span class="n">username</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">logger</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="s">"Creating user: $username"</span><span class="p">)</span>
+        <span class="c1">// User creation logic</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Usage</span>
+<span class="kd">val</span> <span class="py">consoleLogger</span> <span class="p">=</span> <span class="nc">ConsoleLogger</span><span class="p">()</span>
+<span class="kd">val</span> <span class="py">fileLogger</span> <span class="p">=</span> <span class="nc">FileLogger</span><span class="p">()</span>
+
+<span class="kd">val</span> <span class="py">userService1</span> <span class="p">=</span> <span class="nc">UserService</span><span class="p">(</span><span class="n">consoleLogger</span><span class="p">)</span>
+<span class="kd">val</span> <span class="py">userService2</span> <span class="p">=</span> <span class="nc">UserService</span><span class="p">(</span><span class="n">fileLogger</span><span class="p">)</span>
+</code></pre></div></div> <h2 id="performance-considerations">Performance Considerations</h2> <table> <thead> <tr> <th>Concept</th> <th>Memory Usage</th> <th>Performance</th> <th>Flexibility</th> <th>Maintainability</th> </tr> </thead> <tbody> <tr> <td>Encapsulation</td> <td>Low</td> <td>High</td> <td>Medium</td> <td>High</td> </tr> <tr> <td>Inheritance</td> <td>Medium</td> <td>Medium</td> <td>Low</td> <td>Medium</td> </tr> <tr> <td>Polymorphism</td> <td>Medium</td> <td>Medium</td> <td>High</td> <td>High</td> </tr> <tr> <td>Abstraction</td> <td>Medium</td> <td>Medium</td> <td>High</td> <td>High</td> </tr> </tbody> </table> <h2 id="common-anti-patterns-to-avoid">Common Anti-Patterns to Avoid</h2> <h3 id="1-inheritance-abuse">1. <strong>Inheritance Abuse</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Avoid: Deep inheritance hierarchies</span>
+<span class="kd">class</span> <span class="nc">Animal</span>
+<span class="kd">class</span> <span class="nc">Mammal</span> <span class="p">:</span> <span class="nc">Animal</span><span class="p">()</span>
+<span class="kd">class</span> <span class="nc">Dog</span> <span class="p">:</span> <span class="nc">Mammal</span><span class="p">()</span>
+<span class="kd">class</span> <span class="nc">GoldenRetriever</span> <span class="p">:</span> <span class="nc">Dog</span><span class="p">()</span>
+<span class="kd">class</span> <span class="nc">MyGoldenRetriever</span> <span class="p">:</span> <span class="nc">GoldenRetriever</span><span class="p">()</span> <span class="c1">// Too deep!</span>
+</code></pre></div></div> <h3 id="2-breaking-encapsulation">2. <strong>Breaking Encapsulation</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Avoid: Exposing internal state</span>
+<span class="kd">class</span> <span class="nc">BankAccount</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="py">balance</span><span class="p">:</span> <span class="nc">Double</span> <span class="p">=</span> <span class="mf">0.0</span> <span class="c1">// Public - breaks encapsulation</span>
+    <span class="kd">var</span> <span class="py">accountNumber</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span> <span class="c1">// Public - breaks encapsulation</span>
+<span class="p">}</span>
+</code></pre></div></div> <h3 id="3-tight-coupling">3. <strong>Tight Coupling</strong> </h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Avoid: Direct dependencies</span>
+<span class="kd">class</span> <span class="nc">UserService</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">database</span> <span class="p">=</span> <span class="nc">MySQLDatabase</span><span class="p">()</span> <span class="c1">// Tight coupling</span>
+    <span class="k">fun</span> <span class="nf">createUser</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="nc">User</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">database</span><span class="p">.</span><span class="nf">connect</span><span class="p">()</span>
+        <span class="c1">// Implementation</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div> <h2 id="related-design-patterns">Related Design Patterns</h2> <ul> <li> <strong>Factory Method</strong>: Uses polymorphism to create objects</li> <li> <strong>Strategy</strong>: Uses abstraction to define algorithms</li> <li> <strong>Decorator</strong>: Uses composition and inheritance</li> <li> <strong>Adapter</strong>: Uses abstraction to adapt interfaces</li> </ul> <h2 id="conclusion">Conclusion</h2> <p>Understanding object-oriented concepts is essential for mastering design patterns and building robust software systems. Key benefits include:</p> <ul> <li> <strong>Modularity</strong>: Code is organized into logical, reusable components</li> <li> <strong>Maintainability</strong>: Changes are localized and easier to implement</li> <li> <strong>Extensibility</strong>: New features can be added without modifying existing code</li> <li> <strong>Reusability</strong>: Components can be reused across different parts of the application</li> </ul> <p>These concepts form the foundation for understanding and implementing the 23 classic design patterns that solve common software design problems.</p> <h2 id="related-articles">Related Articles</h2> <ul> <li><a href="/2024-07-03-design-pattern-2-design-principle/">Design Pattern 2: Object-Oriented Design Principles</a></li> <li><a href="/2024-07-05-design-pattern-4-uml/">Design Pattern 4: UML Diagrams</a></li> <li><a href="/2024-07-06-design-pattern-5-simple-factory-pattern/">Design Pattern 5: Simple Factory Pattern</a></li> <li><a href="/2024-07-07-design-pattern-6-factory-method-pattern/">Design Pattern 6: Factory Method Pattern</a></li> </ul> </div> </article> <br> <hr> <br> <ul class="list-disc pl-8"></ul> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/devops/productivity/github/development/how-to-use-multiple-github-accounts-using-ssh/">How to Use Multiple GitHub Accounts on One Computer: Complete SSH Setup Guide</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai%20tools/visualization/productivity/development/ai-tools-excalidraw-chart-guide/">Excalidraw AI: Create Professional Diagrams with Text Commands - Complete Guide</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/setup%20guide/development/macos/productivity/setup-development-environment-on-a-new-macos/">Complete macOS Development Environment Setup Guide for 2024</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/design%20pattern/software%20engineering/programming/design-pattern-28-interpreter-pattern/">Design Pattern 28: Interpreter Pattern - Complete Guide with Examples</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/design%20pattern/software%20engineering/programming/design-pattern-27-visitor-pattern/">Design Pattern 27: Visitor Pattern - Complete Guide with Real-World IoT Examples</a> </li> </div> </div> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top"></nav> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2025 Nick Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script> <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script> <script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script> <script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script> <script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script async src="https://www.googletagmanager.com/gtag/js?id=G-446Z2KNTGH"></script> <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-446Z2KNTGH');
+  </script> <script defer src="/assets/js/google-analytics-setup.js"></script> <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script> <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script> <script>
+    addBackToTop();
+  </script> <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script> <script src="/assets/js/search-data.js"></script> <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script> </body> </html>
