@@ -1,189 +1,178 @@
 ---
 layout: post
-title: Design Pattern (24) - State Pattern (狀態模式)
-date: 2024-12-22 15:00:00 +0800
-description: 透過狀態模式，設計一個飲水機的運作機制，根據不同狀態執行加熱、冷卻或待機的行為。
-tags: [State Pattern]
-categories: [Design Pattern]
+title: 設計模式 24：狀態模式（State Pattern）完整實戰指南
+日期: 2024-12-22 15:00:00 +0800
+description: 精通狀態模式，學會設計狀態機、根據狀態切換物件行為，打造彈性高、易維護的應用程式。圖文範例，適合軟體工程師與架構師。
+tags: [State Pattern, Design Patterns, State Machine, Object-Oriented Design, Software Architecture, Kotlin, Programming, Behavioral Patterns]
+categories: [Design Pattern, Software Engineering, Programming]
 toc:
-  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
+> 📁 **設計模式系列完整程式碼下載**：[design_pattern repository](https://github.com/nickhuangcyh/design_pattern)
 
 ---
 
-## 需求
+## 🎯 狀態模式是什麼？
 
-我們的任務是設計一個 **飲水機**，需求如下：
+**狀態模式（State Pattern）** 是一種行為型設計模式，讓物件在內部狀態改變時能自動切換行為。非常適合實作狀態機、流程控制、UI 狀態切換等場景。
 
-- 飲水機有三種狀態：
-  - **加熱中**：提升水溫至熱水。
-  - **冷卻中**：降低水溫至冷水。
-  - **待機中**：維持現有水溫。
-- 使用者可透過按鈕切換飲水機的狀態。
-- 飲水機需要根據當前狀態執行正確的行為，例如加熱狀態時加熱水，但不可冷卻。
-
----
-
-## 物件導向分析 (OOA)
-
-理解需求後，讓我們來快速實作物件導向分析吧!
-
-{% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_1.png" title="design_pattern_state_pattern_uml_1" %}
-
-### 察覺 Forces
-
-在未使用設計模式的情況下，我們可能面臨以下挑戰：
-
-1. **高耦合性 (High Coupling)**
-
-   - 狀態邏輯與飲水機核心功能混合在一起，導致程式碼難以維護。
-
-2. **違反單一職責原則 (SRP)**
-
-   - 飲水機類別需要同時處理狀態邏輯與主要功能，責任過於繁重。
-
-3. **難以擴展 (Hard to Extend)**
-   - 新增或修改狀態行為需更改飲水機核心邏輯，違反開放關閉原則 (OCP)。
+**主要應用：**
+- ✅ 狀態機與流程引擎
+- ✅ 遊戲開發（角色狀態、AI 行為）
+- ✅ UI 元件（按鈕狀態、表單驗證）
+- ✅ 網路協定（連線狀態）
+- ✅ 商業邏輯（訂單流程、工作流）
 
 ---
 
-## 套用 State Pattern (Solution) 得到新的 Context (Resulting Context)
+## 🚀 實務案例：飲水機狀態管理
 
-做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 State Pattern 解決這個問題
+設計一個「飲水機」系統，需求如下：
+- 三種運作狀態：
+  - 加熱中：提升水溫
+  - 冷卻中：降低水溫
+  - 待機中：維持現有溫度
+- 使用者可按鈕切換狀態
+- 各狀態有專屬行為
 
-察覺 Forces 後，我們可以套用 **State Pattern**，將狀態邏輯封裝成獨立的類別，達到以下效果：
-
-{% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_2.png" title="design_pattern_state_pattern_uml_2" %}
-
-狀態模式有三個角色:
-
-1. **State (狀態介面)**  
-   定義所有具體狀態需要實現的行為。
-
-2. **ConcreteState (具體狀態)**  
-   每個具體狀態類別實現 State 介面，並負責該狀態下的具體行為邏輯。
-
-3. **Context (上下文)**  
-   負責維護當前狀態，並提供介面讓外部操作。在執行操作時，將請求委派給當前狀態物件。
-
-- 飲水機類別負責狀態管理，而非具體行為實現，降低耦合度。
-- 每個狀態專注於自身行為，符合單一職責原則。
-- 新增或修改狀態無需影響飲水機核心邏輯，符合開放關閉原則。
-
-將 State Pattern 套用到我們的應用吧
-
-{% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_3.png" title="design_pattern_state_pattern_uml_3" %}
+**商業規則：**
+- 加熱狀態不可同時冷卻
+- 冷卻狀態不可同時加熱
+- 待機狀態維持現有溫度
+- 狀態切換需平順、可預期
 
 ---
 
-## 物件導向設計 (OOP)
+## 🧩 物件導向分析（OOA）
 
-[State: WaterDispenserState]
+{% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_1.png" title="State Pattern - Problem Analysis" %}
+
+**核心挑戰：**
+1. 高耦合：狀態邏輯與飲水機主功能混雜，難以維護
+2. 違反單一職責原則（SRP）：飲水機類別同時負責狀態與主功能
+3. 擴展困難：新增或修改狀態需改主邏輯，違反 OCP
+
+---
+
+## 💡 狀態模式解決方案
+
+分析完需求後，套用狀態模式，將狀態邏輯封裝成獨立類別：
+
+{% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_2.png" title="State Pattern - General Structure" %}
+
+**組件說明：**
+1. 狀態介面：定義所有狀態共用方法
+2. 具體狀態：各自實作專屬行為
+3. 上下文（Context）：維護當前狀態，將請求委派給狀態物件
+
+**好處：**
+- 降低耦合，狀態邏輯獨立
+- 單一職責，易於維護
+- 易於擴展，無需改舊程式
+
+---
+
+## 🛠️ 實作：飲水機狀態機
+
+{% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_3.png" title="Water Dispenser State Implementation" %}
+
+### 1. 狀態介面
 
 ```kotlin
 interface WaterDispenserState {
     fun handleRequest()
+    fun getStateName(): String
 }
 ```
 
-[ConcreteStates: HeatingState, CoolingState, StandbyState]
+### 2. 具體狀態類別
 
 ```kotlin
 class HeatingState : WaterDispenserState {
     override fun handleRequest() {
-        println("加熱中：水溫正在提升，請稍候...")
+        println("🔥 加熱中：水溫正在提升，請稍候...")
     }
+    override fun getStateName(): String = "加熱中"
 }
 
 class CoolingState : WaterDispenserState {
     override fun handleRequest() {
-        println("冷卻中：水溫正在降低，請稍候...")
+        println("❄️ 冷卻中：水溫正在降低，請稍候...")
     }
+    override fun getStateName(): String = "冷卻中"
 }
 
 class StandbyState : WaterDispenserState {
     override fun handleRequest() {
-        println("待機中：飲水機維持現有水溫，隨時可用。")
+        println("⏸️ 待機中：飲水機維持現有水溫，隨時可用。")
     }
+    override fun getStateName(): String = "待機中"
 }
 ```
 
-[Context: WaterDispenser]
+### 3. 上下文類別
 
 ```kotlin
 class WaterDispenser {
     private var currentState: WaterDispenserState = StandbyState()
+    private var temperature: Int = 25 // 預設室溫
 
     fun setState(state: WaterDispenserState) {
         currentState = state
-        println("狀態切換：${state::class.simpleName}")
+        println("🔄 狀態切換：${state.getStateName()}")
     }
 
     fun pressButton() {
         currentState.handleRequest()
     }
+    fun getCurrentState(): String = currentState.getStateName()
+    fun getTemperature(): Int = temperature
 }
 ```
 
-[Client]
+### 4. 用戶端程式碼
 
 ```kotlin
 fun main() {
     val dispenser = WaterDispenser()
-
-    // 初始狀態為待機中
+    println("=== 飲水機狀態機示範 ===")
     dispenser.pressButton()
-
-    // 切換到加熱狀態
     dispenser.setState(HeatingState())
     dispenser.pressButton()
-
-    // 切換到冷卻狀態
     dispenser.setState(CoolingState())
     dispenser.pressButton()
-
-    // 回到待機狀態
     dispenser.setState(StandbyState())
     dispenser.pressButton()
 }
 ```
 
-[Output]
-
-```kotlin
-待機中：飲水機維持現有水溫，隨時可用。
-狀態切換：HeatingState
-加熱中：水溫正在提升，請稍候...
-狀態切換：CoolingState
-冷卻中：水溫正在降低，請稍候...
-狀態切換：StandbyState
-待機中：飲水機維持現有水溫，隨時可用。
+**預期輸出：**
+```
+=== 飲水機狀態機示範 ===
+⏸️ 待機中：飲水機維持現有水溫，隨時可用。
+🔄 狀態切換：加熱中
+🔥 加熱中：水溫正在提升，請稍候...
+🔄 狀態切換：冷卻中
+❄️ 冷卻中：水溫正在降低，請稍候...
+🔄 狀態切換：待機中
+⏸️ 待機中：飲水機維持現有水溫，隨時可用。
 ```
 
-## 結論
+---
 
-透過 State Pattern，我們成功將飲水機的狀態邏輯與核心功能分離，實現以下優勢：
+## 🏆 結論
 
-1. 降低耦合度
+狀態模式讓你能彈性管理物件行為，根據狀態切換不同邏輯，適合狀態機、流程控制、UI 狀態等場景。
 
-- 飲水機類別專注於狀態切換，具體行為由狀態類別負責。
+**適用場景：**
+- 複雜狀態機
+- 需根據狀態切換行為的物件
+- UI 狀態、遊戲角色、網路協定
 
-2. 符合設計原則
+**設計原則：**
+- 單一職責原則（SRP）：狀態邏輯獨立
+- 開放封閉原則（OCP）：新增狀態無需改舊程式
 
-- 單一職責原則 (SRP)：每個狀態類別專注於自身行為。
-- 開放關閉原則 (OCP)：新增狀態無需修改現有程式碼。
-
-3. 易於擴展
-
-- 新增或修改狀態行為時，不影響其他部分。
-
-此模式特別適合處理複雜的狀態轉換場景，例如：
-
-- ATM 機的插卡、操作、取卡狀態。
-- 文檔編輯器的編輯、檢視、列印模式。
-
-狀態模式讓程式結構更具彈性，是開發狀態機制應用的最佳選擇！
+立即將狀態模式應用於你的專案，讓系統更彈性、易於維護！

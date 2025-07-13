@@ -1,80 +1,380 @@
 ---
 layout: post
-title: Jenkins (2) - 如何架設 Jenkins 伺服器
+title: "Jenkins 服务器搭建：Docker 安装全流程实战指南"
 date: 2024-08-15 17:00:00 +0800
-description: 學習如何使用 Docker 映像檔來架設 Jenkins 伺服器，提升開發團隊的自動化能力。
-tags: [Jenkins, CI/CD, DevOps, Docker]
-categories: [DevOps]
+description: "通过 Docker 容器快速搭建 Jenkins 服务器，详解 CI/CD 自动化、Android 构建环境集成与生产部署最佳实践。"
+tags: [Jenkins, CI/CD, DevOps, Docker, Container, Automation, Build Server, GitHub Container Registry, Android Development]
+categories: [DevOps, CI/CD, Docker, Automation]
 toc:
-  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/jenkins.jpg
 ---
 
-## 如何架設 Jenkins 伺服器
+## 🚀 **Jenkins 服务器搭建全览**
 
-在這篇文章中，我們將介紹如何使用 Docker 映像檔來架設 Jenkins 伺服器。這種方法不僅簡單快捷，還能確保環境的一致性。
+本指南将带你通过 Docker 容器快速搭建 Jenkins 服务器。这种方式不仅简单高效，还能确保多环境一致性。
 
----
-
-### 步驟一：拉取 Docker 映像檔
-
-首先，我們需要從 GitHub Container Registry 拉取 Jenkins 的 Docker 映像檔。打開終端機並執行以下指令：
-
-```bash
-docker pull jenkins/jenkins:lts-jdk17 # 單純 jenkins 環境
-```
-
-or
-
-```bash
-docker pull ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17 # jenkins 環境 + Android 建構環境
-```
+**你将学到：**
+- 🐳 基于 Docker 的 Jenkins 安装
+- 🛠️ 步骤详尽的搭建流程
+- 📱 集成 Android 构建环境
+- 🛡️ 生产部署最佳实践
+- 🔍 常见问题排查技巧
 
 ---
 
-### 步驟二：運行 Jenkins 容器
+## 🎯 **为什么用 Docker 部署 Jenkins？**
 
-接下來，我們將運行 Jenkins 容器。請確保替換 `${volume path}` 為你希望 Jenkins 資料儲存的本地路徑。執行以下指令：
+### **Docker 方案优势：**
+- ✅ 环境一致性，开发/测试/生产无差异
+- ✅ 部署快捷，易于扩展与迁移
+- ✅ 版本可控，支持多版本并存
+- ✅ 资源隔离，避免冲突
+- ✅ 易于横向扩展
 
-```bash
-docker run -d -v ${volume path}:/var/jenkins_home -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts-jdk17 # 單純 jenkins 環境
-```
-
-or
-
-```bash
-docker run -d -v ${volume path}:/var/jenkins_home -p 8080:8080 -p 50000:50000 ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17 # jenkins 環境 + Android 建構環境
-```
-
-這個指令會在背景運行 Jenkins 容器，並將 Jenkins 的資料儲存在你指定的路徑中。同時，容器會綁定本地的 8080 端口和 50000 端口，分別用於 Jenkins 的 Web 介面和代理通訊。
+### **主流 Jenkins 镜像：**
+- **标准版 Jenkins**：`jenkins/jenkins:lts-jdk17`
+- **集成 Android 环境**：`ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17`
 
 ---
 
-### 步驟三：訪問 Jenkins
+## 🛠️ **Jenkins 搭建步骤详解**
 
-容器啟動後，你可以在瀏覽器中打開 [http://localhost:8080](http://localhost:8080) 來訪問 Jenkins 的 Web 介面。首次訪問時，系統會要求你輸入初始管理員密碼。
+### **步骤 1：拉取 Docker 镜像**
 
-{% include figure.liquid path="assets/img/jenkins_setup_initialAdminPassword.png" title="Jenkins 初始密碼頁面" %}
+在终端执行以下命令，拉取所需 Jenkins 镜像：
 
-> ##### TIP
+#### **A. 标准 Jenkins 环境**
+```bash
+docker pull jenkins/jenkins:lts-jdk17
+```
+
+#### **B. 集成 Android 构建环境**
+```bash
+docker pull ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17
+```
+
+**镜像对比：**
+| 镜像 | 说明 | 适用场景 |
+|------|------|----------|
+| `jenkins/jenkins:lts-jdk17` | 标准 Jenkins，JDK 17 | 通用 CI/CD |
+| `ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17` | 集成 Android SDK | Android 开发 |
+
+### **步骤 2：运行 Jenkins 容器**
+
+将 `${volume_path}` 替换为本地 Jenkins 数据存储路径。
+
+#### **A. 标准 Jenkins 容器**
+```bash
+docker run -d \
+  --name jenkins-server \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  jenkins/jenkins:lts-jdk17
+```
+
+#### **B. 集成 Android 环境容器**
+```bash
+docker run -d \
+  --name jenkins-android-server \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17
+```
+
+**命令说明：**
+- `-d`：后台运行
+- `--name`：容器命名
+- `-v`：挂载本地目录
+- `-p 8080:8080`：Web UI 端口映射
+- `-p 50000:50000`：Agent 通信端口
+
+### **步骤 3：访问 Jenkins Web 界面**
+
+容器启动后，浏览器访问 [http://localhost:8080](http://localhost:8080)。首次访问需输入初始管理员密码。
+
+{% include figure.liquid path="assets/img/jenkins_setup_initialAdminPassword.png" title="Jenkins 初始密码页面" %}
+
+#### **获取初始密码**
+
+> **💡 专业建议：** `${volume_path}` 即为数据目录，初始密码路径为：
 >
-> 還記得我們剛剛在 run container 時有設定 `${volume path}` 嗎？你可以透過以下路徑找到初始密碼：
->
-> `/var/jenkins_home/secrets/initialAdminPassword`
-> {: .block-tip }
+> ```bash
+> cat ${volume_path}/secrets/initialAdminPassword
+> ```
 
-輸入密碼後，按照指示安裝 Plugin 並完成初始設定，你就成功架設好 Jenkins 啦！🎉
+**其他获取方式：**
+```bash
+# 查看容器日志
+docker logs jenkins-server
 
-{% include figure.liquid path="assets/img/jenkins_setup_main_page.png" title="Jenkins 初始主頁" %}
+# 容器内执行命令
+docker exec jenkins-server cat /var/jenkins_home/secrets/initialAdminPassword
+
+# 直接读取挂载目录
+cat ${volume_path}/secrets/initialAdminPassword
+```
+
+### **步骤 4：完成初始化配置**
+
+1. 输入初始密码
+2. 安装推荐插件或自定义安装
+3. 创建管理员账号
+4. 配置 Jenkins URL（本地用 `http://localhost:8080`）
+5. 开始使用 Jenkins！🎉
+
+{% include figure.liquid path="assets/img/jenkins_setup_main_page.png" title="Jenkins 主面板" %}
 
 ---
 
-## 總結
+## 🔧 **进阶配置与最佳实践**
 
-通過以上步驟，我們成功地使用 Docker 映像檔架設了一個 Jenkins 伺服器。這種方法不僅快速，而且能確保環境一致性，對開發團隊來說是一個實用又穩定的解決方案。如果你還沒使用 Jenkins，現在就是開始的好時機！
+### **自定义 Docker 启动命令**
 
-> ##### TIP
->
-> 想了解更多關於 Jenkins 的資訊，請參考 [Jenkins 官方文件](https://jenkins.io/doc/)。
-> {: .block-tip }
+```bash
+docker run -d \
+  --name jenkins-server \
+  --restart unless-stopped \
+  -v jenkins_home:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  -v /usr/bin/docker:/usr/bin/docker \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -e JAVA_OPTS="-Djenkins.install.runSetupWizard=false" \
+  -e JENKINS_OPTS="--prefix=/jenkins" \
+  jenkins/jenkins:lts-jdk17
+```
+
+**参数说明：**
+- `--restart unless-stopped`：自动重启
+- `-v /var/run/docker.sock:/var/run/docker.sock`：支持 Docker in Docker
+- `-e JAVA_OPTS`：JVM 参数
+- `-e JENKINS_OPTS`：Jenkins 启动参数
+
+### **Docker Compose 管理**
+
+编写 `docker-compose.yml`，便于多容器管理：
+
+```yaml
+version: '3.8'
+services:
+  jenkins:
+    image: jenkins/jenkins:lts-jdk17
+    container_name: jenkins-server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+    networks:
+      - jenkins-network
+
+volumes:
+  jenkins_home:
+
+networks:
+  jenkins-network:
+    driver: bridge
+```
+
+**启动命令：**
+```bash
+docker-compose up -d
+```
+
+---
+
+## 🚨 **常见问题排查**
+
+### **1. 容器无法启动**
+```bash
+# 查看容器状态
+docker ps -a
+# 查看日志
+docker logs jenkins-server
+# 端口占用
+sudo lsof -i :8080
+# 权限问题
+sudo chown -R 1000:1000 ${volume_path}
+```
+
+### **2. 无法访问 Web 界面**
+```bash
+# 检查容器是否运行
+docker ps
+# 检查端口映射
+docker port jenkins-server
+# 测试连通性
+curl http://localhost:8080
+```
+
+### **3. 权限拒绝**
+```bash
+# 修复权限
+sudo chown -R 1000:1000 ${volume_path}
+# 以 root 用户运行
+docker run -d \
+  --name jenkins-server \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  --user root \
+  jenkins/jenkins:lts-jdk17
+```
+
+### **4. 内存不足**
+```bash
+# 增加内存限制
+docker run -d \
+  --name jenkins-server \
+  --memory=2g \
+  --memory-swap=4g \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  jenkins/jenkins:lts-jdk17
+```
+
+---
+
+## 📈 **性能优化建议**
+
+### **资源推荐配置**
+
+| 环境 | CPU | 内存 | 存储 |
+|------|-----|------|------|
+| 开发 | 1核 | 2GB  | 10GB |
+| 测试 | 2核 | 4GB  | 20GB |
+| 生产 | 4核+| 8GB+ | 50GB+|
+
+### **JVM 调优**
+
+```bash
+# 生产环境 JVM 优化
+docker run -d \
+  --name jenkins-server \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -e JAVA_OPTS="-Xmx4g -Xms2g -XX:+UseG1GC" \
+  jenkins/jenkins:lts-jdk17
+```
+
+---
+
+## 🔒 **安全最佳实践**
+
+### **1. 生产环境启用 HTTPS**
+```bash
+# 挂载 SSL 证书
+docker run -d \
+  --name jenkins-server \
+  -v ${volume_path}:/var/jenkins_home \
+  -v /path/to/ssl:/var/jenkins_ssl \
+  -p 443:8080 \
+  -e JENKINS_OPTS="--httpPort=-1 --httpsPort=8080 --httpsCertificate=/var/jenkins_ssl/cert.pem --httpsPrivateKey=/var/jenkins_ssl/key.pem" \
+  jenkins/jenkins:lts-jdk17
+```
+
+### **2. 启用认证与权限管理**
+- 集成 LDAP/AD
+- 启用 Jenkins 安全功能
+- 定期更换密码
+- 开启双因素认证
+
+### **3. 网络安全**
+```bash
+# 自定义网络与防火墙
+docker network create --driver bridge --subnet=172.20.0.0/16 jenkins-network
+
+docker run -d \
+  --name jenkins-server \
+  --network jenkins-network \
+  --ip 172.20.0.2 \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  jenkins/jenkins:lts-jdk17
+```
+
+---
+
+## 🛡️ **监控与维护**
+
+### **健康检查**
+```bash
+# 添加健康检查
+docker run -d \
+  --name jenkins-server \
+  --health-cmd="curl -f http://localhost:8080 || exit 1" \
+  --health-interval=30s \
+  --health-timeout=10s \
+  --health-retries=3 \
+  -v ${volume_path}:/var/jenkins_home \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  jenkins/jenkins:lts-jdk17
+```
+
+### **备份策略**
+```bash
+# 备份脚本示例
+#!/bin/bash
+BACKUP_DIR="/backup/jenkins"
+DATE=$(date +%Y%m%d_%H%M%S)
+
+docker stop jenkins-server
+tar -czf "${BACKUP_DIR}/jenkins_backup_${DATE}.tar.gz" -C ${volume_path} .
+docker start jenkins-server
+echo "Backup completed: jenkins_backup_${DATE}.tar.gz"
+```
+
+---
+
+## 🔗 **相关文章推荐**
+
+- [Jenkins 基础原理](/2024-08-15-jenkins-1-what-is-jenkins)
+- [Jenkins SSH 凭据配置](/2024-08-16-jenkins-3-configure-credentials-ssh)
+- [GitHub 容器仓库搭建](/2024-07-23-getting-started-with-github-container-registry)
+- [macOS 开发环境搭建](/2024-01-11-setup-development-environment-on-a-new-macos)
+
+---
+
+## ✅ **总结**
+
+恭喜你，已成功通过 Docker 搭建 Jenkins 服务器！
+
+**本方案优势：**
+- 🚀 部署高效
+- 🛠️ 环境一致性
+- 📱 支持 Android 构建
+- 🛡️ 备份与恢复便捷
+- 📈 架构可扩展
+
+**后续建议：**
+1. 配置首个流水线
+2. 设置分布式构建代理
+3. 集成版本控制系统
+4. 强化生产安全
+5. 配置监控与告警
+
+> **💡 专业建议：** 开发环境推荐用 Docker Compose 管理，生产环境建议自动化备份。
+
+---
+
+**💡 专业建议：** 推荐体验 Jenkins Blue Ocean 插件，获得更现代的流水线可视化。
+
+**🔔 关注我们：** 持续关注 DevOps 系列，获取更多 CI/CD 自动化干货！
+
+---
+
+**📚 延伸阅读：**
+- [Jenkins 官方文档](https://jenkins.io/doc/)
+- [Docker Jenkins 镜像](https://hub.docker.com/r/jenkins/jenkins/)
+- [Jenkins 最佳实践](https://jenkins.io/doc/book/architecting-for-scale/)
+- [CI/CD 流水线设计](https://jenkins.io/doc/book/pipeline/)
