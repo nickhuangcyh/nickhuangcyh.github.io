@@ -84,6 +84,9 @@
   </script>
 {% endif %}
 
+<!-- Language Detection -->
+<script src="{{ '/assets/js/language-detection.js' | relative_url | bust_file_cache }}"></script>
+
 {% if page.map %}
   <!-- GeoJSON support via Leaflet -->
   <link

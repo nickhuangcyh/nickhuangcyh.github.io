@@ -1,0 +1,29 @@
+{% if site.languages.size > 1 %}
+<div class="language-toggle">
+  <div class="dropdown">
+    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-globe"></i>
+      {% if site.lang == 'en' %}
+        EN
+      {% elsif site.lang == 'zh' %}
+        中文
+      {% endif %}
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle">
+      {% for lang in site.languages %}
+        {% if lang != site.lang %}
+          <li>
+            <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('{{ lang }}')">
+              {% if lang == 'en' %}
+                <span class="flag">🇺🇸</span> English
+              {% elsif lang == 'zh' %}
+                <span class="flag">🇹🇼</span> 中文
+              {% endif %}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endif %} 

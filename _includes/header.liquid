@@ -125,6 +125,12 @@
               </button>
             </li>
           {% endif %}
+          {% if site.languages.size > 1 %}
+            <!-- Language Toggle -->
+            <li class="nav-item">
+              {% include language-toggle.html %}
+            </li>
+          {% endif %}
           {% if site.enable_darkmode %}
             <!-- Toogle theme mode -->
             <li class="toggle-container">
