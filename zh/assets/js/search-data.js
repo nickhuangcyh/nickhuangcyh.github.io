@@ -66,11 +66,11 @@ ninja.data = [{
             window.location.href = "/blog/ai%20tools/visualization/productivity/development/ai-tools-excalidraw-chart-guide/";
           
         },
-      },{id: "post-complete-macos-development-environment-setup-guide-for-2024",
+      },{id: "post-2024-年最新版-macos-开发环境搭建全攻略",
         
-          title: "Complete macOS Development Environment Setup Guide for 2024",
+          title: "2024 年最新版 macOS 开发环境搭建全攻略",
         
-        description: "Master the complete setup of a professional development environment on macOS. Step-by-step guide covering Homebrew, Git, iTerm2, Zsh, and mobile development tools for maximum productivity.",
+        description: "一站式掌握 macOS 专业开发环境搭建，涵盖 Homebrew、Git、iTerm2、Zsh 及移动开发工具，助你高效提升生产力。",
         section: "Posts",
         handler: () => {
           
@@ -330,22 +330,22 @@ ninja.data = [{
             window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/database/design-pattern-10-singleton-pattern/";
           
         },
-      },{id: "post-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8-step-by-step-guide-for-secure-ssh-connections",
+      },{id: "post-如何在-openssh-8-8-启用-rsa-加密算法密钥-安全-ssh-连接全流程指南",
         
-          title: "How to Enable RSA Encryption Algorithm Key in OpenSSH 8.8: Step-by-Step Guide for...",
+          title: "如何在 OpenSSH 8.8 启用 RSA 加密算法密钥：安全 SSH 连接全流程指南",
         
-        description: "Learn how to re-enable RSA encryption support in OpenSSH 8.8+ for legacy systems and Git servers. Step-by-step troubleshooting, security best practices, and configuration tips.",
+        description: "掌握在 OpenSSH 8.8+ 环境下为旧系统和 Git 服务器重新启用 RSA 加密支持的完整方法，涵盖排错、安全建议与配置技巧。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/cryptography/openssh/security/devops/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8/";
           
         },
-      },{id: "post-complete-guide-getting-started-with-github-container-registry-ghcr",
+      },{id: "post-github-container-registry-ghcr-入门全攻略-容器镜像管理与-ci-cd-实战",
         
-          title: "Complete Guide: Getting Started with GitHub Container Registry (GHCR)",
+          title: "GitHub Container Registry (GHCR) 入门全攻略：容器镜像管理与 CI/CD 实战",
         
-        description: "Master GitHub Container Registry with step-by-step tutorials. Learn Docker image management, GitHub Actions automation, and CI/CD best practices for containerized applications.",
+        description: "全面掌握 GitHub Container Registry，涵盖 Docker 镜像管理、GitHub Actions 自动化与容器化应用 CI/CD 最佳实践。",
         section: "Posts",
         handler: () => {
           
@@ -363,11 +363,11 @@ ninja.data = [{
             window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/performance/design-pattern-9-prototype-pattern/";
           
         },
-      },{id: "post-how-to-build-chiptool-for-android-complete-guide-to-matter-protocol-development",
+      },{id: "post-如何编译-chiptool-for-android-matter-协议开发全流程实战",
         
-          title: "How to Build CHIPTool for Android: Complete Guide to Matter Protocol Development",
+          title: "如何编译 CHIPTool for Android：Matter 协议开发全流程实战",
         
-        description: "Learn how to build CHIPTool APK for Android from source code. Step-by-step guide for Matter protocol development, Docker setup, and troubleshooting common build issues.",
+        description: "从源码编译 Android 版 CHIPTool APK，详解 Matter 协议开发、Docker 环境搭建与常见构建问题排查。",
         section: "Posts",
         handler: () => {
           
@@ -429,11 +429,11 @@ ninja.data = [{
             window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/software%20architecture/design-pattern-4-uml/";
           
         },
-      },{id: "post-google-wallet-smart-tap-deep-dive-exploring-the-future-of-contactless-payments",
+      },{id: "post-google-wallet-smart-tap-深度解析-无接触支付技术与未来趋势",
         
-          title: "Google Wallet Smart Tap Deep Dive: Exploring the Future of Contactless Payments",
+          title: "Google Wallet Smart Tap 深度解析：无接触支付技术与未来趋势",
         
-        description: "Explore Google Wallet Smart Tap technology and how it&#39;s revolutionizing payment systems. Learn about NFC communication, terminal integration, and the future of contactless transactions.",
+        description: "全面解读 Google Wallet Smart Tap 技术，探索 NFC 通信、终端集成与无接触支付的未来。",
         section: "Posts",
         handler: () => {
           
@@ -473,110 +473,110 @@ ninja.data = [{
             window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/programming%20fundamentals/design-pattern-1-object-oriented-concepts/";
           
         },
-      },{id: "post-how-to-capture-network-packets-on-ios-complete-guide-with-rvictl-and-wireshark",
+      },{id: "post-ios-网络抓包全攻略-rvictl-wireshark-实战详解",
         
-          title: "How to Capture Network Packets on iOS: Complete Guide with rvictl and Wireshark...",
+          title: "iOS 网络抓包全攻略：rvictl + Wireshark 实战详解",
         
-        description: "Master iOS network packet capture using rvictl and Wireshark. Learn debugging techniques for iOS apps, IoT development, and network troubleshooting with step-by-step instructions.",
+        description: "掌握 iOS 网络抓包技巧，结合 rvictl 与 Wireshark，助力移动开发、IoT 调试与网络分析。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/tools/ios%20development/network%20analysis/how-to-capture-network-packet-on-ios/";
           
         },
-      },{id: "post-android-network-packet-capture-complete-guide-with-tcpdump-and-wireshark",
+      },{id: "post-android-网络抓包全攻略-tcpdump-wireshark-实战详解",
         
-          title: "Android Network Packet Capture: Complete Guide with tcpdump and Wireshark",
+          title: "Android 网络抓包全攻略：tcpdump + Wireshark 实战详解",
         
-        description: "Master Android network packet capture using tcpdump and Wireshark. Step-by-step guide for debugging network issues, analyzing traffic, and troubleshooting connectivity problems.",
+        description: "掌握 Android 网络抓包技巧，结合 tcpdump 与 Wireshark，助力移动开发、流量分析与疑难排查。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/android%20development/network%20analysis/debugging/tools/how-to-capture-network-packet-on-android-using-tcpdump/";
           
         },
-      },{id: "post-complete-webrtc-guide-understanding-p2p-technology-with-aws-kvs-implementation",
+      },{id: "post-webrtc-完全指南-p2p-技術原理與-aws-kvs-實戰應用",
         
-          title: "Complete WebRTC Guide: Understanding P2P Technology with AWS KVS Implementation",
+          title: "WebRTC 完全指南：P2P 技術原理與 AWS KVS 實戰應用",
         
-        description: "Deep dive into WebRTC architecture, signaling server design, ICE protocol flow, and AWS Kinesis Video Streams implementation. Master P2P technology for real-time communication and IoT applications.",
+        description: "深入解析 WebRTC 架構、訊號伺服器設計、ICE 協議流程與 AWS Kinesis Video Streams 實作，掌握即時通訊與 IoT 應用的 P2P 技術。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/web%20development/cloud%20computing/p2p-tech-3-webrtc-kvs/";
           
         },
-      },{id: "post-stun-turn-and-ice-complete-guide-to-nat-traversal-protocols",
+      },{id: "post-stun-turn-與-ice-nat-穿透協議全攻略",
         
-          title: "STUN, TURN, and ICE: Complete Guide to NAT Traversal Protocols",
+          title: "STUN、TURN 與 ICE：NAT 穿透協議全攻略",
         
-        description: "Master NAT traversal with STUN, TURN, and ICE protocols. Learn how to establish P2P connections, handle Symmetric NAT, and build robust real-time communication systems.",
+        description: "精通 STUN、TURN、ICE 協議，掌握 NAT 穿透、P2P 連線、Symmetric NAT 處理與即時通訊系統建構。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/p2p/network%20technology/webrtc/development/p2p-tech-2-stun-turn-ice/";
           
         },
-      },{id: "post-p2p-technology-deep-dive-understanding-ipv4-nat-and-peer-to-peer-communication",
+      },{id: "post-p2p-技術深度解析-ipv4-nat-與點對點通訊全攻略",
         
-          title: "P2P Technology Deep Dive: Understanding IPv4, NAT, and Peer-to-Peer Communication",
+          title: "P2P 技術深度解析：IPv4、NAT 與點對點通訊全攻略",
         
-        description: "Master P2P technology fundamentals: IPv4 addressing, NAT traversal techniques, and peer-to-peer communication protocols. Essential guide for IoT developers and network engineers.",
+        description: "掌握 P2P 技術核心：IPv4 位址、NAT 穿透技巧與點對點通訊協議，IoT 開發者與網路工程師必備指南。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/p2p/network%20technology/iot/development/p2p-tech-1-ipv4-nat/";
           
         },
-      },{id: "post-3d-graphics-engine-fundamentals-triangles-uv-mapping-vertices-amp-indices-explained",
+      },{id: "post-3d-圖形引擎基礎-三角形-uv-映射-頂點與索引全解析",
         
-          title: "3D Graphics Engine Fundamentals: Triangles, UV Mapping, Vertices &amp; Indices Explained",
+          title: "3D 圖形引擎基礎：三角形、UV 映射、頂點與索引全解析",
         
-        description: "Essential knowledge for 3D graphics programming. Master basic modeling logic, UV mapping concepts, and vertex/index management for game development, AR, and 3D applications.",
+        description: "3D 圖形程式設計必備知識。掌握建模邏輯、UV 映射觀念、頂點與索引管理，適用於遊戲開發、AR 與 3D 應用。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/computer%20graphics/game%20development/3d-graphic-tips/";
           
         },
-      },{id: "post-seo-guide-add-your-jekyll-blog-to-google-search-console-and-submit-sitemap",
+      },{id: "post-seo-指南-將你的-jekyll-部落格加入-google-search-console-並提交-sitemap",
         
-          title: "SEO Guide: Add Your Jekyll Blog to Google Search Console and Submit Sitemap...",
+          title: "SEO 指南：將你的 Jekyll 部落格加入 Google Search Console 並提交 Sitemap",
         
-        description: "Complete step-by-step guide to make your Jekyll blog discoverable on Google. Learn how to verify site ownership with Google Search Console and submit XML sitemaps for better SEO indexing.",
+        description: "完整教學，讓你的 Jekyll 部落格被 Google 搜尋引擎收錄。學會用 Google Search Console 驗證網站所有權並提交 XML Sitemap，提升 SEO 收錄效率。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/seo/web%20development/how-to-add-your-jekyll-blog-website-to-google-search-console/";
           
         },
-      },{id: "post-complete-guide-build-a-professional-blog-with-jekyll-minimal-mistakes-on-github-pages",
+      },{id: "post-完整指南-用-jekyll-minimal-mistakes-在-github-pages-打造專業部落格",
         
-          title: "Complete Guide: Build a Professional Blog with Jekyll + Minimal Mistakes on GitHub...",
+          title: "完整指南：用 Jekyll + Minimal Mistakes 在 GitHub Pages 打造專業部落格",
         
-        description: "Step-by-step tutorial to create a modern, SEO-friendly blog using Jekyll and Minimal Mistakes theme on GitHub Pages. Learn Ruby setup, theme customization, and deployment best practices for developers.",
+        description: "逐步教學，帶你用 Jekyll 與 Minimal Mistakes 主題在 GitHub Pages 建立現代化、SEO 友善的部落格。涵蓋 Ruby 環境、主題自訂、部署與維護最佳實踐。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/web%20development/tutorial/creating-a-github-pages-with-jekyll-and-minimal-mistakes/";
           
         },
-      },{id: "post-seo-guide-add-your-octopress-blog-to-google-search-console-for-better-visibility",
+      },{id: "post-seo-指南-將你的-octopress-部落格加入-google-search-console-提升曝光度",
         
-          title: "SEO Guide: Add Your Octopress Blog to Google Search Console for Better Visibility...",
+          title: "SEO 指南：將你的 Octopress 部落格加入 Google Search Console 提升曝光度",
         
-        description: "Step-by-step guide to make your Octopress or Jekyll blog discoverable on Google. Learn how to verify site ownership and submit your blog to Google Search Console for improved SEO.",
+        description: "逐步教學，讓你的 Octopress 或 Jekyll 部落格被 Google 搜尋引擎收錄。學會驗證網站所有權並提交到 Google Search Console，全面提升 SEO 成效。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/seo/web%20development/how-to-add-your-octopress-blog-website-to-google-search-console/";
           
         },
-      },{id: "post-complete-guide-setting-up-a-static-blog-with-octopress-and-github-pages",
+      },{id: "post-完整指南-用-octopress-與-github-pages-架設靜態部落格",
         
-          title: "Complete Guide: Setting Up a Static Blog with Octopress and GitHub Pages",
+          title: "完整指南：用 Octopress 與 GitHub Pages 架設靜態部落格",
         
-        description: "Learn how to create a professional static blog using Octopress and GitHub Pages. Step-by-step tutorial covering installation, configuration, deployment, and content management for developers.",
+        description: "學會如何用 Octopress 與 GitHub Pages 建立專業靜態部落格。涵蓋安裝、設定、部署與內容管理的詳細教學，適合開發者入門。",
         section: "Posts",
         handler: () => {
           
