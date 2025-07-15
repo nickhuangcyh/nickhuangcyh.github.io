@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Complete Guide: Getting Started with GitHub Container Registry (GHCR)"
+title: "GitHub Container Registry (GHCR) 入门全攻略：容器镜像管理与 CI/CD 实战"
 date: 2024-07-23 18:00:00 +0800
-description: "Master GitHub Container Registry with step-by-step tutorials. Learn Docker image management, GitHub Actions automation, and CI/CD best practices for containerized applications."
+description: "全面掌握 GitHub Container Registry，涵盖 Docker 镜像管理、GitHub Actions 自动化与容器化应用 CI/CD 最佳实践。"
 tags: [GitHub Container Registry, Docker, Container Registry, GitHub Actions, CI/CD, DevOps, Container Images, Docker Hub Alternative, Container Management]
 categories: [DevOps, GitHub, Container Technology, CI/CD]
 toc:
@@ -10,57 +10,54 @@ toc:
 thumbnail: /assets/img/github_container_registry.png
 ---
 
-## 🚀 **Why GitHub Container Registry Matters**
+## 🚀 **为什么选择 GitHub Container Registry？**
 
-As our company's project portfolio grew, each project's environment requirements became increasingly diverse. We decided to transform our Docker-built Android Jenkins Server into a more flexible architecture: a main Jenkins Server (Master) paired with multiple Android Build Environment (Slave) instances, the latter created through Docker for clean environments. This article documents this transformation process, serving both as a personal learning review and a helpful resource for other developers.
+随着项目数量和环境需求的增长，我们将原本基于 Docker 的 Android Jenkins Server 架构升级为主 Jenkins Server（Master）+ 多个 Android 构建环境（Slave），后者通过 Docker 动态创建，保证环境干净。本文记录了这一转型过程，既是个人学习总结，也为其他开发者提供参考。
 
-**Key Benefits of GitHub Container Registry:**
-- 🆓 **Free for public packages** - No cost for open-source projects
-- 🔒 **Integrated security** - Built-in vulnerability scanning
-- 🔄 **GitHub Actions integration** - Seamless CI/CD workflows
-- 📦 **Package management** - Centralized container image storage
-- 🛡️ **Access control** - Fine-grained permissions management
-
----
-
-## 📋 **Article Overview**
-
-This comprehensive guide will walk beginners and developers who want to deeply understand how to integrate GitHub's new tools into their CI/CD workflows. Through clear instructions and practical tips, you'll learn how to push container images to GitHub Container Registry. I'll demonstrate step-by-step how to set up GitHub Actions to automate the build and deployment process, making your development work more efficient.
-
-**What You'll Learn:**
-- 🐳 **Docker image creation** and management
-- 🔧 **GitHub Container Registry setup** and configuration
-- ⚡ **GitHub Actions automation** for container builds
-- 🔐 **Security best practices** for container images
-- 📊 **CI/CD pipeline integration** strategies
+**GHCR 主要优势：**
+- 🏛️ **公有包免费**，开源项目零成本
+- 🔒 **内建安全**，自动漏洞扫描
+- 🔄 **GitHub Actions 无缝集成**，CI/CD 自动化
+- 📦 **统一镜像管理**，集中存储
+- 🛡️ **细粒度权限控制**
 
 ---
 
-## 🛠️ **Prerequisites and Setup**
+## 🗂️ **文章结构与学习目标**
 
-Before diving into the main topic, let's quickly set up a simple Node.js application using the Express framework as our example project.
+本指南适合初学者与希望深入集成 GitHub 新工具的开发者。通过清晰步骤与实用技巧，带你掌握如何将容器镜像推送到 GHCR，并用 GitHub Actions 自动化构建与部署流程。
 
-### **Step 1: Create Project Directory**
+**你将学到：**
+- 🐳 **Docker 镜像创建与管理**
+- 🛠️ **GHCR 配置与使用**
+- ⚡ **GitHub Actions 自动化容器构建**
+- 🔒 **容器安全最佳实践**
+- 📈 **CI/CD 流水线集成策略**
 
+---
+
+## 🛠️ **环境准备与项目初始化**
+
+以 Node.js + Express 为例，快速搭建演示项目：
+
+### **1. 创建项目目录**
 ```bash
 mkdir node_sample
 cd node_sample
 ```
 
-### **Step 2: Initialize Node.js Project**
-
+### **2. 初始化 Node.js 项目**
 ```bash
 npm init -y
 npm install express
 ```
 
-### **Step 3: Create Application File**
-
+### **3. 创建应用主文件**
 ```bash
 vim app.js
 ```
 
-**Application Code:**
+**示例代码：**
 ```javascript
 const express = require("express");
 const app = express();
@@ -75,31 +72,28 @@ app.listen(port, () => {
 });
 ```
 
-### **Step 4: Create Gitignore File**
+### **4. 创建 .gitignore 文件**
 
-> **💡 Pro Tip:** Visit [gitignore.io](https://gitignore.io/) to generate a `.gitignore` file, select Node.js type for optimal configuration.
+> 💡 **专业建议：** 使用 [gitignore.io](https://gitignore.io/) 生成适合 Node.js 的 `.gitignore` 文件。
 
-### **Step 5: Test the Application**
-
+### **5. 本地测试应用**
 ```bash
 node app.js
 ```
 
-Open `localhost:3000` in your browser to see the output:
+浏览器访问 `localhost:3000` 查看效果。
 
-{% include figure.liquid path="assets/img/github_container_registry_sample_website.png" title="Sample Website Output" %}
+{% include figure.liquid path="assets/img/github_container_registry_sample_website.png" title="示例网站输出" %}
 
 ---
 
-## 🐳 **Creating a Dockerfile**
-
-Now let's containerize our application:
+## 🐳 **编写 Dockerfile 实现容器化**
 
 ```bash
 vim Dockerfile
 ```
 
-**Dockerfile Content:**
+**Dockerfile 示例：**
 ```dockerfile
 FROM node:latest
 WORKDIR /usr/src/app
@@ -109,136 +103,98 @@ EXPOSE 3000
 CMD ["node", "app.js"]
 ```
 
-**Dockerfile Explanation:**
-- **FROM node:latest** - Uses the latest Node.js base image
-- **WORKDIR /usr/src/app** - Sets the working directory
-- **COPY package*.json app.js ./** - Copies dependency files and application
-- **RUN npm install** - Installs dependencies
-- **EXPOSE 3000** - Exposes port 3000
-- **CMD ["node", "app.js"]** - Runs the application
+**关键说明：**
+- **FROM node:latest**：基础镜像
+- **WORKDIR /usr/src/app**：工作目录
+- **COPY ...**：复制依赖与主程序
+- **RUN npm install**：安装依赖
+- **EXPOSE 3000**：暴露端口
+- **CMD ...**：启动命令
 
 ---
 
-## 📤 **Uploading Docker Images to GitHub Container Registry**
+## 📦 **上传 Docker 镜像到 GHCR**
 
-After creating the Dockerfile, there are two ways to upload images to GitHub Container Registry:
-
-1. **Manual upload** using command line
-2. **Automated upload** using GitHub Actions
-
-Let's explore both methods:
+镜像构建完成后，有两种上传方式：
+1. **命令行手动上传**
+2. **GitHub Actions 自动上传**
 
 ---
 
-## 🔧 **Method 1: Manual Command Line Upload**
+### **方法一：命令行手动上传**
 
-### **Step 1: Build Docker Image**
-
+#### **1. 构建镜像**
 ```bash
 docker build -t node_sample .
 ```
 
-{% include figure.liquid path="assets/img/github_container_registry_docker_build_image.png" title="Docker Build Process" %}
-
-### **Step 2: Verify Image Creation**
-
+#### **2. 查看镜像**
 ```bash
 docker images
 ```
 
-{% include figure.liquid path="assets/img/github_container_registry_docker_images.png" title="Docker Images List" %}
-
-### **Step 3: Tag Image for GitHub Container Registry**
-
+#### **3. 镜像打标签**
 ```bash
 docker tag node_sample:latest ghcr.io/{NAMESPACE}/node_sample:latest
 ```
+> ⚠️ `{NAMESPACE}` 替换为你的 GitHub 用户名
 
-> **⚠️ Important:** Replace `{NAMESPACE}` with your GitHub username.
+#### **4. 生成 Personal Access Token**
+1. GitHub 个人设置 → Developer settings → Personal access tokens
+2. 生成新 token，勾选 `write:packages`、`read:packages`、`delete:packages`（可选）
 
-### **Step 4: Generate Personal Access Token**
-
-Before logging into GitHub Container Registry, you need to generate a `GITHUB_TOKEN`:
-
-1. Go to **GitHub** → **Profile** (top right) → **Settings**
-2. Navigate to **Developer settings** → **Personal access tokens** → **Tokens (classic)**
-3. Click **Generate new token**
-
-**Required Permissions:**
-- ✅ `write:packages` - Upload packages
-- ✅ `read:packages` - Download packages
-- ✅ `delete:packages` - Delete packages (optional)
-
-{% include figure.liquid path="assets/img/github_container_registry_generate_github_token.png" title="GitHub Token Generation" %}
-
-### **Step 5: Login to GitHub Container Registry**
-
+#### **5. 登录 GHCR**
 ```bash
 export CR_PAT=YOUR_TOKEN
 echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
 ```
 
-**Expected Output:** `Login Succeeded 🎉`
-
-### **Step 6: Push Image to Registry**
-
+#### **6. 推送镜像**
 ```bash
 docker push ghcr.io/{NAMESPACE}/node_sample:latest
 ```
 
-{% include figure.liquid path="assets/img/github_container_registry_github_package.png" title="Image Successfully Uploaded to GHCR" %}
-
 ---
 
-## ⚡ **Method 2: GitHub Actions Automation**
+### **方法二：GitHub Actions 自动化上传**
 
-Using GitHub Actions is more efficient and automated. Create the following file in your `node_sample` directory:
-
-### **Create GitHub Actions Workflow**
-
+在 `node_sample` 目录下创建工作流：
 ```bash
 mkdir -p .github/workflows
 vim .github/workflows/deploy-image.yml
 ```
 
-**Workflow Configuration:**
+**workflow 配置：**
 ```yaml
 name: Build and Push Docker Image
-
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
     - name: Log in to Container Registry
       uses: docker/login-action@v3
       with:
         registry: ${{ env.REGISTRY }}
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Extract metadata
       id: meta
       uses: docker/metadata-action@v5
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
@@ -250,59 +206,46 @@ jobs:
 
 ---
 
-## 🔍 **Verifying Your Container Registry**
+## 🔍 **验证与拉取镜像**
 
-### **View Packages in GitHub**
-
-1. Go to your GitHub profile
-2. Click on **Packages** tab
-3. You'll see your uploaded container images
-
-### **Pull and Run Your Image**
-
+1. GitHub 个人主页 → Packages 查看上传的镜像
+2. 拉取镜像并运行：
 ```bash
-# Pull the image
 docker pull ghcr.io/{NAMESPACE}/node_sample:latest
-
-# Run the container
 docker run -p 3000:3000 ghcr.io/{NAMESPACE}/node_sample:latest
 ```
 
 ---
 
-## 📊 **GitHub Container Registry vs Docker Hub**
+## 📊 **GHCR 与 Docker Hub 对比**
 
-| Feature | GitHub Container Registry | Docker Hub |
-|---------|---------------------------|------------|
-| **Free Public Packages** | ✅ Unlimited | ✅ Unlimited |
-| **Free Private Packages** | ✅ 500MB/month | ❌ Paid only |
-| **GitHub Integration** | ✅ Native | ⚠️ Limited |
-| **Vulnerability Scanning** | ✅ Built-in | ✅ Available |
-| **Access Control** | ✅ Fine-grained | ⚠️ Basic |
-| **CI/CD Integration** | ✅ GitHub Actions | ⚠️ Third-party |
+| 功能 | GHCR | Docker Hub |
+|------|------|------------|
+| 公有包免费 | ✅ 无限 | ✅ 无限 |
+| 私有包免费 | ✅ 500MB/月 | ❌ 付费 |
+| GitHub 集成 | ✅ 原生 | ⚠️ 有限 |
+| 漏洞扫描 | ✅ 内建 | ✅ 可用 |
+| 权限控制 | ✅ 细粒度 | ⚠️ 基础 |
+| CI/CD 集成 | ✅ GitHub Actions | ⚠️ 需第三方 |
 
 ---
 
-## 🛡️ **Security Best Practices**
+## 🛡️ **容器安全最佳实践**
 
-### **1. Use Specific Base Images**
+### 1. 指定基础镜像版本
 ```dockerfile
-# ❌ Avoid
+# ❌ 不推荐
 FROM node:latest
-
-# ✅ Prefer
+# ✅ 推荐
 FROM node:18-alpine
 ```
 
-### **2. Implement Multi-stage Builds**
+### 2. 多阶段构建
 ```dockerfile
-# Build stage
 FROM node:18-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --only=production
-
-# Production stage
 FROM node:18-alpine
 WORKDIR /app
 COPY --from=builder /app/node_modules ./node_modules
@@ -311,7 +254,7 @@ EXPOSE 3000
 CMD ["node", "app.js"]
 ```
 
-### **3. Scan for Vulnerabilities**
+### 3. 漏洞扫描
 ```yaml
 - name: Run Trivy vulnerability scanner
   uses: aquasecurity/trivy-action@master
@@ -323,45 +266,31 @@ CMD ["node", "app.js"]
 
 ---
 
-## 🚨 **Common Issues and Solutions**
+## 🚨 **常见问题与解决方案**
 
-### **Issue: Authentication Failed**
+### 1. 认证失败
 ```bash
 Error: unauthorized: authentication required
 ```
+**解决：** 检查 token 权限、用户名与 token 是否正确
 
-**Solution:**
-```bash
-# Ensure token has correct permissions
-# Check username and token are correct
-echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
-```
-
-### **Issue: Permission Denied**
+### 2. 权限拒绝
 ```bash
 Error: denied: permission_denied
 ```
+**解决：** 检查包可见性、仓库权限、token 范围
 
-**Solution:**
-- Verify package visibility settings
-- Check repository permissions
-- Ensure GitHub token has required scopes
-
-### **Issue: Image Not Found**
+### 3. 镜像未找到
 ```bash
 Error: manifest for ghcr.io/user/image:tag not found
 ```
-
-**Solution:**
-- Verify image name and tag
-- Check if image was successfully pushed
-- Ensure correct namespace
+**解决：** 检查镜像名、tag、命名空间与推送状态
 
 ---
 
-## 📈 **Advanced Usage Scenarios**
+## 📈 **进阶用法与自动化场景**
 
-### **1. Multi-Architecture Images**
+### 1. 多架构镜像构建
 ```yaml
 - name: Build and push multi-arch image
   uses: docker/build-push-action@v5
@@ -372,14 +301,14 @@ Error: manifest for ghcr.io/user/image:tag not found
     tags: ${{ steps.meta.outputs.tags }}
 ```
 
-### **2. Automated Versioning**
+### 2. 自动版本号生成
 ```yaml
 - name: Generate version tag
   id: version
   run: echo "::set-output name=version::$(date +'%Y%m%d')-$(git rev-parse --short HEAD)"
 ```
 
-### **3. Conditional Publishing**
+### 3. 条件发布
 ```yaml
 - name: Push to Registry
   if: github.ref == 'refs/heads/main'
@@ -388,41 +317,40 @@ Error: manifest for ghcr.io/user/image:tag not found
 
 ---
 
-## 🔗 **Related Articles**
-
-- [Complete Git Workflow Guide](/2025-05-18-how-to-use-multiple-github-accounts-using-ssh)
-- [macOS Development Environment Setup](/2024-01-11-setup-development-environment-on-a-new-macos)
-- [Jenkins Server Configuration](/2024-08-15-jenkins-2-how-to-setup-jenkins-server)
-- [SSH Key Management](/2024-08-02-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8)
-
----
-
-## ✅ **Conclusion**
-
-GitHub Container Registry provides a powerful, integrated solution for managing container images within the GitHub ecosystem. By following this guide, you've learned how to:
-
-**Key Achievements:**
-- 🐳 **Create and manage** Docker images effectively
-- 🔧 **Set up automated workflows** with GitHub Actions
-- 🔐 **Implement security best practices** for container images
-- 📦 **Integrate container management** into your CI/CD pipeline
-
-**Next Steps:**
-1. **Explore advanced features** like vulnerability scanning
-2. **Implement multi-architecture builds** for broader compatibility
-3. **Set up automated testing** for your container images
-4. **Consider implementing** container image signing for enhanced security
+## 🔗 **相关文章推荐**
+- [完整 Git 工作流指南](/2025-05-18-how-to-use-multiple-github-accounts-using-ssh)
+- [macOS 开发环境搭建](/2024-01-11-setup-development-environment-on-a-new-macos)
+- [Jenkins 服务器配置](/2024-08-15-jenkins-2-how-to-setup-jenkins-server)
+- [SSH 密钥管理](/2024-08-02-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8)
 
 ---
 
-**💡 Pro Tip:** Use GitHub Container Registry's built-in vulnerability scanning to automatically detect security issues in your container images.
+## ✅ **总结**
 
-**🔔 Stay Updated:** Follow our DevOps series for more container and CI/CD insights!
+GitHub Container Registry 为容器镜像管理与 CI/CD 提供了强大的一体化解决方案。通过本指南，你已学会：
+
+**核心收获：**
+- 🐳 **高效创建与管理 Docker 镜像**
+- 🛠️ **用 GitHub Actions 实现自动化工作流**
+- 🔒 **容器安全最佳实践**
+- 📦 **流水线集成与自动化管理**
+
+**后续建议：**
+1. 深入体验漏洞扫描等高级功能
+2. 实现多架构镜像构建
+3. 配置镜像自动化测试
+4. 考虑镜像签名增强安全
 
 ---
 
-**📚 Additional Resources:**
-- [GitHub Container Registry Documentation](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
-- [Docker Best Practices](https://docs.docker.com/develop/dev-best-practices/)
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
-- [Container Security Guidelines](https://cloud.google.com/architecture/best-practices-for-building-containers)
+**💡 专业建议：** 善用 GHCR 内建漏洞扫描，自动发现并修复安全隐患。
+
+**🔔 关注我们：** 持续关注 DevOps 系列，获取更多容器与 CI/CD 实战干货！
+
+---
+
+**📚 延伸阅读：**
+- [GHCR 官方文档](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
+- [Docker 最佳实践](https://docs.docker.com/develop/dev-best-practices/)
+- [GitHub Actions 文档](https://docs.github.com/en/actions)
+- [容器安全指南](https://cloud.google.com/architecture/best-practices-for-building-containers)

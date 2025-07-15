@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Complete macOS Development Environment Setup Guide for 2024"
+title: "2024 年最新版 macOS 开发环境搭建全攻略"
 date: 2025-01-11 15:00:00 +0800
-description: "Master the complete setup of a professional development environment on macOS. Step-by-step guide covering Homebrew, Git, iTerm2, Zsh, and mobile development tools for maximum productivity."
+description: "一站式掌握 macOS 专业开发环境搭建，涵盖 Homebrew、Git、iTerm2、Zsh 及移动开发工具，助你高效提升生产力。"
 tags: [macOS, Development Environment, Homebrew, Git, iTerm2, Zsh, Oh-My-Zsh, Powerlevel10k, Xcode, Mobile Development, Setup Guide, Productivity]
 categories: [Setup Guide, Development, macOS, Productivity]
 toc:
@@ -10,101 +10,63 @@ toc:
 thumbnail: /assets/img/raul-per-e-K2w9VegUIb0-unsplash.jpg
 ---
 
-## 🚀 **Why a Proper Development Environment Matters**
+## 🚀 为什么开发环境配置很重要？
 
-Setting up a new Mac for development can be overwhelming, but having the right tools configured from the start will save you countless hours and boost your productivity. This comprehensive guide will transform your fresh macOS installation into a powerful development machine.
+新 Mac 开发环境的搭建往往让人头疼，但一次性配置好合适的工具，将极大提升你的开发效率。本文将带你把全新 macOS 打造成高效的开发利器。
 
-**What You'll Achieve:**
-- ⚡ **Lightning-fast terminal** with advanced features
-- 🎨 **Beautiful, customizable shell** with syntax highlighting
-- 🔧 **Package management** for easy software installation
-- 📱 **Mobile development** environment ready to go
-- 🎯 **Professional workflow** optimized for productivity
-
----
-
-## 📋 **Prerequisites Checklist**
-
-Before we begin, ensure you have:
-- ✅ **macOS** (preferably latest version)
-- ✅ **Administrator privileges**
-- ✅ **Stable internet connection**
-- ✅ **Patience** for the setup process
+**你将收获：**
+- ⚡ 极速终端体验
+- 🎨 美观可定制的 Shell，支持语法高亮
+- 🛠️ 便捷的软件包管理
+- 📱 移动开发环境即刻就绪
+- 🎯 专业高效的开发工作流
 
 ---
 
-## 🍺 **Step 1: Install Homebrew Package Manager**
+## 📋 前置准备清单
+- ✅ 最新版 macOS
+- ✅ 管理员权限
+- ✅ 稳定网络
+- ✅ 耐心（全流程约需 30-60 分钟）
 
-**Homebrew** is the essential package manager for macOS that will make installing and managing software incredibly easy.
+---
 
-### **Installation Command**
+## 🍺 步骤 1：安装 Homebrew 包管理器
+
+**Homebrew** 是 macOS 上必备的包管理工具。
 
 ```zsh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-### **Verify Installation**
-
-```zsh
 brew --version
 ```
 
-**Expected Output:**
-```zsh
-Homebrew 4.1.0
-Homebrew/homebrew-core (git revision 1234567890; last commit 2024-01-11)
-```
-
-### **🚨 Common Issue: PATH Configuration**
-
-If you encounter this warning:
+**如遇 PATH 警告：**
 ```zsh
 Warning: /opt/homebrew/bin is not in your PATH
 ```
 
-**Solution:** Add Homebrew to your PATH:
-
+**解决方法：**
 ```zsh
-# Edit your shell configuration
 vim ~/.zshrc
-
-# Add this line to the file
 export PATH=/opt/homebrew/bin:$PATH
-
-# Save and reload
-:wq
 source ~/.zshrc
 ```
 
-**💡 Pro Tip:** This issue commonly occurs on Apple Silicon Macs (M1/M2/M3). The solution above ensures Homebrew works correctly on all Mac architectures.
+> 💡 Apple Silicon (M1/M2/M3) 机型常见，务必加到 PATH。
 
 ---
 
-## 🔧 **Step 2: Install and Configure Git**
-
-Git is essential for version control and collaboration.
-
-### **Install Git**
+## 🛠️ 步骤 2：安装与配置 Git
 
 ```zsh
 brew install git
-```
-
-### **Configure Git Identity**
-
-```zsh
-# Set your email and name
 git config --global user.email "your.email@example.com"
-git config --global user.name "Your Full Name"
-
-# Verify configuration
+git config --global user.name "Your Name"
 git config --list
 ```
 
-### **Setup Useful Git Aliases**
-
+**常用 Git 别名：**
 ```zsh
-# Common aliases for faster Git workflow
 git config --global alias.co checkout
 git config --global alias.ci commit
 git config --global alias.st status
@@ -113,321 +75,173 @@ git config --global alias.lg "log --oneline --graph --decorate"
 git config --global alias.unstage "reset HEAD --"
 ```
 
-**Usage Examples:**
-```zsh
-git st          # Instead of git status
-git co main     # Instead of git checkout main
-git ci -m "msg" # Instead of git commit -m "msg"
-```
-
 ---
 
-## 🖥️ **Step 3: Install iTerm2 Terminal**
-
-Replace the default Terminal with the powerful iTerm2 for a better development experience.
-
-### **Install iTerm2**
+## 🖥️ 步骤 3：安装 iTerm2 终端
 
 ```zsh
 brew install --cask iterm2
 ```
 
-### **Why iTerm2 is Superior:**
-
-| Feature | Default Terminal | iTerm2 |
-|---------|------------------|--------|
-| **Split Panes** | ❌ | ✅ |
-| **Search** | Basic | Advanced |
-| **Profiles** | Limited | Extensive |
-| **Performance** | Good | Excellent |
-| **Customization** | Minimal | Extensive |
+**iTerm2 优势对比：**
+| 功能 | 系统终端 | iTerm2 |
+|------|----------|--------|
+| 分屏 | ❌ | ✅ |
+| 搜索 | 基础 | 高级 |
+| 配置 | 有限 | 丰富 |
+| 性能 | 良好 | 优秀 |
 
 ---
 
-## 🎨 **Step 4: Configure Zsh with Oh-My-Zsh**
-
-Transform your shell into a powerful, beautiful development environment.
-
-### **Install Zsh (if not already installed)**
+## 🎨 步骤 4：配置 Zsh + Oh-My-Zsh
 
 ```zsh
 brew install zsh
-```
-
-### **Install Oh-My-Zsh**
-
-```zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
-### **Configure iTerm2 Colors**
+**iTerm2 配色建议：**
+- Profiles → Colors → Solarized
+- 可自定义背景/前景色
 
-1. Open iTerm2
-2. Go to **Preferences** → **Profiles** → **Colors**
-3. Select **Solarized** color scheme
-4. Adjust **Background** and **Foreground** as needed
-
-### **Install Nerd Fonts**
-
+**安装 Nerd Fonts 字体：**
 ```zsh
-# Add font repository
 brew tap homebrew/cask-fonts
-
-# Install Meslo Nerd Font
 brew install --cask font-meslo-lg-nerd-font
 ```
 
-**Configure Font in iTerm2:**
-1. **Preferences** → **Profiles** → **Text**
-2. Set font to **MesloLGS NF**
-3. Size: **14pt** (adjust as needed)
+iTerm2 → Preferences → Profiles → Text → 选择 MesloLGS NF 字体
 
 ---
 
-## ⚡ **Step 5: Install Powerlevel10k Theme**
-
-Powerlevel10k is the most popular and feature-rich Zsh theme.
-
-### **Install Powerlevel10k**
+## ⚡ 步骤 5：安装 Powerlevel10k 主题
 
 ```zsh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-```
-
-### **Configure Theme**
-
-```zsh
-# Edit your Zsh configuration
 vim ~/.zshrc
-
-# Change the theme line to:
+# 设置主题
 ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Reload configuration
 source ~/.zshrc
-```
-
-### **Run Configuration Wizard**
-
-```zsh
 p10k configure
 ```
 
-**Follow the interactive prompts** to customize your prompt appearance and features.
-
 ---
 
-## 🔌 **Step 6: Install Essential Zsh Plugins**
-
-Enhance your shell with powerful plugins for better productivity.
-
-### **Install Zsh-Syntax-Highlighting**
+## 🔌 步骤 6：安装高效 Zsh 插件
 
 ```zsh
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-```
-
-### **Install Zsh-Autosuggestions**
-
-```zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-```
-
-### **Configure Plugins**
-
-```zsh
-# Edit your Zsh configuration
 vim ~/.zshrc
-
-# Update the plugins line:
+# 插件配置
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
-
-# Reload configuration
 source ~/.zshrc
 ```
 
-**Plugin Benefits:**
-- **Syntax Highlighting**: Commands are color-coded for better readability
-- **Autosuggestions**: See command suggestions as you type
-- **Git Integration**: Built-in Git status and aliases
+**插件亮点：**
+- 语法高亮
+- 自动补全
+- Git 状态集成
 
 ---
 
-## 📱 **Step 7: Setup iOS Development Environment**
-
-### **Install Xcode Command Line Tools**
+## 📱 步骤 7：iOS 开发环境配置
 
 ```zsh
 xcode-select --install
-```
-
-### **Install Xcodes Tool (Recommended)**
-
-```zsh
 brew install robotsandpencils/made/xcodes
 ```
 
-**Xcodes Tool Benefits:**
-- Manage multiple Xcode versions
-- Easy installation and switching
-- Command-line interface
+**Xcodes 工具优势：**
+- 多版本 Xcode 管理
+- 命令行一键切换
 
-### **🚨 Common Xcode Issues**
-
-**Issue:** `xcrun: error: unable to find utility "xctest"`
-
-**Solution:**
+**常见 Xcode 问题：**
 ```zsh
-# Reset Xcode command line tools
 sudo xcode-select --reset
-
-# Or specify the correct path
 sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
 ```
 
-### **Alternative: Install Xcode from App Store**
-
-If you encounter persistent issues:
-1. Open **App Store**
-2. Search for **Xcode**
-3. Download and install (large file, ~15GB)
+如遇问题可直接 App Store 下载 Xcode。
 
 ---
 
-## 🛠️ **Step 8: Install Additional Development Tools**
-
-### **Node.js and npm**
+## 🧰 步骤 8：常用开发工具安装
 
 ```zsh
 brew install node
-```
-
-### **Python (if needed)**
-
-```zsh
 brew install python
-```
-
-### **Docker**
-
-```zsh
 brew install --cask docker
-```
-
-### **Visual Studio Code**
-
-```zsh
 brew install --cask visual-studio-code
 ```
 
 ---
 
-## 📊 **Performance Optimization Tips**
+## 📈 性能优化建议
 
-### **Terminal Performance**
-
-```zsh
-# Add to ~/.zshrc for faster startup
+- ~/.zshrc 添加：
 skip_global_compinit=1
-```
-
-### **iTerm2 Settings**
-
-1. **Profiles** → **Terminal** → **Scrollback Buffer**: 10000 lines
-2. **Profiles** → **Terminal** → **Unlimited scrollback**: ✅
-3. **Profiles** → **Terminal** → **Save lines to scrollback in alternate screen mode**: ✅
-
-### **Zsh Performance**
-
-```zsh
-# Add to ~/.zshrc for faster plugin loading
 DISABLE_AUTO_UPDATE=true
 DISABLE_UPDATE_PROMPT=true
-```
+
+- iTerm2 → Profiles → Terminal → Scrollback Buffer 10000 行
+- 启用 Unlimited scrollback
 
 ---
 
-## 🎯 **Final Configuration Checklist**
+## ✅ 最终配置检查表
 
-| Component | Status | Test Command |
-|-----------|--------|--------------|
-| **Homebrew** | ✅ | `brew --version` |
-| **Git** | ✅ | `git --version` |
-| **iTerm2** | ✅ | Open iTerm2 |
-| **Zsh** | ✅ | `echo $SHELL` |
-| **Oh-My-Zsh** | ✅ | Check prompt appearance |
-| **Powerlevel10k** | ✅ | `p10k configure` |
-| **Plugins** | ✅ | Type commands to see highlighting |
-| **Xcode** | ✅ | `xcode-select --print-path` |
-
----
-
-## 🚨 **Troubleshooting Common Issues**
-
-### **Issue: Homebrew Commands Not Found**
-```zsh
-# Solution: Check PATH
-echo $PATH | grep homebrew
-
-# If not found, add to ~/.zshrc
-export PATH="/opt/homebrew/bin:$PATH"
-```
-
-### **Issue: Zsh Theme Not Loading**
-```zsh
-# Solution: Check theme configuration
-cat ~/.zshrc | grep ZSH_THEME
-
-# Ensure theme is correctly set
-ZSH_THEME="powerlevel10k/powerlevel10k"
-```
-
-### **Issue: Plugins Not Working**
-```zsh
-# Solution: Check plugin configuration
-cat ~/.zshrc | grep plugins
-
-# Ensure plugins are correctly listed
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
-```
+| 组件 | 检查 | 测试命令 |
+|------|------|----------|
+| Homebrew | ✅ | brew --version |
+| Git | ✅ | git --version |
+| iTerm2 | ✅ | 打开 iTerm2 |
+| Zsh | ✅ | echo $SHELL |
+| Oh-My-Zsh | ✅ | 检查提示符 |
+| Powerlevel10k | ✅ | p10k configure |
+| 插件 | ✅ | 输入命令测试高亮 |
+| Xcode | ✅ | xcode-select --print-path |
 
 ---
 
-## 🔗 **Related Articles**
+## 🚨 常见问题排查
 
-- [Complete Git Workflow Guide](/2025-05-18-how-to-use-multiple-github-accounts-using-ssh)
-- [GitHub Pages Setup](/2020-09-10-octopress-setup)
-- [SSH Key Management](/2024-08-02-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8)
-
----
-
-## ✅ **Conclusion**
-
-Congratulations! You've successfully set up a professional development environment on macOS. Your new setup includes:
-
-**Key Achievements:**
-- 🚀 **High-performance terminal** with iTerm2
-- 🎨 **Beautiful shell** with Powerlevel10k theme
-- 🔧 **Efficient package management** with Homebrew
-- 📱 **Mobile development** environment ready
-- ⚡ **Productivity-boosting** plugins and aliases
-
-**Next Steps:**
-1. **Customize your theme** further with `p10k configure`
-2. **Install project-specific tools** as needed
-3. **Set up your preferred code editor**
-4. **Configure additional Git aliases** for your workflow
+- Homebrew 命令无效：检查 PATH
+- Zsh 主题不生效：检查 ZSH_THEME 配置
+- 插件无效：检查 plugins 配置
 
 ---
 
-**💡 Pro Tip:** Consider using a dotfiles repository to backup and sync your configuration across multiple machines.
-
-**🔔 Stay Updated:** Follow our blog for more development environment and productivity tips!
+## 🔗 相关文章
+- [完整 Git 工作流指南](/2025-05-18-how-to-use-multiple-github-accounts-using-ssh)
+- [GitHub Pages 搭建](/2020-09-10-octopress-setup)
+- [SSH 密钥管理](/2024-08-02-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8)
 
 ---
 
-**📚 Additional Resources:**
-- [Homebrew Documentation](https://docs.brew.sh/)
+## 🎉 总结
+
+恭喜你，已成功搭建专业 macOS 开发环境！
+
+**核心收获：**
+- 🚀 高性能终端与 iTerm2
+- 🎨 美观 Shell + Powerlevel10k
+- 🛠️ 高效包管理
+- 📱 移动开发环境
+- ⚡ 提升生产力的插件与别名
+
+**后续建议：**
+1. 用 `p10k configure` 深度定制主题
+2. 按需安装项目相关工具
+3. 配置你喜欢的编辑器
+4. 增加更多 Git 别名
+
+> 💡 建议用 dotfiles 仓库同步配置，跨设备无忧。
+
+**🔔 关注我们：** 持续关注开发环境与效率提升干货！
+
+**📚 延伸阅读：**
+- [Homebrew 官方文档](https://docs.brew.sh/)
 - [Oh-My-Zsh Wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
-- [Powerlevel10k Documentation](https://github.com/romkatv/powerlevel10k)
-- [iTerm2 Documentation](https://iterm2.com/documentation.html)
+- [Powerlevel10k 文档](https://github.com/romkatv/powerlevel10k)
+- [iTerm2 文档](https://iterm2.com/documentation.html)
