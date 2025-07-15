@@ -1,85 +1,76 @@
 ---
 layout: post
-title: Design Pattern (28) - Interpreter Pattern (解譯器模式)
-date: 2024-12-29 16:30:00 +0800
-description: 解譯器模式用於構建一個可解讀特定語言或語法的系統，適合於處理複雜的規則判斷或指令語法。
-tags: [Interpreter Pattern]
-categories: [Design Pattern]
+title: 設計模式 28：解譯器模式（Interpreter Pattern）完整實戰指南
+日期: 2024-12-29 16:30:00 +0800
+description: 精通解譯器模式，學會打造語言解譯器、運算式解析器與彈性規則引擎。適合開發 DSL、規則系統與表達式處理的工程師。
+tags: [Interpreter Pattern, Design Patterns, Software Architecture, Object-Oriented Design, Expression Parsing, DSL, Kotlin, Programming]
+categories: [Design Pattern, Software Engineering, Programming]
 toc:
-  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
+> 📁 **設計模式系列完整程式碼下載**：[design_pattern repository](https://github.com/nickhuangcyh/design_pattern)
 
 ---
 
-## 需求
+## 🎯 解譯器模式是什麼？
 
-我們需要設計一個布林運算解譯系統，具備以下功能：
+**解譯器模式（Interpreter Pattern）** 是一種行為型設計模式，適合用來解析語法規則、運算式或自訂語言。常見於 DSL（領域專用語言）、規則引擎、表達式求值等場景。
 
-1. 能解譯包含布林值、AND 運算與 OR 運算的表達式。
-2. 符合開放關閉原則，能夠方便地新增其他運算（如 NOT）。
-3. 系統結構清晰，易於維護與擴展。
-
----
-
-## 物件導向分析 (OOA)
-
-理解需求後，讓我們來快速實作物件導向分析吧！
-
-{% include figure.liquid path="assets/img/design_pattern_interpreter_pattern_uml_1.png" title="design_pattern_interpreter_pattern_uml_1" %}
-
-### 察覺 Forces
-
-1. **複雜性增加**
-
-   - 隨著運算符類型增加，手動解析邏輯會變得難以維護。
-
-2. **重複代碼**
-
-   - 不同運算符的處理可能導致類似功能重複實現。
-
-3. **難以擴展**
-   - 新增運算符需要修改大量代碼，違反開放關閉原則 (OCP)。
+**主要應用：**
+- ✅ 運算式求值
+- ✅ DSL（自訂語言）實作
+- ✅ 規則引擎
+- ✅ 數學運算式解析
+- ✅ 設定檔解析
 
 ---
 
-## 套用 Interpreter Pattern (Solution) 得到新的 Context (Resulting Context)
+## 🚀 實務案例：布林運算式解譯器
 
-做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Interpreter Pattern 解決這個問題。
+設計一個布林運算式解譯器，能處理複雜邏輯運算：
+- `true AND false OR true`
+- `(true OR false) AND true`
+- `NOT (false AND true)`
 
-先來看一下 Interpreter Pattern 的 UML
-
-{% include figure.liquid path="assets/img/design_pattern_interpreter_pattern_uml_2.png" title="design_pattern_interpreter_pattern_uml_2" %}
-
-### Interrepter Pattern 的組件
-
-1. **建立抽象表達式 (Expression)**
-
-   - 定義所有表達式的通用介面，確保不同類型的表達式可以被統一處理。
-
-2. **設計終端表達式 (Terminal Expression)**
-
-   - 負責處理語法中的基本單位（如布林值 `true` 和 `false`）。
-
-3. **設計非終端表達式 (Non-Terminal Expression)**
-   - 表示複雜運算的組合（如 `AND` 和 `OR`），遞迴處理子表達式。
-
-為了解決上述問題，我們採用解譯器模式來建構布林運算系統。核心思想是將每個運算符與操作數作為一個 "表達式"，並使用遞迴的方式進行解譯。
-
-透過這種方式，我們可以將複雜的布林運算拆解為多個小型且可組合的單元，並保持系統結構的靈活性。
-
-將 Interpreter Pattern 套用到我們的應用吧
-
-{% include figure.liquid path="assets/img/design_pattern_interpreter_pattern_uml_3.png" title="design_pattern_interpreter_pattern_uml_3" %}
+**需求：**
+1. 支援 AND、OR、NOT 運算子
+2. 支援括號分組
+3. 遵循開放封閉原則，易於擴展
+4. 程式結構清晰、易維護
 
 ---
 
-## 物件導向程式設計 (OOP)
+## 🧩 物件導向分析（OOA）
 
-[抽象表達式: Expression]
+{% include figure.liquid path="assets/img/design_pattern_interpreter_pattern_uml_1.png" title="Interpreter Pattern - Problem Analysis" %}
+
+**核心挑戰：**
+1. 複雜度管理：運算子多時，手動解析難以維護
+2. 程式碼重複：不同運算子處理邏輯類似
+3. 擴展困難：新增運算子需改舊程式，違反 OCP
+
+---
+
+## 💡 解譯器模式解決方案
+
+解譯器模式將每個語法規則封裝成獨立類別，遞迴處理運算式：
+
+{% include figure.liquid path="assets/img/design_pattern_interpreter_pattern_uml_2.png" title="Interpreter Pattern - General Structure" %}
+
+**核心組件：**
+1. 抽象運算式介面：定義所有運算式的共用介面
+2. 終端運算式：處理基本元素（如布林值）
+3. 非終端運算式：處理複雜運算（AND、OR、NOT），遞迴處理子運算式
+
+---
+
+## 🛠️ 實作：布林運算式解譯器
+
+{% include figure.liquid path="assets/img/design_pattern_interpreter_pattern_uml_3.png" title="Boolean Expression Interpreter Implementation" %}
+
+### 1. 抽象運算式介面
 
 ```kotlin
 interface Expression {
@@ -87,7 +78,7 @@ interface Expression {
 }
 ```
 
-[終端表達式: BooleanValue]
+### 2. 終端運算式：布林值
 
 ```kotlin
 class BooleanValue(private val value: Boolean) : Expression {
@@ -95,7 +86,7 @@ class BooleanValue(private val value: Boolean) : Expression {
 }
 ```
 
-[非終端表達式: AndExpression, OrExpression]
+### 3. 非終端運算式：邏輯運算子
 
 ```kotlin
 class AndExpression(private val left: Expression, private val right: Expression) : Expression {
@@ -105,13 +96,17 @@ class AndExpression(private val left: Expression, private val right: Expression)
 class OrExpression(private val left: Expression, private val right: Expression) : Expression {
     override fun interpret(): Boolean = left.interpret() || right.interpret()
 }
+
+class NotExpression(private val expression: Expression) : Expression {
+    override fun interpret(): Boolean = !expression.interpret()
+}
 ```
 
-[客戶端代碼: Client]
+### 4. 用戶端程式碼：建構與求值
 
 ```kotlin
 fun main() {
-    // 定義布林表達式：true AND false OR true
+    // 建立運算式：true AND false OR true
     val expression = OrExpression(
         AndExpression(
             BooleanValue(true),
@@ -120,33 +115,35 @@ fun main() {
         BooleanValue(true)
     )
 
-    // 計算結果
+    // 求值
     val result = expression.interpret()
-    println("Result of the expression is: $result")
+    println("運算式: true AND false OR true")
+    println("結果: $result")
+    // 預期輸出: true
 }
 ```
 
-[Output]
-
-```kotlin
-Result of the expression is: true
+**輸出：**
+```
+運算式: true AND false OR true
+結果: true
 ```
 
 ---
 
-## 結論
+## 🏆 結論
 
-透過解譯器模式，我們成功解決了布林運算系統的設計挑戰，並實現以下優勢：
+解譯器模式讓你能彈性解析與求值複雜運算式，適合 DSL、規則引擎、設定檔等場景。每個語法規則獨立封裝，易於擴展與維護。
 
-1. **結構清晰**
+**適用場景：**
+- DSL 實作
+- 運算式求值系統
+- 設定檔解析
+- 規則引擎
+- 數學運算式解析
 
-   - 將每個運算符和操作數封裝成表達式類別，便於組合與管理。
+**設計原則：**
+- 單一職責原則（SRP）：每個運算式類別專注一種規則
+- 開放封閉原則（OCP）：新增運算子無需改舊程式
 
-2. **易於擴展**
-
-   - 新增運算符只需實現新的表達式類別，符合開放關閉原則 (OCP)。
-
-3. **靈活性高**
-   - 支持動態構建與解譯複雜表達式，適用於多種運算場景。
-
-需要注意的是，解譯器模式更適合處理結構簡單的語法。如果語法過於複雜，可能導致類別數量激增，這時可以考慮結合其他模式（如組合模式或訪問者模式）進行優化。
+立即將解譯器模式應用於你的專案，讓系統更彈性、易於維護！

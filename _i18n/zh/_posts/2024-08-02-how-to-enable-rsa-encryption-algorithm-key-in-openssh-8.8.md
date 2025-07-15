@@ -1,127 +1,111 @@
 ---
 layout: post
-title: How to Enable RSA Encryption Algorithm Key in OpenSSH 8.8
+title: "How to Enable RSA Encryption Algorithm Key in OpenSSH 8.8: Step-by-Step Guide for Secure SSH Connections"
 date: 2024-08-02 19:50:00 +0800
-description: 如何在 OpenSSH 8.8 中重新啟用 RSA 加密支援，確保可以繼續使用 RSA 金鑰。
-tags: [RSA Encryption, OpenSSH 8.8, Encryption Support]
-categories: [Cryptography, OpenSSH, Security]
+description: "Learn how to re-enable RSA encryption support in OpenSSH 8.8+ for legacy systems and Git servers. Step-by-step troubleshooting, security best practices, and configuration tips."
+tags: [RSA Encryption, OpenSSH 8.8, SSH, Encryption Support, Security, Git, Linux, DevOps, Troubleshooting, Compatibility]
+categories: [Cryptography, OpenSSH, Security, DevOps]
 toc:
-  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/rsa-algorithm.jpg
 ---
 
-## 前言
-
-最近在修改公司的 Jenkins CI/CD 架構時，為了 Dockerize Android Building Environment，我啟動了 Debian 12 的 container。然而在配置 RSA Key 至 GitLab server 時，卻發現無法拉取原始碼。這篇文章記錄了解決過程，讓我日後可以快速複習，也希望能幫助到遇到同樣問題的開發者。
-
-深入調查後才發現，Debian 12 使用的 OpenSSH 版本為 8.8，而 OpenSSH 8.8 預設停用 RSA 加密演算法（因為安全性與過時性考量）。但我們內部的 GitLab server 較舊，只支援 RSA Key，所以我們需要手動重新啟用 RSA 支援。
+> 💡 **Pro Tip:** Always use the latest secure algorithms when possible. Only re-enable RSA for legacy compatibility!
 
 ---
 
-## 準備作業
+## 🎯 **Why Was RSA Disabled in OpenSSH 8.8?**
 
-> ##### TIP
->
-> 如果你已有環境，可略過此步驟，直接進入測試與修正段落。  
-> {: .block-tip }
+OpenSSH 8.8+ disables RSA/SHA-1 by default due to security and obsolescence concerns. However, some legacy systems (e.g., old Git servers) still require RSA keys for authentication.
 
-首先，我用 Docker 啟動一台 Debian 12 container：
-
-```bash
-docker pull debian:bookworm
-docker run -it --name debian-bookworm-for-test-openssh debian:bookworm
-```
+**Key Points:**
+- ✅ **RSA/SHA-1 is considered weak**
+- ✅ **OpenSSH prefers modern algorithms (ED25519, ECDSA)**
+- ✅ **Legacy servers may only support RSA**
 
 ---
 
-### 更新 apt
+## 🚀 **Step-by-Step: Re-Enabling RSA in OpenSSH 8.8+**
 
-```bash
-apt update
-```
+### **1. Prepare Your Environment**
+- Use Docker or a VM for safe testing
+- Ensure you have OpenSSH 8.8+ and a legacy server (e.g., GitLab)
 
----
-
-### 安裝 Git
-
-```bash
-apt install git
-```
-
----
-
-### 確認 OpenSSH 版本
-
-```bash
-ssh -V
-# OpenSSH_9.2p1 Debian-2+deb12u3, OpenSSL 3.0.13
-```
-
----
-
-### 建立 SSH RSA Key
-
+### **2. Generate an RSA Key**
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 ```
 
----
-
-### 將 Public Key 上傳至 Git Server
-
+### **3. Upload Public Key to Server**
 ```bash
 cat ~/.ssh/id_rsa.pub
+# Copy to your Git server's SSH settings
 ```
 
-將該內容複製貼上至 Git Server 內部帳號的 SSH 設定中。
-
----
-
-## 測試 SSH 連線
-
-以 verbose 模式連線 Git server（請替換 IP/domain）：
-
+### **4. Test SSH Connection**
 ```bash
 ssh -T -v git@x.x.x.x
+# If you see: send_pubkey_test: no mutual signature algorithm
+# It means RSA is disabled by default
 ```
-
-執行後，若看到以下錯誤訊息：
-
-```bash
-debug1: send_pubkey_test: no mutual signature algorithm
-```
-
-代表你的 client 與 server 之間沒有共同支援的簽名演算法，RSA 因被 OpenSSH 預設關閉而導致驗證失敗。
 
 ---
 
-## 解決方法
+## 🔧 **How to Re-Enable RSA/SHA-1 in OpenSSH**
 
-打開官方文件：[OpenSSH 8.8 Release Notes](https://www.openssh.com/txt/release-8.8) 可以看到如下說明：
-
-> ...it may be necessary to selectively re-enable RSA/SHA1 to allow connection and/or user authentication via the HostkeyAlgorithms and PubkeyAcceptedAlgorithms options...
-
-這表示我們可以透過 `.ssh/config` 設定檔來手動啟用 `ssh-rsa`：
-
+Edit your `~/.ssh/config`:
 ```bash
 Host x.x.x.x
   HostkeyAlgorithms +ssh-rsa
   PubkeyAcceptedAlgorithms +ssh-rsa
 ```
 
-儲存後，再次執行：
-
+Save and retry your SSH connection:
 ```bash
 ssh -T -v git@x.x.x.x
+# You should now connect successfully
 ```
-
-你將會看到登入成功的訊息 🎉
 
 ---
 
-## 參考
+## 📈 **OpenSSH 8.8+ vs Previous Versions**
 
-- [OpenSSH 8.8 Release Document](https://www.openssh.com/txt/release-8.8)
+| Version         | Default RSA Support | Security Level | Recommended For         |
+|-----------------|--------------------|---------------|------------------------|
+| **OpenSSH <8.8**| ✅ Enabled          | ⚠️ Lower      | Legacy/compatibility   |
+| **OpenSSH 8.8+**| ❌ Disabled         | ✅ Higher      | Modern, secure systems |
+
+---
+
+## 🚨 **Security Best Practices**
+- Use ED25519 or ECDSA keys for new systems
+- Only re-enable RSA for legacy compatibility
+- Regularly update OpenSSH and monitor security advisories
+- Restrict RSA usage to specific hosts in your SSH config
+- Never share your private key
+
+---
+
+## 🔗 **Related Articles**
+- [How to Use Multiple GitHub Accounts with SSH](/2025-05-18-how-to-use-multiple-github-accounts-using-ssh.md)
+- [Jenkins Server Setup with SSH Keys](/2024-08-15-jenkins-2-how-to-setup-jenkins-server.md)
+- [P2P Technology Fundamentals: IPv4 and NAT](/2022-01-03-p2p-tech-1-ipv4-nat)
+- [STUN, TURN, and ICE Protocols](/2022-01-04-p2p-tech-2-stun-turn-ice)
+
+---
+
+## ✅ **Conclusion**
+
+Re-enabling RSA in OpenSSH 8.8+ is sometimes necessary for legacy compatibility, but always prefer modern, secure algorithms when possible.
+
+**Key Takeaways:**
+- 🎯 **RSA/SHA-1 is deprecated for security**
+- 🛡️ **Use only for legacy systems**
+- 🔧 **Configure SSH client for compatibility**
+- 📈 **Prefer ED25519/ECDSA for new deployments**
+
+---
+
+**💡 Pro Tip:** Regularly audit your SSH keys and configurations to maintain strong security!
