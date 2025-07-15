@@ -1,95 +1,94 @@
 ---
 layout: post
-title: "SEO Guide: Add Your Octopress Blog to Google Search Console for Better Visibility"
+title: "SEO 指南：將你的 Octopress 部落格加入 Google Search Console 提升曝光度"
 date: 2020-09-10 23:29:22 +0800
-description: "Step-by-step guide to make your Octopress or Jekyll blog discoverable on Google. Learn how to verify site ownership and submit your blog to Google Search Console for improved SEO."
+description: "逐步教學，讓你的 Octopress 或 Jekyll 部落格被 Google 搜尋引擎收錄。學會驗證網站所有權並提交到 Google Search Console，全面提升 SEO 成效。"
 tags: [Octopress, Jekyll, Google Search Console, SEO, Blog Optimization, Search Engine, Web Development]
 categories: [SEO, Web Development]
 toc:
-  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 ---
 
-## Can't Find Your Blog on Google Search?
+## 在 Google 搜尋不到你的部落格？
 
-When we set up an Octopress or Jekyll blog, we might encounter a situation where searching for our website name on Google yields no results.
+當我們架設 Octopress 或 Jekyll 部落格時，常常會遇到在 Google 搜尋網站名稱卻找不到任何結果的情況。
 
-Don't worry - this doesn't mean there's something wrong with your website. It simply means we haven't actively submitted it to Google's search engine yet.
+別擔心，這並不代表你的網站有問題，而是因為我們尚未主動將網站提交給 Google 搜尋引擎。
 
-### Why SEO Matters for Your Blog
+### 為什麼 SEO 對部落格很重要？
 
-Search Engine Optimization (SEO) is crucial for blog success:
+搜尋引擎優化（SEO）對於部落格的成功至關重要：
 
-- **Increased Visibility**: Help readers find your content
-- **Organic Traffic**: Drive free, targeted visitors
-- **Credibility**: Higher rankings build authority
-- **Long-term Growth**: Sustainable traffic source
+- **提升曝光度**：讓更多讀者找到你的內容
+- **帶來自然流量**：吸引免費且精準的訪客
+- **建立權威性**：排名越高越具公信力
+- **長期成長**：帶來穩定且持續的流量
 
 ---
 
-## Add Your Site to Google Search Console
+## 將網站加入 Google Search Console
 
-First, open [Google Search Console](https://search.google.com/search-console/welcome?hl=en&utm_source=about-page&pli=1)
+首先，打開 [Google Search Console](https://search.google.com/search-console/welcome?hl=zh-TW&utm_source=about-page&pli=1)
 
-Then, choose the "URL prefix" method to add your website, enter your blog domain name, and click continue.
+選擇「URL 前綴」方式新增網站，輸入你的部落格網域名稱，點擊繼續。
 
 <div>
-    {% include figure.liquid loading="eager" path="assets/img/google_search_console.png" title="Add Website to Google Search Console" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/google_search_console.png" title="新增網站到 Google Search Console" class="img-fluid rounded z-depth-1" %}
 </div>
 
-Google will ask you to download an HTML file like this:
+Google 會要求你下載一個 HTML 驗證檔案，例如：
 
     googlexxxxxxxxxx.html
 
-Place this file in your project folder:
+將此檔案放到你的專案資料夾：
 
     octopress/source/
 
-Then remember to commit and push to GitHub:
+然後記得 commit 並推送到 GitHub：
 
 ```bash
 rake gen_deploy
 ```
 
 <div>
-    {% include figure.liquid loading="eager" path="assets/img/google_search_console_verify.png" title="Verify Website Ownership" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/google_search_console_verify.png" title="驗證網站所有權" class="img-fluid rounded z-depth-1" %}
 </div>
 
-After deployment, return to Search Console and click "Verify." If everything goes smoothly, you'll see a success message 👍
+部署完成後，回到 Search Console 點擊「驗證」。若一切順利，會看到成功訊息 👍
 
 <div>
-    {% include figure.liquid loading="eager" path="assets/img/google_search_console_verified.png" title="Verification Successful" class="img-fluid rounded z-depth-1" %}
+    {% include figure.liquid loading="eager" path="assets/img/google_search_console_verified.png" title="驗證成功" class="img-fluid rounded z-depth-1" %}
 </div>
 
 ---
 
-## Understanding Google Search Console
+## 認識 Google Search Console
 
-### What is Google Search Console?
+### 什麼是 Google Search Console？
 
-Google Search Console is a free service that helps you:
-- **Monitor Performance**: Track how your site appears in search results
-- **Submit Content**: Tell Google about new or updated pages
-- **Fix Issues**: Identify and resolve search-related problems
-- **Understand Traffic**: Analyze search queries and user behavior
+Google Search Console 是 Google 提供的免費服務，能協助你：
+- **監控網站表現**：追蹤網站在搜尋結果的曝光與點擊
+- **提交內容**：主動告知 Google 有新頁面或更新
+- **修正問題**：發現並解決搜尋相關問題
+- **分析流量**：了解用戶搜尋行為與關鍵字
 
-### Key Features
+### 主要功能
 
-| Feature | Description | Benefit |
-|---------|-------------|---------|
-| **Performance Reports** | Track search queries and clicks | Understand what content works |
-| **Coverage Reports** | Monitor indexed pages | Ensure all content is found |
-| **Core Web Vitals** | Check page speed metrics | Improve user experience |
-| **Mobile Usability** | Test mobile-friendly design | Reach mobile users |
+| 功能 | 說明 | 好處 |
+|------|------|------|
+| **成效報告** | 追蹤搜尋查詢與點擊 | 找出受歡迎內容 |
+| **收錄覆蓋** | 監控已被索引的頁面 | 確保所有內容都被發現 |
+| **核心網頁指標** | 檢查頁面速度與體驗 | 提升用戶體驗 |
+| **行動裝置可用性** | 測試手機版設計 | 擴展行動用戶 |
 
 ---
 
-## Advanced SEO Configuration
+## 進階 SEO 設定
 
-### XML Sitemap Setup
+### 建立 XML Sitemap
 
-Create a `sitemap.xml` file to help Google discover your content:
+建立 `sitemap.xml`，協助 Google 快速發現你的內容：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -109,9 +108,9 @@ Create a `sitemap.xml` file to help Google discover your content:
 </urlset>
 ```
 
-### Robots.txt Configuration
+### 設定 robots.txt
 
-Create a `robots.txt` file in your root directory:
+在網站根目錄建立 `robots.txt`：
 
 ```txt
 User-agent: *
@@ -120,13 +119,13 @@ Allow: /
 Sitemap: https://yourdomain.com/sitemap.xml
 ```
 
-### Meta Tags Optimization
+### 優化 Meta 標籤
 
 ```html
-<!-- Optimize your HTML head section -->
+<!-- 優化 HTML head 區塊 -->
 <head>
-    <title>Your Blog Title - Descriptive and Keyword-Rich</title>
-    <meta name="description" content="Compelling description under 160 characters with relevant keywords">
+    <title>你的部落格標題 - 描述性且含關鍵字</title>
+    <meta name="description" content="160 字以內、具吸引力且含關鍵字的描述">
     <meta name="keywords" content="relevant, keywords, for, your, content">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://yourdomain.com/current-page">
@@ -135,95 +134,95 @@ Sitemap: https://yourdomain.com/sitemap.xml
 
 ---
 
-## Content Optimization Strategies
+## 內容優化策略
 
-### Keyword Research
+### 關鍵字研究
 
-- **Use Google Keyword Planner**: Find relevant search terms
-- **Analyze Competitors**: See what keywords they target
-- **Long-tail Keywords**: Target specific, less competitive terms
-- **User Intent**: Match content to search intent
+- **使用 Google 關鍵字規劃工具**：找出熱門搜尋詞
+- **分析競爭對手**：觀察他們鎖定哪些關鍵字
+- **長尾關鍵字**：聚焦更精準、競爭較低的詞組
+- **用戶意圖**：內容要符合搜尋者需求
 
-### Content Quality Guidelines
+### 內容品質指引
 
-- **Valuable Information**: Provide useful, comprehensive content
-- **Regular Updates**: Keep content fresh and current
-- **Internal Linking**: Connect related posts and pages
-- **External References**: Link to authoritative sources
+- **有價值的資訊**：提供實用且完整的內容
+- **定期更新**：保持內容新穎
+- **內部連結**：串連相關文章與頁面
+- **外部參考**：連結權威網站
 
-### Technical SEO
+### 技術 SEO
 
-- **Fast Loading**: Optimize images and minimize HTTP requests
-- **Mobile Responsive**: Ensure mobile-friendly design
-- **Clean URLs**: Use descriptive, keyword-rich URLs
-- **Structured Data**: Implement schema markup
+- **加快載入速度**：壓縮圖片、減少 HTTP 請求
+- **行動裝置友善**：確保響應式設計
+- **乾淨網址**：使用描述性且含關鍵字的網址
+- **結構化資料**：加上 schema 標記
 
 ---
 
-## Monitoring and Analytics
+## 監控與分析
 
-### Google Search Console Metrics
+### Google Search Console 指標
 
-Track these key performance indicators:
+追蹤這些關鍵績效指標：
 
-- **Search Impressions**: How often your site appears in search
-- **Click-Through Rate (CTR)**: Percentage of clicks from impressions
-- **Average Position**: Your ranking position in search results
-- **Indexed Pages**: Number of pages Google has indexed
+- **搜尋曝光次數**：網站在搜尋結果出現的次數
+- **點擊率（CTR）**：曝光中被點擊的比例
+- **平均排名**：在搜尋結果中的平均位置
+- **已索引頁面數**：被 Google 收錄的頁面數
 
-### Performance Monitoring
+### 效能監控
 
 ```bash
-# Check site loading speed
+# 檢查網站載入速度
 curl -w "@curl-format.txt" -o /dev/null -s "https://yourdomain.com"
 
-# Monitor Core Web Vitals
-# Use Google PageSpeed Insights
+# 監控核心網頁指標
+# 使用 Google PageSpeed Insights
 ```
 
-### Regular SEO Audits
+### 定期 SEO 稽核
 
-1. **Technical Issues**: Check for crawl errors and mobile usability
-2. **Content Quality**: Review and update outdated content
-3. **Keyword Performance**: Analyze search query reports
-4. **Competitor Analysis**: Monitor competitor rankings
-
----
-
-## Common SEO Issues and Solutions
-
-### Site Not Indexed
-
-**Problem**: Your site doesn't appear in search results
-**Solutions**:
-- Verify Google Search Console setup
-- Check robots.txt for blocking directives
-- Ensure site is accessible to crawlers
-- Submit sitemap manually
-
-### Low Search Rankings
-
-**Problem**: Site appears but ranks poorly
-**Solutions**:
-- Optimize page titles and meta descriptions
-- Improve content quality and relevance
-- Build quality backlinks
-- Enhance page loading speed
-
-### Duplicate Content Issues
-
-**Problem**: Multiple URLs with similar content
-**Solutions**:
-- Use canonical tags
-- Implement proper redirects
-- Consolidate similar content
-- Use hreflang for multilingual sites
+1. **技術問題**：檢查爬蟲錯誤與行動裝置可用性
+2. **內容品質**：審查並更新過時內容
+3. **關鍵字成效**：分析搜尋查詢報告
+4. **競爭對手分析**：追蹤競爭者排名
 
 ---
 
-## Best Practices for Octopress/Jekyll SEO
+## 常見 SEO 問題與解決方案
 
-### Configuration Optimization
+### 網站未被收錄
+
+**問題**：網站未出現在搜尋結果
+**解決方式**：
+- 確認 Google Search Console 設定無誤
+- 檢查 robots.txt 是否有阻擋
+- 確保網站可被爬蟲存取
+- 手動提交 sitemap
+
+### 排名過低
+
+**問題**：網站有收錄但排名不佳
+**解決方式**：
+- 優化標題與 meta 描述
+- 提升內容品質與相關性
+- 建立高品質外部連結
+- 加快頁面載入速度
+
+### 重複內容問題
+
+**問題**：多個網址有相似內容
+**解決方式**：
+- 使用 canonical 標籤
+- 正確實作轉址
+- 合併相似內容
+- 多語系網站加上 hreflang
+
+---
+
+## Octopress/Jekyll SEO 最佳實踐
+
+### 設定優化
 
 ```yaml
 # _config.yml
@@ -234,7 +233,7 @@ author: "Your Name"
 permalink: /:year/:month/:day/:title/
 ```
 
-### Post Front Matter
+### 文章 Front Matter
 
 ```yaml
 ---
@@ -246,127 +245,127 @@ categories: [Category]
 ---
 ```
 
-### Image Optimization
+### 圖片優化
 
 ```html
-<!-- Use descriptive alt text -->
-<img src="/assets/img/example.jpg" alt="Descriptive image alt text for SEO">
+<!-- 使用描述性 alt 文字 -->
+<img src="/assets/img/example.jpg" alt="有助 SEO 的圖片描述文字">
 
-<!-- Optimize image size -->
-<!-- Use WebP format when possible -->
-<!-- Implement lazy loading -->
+<!-- 優化圖片大小 -->
+<!-- 優先使用 WebP 格式 -->
+<!-- 實作 lazy loading -->
 ```
 
 ---
 
-## Performance Optimization
+## 效能優化
 
-### Page Speed Improvements
+### 提升頁面速度
 
-- **Image Compression**: Use tools like TinyPNG or ImageOptim
-- **Minify CSS/JS**: Reduce file sizes
-- **Enable Caching**: Set proper cache headers
-- **Use CDN**: Distribute content globally
+- **圖片壓縮**：使用 TinyPNG、ImageOptim 等工具
+- **壓縮 CSS/JS**：減少檔案大小
+- **啟用快取**：設定正確的快取標頭
+- **使用 CDN**：全球分發內容
 
-### Mobile Optimization
+### 行動裝置優化
 
-- **Responsive Design**: Ensure mobile-friendly layout
-- **Touch-friendly**: Make buttons and links easy to tap
-- **Fast Loading**: Optimize for mobile networks
-- **Readable Text**: Use appropriate font sizes
+- **響應式設計**：確保手機、平板皆適用
+- **觸控友善**：按鈕與連結易於點擊
+- **快速載入**：針對行動網路優化
+- **易讀字體**：使用適當字級
 
 ---
 
-## Troubleshooting SEO Issues
+## SEO 疑難排解
 
-### Verification File Not Working
+### 驗證檔案無法存取
 
 ```bash
-# Check if file is accessible
+# 檢查檔案是否可存取
 curl https://yourdomain.com/googlexxxxxxxxxx.html
 
-# Ensure proper file permissions
+# 確認檔案權限
 chmod 644 googlexxxxxxxxxx.html
 
-# Check for redirects
+# 檢查是否有轉址
 curl -I https://yourdomain.com/googlexxxxxxxxxx.html
 ```
 
-### Search Console Errors
+### Search Console 錯誤
 
-- Check for DNS propagation delays
-- Verify HTTPS certificate validity
-- Ensure no redirect chains
-- Confirm proper canonical URLs
+- 檢查 DNS 傳播延遲
+- 驗證 HTTPS 憑證有效性
+- 確認無多重轉址
+- 檢查 canonical URL 設定
 
-### Common Octopress Issues
+### Octopress 常見問題
 
 ```bash
-# Regenerate and deploy
+# 重新產生並部署
 rake generate
 rake deploy
 
-# Check for build errors
+# 檢查建置錯誤
 rake check
 
-# Clean and rebuild
+# 清除並重建
 rake clean
 rake generate
 ```
 
 ---
 
-## SEO Tools and Resources
+## SEO 工具與資源
 
-### Free SEO Tools
+### 免費 SEO 工具
 
-- **Google Search Console**: Official SEO monitoring
-- **Google PageSpeed Insights**: Performance analysis
-- **Google Mobile-Friendly Test**: Mobile optimization
-- **Schema.org Validator**: Structured data testing
+- **Google Search Console**：官方 SEO 監控
+- **Google PageSpeed Insights**：效能分析
+- **Google Mobile-Friendly Test**：行動裝置優化
+- **Schema.org Validator**：結構化資料測試
 
-### Paid SEO Tools
+### 付費 SEO 工具
 
-- **Ahrefs**: Comprehensive SEO analysis
-- **SEMrush**: Keyword research and competitor analysis
-- **Moz Pro**: SEO metrics and tracking
-- **Screaming Frog**: Technical SEO audit
+- **Ahrefs**：全方位 SEO 分析
+- **SEMrush**：關鍵字與競爭對手分析
+- **Moz Pro**：SEO 指標追蹤
+- **Screaming Frog**：技術 SEO 稽核
 
-### Learning Resources
+### 學習資源
 
-- [Google SEO Starter Guide](https://developers.google.com/search/docs/beginner/seo-starter-guide)
-- [Moz SEO Learning Center](https://moz.com/learn/seo)
+- [Google SEO 入門指南](https://developers.google.com/search/docs/beginner/seo-starter-guide)
+- [Moz SEO 學習中心](https://moz.com/learn/seo)
 - [Search Engine Journal](https://www.searchenginejournal.com/)
 - [Search Engine Land](https://searchengineland.com/)
 
 ---
 
-## Related Articles
+## 延伸閱讀
 
-- [Complete Guide: Build a Professional Blog with Jekyll + Minimal Mistakes on GitHub Pages](/2021-12-30-creating_a_github_pages_with_jekyll_and_minimal_mistakes/)
-- [SEO Guide: Add Your Jekyll Blog to Google Search Console and Submit Sitemap](/2021-12-31-how-to-add-your-jekyll-blog-website-to-google-search-console/)
-- [Advanced Image Optimization Techniques](/2024-01-27-advanced-images/)
+- [完整教學：用 Jekyll + Minimal Mistakes 打造專業部落格並部署到 GitHub Pages](/2021-12-30-creating_a_github_pages_with_jekyll_and_minimal_mistakes/)
+- [SEO 指南：將你的 Jekyll 部落格加入 Google Search Console 並提交 Sitemap](/2021-12-31-how-to-add-your-jekyll-blog-website-to-google-search-console/)
+- [進階圖片優化技巧](/2024-01-27-advanced-images/)
 
 ---
 
-## Next Steps
+## 下一步
 
-After verification, you can continue using Search Console to monitor indexing status, search keyword performance, and even submit sitemaps to speed up indexing.
+驗證完成後，你可以持續透過 Search Console 監控收錄狀態、搜尋關鍵字表現，甚至主動提交 sitemap 加速收錄。
 
-With this step, your website has truly embarked on the SEO journey!
+從這一步開始，你的網站正式踏上 SEO 之路！
 
-### Action Items
+### 行動清單
 
-1. **Monitor Performance**: Check Search Console regularly
-2. **Optimize Content**: Focus on quality and relevance
-3. **Build Backlinks**: Earn links from reputable sites
-4. **Track Progress**: Monitor rankings and traffic
+1. **監控成效**：定期檢查 Search Console
+2. **優化內容**：聚焦品質與相關性
+3. **建立外部連結**：爭取高權重網站引用
+4. **追蹤進展**：觀察排名與流量變化
 
-### Long-term SEO Strategy
+### 長期 SEO 策略
 
-- **Content Calendar**: Plan regular content updates
-- **Keyword Expansion**: Research and target new keywords
-- **Technical Improvements**: Continuously optimize site performance
-- **User Experience**: Focus on providing value to readers
+- **內容行事曆**：規劃定期更新
+- **關鍵字擴展**：持續研究新關鍵字
+- **技術優化**：不斷提升網站效能
+- **用戶體驗**：專注於為讀者創造價值
 
-> If you have different methods, encounter any problems, or want to exchange more SEO techniques, feel free to leave a comment or email me. Let's research and improve together! 🙂
+> 如果你有不同的方法、遇到任何問題，或想交流更多 SEO 技巧，歡迎留言或來信，一起研究、一起進步！🙂
