@@ -1,184 +1,99 @@
 ---
 layout: post
-title: "Google Wallet Smart Tap Deep Dive: Exploring the Future of Contactless Payments"
+title: "Google Wallet Smart Tap 深度解析：无接触支付技术与未来趋势"
 date: 2024-07-05 20:00:00 +0800
-description: "Explore Google Wallet Smart Tap technology and how it's revolutionizing payment systems. Learn about NFC communication, terminal integration, and the future of contactless transactions."
+description: "全面解读 Google Wallet Smart Tap 技术，探索 NFC 通信、终端集成与无接触支付的未来。"
 tags: [Google Wallet, Smart Tap, NFC, Contactless Payments, Payment Systems, Mobile Payments, Digital Wallets, Payment Technology, Terminal Integration, Security]
 categories: [Payments, Technology, Mobile Development, Digital Wallets]
 toc:
-  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/mika-baumeister-m7HWPWVjfJ4-unsplash.jpg
 ---
 
-> This article explores the technical implementation of Google Wallet Smart Tap technology, providing insights for developers and businesses interested in contactless payment integration.
+> 本文聚焦 Google Wallet Smart Tap 技术实现，助力开发者与企业深入理解无接触支付集成方案。
 
-## Introduction: The Evolution of Contactless Payments
+## 引言：无接触支付的演进
 
-Recently, due to work requirements, I conducted in-depth research on Google Wallet Smart Tap technology. This article serves as both a personal review and a resource to help other developers understand this innovative payment technology.
+近期因项目需求，深入研究了 Google Wallet Smart Tap 技术。本文既是个人复盘，也为开发者提供创新支付技术的实用参考。
 
-## What is NFC?
+## 什么是 NFC？
 
-NFC (Near Field Communication) is a short-range wireless communication technology that enables two devices to communicate within a few centimeters. It's widely used in payments, ticketing, data exchange, and other applications.
+NFC（近场通信）是一种短距离无线通信技术，支持设备间厘米级数据交换，广泛应用于支付、票务、数据传输等场景。
 
-## Google Wallet Smart Tap Overview
+## Google Wallet Smart Tap 概述
 
-Smart Tap is a proprietary communication protocol developed by Google using NFC technology. It allows users to perform fast and secure transactions and data exchanges through mobile devices on supported terminals.
+Smart Tap 是 Google 基于 NFC 推出的专有协议，支持用户通过移动设备在支持终端上实现快速安全的交易与数据交换。
 
-> **Important Note for Terminal Providers**: If your company is implementing the Terminal side, you must obtain certification to use this protocol. I contacted Google and received the following response: "If you are a terminal provider and would like to certify your terminal for use with Google Wallet, please provide more details about your terminal, intended functionality and target country/region. The documentation needed for Smart Tap certification is locked behind an NDA. Once I have this information, my team and I will review and if the decision is to move forward with your request, we will begin the process of onboarding, starting with an NDA."
+> **终端厂商注意：** 若需集成 Smart Tap，必须通过 Google 认证。认证流程需提交终端信息、功能说明与目标市场，签署 NDA 后方可获取相关文档。
 
-## Prerequisites
+## 集成前置条件
 
-To begin Smart Tap setup, we need to complete two conditions:
+1. 创建 pass class 与 pass object
+2. 与 Smart Tap 支持的终端厂商建立合作
 
-1. **Create pass class and pass object(s)**
-2. **Establish partnership with Smart Tap-supported terminal providers**
+主流支持厂商包括：Verifone、Ingenico、Pax、HID、Equinox、XAC 等。
 
-Currently supported Smart Tap providers include:
+## 关键标识符说明
 
-- Verifone
-- Ingenico
-- Pax
-- HID
-- Equinox
-- XAC
-- ... (and others)
+- **Redemption Issuer ID**（兑换发行方 ID）
+- **Collector ID**（收款方 ID）
+- **Pass class ID**（票证类型 ID）
 
-## Identifiers
+### Issuer ID
+Google Wallet 卡券发行方唯一标识，可在 [Google Pay & Wallet Console](https://pay.google.com/business/console/home?hl=zh-cn) 查询。
 
-Before creating pass class and pass object(s), we need to understand some identifiers used by the Smart Tap protocol:
+### Redemption Issuer ID
+兑换发行方 ID 通常代表单一商户，Issuer ID 则可视为多商户平台。开发完成后，pass class 与 object 需关联 Redemption Issuer ID。
 
-- **Redemption Issuer ID** (兌換核發機構 ID)
-- **Collector ID**
-- **Pass class ID**
+| ID | 格式 | 说明 |
+|----|------|------|
+| Class ID | `issuerId.classSuffix` | classSuffix 由开发者自定义 |
+| Object ID | `issuerId.objectSuffix` | objectSuffix 由开发者自定义 |
 
-### Issuer ID (核發機構 ID)
+### Collector ID
+- 终端支持 Smart Tap 时，Redemption Issuer 会有唯一 Collector ID（8 位数字）
+- 终端通过 Collector ID 与用户设备通信，设备用 Collector ID 公钥完成认证
+- 一个 Issuer ID 仅对应一个 Collector ID，Collector ID 全局唯一
 
-The Issuer ID is a unique identifier for Google Wallet card issuers, which can be found in the [Google Pay & Wallet Console](https://pay.google.com/business/console/home?hl=zh-cn).
+### Pass Class ID
+用于标识具体票证类型，格式为 `issuerId.classSuffix`，同一 Issuer 可关联多个 Redemption Issuer。
 
-### Redemption Issuer ID (兌換核發機構 ID)
+## 通信流程与场景
 
-The Redemption Issuer ID is a specific type of Issuer ID. You can think of the Redemption Issuer ID as a single merchant, while the Issuer is a "collection of merchants" platform that stores multiple merchants' pass classes.
+终端通过 Collector ID 标识自身，Google Wallet App 检查本地 pass class 与 Collector ID，找到匹配后将 pass 传输至终端。
 
-Issuer ID can represent merchants, offer providers, shopping malls (e.g., SOGO), terminal manufacturers, etc. After pass class & object(s) are developed, they will be associated with the Redemption Issuer ID. The Issuer ID contains pass class IDs and object IDs.
+### 场景一：单 Redemption Issuer
 
-| ID | Format | Notes |
-|----|--------|-------|
-| Class ID | `issuerId.classSuffix` | The classSuffix is a unique, developer-defined value for a specific pass class (e.g., a loyalty tier) |
-| Object ID | `issuerId.objectSuffix` | The objectSuffix is a unique, developer-defined value for a specific pass object (such as a user ID) |
+{% include figure.liquid path="assets/img/google_wallet_smart_tap_communication_flow_example1.png" title="单 Redemption Issuer 通信流程" %}
 
-### Collector ID (收款方 ID)
+- Aggregator 创建 pass class 与 object
+- Redemption Issuer 获取 Collector ID 并配置到终端
+- 终端与 Google Wallet 通过 Collector ID 匹配传输 pass
 
-- When a merchant's terminal supports Smart Tap, the Redemption Issuer will have a Collector ID
-- The Collector ID is an 8-digit ID
-- When a user touches their device to a Smart Tap-supported terminal, the terminal sends the Collector ID to the user's device. The device then uses the public key of that Collector ID to authenticate with the terminal (communication flow will be discussed later)
+### 场景二：多 Redemption Issuer
 
-> **Important Notes**:
-> 1. One Issuer ID can only be assigned one Collector ID
-> 2. Collector ID is unique across all Issuer IDs
+{% include figure.liquid path="assets/img/google_wallet_smart_tap_communication_flow_example2.png" title="多 Redemption Issuer 通信流程" %}
 
-### Pass Class ID (票證類 ID)
+- Aggregator 在 pass class redemptionIssuers 属性中添加多个 Redemption Issuer ID
+- 各 Redemption Issuer 获取并配置各自 Collector ID
 
-Used to identify specific tiers or pass types. Uses the following format:
+### 场景三：无 Aggregator（直发模式）
 
-> `issuerId.classSuffix`
+{% include figure.liquid path="assets/img/google_wallet_smart_tap_communication_flow_example3.png" title="无 Aggregator 模式" %}
 
-The classSuffix is a unique value defined by developers for this pass class. Object classes created through this pass class can be saved to the Google Wallet App.
+- 开发者直接创建 pass class 与 object
+- Redemption Issuer ID 配置到 pass class redemptionIssuers 属性
+- 获取 Collector ID 并配置到终端
 
-> Pass Class ID belongs to a single Issuer account but can be associated with multiple Redemption Issuers
+## 用户体验与行为
 
-## Communication Flow
+- 用户在 Google Wallet App 选择指定 pass 或解锁主界面后，触碰终端即可传输 pass
+- 若 Collector ID 匹配，pass 会被传输；否则不会传输
+- 多个匹配时，用户可选择传输的 pass
 
-The terminal uses the Collector ID to identify itself. The Collector ID maps to a Redemption Issuer ID. When Smart Tap occurs, the terminal transmits its Collector ID to the user's device. The Google Wallet App then checks each pass class ID and Collector ID stored on the device. It finds one or more matching passes and transmits these matching passes to the terminal.
+## 技术实现要点
 
-### Example 1: Single Redemption Issuer
-
-{% include figure.liquid path="assets/img/google_wallet_smart_tap_communication_flow_example1.png" title="Single Redemption Issuer communication flow" %}
-
-The diagram shows two different Issuers:
-
-- Issuer `2018` is the pass developer (Aggregator)
-- Issuer `1990` is the merchant fooPizza (Redemption Issuer)
-
-The Redemption Issuer - fooPizza wants to enable Smart Tap functionality for their passes. The Aggregator and Redemption Issuer must complete the following steps to enable Smart Tap for merchant terminals:
-
-| Step | Role | Description |
-|:----:|:----:|:------------|
-| 1 | Aggregator | Create pass class and objects (abc and 123 in the diagram respectively). |
-| 2 | Aggregator | Add the Redemption Issuer's ID to the pass class's `redemptionIssuers` property. This tells Google Wallet that Issuer ID 1990 can redeem pass objects that reference this class. |
-| 3 | Redemption Issuer | Obtain Collector ID (12345678 in the diagram). |
-| 4 | Redemption Issuer | Configure Collector ID 12345678 on each Smart Tap-supported terminal to be used. Any object with class ID abc and Collector ID 12345678 will be transmitted to the Reader. |
-
-### Example 2: Multiple Redemption Issuers
-
-A pass class can have multiple Redemption Issuers. To be able to redeem a specific pass class, the Redemption Issuer ID must be included in the `redemptionIssuers` property when creating the pass class. Each Redemption Issuer then has its own Collector ID, which is configured on terminals.
-
-{% include figure.liquid path="assets/img/google_wallet_smart_tap_communication_flow_example2.png" title="Multiple Redemption Issuers communication flow" %}
-
-The diagram shows three different Issuers:
-
-- Issuer `8088` is the pass developer (Aggregator)
-- Issuer `1990` is the merchant fooPizza (Redemption Issuer)
-- Issuer `2018` is the merchant yumPie (Redemption Issuer)
-
-The Aggregator and Redemption Issuers must complete the following steps to enable Smart Tap for merchant terminals:
-
-| Step | Role | Description |
-|:----:|:----:|:------------|
-| 1 | Aggregator | Create pass class and objects (abc and 123 in the diagram respectively). |
-| 2 | Aggregator | Add Redemption Issuer IDs to the pass class's `redemptionIssuers` property. This tells Google Wallet that Issuer IDs 1990 and 2018 can redeem pass objects that reference this class. |
-| 3 | Redemption Issuer | Obtain Collector IDs (12345678 for fooPizza and 18802001 for yumPie in the diagram). |
-| 4 | Redemption Issuer | Configure the corresponding Collector ID on each Smart Tap-supported terminal. Any object with class ID abc and a matching Collector ID will be transmitted to the Reader. |
-
-### Example 3: No Aggregator (Direct Issuer)
-
-We can also use the same Issuer account to develop and issue pass classes without an Aggregator managing multiple Redemption Issuers' pass classes. To redeem a specific pass class, developers must include their Issuer ID in the class's `redemptionIssuers` property. Developers must obtain a Collector ID and configure it on Smart Tap terminals.
-
-{% include figure.liquid path="assets/img/google_wallet_smart_tap_communication_flow_example3.png" title="No Aggregator mode" %}
-
-The pass developer must complete the following steps to enable Smart Tap for merchant terminals:
-
-| Step | Role | Description |
-|:----:|:----:|:------------|
-| 1 | Pass Developer | Create pass class and objects (abc and 123 in the diagram respectively). |
-| 2 | Pass Developer | Add their Issuer ID to the pass class's `redemptionIssuers` property. This tells Google Wallet that Issuer ID 2018 is authorized to redeem pass objects that reference this class. |
-| 3 | Pass Developer | Obtain Collector ID (12345678 in the diagram). |
-| 4 | Pass Developer | Configure the corresponding Collector ID on each Smart Tap-supported terminal. Any object with class ID abc and a matching Collector ID will be transmitted to the Reader. |
-
-## User Experience and Behavior
-
-The content and behavior transmitted between terminals and the Google Wallet app depend on how users interact with the Google Wallet app at that moment.
-
-### Scenario 1: User Opens Specific Pass
-
-| Step | Role | Description |
-|:----:|:----:|:------------|
-| 1 | User | Selects a specific pass in the Google Wallet app. |
-| 2 | User | Touches a Smart Tap-supported contactless reader. |
-| 3 | Terminal | (Collector ID matches) Pass is transmitted to terminal.<br>(Collector ID doesn't match) Pass is not transmitted to terminal. |
-
-> If the Collector ID on the pass matches the terminal's Collector ID, the pass will be transmitted regardless of whether the pass is valid (e.g., if the pass object has expired).
-
-### Scenario 2: Google Wallet Home Tab or Unlocked Screen View
-
-| Step | Role | Description |
-|:----:|:----:|:------------|
-| 1 | User | Opens the "Home" tab in the Google Wallet app, or unlocks the device screen. |
-| 2 | User | Touches a Smart Tap-supported contactless reader. |
-| 3 | Terminal | (Single valid Collector ID match) Pass is transmitted to terminal.<br>(Multiple valid Collector ID matches) Shows rotating interface of valid passes and transmits the user's selected item. |
-
-### Scenario 3: Locked Screen
-
-| Step | Role | Description |
-|:----:|:----:|:------------|
-| 1 | User | Device screen is locked. |
-| 2 | User | Touches a Smart Tap-supported contactless reader. |
-| 3 | Terminal | (Single valid Collector ID match) Pass is transmitted to terminal.<br>(Multiple valid Collector ID matches) Shows rotating interface of valid passes and transmits the user's selected item. |
-
-## Technical Implementation
-
-### Pass Class Configuration
-
+### Pass Class 配置示例
 ```json
 {
   "issuerId": "2018",
@@ -191,8 +106,7 @@ The content and behavior transmitted between terminals and the Google Wallet app
 }
 ```
 
-### Pass Object Configuration
-
+### Pass Object 配置示例
 ```json
 {
   "issuerId": "2018",
@@ -213,43 +127,35 @@ The content and behavior transmitted between terminals and the Google Wallet app
 }
 ```
 
-## Security Considerations
+## 安全与隐私设计
 
-### 1. **Authentication Flow**
+### 1. 认证流程
+- 终端发送 Collector ID 至用户设备
+- 设备校验 Collector ID 并用公钥认证
+- 传输 pass 数据至终端
 
-1. Terminal sends Collector ID to user device
-2. Device validates Collector ID against stored passes
-3. Device uses Collector ID's public key for authentication
-4. Secure transmission of pass data to terminal
+### 2. 数据保护
+- 传输全程加密
+- Collector ID 唯一且不可复用
+- 终端认证防止未授权访问
 
-### 2. **Data Protection**
+### 3. 隐私控制
+- 用户自主选择传输哪些 pass
+- 未经同意不共享个人信息
+- 仅匹配 Collector ID 时才传输 pass
 
-- Pass data is encrypted during transmission
-- Collector IDs are unique and non-reusable
-- Terminal authentication prevents unauthorized access
+## 实施最佳实践
 
-### 3. **Privacy Controls**
-
-- Users control which passes are transmitted
-- No personal data is shared without user consent
-- Pass transmission is limited to matching Collector IDs
-
-## Best Practices for Implementation
-
-### 1. **Terminal Configuration**
-
+### 1. 终端配置
 ```bash
-# Example terminal configuration
 COLLECTOR_ID=12345678
 REDEMPTION_ISSUER_ID=1990
 TERMINAL_TYPE=VERIFONE
 LOCATION_ID=STORE_001
 ```
 
-### 2. **Pass Development**
-
+### 2. Pass 开发
 ```kotlin
-// Example pass creation
 class SmartTapPassBuilder {
     fun createPass(
         issuerId: String,
@@ -266,10 +172,8 @@ class SmartTapPassBuilder {
 }
 ```
 
-### 3. **Error Handling**
-
+### 3. 错误处理
 ```kotlin
-// Example error handling
 sealed class SmartTapError {
     object CollectorIdMismatch : SmartTapError()
     object PassExpired : SmartTapError()
@@ -279,86 +183,49 @@ sealed class SmartTapError {
 
 fun handleSmartTapError(error: SmartTapError) {
     when (error) {
-        is SmartTapError.CollectorIdMismatch -> {
-            // Handle mismatch
-        }
-        is SmartTapError.PassExpired -> {
-            // Handle expired pass
-        }
-        // ... other cases
+        is SmartTapError.CollectorIdMismatch -> { /* 处理不匹配 */ }
+        is SmartTapError.PassExpired -> { /* 处理过期 */ }
+        // ... 其他情况
     }
 }
 ```
 
-## Performance Considerations
+## 性能与常见问题
 
-| Aspect | Impact | Optimization |
-|--------|--------|--------------|
-| **NFC Communication** | Low latency required | Optimize data transmission size |
-| **Pass Validation** | Real-time processing | Cache validation results |
-| **Terminal Response** | User experience critical | Implement timeout handling |
-| **Battery Usage** | NFC consumes power | Minimize active NFC time |
+| 方面 | 影响 | 优化建议 |
+|------|------|----------|
+| NFC 通信 | 需低延迟 | 优化数据包大小 |
+| Pass 校验 | 实时性要求 | 缓存校验结果 |
+| 终端响应 | 影响体验 | 增加超时处理 |
+| 电池消耗 | NFC 耗电 | 减少 NFC 激活时长 |
 
-## Common Issues and Solutions
+### 常见问题
+- **Collector ID 不匹配**：检查终端与 pass 配置
+- **Pass 未被识别**：检查 redemptionIssuers 配置
+- **终端无响应**：确认终端认证与硬件支持
 
-### 1. **Collector ID Mismatch**
+## 未来展望
+- 生物认证与更强加密
+- 交通、门禁、票务等多场景拓展
+- iOS、可穿戴与 IoT 设备集成
 
-**Problem**: Pass not transmitting to terminal
-**Solution**: Verify Collector ID configuration on both terminal and pass
+## 相关技术与标准
+- NFC：ISO/IEC 14443、7816
+- 支付协议：EMV、PCI DSS
+- 移动平台：Android HCE、iOS Core NFC
+- 安全标准：FIDO、OAuth 2.0
 
-### 2. **Pass Not Found**
+## 总结
 
-**Problem**: User has pass but terminal doesn't receive it
-**Solution**: Check pass class redemptionIssuers configuration
+Google Wallet Smart Tap 代表无接触支付技术的重要进步，具备多层安全、极致体验与灵活集成优势。理解其技术实现与通信流程，有助于开发者和企业把握数字支付未来。
 
-### 3. **Terminal Not Responding**
+**核心优势：**
+- 多层安全认证与加密
+- 流畅用户体验
+- 灵活终端集成
+- 易于扩展新商户与票证
 
-**Problem**: NFC communication fails
-**Solution**: Verify terminal certification and NFC hardware
-
-## Future Developments
-
-### 1. **Enhanced Security**
-
-- Biometric authentication integration
-- Advanced encryption protocols
-- Real-time fraud detection
-
-### 2. **Expanded Use Cases**
-
-- Transportation systems
-- Access control
-- Event ticketing
-- Healthcare applications
-
-### 3. **Cross-Platform Integration**
-
-- iOS compatibility
-- Wearable device support
-- IoT device integration
-
-## Related Technologies
-
-- **NFC Standards**: ISO/IEC 14443, ISO/IEC 7816
-- **Payment Protocols**: EMV, PCI DSS
-- **Mobile Platforms**: Android HCE, iOS Core NFC
-- **Security Standards**: FIDO, OAuth 2.0
-
-## Conclusion
-
-Google Wallet Smart Tap represents a significant advancement in contactless payment technology, offering secure, fast, and user-friendly transaction experiences. Understanding the technical implementation and communication flow is essential for developers and businesses looking to integrate this technology.
-
-Key benefits of Smart Tap include:
-
-- **Enhanced Security**: Multi-layered authentication and encryption
-- **Improved User Experience**: Seamless, fast transactions
-- **Flexible Integration**: Support for multiple terminal providers
-- **Scalable Architecture**: Easy addition of new merchants and passes
-
-As contactless payments continue to grow in popularity, Smart Tap technology will play an increasingly important role in shaping the future of digital payments.
-
-## Related Articles
-
-- [Mobile Payment Security Best Practices](/2024-12-01-google-adsense/)
-- [NFC Technology Implementation Guide](/2024-07-16-how-to-build-chiptool-for-android/)
-- [Digital Wallet Development](/2024-07-23-getting-started-with-github-container-registry/)
+## 相关文章
+- [移动支付安全最佳实践](/2024-12-01-google-adsense/)
+- [NFC 技术实现指南](/2024-07-16-how-to-build-chiptool-for-android/)
+- [数字钱包开发实战](/2024-07-23-getting-started-with-github-container-registry/)
