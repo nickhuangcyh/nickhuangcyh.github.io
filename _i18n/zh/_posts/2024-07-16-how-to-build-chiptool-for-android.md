@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "如何编译 CHIPTool for Android：Matter 协议开发全流程实战"
+title: "如何編譯 CHIPTool for Android：Matter 協議開發全流程實戰"
 date: 2024-07-16 19:50:00 +0800
-description: "从源码编译 Android 版 CHIPTool APK，详解 Matter 协议开发、Docker 环境搭建与常见构建问题排查。"
+description: "從原始碼編譯 Android 版 CHIPTool APK，詳解 Matter 協議開發、Docker 環境建置與常見建構問題排查。"
 tags: [CHIP, Matter, Android Development, IoT, Smart Home, Connected Home over IP, Docker, Build Process, Protocol Development, Home Automation]
 categories: [Android Development, IoT, Smart Home, Development Tools, Protocol Development]
 toc:
@@ -10,98 +10,98 @@ toc:
 thumbnail: /assets/img/matter.jpg
 ---
 
-> 本文详解如何从源码编译 Android 版 CHIPTool，涵盖 Docker 环境搭建、源码编译与常见问题排查，助力开发者高效参与 Matter 协议生态。
+> 本文詳解如何從原始碼編譯 Android 版 CHIPTool，涵蓋 Docker 環境建置、原始碼編譯與常見問題排查，助力開發者高效參與 Matter 協議生態。
 
-## 引言：Matter 协议与 CHIPTool 概述
+## 引言：Matter 協議與 CHIPTool 概述
 
-近期因项目需求，研究了如何从源码编译 CHIPTool Android APK。官方文档虽有基础流程，但实际操作中遇到不少未记录的坑，本文旨在帮助开发者避坑并便于后续查阅。
+近期因專案需求，研究了如何從原始碼編譯 CHIPTool Android APK。官方文件雖有基礎流程，但實際操作中遇到不少未記錄的坑，本文旨在幫助開發者避坑並便於後續查閱。
 
-## 什么是 Matter 协议？
+## 什麼是 Matter 協議？
 
-Matter（前身为 Project CHIP, Connected Home over IP）是由 CSA（Connectivity Standards Alliance）主导的开源智能家居互联标准，成员包括 Apple、Google、Amazon、Zigbee 等。Matter 强调安全性、易用性与开发友好，支持 Thread、Wi-Fi 等多种通信协议，推动跨品牌智能家居互通。
+Matter（前身為 Project CHIP, Connected Home over IP）是由 CSA（Connectivity Standards Alliance）主導的開源智慧家庭互聯標準，成員包括 Apple、Google、Amazon、Zigbee 等。Matter 強調安全性、易用性與開發友好，支援 Thread、Wi-Fi 等多種通訊協議，推動跨品牌智慧家庭互通。
 
-### Matter 协议核心特性
-- **互操作性**：跨品牌、跨生态兼容
-- **安全性**：内建安全机制
-- **多传输层**：支持 Thread、Wi-Fi、以太网
-- **开放标准**：中立、开源
-- **开发友好**：丰富 SDK 与工具
+### Matter 協議核心特性
+- **互通性**：跨品牌、跨生態相容
+- **安全性**：內建安全機制
+- **多傳輸層**：支援 Thread、Wi-Fi、乙太網路
+- **開放標準**：中立、開源
+- **開發友好**：豐富 SDK 與工具
 
-## 环境准备与依赖
+## 環境準備與相依
 
-建议使用官方 CHIP Docker 镜像，避免本地环境污染。
+建議使用官方 CHIP Docker 映像，避免本地環境污染。
 
-### 必备工具
-- **Docker**：容器化构建环境
-- **Git**：源码管理
-- **磁盘空间**：建议 10GB 以上
+### 必備工具
+- **Docker**：容器化建構環境
+- **Git**：原始碼管理
+- **磁碟空間**：建議 10GB 以上
 
-### 系统要求
-| 组件 | 最低配置 | 推荐配置 |
+### 系統需求
+| 元件 | 最低配置 | 推薦配置 |
 |------|----------|----------|
-| 内存 | 8GB | 16GB+ |
-| 存储 | 10GB | 20GB+ |
+| 記憶體 | 8GB | 16GB+ |
+| 儲存 | 10GB | 20GB+ |
 | CPU | 4核 | 8核+ |
-| 系统 | Linux/macOS/Windows | Linux |
+| 系統 | Linux/macOS/Windows | Linux |
 
-## 步骤 1：拉取 Docker 镜像
+## 步驟 1：拉取 Docker 映像
 ```bash
 docker pull ghcr.io/project-chip/chip-build-android:latest
 ```
 
-## 步骤 2：运行容器
+## 步驟 2：執行容器
 ```bash
 docker run -it -v ~/workspace/connectedhomeip:/connectedhomeip ghcr.io/project-chip/chip-build-android:latest
 ```
 
-## 步骤 3：配置 Git 安全目录
+## 步驟 3：設定 Git 安全目錄
 ```bash
 git config --global --add safe.directory /connectedhomeip
 git config --global --add safe.directory /connectedhomeip/third_party/pigweed/repo
 ```
 
-## 步骤 4：下载源码与子模块
+## 步驟 4：下載原始碼與子模組
 ```bash
 git clone https://github.com/project-chip/connectedhomeip.git
 cd connectedhomeip
 git submodule sync && git submodule update --init
 ```
 
-### 目录结构说明
+### 目錄結構說明
 ```
 connectedhomeip/
-├── examples/           # 示例应用
-│   └── chip-tool/      # CHIPTool 应用
-├── src/                # Matter 协议核心实现
-├── third_party/        # 第三方依赖
-├── scripts/            # 构建与工具脚本
-└── docs/               # 文档
+├── examples/           # 範例應用
+│   └── chip-tool/      # CHIPTool 應用
+├── src/                # Matter 協議核心實作
+├── third_party/        # 第三方相依
+├── scripts/            # 建構與工具腳本
+└── docs/               # 文件
 ```
 
-## 步骤 5：接受 Android SDK 许可协议
+## 步驟 5：接受 Android SDK 授權協議
 ```bash
 export PATH=$PATH:/opt/android/sdk/tools/bin
 sdkmanager --licenses
 ```
 
-## 步骤 6：验证环境变量
+## 步驟 6：驗證環境變數
 ```bash
 echo $ANDROID_HOME  # /opt/android/sdk
 echo $ANDROID_NDK_HOME  # /opt/android/android-ndk-r23c
 ```
 
-## 步骤 7：项目初始化与依赖安装
+## 步驟 7：專案初始化與相依安裝
 ```bash
 cd /connectedhomeip
 source scripts/bootstrap.sh
 ```
 
-## 步骤 8：编译 Android CHIPTool
+## 步驟 8：編譯 Android CHIPTool
 ```bash
 ./scripts/build/build_examples.py --target android-arm64-chip-tool build
 ```
 
-> 若遇到 `ninja: error: loading 'build.ninja': No such file or directory`，需手动生成 build.ninja：
+> 若遇到 `ninja: error: loading 'build.ninja': No such file or directory`，需手動產生 build.ninja：
 ```bash
 cd /connectedhomeip/out/android-arm64-chip-tool
 gn gen .
@@ -109,56 +109,56 @@ cd ../..
 ./scripts/build/build_examples.py --target android-arm64-chip-tool build
 ```
 
-编译完成后，APK 路径：
+編譯完成後，APK 路徑：
 ```
 out/android-arm64-chip-tool/outputs/apk/debug/app-debug.apk
 ```
 
-## 进阶构建与常见问题排查
+## 進階建構與常見問題排查
 
-### 1. 多架构与发布模式
+### 1. 多架構與發佈模式
 ```bash
-# ARM64（推荐）
+# ARM64（推薦）
 ./scripts/build/build_examples.py --target android-arm64-chip-tool build
 # ARM32
 ./scripts/build/build_examples.py --target android-arm32-chip-tool build
-# x86（模拟器）
+# x86（模擬器）
 ./scripts/build/build_examples.py --target android-x64-chip-tool build
-# Release 构建
+# Release 建構
 ./scripts/build/build_examples.py --target android-arm64-chip-tool build --release
 ```
 
-### 2. 常见错误与解决
-- **build.ninja 缺失**：手动执行 gn gen .
-- **SDK 许可未接受**：执行 sdkmanager --licenses
-- **内存不足**：增加 swap 或降低并发
-- **网络超时**：增大 git buffer 并重试
+### 2. 常見錯誤與解決
+- **build.ninja 缺失**：手動執行 gn gen .
+- **SDK 授權未接受**：執行 sdkmanager --licenses
+- **記憶體不足**：增加 swap 或降低並行數
+- **網路逾時**：增大 git buffer 並重試
 
-### 3. 测试 APK
+### 3. 測試 APK
 ```bash
 adb install out/android-arm64-chip-tool/outputs/apk/debug/app-debug.apk
 adb shell pm list packages | grep chip
 adb shell am start -n com.matter.example.chip.tool/.MainActivity
 ```
 
-### 4. 增量与清理构建
+### 4. 增量與清理建構
 ```bash
-# 增量构建
+# 增量建構
 ./scripts/build/build_examples.py --target android-arm64-chip-tool build --incremental
-# 清理构建
+# 清理建構
 ./scripts/build/build_examples.py --target android-arm64-chip-tool clean
 ```
 
-### 5. 性能优化建议
-- 并行编译：`--jobs 8`
-- 增量构建：`--incremental`
-- 启用 ccache：`--enable-ccache`
-- 分布式构建：`--distributed`
-- 降低内存占用：`export MAKEFLAGS="-j2"`
+### 5. 效能優化建議
+- 並行編譯：`--jobs 8`
+- 增量建構：`--incremental`
+- 啟用 ccache：`--enable-ccache`
+- 分散式建構：`--distributed`
+- 降低記憶體佔用：`export MAKEFLAGS="-j2"`
 
-### 6. 开发与 CI/CD 集成
-- 本地代码修改可实时同步到容器
-- GitHub Actions 自动化构建与 APK 上传
+### 6. 開發與 CI/CD 整合
+- 本地程式碼修改可即時同步到容器
+- GitHub Actions 自動化建構與 APK 上傳
 
 ```yaml
 name: Build CHIPTool
@@ -185,15 +185,15 @@ jobs:
           path: out/android-arm64-chip-tool/outputs/apk/debug/app-debug.apk
 ```
 
-## 相关技术与参考资料
-- **Thread 协议**：低功耗组网
-- **Wi-Fi**：高带宽通信
-- **Bluetooth LE**：设备发现与配对
-- **Zigbee**：传统智能家居协议
-- [官方 Android 构建文档](https://github.com/project-chip/connectedhomeip/blob/master/docs/guides/android_building.md)
-- [相关 Issue 参考](https://github.com/project-chip/connectedhomeip/issues/28317)
+## 相關技術與參考資料
+- **Thread 協議**：低功耗組網
+- **Wi-Fi**：高頻寬通訊
+- **Bluetooth LE**：裝置發現與配對
+- **Zigbee**：傳統智慧家庭協議
+- [官方 Android 建構文件](https://github.com/project-chip/connectedhomeip/blob/master/docs/guides/android_building.md)
+- [相關 Issue 參考](https://github.com/project-chip/connectedhomeip/issues/28317)
 
-## 相关文章
-- [Matter 协议概览](/2024-07-05-google-wallet-smart-tap-exploring/)
-- [Android 开发最佳实践](/2024-01-11-setup-development-environment-on-a-new-macos/)
-- [IoT 开发指南](/2024-07-23-getting-started-with-github-container-registry/)
+## 相關文章
+- [Matter 協議概覽](/2024-07-05-google-wallet-smart-tap-exploring/)
+- [Android 開發最佳實踐](/2024-01-11-setup-development-environment-on-a-new-macos/)
+- [IoT 開發指南](/2024-07-23-getting-started-with-github-container-registry/)

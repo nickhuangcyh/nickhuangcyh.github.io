@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "GitHub Container Registry (GHCR) 入门全攻略：容器镜像管理与 CI/CD 实战"
+title: "GitHub Container Registry (GHCR) 入門全攻略：容器映像管理與 CI/CD 實戰"
 date: 2024-07-23 18:00:00 +0800
-description: "全面掌握 GitHub Container Registry，涵盖 Docker 镜像管理、GitHub Actions 自动化与容器化应用 CI/CD 最佳实践。"
+description: "全面掌握 GitHub Container Registry，涵蓋 Docker 映像管理、GitHub Actions 自動化與容器化應用 CI/CD 最佳實踐。"
 tags: [GitHub Container Registry, Docker, Container Registry, GitHub Actions, CI/CD, DevOps, Container Images, Docker Hub Alternative, Container Management]
 categories: [DevOps, GitHub, Container Technology, CI/CD]
 toc:
@@ -10,54 +10,54 @@ toc:
 thumbnail: /assets/img/github_container_registry.png
 ---
 
-## 🚀 **为什么选择 GitHub Container Registry？**
+## 🚀 **為什麼選擇 GitHub Container Registry？**
 
-随着项目数量和环境需求的增长，我们将原本基于 Docker 的 Android Jenkins Server 架构升级为主 Jenkins Server（Master）+ 多个 Android 构建环境（Slave），后者通过 Docker 动态创建，保证环境干净。本文记录了这一转型过程，既是个人学习总结，也为其他开发者提供参考。
+隨著專案數量和環境需求的增長，我們將原本基於 Docker 的 Android Jenkins Server 架構升級為主 Jenkins Server（Master）+ 多個 Android 建構環境（Slave），後者透過 Docker 動態建立，確保環境乾淨。本文記錄了這一轉型過程，既是個人學習總結，也為其他開發者提供參考。
 
-**GHCR 主要优势：**
-- 🏛️ **公有包免费**，开源项目零成本
-- 🔒 **内建安全**，自动漏洞扫描
-- 🔄 **GitHub Actions 无缝集成**，CI/CD 自动化
-- 📦 **统一镜像管理**，集中存储
-- 🛡️ **细粒度权限控制**
-
----
-
-## 🗂️ **文章结构与学习目标**
-
-本指南适合初学者与希望深入集成 GitHub 新工具的开发者。通过清晰步骤与实用技巧，带你掌握如何将容器镜像推送到 GHCR，并用 GitHub Actions 自动化构建与部署流程。
-
-**你将学到：**
-- 🐳 **Docker 镜像创建与管理**
-- 🛠️ **GHCR 配置与使用**
-- ⚡ **GitHub Actions 自动化容器构建**
-- 🔒 **容器安全最佳实践**
-- 📈 **CI/CD 流水线集成策略**
+**GHCR 主要優勢：**
+- 🏛️ **公有包免費**，開源專案零成本
+- 🔒 **內建安全**，自動漏洞掃描
+- 🔄 **GitHub Actions 無縫整合**，CI/CD 自動化
+- 📦 **統一映像管理**，集中儲存
+- 🛡️ **細緻權限控制**
 
 ---
 
-## 🛠️ **环境准备与项目初始化**
+## 🗂️ **文章結構與學習目標**
 
-以 Node.js + Express 为例，快速搭建演示项目：
+本指南適合初學者與希望深入整合 GitHub 新工具的開發者。透過清晰步驟與實用技巧，帶你掌握如何將容器映像推送到 GHCR，並用 GitHub Actions 自動化建構與部署流程。
 
-### **1. 创建项目目录**
+**你將學到：**
+- 🐳 **Docker 映像建立與管理**
+- 🛠️ **GHCR 設定與使用**
+- ⚡ **GitHub Actions 自動化容器建構**
+- 🔒 **容器安全最佳實踐**
+- 📈 **CI/CD 流水線整合策略**
+
+---
+
+## 🛠️ **環境準備與專案初始化**
+
+以 Node.js + Express 為例，快速建立示範專案：
+
+### **1. 建立專案目錄**
 ```bash
 mkdir node_sample
 cd node_sample
 ```
 
-### **2. 初始化 Node.js 项目**
+### **2. 初始化 Node.js 專案**
 ```bash
 npm init -y
 npm install express
 ```
 
-### **3. 创建应用主文件**
+### **3. 建立應用主檔案**
 ```bash
 vim app.js
 ```
 
-**示例代码：**
+**範例程式碼：**
 ```javascript
 const express = require("express");
 const app = express();
@@ -72,28 +72,28 @@ app.listen(port, () => {
 });
 ```
 
-### **4. 创建 .gitignore 文件**
+### **4. 建立 .gitignore 檔案**
 
-> 💡 **专业建议：** 使用 [gitignore.io](https://gitignore.io/) 生成适合 Node.js 的 `.gitignore` 文件。
+> 💡 **專業建議：** 使用 [gitignore.io](https://gitignore.io/) 產生適合 Node.js 的 `.gitignore` 檔案。
 
-### **5. 本地测试应用**
+### **5. 本地測試應用**
 ```bash
 node app.js
 ```
 
-浏览器访问 `localhost:3000` 查看效果。
+瀏覽器訪問 `localhost:3000` 查看效果。
 
-{% include figure.liquid path="assets/img/github_container_registry_sample_website.png" title="示例网站输出" %}
+{% include figure.liquid path="assets/img/github_container_registry_sample_website.png" title="範例網站輸出" %}
 
 ---
 
-## 🐳 **编写 Dockerfile 实现容器化**
+## 🐳 **撰寫 Dockerfile 實現容器化**
 
 ```bash
 vim Dockerfile
 ```
 
-**Dockerfile 示例：**
+**Dockerfile 範例：**
 ```dockerfile
 FROM node:latest
 WORKDIR /usr/src/app
@@ -103,68 +103,68 @@ EXPOSE 3000
 CMD ["node", "app.js"]
 ```
 
-**关键说明：**
-- **FROM node:latest**：基础镜像
-- **WORKDIR /usr/src/app**：工作目录
-- **COPY ...**：复制依赖与主程序
-- **RUN npm install**：安装依赖
-- **EXPOSE 3000**：暴露端口
-- **CMD ...**：启动命令
+**關鍵說明：**
+- **FROM node:latest**：基礎映像
+- **WORKDIR /usr/src/app**：工作目錄
+- **COPY ...**：複製相依與主程式
+- **RUN npm install**：安裝相依
+- **EXPOSE 3000**：暴露埠口
+- **CMD ...**：啟動指令
 
 ---
 
-## 📦 **上传 Docker 镜像到 GHCR**
+## 📦 **上傳 Docker 映像到 GHCR**
 
-镜像构建完成后，有两种上传方式：
-1. **命令行手动上传**
-2. **GitHub Actions 自动上传**
+映像建構完成後，有兩種上傳方式：
+1. **命令列手動上傳**
+2. **GitHub Actions 自動上傳**
 
 ---
 
-### **方法一：命令行手动上传**
+### **方法一：命令列手動上傳**
 
-#### **1. 构建镜像**
+#### **1. 建構映像**
 ```bash
 docker build -t node_sample .
 ```
 
-#### **2. 查看镜像**
+#### **2. 查看映像**
 ```bash
 docker images
 ```
 
-#### **3. 镜像打标签**
+#### **3. 映像打標籤**
 ```bash
 docker tag node_sample:latest ghcr.io/{NAMESPACE}/node_sample:latest
 ```
-> ⚠️ `{NAMESPACE}` 替换为你的 GitHub 用户名
+> ⚠️ `{NAMESPACE}` 請替換為你的 GitHub 使用者名稱
 
-#### **4. 生成 Personal Access Token**
-1. GitHub 个人设置 → Developer settings → Personal access tokens
-2. 生成新 token，勾选 `write:packages`、`read:packages`、`delete:packages`（可选）
+#### **4. 產生 Personal Access Token**
+1. GitHub 個人設定 → Developer settings → Personal access tokens
+2. 產生新 token，勾選 `write:packages`、`read:packages`、`delete:packages`（可選）
 
-#### **5. 登录 GHCR**
+#### **5. 登入 GHCR**
 ```bash
 export CR_PAT=YOUR_TOKEN
 echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
 ```
 
-#### **6. 推送镜像**
+#### **6. 推送映像**
 ```bash
 docker push ghcr.io/{NAMESPACE}/node_sample:latest
 ```
 
 ---
 
-### **方法二：GitHub Actions 自动化上传**
+### **方法二：GitHub Actions 自動化上傳**
 
-在 `node_sample` 目录下创建工作流：
+在 `node_sample` 目錄下建立工作流程：
 ```bash
 mkdir -p .github/workflows
 vim .github/workflows/deploy-image.yml
 ```
 
-**workflow 配置：**
+**workflow 設定：**
 ```yaml
 name: Build and Push Docker Image
 on:
@@ -206,10 +206,10 @@ jobs:
 
 ---
 
-## 🔍 **验证与拉取镜像**
+## 🔍 **驗證與拉取映像**
 
-1. GitHub 个人主页 → Packages 查看上传的镜像
-2. 拉取镜像并运行：
+1. GitHub 個人主頁 → Packages 查看上傳的映像
+2. 拉取映像並執行：
 ```bash
 docker pull ghcr.io/{NAMESPACE}/node_sample:latest
 docker run -p 3000:3000 ghcr.io/{NAMESPACE}/node_sample:latest
@@ -217,30 +217,30 @@ docker run -p 3000:3000 ghcr.io/{NAMESPACE}/node_sample:latest
 
 ---
 
-## 📊 **GHCR 与 Docker Hub 对比**
+## 📊 **GHCR 與 Docker Hub 對比**
 
 | 功能 | GHCR | Docker Hub |
 |------|------|------------|
-| 公有包免费 | ✅ 无限 | ✅ 无限 |
-| 私有包免费 | ✅ 500MB/月 | ❌ 付费 |
-| GitHub 集成 | ✅ 原生 | ⚠️ 有限 |
-| 漏洞扫描 | ✅ 内建 | ✅ 可用 |
-| 权限控制 | ✅ 细粒度 | ⚠️ 基础 |
-| CI/CD 集成 | ✅ GitHub Actions | ⚠️ 需第三方 |
+| 公有包免費 | ✅ 無限 | ✅ 無限 |
+| 私有包免費 | ✅ 500MB/月 | ❌ 付費 |
+| GitHub 整合 | ✅ 原生 | ⚠️ 有限 |
+| 漏洞掃描 | ✅ 內建 | ✅ 可用 |
+| 權限控制 | ✅ 細緻 | ⚠️ 基礎 |
+| CI/CD 整合 | ✅ GitHub Actions | ⚠️ 需第三方 |
 
 ---
 
-## 🛡️ **容器安全最佳实践**
+## 🛡️ **容器安全最佳實踐**
 
-### 1. 指定基础镜像版本
+### 1. 指定基礎映像版本
 ```dockerfile
-# ❌ 不推荐
+# ❌ 不推薦
 FROM node:latest
-# ✅ 推荐
+# ✅ 推薦
 FROM node:18-alpine
 ```
 
-### 2. 多阶段构建
+### 2. 多階段建構
 ```dockerfile
 FROM node:18-alpine AS builder
 WORKDIR /app
@@ -254,7 +254,7 @@ EXPOSE 3000
 CMD ["node", "app.js"]
 ```
 
-### 3. 漏洞扫描
+### 3. 漏洞掃描
 ```yaml
 - name: Run Trivy vulnerability scanner
   uses: aquasecurity/trivy-action@master
@@ -266,31 +266,31 @@ CMD ["node", "app.js"]
 
 ---
 
-## 🚨 **常见问题与解决方案**
+## 🚨 **常見問題與解決方案**
 
-### 1. 认证失败
+### 1. 認證失敗
 ```bash
 Error: unauthorized: authentication required
 ```
-**解决：** 检查 token 权限、用户名与 token 是否正确
+**解決：** 檢查 token 權限、使用者名稱與 token 是否正確
 
-### 2. 权限拒绝
+### 2. 權限拒絕
 ```bash
 Error: denied: permission_denied
 ```
-**解决：** 检查包可见性、仓库权限、token 范围
+**解決：** 檢查包可見性、倉庫權限、token 範圍
 
-### 3. 镜像未找到
+### 3. 映像未找到
 ```bash
 Error: manifest for ghcr.io/user/image:tag not found
 ```
-**解决：** 检查镜像名、tag、命名空间与推送状态
+**解決：** 檢查映像名稱、tag、命名空間與推送狀態
 
 ---
 
-## 📈 **进阶用法与自动化场景**
+## 📈 **進階用法與自動化場景**
 
-### 1. 多架构镜像构建
+### 1. 多架構映像建構
 ```yaml
 - name: Build and push multi-arch image
   uses: docker/build-push-action@v5
@@ -301,14 +301,14 @@ Error: manifest for ghcr.io/user/image:tag not found
     tags: ${{ steps.meta.outputs.tags }}
 ```
 
-### 2. 自动版本号生成
+### 2. 自動版本號產生
 ```yaml
 - name: Generate version tag
   id: version
   run: echo "::set-output name=version::$(date +'%Y%m%d')-$(git rev-parse --short HEAD)"
 ```
 
-### 3. 条件发布
+### 3. 條件發佈
 ```yaml
 - name: Push to Registry
   if: github.ref == 'refs/heads/main'
@@ -317,40 +317,40 @@ Error: manifest for ghcr.io/user/image:tag not found
 
 ---
 
-## 🔗 **相关文章推荐**
+## 🔗 **相關文章推薦**
 - [完整 Git 工作流指南](/2025-05-18-how-to-use-multiple-github-accounts-using-ssh)
-- [macOS 开发环境搭建](/2024-01-11-setup-development-environment-on-a-new-macos)
-- [Jenkins 服务器配置](/2024-08-15-jenkins-2-how-to-setup-jenkins-server)
-- [SSH 密钥管理](/2024-08-02-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8)
+- [macOS 開發環境建置](/2024-01-11-setup-development-environment-on-a-new-macos)
+- [Jenkins 伺服器設定](/2024-08-15-jenkins-2-how-to-setup-jenkins-server)
+- [SSH 金鑰管理](/2024-08-02-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8)
 
 ---
 
-## ✅ **总结**
+## ✅ **總結**
 
-GitHub Container Registry 为容器镜像管理与 CI/CD 提供了强大的一体化解决方案。通过本指南，你已学会：
+GitHub Container Registry 為容器映像管理與 CI/CD 提供了強大的一體化解決方案。透過本指南，你已學會：
 
-**核心收获：**
-- 🐳 **高效创建与管理 Docker 镜像**
-- 🛠️ **用 GitHub Actions 实现自动化工作流**
-- 🔒 **容器安全最佳实践**
-- 📦 **流水线集成与自动化管理**
+**核心收穫：**
+- 🐳 **高效建立與管理 Docker 映像**
+- 🛠️ **用 GitHub Actions 實現自動化工作流程**
+- 🔒 **容器安全最佳實踐**
+- 📦 **流水線整合與自動化管理**
 
-**后续建议：**
-1. 深入体验漏洞扫描等高级功能
-2. 实现多架构镜像构建
-3. 配置镜像自动化测试
-4. 考虑镜像签名增强安全
-
----
-
-**💡 专业建议：** 善用 GHCR 内建漏洞扫描，自动发现并修复安全隐患。
-
-**🔔 关注我们：** 持续关注 DevOps 系列，获取更多容器与 CI/CD 实战干货！
+**後續建議：**
+1. 深入體驗漏洞掃描等進階功能
+2. 實現多架構映像建構
+3. 設定映像自動化測試
+4. 考慮映像簽章增強安全
 
 ---
 
-**📚 延伸阅读：**
-- [GHCR 官方文档](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
-- [Docker 最佳实践](https://docs.docker.com/develop/dev-best-practices/)
-- [GitHub Actions 文档](https://docs.github.com/en/actions)
+**💡 專業建議：** 善用 GHCR 內建漏洞掃描，自動發現並修復安全隱患。
+
+**🔔 關注我們：** 持續關注 DevOps 系列，獲取更多容器與 CI/CD 實戰乾貨！
+
+---
+
+**📚 延伸閱讀：**
+- [GHCR 官方文件](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
+- [Docker 最佳實踐](https://docs.docker.com/develop/dev-best-practices/)
+- [GitHub Actions 文件](https://docs.github.com/en/actions)
 - [容器安全指南](https://cloud.google.com/architecture/best-practices-for-building-containers)

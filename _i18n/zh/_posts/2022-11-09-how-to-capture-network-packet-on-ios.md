@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "iOS 网络抓包全攻略：rvictl + Wireshark 实战详解"
+title: "iOS 網路抓包全攻略：rvictl + Wireshark 實戰詳解"
 date: 2022-11-09 11:30:00 +0800
-description: "掌握 iOS 网络抓包技巧，结合 rvictl 与 Wireshark，助力移动开发、IoT 调试与网络分析。"
+description: "掌握 iOS 網路抓包技巧，結合 rvictl 與 Wireshark，助力行動開發、IoT 除錯與網路分析。"
 tags: [iOS, Network Packet Capture, Wireshark, rvictl, Network Debugging, iOS Development, IoT Development, Network Analysis, Xcode, USB Debugging, Network Troubleshooting, Mobile Development]
 categories: [Tools, iOS Development, Network Analysis]
 toc:
@@ -10,97 +10,97 @@ toc:
 thumbnail: /assets/img/jordan-harrison-40XgDxBfYXM-unsplash.jpg
 ---
 
-> 📱 **iOS 开发必备技能**：本指南详解如何用苹果官方工具抓取 iOS 网络数据包，适用于调试、IoT 开发与移动应用测试。
+> 📱 **iOS 開發必備技能**：本指南詳解如何用蘋果官方工具抓取 iOS 網路封包，適用於除錯、IoT 開發與行動應用測試。
 
 ---
 
-## 🎯 为什么要抓取 iOS 网络数据包？
+## 🎯 為什麼要抓取 iOS 網路封包？
 
-- 🔍 定位 iOS 应用网络问题
-- 📊 分析 API 通信与协议实现
-- 🛠️ IoT 设备集成与调试
-- 🛡️ 网络安全分析
-- 📈 性能优化与流量监控
-- 🧪 协议兼容性测试
+- 🔍 定位 iOS 應用網路問題
+- 📊 分析 API 通訊與協議實現
+- 🛠️ IoT 裝置整合與除錯
+- 🛡️ 網路安全分析
+- 📈 效能優化與流量監控
+- 🧪 協議相容性測試
 
-**核心优势：**
-- ✅ 无需越狱，官方工具支持
-- ✅ 实时抓包，完整流量可见
-- ✅ 支持所有网络接口
-- ✅ 专业级调试体验
-- ✅ 不影响设备性能
-
----
-
-## 🛠️ 抓包前准备
-
-### 必备设备与软件
-- iOS 设备（iPhone/iPad/iPod Touch）
-- Mac 电脑（macOS 10.15+）
-- USB 数据线
-- Apple ID（开发者账号/免费账号均可）
-- Xcode（建议最新版）
-- Wireshark（[官网下载](https://www.wireshark.org/download.html)）
-- rvictl（随 Xcode 安装）
+**核心優勢：**
+- ✅ 無需越獄，官方工具支援
+- ✅ 即時抓包，完整流量可見
+- ✅ 支援所有網路介面
+- ✅ 專業級除錯體驗
+- ✅ 不影響裝置效能
 
 ---
 
-## 🚀 iOS 抓包全流程实战
+## 🛠️ 抓包前準備
 
-### 步骤 1：工具安装与检查
+### 必備裝置與軟體
+- iOS 裝置（iPhone/iPad/iPod Touch）
+- Mac 電腦（macOS 10.15+）
+- USB 傳輸線
+- Apple ID（開發者帳號/免費帳號皆可）
+- Xcode（建議最新版）
+- Wireshark（[官網下載](https://www.wireshark.org/download.html)）
+- rvictl（隨 Xcode 安裝）
+
+---
+
+## 🚀 iOS 抓包全流程實戰
+
+### 步驟 1：工具安裝與檢查
 ```bash
 xcode-select --version
 which rvictl
 brew install --cask wireshark
 ```
 
-### 步骤 2：连接 iOS 设备
-- USB 连接设备，信任电脑
-- iOS 16+ 需开启开发者模式（设置 → 隐私与安全性 → 开发者模式）
+### 步驟 2：連接 iOS 裝置
+- USB 連接裝置，信任電腦
+- iOS 16+ 需開啟開發者模式（設定 → 隱私與安全性 → 開發者模式）
 
-### 步骤 3：获取设备 UUID
+### 步驟 3：取得裝置 UUID
 ```bash
-# 推荐：Xcode → Window → Devices and Simulators
+# 推薦：Xcode → Window → Devices and Simulators
 xcrun devicectl list devices
 # 或 system_profiler SPUSBDataType | grep -A 20 "iPhone\|iPad"
 ```
 
-### 步骤 4：检查网络接口
+### 步驟 4：檢查網路介面
 ```bash
 ifconfig -l
 ```
 
-### 步骤 5：创建虚拟网络接口
+### 步驟 5：建立虛擬網路介面
 ```bash
-rvictl -s 设备UUID
-# 成功输出：Starting device [UUID] [SUCCESS]
+rvictl -s 裝置UUID
+# 成功輸出：Starting device [UUID] [SUCCESS]
 ```
 
-如遇错误：
-- bootstrap_look_up(): 1102 → 检查 rpmuxd 服务
-- Permission denied → sudo rvictl -s 设备UUID
-- Device not found → 检查连接与 UUID
+如遇錯誤：
+- bootstrap_look_up(): 1102 → 檢查 rpmuxd 服務
+- Permission denied → sudo rvictl -s 裝置UUID
+- Device not found → 檢查連線與 UUID
 
-### 步骤 6：确认虚拟接口
+### 步驟 6：確認虛擬介面
 ```bash
 ifconfig -l
 ifconfig rvi0
 ```
 
-### 步骤 7：Wireshark 抓包
-- 打开 Wireshark，选择 rvi0 接口
-- 可用过滤器：
+### 步驟 7：Wireshark 抓包
+- 開啟 Wireshark，選擇 rvi0 介面
+- 可用過濾器：
   - tcp、udp、port 80、port 443、host 192.168.1.1
-- 开始抓包并操作 iOS 设备
+- 開始抓包並操作 iOS 裝置
 
-### 步骤 8：数据分析
-- 常用过滤：
+### 步驟 8：資料分析
+- 常用過濾：
   - http
   - http.request.method == "POST"
   - http.response.code == 200
   - tcp.port == 443
   - dns
-- 高级过滤：
+- 進階過濾：
   - http.user_agent contains "MyApp"
   - http.request.uri contains "/api/"
   - http.time > 1.0
@@ -108,61 +108,61 @@ ifconfig rvi0
 
 ---
 
-## 🔧 进阶配置与常见问题
+## 🔧 進階設定與常見問題
 
-- 多设备抓包：rvictl -s UUID1、rvictl -s UUID2
-- 性能优化：用过滤器减少数据量，调整缓冲区
-- 接口消失：rvictl -x UUID 后重建
-- Wireshark 无流量：确认设备有网络活动、接口选择正确
-- CPU 占用高：用更精确的过滤器，减小缓冲区
+- 多裝置抓包：rvictl -s UUID1、rvictl -s UUID2
+- 效能優化：用過濾器減少資料量，調整緩衝區
+- 介面消失：rvictl -x UUID 後重建
+- Wireshark 無流量：確認裝置有網路活動、介面選擇正確
+- CPU 使用率高：用更精確的過濾器，減小緩衝區
 
 ---
 
-## 📚 真实场景与用例
+## 📚 真實場景與用例
 
-- 移动 App API 调试
-- IoT 设备协议分析
-- 网络性能瓶颈定位
-- 安全流量监控与异常检测
+- 行動 App API 除錯
+- IoT 裝置協議分析
+- 網路效能瓶頸定位
+- 安全流量監控與異常偵測
 
 ---
 
 ## 🛠️ 其他抓包方法
 
-- Charles Proxy：适合 HTTP/HTTPS 流量分析，需配置代理与证书
-- Network Link Conditioner：模拟不同网络环境
-- Instruments：Xcode 内置网络性能分析
+- Charles Proxy：適合 HTTP/HTTPS 流量分析，需設定代理與憑證
+- Network Link Conditioner：模擬不同網路環境
+- Instruments：Xcode 內建網路效能分析
 
 ---
 
-## 🏆 抓包最佳实践
+## 🏆 抓包最佳實踐
 
-- 明确抓包目标，合理设置过滤器
-- 监控系统资源，定期保存数据
-- 分析后及时清理虚拟接口与抓包文件
-- 注意隐私与合规，仅抓取授权设备流量
-
----
-
-## 🔗 相关文章与资源
-- [Android 网络抓包实战](/2022-11-06-how-to-capture-network-packet-on-android-using-tcpdump)
-- [P2P 技术基础](/2022-01-03-p2p-tech-1-ipv4-nat)
-- [STUN/TURN/ICE 协议详解](/2022-01-04-p2p-tech-2-stun-turn-ice)
-- [WebRTC 与 KVS 实现](/2022-01-04-p2p-tech-3-webrtc-kvs)
-- [Wireshark 官方文档](https://www.wireshark.org/docs/)
-- [Apple Developer 文档](https://developer.apple.com/documentation/)
+- 明確抓包目標，合理設定過濾器
+- 監控系統資源，定期儲存資料
+- 分析後及時清理虛擬介面與抓包檔案
+- 注意隱私與合規，僅抓取授權裝置流量
 
 ---
 
-## ✅ 总结与建议
-
-- 全流程掌握 iOS 抓包与分析技巧
-- 熟悉常见问题与进阶配置
-- 实战场景与最佳实践助力高效调试
-- 合理合规抓包，保障数据安全
-
-> 💡 建议多实践，结合 Wireshark 高级功能，提升网络调试能力。
+## 🔗 相關文章與資源
+- [Android 網路抓包實戰](/2022-11-06-how-to-capture-network-packet-on-android-using-tcpdump)
+- [P2P 技術基礎](/2022-01-03-p2p-tech-1-ipv4-nat)
+- [STUN/TURN/ICE 協議詳解](/2022-01-04-p2p-tech-2-stun-turn-ice)
+- [WebRTC 與 KVS 實現](/2022-01-04-p2p-tech-3-webrtc-kvs)
+- [Wireshark 官方文件](https://www.wireshark.org/docs/)
+- [Apple Developer 文件](https://developer.apple.com/documentation/)
 
 ---
 
-**🔔 关注我们：** 持续关注移动开发与网络分析系列干货！
+## ✅ 總結與建議
+
+- 全流程掌握 iOS 抓包與分析技巧
+- 熟悉常見問題與進階設定
+- 實戰場景與最佳實踐助力高效除錯
+- 合理合規抓包，保障資料安全
+
+> 💡 建議多實作，結合 Wireshark 進階功能，提升網路除錯能力。
+
+---
+
+**🔔 關注我們：** 持續關注行動開發與網路分析系列乾貨！

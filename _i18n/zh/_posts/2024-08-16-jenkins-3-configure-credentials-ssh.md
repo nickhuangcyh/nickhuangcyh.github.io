@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Jenkins 3：配置 SSH 凭据，实现安全 Git 代码拉取"
+title: "Jenkins 3：設定 SSH 憑證，實現安全 Git 程式碼拉取"
 date: 2024-12-09 20:00:00 +0800
-description: "详解如何在 Jenkins 中配置 SSH 凭据，实现安全拉取 Git 仓库代码。涵盖密钥生成、凭据管理与流水线集成全流程。"
+description: "詳解如何在 Jenkins 中設定 SSH 憑證，實現安全拉取 Git 倉庫程式碼。涵蓋金鑰產生、憑證管理與流水線整合全流程。"
 tags: [Jenkins, SSH, Credentials, Git, CI/CD, DevOps, Security, Authentication, SSH Keys, Repository Access]
 categories: [DevOps, CI/CD, Security, Jenkins, Git, Authentication]
 toc:
@@ -10,116 +10,116 @@ toc:
 thumbnail: /assets/img/jenkins.jpg
 ---
 
-> 本文详解如何在 Jenkins 中配置 SSH 凭据，实现安全拉取 Git 代码，助力 CI/CD 流水线自动化与安全。
+> 本文詳解如何在 Jenkins 中設定 SSH 憑證，實現安全拉取 Git 程式碼，助力 CI/CD 流水線自動化與安全。
 
-## 引言：Jenkins 安全拉取代码的最佳实践
+## 引言：Jenkins 安全拉取程式碼的最佳實踐
 
-本文将带你完成 Jenkins 配置 SSH 凭据的全流程，包括密钥生成、凭据添加、流水线集成与安全加固，是保障自动化部署与代码安全的关键环节。
+本文將帶你完成 Jenkins 設定 SSH 憑證的全流程，包括金鑰產生、憑證新增、流水線整合與安全加強，是保障自動化部署與程式碼安全的關鍵環節。
 
-## 为什么用 SSH 拉取 Git 代码？
+## 為什麼用 SSH 拉取 Git 程式碼？
 
-SSH（安全外壳协议）相比 HTTPS 具备多项优势：
-- **安全性高**：通信全程加密
-- **无需存储密码**：密钥认证更安全
-- **自动化访问**：无需人工干预
-- **审计追踪**：便于权限管理与操作追踪
-- **权限细粒度**：可为不同仓库分配不同密钥
+SSH（安全殼層協定）相較於 HTTPS 具備多項優勢：
+- **安全性高**：通訊全程加密
+- **無需儲存密碼**：金鑰認證更安全
+- **自動化存取**：無需人工干預
+- **稽核追蹤**：便於權限管理與操作追蹤
+- **權限細緻**：可為不同倉庫分配不同金鑰
 
-## 前置条件
-- Jenkins 服务器已部署
-- Git 仓库支持 SSH 访问
-- 拥有 Jenkins 管理员权限
-- 已安装 SSH 客户端工具
+## 前置條件
+- Jenkins 伺服器已建置
+- Git 倉庫支援 SSH 存取
+- 擁有 Jenkins 管理員權限
+- 已安裝 SSH 用戶端工具
 
-## 步骤 1：生成 SSH 密钥对
+## 步驟 1：產生 SSH 金鑰對
 
-在终端执行：
+在終端執行：
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
-按提示完成密钥生成，记下公钥与私钥路径。
+依提示完成金鑰產生，記下公鑰與私鑰路徑。
 
-### 其他密钥生成方式
+### 其他金鑰產生方式
 ```bash
-# 推荐：4096 位 RSA 密钥
+# 推薦：4096 位 RSA 金鑰
 ssh-keygen -t rsa -b 4096 -C "jenkins@company.com"
 # Ed25519（更安全）
 ssh-keygen -t ed25519 -C "jenkins@company.com"
-# 自定义文件名
+# 自訂檔名
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/jenkins_rsa -C "jenkins@company.com"
 ```
 
-### 常见密钥类型对比
-| 类型 | 安全性 | 长度 | 兼容性 |
+### 常見金鑰類型對比
+| 類型 | 安全性 | 長度 | 相容性 |
 |------|--------|------|--------|
 | **RSA** | 高 | 2048-4096 | 通用 |
-| **Ed25519** | 很高 | 256 | 现代系统 |
-| **ECDSA** | 高 | 256-521 | 主流系统 |
-| **DSA** | 低 | 1024 | 仅限旧系统 |
+| **Ed25519** | 很高 | 256 | 現代系統 |
+| **ECDSA** | 高 | 256-521 | 主流系統 |
+| **DSA** | 低 | 1024 | 僅限舊系統 |
 
-## 步骤 2：将公钥添加到代码托管平台
+## 步驟 2：將公鑰新增到程式碼託管平台
 
-以 GitHub 为例：
-1. 登录 GitHub，进入「Settings」
-2. 选择「SSH and GPG keys」
-3. 点击「New SSH key」，粘贴公钥内容
-4. 保存
+以 GitHub 為例：
+1. 登入 GitHub，進入「Settings」
+2. 選擇「SSH and GPG keys」
+3. 點擊「New SSH key」，貼上公鑰內容
+4. 儲存
 
 ### 不同平台操作
 - **GitHub**：`cat ~/.ssh/id_rsa.pub | pbcopy`（macOS）
-- **GitLab**：用户设置 → SSH Keys
-- **Bitbucket**：个人设置 → SSH Keys
+- **GitLab**：使用者設定 → SSH Keys
+- **Bitbucket**：個人設定 → SSH Keys
 
-## 步骤 3：在 Jenkins 添加 SSH 凭据
+## 步驟 3：在 Jenkins 新增 SSH 憑證
 
-### 1. 进入 Jenkins 管理界面
-- 访问 `http://localhost:8080/`
-- 登录管理员账号
-- 依次点击「Credentials」→「System」
+### 1. 進入 Jenkins 管理介面
+- 訪問 `http://localhost:8080/`
+- 登入管理員帳號
+- 依序點擊「Credentials」→「System」
 
-### 2. 新建域（可选）
-- 点击「Add domain」
-- 填写域名（如「GitHub」）
-- 确认
+### 2. 新增網域（可選）
+- 點擊「Add domain」
+- 填寫網域名稱（如「GitHub」）
+- 確認
 
-### 3. 添加 SSH 凭据
-- 选择新建域，点击「Add Credentials」
-- 填写如下信息：
+### 3. 新增 SSH 憑證
+- 選擇新建網域，點擊「Add Credentials」
+- 填寫如下資訊：
 
-| 字段 | 值 | 说明 |
+| 欄位 | 值 | 說明 |
 |------|----|------|
-| Kind | SSH Username with private key | 凭据类型 |
-| Scope | Global | 作用域 |
-| ID | `github-ssh-key` | 唯一标识（可选） |
-| Description | `SSH key for GitHub access` | 备注 |
-| Username | `git` | Git 仓库默认用户名 |
-| Private Key | Enter directly | 粘贴私钥内容 |
+| Kind | SSH Username with private key | 憑證類型 |
+| Scope | Global | 作用範圍 |
+| ID | `github-ssh-key` | 唯一識別（可選） |
+| Description | `SSH key for GitHub access` | 備註 |
+| Username | `git` | Git 倉庫預設用戶名 |
+| Private Key | Enter directly | 貼上私鑰內容 |
 
-### 4. 私钥格式要求
+### 4. 私鑰格式要求
 ```bash
 cat ~/.ssh/id_rsa
 ```
-示例：
+範例：
 ```
 -----BEGIN OPENSSH PRIVATE KEY-----
 ...
 -----END OPENSSH PRIVATE KEY-----
 ```
 
-## 步骤 4：配置 Jenkins Job 使用 SSH 凭据
+## 步驟 4：設定 Jenkins Job 使用 SSH 憑證
 
-### 1. 创建或编辑 Job
-- 选择「Git」作为源码管理
-- 仓库地址使用 SSH 格式：
+### 1. 建立或編輯 Job
+- 選擇「Git」作為原始碼管理
+- 倉庫位址使用 SSH 格式：
 ```bash
 git@github.com:username/repository.git
 ```
 
-### 2. 选择凭据
-- 在「Credentials」下拉选择 SSH 凭据
-- 选择分支，保存配置
+### 2. 選擇憑證
+- 在「Credentials」下拉選擇 SSH 憑證
+- 選擇分支，儲存設定
 
-### 示例 Jenkinsfile
+### 範例 Jenkinsfile
 ```groovy
 pipeline {
     agent any
@@ -145,11 +145,11 @@ pipeline {
 }
 ```
 
-## 进阶 SSH 配置
+## 進階 SSH 設定
 
-### 1. SSH 配置文件
+### 1. SSH 設定檔
 
-`~/.ssh/config` 示例：
+`~/.ssh/config` 範例：
 ```bash
 Host github.com
     HostName github.com
@@ -158,7 +158,7 @@ Host github.com
     IdentitiesOnly yes
 ```
 
-### 2. 多密钥管理
+### 2. 多金鑰管理
 
 ```bash
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/github_rsa -C "jenkins@company.com"
@@ -166,7 +166,7 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/gitlab_rsa -C "jenkins@company.com"
 ssh-keygen -t rsa -b 4096 -f ~/.ssh/bitbucket_rsa -C "jenkins@company.com"
 ```
 
-### 3. SSH Agent 配置
+### 3. SSH Agent 設定
 
 ```bash
 eval "$(ssh-agent -s)"
@@ -174,70 +174,70 @@ ssh-add ~/.ssh/github_rsa
 ssh-add ~/.ssh/gitlab_rsa
 ```
 
-## 安全最佳实践
+## 安全最佳實踐
 
-### 1. 密钥管理
-- 独立密钥，专用 Jenkins
-- 定期轮换密钥
-- 权限设置（私钥 600）
-- 安全存储
+### 1. 金鑰管理
+- 獨立金鑰，專用 Jenkins
+- 定期輪換金鑰
+- 權限設定（私鑰 600）
+- 安全儲存
 ```bash
 chmod 600 ~/.ssh/id_rsa
 chmod 644 ~/.ssh/id_rsa.pub
 ```
 
-### 2. 权限与访问控制
-- 最小权限原则
-- 仓库专用密钥
-- 定期审计
+### 2. 權限與存取控制
+- 最小權限原則
+- 倉庫專用金鑰
+- 定期稽核
 
-### 3. 监控与告警
-- 监控 SSH 日志
-- 跟踪密钥使用
-- 异常行为告警
+### 3. 監控與告警
+- 監控 SSH 日誌
+- 追蹤金鑰使用
+- 異常行為告警
 
-## 常见问题排查
+## 常見問題排查
 
-### 1. 权限拒绝
+### 1. 權限拒絕
 ```bash
 ssh -T git@github.com
 ls -la ~/.ssh/
 ssh-add -l
 ```
 
-### 2. 主机密钥校验失败
+### 2. 主機金鑰驗證失敗
 ```bash
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 ```
 
-### 3. 找不到凭据
-- 检查凭据 ID
-- 检查作用域
-- 检查域设置
+### 3. 找不到憑證
+- 檢查憑證 ID
+- 檢查作用範圍
+- 檢查網域設定
 
-### 4. 认证超时
+### 4. 認證逾時
 ```bash
 ssh -o ConnectTimeout=30 git@github.com
 ping github.com
 ```
 
-## 测试 SSH 配置
+## 測試 SSH 設定
 
-### 1. 测试连接
+### 1. 測試連線
 ```bash
 ssh -T git@github.com
 ssh -T git@gitlab.com
 ssh -vT git@github.com
 ```
 
-### 2. 测试 Git 操作
+### 2. 測試 Git 操作
 ```bash
 git clone git@github.com:username/repository.git
 cd repository
 git pull origin main
 ```
 
-### 3. Jenkins 测试 Job
+### 3. Jenkins 測試 Job
 ```groovy
 pipeline {
     agent any
@@ -259,9 +259,9 @@ pipeline {
 }
 ```
 
-## 性能优化建议
+## 效能優化建議
 
-### 1. SSH 连接复用
+### 1. SSH 連線複用
 ```bash
 Host github.com
     HostName github.com
@@ -271,15 +271,15 @@ Host github.com
     ControlPersist 1h
 ```
 
-### 2. 密钥缓存
+### 2. 金鑰快取
 ```bash
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 ```
 
-## CI/CD 流水线集成
+## CI/CD 流水線整合
 
-### 1. 多分支流水线
+### 1. 多分支流水線
 ```groovy
 pipeline {
     agent any
@@ -311,7 +311,7 @@ pipeline {
 }
 ```
 
-### 2. 参数化构建
+### 2. 參數化建置
 ```groovy
 pipeline {
     agent any
@@ -319,7 +319,7 @@ pipeline {
         choice(
             name: 'BRANCH',
             choices: ['main', 'develop', 'feature/*'],
-            description: '选择构建分支'
+            description: '選擇建置分支'
         )
     }
     stages {
@@ -339,36 +339,36 @@ pipeline {
 }
 ```
 
-## 监控与维护
+## 監控與維護
 
-### 1. 定期维护
-- 密钥轮换（6-12 个月）
-- 权限审查
-- 日志分析
-- 密钥备份
+### 1. 定期維護
+- 金鑰輪換（6-12 個月）
+- 權限審查
+- 日誌分析
+- 金鑰備份
 
-### 2. 健康检查
+### 2. 健康檢查
 ```bash
 ssh-keygen -l -f ~/.ssh/id_rsa
 ssh -T git@github.com
 curl -u username:api_token http://jenkins:8080/job/test-job/lastBuild/api/json
 ```
 
-## 总结
+## 總結
 
-通过上述步骤，Jenkins 可安全高效地通过 SSH 拉取 Git 代码，提升 CI/CD 自动化与安全性。建议每个 Jenkins 环境都规范配置 SSH 凭据，避免因权限问题导致构建中断。
+透過上述步驟，Jenkins 可安全高效地透過 SSH 拉取 Git 程式碼，提升 CI/CD 自動化與安全性。建議每個 Jenkins 環境都規範設定 SSH 憑證，避免因權限問題導致建置中斷。
 
-**主要优势：**
-- **安全性提升**：加密通信与密钥认证
-- **自动化访问**：无需人工干预
-- **审计追踪**：便于权限管理
-- **灵活控制**：细粒度权限分配
+**主要優勢：**
+- **安全性提升**：加密通訊與金鑰認證
+- **自動化存取**：無需人工干預
+- **稽核追蹤**：便於權限管理
+- **彈性控制**：細緻權限分配
 
-## 相关文章
+## 相關文章
 
-- [Jenkins 1：什么是 Jenkins](/2024-08-15-jenkins-1-what-is-jenkins/)
-- [Jenkins 2：Jenkins 服务器搭建](/2024-08-15-jenkins-2-how-to-setup-jenkins-server/)
-- [Git 安全最佳实践](/2025-05-18-how-to-use-multiple-github-accounts-using-ssh/)
+- [Jenkins 1：什麼是 Jenkins](/2024-08-15-jenkins-1-what-is-jenkins/)
+- [Jenkins 2：Jenkins 伺服器建置](/2024-08-15-jenkins-2-how-to-setup-jenkins-server/)
+- [Git 安全最佳實踐](/2025-05-18-how-to-use-multiple-github-accounts-using-ssh/)
 - [DevOps 安全指南](/2024-08-02-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8.md/)
 
-> **专业建议**：更多 Jenkins 凭据系统与进阶配置，请参考 [Jenkins 官方文档](https://jenkins.io/doc/)。
+> **專業建議**：更多 Jenkins 憑證系統與進階設定，請參考 [Jenkins 官方文件](https://jenkins.io/doc/)。

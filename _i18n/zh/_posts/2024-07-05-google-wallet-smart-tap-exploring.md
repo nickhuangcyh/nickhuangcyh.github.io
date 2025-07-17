@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Google Wallet Smart Tap 深度解析：无接触支付技术与未来趋势"
+title: "Google Wallet Smart Tap 深度解析：無接觸支付技術與未來趨勢"
 date: 2024-07-05 20:00:00 +0800
-description: "全面解读 Google Wallet Smart Tap 技术，探索 NFC 通信、终端集成与无接触支付的未来。"
+description: "全面解讀 Google Wallet Smart Tap 技術，探索 NFC 通訊、終端整合與無接觸支付的未來。"
 tags: [Google Wallet, Smart Tap, NFC, Contactless Payments, Payment Systems, Mobile Payments, Digital Wallets, Payment Technology, Terminal Integration, Security]
 categories: [Payments, Technology, Mobile Development, Digital Wallets]
 toc:
@@ -10,90 +10,90 @@ toc:
 thumbnail: /assets/img/mika-baumeister-m7HWPWVjfJ4-unsplash.jpg
 ---
 
-> 本文聚焦 Google Wallet Smart Tap 技术实现，助力开发者与企业深入理解无接触支付集成方案。
+> 本文聚焦 Google Wallet Smart Tap 技術實現，助力開發者與企業深入理解無接觸支付整合方案。
 
-## 引言：无接触支付的演进
+## 引言：無接觸支付的演進
 
-近期因项目需求，深入研究了 Google Wallet Smart Tap 技术。本文既是个人复盘，也为开发者提供创新支付技术的实用参考。
+近期因專案需求，深入研究了 Google Wallet Smart Tap 技術。本文既是個人復盤，也為開發者提供創新支付技術的實用參考。
 
-## 什么是 NFC？
+## 什麼是 NFC？
 
-NFC（近场通信）是一种短距离无线通信技术，支持设备间厘米级数据交换，广泛应用于支付、票务、数据传输等场景。
+NFC（近場通訊）是一種短距離無線通訊技術，支援裝置間公分級資料交換，廣泛應用於支付、票務、資料傳輸等場景。
 
 ## Google Wallet Smart Tap 概述
 
-Smart Tap 是 Google 基于 NFC 推出的专有协议，支持用户通过移动设备在支持终端上实现快速安全的交易与数据交换。
+Smart Tap 是 Google 基於 NFC 推出的專有協議，支援用戶透過行動裝置在支援終端上實現快速安全的交易與資料交換。
 
-> **终端厂商注意：** 若需集成 Smart Tap，必须通过 Google 认证。认证流程需提交终端信息、功能说明与目标市场，签署 NDA 后方可获取相关文档。
+> **終端廠商注意：** 若需整合 Smart Tap，必須通過 Google 認證。認證流程需提交終端資訊、功能說明與目標市場，簽署 NDA 後方可取得相關文件。
 
-## 集成前置条件
+## 整合前置條件
 
-1. 创建 pass class 与 pass object
-2. 与 Smart Tap 支持的终端厂商建立合作
+1. 建立 pass class 與 pass object
+2. 與 Smart Tap 支援的終端廠商建立合作
 
-主流支持厂商包括：Verifone、Ingenico、Pax、HID、Equinox、XAC 等。
+主流支援廠商包括：Verifone、Ingenico、Pax、HID、Equinox、XAC 等。
 
-## 关键标识符说明
+## 關鍵識別碼說明
 
-- **Redemption Issuer ID**（兑换发行方 ID）
+- **Redemption Issuer ID**（兌換發行方 ID）
 - **Collector ID**（收款方 ID）
-- **Pass class ID**（票证类型 ID）
+- **Pass class ID**（票證類型 ID）
 
 ### Issuer ID
-Google Wallet 卡券发行方唯一标识，可在 [Google Pay & Wallet Console](https://pay.google.com/business/console/home?hl=zh-cn) 查询。
+Google Wallet 卡券發行方唯一識別，可在 [Google Pay & Wallet Console](https://pay.google.com/business/console/home?hl=zh-cn) 查詢。
 
 ### Redemption Issuer ID
-兑换发行方 ID 通常代表单一商户，Issuer ID 则可视为多商户平台。开发完成后，pass class 与 object 需关联 Redemption Issuer ID。
+兌換發行方 ID 通常代表單一商戶，Issuer ID 則可視為多商戶平台。開發完成後，pass class 與 object 需關聯 Redemption Issuer ID。
 
-| ID | 格式 | 说明 |
+| ID | 格式 | 說明 |
 |----|------|------|
-| Class ID | `issuerId.classSuffix` | classSuffix 由开发者自定义 |
-| Object ID | `issuerId.objectSuffix` | objectSuffix 由开发者自定义 |
+| Class ID | `issuerId.classSuffix` | classSuffix 由開發者自訂 |
+| Object ID | `issuerId.objectSuffix` | objectSuffix 由開發者自訂 |
 
 ### Collector ID
-- 终端支持 Smart Tap 时，Redemption Issuer 会有唯一 Collector ID（8 位数字）
-- 终端通过 Collector ID 与用户设备通信，设备用 Collector ID 公钥完成认证
-- 一个 Issuer ID 仅对应一个 Collector ID，Collector ID 全局唯一
+- 終端支援 Smart Tap 時，Redemption Issuer 會有唯一 Collector ID（8 位數字）
+- 終端透過 Collector ID 與用戶裝置通訊，裝置用 Collector ID 公鑰完成認證
+- 一個 Issuer ID 僅對應一個 Collector ID，Collector ID 全域唯一
 
 ### Pass Class ID
-用于标识具体票证类型，格式为 `issuerId.classSuffix`，同一 Issuer 可关联多个 Redemption Issuer。
+用於識別具體票證類型，格式為 `issuerId.classSuffix`，同一 Issuer 可關聯多個 Redemption Issuer。
 
-## 通信流程与场景
+## 通訊流程與場景
 
-终端通过 Collector ID 标识自身，Google Wallet App 检查本地 pass class 与 Collector ID，找到匹配后将 pass 传输至终端。
+終端透過 Collector ID 識別自身，Google Wallet App 檢查本地 pass class 與 Collector ID，找到匹配後將 pass 傳輸至終端。
 
-### 场景一：单 Redemption Issuer
+### 場景一：單 Redemption Issuer
 
-{% include figure.liquid path="assets/img/google_wallet_smart_tap_communication_flow_example1.png" title="单 Redemption Issuer 通信流程" %}
+{% include figure.liquid path="assets/img/google_wallet_smart_tap_communication_flow_example1.png" title="單 Redemption Issuer 通訊流程" %}
 
-- Aggregator 创建 pass class 与 object
-- Redemption Issuer 获取 Collector ID 并配置到终端
-- 终端与 Google Wallet 通过 Collector ID 匹配传输 pass
+- Aggregator 建立 pass class 與 object
+- Redemption Issuer 取得 Collector ID 並設定到終端
+- 終端與 Google Wallet 透過 Collector ID 匹配傳輸 pass
 
-### 场景二：多 Redemption Issuer
+### 場景二：多 Redemption Issuer
 
-{% include figure.liquid path="assets/img/google_wallet_smart_tap_communication_flow_example2.png" title="多 Redemption Issuer 通信流程" %}
+{% include figure.liquid path="assets/img/google_wallet_smart_tap_communication_flow_example2.png" title="多 Redemption Issuer 通訊流程" %}
 
-- Aggregator 在 pass class redemptionIssuers 属性中添加多个 Redemption Issuer ID
-- 各 Redemption Issuer 获取并配置各自 Collector ID
+- Aggregator 在 pass class redemptionIssuers 屬性中新增多個 Redemption Issuer ID
+- 各 Redemption Issuer 取得並設定各自 Collector ID
 
-### 场景三：无 Aggregator（直发模式）
+### 場景三：無 Aggregator（直發模式）
 
-{% include figure.liquid path="assets/img/google_wallet_smart_tap_communication_flow_example3.png" title="无 Aggregator 模式" %}
+{% include figure.liquid path="assets/img/google_wallet_smart_tap_communication_flow_example3.png" title="無 Aggregator 模式" %}
 
-- 开发者直接创建 pass class 与 object
-- Redemption Issuer ID 配置到 pass class redemptionIssuers 属性
-- 获取 Collector ID 并配置到终端
+- 開發者直接建立 pass class 與 object
+- Redemption Issuer ID 設定到 pass class redemptionIssuers 屬性
+- 取得 Collector ID 並設定到終端
 
-## 用户体验与行为
+## 用戶體驗與行為
 
-- 用户在 Google Wallet App 选择指定 pass 或解锁主界面后，触碰终端即可传输 pass
-- 若 Collector ID 匹配，pass 会被传输；否则不会传输
-- 多个匹配时，用户可选择传输的 pass
+- 用戶在 Google Wallet App 選擇指定 pass 或解鎖主畫面後，觸碰終端即可傳輸 pass
+- 若 Collector ID 匹配，pass 會被傳輸；否則不會傳輸
+- 多個匹配時，用戶可選擇傳輸的 pass
 
-## 技术实现要点
+## 技術實現要點
 
-### Pass Class 配置示例
+### Pass Class 設定範例
 ```json
 {
   "issuerId": "2018",
@@ -106,7 +106,7 @@ Google Wallet 卡券发行方唯一标识，可在 [Google Pay & Wallet Console]
 }
 ```
 
-### Pass Object 配置示例
+### Pass Object 設定範例
 ```json
 {
   "issuerId": "2018",
@@ -127,26 +127,26 @@ Google Wallet 卡券发行方唯一标识，可在 [Google Pay & Wallet Console]
 }
 ```
 
-## 安全与隐私设计
+## 安全與隱私設計
 
-### 1. 认证流程
-- 终端发送 Collector ID 至用户设备
-- 设备校验 Collector ID 并用公钥认证
-- 传输 pass 数据至终端
+### 1. 認證流程
+- 終端發送 Collector ID 至用戶裝置
+- 裝置驗證 Collector ID 並用公鑰認證
+- 傳輸 pass 資料至終端
 
-### 2. 数据保护
-- 传输全程加密
-- Collector ID 唯一且不可复用
-- 终端认证防止未授权访问
+### 2. 資料保護
+- 傳輸全程加密
+- Collector ID 唯一且不可重複使用
+- 終端認證防止未授權存取
 
-### 3. 隐私控制
-- 用户自主选择传输哪些 pass
-- 未经同意不共享个人信息
-- 仅匹配 Collector ID 时才传输 pass
+### 3. 隱私控制
+- 用戶自主選擇傳輸哪些 pass
+- 未經同意不共享個人資訊
+- 僅匹配 Collector ID 時才傳輸 pass
 
-## 实施最佳实践
+## 實施最佳實踐
 
-### 1. 终端配置
+### 1. 終端設定
 ```bash
 COLLECTOR_ID=12345678
 REDEMPTION_ISSUER_ID=1990
@@ -154,7 +154,7 @@ TERMINAL_TYPE=VERIFONE
 LOCATION_ID=STORE_001
 ```
 
-### 2. Pass 开发
+### 2. Pass 開發
 ```kotlin
 class SmartTapPassBuilder {
     fun createPass(
@@ -172,7 +172,7 @@ class SmartTapPassBuilder {
 }
 ```
 
-### 3. 错误处理
+### 3. 錯誤處理
 ```kotlin
 sealed class SmartTapError {
     object CollectorIdMismatch : SmartTapError()
@@ -183,49 +183,49 @@ sealed class SmartTapError {
 
 fun handleSmartTapError(error: SmartTapError) {
     when (error) {
-        is SmartTapError.CollectorIdMismatch -> { /* 处理不匹配 */ }
-        is SmartTapError.PassExpired -> { /* 处理过期 */ }
-        // ... 其他情况
+        is SmartTapError.CollectorIdMismatch -> { /* 處理不匹配 */ }
+        is SmartTapError.PassExpired -> { /* 處理過期 */ }
+        // ... 其他情況
     }
 }
 ```
 
-## 性能与常见问题
+## 效能與常見問題
 
-| 方面 | 影响 | 优化建议 |
+| 方面 | 影響 | 優化建議 |
 |------|------|----------|
-| NFC 通信 | 需低延迟 | 优化数据包大小 |
-| Pass 校验 | 实时性要求 | 缓存校验结果 |
-| 终端响应 | 影响体验 | 增加超时处理 |
-| 电池消耗 | NFC 耗电 | 减少 NFC 激活时长 |
+| NFC 通訊 | 需低延遲 | 優化資料包大小 |
+| Pass 驗證 | 即時性要求 | 快取驗證結果 |
+| 終端回應 | 影響體驗 | 增加逾時處理 |
+| 電池消耗 | NFC 耗電 | 減少 NFC 啟動時長 |
 
-### 常见问题
-- **Collector ID 不匹配**：检查终端与 pass 配置
-- **Pass 未被识别**：检查 redemptionIssuers 配置
-- **终端无响应**：确认终端认证与硬件支持
+### 常見問題
+- **Collector ID 不匹配**：檢查終端與 pass 設定
+- **Pass 未被識別**：檢查 redemptionIssuers 設定
+- **終端無回應**：確認終端認證與硬體支援
 
-## 未来展望
-- 生物认证与更强加密
-- 交通、门禁、票务等多场景拓展
-- iOS、可穿戴与 IoT 设备集成
+## 未來展望
+- 生物認證與更強加密
+- 交通、門禁、票務等多場景拓展
+- iOS、可穿戴與 IoT 裝置整合
 
-## 相关技术与标准
+## 相關技術與標準
 - NFC：ISO/IEC 14443、7816
-- 支付协议：EMV、PCI DSS
-- 移动平台：Android HCE、iOS Core NFC
-- 安全标准：FIDO、OAuth 2.0
+- 支付協議：EMV、PCI DSS
+- 行動平台：Android HCE、iOS Core NFC
+- 安全標準：FIDO、OAuth 2.0
 
-## 总结
+## 總結
 
-Google Wallet Smart Tap 代表无接触支付技术的重要进步，具备多层安全、极致体验与灵活集成优势。理解其技术实现与通信流程，有助于开发者和企业把握数字支付未来。
+Google Wallet Smart Tap 代表無接觸支付技術的重要進步，具備多層安全、極致體驗與彈性整合優勢。理解其技術實現與通訊流程，有助於開發者和企業把握數位支付未來。
 
-**核心优势：**
-- 多层安全认证与加密
-- 流畅用户体验
-- 灵活终端集成
-- 易于扩展新商户与票证
+**核心優勢：**
+- 多層安全認證與加密
+- 流暢用戶體驗
+- 彈性終端整合
+- 易於擴展新商戶與票證
 
-## 相关文章
-- [移动支付安全最佳实践](/2024-12-01-google-adsense/)
-- [NFC 技术实现指南](/2024-07-16-how-to-build-chiptool-for-android/)
-- [数字钱包开发实战](/2024-07-23-getting-started-with-github-container-registry/)
+## 相關文章
+- [行動支付安全最佳實踐](/2024-12-01-google-adsense/)
+- [NFC 技術實現指南](/2024-07-16-how-to-build-chiptool-for-android/)
+- [數位錢包開發實戰](/2024-07-23-getting-started-with-github-container-registry/)
