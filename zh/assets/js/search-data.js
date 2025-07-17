@@ -66,11 +66,11 @@ ninja.data = [{
             window.location.href = "/blog/ai%20tools/visualization/productivity/development/ai-tools-excalidraw-chart-guide/";
           
         },
-      },{id: "post-2024-年最新版-macos-开发环境搭建全攻略",
+      },{id: "post-2024-年最新版-macos-開發環境搭建全攻略",
         
-          title: "2024 年最新版 macOS 开发环境搭建全攻略",
+          title: "2024 年最新版 macOS 開發環境搭建全攻略",
         
-        description: "一站式掌握 macOS 专业开发环境搭建，涵盖 Homebrew、Git、iTerm2、Zsh 及移动开发工具，助你高效提升生产力。",
+        description: "一站式掌握 macOS 專業開發環境搭建，涵蓋 Homebrew、Git、iTerm2、Zsh 及行動開發工具，助你高效提升生產力。",
         section: "Posts",
         handler: () => {
           
@@ -154,11 +154,11 @@ ninja.data = [{
             window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-22-memento-pattern/";
           
         },
-      },{id: "post-设计模式-21-中介者模式全解析与实战聊天室案例",
+      },{id: "post-設計模式-21-中介者模式全解析與實戰聊天室案例",
         
-          title: "设计模式 21：中介者模式全解析与实战聊天室案例",
+          title: "設計模式 21：中介者模式全解析與實戰聊天室案例",
         
-        description: "掌握中介者模式，结合聊天室与系统协调实战案例，深入理解如何降低耦合、提升可扩展性、集中通信逻辑。",
+        description: "掌握中介者模式，結合聊天室與系統協調實戰案例，深入理解如何降低耦合、提升可擴展性、集中通信邏輯。",
         section: "Posts",
         handler: () => {
           
@@ -253,11 +253,11 @@ ninja.data = [{
             window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/design-pattern-13-composite-pattern/";
           
         },
-      },{id: "post-jenkins-3-配置-ssh-凭据-实现安全-git-代码拉取",
+      },{id: "post-jenkins-3-設定-ssh-憑證-實現安全-git-程式碼拉取",
         
-          title: "Jenkins 3：配置 SSH 凭据，实现安全 Git 代码拉取",
+          title: "Jenkins 3：設定 SSH 憑證，實現安全 Git 程式碼拉取",
         
-        description: "详解如何在 Jenkins 中配置 SSH 凭据，实现安全拉取 Git 仓库代码。涵盖密钥生成、凭据管理与流水线集成全流程。",
+        description: "詳解如何在 Jenkins 中設定 SSH 憑證，實現安全拉取 Git 倉庫程式碼。涵蓋金鑰產生、憑證管理與流水線整合全流程。",
         section: "Posts",
         handler: () => {
           
@@ -286,33 +286,33 @@ ninja.data = [{
             window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-11-adapter-pattern/";
           
         },
-      },{id: "post-google-adsense-网站变现全攻略-开发者必读指南",
+      },{id: "post-google-adsense-網站變現全攻略-開發者必讀指南",
         
-          title: "Google AdSense 网站变现全攻略：开发者必读指南",
+          title: "Google AdSense 網站變現全攻略：開發者必讀指南",
         
-        description: "掌握如何将 Google AdSense 集成到你的网站，实现被动收入。涵盖注册、设置、优化与收益提升的实用技巧。",
+        description: "掌握如何將 Google AdSense 集成到你的网站，实现被动收入。涵盖注册、设置、优化与收益提升的实用技巧。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/monetization/google/web%20development/google-adsense/";
           
         },
-      },{id: "post-jenkins-服务器搭建-docker-安装全流程实战指南",
+      },{id: "post-jenkins-伺服器建置-docker-安裝全流程實戰指南",
         
-          title: "Jenkins 服务器搭建：Docker 安装全流程实战指南",
+          title: "Jenkins 伺服器建置：Docker 安裝全流程實戰指南",
         
-        description: "通过 Docker 容器快速搭建 Jenkins 服务器，详解 CI/CD 自动化、Android 构建环境集成与生产部署最佳实践。",
+        description: "透過 Docker 容器快速建置 Jenkins 伺服器，詳解 CI/CD 自動化、Android 建置環境整合與生產部署最佳實踐。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/devops/ci/cd/docker/automation/jenkins-2-how-to-setup-jenkins-server/";
           
         },
-      },{id: "post-jenkins-1-什么是-jenkins-ci-cd-自动化服务器全解析",
+      },{id: "post-jenkins-1-什麼是-jenkins-ci-cd-自動化伺服器全解析",
         
-          title: "Jenkins 1：什么是 Jenkins——CI/CD 自动化服务器全解析",
+          title: "Jenkins 1：什麼是 Jenkins——CI/CD 自動化伺服器全解析",
         
-        description: "深入了解 Jenkins 这款强大的开源自动化服务器，掌握其核心理念、优势及如何革新软件开发流程。",
+        description: "深入了解 Jenkins 這款強大的開源自動化伺服器，掌握其核心理念、優勢及如何革新軟體開發流程。",
         section: "Posts",
         handler: () => {
           
@@ -330,22 +330,22 @@ ninja.data = [{
             window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/database/design-pattern-10-singleton-pattern/";
           
         },
-      },{id: "post-如何在-openssh-8-8-启用-rsa-加密算法密钥-安全-ssh-连接全流程指南",
+      },{id: "post-如何在-openssh-8-8-啟用-rsa-加密演算法金鑰-安全-ssh-連線全流程指南",
         
-          title: "如何在 OpenSSH 8.8 启用 RSA 加密算法密钥：安全 SSH 连接全流程指南",
+          title: "如何在 OpenSSH 8.8 啟用 RSA 加密演算法金鑰：安全 SSH 連線全流程指南",
         
-        description: "掌握在 OpenSSH 8.8+ 环境下为旧系统和 Git 服务器重新启用 RSA 加密支持的完整方法，涵盖排错、安全建议与配置技巧。",
+        description: "掌握在 OpenSSH 8.8+ 環境下為舊系統和 Git 伺服器重新啟用 RSA 加密支援的完整方法，涵蓋排錯、安全建議與設定技巧。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/cryptography/openssh/security/devops/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8/";
           
         },
-      },{id: "post-github-container-registry-ghcr-入门全攻略-容器镜像管理与-ci-cd-实战",
+      },{id: "post-github-container-registry-ghcr-入門全攻略-容器映像管理與-ci-cd-實戰",
         
-          title: "GitHub Container Registry (GHCR) 入门全攻略：容器镜像管理与 CI/CD 实战",
+          title: "GitHub Container Registry (GHCR) 入門全攻略：容器映像管理與 CI/CD 實戰",
         
-        description: "全面掌握 GitHub Container Registry，涵盖 Docker 镜像管理、GitHub Actions 自动化与容器化应用 CI/CD 最佳实践。",
+        description: "全面掌握 GitHub Container Registry，涵蓋 Docker 映像管理、GitHub Actions 自動化與容器化應用 CI/CD 最佳實踐。",
         section: "Posts",
         handler: () => {
           
@@ -363,11 +363,11 @@ ninja.data = [{
             window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/performance/design-pattern-9-prototype-pattern/";
           
         },
-      },{id: "post-如何编译-chiptool-for-android-matter-协议开发全流程实战",
+      },{id: "post-如何編譯-chiptool-for-android-matter-協議開發全流程實戰",
         
-          title: "如何编译 CHIPTool for Android：Matter 协议开发全流程实战",
+          title: "如何編譯 CHIPTool for Android：Matter 協議開發全流程實戰",
         
-        description: "从源码编译 Android 版 CHIPTool APK，详解 Matter 协议开发、Docker 环境搭建与常见构建问题排查。",
+        description: "從原始碼編譯 Android 版 CHIPTool APK，詳解 Matter 協議開發、Docker 環境建置與常見建構問題排查。",
         section: "Posts",
         handler: () => {
           
@@ -429,11 +429,11 @@ ninja.data = [{
             window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/software%20architecture/design-pattern-4-uml/";
           
         },
-      },{id: "post-google-wallet-smart-tap-深度解析-无接触支付技术与未来趋势",
+      },{id: "post-google-wallet-smart-tap-深度解析-無接觸支付技術與未來趨勢",
         
-          title: "Google Wallet Smart Tap 深度解析：无接触支付技术与未来趋势",
+          title: "Google Wallet Smart Tap 深度解析：無接觸支付技術與未來趨勢",
         
-        description: "全面解读 Google Wallet Smart Tap 技术，探索 NFC 通信、终端集成与无接触支付的未来。",
+        description: "全面解讀 Google Wallet Smart Tap 技術，探索 NFC 通訊、終端整合與無接觸支付的未來。",
         section: "Posts",
         handler: () => {
           
@@ -473,22 +473,22 @@ ninja.data = [{
             window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/programming%20fundamentals/design-pattern-1-object-oriented-concepts/";
           
         },
-      },{id: "post-ios-网络抓包全攻略-rvictl-wireshark-实战详解",
+      },{id: "post-ios-網路抓包全攻略-rvictl-wireshark-實戰詳解",
         
-          title: "iOS 网络抓包全攻略：rvictl + Wireshark 实战详解",
+          title: "iOS 網路抓包全攻略：rvictl + Wireshark 實戰詳解",
         
-        description: "掌握 iOS 网络抓包技巧，结合 rvictl 与 Wireshark，助力移动开发、IoT 调试与网络分析。",
+        description: "掌握 iOS 網路抓包技巧，結合 rvictl 與 Wireshark，助力行動開發、IoT 除錯與網路分析。",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/tools/ios%20development/network%20analysis/how-to-capture-network-packet-on-ios/";
           
         },
-      },{id: "post-android-网络抓包全攻略-tcpdump-wireshark-实战详解",
+      },{id: "post-android-網路抓包全攻略-tcpdump-wireshark-實戰詳解",
         
-          title: "Android 网络抓包全攻略：tcpdump + Wireshark 实战详解",
+          title: "Android 網路抓包全攻略：tcpdump + Wireshark 實戰詳解",
         
-        description: "掌握 Android 网络抓包技巧，结合 tcpdump 与 Wireshark，助力移动开发、流量分析与疑难排查。",
+        description: "掌握 Android 網路抓包技巧，結合 tcpdump 與 Wireshark，助力行動開發、流量分析與疑難排查。",
         section: "Posts",
         handler: () => {
           
