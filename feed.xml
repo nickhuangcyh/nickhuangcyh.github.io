@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://nickhuangcyh.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://nickhuangcyh.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-07-17T16:55:02+00:00</updated><id>https://nickhuangcyh.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">How to Use Multiple GitHub Accounts on One Computer: Complete SSH Setup Guide</title><link href="https://nickhuangcyh.github.io/blog/devops/productivity/github/development/how-to-use-multiple-github-accounts-using-ssh/" rel="alternate" type="text/html" title="How to Use Multiple GitHub Accounts on One Computer: Complete SSH Setup Guide"/><published>2025-05-18T06:00:00+00:00</published><updated>2025-05-18T06:00:00+00:00</updated><id>https://nickhuangcyh.github.io/blog/devops/productivity/github/development/how-to-use-multiple-github-accounts-using-ssh</id><content type="html" xml:base="https://nickhuangcyh.github.io/blog/devops/productivity/github/development/how-to-use-multiple-github-accounts-using-ssh/"><![CDATA[<h2 id="-why-you-need-multiple-github-accounts">🚀 <strong>Why You Need Multiple GitHub Accounts</strong></h2> <p>Many developers work with multiple GitHub accounts - one for personal projects and another for work. Managing these accounts on the same computer can be challenging without proper SSH configuration. This guide will show you the most efficient way to handle multiple GitHub accounts using SSH keys.</p> <p><strong>Key Benefits:</strong></p> <ul> <li>✅ Seamlessly switch between work and personal accounts</li> <li>✅ Avoid permission conflicts and push errors</li> <li>✅ Maintain security with proper key management</li> <li>✅ No need to create new keys or modify global settings</li> </ul> <hr/> <h2 id="-the-most-efficient-method-ssh-config-with-key-pairing">🛠 <strong>The Most Efficient Method: SSH Config with Key Pairing</strong></h2> <p>This approach uses SSH config files to automatically route different repositories to their corresponding GitHub accounts. Here’s the complete setup process:</p> <hr/> <h3 id="1️⃣-check-currently-loaded-ssh-keys">1️⃣ <strong>Check Currently Loaded SSH Keys</strong></h3> <p>First, let’s see what SSH keys are currently loaded in your SSH agent:</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-add <span class="nt">-l</span>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://nickhuangcyh.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://nickhuangcyh.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2025-07-19T14:06:48+00:00</updated><id>https://nickhuangcyh.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design. </subtitle><entry><title type="html">How to Use Multiple GitHub Accounts on One Computer: Complete SSH Setup Guide</title><link href="https://nickhuangcyh.github.io/blog/devops/productivity/github/development/how-to-use-multiple-github-accounts-using-ssh/" rel="alternate" type="text/html" title="How to Use Multiple GitHub Accounts on One Computer: Complete SSH Setup Guide"/><published>2025-05-18T06:00:00+00:00</published><updated>2025-05-18T06:00:00+00:00</updated><id>https://nickhuangcyh.github.io/blog/devops/productivity/github/development/how-to-use-multiple-github-accounts-using-ssh</id><content type="html" xml:base="https://nickhuangcyh.github.io/blog/devops/productivity/github/development/how-to-use-multiple-github-accounts-using-ssh/"><![CDATA[<h2 id="-why-you-need-multiple-github-accounts">🚀 <strong>Why You Need Multiple GitHub Accounts</strong></h2> <p>Many developers work with multiple GitHub accounts - one for personal projects and another for work. Managing these accounts on the same computer can be challenging without proper SSH configuration. This guide will show you the most efficient way to handle multiple GitHub accounts using SSH keys.</p> <p><strong>Key Benefits:</strong></p> <ul> <li>✅ Seamlessly switch between work and personal accounts</li> <li>✅ Avoid permission conflicts and push errors</li> <li>✅ Maintain security with proper key management</li> <li>✅ No need to create new keys or modify global settings</li> </ul> <hr/> <h2 id="-the-most-efficient-method-ssh-config-with-key-pairing">🛠 <strong>The Most Efficient Method: SSH Config with Key Pairing</strong></h2> <p>This approach uses SSH config files to automatically route different repositories to their corresponding GitHub accounts. Here’s the complete setup process:</p> <hr/> <h3 id="1️⃣-check-currently-loaded-ssh-keys">1️⃣ <strong>Check Currently Loaded SSH Keys</strong></h3> <p>First, let’s see what SSH keys are currently loaded in your SSH agent:</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-add <span class="nt">-l</span>
 </code></pre></div></div> <p>If you only see your default key (e.g., <code class="language-plaintext highlighter-rouge">id_ed25519</code>), you’ll need to load additional keys for other accounts.</p> <p><strong>Example Output:</strong></p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>256 SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx nick25932219@gmail.com<span class="o">(</span>ED25519<span class="o">)</span>
 </code></pre></div></div> <hr/> <h3 id="2️⃣-load-additional-account-keys">2️⃣ <strong>Load Additional Account Keys</strong></h3> <p>Add your second account’s SSH key to the SSH agent:</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-add ~/.ssh/id_ed25519_company
 </code></pre></div></div> <p>Verify the key was loaded successfully:</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ssh-add <span class="nt">-l</span>
@@ -176,7 +176,7 @@ vim ~/.zshrc
     <span class="kd">val</span> <span class="py">result</span> <span class="p">=</span> <span class="n">expression</span><span class="p">.</span><span class="nf">interpret</span><span class="p">()</span>
     <span class="nf">println</span><span class="p">(</span><span class="s">"Expression: true AND false OR true"</span><span class="p">)</span>
     <span class="nf">println</span><span class="p">(</span><span class="s">"Result: $result"</span><span class="p">)</span>
-    
+
     <span class="c1">// Expected output: true</span>
 <span class="p">}</span>
 </code></pre></div></div> <p><strong>Output:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Expression: true AND false OR true
@@ -200,7 +200,7 @@ Result: true
 <span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">val</span> <span class="py">builder</span> <span class="p">=</span> <span class="nc">ExpressionBuilder</span><span class="p">()</span>
     <span class="kd">val</span> <span class="py">complexExpression</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="nf">buildComplexExpression</span><span class="p">()</span>
-    
+
     <span class="nf">println</span><span class="p">(</span><span class="s">"Complex Expression: (true OR false) AND NOT false"</span><span class="p">)</span>
     <span class="nf">println</span><span class="p">(</span><span class="s">"Result: ${complexExpression.interpret()}"</span><span class="p">)</span>
 <span class="p">}</span>
@@ -282,7 +282,7 @@ Snapshot: Dahua Snapshot
     <span class="k">fun</span> <span class="nf">captureEzvizSnapshot</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"Ezviz Snapshot"</span>
 <span class="p">}</span>
 </code></pre></div></div> <hr/> <h2 id="-real-world-applications">📈 <strong>Real-World Applications</strong></h2> <h3 id="1-iot-device-management"><strong>1. IoT Device Management</strong></h3> <ul> <li>Multi-brand camera integration</li> <li>Unified device operations (streaming, snapshot, firmware upgrade)</li> </ul> <h3 id="2-compilers-and-interpreters"><strong>2. Compilers and Interpreters</strong></h3> <ul> <li>Abstract Syntax Tree (AST) traversal</li> <li>Code generation, optimization, and analysis</li> </ul> <h3 id="3-ui-component-trees"><strong>3. UI Component Trees</strong></h3> <ul> <li>Rendering, event handling, and layout</li> </ul> <h3 id="4-code-analysis-tools"><strong>4. Code Analysis Tools</strong></h3> <ul> <li>Linting, static analysis, refactoring</li> </ul> <hr/> <h2 id="-common-pitfalls-and-best-practices">🚨 <strong>Common Pitfalls and Best Practices</strong></h2> <h3 id="1-double-dispatch-complexity"><strong>1. Double Dispatch Complexity</strong></h3> <ul> <li>Visitor pattern uses double dispatch; keep visitor interfaces up to date</li> </ul> <h3 id="2-element-explosion"><strong>2. Element Explosion</strong></h3> <ul> <li>Too many element types can make visitor maintenance harder</li> </ul> <h3 id="3-best-practices"><strong>3. Best Practices</strong></h3> <ul> <li>Use clear naming for visitor methods (e.g., <code class="language-plaintext highlighter-rouge">visitHikvision</code>)</li> <li>Document all supported element types in visitor interface</li> <li>Use abstract base classes for shared logic</li> </ul> <hr/> <h2 id="-related-articles">🔗 <strong>Related Articles</strong></h2> <ul> <li><a href="/2024-07-02-design-pattern-1-object-oriented-concepts">Design Pattern 1: Object-Oriented Concepts</a></li> <li><a href="/2024-07-03-design-pattern-2-design-principle">Design Pattern 2: Design Principles</a></li> <li><a href="/2024-12-28-design-pattern-26-template-method-pattern">Template Method Pattern</a></li> <li><a href="/2024-12-26-design-pattern-25-strategy-pattern">Strategy Pattern</a></li> <li><a href="/2024-12-21-design-pattern-19-command-pattern">Command Pattern</a></li> </ul> <hr/> <h2 id="-conclusion">✅ <strong>Conclusion</strong></h2> <p>Through the Visitor Pattern, we successfully decoupled IPCam operations from their structure, enabling easy extension and centralized logic management.</p> <p><strong>Key Advantages:</strong></p> <ul> <li>🎯 <strong>Open/Closed Principle</strong> - Add new operations without changing object structure</li> <li>🔧 <strong>Centralized logic</strong> - Keep related operations together</li> <li>📈 <strong>Easy extension</strong> - Add new operations or brands with minimal changes</li> <li>🛡️ <strong>Maintainability</strong> - Clean separation of concerns</li> <li>⚡ <strong>Scalability</strong> - Ideal for large, evolving systems</li> </ul> <p><strong>Design Principles Followed:</strong></p> <ul> <li><strong>Single Responsibility Principle (SRP)</strong>: Separate operation logic from object structure</li> <li><strong>Open-Closed Principle (OCP)</strong>: Open for extension, closed for modification</li> <li><strong>Don’t Repeat Yourself (DRY)</strong>: Centralize operation logic</li> </ul> <p><strong>Perfect For:</strong></p> <ul> <li><strong>IoT device integration</strong> (multi-brand support)</li> <li><strong>AST traversal</strong> (compilers, interpreters)</li> <li><strong>UI frameworks</strong> (component trees)</li> <li><strong>Code analysis tools</strong> (linting, refactoring)</li> </ul> <p>The Visitor Pattern provides an elegant solution for adding new operations to complex object structures while maintaining a clean, extensible codebase!</p> <hr/> <p><strong>💡 Pro Tip:</strong> Use the Visitor Pattern when you need to add many unrelated operations to object structures, but avoid it if your element types change frequently.</p> <p><strong>🔔 Stay Updated:</strong> Follow our Design Pattern series for more software architecture insights!</p>]]></content><author><name></name></author><category term="Design Pattern"/><category term="Software Engineering"/><category term="Programming"/><category term="Visitor Pattern"/><category term="Design Patterns"/><category term="Extensibility"/><category term="Object-Oriented Design"/><category term="Software Architecture"/><category term="IoT"/><category term="Kotlin"/><category term="Programming"/><category term="Behavioral Patterns"/><category term="Maintainability"/><summary type="html"><![CDATA[Master the Visitor Pattern with practical IoT and software examples. Learn how to add new operations to object structures, improve extensibility, and maintain clean code architecture.]]></summary></entry><entry><title type="html">Design Pattern 26: Template Method Pattern - Complete Guide with Real-World Examples</title><link href="https://nickhuangcyh.github.io/blog/design%20pattern/software%20engineering/programming/design-pattern-26-template-method-pattern/" rel="alternate" type="text/html" title="Design Pattern 26: Template Method Pattern - Complete Guide with Real-World Examples"/><published>2024-12-28T11:30:00+00:00</published><updated>2024-12-28T11:30:00+00:00</updated><id>https://nickhuangcyh.github.io/blog/design%20pattern/software%20engineering/programming/design-pattern-26-template-method-pattern</id><content type="html" xml:base="https://nickhuangcyh.github.io/blog/design%20pattern/software%20engineering/programming/design-pattern-26-template-method-pattern/"><![CDATA[<blockquote> <p>📁 <strong>Download the complete Design Pattern series code</strong> from our <a href="https://github.com/nickhuangcyh/design_pattern">design_pattern repository</a>.</p> </blockquote> <hr/> <h2 id="-what-is-the-template-method-pattern">🎯 <strong>What is the Template Method Pattern?</strong></h2> <p>The <strong>Template Method Pattern</strong> is a behavioral design pattern that defines the skeleton of an algorithm in a base class, allowing subclasses to override specific steps without changing the algorithm’s structure. This pattern promotes code reuse and ensures consistent algorithm execution while providing flexibility for customization.</p> <p><strong>Key Benefits:</strong></p> <ul> <li>✅ <strong>Code reuse</strong> - Common algorithm structure shared across subclasses</li> <li>✅ <strong>Consistent execution</strong> - Algorithm flow remains the same</li> <li>✅ <strong>Flexibility</strong> - Subclasses can customize specific steps</li> <li>✅ <strong>Maintainability</strong> - Changes to algorithm structure affect all subclasses</li> <li>✅ <strong>Extensibility</strong> - Easy to add new algorithm variations</li> </ul> <hr/> <h2 id="-real-world-problem-data-format-conversion-system">🚀 <strong>Real-World Problem: Data Format Conversion System</strong></h2> <p>Let’s design a <strong>data format conversion system</strong> with the following requirements:</p> <h3 id="system-requirements"><strong>System Requirements:</strong></h3> <ul> <li><strong>Support multiple format conversions</strong> (JSON, XML, CSV, YAML)</li> <li><strong>Maintain consistent conversion workflow</strong> across all formats</li> <li><strong>Easy extensibility</strong> for new formats</li> <li><strong>Avoid code duplication</strong> in conversion logic</li> <li><strong>Handle different data sources</strong> (files, databases, APIs)</li> </ul> <h3 id="business-rules"><strong>Business Rules:</strong></h3> <ul> <li>All conversions follow the same 3-step process: Read → Format → Output</li> <li>Each format has specific formatting rules</li> <li>System should handle errors gracefully</li> <li>Performance optimization for large datasets</li> <li>Support for validation and transformation</li> </ul> <hr/> <h2 id="️-object-oriented-analysis-ooa">🏗️ <strong>Object-Oriented Analysis (OOA)</strong></h2> <p>Let’s analyze the problem and identify the core components:</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_template_method_pattern_uml_1-480.webp 480w,/assets/img/design_pattern_template_method_pattern_uml_1-800.webp 800w,/assets/img/design_pattern_template_method_pattern_uml_1-1400.webp 1400w," type="image/webp" sizes="95vw"/> <img src="/assets/img/design_pattern_template_method_pattern_uml_1.png" width="100%" height="auto" title="Template Method Pattern - Problem Analysis" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> <h3 id="identified-forces"><strong>Identified Forces:</strong></h3> <ol> <li><strong>Code Duplication</strong> <ul> <li>Each format conversion implements the same 3-step process</li> <li>Common logic repeated across multiple classes</li> </ul> </li> <li><strong>Violation of Open-Closed Principle (OCP)</strong> <ul> <li>Adding new formats requires modifying existing code</li> <li>Changes to conversion workflow affect all implementations</li> </ul> </li> <li><strong>Maintenance Complexity</strong> <ul> <li>Conversion logic scattered across multiple classes</li> <li>Difficult to ensure consistency across all formats</li> </ul> </li> <li><strong>Inconsistent Error Handling</strong> <ul> <li>Each format handles errors differently</li> <li>No standardized validation approach</li> </ul> </li> </ol> <hr/> <h2 id="-template-method-pattern-solution">💡 <strong>Template Method Pattern Solution</strong></h2> <p>After analyzing the forces, we can apply the <strong>Template Method Pattern</strong> to create a flexible conversion framework:</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_template_method_pattern_uml_2-480.webp 480w,/assets/img/design_pattern_template_method_pattern_uml_2-800.webp 800w,/assets/img/design_pattern_template_method_pattern_uml_2-1400.webp 1400w," type="image/webp" sizes="95vw"/> <img src="/assets/img/design_pattern_template_method_pattern_uml_2.png" width="100%" height="auto" title="Template Method Pattern - General Structure" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> <h3 id="template-method-pattern-components"><strong>Template Method Pattern Components:</strong></h3> <ol> <li><strong>Abstract Class</strong> <ul> <li>Defines the template method with algorithm skeleton</li> <li>Provides default implementations for common steps</li> <li>Declares abstract methods for customizable steps</li> </ul> </li> <li><strong>Concrete Classes</strong> <ul> <li>Inherit from abstract class</li> <li>Implement specific formatting logic</li> <li>Can override default implementations if needed</li> </ul> </li> <li><strong>Template Method</strong> <ul> <li>Orchestrates the algorithm execution</li> <li>Ensures consistent workflow</li> <li>Handles common operations</li> </ul> </li> </ol> <p><strong>Benefits:</strong></p> <ul> <li><strong>Consistent algorithm structure</strong> across all implementations</li> <li><strong>Code reuse</strong> through shared template method</li> <li><strong>Flexible customization</strong> through method overriding</li> <li><strong>Easy maintenance</strong> and extension</li> </ul> <hr/> <h2 id="️-implementation-data-format-conversion-system">🛠️ <strong>Implementation: Data Format Conversion System</strong></h2> <p>Here’s the complete implementation using the Template Method Pattern:</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_template_method_pattern_uml_3-480.webp 480w,/assets/img/design_pattern_template_method_pattern_uml_3-800.webp 800w,/assets/img/design_pattern_template_method_pattern_uml_3-1400.webp 1400w," type="image/webp" sizes="95vw"/> <img src="/assets/img/design_pattern_template_method_pattern_uml_3.png" width="100%" height="auto" title="Data Format Conversion Template Method Implementation" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> <h3 id="1-abstract-base-class"><strong>1. Abstract Base Class</strong></h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">abstract</span> <span class="kd">class</span> <span class="nc">DataFormatter</span> <span class="p">{</span>
-    
+
     <span class="c1">// Template method - defines the algorithm structure</span>
     <span class="k">fun</span> <span class="nf">convert</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;):</span> <span class="nc">ConversionResult</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">try</span> <span class="p">{</span>
@@ -290,28 +290,28 @@ Snapshot: Dahua Snapshot
             <span class="kd">val</span> <span class="py">validatedData</span> <span class="p">=</span> <span class="nf">validateData</span><span class="p">(</span><span class="n">rawData</span><span class="p">)</span>
             <span class="kd">val</span> <span class="py">formattedData</span> <span class="p">=</span> <span class="nf">formatData</span><span class="p">(</span><span class="n">validatedData</span><span class="p">)</span>
             <span class="kd">val</span> <span class="py">result</span> <span class="p">=</span> <span class="nf">outputData</span><span class="p">(</span><span class="n">formattedData</span><span class="p">)</span>
-            
+
             <span class="nc">ConversionResult</span><span class="p">.</span><span class="nc">Success</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nf">getFormatType</span><span class="p">())</span>
         <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">e</span><span class="p">:</span> <span class="nc">Exception</span><span class="p">)</span> <span class="p">{</span>
             <span class="nc">ConversionResult</span><span class="p">.</span><span class="nc">Error</span><span class="p">(</span><span class="s">"Conversion failed: ${e.message}"</span><span class="p">,</span> <span class="nf">getFormatType</span><span class="p">())</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    
+
     <span class="c1">// Hook method - can be overridden by subclasses</span>
     <span class="k">protected</span> <span class="k">open</span> <span class="k">fun</span> <span class="nf">validateData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">data</span><span class="p">.</span><span class="nf">trim</span><span class="p">()</span>
     <span class="p">}</span>
-    
+
     <span class="c1">// Common implementation - shared by all subclasses</span>
     <span class="k">private</span> <span class="k">fun</span> <span class="nf">readData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;):</span> <span class="nc">String</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">data</span><span class="p">.</span><span class="n">entries</span><span class="p">.</span><span class="nf">joinToString</span><span class="p">(</span><span class="s">", "</span><span class="p">)</span> <span class="p">{</span> <span class="s">"${it.key}=${it.value}"</span> <span class="p">}</span>
     <span class="p">}</span>
-    
+
     <span class="c1">// Abstract methods - must be implemented by subclasses</span>
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">formatData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span>
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">outputData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span>
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">getFormatType</span><span class="p">():</span> <span class="nc">String</span>
-    
+
     <span class="c1">// Optional hook method for performance optimization</span>
     <span class="k">protected</span> <span class="k">open</span> <span class="k">fun</span> <span class="nf">shouldOptimize</span><span class="p">():</span> <span class="nc">Boolean</span> <span class="p">=</span> <span class="k">false</span>
 <span class="p">}</span>
@@ -327,14 +327,14 @@ Snapshot: Dahua Snapshot
             <span class="kd">val</span> <span class="p">(</span><span class="py">key</span><span class="p">,</span> <span class="py">value</span><span class="p">)</span> <span class="p">=</span> <span class="n">entry</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s">"="</span><span class="p">,</span> <span class="n">limit</span> <span class="p">=</span> <span class="mi">2</span><span class="p">)</span>
             <span class="n">key</span> <span class="n">to</span> <span class="n">value</span>
         <span class="p">}</span>
-        
+
         <span class="k">return</span> <span class="nf">buildJsonObject</span> <span class="p">{</span>
             <span class="n">entries</span><span class="p">.</span><span class="nf">forEach</span> <span class="p">{</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="p">-&gt;</span>
                 <span class="nf">put</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
             <span class="p">}</span>
         <span class="p">}.</span><span class="nf">toString</span><span class="p">()</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">outputData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">if</span> <span class="p">(</span><span class="nf">shouldOptimize</span><span class="p">())</span> <span class="p">{</span>
             <span class="s">"JSON (Optimized): $data"</span>
@@ -342,9 +342,9 @@ Snapshot: Dahua Snapshot
             <span class="s">"JSON Output: $data"</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">getFormatType</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"JSON"</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">shouldOptimize</span><span class="p">():</span> <span class="nc">Boolean</span> <span class="p">=</span> <span class="k">true</span>
 <span class="p">}</span>
 
@@ -354,7 +354,7 @@ Snapshot: Dahua Snapshot
             <span class="kd">val</span> <span class="p">(</span><span class="py">key</span><span class="p">,</span> <span class="py">value</span><span class="p">)</span> <span class="p">=</span> <span class="n">entry</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s">"="</span><span class="p">,</span> <span class="n">limit</span> <span class="p">=</span> <span class="mi">2</span><span class="p">)</span>
             <span class="n">key</span> <span class="n">to</span> <span class="n">value</span>
         <span class="p">}</span>
-        
+
         <span class="k">return</span> <span class="nf">buildString</span> <span class="p">{</span>
             <span class="nf">appendLine</span><span class="p">(</span><span class="s">"&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;"</span><span class="p">)</span>
             <span class="nf">appendLine</span><span class="p">(</span><span class="s">"&lt;data&gt;"</span><span class="p">)</span>
@@ -364,13 +364,13 @@ Snapshot: Dahua Snapshot
             <span class="nf">append</span><span class="p">(</span><span class="s">"&lt;/data&gt;"</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">outputData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">"XML Output: $data"</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">getFormatType</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"XML"</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">validateData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
         <span class="c1">// XML-specific validation</span>
         <span class="k">return</span> <span class="n">data</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="s">"&lt;"</span><span class="p">,</span> <span class="s">"&amp;lt;"</span><span class="p">).</span><span class="nf">replace</span><span class="p">(</span><span class="s">"&gt;"</span><span class="p">,</span> <span class="s">"&amp;gt;"</span><span class="p">)</span>
@@ -383,7 +383,7 @@ Snapshot: Dahua Snapshot
             <span class="kd">val</span> <span class="p">(</span><span class="py">key</span><span class="p">,</span> <span class="py">value</span><span class="p">)</span> <span class="p">=</span> <span class="n">entry</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s">"="</span><span class="p">,</span> <span class="n">limit</span> <span class="p">=</span> <span class="mi">2</span><span class="p">)</span>
             <span class="s">"$key,$value"</span>
         <span class="p">}</span>
-        
+
         <span class="k">return</span> <span class="nf">buildString</span> <span class="p">{</span>
             <span class="nf">appendLine</span><span class="p">(</span><span class="s">"key,value"</span><span class="p">)</span> <span class="c1">// Header</span>
             <span class="n">entries</span><span class="p">.</span><span class="nf">forEach</span> <span class="p">{</span> <span class="n">entry</span> <span class="p">-&gt;</span>
@@ -391,11 +391,11 @@ Snapshot: Dahua Snapshot
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">outputData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">"CSV Output: $data"</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">getFormatType</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"CSV"</span>
 <span class="p">}</span>
 
@@ -405,31 +405,31 @@ Snapshot: Dahua Snapshot
             <span class="kd">val</span> <span class="p">(</span><span class="py">key</span><span class="p">,</span> <span class="py">value</span><span class="p">)</span> <span class="p">=</span> <span class="n">entry</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s">"="</span><span class="p">,</span> <span class="n">limit</span> <span class="p">=</span> <span class="mi">2</span><span class="p">)</span>
             <span class="n">key</span> <span class="n">to</span> <span class="n">value</span>
         <span class="p">}</span>
-        
+
         <span class="k">return</span> <span class="nf">buildString</span> <span class="p">{</span>
             <span class="n">entries</span><span class="p">.</span><span class="nf">forEach</span> <span class="p">{</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="p">-&gt;</span>
                 <span class="nf">appendLine</span><span class="p">(</span><span class="s">"$key: $value"</span><span class="p">)</span>
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">outputData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">"YAML Output: $data"</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">getFormatType</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"YAML"</span>
 <span class="p">}</span>
 </code></pre></div></div> <h3 id="3-advanced-implementation-with-hooks"><strong>3. Advanced Implementation with Hooks</strong></h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">abstract</span> <span class="kd">class</span> <span class="nc">AdvancedDataFormatter</span> <span class="p">:</span> <span class="nc">DataFormatter</span><span class="p">()</span> <span class="p">{</span>
-    
+
     <span class="c1">// Template method with additional hooks</span>
     <span class="k">fun</span> <span class="nf">convertWithMetadata</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;):</span> <span class="nc">ConversionResult</span> <span class="p">{</span>
         <span class="kd">val</span> <span class="py">startTime</span> <span class="p">=</span> <span class="nc">System</span><span class="p">.</span><span class="nf">currentTimeMillis</span><span class="p">()</span>
-        
+
         <span class="kd">val</span> <span class="py">result</span> <span class="p">=</span> <span class="nf">convert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        
+
         <span class="kd">val</span> <span class="py">endTime</span> <span class="p">=</span> <span class="nc">System</span><span class="p">.</span><span class="nf">currentTimeMillis</span><span class="p">()</span>
         <span class="kd">val</span> <span class="py">processingTime</span> <span class="p">=</span> <span class="n">endTime</span> <span class="p">-</span> <span class="n">startTime</span>
-        
+
         <span class="k">return</span> <span class="k">when</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">is</span> <span class="nc">ConversionResult</span><span class="p">.</span><span class="nc">Success</span> <span class="p">-&gt;</span> <span class="p">{</span>
                 <span class="nc">ConversionResult</span><span class="p">.</span><span class="nc">Success</span><span class="p">(</span>
@@ -440,12 +440,12 @@ Snapshot: Dahua Snapshot
             <span class="k">is</span> <span class="nc">ConversionResult</span><span class="p">.</span><span class="nc">Error</span> <span class="p">-&gt;</span> <span class="n">result</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    
+
     <span class="c1">// Hook method for preprocessing</span>
     <span class="k">protected</span> <span class="k">open</span> <span class="k">fun</span> <span class="nf">preprocess</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;):</span> <span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">data</span>
     <span class="p">}</span>
-    
+
     <span class="c1">// Hook method for postprocessing</span>
     <span class="k">protected</span> <span class="k">open</span> <span class="k">fun</span> <span class="nf">postprocess</span><span class="p">(</span><span class="n">formattedData</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">formattedData</span>
@@ -458,33 +458,33 @@ Snapshot: Dahua Snapshot
         <span class="k">return</span> <span class="n">data</span><span class="p">.</span><span class="nf">filterValues</span> <span class="p">{</span> <span class="n">it</span> <span class="p">!=</span> <span class="k">null</span> <span class="p">}</span>
             <span class="p">.</span><span class="nf">toSortedMap</span><span class="p">()</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">postprocess</span><span class="p">(</span><span class="n">formattedData</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
         <span class="c1">// Minify JSON</span>
         <span class="k">return</span> <span class="n">formattedData</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="nc">Regex</span><span class="p">(</span><span class="s">"\\s+"</span><span class="p">),</span> <span class="s">""</span><span class="p">)</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">formatData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
         <span class="c1">// Implementation similar to JsonFormatter but optimized</span>
         <span class="k">return</span> <span class="k">super</span><span class="p">.</span><span class="nf">formatData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">outputData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
         <span class="k">return</span> <span class="s">"Optimized JSON: $data"</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">getFormatType</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"Optimized JSON"</span>
 <span class="p">}</span>
 </code></pre></div></div> <h3 id="4-client-code"><strong>4. Client Code</strong></h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nf">println</span><span class="p">(</span><span class="s">"=== Data Format Conversion Demo ==="</span><span class="p">)</span>
-    
+
     <span class="kd">val</span> <span class="py">data</span> <span class="p">=</span> <span class="nf">mapOf</span><span class="p">(</span>
         <span class="s">"name"</span> <span class="n">to</span> <span class="s">"John Doe"</span><span class="p">,</span>
         <span class="s">"age"</span> <span class="n">to</span> <span class="mi">30</span><span class="p">,</span>
         <span class="s">"city"</span> <span class="n">to</span> <span class="s">"New York"</span><span class="p">,</span>
         <span class="s">"occupation"</span> <span class="n">to</span> <span class="s">"Software Engineer"</span>
     <span class="p">)</span>
-    
+
     <span class="c1">// Test different formatters</span>
     <span class="kd">val</span> <span class="py">formatters</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span>
         <span class="nc">JsonFormatter</span><span class="p">(),</span>
@@ -493,11 +493,11 @@ Snapshot: Dahua Snapshot
         <span class="nc">YamlFormatter</span><span class="p">(),</span>
         <span class="nc">OptimizedJsonFormatter</span><span class="p">()</span>
     <span class="p">)</span>
-    
+
     <span class="n">formatters</span><span class="p">.</span><span class="nf">forEach</span> <span class="p">{</span> <span class="n">formatter</span> <span class="p">-&gt;</span>
         <span class="nf">println</span><span class="p">(</span><span class="s">"\n--- ${formatter.javaClass.simpleName} ---"</span><span class="p">)</span>
         <span class="kd">val</span> <span class="py">result</span> <span class="p">=</span> <span class="n">formatter</span><span class="p">.</span><span class="nf">convert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        
+
         <span class="k">when</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">is</span> <span class="nc">ConversionResult</span><span class="p">.</span><span class="nc">Success</span> <span class="p">-&gt;</span> <span class="p">{</span>
                 <span class="nf">println</span><span class="p">(</span><span class="s">"✅ ${result.format} conversion successful:"</span><span class="p">)</span>
@@ -509,12 +509,12 @@ Snapshot: Dahua Snapshot
             <span class="p">}</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    
+
     <span class="c1">// Test with metadata</span>
     <span class="nf">println</span><span class="p">(</span><span class="s">"\n--- Advanced Formatter with Metadata ---"</span><span class="p">)</span>
     <span class="kd">val</span> <span class="py">advancedFormatter</span> <span class="p">=</span> <span class="nc">OptimizedJsonFormatter</span><span class="p">()</span>
     <span class="kd">val</span> <span class="py">advancedResult</span> <span class="p">=</span> <span class="n">advancedFormatter</span><span class="p">.</span><span class="nf">convertWithMetadata</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    
+
     <span class="k">when</span> <span class="p">(</span><span class="n">advancedResult</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">is</span> <span class="nc">ConversionResult</span><span class="p">.</span><span class="nc">Success</span> <span class="p">-&gt;</span> <span class="p">{</span>
             <span class="nf">println</span><span class="p">(</span><span class="s">"✅ Advanced conversion successful:"</span><span class="p">)</span>
@@ -584,7 +584,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
 <span class="k">abstract</span> <span class="kd">class</span> <span class="nc">ConfigurableDataFormatter</span><span class="p">(</span>
     <span class="k">private</span> <span class="kd">val</span> <span class="py">validationStrategy</span><span class="p">:</span> <span class="nc">ValidationStrategy</span>
 <span class="p">)</span> <span class="p">:</span> <span class="nc">DataFormatter</span><span class="p">()</span> <span class="p">{</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">validateData</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">String</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">if</span> <span class="p">(</span><span class="n">validationStrategy</span><span class="p">.</span><span class="nf">validate</span><span class="p">(</span><span class="n">data</span><span class="p">))</span> <span class="p">{</span>
             <span class="n">data</span><span class="p">.</span><span class="nf">trim</span><span class="p">()</span>
@@ -616,14 +616,14 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
 
 <span class="k">abstract</span> <span class="kd">class</span> <span class="nc">ObservableDataFormatter</span> <span class="p">:</span> <span class="nc">DataFormatter</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">private</span> <span class="kd">val</span> <span class="py">observers</span> <span class="p">=</span> <span class="n">mutableListOf</span><span class="p">&lt;</span><span class="nc">ConversionObserver</span><span class="p">&gt;()</span>
-    
+
     <span class="k">fun</span> <span class="nf">addObserver</span><span class="p">(</span><span class="n">observer</span><span class="p">:</span> <span class="nc">ConversionObserver</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">observers</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">observer</span><span class="p">)</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">convert</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nc">Map</span><span class="p">&lt;</span><span class="nc">String</span><span class="p">,</span> <span class="nc">Any</span><span class="p">&gt;):</span> <span class="nc">ConversionResult</span> <span class="p">{</span>
         <span class="n">observers</span><span class="p">.</span><span class="nf">forEach</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="nf">onConversionStart</span><span class="p">(</span><span class="nf">getFormatType</span><span class="p">())</span> <span class="p">}</span>
-        
+
         <span class="k">return</span> <span class="k">try</span> <span class="p">{</span>
             <span class="kd">val</span> <span class="py">result</span> <span class="p">=</span> <span class="k">super</span><span class="p">.</span><span class="nf">convert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
             <span class="n">observers</span><span class="p">.</span><span class="nf">forEach</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="nf">onConversionComplete</span><span class="p">(</span><span class="nf">getFormatType</span><span class="p">(),</span> <span class="n">result</span><span class="p">)</span> <span class="p">}</span>
@@ -643,7 +643,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
         <span class="k">package</span><span class="p">()</span>
         <span class="k">return</span> <span class="nf">deploy</span><span class="p">()</span>
     <span class="p">}</span>
-    
+
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">clean</span><span class="p">()</span>
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">compile</span><span class="p">()</span>
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">test</span><span class="p">()</span>
@@ -666,7 +666,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
         <span class="nf">disconnect</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">result</span>
     <span class="p">}</span>
-    
+
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">connect</span><span class="p">()</span>
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">performOperation</span><span class="p">():</span> <span class="nc">OperationResult</span><span class="p">&lt;</span><span class="nc">T</span><span class="p">&gt;</span>
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">commit</span><span class="p">()</span>
@@ -690,7 +690,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
         <span class="nf">log</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">response</span>
     <span class="p">}</span>
-    
+
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">authenticate</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="nc">Request</span><span class="p">)</span>
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">authorize</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="nc">Request</span><span class="p">)</span>
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">processRequest</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="nc">Request</span><span class="p">):</span> <span class="nc">Response</span>
@@ -710,7 +710,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
         <span class="nf">tearDown</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">result</span>
     <span class="p">}</span>
-    
+
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">setUp</span><span class="p">()</span>
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">runTest</span><span class="p">():</span> <span class="nc">TestResult</span>
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">tearDown</span><span class="p">()</span>
@@ -758,7 +758,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
             <span class="nc">Result</span><span class="p">.</span><span class="nc">Error</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">message</span> <span class="o">?:</span> <span class="s">"Unknown error"</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    
+
     <span class="k">protected</span> <span class="k">abstract</span> <span class="k">fun</span> <span class="nf">performAlgorithm</span><span class="p">():</span> <span class="nc">Any</span>
 <span class="p">}</span>
 </code></pre></div></div> <hr/> <h2 id="-related-articles">🔗 <strong>Related Articles</strong></h2> <ul> <li><a href="/2024-07-02-design-pattern-1-object-oriented-concepts">Design Pattern 1: Object-Oriented Concepts</a></li> <li><a href="/2024-07-03-design-pattern-2-design-principle">Design Pattern 2: Design Principles</a></li> <li><a href="/2024-12-26-design-pattern-25-strategy-pattern">Strategy Pattern</a></li> <li><a href="/2024-07-07-design-pattern-6-factory-method-pattern">Factory Method Pattern</a></li> <li><a href="/2024-12-21-design-pattern-19-command-pattern">Command Pattern</a></li> </ul> <hr/> <h2 id="-conclusion">✅ <strong>Conclusion</strong></h2> <p>Through the Template Method Pattern, we successfully created a flexible data format conversion system that maintains consistent workflow while allowing customization of specific steps.</p> <p><strong>Key Advantages:</strong></p> <ul> <li>🎯 <strong>Code reuse</strong> - Common algorithm structure shared across implementations</li> <li>🔧 <strong>Consistent execution</strong> - Algorithm flow remains the same for all formats</li> <li>📈 <strong>Easy extension</strong> - New formats can be added without modifying existing code</li> <li>🛡️ <strong>Maintainability</strong> - Changes to algorithm structure affect all subclasses</li> <li>⚡ <strong>Performance optimization</strong> - Hook methods allow for format-specific optimizations</li> </ul> <p><strong>Design Principles Followed:</strong></p> <ul> <li><strong>Single Responsibility Principle (SRP)</strong>: Each class handles one format conversion</li> <li><strong>Open-Closed Principle (OCP)</strong>: Open for extension (new formats), closed for modification</li> <li><strong>Don’t Repeat Yourself (DRY)</strong>: Common logic shared in template method</li> <li><strong>Template Method Pattern</strong>: Defines algorithm skeleton with customizable steps</li> </ul> <p><strong>Perfect For:</strong></p> <ul> <li><strong>Data processing pipelines</strong> (ETL, format conversion, validation)</li> <li><strong>Build systems</strong> (compilation, testing, deployment)</li> <li><strong>Workflow engines</strong> (approval processes, business processes)</li> <li><strong>Test frameworks</strong> (setup → test → teardown)</li> <li><strong>Document generation</strong> (reports, exports, templates)</li> </ul> <p>The Template Method Pattern provides an elegant solution for creating reusable algorithm frameworks while maintaining flexibility and consistency!</p> <hr/> <p><strong>💡 Pro Tip:</strong> Use hook methods sparingly and only when they provide meaningful customization points. Too many hooks can make the template method complex and hard to understand.</p> <p><strong>🔔 Stay Updated:</strong> Follow our Design Pattern series for more software architecture insights!</p>]]></content><author><name></name></author><category term="Design Pattern"/><category term="Software Engineering"/><category term="Programming"/><category term="Template Method Pattern"/><category term="Design Patterns"/><category term="Algorithm Framework"/><category term="Code Reuse"/><category term="Object-Oriented Design"/><category term="Software Architecture"/><category term="Kotlin"/><category term="Programming"/><category term="Behavioral Patterns"/><category term="Data Processing"/><summary type="html"><![CDATA[Master the Template Method Pattern with practical examples. Learn how to create reusable algorithm frameworks, implement data format conversions, and build extensible systems.]]></summary></entry><entry><title type="html">Design Pattern 25: Strategy Pattern - Complete Guide with Real-World Examples</title><link href="https://nickhuangcyh.github.io/blog/design%20pattern/software%20engineering/programming/design-pattern-25-strategy-pattern/" rel="alternate" type="text/html" title="Design Pattern 25: Strategy Pattern - Complete Guide with Real-World Examples"/><published>2024-12-26T15:50:00+00:00</published><updated>2024-12-26T15:50:00+00:00</updated><id>https://nickhuangcyh.github.io/blog/design%20pattern/software%20engineering/programming/design-pattern-25-strategy-pattern</id><content type="html" xml:base="https://nickhuangcyh.github.io/blog/design%20pattern/software%20engineering/programming/design-pattern-25-strategy-pattern/"><![CDATA[<blockquote> <p>📁 <strong>Download the complete Design Pattern series code</strong> from our <a href="https://github.com/nickhuangcyh/design_pattern">design_pattern repository</a>.</p> </blockquote> <hr/> <h2 id="-what-is-the-strategy-pattern">🎯 <strong>What is the Strategy Pattern?</strong></h2> <p>The <strong>Strategy Pattern</strong> is a behavioral design pattern that enables you to define a family of algorithms, encapsulate each one, and make them interchangeable. It allows the algorithm to vary independently from clients that use it, providing flexibility and maintainability.</p> <p><strong>Key Benefits:</strong></p> <ul> <li>✅ <strong>Algorithm flexibility</strong> - Switch algorithms at runtime</li> <li>✅ <strong>Low coupling</strong> - Algorithms are isolated from client code</li> <li>✅ <strong>Easy extension</strong> - Add new strategies without modifying existing code</li> <li>✅ <strong>Single responsibility</strong> - Each strategy focuses on one algorithm</li> <li>✅ <strong>Open/Closed Principle</strong> - Open for extension, closed for modification</li> </ul> <hr/> <h2 id="-real-world-problem-e-commerce-shipping-calculator">🚀 <strong>Real-World Problem: E-commerce Shipping Calculator</strong></h2> <p>Let’s design an <strong>e-commerce shipping cost calculation system</strong> with the following requirements:</p> <h3 id="system-requirements"><strong>System Requirements:</strong></h3> <ol> <li><strong>Support multiple shipping calculation methods:</strong> <ul> <li><strong>Regular Shipping</strong>: Fixed shipping cost</li> <li><strong>Express Shipping</strong>: Weight-based pricing</li> <li><strong>International Shipping</strong>: Region and weight-based pricing</li> </ul> </li> <li><strong>System must be highly extensible:</strong> <ul> <li>Easy to add new shipping calculation methods</li> </ul> </li> <li><strong>Avoid extensive if-else or switch-case statements</strong></li> <li><strong>Users should easily switch between shipping methods</strong></li> </ol> <h3 id="business-rules"><strong>Business Rules:</strong></h3> <ul> <li>Regular shipping: Fixed cost regardless of weight/region</li> <li>Express shipping: Cost per kilogram</li> <li>International shipping: Variable cost based on region and weight</li> <li>System should support future shipping methods without code changes</li> </ul> <hr/> <h2 id="️-object-oriented-analysis-ooa">🏗️ <strong>Object-Oriented Analysis (OOA)</strong></h2> <p>Let’s analyze the problem and identify the core components:</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_strategy_pattern_uml_1-480.webp 480w,/assets/img/design_pattern_strategy_pattern_uml_1-800.webp 800w,/assets/img/design_pattern_strategy_pattern_uml_1-1400.webp 1400w," type="image/webp" sizes="95vw"/> <img src="/assets/img/design_pattern_strategy_pattern_uml_1.png" width="100%" height="auto" title="Strategy Pattern - Problem Analysis" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> <h3 id="identified-forces"><strong>Identified Forces:</strong></h3> <ol> <li><strong>Maintenance Challenges</strong> <ul> <li>Shipping calculation logic mixed with main business logic</li> <li>Adding or modifying calculation methods affects other parts</li> </ul> </li> <li><strong>Open-Closed Principle Violation</strong> <ul> <li>Adding new shipping methods requires modifying core business logic</li> </ul> </li> <li><strong>Single Responsibility Principle Violation</strong> <ul> <li>Main class handles both shipping calculation and core business logic</li> </ul> </li> </ol> <hr/> <h2 id="-strategy-pattern-solution">💡 <strong>Strategy Pattern Solution</strong></h2> <p>After analyzing the forces, we can apply the <strong>Strategy Pattern</strong> to encapsulate algorithms into separate classes:</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_strategy_pattern_uml_2-480.webp 480w,/assets/img/design_pattern_strategy_pattern_uml_2-800.webp 800w,/assets/img/design_pattern_strategy_pattern_uml_2-1400.webp 1400w," type="image/webp" sizes="95vw"/> <img src="/assets/img/design_pattern_strategy_pattern_uml_2.png" width="100%" height="auto" title="Strategy Pattern - General Structure" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> <h3 id="strategy-pattern-components"><strong>Strategy Pattern Components:</strong></h3> <ol> <li><strong>Strategy Interface</strong> <ul> <li>Defines common interface for all algorithms</li> <li>Ensures consistent behavior across strategies</li> </ul> </li> <li><strong>Concrete Strategies</strong> <ul> <li>Each strategy implements the interface</li> <li>Contains specific algorithm logic</li> </ul> </li> <li><strong>Context</strong> <ul> <li>Maintains reference to current strategy</li> <li>Delegates work to strategy object</li> </ul> </li> </ol> <p><strong>Benefits:</strong></p> <ul> <li><strong>Algorithm isolation</strong> from client code</li> <li><strong>Runtime strategy switching</strong> capability</li> <li><strong>Easy extension</strong> without modifying existing code</li> </ul> <hr/> <h2 id="️-implementation-e-commerce-shipping-calculator">🛠️ <strong>Implementation: E-commerce Shipping Calculator</strong></h2> <p>Here’s the complete implementation using the Strategy Pattern:</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_strategy_pattern_uml_3-480.webp 480w,/assets/img/design_pattern_strategy_pattern_uml_3-800.webp 800w,/assets/img/design_pattern_strategy_pattern_uml_3-1400.webp 1400w," type="image/webp" sizes="95vw"/> <img src="/assets/img/design_pattern_strategy_pattern_uml_3.png" width="100%" height="auto" title="Shipping Calculator Strategy Implementation" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> <h3 id="1-strategy-interface"><strong>1. Strategy Interface</strong></h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">interface</span> <span class="nc">ShippingStrategy</span> <span class="p">{</span>
@@ -769,7 +769,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">calculateShippingCost</span><span class="p">(</span><span class="n">weight</span><span class="p">:</span> <span class="nc">Double</span><span class="p">,</span> <span class="n">region</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Double</span> <span class="p">{</span>
         <span class="k">return</span> <span class="mf">50.0</span> <span class="c1">// Fixed shipping cost</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">getStrategyName</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"Regular Shipping"</span>
 <span class="p">}</span>
 
@@ -777,7 +777,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">calculateShippingCost</span><span class="p">(</span><span class="n">weight</span><span class="p">:</span> <span class="nc">Double</span><span class="p">,</span> <span class="n">region</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Double</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">weight</span> <span class="p">*</span> <span class="mi">10</span> <span class="c1">// 10 per kilogram</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">getStrategyName</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"Express Shipping"</span>
 <span class="p">}</span>
 
@@ -791,44 +791,44 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
         <span class="p">}</span>
         <span class="k">return</span> <span class="n">weight</span> <span class="p">*</span> <span class="n">regionMultiplier</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">getStrategyName</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"International Shipping"</span>
 <span class="p">}</span>
 </code></pre></div></div> <h3 id="3-context-class"><strong>3. Context Class</strong></h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">ShippingCalculator</span><span class="p">(</span><span class="k">private</span> <span class="kd">var</span> <span class="py">strategy</span><span class="p">:</span> <span class="nc">ShippingStrategy</span><span class="p">)</span> <span class="p">{</span>
-    
+
     <span class="k">fun</span> <span class="nf">setStrategy</span><span class="p">(</span><span class="n">strategy</span><span class="p">:</span> <span class="nc">ShippingStrategy</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="n">strategy</span> <span class="p">=</span> <span class="n">strategy</span>
         <span class="nf">println</span><span class="p">(</span><span class="s">"🔄 Strategy changed to: ${strategy.getStrategyName()}"</span><span class="p">)</span>
     <span class="p">}</span>
-    
+
     <span class="k">fun</span> <span class="nf">calculateCost</span><span class="p">(</span><span class="n">weight</span><span class="p">:</span> <span class="nc">Double</span><span class="p">,</span> <span class="n">region</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Double</span> <span class="p">{</span>
         <span class="kd">val</span> <span class="py">cost</span> <span class="p">=</span> <span class="n">strategy</span><span class="p">.</span><span class="nf">calculateShippingCost</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span> <span class="n">region</span><span class="p">)</span>
         <span class="nf">println</span><span class="p">(</span><span class="s">"📦 ${strategy.getStrategyName()}: $${cost} for ${weight}kg to $region"</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">cost</span>
     <span class="p">}</span>
-    
+
     <span class="k">fun</span> <span class="nf">getCurrentStrategy</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="n">strategy</span><span class="p">.</span><span class="nf">getStrategyName</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div></div> <h3 id="4-client-code"><strong>4. Client Code</strong></h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="nf">println</span><span class="p">(</span><span class="s">"=== E-commerce Shipping Calculator Demo ==="</span><span class="p">)</span>
-    
+
     <span class="kd">val</span> <span class="py">calculator</span> <span class="p">=</span> <span class="nc">ShippingCalculator</span><span class="p">(</span><span class="nc">RegularShipping</span><span class="p">())</span>
-    
+
     <span class="c1">// Test different strategies</span>
     <span class="kd">val</span> <span class="py">testWeight</span> <span class="p">=</span> <span class="mf">5.0</span>
     <span class="kd">val</span> <span class="py">testRegion</span> <span class="p">=</span> <span class="s">"Asia"</span>
-    
+
     <span class="c1">// Regular shipping</span>
     <span class="n">calculator</span><span class="p">.</span><span class="nf">calculateCost</span><span class="p">(</span><span class="n">testWeight</span><span class="p">,</span> <span class="n">testRegion</span><span class="p">)</span>
-    
+
     <span class="c1">// Switch to express shipping</span>
     <span class="n">calculator</span><span class="p">.</span><span class="nf">setStrategy</span><span class="p">(</span><span class="nc">ExpressShipping</span><span class="p">())</span>
     <span class="n">calculator</span><span class="p">.</span><span class="nf">calculateCost</span><span class="p">(</span><span class="n">testWeight</span><span class="p">,</span> <span class="n">testRegion</span><span class="p">)</span>
-    
+
     <span class="c1">// Switch to international shipping</span>
     <span class="n">calculator</span><span class="p">.</span><span class="nf">setStrategy</span><span class="p">(</span><span class="nc">InternationalShipping</span><span class="p">())</span>
     <span class="n">calculator</span><span class="p">.</span><span class="nf">calculateCost</span><span class="p">(</span><span class="n">testWeight</span><span class="p">,</span> <span class="n">testRegion</span><span class="p">)</span>
-    
+
     <span class="c1">// Test different regions</span>
     <span class="nf">println</span><span class="p">(</span><span class="s">"\n=== Regional Cost Comparison ==="</span><span class="p">)</span>
     <span class="kd">val</span> <span class="py">regions</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span><span class="s">"Asia"</span><span class="p">,</span> <span class="s">"Europe"</span><span class="p">,</span> <span class="s">"America"</span><span class="p">,</span> <span class="s">"Africa"</span><span class="p">)</span>
@@ -858,13 +858,13 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">calculateShippingCost</span><span class="p">(</span><span class="n">weight</span><span class="p">:</span> <span class="nc">Double</span><span class="p">,</span> <span class="n">region</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Double</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">weight</span> <span class="p">*</span> <span class="mi">25</span> <span class="p">+</span> <span class="mi">100</span> <span class="c1">// Premium base cost + weight-based</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">getStrategyName</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"Premium Shipping"</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">validateOrder</span><span class="p">(</span><span class="n">weight</span><span class="p">:</span> <span class="nc">Double</span><span class="p">,</span> <span class="n">region</span><span class="p">:</span> <span class="nc">String</span><span class="p">):</span> <span class="nc">Boolean</span> <span class="p">{</span>
         <span class="k">return</span> <span class="n">weight</span> <span class="p">&lt;=</span> <span class="mf">50.0</span> <span class="c1">// Premium shipping has weight limit</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">getEstimatedDeliveryDays</span><span class="p">():</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">1</span>
 <span class="p">}</span>
 
@@ -937,7 +937,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">handleRequest</span><span class="p">()</span> <span class="p">{</span>
         <span class="nf">println</span><span class="p">(</span><span class="s">"🔥 Heating: Water temperature is rising, please wait..."</span><span class="p">)</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">getStateName</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"Heating"</span>
 <span class="p">}</span>
 
@@ -945,7 +945,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">handleRequest</span><span class="p">()</span> <span class="p">{</span>
         <span class="nf">println</span><span class="p">(</span><span class="s">"❄️ Cooling: Water temperature is decreasing, please wait..."</span><span class="p">)</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">getStateName</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"Cooling"</span>
 <span class="p">}</span>
 
@@ -953,7 +953,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">handleRequest</span><span class="p">()</span> <span class="p">{</span>
         <span class="nf">println</span><span class="p">(</span><span class="s">"⏸️ Standby: Water dispenser maintains current temperature, ready to use."</span><span class="p">)</span>
     <span class="p">}</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">getStateName</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">"Standby"</span>
 <span class="p">}</span>
 </code></pre></div></div> <h3 id="3-context-class"><strong>3. Context Class</strong></h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">WaterDispenser</span> <span class="p">{</span>
@@ -968,9 +968,9 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
     <span class="k">fun</span> <span class="nf">pressButton</span><span class="p">()</span> <span class="p">{</span>
         <span class="n">currentState</span><span class="p">.</span><span class="nf">handleRequest</span><span class="p">()</span>
     <span class="p">}</span>
-    
+
     <span class="k">fun</span> <span class="nf">getCurrentState</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="n">currentState</span><span class="p">.</span><span class="nf">getStateName</span><span class="p">()</span>
-    
+
     <span class="k">fun</span> <span class="nf">getTemperature</span><span class="p">():</span> <span class="nc">Int</span> <span class="p">=</span> <span class="n">temperature</span>
 <span class="p">}</span>
 </code></pre></div></div> <h3 id="4-client-code"><strong>4. Client Code</strong></h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
@@ -1079,7 +1079,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
 </code></pre></div></div> <h3 id="3-state-specific-data"><strong>3. State-Specific Data</strong></h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ✅ Good: State-specific data handling</span>
 <span class="kd">class</span> <span class="nc">HeatingState</span> <span class="p">:</span> <span class="nc">WaterDispenserState</span> <span class="p">{</span>
     <span class="k">private</span> <span class="kd">var</span> <span class="py">targetTemperature</span><span class="p">:</span> <span class="nc">Int</span> <span class="p">=</span> <span class="mi">80</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">handleRequest</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// Use targetTemperature for heating logic</span>
     <span class="p">}</span>
@@ -1164,10 +1164,10 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div> <h3 id="4-concrete-aggregate"><strong>4. Concrete Aggregate</strong></h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">DefaultFileSystem</span><span class="p">(</span>
-    <span class="k">private</span> <span class="kd">val</span> <span class="py">root</span><span class="p">:</span> <span class="nc">File</span><span class="p">,</span> 
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">root</span><span class="p">:</span> <span class="nc">File</span><span class="p">,</span>
     <span class="k">private</span> <span class="kd">val</span> <span class="py">searchMethod</span><span class="p">:</span> <span class="nc">SearchMethod</span>
 <span class="p">)</span> <span class="p">:</span> <span class="nc">FileSystem</span> <span class="p">{</span>
-    
+
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">createIterator</span><span class="p">():</span> <span class="nc">Iterator</span><span class="p">&lt;</span><span class="nc">File</span><span class="p">&gt;</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">when</span> <span class="p">(</span><span class="n">searchMethod</span><span class="p">)</span> <span class="p">{</span>
             <span class="nc">SearchMethod</span><span class="p">.</span><span class="nc">BFS</span> <span class="p">-&gt;</span> <span class="nc">BFSIterator</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
@@ -1181,8 +1181,8 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
     <span class="nc">BFS</span><span class="p">,</span> <span class="nc">DFS</span><span class="p">,</span> <span class="nc">SIZE_BASED</span>
 <span class="p">}</span>
 </code></pre></div></div> <h3 id="5-file-model"><strong>5. File Model</strong></h3> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">data class</span> <span class="nc">File</span><span class="p">(</span>
-    <span class="kd">val</span> <span class="py">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> 
-    <span class="kd">val</span> <span class="py">isDirectory</span><span class="p">:</span> <span class="nc">Boolean</span><span class="p">,</span> 
+    <span class="kd">val</span> <span class="py">name</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">isDirectory</span><span class="p">:</span> <span class="nc">Boolean</span><span class="p">,</span>
     <span class="kd">val</span> <span class="py">size</span><span class="p">:</span> <span class="nc">Long</span> <span class="p">=</span> <span class="mi">0</span><span class="p">,</span>
     <span class="kd">val</span> <span class="py">children</span><span class="p">:</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">File</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">emptyList</span><span class="p">()</span>
 <span class="p">)</span> <span class="p">{</span>
@@ -1234,7 +1234,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
 
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">hasNext</span><span class="p">():</span> <span class="nc">Boolean</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">currentFile</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span> <span class="k">return</span> <span class="k">true</span>
-        
+
         <span class="k">while</span> <span class="p">(</span><span class="n">stack</span><span class="p">.</span><span class="nf">isNotEmpty</span><span class="p">())</span> <span class="p">{</span>
             <span class="kd">val</span> <span class="py">file</span> <span class="p">=</span> <span class="n">stack</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="n">isDirectory</span><span class="p">)</span> <span class="p">{</span>
@@ -1263,7 +1263,7 @@ Optimized JSON: {"age":"30","city":"New York","name":"John Doe","occupation":"So
 
     <span class="k">override</span> <span class="k">fun</span> <span class="nf">hasNext</span><span class="p">():</span> <span class="nc">Boolean</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">hasNextElement</span><span class="p">)</span> <span class="k">return</span> <span class="k">true</span>
-        
+
         <span class="k">while</span> <span class="p">(</span><span class="n">iterator</span><span class="p">.</span><span class="nf">hasNext</span><span class="p">())</span> <span class="p">{</span>
             <span class="kd">val</span> <span class="py">element</span> <span class="p">=</span> <span class="n">iterator</span><span class="p">.</span><span class="nf">next</span><span class="p">()</span>
             <span class="k">if</span> <span class="p">(</span><span class="nf">predicate</span><span class="p">(</span><span class="n">element</span><span class="p">))</span> <span class="p">{</span>
