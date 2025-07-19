@@ -16,6 +16,7 @@ thumbnail: /assets/img/nick-brunner-k4xDXNskVsQ-unsplash.jpg
 Recently, while developing AR features on iOS and Android, I discovered my complete unfamiliarity with 3D graphics. After spending time deeply understanding the concepts, I finally pieced together some fundamental ideas. This article organizes several core concepts to share with others who are also exploring 3D graphics.
 
 Understanding 3D graphics fundamentals is essential for:
+
 - **Game Development**: Creating immersive 3D worlds
 - **AR/VR Applications**: Building augmented and virtual reality experiences
 - **Computer Graphics**: Understanding rendering pipelines
@@ -40,11 +41,11 @@ Triangles are the fundamental building blocks of 3D graphics because:
 
 ### Triangle Resolution Impact
 
-| Resolution | Triangle Count | Quality | Performance |
-|------------|----------------|---------|-------------|
-| Low | 100-1,000 | Basic shape | Fast rendering |
-| Medium | 1,000-10,000 | Good detail | Balanced |
-| High | 10,000+ | High detail | Slower rendering |
+| Resolution | Triangle Count | Quality     | Performance      |
+| ---------- | -------------- | ----------- | ---------------- |
+| Low        | 100-1,000      | Basic shape | Fast rendering   |
+| Medium     | 1,000-10,000   | Good detail | Balanced         |
+| High       | 10,000+        | High detail | Slower rendering |
 
 ---
 
@@ -61,6 +62,7 @@ For example, a cube's six faces can be unfolded into a 2D plane (like paper cutt
 ### UV Coordinate System
 
 UV coordinates are represented as (U, V):
+
 - **U**: Horizontal axis (0 to 1)
 - **V**: Vertical axis (0 to 1)
 - **Origin**: Top-left corner (0,0)
@@ -71,16 +73,19 @@ UV coordinates are represented as (U, V):
 ### UV Mapping Techniques
 
 #### 1. Planar Mapping
+
 - Projects texture from one direction
 - Best for flat surfaces
 - Simple but may cause distortion
 
 #### 2. Cylindrical Mapping
+
 - Wraps texture around cylindrical objects
 - Good for bottles, pipes, characters
 - Maintains aspect ratio
 
 #### 3. Spherical Mapping
+
 - Maps texture onto spherical surfaces
 - Ideal for planets, balls, heads
 - May cause distortion at poles
@@ -195,12 +200,12 @@ glDisable(GL_CULL_FACE);
 
 ### Triangle Count Optimization
 
-| Platform | Recommended Triangle Count |
-|----------|---------------------------|
-| Mobile (Low-end) | 1,000 - 5,000 |
-| Mobile (High-end) | 5,000 - 20,000 |
-| Desktop | 10,000 - 100,000 |
-| VR | 50,000 - 200,000 |
+| Platform          | Recommended Triangle Count |
+| ----------------- | -------------------------- |
+| Mobile (Low-end)  | 1,000 - 5,000              |
+| Mobile (High-end) | 5,000 - 20,000             |
+| Desktop           | 10,000 - 100,000           |
+| VR                | 50,000 - 200,000           |
 
 ### Rendering Pipeline Optimization
 
@@ -249,7 +254,7 @@ private:
     std::vector<Vertex> vertices;
     std::vector<unsigned int> indices;
     unsigned int VAO, VBO, EBO;
-    
+
 public:
     void setupMesh();
     void draw();
@@ -264,7 +269,8 @@ public:
 ### UV Mapping Issues
 
 **Problem**: Texture stretching or distortion
-**Solution**: 
+**Solution**:
+
 - Use proper UV unwrapping techniques
 - Avoid overlapping UV coordinates
 - Maintain consistent texture density
@@ -273,6 +279,7 @@ public:
 
 **Problem**: Slow rendering with complex models
 **Solution**:
+
 - Reduce triangle count
 - Implement LOD system
 - Use efficient rendering techniques
@@ -282,6 +289,7 @@ public:
 
 **Problem**: High memory usage
 **Solution**:
+
 - Use index buffers
 - Implement texture streaming
 - Optimize vertex data

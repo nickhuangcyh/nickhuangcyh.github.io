@@ -19,6 +19,7 @@ thumbnail: /assets/img/google_adsense.jpg
 **Google AdSense** is an advertising platform that allows website owners to display relevant ads and earn revenue from clicks or impressions. It's a popular choice for bloggers, content creators, and webmasters looking to monetize their sites with minimal effort.
 
 **Key Benefits:**
+
 - ✅ **Free to use**
 - ✅ **Automated ad placement**
 - ✅ **Multiple ad formats** (text, image, video)
@@ -40,20 +41,24 @@ thumbnail: /assets/img/google_adsense.jpg
 ## 🛠️ **Step-by-Step Guide: Setting Up Google AdSense**
 
 ### **1. Register for an AdSense Account**
+
 - Visit the [Google AdSense website](https://www.google.com/adsense/)
 - Sign in with your Google account and apply
 - Enter your website domain and region
 - Accept the terms and conditions
 
 ### **2. Add Your Website Information**
+
 - Provide accurate site details
 - Ensure your site complies with AdSense policies
 
 ### **3. Choose Ad Display Formats**
+
 - Explore different ad styles (text, display, in-feed, in-article)
 - Select formats that match your website design
 
 ### **4. Insert AdSense Code and Submit for Review**
+
 - Copy the provided code and paste it into your site's `<head>` section
 - Submit your site for review (approval may take a few days)
 
@@ -81,12 +86,12 @@ thumbnail: /assets/img/google_adsense.jpg
 
 ## 📊 **Google AdSense vs Alternatives**
 
-| Platform         | Pros                        | Cons                       |
-|------------------|-----------------------------|----------------------------|
-| **AdSense**      | ✅ Easy setup<br>✅ High fill rate | ❌ Strict policies         |
-| **Media.net**    | ✅ Contextual ads           | ❌ Lower fill rate          |
-| **Ezoic**        | ✅ AI optimization          | ❌ Approval process         |
-| **Amazon Ads**   | ✅ High e-commerce synergy  | ❌ Limited to Amazon sites  |
+| Platform       | Pros                               | Cons                       |
+| -------------- | ---------------------------------- | -------------------------- |
+| **AdSense**    | ✅ Easy setup<br>✅ High fill rate | ❌ Strict policies         |
+| **Media.net**  | ✅ Contextual ads                  | ❌ Lower fill rate         |
+| **Ezoic**      | ✅ AI optimization                 | ❌ Approval process        |
+| **Amazon Ads** | ✅ High e-commerce synergy         | ❌ Limited to Amazon sites |
 
 ---
 
@@ -100,6 +105,7 @@ thumbnail: /assets/img/google_adsense.jpg
 ---
 
 ## 🔗 **Related Articles**
+
 - [How to Set Up Google Analytics for Your Website](/2024-12-01-google-analytics.md)
 - [SEO Best Practices for Developers](/2024-01-11-setup-development-environment-on-a-new-macos.md)
 - [How to Build a Blog with Jekyll and GitHub Pages](/2021-12-30-creating_a_github_pages_with_jekyll_and_minimal_mistakes.md)
@@ -111,6 +117,7 @@ thumbnail: /assets/img/google_adsense.jpg
 Google AdSense is a simple and effective way to monetize your website. By focusing on valuable content and optimizing ad placements, you can generate steady passive income while providing a great user experience.
 
 **Key Takeaways:**
+
 - 🎯 **Easy setup and integration**
 - 📈 **Passive income potential**
 - 🛠️ **Comprehensive analytics**

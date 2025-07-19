@@ -19,6 +19,7 @@ thumbnail: /assets/img/design_patterns.jpg
 **狀態模式（State Pattern）** 是一種行為型設計模式，讓物件在內部狀態改變時能自動切換行為。非常適合實作狀態機、流程控制、UI 狀態切換等場景。
 
 **主要應用：**
+
 - ✅ 狀態機與流程引擎
 - ✅ 遊戲開發（角色狀態、AI 行為）
 - ✅ UI 元件（按鈕狀態、表單驗證）
@@ -30,6 +31,7 @@ thumbnail: /assets/img/design_patterns.jpg
 ## 🚀 實務案例：飲水機狀態管理
 
 設計一個「飲水機」系統，需求如下：
+
 - 三種運作狀態：
   - 加熱中：提升水溫
   - 冷卻中：降低水溫
@@ -38,6 +40,7 @@ thumbnail: /assets/img/design_patterns.jpg
 - 各狀態有專屬行為
 
 **商業規則：**
+
 - 加熱狀態不可同時冷卻
 - 冷卻狀態不可同時加熱
 - 待機狀態維持現有溫度
@@ -50,6 +53,7 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_1.png" title="State Pattern - Problem Analysis" %}
 
 **核心挑戰：**
+
 1. 高耦合：狀態邏輯與飲水機主功能混雜，難以維護
 2. 違反單一職責原則（SRP）：飲水機類別同時負責狀態與主功能
 3. 擴展困難：新增或修改狀態需改主邏輯，違反 OCP
@@ -63,11 +67,13 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_2.png" title="State Pattern - General Structure" %}
 
 **組件說明：**
+
 1. 狀態介面：定義所有狀態共用方法
 2. 具體狀態：各自實作專屬行為
 3. 上下文（Context）：維護當前狀態，將請求委派給狀態物件
 
 **好處：**
+
 - 降低耦合，狀態邏輯獨立
 - 單一職責，易於維護
 - 易於擴展，無需改舊程式
@@ -149,6 +155,7 @@ fun main() {
 ```
 
 **預期輸出：**
+
 ```
 === 飲水機狀態機示範 ===
 ⏸️ 待機中：飲水機維持現有水溫，隨時可用。
@@ -167,11 +174,13 @@ fun main() {
 狀態模式讓你能彈性管理物件行為，根據狀態切換不同邏輯，適合狀態機、流程控制、UI 狀態等場景。
 
 **適用場景：**
+
 - 複雜狀態機
 - 需根據狀態切換行為的物件
 - UI 狀態、遊戲角色、網路協定
 
 **設計原則：**
+
 - 單一職責原則（SRP）：狀態邏輯獨立
 - 開放封閉原則（OCP）：新增狀態無需改舊程式
 

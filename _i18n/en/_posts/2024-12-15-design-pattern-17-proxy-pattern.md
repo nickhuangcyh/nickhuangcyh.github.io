@@ -3,7 +3,20 @@ layout: post
 title: "Design Pattern 17: Proxy Pattern - Complete Guide with Real-World Video Streaming Examples"
 date: 2024-12-15 21:30:00 +0800
 description: "Master the Proxy Pattern with practical video streaming examples. Learn how to control object access for improved performance, security, and resource management in distributed systems."
-tags: [Proxy Pattern, Design Patterns, Access Control, Performance Optimization, Object-Oriented Design, Software Architecture, Kotlin, Programming, Structural Patterns, Caching, Security]
+tags:
+  [
+    Proxy Pattern,
+    Design Patterns,
+    Access Control,
+    Performance Optimization,
+    Object-Oriented Design,
+    Software Architecture,
+    Kotlin,
+    Programming,
+    Structural Patterns,
+    Caching,
+    Security,
+  ]
 categories: [Design Pattern, Software Engineering, Programming]
 toc:
   sidebar: right
@@ -19,6 +32,7 @@ thumbnail: /assets/img/design_patterns.jpg
 The **Proxy Pattern** is a structural design pattern that provides a surrogate or placeholder for another object to control access to it. It acts as an intermediary between the client and the real object, adding a layer of indirection for various purposes such as caching, access control, or lazy loading.
 
 **Key Benefits:**
+
 - ✅ **Access Control** - Control and monitor access to sensitive objects
 - ✅ **Performance Optimization** - Implement caching and lazy loading
 - ✅ **Resource Management** - Efficiently manage expensive resources
@@ -32,6 +46,7 @@ The **Proxy Pattern** is a structural design pattern that provides a surrogate o
 Let's design a **video streaming system** with the following requirements:
 
 ### **System Requirements:**
+
 - **Support multiple video sources** (YouTube, Vimeo, local files)
 - **Implement intelligent caching** to avoid repeated downloads
 - **Transparent client interface** - clients shouldn't know about caching logic
@@ -39,6 +54,7 @@ Let's design a **video streaming system** with the following requirements:
 - **Extensibility** - easy to add new video sources and caching strategies
 
 ### **Business Rules:**
+
 - Videos should be downloaded only on first access
 - Subsequent accesses should use cached versions
 - System should handle different video formats efficiently
@@ -83,6 +99,7 @@ After analyzing the forces, we can apply the **Proxy Pattern** to introduce inte
 4. **Client** - Uses the subject interface without knowing about proxy
 
 **Benefits:**
+
 - **Intelligent caching** - Avoid repeated expensive operations
 - **Access control** - Add security and monitoring layers
 - **Resource management** - Efficiently handle expensive resources
@@ -126,7 +143,7 @@ class YouTubeVideoPlayer : VideoPlayer {
         println("🔄 Downloading video from YouTube: $videoName")
         // Simulate network delay
         Thread.sleep(2000)
-        
+
         return VideoData(
             name = videoName,
             content = "VideoContent($videoName)",
@@ -154,7 +171,7 @@ class VimeoVideoPlayer : VideoPlayer {
     override fun download(videoName: String): VideoData {
         println("🔄 Downloading video from Vimeo: $videoName")
         Thread.sleep(1500)
-        
+
         return VideoData(
             name = videoName,
             content = "VideoContent($videoName)",
@@ -252,11 +269,11 @@ data class CacheStats(
 class VideoStreamingManager(private val player: VideoPlayer) {
     fun streamVideo(videoName: String) {
         println("🎬 Request to stream video: $videoName")
-        
+
         // Get video info first
         val videoInfo = player.getVideoInfo(videoName)
         println("📊 Video Info: ${videoInfo.name} - ${videoInfo.duration}s - ${videoInfo.quality}")
-        
+
         // Download and play video
         val videoData = player.download(videoName)
         player.play(videoData)
@@ -266,10 +283,10 @@ class VideoStreamingManager(private val player: VideoPlayer) {
 fun main() {
     // Create real video player
     val youtubePlayer = YouTubeVideoPlayer()
-    
+
     // Create proxy with caching
     val proxyPlayer = CachingVideoProxy(youtubePlayer)
-    
+
     // Create streaming manager
     val manager = VideoStreamingManager(proxyPlayer)
 
@@ -278,14 +295,14 @@ fun main() {
     // Stream videos (first access - download required)
     manager.streamVideo("funny_cats.mp4")
     println()
-    
+
     manager.streamVideo("epic_fail.mp4")
     println()
-    
+
     // Stream same videos again (using cache)
     manager.streamVideo("funny_cats.mp4")
     println()
-    
+
     manager.streamVideo("epic_fail.mp4")
     println()
 
@@ -301,6 +318,7 @@ fun main() {
 ```
 
 **Expected Output:**
+
 ```
 === Video Streaming Demo ===
 
@@ -338,18 +356,19 @@ fun main() {
 
 ## 📊 **Proxy Pattern vs Alternative Approaches**
 
-| Approach | Pros | Cons |
-|----------|------|------|
-| **Proxy Pattern** | ✅ Access control<br>✅ Performance optimization<br>✅ Transparent interface | ❌ Additional complexity<br>❌ Potential overhead<br>❌ Debugging complexity |
-| **Direct Access** | ✅ Simple implementation<br>✅ No overhead<br>✅ Easy debugging | ❌ No access control<br>❌ No caching<br>❌ Tight coupling |
-| **Decorator Pattern** | ✅ Dynamic behavior addition<br>✅ Multiple decorators | ❌ No access control<br>❌ Different purpose (behavior vs access) |
-| **Facade Pattern** | ✅ Simplified interface<br>✅ Subsystem encapsulation | ❌ No access control<br>❌ Different purpose (interface vs access) |
+| Approach              | Pros                                                                         | Cons                                                                         |
+| --------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| **Proxy Pattern**     | ✅ Access control<br>✅ Performance optimization<br>✅ Transparent interface | ❌ Additional complexity<br>❌ Potential overhead<br>❌ Debugging complexity |
+| **Direct Access**     | ✅ Simple implementation<br>✅ No overhead<br>✅ Easy debugging              | ❌ No access control<br>❌ No caching<br>❌ Tight coupling                   |
+| **Decorator Pattern** | ✅ Dynamic behavior addition<br>✅ Multiple decorators                       | ❌ No access control<br>❌ Different purpose (behavior vs access)            |
+| **Facade Pattern**    | ✅ Simplified interface<br>✅ Subsystem encapsulation                        | ❌ No access control<br>❌ Different purpose (interface vs access)           |
 
 ---
 
 ## 🎯 **When to Use the Proxy Pattern**
 
 ### **✅ Perfect For:**
+
 - **Remote access** (RMI, web services, distributed systems)
 - **Virtual proxies** (lazy loading of expensive resources)
 - **Protection proxies** (access control and security)
@@ -357,6 +376,7 @@ fun main() {
 - **Logging and monitoring** (audit trails and metrics)
 
 ### **❌ Avoid When:**
+
 - **Simple object access** (no additional functionality needed)
 - **Performance-critical applications** (proxy overhead)
 - **Tight coupling requirements** (direct access needed)
@@ -373,7 +393,7 @@ class ProtectionProxy(
     private val realPlayer: VideoPlayer,
     private val userRole: UserRole
 ) : VideoPlayer {
-    
+
     override fun download(videoName: String): VideoData {
         if (!hasPermission(userRole, "download")) {
             throw SecurityException("User ${userRole.name} cannot download videos")
@@ -412,12 +432,12 @@ enum class UserRole {
 class RemoteVideoProxy(
     private val serverUrl: String
 ) : VideoPlayer {
-    
+
     override fun download(videoName: String): VideoData {
         println("🌐 Connecting to remote server: $serverUrl")
         // Simulate network communication
         Thread.sleep(1000)
-        
+
         return VideoData(
             name = videoName,
             content = "RemoteVideoContent($videoName)",
@@ -448,19 +468,19 @@ class RemoteVideoProxy(
 class AnalyticsProxy(
     private val realPlayer: VideoPlayer
 ) : VideoPlayer {
-    
+
     private val analytics = mutableMapOf<String, Int>()
     private val performanceMetrics = mutableListOf<PerformanceMetric>()
 
     override fun download(videoName: String): VideoData {
         val startTime = System.currentTimeMillis()
-        
+
         try {
             val result = realPlayer.download(videoName)
-            
+
             val duration = System.currentTimeMillis() - startTime
             recordMetric("download", videoName, duration, true)
-            
+
             return result
         } catch (e: Exception) {
             val duration = System.currentTimeMillis() - startTime
@@ -471,10 +491,10 @@ class AnalyticsProxy(
 
     override fun play(videoData: VideoData) {
         val startTime = System.currentTimeMillis()
-        
+
         try {
             realPlayer.play(videoData)
-            
+
             val duration = System.currentTimeMillis() - startTime
             recordMetric("play", videoData.name, duration, true)
         } catch (e: Exception) {
@@ -497,7 +517,7 @@ class AnalyticsProxy(
         val totalRequests = performanceMetrics.size
         val successfulRequests = performanceMetrics.count { it.success }
         val avgDuration = performanceMetrics.map { it.duration }.average()
-        
+
         return AnalyticsReport(
             totalRequests = totalRequests,
             successRate = successfulRequests.toDouble() / totalRequests,
@@ -527,21 +547,25 @@ data class AnalyticsReport(
 ## 🚀 **Real-World Applications**
 
 ### **1. Web Services and APIs**
+
 - **REST API proxies** - Add caching, authentication, rate limiting
 - **Microservice gateways** - Route requests and add cross-cutting concerns
 - **Load balancers** - Distribute requests across multiple servers
 
 ### **2. Database Access**
+
 - **Connection pooling** - Manage database connections efficiently
 - **Query caching** - Cache frequently executed queries
 - **Access control** - Implement row-level security
 
 ### **3. File Systems**
+
 - **Virtual file systems** - Provide unified access to different storage backends
 - **File caching** - Cache frequently accessed files
 - **Access logging** - Track file access patterns
 
 ### **4. Network Services**
+
 - **HTTP proxies** - Add caching, compression, security
 - **VPN services** - Route traffic through secure tunnels
 - **CDN services** - Distribute content globally
@@ -551,12 +575,14 @@ data class AnalyticsReport(
 ## 📈 **Performance Considerations**
 
 ### **Caching Strategies**
+
 - **Memory caching** - Fast access for frequently used objects
 - **Disk caching** - Persistent storage for large objects
 - **Distributed caching** - Share cache across multiple servers
 - **Cache invalidation** - Remove stale data efficiently
 
 ### **Access Control Overhead**
+
 - **Authentication checks** - Validate user credentials
 - **Authorization logic** - Check user permissions
 - **Audit logging** - Record access patterns
@@ -576,18 +602,21 @@ data class AnalyticsReport(
 ## 📚 **Best Practices**
 
 ### **1. Proxy Design**
+
 - **Keep proxies lightweight** - Avoid heavy computation in proxy
 - **Maintain transparency** - Proxy should be indistinguishable from real object
 - **Handle errors gracefully** - Provide meaningful error messages
 - **Document proxy behavior** - Clear documentation of proxy functionality
 
 ### **2. Performance Optimization**
+
 - **Use appropriate caching strategies** - Choose caching based on access patterns
 - **Implement lazy loading** - Load resources only when needed
 - **Monitor proxy overhead** - Ensure proxy doesn't become bottleneck
 - **Consider async operations** - For time-consuming operations
 
 ### **3. Security Considerations**
+
 - **Validate all inputs** - Prevent security vulnerabilities
 - **Implement proper authentication** - Secure access to sensitive resources
 - **Log security events** - Track access patterns for security analysis
@@ -607,10 +636,11 @@ The **Proxy Pattern** provides a powerful way to control access to objects while
 This pattern is essential for building robust, scalable systems that need to handle remote resources, implement security controls, or optimize performance. Whether you're building web services, database applications, or file systems, the Proxy Pattern provides the foundation for controlled and efficient object access.
 
 **Next Steps:**
+
 - Explore the **[Decorator Pattern](/2024-12-11-design-pattern-14-decorator-pattern/)** for dynamic behavior addition
 - Learn about the **[Facade Pattern](/2024-12-12-design-pattern-15-facade-pattern/)** for interface simplification
 - Discover the **[Adapter Pattern](/2024-12-07-design-pattern-11-adapter-pattern/)** for interface compatibility
 
 ---
 
-*Ready to implement the Proxy Pattern in your projects? Download the complete code examples from our [design_pattern repository](https://github.com/nickhuangcyh/design_pattern) and start building more secure, efficient systems today!*
+_Ready to implement the Proxy Pattern in your projects? Download the complete code examples from our [design_pattern repository](https://github.com/nickhuangcyh/design_pattern) and start building more secure, efficient systems today!_

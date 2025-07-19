@@ -3,7 +3,19 @@ layout: post
 title: "Design Pattern 5: Simple Factory Pattern - Centralized Object Creation for Dynamic Beverage Ordering Systems"
 date: 2024-07-06 23:00:00 +0800
 description: "Master the Simple Factory Pattern to centralize object creation logic. Learn how to separate variable and constant code, improve maintainability, and create flexible object instantiation systems."
-tags: [Simple Factory Pattern, Design Patterns, Object Creation, Factory Pattern, Software Architecture, Kotlin, Java, Swift, Code Separation, Maintainability]
+tags:
+  [
+    Simple Factory Pattern,
+    Design Patterns,
+    Object Creation,
+    Factory Pattern,
+    Software Architecture,
+    Kotlin,
+    Java,
+    Swift,
+    Code Separation,
+    Maintainability,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Code Quality]
 toc:
   #   beginning: true
@@ -239,6 +251,7 @@ The Simple Factory Pattern provides an elegant solution by centralizing the obje
 {% include figure.liquid path="assets/img/design_pattern_simple_factory_pattern_uml_2.png" title="Simple Factory Pattern UML diagram" %}
 
 **Key Components:**
+
 - **Product**: The interface for the objects being created
 - **Concrete Products**: Specific implementations of the product
 - **Factory**: Centralized class responsible for creating objects
@@ -305,12 +318,12 @@ class BeverageFactory {
 class BeverageShop(private val factory: BeverageFactory) {
     fun order(beverageName: String): Beverage? {
         val beverage = factory.createBeverage(beverageName)
-        
+
         beverage?.addSugar(5)
         beverage?.addIce(5)
         beverage?.shake()
         beverage?.packageUp()
-        
+
         return beverage
     }
 }
@@ -319,7 +332,7 @@ class BeverageShop(private val factory: BeverageFactory) {
 fun main() {
     val factory = BeverageFactory()
     val shop = BeverageShop(factory)
-    
+
     val blackTea = shop.order("black tea")
     val greenTea = shop.order("green tea")
     val milkTea = shop.order("milk tea")
@@ -331,13 +344,13 @@ fun main() {
 ```kotlin
 class EnhancedBeverageFactory {
     private val supportedBeverages = setOf("black tea", "green tea", "milk tea", "oolong tea")
-    
+
     fun createBeverage(beverageName: String): Beverage? {
         if (!supportedBeverages.contains(beverageName.lowercase())) {
             println("Unsupported beverage: $beverageName")
             return null
         }
-        
+
         return when (beverageName.lowercase()) {
             "black tea" -> BlackTea()
             "green tea" -> GreenTea()
@@ -346,7 +359,7 @@ class EnhancedBeverageFactory {
             else -> null
         }
     }
-    
+
     fun getSupportedBeverages(): Set<String> = supportedBeverages.toSet()
 }
 
@@ -368,7 +381,7 @@ class PayPalGateway: PaymentGateway {
         println("Processing $amount via PayPal")
         return true
     }
-    
+
     override fun getGatewayName(): String = "PayPal"
 }
 
@@ -377,7 +390,7 @@ class StripeGateway: PaymentGateway {
         println("Processing $amount via Stripe")
         return true
     }
-    
+
     override fun getGatewayName(): String = "Stripe"
 }
 
@@ -428,7 +441,7 @@ class RobustBeverageFactory {
 // Good: Factory with object caching
 class CachedBeverageFactory {
     private val cache = mutableMapOf<String, Beverage>()
-    
+
     fun createBeverage(beverageName: String): Beverage? {
         return cache.getOrPut(beverageName.lowercase()) {
             when (beverageName.lowercase()) {
@@ -449,7 +462,7 @@ class CachedBeverageFactory {
 class ConfigurableBeverageFactory(private val config: Map<String, String>) {
     fun createBeverage(beverageName: String): Beverage? {
         val className = config[beverageName.lowercase()] ?: return null
-        
+
         return try {
             Class.forName(className).getDeclaredConstructor().newInstance() as Beverage
         } catch (e: Exception) {
@@ -469,12 +482,12 @@ val factory = ConfigurableBeverageFactory(config)
 
 ## Performance Considerations
 
-| Approach | Memory Usage | Performance | Maintainability | Extensibility |
-|----------|--------------|-------------|-----------------|---------------|
-| Direct Instantiation | Low | High | Low | Low |
-| Simple Factory | Medium | Medium | High | Medium |
-| Factory Method | Medium | Medium | High | High |
-| Abstract Factory | High | Medium | High | High |
+| Approach             | Memory Usage | Performance | Maintainability | Extensibility |
+| -------------------- | ------------ | ----------- | --------------- | ------------- |
+| Direct Instantiation | Low          | High        | Low             | Low           |
+| Simple Factory       | Medium       | Medium      | High            | Medium        |
+| Factory Method       | Medium       | Medium      | High            | High          |
+| Abstract Factory     | High         | Medium      | High            | High          |
 
 ## Related Design Patterns
 

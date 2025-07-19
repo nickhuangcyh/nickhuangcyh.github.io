@@ -3,7 +3,19 @@ layout: post
 title: "設計模式 7：抽象工廠模式 - 多區域產品家族的彈性創建"
 date: 2024-07-08 23:00:00 +0800
 description: "精通抽象工廠模式，打造多區域、多產品家族的彈性物件創建架構。學會支援全球化應用、平台差異與主題切換，圖文範例，適合軟體工程師與架構師。"
-tags: [Abstract Factory Pattern, Design Patterns, Product Families, Globalization, Software Architecture, Kotlin, Java, Swift, Factory Pattern, Object Creation]
+tags:
+  [
+    Abstract Factory Pattern,
+    Design Patterns,
+    Product Families,
+    Globalization,
+    Software Architecture,
+    Kotlin,
+    Java,
+    Swift,
+    Factory Pattern,
+    Object Creation,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Globalization]
 toc:
   sidebar: right

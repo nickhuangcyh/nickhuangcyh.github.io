@@ -72,6 +72,7 @@ A Sitemap is an XML file that tells search engines about all your website conten
 ### What is an XML Sitemap?
 
 An XML sitemap is a structured file that:
+
 - Lists all your website pages
 - Provides metadata about each page
 - Helps search engines understand your site structure
@@ -174,6 +175,7 @@ keywords: "relevant, keywords, for, your, content"
 
 **Problem**: Your site doesn't appear in search results
 **Solutions**:
+
 - Verify Google Search Console setup
 - Check robots.txt for blocking directives
 - Ensure site is accessible to crawlers
@@ -183,6 +185,7 @@ keywords: "relevant, keywords, for, your, content"
 
 **Problem**: Site appears but ranks poorly
 **Solutions**:
+
 - Optimize page titles and meta descriptions
 - Improve content quality and relevance
 - Build quality backlinks
@@ -192,6 +195,7 @@ keywords: "relevant, keywords, for, your, content"
 
 **Problem**: Multiple URLs with similar content
 **Solutions**:
+
 - Use canonical tags
 - Implement proper redirects
 - Consolidate similar content

@@ -3,7 +3,20 @@ layout: post
 title: "設計模式 17：代理模式（Proxy Pattern）——存取控制、快取與分散式系統效能最佳化"
 date: 2024-12-15 21:30:00 +0800
 description: "精通代理模式，學會透過代理物件控制存取、實現快取與安全，優化分散式系統效能。以影音串流、API、資料庫等場景為例，圖文範例與進階應用。"
-tags: [Proxy Pattern, Design Patterns, Access Control, Performance Optimization, Object-Oriented Design, Software Architecture, Kotlin, Programming, Structural Patterns, Caching, Security]
+tags:
+  [
+    Proxy Pattern,
+    Design Patterns,
+    Access Control,
+    Performance Optimization,
+    Object-Oriented Design,
+    Software Architecture,
+    Kotlin,
+    Programming,
+    Structural Patterns,
+    Caching,
+    Security,
+  ]
 categories: [Design Pattern, Software Engineering, Programming]
 toc:
   sidebar: right
@@ -19,6 +32,7 @@ thumbnail: /assets/img/design_patterns.jpg
 代理模式是一種結構型設計模式，為其他物件提供一個代理或替身，以控制對其的存取。代理可作為中介，實現快取、權限控管、延遲載入等功能，常用於分散式系統、資源管理與安全場景。
 
 **主要優點：**
+
 - 存取控制：控管敏感物件的存取權限
 - 效能優化：實現快取、延遲載入
 - 資源管理：高效管理昂貴資源
@@ -30,6 +44,7 @@ thumbnail: /assets/img/design_patterns.jpg
 ## 實務情境：影音串流系統
 
 設計一個影音串流系統，需求如下：
+
 - 支援多種影音來源（YouTube、Vimeo、本地檔案）
 - 實現智慧快取，避免重複下載
 - 客戶端介面統一，無需關心快取邏輯
@@ -43,6 +58,7 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_proxy_pattern_uml_1.png" title="Proxy Pattern - 問題分析" %}
 
 ### 設計痛點
+
 1. 頻寬浪費：重複下載同一影片，資源耗損
 2. 高延遲：每次存取都需完整下載，體驗差
 3. 客戶端耦合：需處理下載邏輯，維護困難
@@ -54,12 +70,14 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_proxy_pattern_uml_2.png" title="Proxy Pattern - 一般結構" %}
 
 ### 組成元件
+
 1. 主體介面（Subject）：定義真實物件與代理的共用介面
 2. 真實主體（Real Subject）：實際執行工作的物件
 3. 代理（Proxy）：控制存取並加入額外功能
 4. 客戶端（Client）：只與主體介面互動
 
 **優點：**
+
 - 智慧快取，避免重複操作
 - 存取控管，提升安全性
 - 資源最佳化，提升效能
@@ -75,18 +93,19 @@ thumbnail: /assets/img/design_patterns.jpg
 
 ## 代理模式 vs 其他做法
 
-| 做法 | 優點 | 缺點 |
-|------|------|------|
-| 代理模式 | 存取控管、效能優化、介面統一 | 複雜度提升、潛在效能損耗、除錯較難 |
-| 直接存取 | 實作簡單、無額外開銷、易除錯 | 無存取控管、無快取、耦合高 |
-| 裝飾者模式 | 動態行為擴充、多層裝飾 | 無存取控管、目的不同（行為 vs 存取） |
-| 外觀模式 | 介面簡化、子系統封裝 | 無存取控管、目的不同（介面 vs 存取） |
+| 做法       | 優點                         | 缺點                                 |
+| ---------- | ---------------------------- | ------------------------------------ |
+| 代理模式   | 存取控管、效能優化、介面統一 | 複雜度提升、潛在效能損耗、除錯較難   |
+| 直接存取   | 實作簡單、無額外開銷、易除錯 | 無存取控管、無快取、耦合高           |
+| 裝飾者模式 | 動態行為擴充、多層裝飾       | 無存取控管、目的不同（行為 vs 存取） |
+| 外觀模式   | 介面簡化、子系統封裝         | 無存取控管、目的不同（介面 vs 存取） |
 
 ---
 
 ## 什麼時候用代理模式？
 
 **適合：**
+
 - 遠端存取（RMI、Web 服務、分散式系統）
 - 虛擬代理（延遲載入昂貴資源）
 - 保護代理（存取控管與安全）
@@ -94,6 +113,7 @@ thumbnail: /assets/img/design_patterns.jpg
 - 日誌與監控（存取紀錄與分析）
 
 **不適合：**
+
 - 簡單物件存取（無需額外功能）
 - 極度效能敏感（代理開銷）
 - 強耦合需求（需直接存取）

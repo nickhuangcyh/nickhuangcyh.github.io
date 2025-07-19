@@ -3,7 +3,20 @@ layout: post
 title: "設計模式 10：單例模式（Singleton Pattern）——資料庫連線與全域狀態管理的唯一實例解決方案"
 date: 2024-08-10 15:00:00 +0800
 description: "深入掌握單例模式（Singleton Pattern），確保類別僅有一個實例，並學會實作執行緒安全的單例，應用於資料庫連線、日誌系統與全域設定管理，提升效能與一致性。"
-tags: [Singleton Pattern, Design Patterns, Global State, Database Connection, Thread Safety, Resource Management, Software Architecture, Kotlin, Java, Swift, Lazy Initialization]
+tags:
+  [
+    Singleton Pattern,
+    Design Patterns,
+    Global State,
+    Database Connection,
+    Thread Safety,
+    Resource Management,
+    Software Architecture,
+    Kotlin,
+    Java,
+    Swift,
+    Lazy Initialization,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Database]
 toc:
   sidebar: right
@@ -237,16 +250,17 @@ class TestableDatabaseClient private constructor() {
 
 ## 各種實作效能比較
 
-| 實作方式 | 執行緒安全 | 效能 | 記憶體用量 | 複雜度 |
-|----------|------------|------|------------|--------|
-| 急切單例 | 是         | 高   | 高         | 低     |
-| lazy 單例| 是         | 中   | 低         | 中     |
-| Double-Checked Locking | 是 | 高 | 低 | 高 |
-| Kotlin 物件 | 是 | 高 | 低 | 低 |
+| 實作方式               | 執行緒安全 | 效能 | 記憶體用量 | 複雜度 |
+| ---------------------- | ---------- | ---- | ---------- | ------ |
+| 急切單例               | 是         | 高   | 高         | 低     |
+| lazy 單例              | 是         | 中   | 低         | 中     |
+| Double-Checked Locking | 是         | 高   | 低         | 高     |
+| Kotlin 物件            | 是         | 高   | 低         | 低     |
 
 ## 常見反模式與誤用
 
 ### 1. 濫用全域狀態
+
 ```kotlin
 // 避免：所有狀態都用單例
 object GlobalState {
@@ -257,6 +271,7 @@ object GlobalState {
 ```
 
 ### 2. 過度耦合
+
 ```kotlin
 // 避免：直接依賴單例
 class UserService {

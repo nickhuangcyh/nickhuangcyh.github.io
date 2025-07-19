@@ -3,7 +3,19 @@ layout: post
 title: "Design Pattern 2: Object-Oriented Design Principles - SOLID Principles for Building Maintainable Software Systems"
 date: 2024-07-03 23:00:00 +0800
 description: "Master the SOLID principles to improve object-oriented design quality. Learn Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion principles with practical examples."
-tags: [SOLID Principles, Design Principles, Object-Oriented Design, Software Architecture, Single Responsibility, Open-Closed Principle, Liskov Substitution, Interface Segregation, Dependency Inversion, Code Quality]
+tags:
+  [
+    SOLID Principles,
+    Design Principles,
+    Object-Oriented Design,
+    Software Architecture,
+    Single Responsibility,
+    Open-Closed Principle,
+    Liskov Substitution,
+    Interface Segregation,
+    Dependency Inversion,
+    Code Quality,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Code Quality]
 toc:
   #   beginning: true
@@ -185,6 +197,7 @@ class LoginActivitySRP {
 {% endtabs %}
 
 **Benefits**:
+
 - **Maintainability**: Changes to network logic don't affect database operations
 - **Testability**: Each service can be tested independently
 - **Reusability**: Services can be reused in other parts of the application
@@ -331,11 +344,11 @@ class EmailValidationRule: ValidationRule {
 
 class ValidatorOCP {
     private var rules: [ValidationRule] = []
-    
+
     func addRule(_ rule: ValidationRule) {
         rules.append(rule)
     }
-    
+
     func validate(_ value: String) throws -> String {
         var result = value
         for rule in rules {
@@ -393,11 +406,11 @@ class EmailValidationRule : ValidationRule {
 
 class ValidatorOCP {
     private val rules = mutableListOf<ValidationRule>()
-    
+
     fun addRule(rule: ValidationRule) {
         rules.add(rule)
     }
-    
+
     fun validate(value: String): String {
         var result = value
         for (rule in rules) {
@@ -413,6 +426,7 @@ class ValidatorOCP {
 {% endtabs %}
 
 **Benefits**:
+
 - **Extensibility**: New validation rules can be added without modifying existing code
 - **Maintainability**: Each validation rule is isolated and easy to maintain
 - **Flexibility**: Validation rules can be combined dynamically
@@ -429,7 +443,7 @@ class ValidatorOCP {
 open class Rectangle {
     open var width: Int = 0
     open var height: Int = 0
-    
+
     fun getArea(): Int = width * height
 }
 
@@ -439,7 +453,7 @@ class Square : Rectangle() {
             field = value
             height = value // This violates LSP
         }
-    
+
     override var height: Int = 0
         set(value) {
             field = value
@@ -465,13 +479,13 @@ interface Shape {
 class Rectangle : Shape {
     var width: Int = 0
     var height: Int = 0
-    
+
     override fun getArea(): Int = width * height
 }
 
 class Square : Shape {
     var side: Int = 0
-    
+
     override fun getArea(): Int = side * side
 }
 
@@ -500,12 +514,12 @@ class Robot : Worker {
     override fun work() {
         println("Robot working")
     }
-    
+
     override fun eat() {
         // Robots don't eat - forced to implement unused method
         throw UnsupportedOperationException("Robots don't eat")
     }
-    
+
     override fun sleep() {
         // Robots don't sleep - forced to implement unused method
         throw UnsupportedOperationException("Robots don't sleep")
@@ -532,11 +546,11 @@ class Human : Workable, Eatable, Sleepable {
     override fun work() {
         println("Human working")
     }
-    
+
     override fun eat() {
         println("Human eating")
     }
-    
+
     override fun sleep() {
         println("Human sleeping")
     }
@@ -567,7 +581,7 @@ class EmailNotifier {
 
 class UserService {
     private val emailNotifier = EmailNotifier() // Direct dependency
-    
+
     fun createUser(email: String) {
         // User creation logic
         emailNotifier.sendEmail(email, "Welcome!")
@@ -642,7 +656,7 @@ class User : Validatable {
     val name: String = ""
     val email: String = ""
     val age: Int = 0
-    
+
     override fun validate(): Boolean {
         return name.isNotEmpty() && email.isNotEmpty() && age >= 0
     }
@@ -652,7 +666,7 @@ class Product : Validatable {
     val name: String = ""
     val price: Double = 0.0
     val category: String = ""
-    
+
     override fun validate(): Boolean {
         return name.isNotEmpty() && price >= 0 && category.isNotEmpty()
     }
@@ -680,7 +694,7 @@ interface Swimmable {
 class Duck {
     private val flyable: Flyable = SimpleFlyable()
     private val swimmable: Swimmable = SimpleSwimmable()
-    
+
     fun fly() = flyable.fly()
     fun swim() = swimmable.swim()
 }
@@ -721,16 +735,17 @@ open class Duck : FlyingBird() // Too deep!
 ## Performance Considerations
 
 | Principle | Memory Usage | Performance | Maintainability | Extensibility |
-|-----------|--------------|-------------|-----------------|---------------|
-| SRP | Low | High | High | Medium |
-| OCP | Medium | Medium | High | High |
-| LSP | Low | High | High | High |
-| ISP | Low | High | High | High |
-| DIP | Medium | Medium | High | High |
+| --------- | ------------ | ----------- | --------------- | ------------- |
+| SRP       | Low          | High        | High            | Medium        |
+| OCP       | Medium       | Medium      | High            | High          |
+| LSP       | Low          | High        | High            | High          |
+| ISP       | Low          | High        | High            | High          |
+| DIP       | Medium       | Medium      | High            | High          |
 
 ## Common Anti-Patterns
 
 ### 1. **God Classes**
+
 ```kotlin
 // Avoid: Classes with too many responsibilities
 class UserManager {
@@ -745,12 +760,13 @@ class UserManager {
 ```
 
 ### 2. **Tight Coupling**
+
 ```kotlin
 // Avoid: Direct dependencies on concrete classes
 class OrderService {
     private val database = MySQLDatabase() // Tight coupling
     private val emailService = GmailService() // Tight coupling
-    
+
     fun processOrder(order: Order) {
         database.save(order)
         emailService.sendConfirmation(order)
@@ -759,6 +775,7 @@ class OrderService {
 ```
 
 ### 3. **Interface Pollution**
+
 ```kotlin
 // Avoid: Interfaces with too many methods
 interface FileOperations {

@@ -61,12 +61,12 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/jenkins_rsa -C "jenkins@company.com"
 
 ### Understanding SSH Key Types
 
-| Key Type | Security Level | Key Size | Compatibility |
-|----------|----------------|----------|---------------|
-| **RSA** | High | 2048-4096 bits | Universal |
-| **Ed25519** | Very High | 256 bits | Modern systems |
-| **ECDSA** | High | 256-521 bits | Most systems |
-| **DSA** | Low | 1024 bits | Legacy (not recommended) |
+| Key Type    | Security Level | Key Size       | Compatibility            |
+| ----------- | -------------- | -------------- | ------------------------ |
+| **RSA**     | High           | 2048-4096 bits | Universal                |
+| **Ed25519** | Very High      | 256 bits       | Modern systems           |
+| **ECDSA**   | High           | 256-521 bits   | Most systems             |
+| **DSA**     | Low            | 1024 bits      | Legacy (not recommended) |
 
 ## Step 2: Add Public Key to Version Control System
 
@@ -80,6 +80,7 @@ Copy the generated public key content and add it to your version control system.
 ### For Different Git Providers
 
 #### GitHub
+
 ```bash
 # Copy public key to clipboard
 cat ~/.ssh/id_rsa.pub | pbcopy  # macOS
@@ -87,11 +88,13 @@ cat ~/.ssh/id_rsa.pub | xclip -selection clipboard  # Linux
 ```
 
 #### GitLab
+
 1. Go to User Settings → SSH Keys
 2. Paste the public key content
 3. Add a title for the key
 
 #### Bitbucket
+
 1. Go to Personal Settings → SSH Keys
 2. Click "Add key"
 3. Paste the public key content
@@ -115,14 +118,14 @@ cat ~/.ssh/id_rsa.pub | xclip -selection clipboard  # Linux
 1. **Select the new domain** and click "Add Credentials"
 2. **Fill in credential information**:
 
-| Field | Value | Description |
-|-------|-------|-------------|
-| **Kind** | SSH Username with private key | Type of credential |
-| **Scope** | Global | Credential scope |
-| **ID** | `github-ssh-key` | Unique identifier (optional) |
-| **Description** | `SSH key for GitHub access` | Description for management |
-| **Username** | `git` | Usually `git` for Git repositories |
-| **Private Key** | Enter directly | Choose "Enter directly" and paste private key |
+| Field           | Value                         | Description                                   |
+| --------------- | ----------------------------- | --------------------------------------------- |
+| **Kind**        | SSH Username with private key | Type of credential                            |
+| **Scope**       | Global                        | Credential scope                              |
+| **ID**          | `github-ssh-key`              | Unique identifier (optional)                  |
+| **Description** | `SSH key for GitHub access`   | Description for management                    |
+| **Username**    | `git`                         | Usually `git` for Git repositories            |
+| **Private Key** | Enter directly                | Choose "Enter directly" and paste private key |
 
 ### 4. Private Key Format
 
@@ -134,6 +137,7 @@ cat ~/.ssh/id_rsa
 ```
 
 Example private key format:
+
 ```
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABlwAAAAdzc2gtcn
@@ -166,7 +170,7 @@ git@github.com:username/repository.git
 // Jenkinsfile example with SSH credentials
 pipeline {
     agent any
-    
+
     stages {
         stage('Checkout') {
             steps {
@@ -268,6 +272,7 @@ chmod 644 ~/.ssh/id_rsa.pub
 **Problem**: `Permission denied (publickey)`
 
 **Solutions**:
+
 ```bash
 # Test SSH connection
 ssh -T git@github.com
@@ -284,6 +289,7 @@ ssh-add -l
 **Problem**: `Host key verification failed`
 
 **Solution**:
+
 ```bash
 # Add host to known_hosts
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
@@ -294,6 +300,7 @@ ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 **Problem**: Jenkins can't find the SSH credential
 
 **Solutions**:
+
 1. Verify credential ID matches job configuration
 2. Check credential scope (Global vs System)
 3. Ensure credential is in the correct domain
@@ -303,6 +310,7 @@ ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 **Problem**: SSH authentication times out
 
 **Solutions**:
+
 ```bash
 # Increase SSH timeout
 ssh -o ConnectTimeout=30 git@github.com
@@ -344,7 +352,7 @@ Create a simple test job to verify SSH configuration:
 ```groovy
 pipeline {
     agent any
-    
+
     stages {
         stage('Test SSH') {
             steps {
@@ -397,7 +405,7 @@ ssh-add ~/.ssh/id_rsa
 // Jenkinsfile for multi-branch pipeline
 pipeline {
     agent any
-    
+
     stages {
         stage('Checkout') {
             steps {
@@ -432,7 +440,7 @@ pipeline {
 // Parameterized pipeline with SSH credentials
 pipeline {
     agent any
-    
+
     parameters {
         choice(
             name: 'BRANCH',
@@ -440,7 +448,7 @@ pipeline {
             description: 'Select branch to build'
         )
     }
-    
+
     stages {
         stage('Checkout') {
             steps {

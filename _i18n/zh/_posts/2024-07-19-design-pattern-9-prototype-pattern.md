@@ -3,7 +3,20 @@ layout: post
 title: "設計模式 9：原型模式 - 高效物件複製與資源最佳化實戰"
 date: 2024-07-21 23:00:00 +0800
 description: "精通原型模式，快速複製複雜物件，減少資源消耗，提升效能。圖文範例，適合軟體工程師、遊戲開發與高效能應用。"
-tags: [Prototype Pattern, Design Patterns, Object Cloning, Performance Optimization, Resource Management, Software Architecture, Kotlin, Java, Swift, Deep Copy, Shallow Copy]
+tags:
+  [
+    Prototype Pattern,
+    Design Patterns,
+    Object Cloning,
+    Performance Optimization,
+    Resource Management,
+    Software Architecture,
+    Kotlin,
+    Java,
+    Swift,
+    Deep Copy,
+    Shallow Copy,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Performance]
 toc:
   sidebar: right

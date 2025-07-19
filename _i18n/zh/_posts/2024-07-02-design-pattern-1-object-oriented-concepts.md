@@ -3,7 +3,19 @@ layout: post
 title: "設計模式 1：物件導向四大核心概念全解析（封裝、繼承、多型、抽象）"
 date: 2024-07-02 23:00:00 +0800
 description: "精通封裝、繼承、多型、抽象四大物件導向核心，打下設計模式與軟體架構的堅實基礎。圖文範例，適合軟體工程師、架構師與進階開發者。"
-tags: [Object-Oriented Concepts, Design Patterns, Encapsulation, Inheritance, Polymorphism, Abstraction, Software Architecture, Programming Fundamentals, OOP, Software Design]
+tags:
+  [
+    Object-Oriented Concepts,
+    Design Patterns,
+    Encapsulation,
+    Inheritance,
+    Polymorphism,
+    Abstraction,
+    Software Architecture,
+    Programming Fundamentals,
+    OOP,
+    Software Design,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Programming Fundamentals]
 toc:
   sidebar: right
@@ -19,6 +31,7 @@ thumbnail: /assets/img/design_patterns.jpg
 ## 實務應用場景
 
 物件導向概念廣泛應用於：
+
 - **軟體架構**：打造模組化、可擴展系統
 - **設計模式**：實現經典解決方案
 - **框架開發**：設計可重用元件

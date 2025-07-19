@@ -3,7 +3,8 @@ layout: post
 title: "Design Pattern 25: Strategy Pattern - Complete Guide with Real-World Examples"
 date: 2024-12-26 23:50:00 +0800
 description: "Master the Strategy Pattern with practical examples. Learn how to implement flexible algorithms, dynamic behavior switching, and create maintainable code with low coupling."
-tags: [Strategy Pattern, Design Patterns, Algorithm Selection, Object-Oriented Design, Software Architecture, Kotlin, Programming, Behavioral Patterns]
+tags:
+  [Strategy Pattern, Design Patterns, Algorithm Selection, Object-Oriented Design, Software Architecture, Kotlin, Programming, Behavioral Patterns]
 categories: [Design Pattern, Software Engineering, Programming]
 toc:
   sidebar: right
@@ -19,6 +20,7 @@ thumbnail: /assets/img/design_patterns.jpg
 The **Strategy Pattern** is a behavioral design pattern that enables you to define a family of algorithms, encapsulate each one, and make them interchangeable. It allows the algorithm to vary independently from clients that use it, providing flexibility and maintainability.
 
 **Key Benefits:**
+
 - ✅ **Algorithm flexibility** - Switch algorithms at runtime
 - ✅ **Low coupling** - Algorithms are isolated from client code
 - ✅ **Easy extension** - Add new strategies without modifying existing code
@@ -32,6 +34,7 @@ The **Strategy Pattern** is a behavioral design pattern that enables you to defi
 Let's design an **e-commerce shipping cost calculation system** with the following requirements:
 
 ### **System Requirements:**
+
 1. **Support multiple shipping calculation methods:**
    - **Regular Shipping**: Fixed shipping cost
    - **Express Shipping**: Weight-based pricing
@@ -42,6 +45,7 @@ Let's design an **e-commerce shipping cost calculation system** with the followi
 4. **Users should easily switch between shipping methods**
 
 ### **Business Rules:**
+
 - Regular shipping: Fixed cost regardless of weight/region
 - Express shipping: Cost per kilogram
 - International shipping: Variable cost based on region and weight
@@ -90,6 +94,7 @@ After analyzing the forces, we can apply the **Strategy Pattern** to encapsulate
    - Delegates work to strategy object
 
 **Benefits:**
+
 - **Algorithm isolation** from client code
 - **Runtime strategy switching** capability
 - **Easy extension** without modifying existing code
@@ -118,7 +123,7 @@ class RegularShipping : ShippingStrategy {
     override fun calculateShippingCost(weight: Double, region: String): Double {
         return 50.0 // Fixed shipping cost
     }
-    
+
     override fun getStrategyName(): String = "Regular Shipping"
 }
 
@@ -126,7 +131,7 @@ class ExpressShipping : ShippingStrategy {
     override fun calculateShippingCost(weight: Double, region: String): Double {
         return weight * 10 // 10 per kilogram
     }
-    
+
     override fun getStrategyName(): String = "Express Shipping"
 }
 
@@ -140,7 +145,7 @@ class InternationalShipping : ShippingStrategy {
         }
         return weight * regionMultiplier
     }
-    
+
     override fun getStrategyName(): String = "International Shipping"
 }
 ```
@@ -149,18 +154,18 @@ class InternationalShipping : ShippingStrategy {
 
 ```kotlin
 class ShippingCalculator(private var strategy: ShippingStrategy) {
-    
+
     fun setStrategy(strategy: ShippingStrategy) {
         this.strategy = strategy
         println("🔄 Strategy changed to: ${strategy.getStrategyName()}")
     }
-    
+
     fun calculateCost(weight: Double, region: String): Double {
         val cost = strategy.calculateShippingCost(weight, region)
         println("📦 ${strategy.getStrategyName()}: $${cost} for ${weight}kg to $region")
         return cost
     }
-    
+
     fun getCurrentStrategy(): String = strategy.getStrategyName()
 }
 ```
@@ -170,24 +175,24 @@ class ShippingCalculator(private var strategy: ShippingStrategy) {
 ```kotlin
 fun main() {
     println("=== E-commerce Shipping Calculator Demo ===")
-    
+
     val calculator = ShippingCalculator(RegularShipping())
-    
+
     // Test different strategies
     val testWeight = 5.0
     val testRegion = "Asia"
-    
+
     // Regular shipping
     calculator.calculateCost(testWeight, testRegion)
-    
+
     // Switch to express shipping
     calculator.setStrategy(ExpressShipping())
     calculator.calculateCost(testWeight, testRegion)
-    
+
     // Switch to international shipping
     calculator.setStrategy(InternationalShipping())
     calculator.calculateCost(testWeight, testRegion)
-    
+
     // Test different regions
     println("\n=== Regional Cost Comparison ===")
     val regions = listOf("Asia", "Europe", "America", "Africa")
@@ -198,6 +203,7 @@ fun main() {
 ```
 
 **Expected Output:**
+
 ```
 === E-commerce Shipping Calculator Demo ===
 📦 Regular Shipping: $50.0 for 5.0kg to Asia
@@ -230,13 +236,13 @@ class PremiumShipping : EnhancedShippingStrategy {
     override fun calculateShippingCost(weight: Double, region: String): Double {
         return weight * 25 + 100 // Premium base cost + weight-based
     }
-    
+
     override fun getStrategyName(): String = "Premium Shipping"
-    
+
     override fun validateOrder(weight: Double, region: String): Boolean {
         return weight <= 50.0 // Premium shipping has weight limit
     }
-    
+
     override fun getEstimatedDeliveryDays(): Int = 1
 }
 
@@ -258,18 +264,19 @@ object ShippingStrategyFactory {
 
 ## 📊 **Strategy Pattern vs Alternative Approaches**
 
-| Approach | Pros | Cons |
-|----------|------|------|
-| **Strategy Pattern** | ✅ Clean separation<br>✅ Easy to extend<br>✅ Runtime switching | ❌ More classes<br>❌ Slight overhead |
-| **If-Else Chains** | ✅ Simple for few cases | ❌ Hard to maintain<br>❌ Violates OCP |
-| **Switch Statements** | ✅ Type-safe<br>✅ Compact | ❌ Mixed responsibilities<br>❌ Hard to extend |
-| **Inheritance** | ✅ Reuse code | ❌ Tight coupling<br>❌ Inflexible |
+| Approach              | Pros                                                             | Cons                                           |
+| --------------------- | ---------------------------------------------------------------- | ---------------------------------------------- |
+| **Strategy Pattern**  | ✅ Clean separation<br>✅ Easy to extend<br>✅ Runtime switching | ❌ More classes<br>❌ Slight overhead          |
+| **If-Else Chains**    | ✅ Simple for few cases                                          | ❌ Hard to maintain<br>❌ Violates OCP         |
+| **Switch Statements** | ✅ Type-safe<br>✅ Compact                                       | ❌ Mixed responsibilities<br>❌ Hard to extend |
+| **Inheritance**       | ✅ Reuse code                                                    | ❌ Tight coupling<br>❌ Inflexible             |
 
 ---
 
 ## 🎯 **When to Use the Strategy Pattern**
 
 ### **✅ Perfect For:**
+
 - **Multiple algorithms** for the same task
 - **Runtime algorithm selection**
 - **Complex conditional logic**
@@ -277,6 +284,7 @@ object ShippingStrategyFactory {
 - **Testing different algorithms**
 
 ### **❌ Avoid When:**
+
 - **Simple conditional logic** (use if-else instead)
 - **Performance-critical** applications
 - **Few algorithm variations**
@@ -296,6 +304,7 @@ object ShippingStrategyFactory {
 ## 📈 **Real-World Applications**
 
 ### **1. Payment Processing Systems**
+
 ```kotlin
 interface PaymentStrategy {
     fun processPayment(amount: Double): Boolean
@@ -307,6 +316,7 @@ class CryptocurrencyPayment : PaymentStrategy { /* Implementation */ }
 ```
 
 ### **2. Sorting Algorithms**
+
 ```kotlin
 interface SortStrategy<T> {
     fun sort(list: List<T>): List<T>
@@ -318,6 +328,7 @@ class BubbleSort<T> : SortStrategy<T> { /* Implementation */ }
 ```
 
 ### **3. Discount Calculation**
+
 ```kotlin
 interface DiscountStrategy {
     fun calculateDiscount(price: Double, customer: Customer): Double
@@ -329,6 +340,7 @@ class SeasonalDiscount : DiscountStrategy { /* Implementation */ }
 ```
 
 ### **4. Data Compression**
+
 ```kotlin
 interface CompressionStrategy {
     fun compress(data: ByteArray): ByteArray
@@ -345,6 +357,7 @@ class ZstdCompression : CompressionStrategy { /* Implementation */ }
 ## 🚨 **Common Pitfalls and Best Practices**
 
 ### **1. Strategy Selection**
+
 ```kotlin
 // ❌ Avoid: Hard-coded strategy selection
 val strategy = if (condition) StrategyA() else StrategyB()
@@ -354,6 +367,7 @@ val strategy = StrategyFactory.createStrategy(type)
 ```
 
 ### **2. Strategy Validation**
+
 ```kotlin
 // ✅ Good: Validate strategy before use
 fun calculateCost(weight: Double, region: String): Double {
@@ -367,6 +381,7 @@ fun calculateCost(weight: Double, region: String): Double {
 ```
 
 ### **3. Strategy Composition**
+
 ```kotlin
 // ✅ Good: Combine multiple strategies
 class CompositeShippingStrategy(private val strategies: List<ShippingStrategy>) : ShippingStrategy {
@@ -393,17 +408,20 @@ class CompositeShippingStrategy(private val strategies: List<ShippingStrategy>) 
 Through the Strategy Pattern, we successfully separated shipping calculation logic from core functionality, achieving the following benefits:
 
 **Key Advantages:**
+
 - 🎯 **Easy extension** - Add new shipping methods without modifying existing code
 - 🔧 **Low coupling** - Shipping logic isolated from business logic
 - 📈 **Runtime flexibility** - Switch strategies dynamically
 - 🛡️ **Better maintainability** - Clear separation of concerns
 
 **Design Principles Followed:**
+
 - **Single Responsibility Principle (SRP)**: Each strategy class has one responsibility
 - **Open-Closed Principle (OCP)**: Open for extension, closed for modification
 - **Dependency Inversion Principle (DIP)**: Depend on abstractions, not concretions
 
 **Perfect For:**
+
 - **Different discount strategies** (percentage, fixed amount, seasonal)
 - **Various sorting algorithms** (quick sort, merge sort, bubble sort)
 - **Multiple tax calculation methods** (progressive, flat, regional)

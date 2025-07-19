@@ -19,6 +19,7 @@ thumbnail: /assets/img/jenkins.jpg
 ## 為什麼用 SSH 拉取 Git 程式碼？
 
 SSH（安全殼層協定）相較於 HTTPS 具備多項優勢：
+
 - **安全性高**：通訊全程加密
 - **無需儲存密碼**：金鑰認證更安全
 - **自動化存取**：無需人工干預
@@ -26,6 +27,7 @@ SSH（安全殼層協定）相較於 HTTPS 具備多項優勢：
 - **權限細緻**：可為不同倉庫分配不同金鑰
 
 ## 前置條件
+
 - Jenkins 伺服器已建置
 - Git 倉庫支援 SSH 存取
 - 擁有 Jenkins 管理員權限
@@ -34,12 +36,15 @@ SSH（安全殼層協定）相較於 HTTPS 具備多項優勢：
 ## 步驟 1：產生 SSH 金鑰對
 
 在終端執行：
+
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
+
 依提示完成金鑰產生，記下公鑰與私鑰路徑。
 
 ### 其他金鑰產生方式
+
 ```bash
 # 推薦：4096 位 RSA 金鑰
 ssh-keygen -t rsa -b 4096 -C "jenkins@company.com"
@@ -50,22 +55,25 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/jenkins_rsa -C "jenkins@company.com"
 ```
 
 ### 常見金鑰類型對比
-| 類型 | 安全性 | 長度 | 相容性 |
-|------|--------|------|--------|
-| **RSA** | 高 | 2048-4096 | 通用 |
-| **Ed25519** | 很高 | 256 | 現代系統 |
-| **ECDSA** | 高 | 256-521 | 主流系統 |
-| **DSA** | 低 | 1024 | 僅限舊系統 |
+
+| 類型        | 安全性 | 長度      | 相容性     |
+| ----------- | ------ | --------- | ---------- |
+| **RSA**     | 高     | 2048-4096 | 通用       |
+| **Ed25519** | 很高   | 256       | 現代系統   |
+| **ECDSA**   | 高     | 256-521   | 主流系統   |
+| **DSA**     | 低     | 1024      | 僅限舊系統 |
 
 ## 步驟 2：將公鑰新增到程式碼託管平台
 
 以 GitHub 為例：
+
 1. 登入 GitHub，進入「Settings」
 2. 選擇「SSH and GPG keys」
 3. 點擊「New SSH key」，貼上公鑰內容
 4. 儲存
 
 ### 不同平台操作
+
 - **GitHub**：`cat ~/.ssh/id_rsa.pub | pbcopy`（macOS）
 - **GitLab**：使用者設定 → SSH Keys
 - **Bitbucket**：個人設定 → SSH Keys
@@ -73,33 +81,39 @@ ssh-keygen -t rsa -b 4096 -f ~/.ssh/jenkins_rsa -C "jenkins@company.com"
 ## 步驟 3：在 Jenkins 新增 SSH 憑證
 
 ### 1. 進入 Jenkins 管理介面
+
 - 訪問 `http://localhost:8080/`
 - 登入管理員帳號
 - 依序點擊「Credentials」→「System」
 
 ### 2. 新增網域（可選）
+
 - 點擊「Add domain」
 - 填寫網域名稱（如「GitHub」）
 - 確認
 
 ### 3. 新增 SSH 憑證
+
 - 選擇新建網域，點擊「Add Credentials」
 - 填寫如下資訊：
 
-| 欄位 | 值 | 說明 |
-|------|----|------|
-| Kind | SSH Username with private key | 憑證類型 |
-| Scope | Global | 作用範圍 |
-| ID | `github-ssh-key` | 唯一識別（可選） |
-| Description | `SSH key for GitHub access` | 備註 |
-| Username | `git` | Git 倉庫預設用戶名 |
-| Private Key | Enter directly | 貼上私鑰內容 |
+| 欄位        | 值                            | 說明               |
+| ----------- | ----------------------------- | ------------------ |
+| Kind        | SSH Username with private key | 憑證類型           |
+| Scope       | Global                        | 作用範圍           |
+| ID          | `github-ssh-key`              | 唯一識別（可選）   |
+| Description | `SSH key for GitHub access`   | 備註               |
+| Username    | `git`                         | Git 倉庫預設用戶名 |
+| Private Key | Enter directly                | 貼上私鑰內容       |
 
 ### 4. 私鑰格式要求
+
 ```bash
 cat ~/.ssh/id_rsa
 ```
+
 範例：
+
 ```
 -----BEGIN OPENSSH PRIVATE KEY-----
 ...
@@ -109,17 +123,21 @@ cat ~/.ssh/id_rsa
 ## 步驟 4：設定 Jenkins Job 使用 SSH 憑證
 
 ### 1. 建立或編輯 Job
+
 - 選擇「Git」作為原始碼管理
 - 倉庫位址使用 SSH 格式：
+
 ```bash
 git@github.com:username/repository.git
 ```
 
 ### 2. 選擇憑證
+
 - 在「Credentials」下拉選擇 SSH 憑證
 - 選擇分支，儲存設定
 
 ### 範例 Jenkinsfile
+
 ```groovy
 pipeline {
     agent any
@@ -150,6 +168,7 @@ pipeline {
 ### 1. SSH 設定檔
 
 `~/.ssh/config` 範例：
+
 ```bash
 Host github.com
     HostName github.com
@@ -177,21 +196,25 @@ ssh-add ~/.ssh/gitlab_rsa
 ## 安全最佳實踐
 
 ### 1. 金鑰管理
+
 - 獨立金鑰，專用 Jenkins
 - 定期輪換金鑰
 - 權限設定（私鑰 600）
 - 安全儲存
+
 ```bash
 chmod 600 ~/.ssh/id_rsa
 chmod 644 ~/.ssh/id_rsa.pub
 ```
 
 ### 2. 權限與存取控制
+
 - 最小權限原則
 - 倉庫專用金鑰
 - 定期稽核
 
 ### 3. 監控與告警
+
 - 監控 SSH 日誌
 - 追蹤金鑰使用
 - 異常行為告警
@@ -199,6 +222,7 @@ chmod 644 ~/.ssh/id_rsa.pub
 ## 常見問題排查
 
 ### 1. 權限拒絕
+
 ```bash
 ssh -T git@github.com
 ls -la ~/.ssh/
@@ -206,16 +230,19 @@ ssh-add -l
 ```
 
 ### 2. 主機金鑰驗證失敗
+
 ```bash
 ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 ```
 
 ### 3. 找不到憑證
+
 - 檢查憑證 ID
 - 檢查作用範圍
 - 檢查網域設定
 
 ### 4. 認證逾時
+
 ```bash
 ssh -o ConnectTimeout=30 git@github.com
 ping github.com
@@ -224,6 +251,7 @@ ping github.com
 ## 測試 SSH 設定
 
 ### 1. 測試連線
+
 ```bash
 ssh -T git@github.com
 ssh -T git@gitlab.com
@@ -231,6 +259,7 @@ ssh -vT git@github.com
 ```
 
 ### 2. 測試 Git 操作
+
 ```bash
 git clone git@github.com:username/repository.git
 cd repository
@@ -238,6 +267,7 @@ git pull origin main
 ```
 
 ### 3. Jenkins 測試 Job
+
 ```groovy
 pipeline {
     agent any
@@ -262,6 +292,7 @@ pipeline {
 ## 效能優化建議
 
 ### 1. SSH 連線複用
+
 ```bash
 Host github.com
     HostName github.com
@@ -272,6 +303,7 @@ Host github.com
 ```
 
 ### 2. 金鑰快取
+
 ```bash
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
@@ -280,6 +312,7 @@ ssh-add ~/.ssh/id_rsa
 ## CI/CD 流水線整合
 
 ### 1. 多分支流水線
+
 ```groovy
 pipeline {
     agent any
@@ -312,6 +345,7 @@ pipeline {
 ```
 
 ### 2. 參數化建置
+
 ```groovy
 pipeline {
     agent any
@@ -342,12 +376,14 @@ pipeline {
 ## 監控與維護
 
 ### 1. 定期維護
+
 - 金鑰輪換（6-12 個月）
 - 權限審查
 - 日誌分析
 - 金鑰備份
 
 ### 2. 健康檢查
+
 ```bash
 ssh-keygen -l -f ~/.ssh/id_rsa
 ssh -T git@github.com
@@ -359,6 +395,7 @@ curl -u username:api_token http://jenkins:8080/job/test-job/lastBuild/api/json
 透過上述步驟，Jenkins 可安全高效地透過 SSH 拉取 Git 程式碼，提升 CI/CD 自動化與安全性。建議每個 Jenkins 環境都規範設定 SSH 憑證，避免因權限問題導致建置中斷。
 
 **主要優勢：**
+
 - **安全性提升**：加密通訊與金鑰認證
 - **自動化存取**：無需人工干預
 - **稽核追蹤**：便於權限管理

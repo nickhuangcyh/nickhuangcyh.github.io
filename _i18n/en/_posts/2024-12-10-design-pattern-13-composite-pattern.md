@@ -3,7 +3,8 @@ layout: post
 title: "Design Pattern 13: Composite Pattern - Unified Tree Structure Management for File Systems and UI Components"
 date: 2024-12-10 22:28:00 +0800
 description: "Master the Composite Pattern to treat individual objects and collections uniformly. Learn how to implement tree structures for file systems, UI components, and organizational hierarchies with practical examples and best practices."
-tags: [Composite Pattern, Design Patterns, Tree Structure, File System, UI Components, Object-Oriented Design, Software Architecture, Kotlin, Java, Swift]
+tags:
+  [Composite Pattern, Design Patterns, Tree Structure, File System, UI Components, Object-Oriented Design, Software Architecture, Kotlin, Java, Swift]
 categories: [Design Patterns, Software Development, Object-Oriented Programming]
 toc:
   #   beginning: true
@@ -59,6 +60,7 @@ The Composite Pattern provides an elegant solution by creating a unified interfa
 {% include figure.liquid path="assets/img/design_pattern_composite_pattern_uml_2.png" title="Composite Pattern UML diagram" %}
 
 **Key Components:**
+
 - **Component**: Defines the unified interface for both individual objects and collections
 - **Leaf**: Represents individual objects (files) that cannot contain children
 - **Composite**: Represents collections (directories) that can contain children and implement recursive operations
@@ -84,7 +86,7 @@ abstract class FileSystemComponent(val name: String) {
     open fun remove(component: FileSystemComponent) {
         throw UnsupportedOperationException("Cannot remove component from a leaf.")
     }
-    
+
     open fun getSize(): Long {
         throw UnsupportedOperationException("Size not implemented for this component.")
     }
@@ -98,7 +100,7 @@ class File(name: String, private val size: Long = 0) : FileSystemComponent(name)
     override fun display(indent: String) {
         println("$indent- File: $name (${size} bytes)")
     }
-    
+
     override fun getSize(): Long = size
 }
 ```
@@ -121,11 +123,11 @@ class Directory(name: String) : FileSystemComponent(name) {
         println("$indent+ Directory: $name")
         children.forEach { it.display("$indent  ") }
     }
-    
+
     override fun getSize(): Long {
         return children.sumOf { it.getSize() }
     }
-    
+
     fun getChildCount(): Int = children.size
 }
 ```
@@ -161,7 +163,7 @@ fun main() {
     // Display structure
     println("File System Structure:")
     root.display()
-    
+
     println("\nSize Analysis:")
     println("Root size: ${root.getSize()} bytes")
     println("Documents size: ${documents.getSize()} bytes")
@@ -170,6 +172,7 @@ fun main() {
 ```
 
 **Output:**
+
 ```bash
 File System Structure:
 + Directory: Root
@@ -196,11 +199,11 @@ The Composite Pattern is also perfect for UI frameworks:
 abstract class UIComponent(val name: String) {
     abstract fun render(): String
     abstract fun getBounds(): Rectangle
-    
+
     open fun add(component: UIComponent) {
         throw UnsupportedOperationException("Cannot add to leaf component")
     }
-    
+
     open fun remove(component: UIComponent) {
         throw UnsupportedOperationException("Cannot remove from leaf component")
     }
@@ -213,21 +216,21 @@ class Button(name: String, private val text: String) : UIComponent(name) {
 
 class Panel(name: String) : UIComponent(name) {
     private val children = mutableListOf<UIComponent>()
-    
+
     override fun render(): String {
         val childRenders = children.joinToString("\n") { "  ${it.render()}" }
         return "<div class='panel'>\n$childRenders\n</div>"
     }
-    
+
     override fun getBounds(): Rectangle {
         // Calculate bounds based on children
         return Rectangle(0, 0, 200, 150)
     }
-    
+
     override fun add(component: UIComponent) {
         children.add(component)
     }
-    
+
     override fun remove(component: UIComponent) {
         children.remove(component)
     }
@@ -237,6 +240,7 @@ class Panel(name: String) : UIComponent(name) {
 ## Best Practices and Considerations
 
 ### 1. **Type Safety**
+
 ```kotlin
 // Good: Type-safe operations
 abstract class Component {
@@ -257,10 +261,11 @@ fun processComponent(component: Component) {
 ```
 
 ### 2. **Memory Management**
+
 ```kotlin
 class Composite(name: String) : Component(name) {
     private val children = WeakHashMap<Component, Boolean>()
-    
+
     override fun add(component: Component) {
         children[component] = true
     }
@@ -268,6 +273,7 @@ class Composite(name: String) : Component(name) {
 ```
 
 ### 3. **Visitor Pattern Integration**
+
 ```kotlin
 interface ComponentVisitor {
     fun visitFile(file: File)
@@ -281,12 +287,12 @@ abstract class FileSystemComponent(val name: String) {
 
 ## Performance Considerations
 
-| Operation | Leaf | Composite | Notes |
-|-----------|------|-----------|-------|
-| Add/Remove | O(1) | O(1) | Direct operation |
-| Search | O(1) | O(n) | Linear search through children |
-| Traversal | O(1) | O(n) | Visit all children |
-| Memory | Low | Higher | Stores child references |
+| Operation  | Leaf | Composite | Notes                          |
+| ---------- | ---- | --------- | ------------------------------ |
+| Add/Remove | O(1) | O(1)      | Direct operation               |
+| Search     | O(1) | O(n)      | Linear search through children |
+| Traversal  | O(1) | O(n)      | Visit all children             |
+| Memory     | Low  | Higher    | Stores child references        |
 
 ## Related Design Patterns
 

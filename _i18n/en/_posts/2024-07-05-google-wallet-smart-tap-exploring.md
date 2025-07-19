@@ -3,7 +3,19 @@ layout: post
 title: "Google Wallet Smart Tap Deep Dive: Exploring the Future of Contactless Payments"
 date: 2024-07-05 20:00:00 +0800
 description: "Explore Google Wallet Smart Tap technology and how it's revolutionizing payment systems. Learn about NFC communication, terminal integration, and the future of contactless transactions."
-tags: [Google Wallet, Smart Tap, NFC, Contactless Payments, Payment Systems, Mobile Payments, Digital Wallets, Payment Technology, Terminal Integration, Security]
+tags:
+  [
+    Google Wallet,
+    Smart Tap,
+    NFC,
+    Contactless Payments,
+    Payment Systems,
+    Mobile Payments,
+    Digital Wallets,
+    Payment Technology,
+    Terminal Integration,
+    Security,
+  ]
 categories: [Payments, Technology, Mobile Development, Digital Wallets]
 toc:
   #   beginning: true
@@ -62,10 +74,10 @@ The Redemption Issuer ID is a specific type of Issuer ID. You can think of the R
 
 Issuer ID can represent merchants, offer providers, shopping malls (e.g., SOGO), terminal manufacturers, etc. After pass class & object(s) are developed, they will be associated with the Redemption Issuer ID. The Issuer ID contains pass class IDs and object IDs.
 
-| ID | Format | Notes |
-|----|--------|-------|
-| Class ID | `issuerId.classSuffix` | The classSuffix is a unique, developer-defined value for a specific pass class (e.g., a loyalty tier) |
-| Object ID | `issuerId.objectSuffix` | The objectSuffix is a unique, developer-defined value for a specific pass object (such as a user ID) |
+| ID        | Format                  | Notes                                                                                                 |
+| --------- | ----------------------- | ----------------------------------------------------------------------------------------------------- |
+| Class ID  | `issuerId.classSuffix`  | The classSuffix is a unique, developer-defined value for a specific pass class (e.g., a loyalty tier) |
+| Object ID | `issuerId.objectSuffix` | The objectSuffix is a unique, developer-defined value for a specific pass object (such as a user ID)  |
 
 ### Collector ID (收款方 ID)
 
@@ -74,6 +86,7 @@ Issuer ID can represent merchants, offer providers, shopping malls (e.g., SOGO),
 - When a user touches their device to a Smart Tap-supported terminal, the terminal sends the Collector ID to the user's device. The device then uses the public key of that Collector ID to authenticate with the terminal (communication flow will be discussed later)
 
 > **Important Notes**:
+>
 > 1. One Issuer ID can only be assigned one Collector ID
 > 2. Collector ID is unique across all Issuer IDs
 
@@ -102,12 +115,12 @@ The diagram shows two different Issuers:
 
 The Redemption Issuer - fooPizza wants to enable Smart Tap functionality for their passes. The Aggregator and Redemption Issuer must complete the following steps to enable Smart Tap for merchant terminals:
 
-| Step | Role | Description |
-|:----:|:----:|:------------|
-| 1 | Aggregator | Create pass class and objects (abc and 123 in the diagram respectively). |
-| 2 | Aggregator | Add the Redemption Issuer's ID to the pass class's `redemptionIssuers` property. This tells Google Wallet that Issuer ID 1990 can redeem pass objects that reference this class. |
-| 3 | Redemption Issuer | Obtain Collector ID (12345678 in the diagram). |
-| 4 | Redemption Issuer | Configure Collector ID 12345678 on each Smart Tap-supported terminal to be used. Any object with class ID abc and Collector ID 12345678 will be transmitted to the Reader. |
+| Step |       Role        | Description                                                                                                                                                                      |
+| :--: | :---------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  1   |    Aggregator     | Create pass class and objects (abc and 123 in the diagram respectively).                                                                                                         |
+|  2   |    Aggregator     | Add the Redemption Issuer's ID to the pass class's `redemptionIssuers` property. This tells Google Wallet that Issuer ID 1990 can redeem pass objects that reference this class. |
+|  3   | Redemption Issuer | Obtain Collector ID (12345678 in the diagram).                                                                                                                                   |
+|  4   | Redemption Issuer | Configure Collector ID 12345678 on each Smart Tap-supported terminal to be used. Any object with class ID abc and Collector ID 12345678 will be transmitted to the Reader.       |
 
 ### Example 2: Multiple Redemption Issuers
 
@@ -123,12 +136,12 @@ The diagram shows three different Issuers:
 
 The Aggregator and Redemption Issuers must complete the following steps to enable Smart Tap for merchant terminals:
 
-| Step | Role | Description |
-|:----:|:----:|:------------|
-| 1 | Aggregator | Create pass class and objects (abc and 123 in the diagram respectively). |
-| 2 | Aggregator | Add Redemption Issuer IDs to the pass class's `redemptionIssuers` property. This tells Google Wallet that Issuer IDs 1990 and 2018 can redeem pass objects that reference this class. |
-| 3 | Redemption Issuer | Obtain Collector IDs (12345678 for fooPizza and 18802001 for yumPie in the diagram). |
-| 4 | Redemption Issuer | Configure the corresponding Collector ID on each Smart Tap-supported terminal. Any object with class ID abc and a matching Collector ID will be transmitted to the Reader. |
+| Step |       Role        | Description                                                                                                                                                                           |
+| :--: | :---------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|  1   |    Aggregator     | Create pass class and objects (abc and 123 in the diagram respectively).                                                                                                              |
+|  2   |    Aggregator     | Add Redemption Issuer IDs to the pass class's `redemptionIssuers` property. This tells Google Wallet that Issuer IDs 1990 and 2018 can redeem pass objects that reference this class. |
+|  3   | Redemption Issuer | Obtain Collector IDs (12345678 for fooPizza and 18802001 for yumPie in the diagram).                                                                                                  |
+|  4   | Redemption Issuer | Configure the corresponding Collector ID on each Smart Tap-supported terminal. Any object with class ID abc and a matching Collector ID will be transmitted to the Reader.            |
 
 ### Example 3: No Aggregator (Direct Issuer)
 
@@ -138,12 +151,12 @@ We can also use the same Issuer account to develop and issue pass classes withou
 
 The pass developer must complete the following steps to enable Smart Tap for merchant terminals:
 
-| Step | Role | Description |
-|:----:|:----:|:------------|
-| 1 | Pass Developer | Create pass class and objects (abc and 123 in the diagram respectively). |
-| 2 | Pass Developer | Add their Issuer ID to the pass class's `redemptionIssuers` property. This tells Google Wallet that Issuer ID 2018 is authorized to redeem pass objects that reference this class. |
-| 3 | Pass Developer | Obtain Collector ID (12345678 in the diagram). |
-| 4 | Pass Developer | Configure the corresponding Collector ID on each Smart Tap-supported terminal. Any object with class ID abc and a matching Collector ID will be transmitted to the Reader. |
+| Step |      Role      | Description                                                                                                                                                                        |
+| :--: | :------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  1   | Pass Developer | Create pass class and objects (abc and 123 in the diagram respectively).                                                                                                           |
+|  2   | Pass Developer | Add their Issuer ID to the pass class's `redemptionIssuers` property. This tells Google Wallet that Issuer ID 2018 is authorized to redeem pass objects that reference this class. |
+|  3   | Pass Developer | Obtain Collector ID (12345678 in the diagram).                                                                                                                                     |
+|  4   | Pass Developer | Configure the corresponding Collector ID on each Smart Tap-supported terminal. Any object with class ID abc and a matching Collector ID will be transmitted to the Reader.         |
 
 ## User Experience and Behavior
 
@@ -151,29 +164,29 @@ The content and behavior transmitted between terminals and the Google Wallet app
 
 ### Scenario 1: User Opens Specific Pass
 
-| Step | Role | Description |
-|:----:|:----:|:------------|
-| 1 | User | Selects a specific pass in the Google Wallet app. |
-| 2 | User | Touches a Smart Tap-supported contactless reader. |
-| 3 | Terminal | (Collector ID matches) Pass is transmitted to terminal.<br>(Collector ID doesn't match) Pass is not transmitted to terminal. |
+| Step |   Role   | Description                                                                                                                  |
+| :--: | :------: | :--------------------------------------------------------------------------------------------------------------------------- |
+|  1   |   User   | Selects a specific pass in the Google Wallet app.                                                                            |
+|  2   |   User   | Touches a Smart Tap-supported contactless reader.                                                                            |
+|  3   | Terminal | (Collector ID matches) Pass is transmitted to terminal.<br>(Collector ID doesn't match) Pass is not transmitted to terminal. |
 
 > If the Collector ID on the pass matches the terminal's Collector ID, the pass will be transmitted regardless of whether the pass is valid (e.g., if the pass object has expired).
 
 ### Scenario 2: Google Wallet Home Tab or Unlocked Screen View
 
-| Step | Role | Description |
-|:----:|:----:|:------------|
-| 1 | User | Opens the "Home" tab in the Google Wallet app, or unlocks the device screen. |
-| 2 | User | Touches a Smart Tap-supported contactless reader. |
-| 3 | Terminal | (Single valid Collector ID match) Pass is transmitted to terminal.<br>(Multiple valid Collector ID matches) Shows rotating interface of valid passes and transmits the user's selected item. |
+| Step |   Role   | Description                                                                                                                                                                                  |
+| :--: | :------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  1   |   User   | Opens the "Home" tab in the Google Wallet app, or unlocks the device screen.                                                                                                                 |
+|  2   |   User   | Touches a Smart Tap-supported contactless reader.                                                                                                                                            |
+|  3   | Terminal | (Single valid Collector ID match) Pass is transmitted to terminal.<br>(Multiple valid Collector ID matches) Shows rotating interface of valid passes and transmits the user's selected item. |
 
 ### Scenario 3: Locked Screen
 
-| Step | Role | Description |
-|:----:|:----:|:------------|
-| 1 | User | Device screen is locked. |
-| 2 | User | Touches a Smart Tap-supported contactless reader. |
-| 3 | Terminal | (Single valid Collector ID match) Pass is transmitted to terminal.<br>(Multiple valid Collector ID matches) Shows rotating interface of valid passes and transmits the user's selected item. |
+| Step |   Role   | Description                                                                                                                                                                                  |
+| :--: | :------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  1   |   User   | Device screen is locked.                                                                                                                                                                     |
+|  2   |   User   | Touches a Smart Tap-supported contactless reader.                                                                                                                                            |
+|  3   | Terminal | (Single valid Collector ID match) Pass is transmitted to terminal.<br>(Multiple valid Collector ID matches) Shows rotating interface of valid passes and transmits the user's selected item. |
 
 ## Technical Implementation
 
@@ -292,12 +305,12 @@ fun handleSmartTapError(error: SmartTapError) {
 
 ## Performance Considerations
 
-| Aspect | Impact | Optimization |
-|--------|--------|--------------|
-| **NFC Communication** | Low latency required | Optimize data transmission size |
-| **Pass Validation** | Real-time processing | Cache validation results |
-| **Terminal Response** | User experience critical | Implement timeout handling |
-| **Battery Usage** | NFC consumes power | Minimize active NFC time |
+| Aspect                | Impact                   | Optimization                    |
+| --------------------- | ------------------------ | ------------------------------- |
+| **NFC Communication** | Low latency required     | Optimize data transmission size |
+| **Pass Validation**   | Real-time processing     | Cache validation results        |
+| **Terminal Response** | User experience critical | Implement timeout handling      |
+| **Battery Usage**     | NFC consumes power       | Minimize active NFC time        |
 
 ## Common Issues and Solutions
 

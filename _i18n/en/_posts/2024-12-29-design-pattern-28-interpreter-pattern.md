@@ -19,6 +19,7 @@ thumbnail: /assets/img/design_patterns.jpg
 The **Interpreter Pattern** is a behavioral design pattern that defines a way to evaluate language grammar or expressions. It's particularly useful for building interpreters for domain-specific languages (DSLs), expression evaluators, and rule engines.
 
 **Key Use Cases:**
+
 - ✅ Building expression evaluators
 - ✅ Creating domain-specific languages
 - ✅ Implementing rule engines
@@ -30,11 +31,13 @@ The **Interpreter Pattern** is a behavioral design pattern that defines a way to
 ## 🚀 **Real-World Problem: Boolean Expression Evaluator**
 
 Let's build a boolean expression interpreter that can evaluate complex logical expressions like:
+
 - `true AND false OR true`
 - `(true OR false) AND true`
 - `NOT (false AND true)`
 
 ### **Requirements:**
+
 1. Evaluate boolean expressions with AND, OR, and NOT operators
 2. Support parentheses for grouping
 3. Follow the Open-Closed Principle for easy extension
@@ -141,12 +144,13 @@ fun main() {
     val result = expression.interpret()
     println("Expression: true AND false OR true")
     println("Result: $result")
-    
+
     // Expected output: true
 }
 ```
 
 **Output:**
+
 ```
 Expression: true AND false OR true
 Result: true
@@ -178,7 +182,7 @@ class ExpressionBuilder {
 fun main() {
     val builder = ExpressionBuilder()
     val complexExpression = builder.buildComplexExpression()
-    
+
     println("Complex Expression: (true OR false) AND NOT false")
     println("Result: ${complexExpression.interpret()}")
 }
@@ -188,19 +192,20 @@ fun main() {
 
 ## 📊 **Performance Considerations**
 
-| Aspect | Interpreter Pattern | Traditional Approach |
-|--------|-------------------|---------------------|
-| **Memory Usage** | Higher (object overhead) | Lower |
-| **Execution Speed** | Slower (method calls) | Faster |
-| **Maintainability** | Excellent | Poor |
-| **Extensibility** | Excellent | Difficult |
-| **Code Clarity** | High | Low |
+| Aspect              | Interpreter Pattern      | Traditional Approach |
+| ------------------- | ------------------------ | -------------------- |
+| **Memory Usage**    | Higher (object overhead) | Lower                |
+| **Execution Speed** | Slower (method calls)    | Faster               |
+| **Maintainability** | Excellent                | Poor                 |
+| **Extensibility**   | Excellent                | Difficult            |
+| **Code Clarity**    | High                     | Low                  |
 
 ---
 
 ## 🎯 **When to Use the Interpreter Pattern**
 
 ### **✅ Perfect For:**
+
 - Domain-specific language implementation
 - Expression evaluation systems
 - Configuration file parsers
@@ -208,6 +213,7 @@ fun main() {
 - Mathematical expression evaluators
 
 ### **❌ Avoid When:**
+
 - Performance is critical
 - Grammar is very complex
 - Expressions are simple and rarely change
@@ -227,16 +233,19 @@ fun main() {
 ## 📚 **Best Practices**
 
 ### **1. Expression Tree Structure**
+
 - Keep expressions immutable
 - Use composition over inheritance
 - Implement proper error handling
 
 ### **2. Performance Optimization**
+
 - Consider caching for repeated expressions
 - Use lazy evaluation when possible
 - Profile memory usage for large expression trees
 
 ### **3. Extension Guidelines**
+
 - Follow the Open-Closed Principle
 - Use factory methods for complex expression creation
 - Document grammar rules clearly
@@ -246,6 +255,7 @@ fun main() {
 ## 🚨 **Common Pitfalls**
 
 ### **1. Infinite Recursion**
+
 ```kotlin
 // ❌ Avoid: Circular references
 class CircularExpression : Expression {
@@ -255,6 +265,7 @@ class CircularExpression : Expression {
 ```
 
 ### **2. Memory Leaks**
+
 ```kotlin
 // ❌ Avoid: Holding references unnecessarily
 class BadExpression(private val heavyObject: HeavyObject) : Expression {
@@ -263,6 +274,7 @@ class BadExpression(private val heavyObject: HeavyObject) : Expression {
 ```
 
 ### **3. Complex Grammar**
+
 - Keep grammar rules simple
 - Consider using parser generators for complex languages
 - Break down complex expressions into smaller parts
@@ -284,6 +296,7 @@ class BadExpression(private val heavyObject: HeavyObject) : Expression {
 The Interpreter Pattern provides an elegant solution for building expression evaluators and language interpreters. By representing grammar rules as classes, we achieve:
 
 **Key Benefits:**
+
 - 🎯 **Clear Structure**: Each grammar rule is a separate class
 - 🔧 **Easy Extension**: Add new operators without modifying existing code
 - 📖 **Maintainable Code**: Well-organized, readable implementation

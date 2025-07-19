@@ -3,7 +3,8 @@ layout: post
 title: 設計模式 25：策略模式（Strategy Pattern）完整實戰指南
 日期: 2024-12-26 23:50:00 +0800
 description: 精通策略模式，學會打造彈性演算法、動態切換行為，讓程式碼低耦合、易維護。圖文範例，適合軟體工程師與架構師。
-tags: [Strategy Pattern, Design Patterns, Algorithm Selection, Object-Oriented Design, Software Architecture, Kotlin, Programming, Behavioral Patterns]
+tags:
+  [Strategy Pattern, Design Patterns, Algorithm Selection, Object-Oriented Design, Software Architecture, Kotlin, Programming, Behavioral Patterns]
 categories: [Design Pattern, Software Engineering, Programming]
 toc:
   sidebar: right
@@ -19,6 +20,7 @@ thumbnail: /assets/img/design_patterns.jpg
 **策略模式（Strategy Pattern）** 是一種行為型設計模式，能將一系列演算法封裝成獨立類別，讓它們可互換、動態切換，並與主程式解耦，提升彈性與維護性。
 
 **主要優點：**
+
 - ✅ 演算法彈性：可於執行時切換
 - ✅ 低耦合：演算法與主程式分離
 - ✅ 易於擴展：新增策略無需改舊程式
@@ -30,6 +32,7 @@ thumbnail: /assets/img/design_patterns.jpg
 ## 🚀 實務案例：電商運費計算系統
 
 設計一個「電商運費計算系統」，需求如下：
+
 1. 支援多種運費計算方式：
    - 一般配送：固定運費
    - 快速配送：依重量計價
@@ -39,6 +42,7 @@ thumbnail: /assets/img/design_patterns.jpg
 4. 使用者可輕鬆切換運費計算方式
 
 **商業規則：**
+
 - 一般配送：固定費用
 - 快速配送：每公斤計價
 - 國際配送：依地區與重量變動
@@ -51,6 +55,7 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_strategy_pattern_uml_1.png" title="Strategy Pattern - Problem Analysis" %}
 
 **核心挑戰：**
+
 1. 維護困難：運費邏輯與主業務混雜，修改影響大
 2. 違反開放封閉原則（OCP）：新增運費需改主邏輯
 3. 違反單一職責原則（SRP）：主類同時負責運費與業務
@@ -64,11 +69,13 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_strategy_pattern_uml_2.png" title="Strategy Pattern - General Structure" %}
 
 **組件說明：**
+
 1. 策略介面：定義所有演算法共用方法
 2. 具體策略：各自實作專屬演算法
 3. 上下文（Context）：維護當前策略，將請求委派給策略物件
 
 **好處：**
+
 - 演算法與主程式分離，易於維護
 - 執行時可動態切換策略
 - 易於擴展，無需改舊程式
@@ -154,6 +161,7 @@ fun main() {
 ```
 
 **預期輸出：**
+
 ```
 === 電商運費計算系統示範 ===
 📦 一般配送: $50.0，5.0kg，地區：Asia
@@ -176,11 +184,13 @@ fun main() {
 策略模式讓你能彈性切換演算法，讓系統更易維護、擴展，適合多種演算法選擇、動態行為切換等場景。
 
 **適用場景：**
+
 - 多種演算法選擇（排序、折扣、運費等）
 - 需動態切換行為的系統
 - 低耦合、易維護的架構
 
 **設計原則：**
+
 - 單一職責原則（SRP）：每個策略專注一種演算法
 - 開放封閉原則（OCP）：新增策略無需改舊程式
 

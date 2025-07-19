@@ -3,7 +3,20 @@ layout: post
 title: "Design Pattern 10: Singleton Pattern - Ensuring Single Instance Access for Database Connections and Global State Management"
 date: 2024-08-10 15:00:00 +0800
 description: "Master the Singleton Pattern to ensure only one instance of a class exists. Learn how to implement thread-safe singletons for database connections, logging systems, and global configuration management with best practices."
-tags: [Singleton Pattern, Design Patterns, Global State, Database Connection, Thread Safety, Resource Management, Software Architecture, Kotlin, Java, Swift, Lazy Initialization]
+tags:
+  [
+    Singleton Pattern,
+    Design Patterns,
+    Global State,
+    Database Connection,
+    Thread Safety,
+    Resource Management,
+    Software Architecture,
+    Kotlin,
+    Java,
+    Swift,
+    Lazy Initialization,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Database]
 toc:
   #   beginning: true
@@ -91,7 +104,7 @@ class DatabaseClient {
     companion object {
         @Volatile
         private var instance: DatabaseClient? = null
-        
+
         fun getInstance(): DatabaseClient {
             return instance ?: synchronized(this) {
                 instance ?: DatabaseClient().also { instance = it }
@@ -107,9 +120,9 @@ class DatabaseClient {
 fun main() {
     val db1 = DatabaseClient.getInstance()
     val db2 = DatabaseClient.getInstance()
-    
+
     println("Are instances the same? ${db1 === db2}") // true
-    
+
     db1.create("users", mapOf("name" to "John", "email" to "john@example.com"))
     db2.read("users", mapOf("name" to "John"))
 }
@@ -181,7 +194,7 @@ class ThreadSafeDatabaseClient private constructor() {
     companion object {
         @Volatile
         private var instance: ThreadSafeDatabaseClient? = null
-        
+
         fun getInstance(): ThreadSafeDatabaseClient {
             return instance ?: synchronized(this) {
                 instance ?: ThreadSafeDatabaseClient().also { instance = it }
@@ -226,7 +239,7 @@ class LazyDatabaseClient private constructor() {
 ```kotlin
 object ConfigurationManager {
     private val properties = mutableMapOf<String, String>()
-    
+
     init {
         // Load configuration from file or environment
         properties["database.url"] = System.getenv("DB_URL") ?: "localhost:5432"
@@ -234,15 +247,15 @@ object ConfigurationManager {
         properties["database.password"] = System.getenv("DB_PASSWORD") ?: "password"
         properties["app.environment"] = System.getenv("APP_ENV") ?: "development"
     }
-    
+
     fun getProperty(key: String): String? {
         return properties[key]
     }
-    
+
     fun setProperty(key: String, value: String) {
         properties[key] = value
     }
-    
+
     fun getAllProperties(): Map<String, String> {
         return properties.toMap()
     }
@@ -252,7 +265,7 @@ object ConfigurationManager {
 fun main() {
     val dbUrl = ConfigurationManager.getProperty("database.url")
     println("Database URL: $dbUrl")
-    
+
     ConfigurationManager.setProperty("app.debug", "true")
     println("Debug mode: ${ConfigurationManager.getProperty("app.debug")}")
 }
@@ -268,7 +281,7 @@ object ThreadSafeSingleton {
     private val lock = Any()
     @Volatile
     private var instance: ThreadSafeSingleton? = null
-    
+
     fun getInstance(): ThreadSafeSingleton {
         return instance ?: synchronized(lock) {
             instance ?: ThreadSafeSingleton().also { instance = it }
@@ -280,7 +293,7 @@ object ThreadSafeSingleton {
 class BadSingleton {
     companion object {
         private var instance: BadSingleton? = null
-        
+
         fun getInstance(): BadSingleton {
             if (instance == null) {
                 instance = BadSingleton() // Race condition!
@@ -316,13 +329,13 @@ class TestableDatabaseClient private constructor() {
     companion object {
         @Volatile
         private var instance: TestableDatabaseClient? = null
-        
+
         fun getInstance(): TestableDatabaseClient {
             return instance ?: synchronized(this) {
                 instance ?: TestableDatabaseClient().also { instance = it }
             }
         }
-        
+
         // For testing
         fun resetInstance() {
             instance = null
@@ -333,16 +346,17 @@ class TestableDatabaseClient private constructor() {
 
 ## Performance Comparison
 
-| Implementation | Thread Safety | Performance | Memory Usage | Complexity |
-|----------------|---------------|-------------|--------------|------------|
-| Eager Singleton | Yes | High | High | Low |
-| Lazy Singleton | Yes | Medium | Low | Medium |
-| Double-Checked Locking | Yes | High | Low | High |
-| Kotlin Object | Yes | High | Low | Low |
+| Implementation         | Thread Safety | Performance | Memory Usage | Complexity |
+| ---------------------- | ------------- | ----------- | ------------ | ---------- |
+| Eager Singleton        | Yes           | High        | High         | Low        |
+| Lazy Singleton         | Yes           | Medium      | Low          | Medium     |
+| Double-Checked Locking | Yes           | High        | Low          | High       |
+| Kotlin Object          | Yes           | High        | Low          | Low        |
 
 ## Common Anti-Patterns to Avoid
 
 ### 1. **Global State Abuse**
+
 ```kotlin
 // Avoid: Using singleton for everything
 object GlobalState {
@@ -353,6 +367,7 @@ object GlobalState {
 ```
 
 ### 2. **Tight Coupling**
+
 ```kotlin
 // Avoid: Direct singleton dependency
 class UserService {

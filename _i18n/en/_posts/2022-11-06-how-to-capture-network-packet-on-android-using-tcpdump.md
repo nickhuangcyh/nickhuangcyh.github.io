@@ -15,6 +15,7 @@ thumbnail: /assets/img/jordan-harrison-40XgDxBfYXM-unsplash.jpg
 Network packet analysis is one of the most valuable debugging techniques for mobile development. While iOS development offers straightforward packet capture with `rvictl -s [UUID]`, Android requires a different approach. This guide will teach you how to capture and analyze network packets on Android devices using tcpdump and Wireshark.
 
 **What You'll Learn:**
+
 - 📱 **Android packet capture setup** with tcpdump
 - 🔍 **Network traffic analysis** using Wireshark
 - 🛠️ **Debugging techniques** for connectivity issues
@@ -26,6 +27,7 @@ Network packet analysis is one of the most valuable debugging techniques for mob
 ## 🎯 **Why Network Packet Analysis Matters**
 
 ### **Common Use Cases:**
+
 - **API Integration Issues** - Debug backend communication problems
 - **Streaming Problems** - Analyze RTSP/RTMP connection failures
 - **Third-party Library Issues** - Understand library network behavior
@@ -33,6 +35,7 @@ Network packet analysis is one of the most valuable debugging techniques for mob
 - **Security Analysis** - Monitor data transmission patterns
 
 ### **Benefits of Packet Analysis:**
+
 - ✅ **Uncover hidden issues** that logs don't reveal
 - ✅ **Real-time network monitoring** for live debugging
 - ✅ **Protocol-level insights** into communication problems
@@ -44,12 +47,14 @@ Network packet analysis is one of the most valuable debugging techniques for mob
 ## 📋 **Prerequisites and Requirements**
 
 ### **Required Tools:**
+
 1. **Rooted Android device** (recommended for full access)
 2. **tcpdump binary** for Android
 3. **Wireshark** for packet analysis
 4. **ADB (Android Debug Bridge)** for device communication
 
 ### **Optional Tools:**
+
 - **tPacketCapture** - Alternative for non-rooted devices
 - **NetworkMiner** - Advanced packet analysis
 - **Ettercap** - Network security analysis
@@ -81,6 +86,7 @@ adb push tcpdump /data/local/tcpdump
 ```
 
 **If you encounter permission errors:**
+
 ```bash
 # Get root access temporarily
 adb root
@@ -121,6 +127,7 @@ Start capturing packets with basic settings:
 ```
 
 **Command Parameters Explained:**
+
 - `-i any`: Capture on all network interfaces
 - `-p`: Don't put interface in promiscuous mode
 - `-s 0`: Capture full packet (no size limit)
@@ -129,6 +136,7 @@ Start capturing packets with basic settings:
 ### **Advanced Capture Options**
 
 #### **Capture Specific Interface:**
+
 ```bash
 # Capture only WiFi traffic
 ./tcpdump -i wlan0 -p -s 0 -w /sdcard/wifi_capture.pcap
@@ -138,6 +146,7 @@ Start capturing packets with basic settings:
 ```
 
 #### **Filter by Protocol:**
+
 ```bash
 # Capture only HTTP/HTTPS traffic
 ./tcpdump -i any -p -s 0 -w /sdcard/http_capture.pcap port 80 or port 443
@@ -150,6 +159,7 @@ Start capturing packets with basic settings:
 ```
 
 #### **Capture with Size Limits:**
+
 ```bash
 # Capture with packet size limit
 ./tcpdump -i any -p -s 1500 -w /sdcard/limited_capture.pcap
@@ -232,6 +242,7 @@ tcp.flags.reset == 1
 ```
 
 **Limitations:**
+
 - ❌ May miss packets due to VPN routing
 - ❌ Limited to user-level applications
 - ❌ Performance impact on device
@@ -262,6 +273,7 @@ tcpdump -i any -p -s 0 -w capture.pcap port 8080
 ## 🚨 **Troubleshooting Common Issues**
 
 ### **Issue 1: Permission Denied**
+
 ```bash
 # Solution: Ensure proper permissions
 adb shell
@@ -271,6 +283,7 @@ chown root:root /data/local/tcpdump
 ```
 
 ### **Issue 2: No Packets Captured**
+
 ```bash
 # Check if device is rooted
 adb shell
@@ -285,6 +298,7 @@ su
 ```
 
 ### **Issue 3: File System Full**
+
 ```bash
 # Check available space
 adb shell df /sdcard
@@ -297,6 +311,7 @@ adb shell df /sdcard
 ```
 
 ### **Issue 4: ADB Connection Issues**
+
 ```bash
 # Restart ADB server
 adb kill-server
@@ -318,6 +333,7 @@ adb devices
 **Problem:** RTSP stream disconnects after 1 minute
 
 **Solution:**
+
 ```bash
 # Capture RTSP traffic
 ./tcpdump -i any -p -s 0 -w /sdcard/rtsp_capture.pcap port 554
@@ -331,6 +347,7 @@ adb devices
 **Problem:** API calls timeout randomly
 
 **Solution:**
+
 ```bash
 # Capture API traffic
 ./tcpdump -i any -p -s 0 -w /sdcard/api_capture.pcap port 443
@@ -344,6 +361,7 @@ adb devices
 **Problem:** Library not responding to network requests
 
 **Solution:**
+
 ```bash
 # Capture all traffic during library usage
 ./tcpdump -i any -p -s 0 -w /sdcard/library_capture.pcap
@@ -357,6 +375,7 @@ adb devices
 ## 🔒 **Security Considerations**
 
 ### **Privacy and Legal Compliance**
+
 - ✅ **Only capture your own traffic** or authorized network traffic
 - ✅ **Respect privacy laws** and regulations
 - ✅ **Secure captured files** containing sensitive data
@@ -364,6 +383,7 @@ adb devices
 - ✅ **Use in controlled environments** only
 
 ### **Best Practices**
+
 ```bash
 # Use specific filters to limit capture scope
 ./tcpdump -i any -p -s 0 -w /sdcard/capture.pcap host 192.168.1.100
@@ -391,6 +411,7 @@ timeout 300 ./tcpdump -i any -p -s 0 -w /sdcard/capture.pcap
 Network packet analysis is an invaluable debugging technique that can save hours of troubleshooting time. By mastering tcpdump and Wireshark on Android, you can:
 
 **Key Benefits Achieved:**
+
 - 🔍 **Deep network insights** that logs can't provide
 - 🚀 **Faster problem resolution** through protocol-level analysis
 - 📊 **Performance optimization** through traffic analysis
@@ -398,6 +419,7 @@ Network packet analysis is an invaluable debugging technique that can save hours
 - 🔧 **Cross-platform debugging** capabilities
 
 **Best Practices:**
+
 1. **Use specific filters** to focus on relevant traffic
 2. **Capture in controlled environments** for accurate results
 3. **Analyze packets systematically** using Wireshark filters
@@ -415,6 +437,7 @@ Network packet analysis is an invaluable debugging technique that can save hours
 ---
 
 **📚 Additional Resources:**
+
 - [tcpdump for Android](https://www.androidtcpdump.com/)
 - [Wireshark Documentation](https://www.wireshark.org/docs/)
 - [Android Network Debugging](https://developer.android.com/studio/debug/network-profiler)

@@ -3,7 +3,8 @@ layout: post
 title: "Design Pattern 6: Factory Method Pattern - Flexible Object Creation for Multi-Region Applications"
 date: 2024-07-07 23:00:00 +0800
 description: "Master the Factory Method Pattern to create objects without specifying exact classes. Learn how to implement region-specific factories, improve flexibility, and support global application expansion."
-tags: [Factory Method Pattern, Design Patterns, Object Creation, Globalization, Software Architecture, Kotlin, Java, Swift, Polymorphism, Extensibility]
+tags:
+  [Factory Method Pattern, Design Patterns, Object Creation, Globalization, Software Architecture, Kotlin, Java, Swift, Polymorphism, Extensibility]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Globalization]
 toc:
   #   beginning: true
@@ -25,6 +26,7 @@ In our previous article, we successfully used the [Simple Factory Pattern](/2024
 The beverage ordering system has become very popular with customers, leading to rapid expansion worldwide. However, a problem quickly emerged—customers in different regions have different preferences.
 
 **Case Analysis:**
+
 - **US customers** prefer Ceylon black tea
 - **EU customers** prefer Earl Grey black tea
 
@@ -255,19 +257,19 @@ class EUBeverageFactory: BeverageFactory {
 ```swift
 public class BeverageShop {
     private let factory: BeverageFactory
-    
+
     public init(factory: BeverageFactory) {
         self.factory = factory
     }
-    
+
     public func order(beverageName: String) -> Beverage? {
         let beverage = factory.createBeverage(beverageName: beverageName)
-        
+
         beverage?.addSugar(level: 5)
         beverage?.addIce(level: 5)
         beverage?.shake()
         beverage?.packageUp()
-        
+
         return beverage
     }
 }
@@ -290,12 +292,12 @@ let euBlackTea = euShop.order(beverageName: "black tea")
 class BeverageShop(private val factory: BeverageFactory) {
     fun order(beverageName: String): Beverage? {
         val beverage = factory.createBeverage(beverageName)
-        
+
         beverage?.addSugar(5)
         beverage?.addIce(5)
         beverage?.shake()
         beverage?.packageUp()
-        
+
         return beverage
     }
 }
@@ -362,11 +364,11 @@ class MySQLConnection: DatabaseConnection {
         println("Connecting to MySQL database")
         return true
     }
-    
+
     override fun disconnect() {
         println("Disconnecting from MySQL database")
     }
-    
+
     override fun executeQuery(query: String): List<Map<String, Any>> {
         println("Executing query on MySQL: $query")
         return emptyList()
@@ -378,11 +380,11 @@ class PostgreSQLConnection: DatabaseConnection {
         println("Connecting to PostgreSQL database")
         return true
     }
-    
+
     override fun disconnect() {
         println("Disconnecting from PostgreSQL database")
     }
-    
+
     override fun executeQuery(query: String): List<Map<String, Any>> {
         println("Executing query on PostgreSQL: $query")
         return emptyList()
@@ -420,7 +422,7 @@ class DatabaseManager(private val factory: DatabaseFactory) {
 // Good: Configuration-based factory selection
 class BeverageService {
     private val factory: BeverageFactory
-    
+
     constructor(region: String) {
         factory = when (region.lowercase()) {
             "us" -> USBeverageFactory()
@@ -429,7 +431,7 @@ class BeverageService {
             else -> USBeverageFactory() // Default
         }
     }
-    
+
     fun createBeverageMenu(): List<Beverage> {
         return listOf(
             factory.createBeverage("black tea"),
@@ -464,25 +466,25 @@ class USBeverageFactory: AdvancedBeverageFactory {
 // Good: Factory with object caching
 abstract class CachedBeverageFactory: BeverageFactory {
     private val cache = mutableMapOf<String, Beverage>()
-    
+
     override fun createBeverage(beverageName: String): Beverage? {
         return cache.getOrPut(beverageName) {
             createBeverageImpl(beverageName) ?: return null
         }
     }
-    
+
     protected abstract fun createBeverageImpl(beverageName: String): Beverage?
 }
 ```
 
 ## Performance Considerations
 
-| Approach | Memory Usage | Performance | Flexibility | Extensibility |
-|----------|--------------|-------------|-------------|---------------|
-| Simple Factory | Low | High | Low | Low |
-| Factory Method | Medium | Medium | High | High |
-| Abstract Factory | High | Medium | High | High |
-| Direct Instantiation | Low | High | Low | Low |
+| Approach             | Memory Usage | Performance | Flexibility | Extensibility |
+| -------------------- | ------------ | ----------- | ----------- | ------------- |
+| Simple Factory       | Low          | High        | Low         | Low           |
+| Factory Method       | Medium       | Medium      | High        | High          |
+| Abstract Factory     | High         | Medium      | High        | High          |
+| Direct Instantiation | Low          | High        | Low         | Low           |
 
 ## Related Design Patterns
 

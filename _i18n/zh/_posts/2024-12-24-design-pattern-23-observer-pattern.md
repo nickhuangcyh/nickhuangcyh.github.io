@@ -3,7 +3,18 @@ layout: post
 title: 設計模式 23：觀察者模式（Observer Pattern）完整實戰指南
 日期: 2024-12-22 14:00:00 +0800
 description: 精通觀察者模式，學會設計事件驅動系統、通知機制，打造鬆耦合、可擴展的架構。圖文範例，適合軟體工程師與架構師。
-tags: [Observer Pattern, Design Patterns, Event-Driven Programming, Notification System, Object-Oriented Design, Software Architecture, Kotlin, Programming, Behavioral Patterns]
+tags:
+  [
+    Observer Pattern,
+    Design Patterns,
+    Event-Driven Programming,
+    Notification System,
+    Object-Oriented Design,
+    Software Architecture,
+    Kotlin,
+    Programming,
+    Behavioral Patterns,
+  ]
 categories: [Design Pattern, Software Engineering, Programming]
 toc:
   sidebar: right
@@ -19,6 +30,7 @@ thumbnail: /assets/img/design_patterns.jpg
 **觀察者模式（Observer Pattern）** 是一種行為型設計模式，建立一對多的依賴關係，當主體（Subject）狀態改變時，所有觀察者（Observer）自動收到通知並更新。這是實作事件驅動系統與通知機制的基礎。
 
 **主要優點：**
+
 - ✅ 鬆耦合：主體與觀察者獨立
 - ✅ 動態關係：觀察者可隨時加入/移除
 - ✅ 事件驅動架構：支援反應式程式設計
@@ -30,12 +42,14 @@ thumbnail: /assets/img/design_patterns.jpg
 ## 🚀 實務案例：安全系統通知機制
 
 設計一個「安全系統主機（Panel）」系統，需求如下：
+
 - 主機監控多種感測器（煙霧、門窗）
 - 警報觸發時自動通知所有已註冊設備
 - 設備可動態加入/移除通知清單
 - 支援多平台（平板、iOS、Android）
 
 **商業規則：**
+
 - 主機需同時通知所有設備
 - 設備可隨時增減，互不影響
 - 不同設備可有不同通知邏輯
@@ -48,6 +62,7 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_observer_pattern_uml_1.png" title="Observer Pattern - Problem Analysis" %}
 
 **核心挑戰：**
+
 1. 高耦合：主機與設備直接互動，擴展困難
 2. 缺乏彈性：新增設備違反 OCP，系統難維護
 3. 通知不一致：難以確保所有設備都收到通知
@@ -61,12 +76,14 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_observer_pattern_uml_2.png" title="Observer Pattern - General Structure" %}
 
 **組件說明：**
+
 1. 主體介面：定義觀察者管理與通知方法
 2. 觀察者介面：定義通知處理方法
 3. 具體主體：實作觀察者管理與通知
 4. 具體觀察者：實作專屬通知邏輯
 
 **好處：**
+
 - 主體與觀察者鬆耦合
 - 觀察者可動態增減
 - 通知機制一致
@@ -195,6 +212,7 @@ fun main() {
 ```
 
 **預期輸出：**
+
 ```
 === 安全系統觀察者模式示範 ===
 📱 裝置 Tablet-xxx 已註冊通知
@@ -238,17 +256,17 @@ data class NotificationPreferences(
 
 class EnhancedSecurityPanel : AlarmSystem {
     private val devices = mutableListOf<EnhancedDevice>()
-    
+
     override fun addObserver(observer: Device) {
         if (observer is EnhancedDevice) {
             devices.add(observer)
         }
     }
-    
+
     override fun removeObserver(observer: Device) {
         devices.remove(observer as? EnhancedDevice)
     }
-    
+
     override fun notifyObservers(alarmMessage: String) {
         // 增強型通知，支援過濾
         devices.filter { device ->
@@ -257,7 +275,7 @@ class EnhancedSecurityPanel : AlarmSystem {
             device.onAlarmTriggered(alarmMessage)
         }
     }
-    
+
     private fun extractSeverity(message: String): AlarmSeverity {
         return when {
             message.contains("CRITICAL") -> AlarmSeverity.CRITICAL
@@ -266,7 +284,7 @@ class EnhancedSecurityPanel : AlarmSystem {
             else -> AlarmSeverity.LOW
         }
     }
-    
+
     override fun getObserverCount(): Int = devices.size
 }
 ```
@@ -275,18 +293,19 @@ class EnhancedSecurityPanel : AlarmSystem {
 
 ## 📈 **觀察者模式 vs 其他方法**
 
-| 方法 | 優點 | 缺點 |
-|------|------|------|
+| 方法           | 優點                                    | 缺點                                   |
+| -------------- | --------------------------------------- | -------------------------------------- |
 | **觀察者模式** | ✅ 鬆耦合<br>✅ 動態關係<br>✅ 事件驅動 | ❌ 潛在記憶體洩漏<br>❌ 通知順序不確定 |
-| **輪詢** | ✅ 簡單實作 | ❌ 資源密集<br>❌ 延遲更新 |
-| **直接參考** | ✅ 執行快速 | ❌ 緊耦合<br>❌ 難以維護 |
-| **事件總線** | ✅ 解耦通訊 | ❌ 複雜除錯<br>❌ 全域狀態 |
+| **輪詢**       | ✅ 簡單實作                             | ❌ 資源密集<br>❌ 延遲更新             |
+| **直接參考**   | ✅ 執行快速                             | ❌ 緊耦合<br>❌ 難以維護               |
+| **事件總線**   | ✅ 解耦通訊                             | ❌ 複雜除錯<br>❌ 全域狀態             |
 
 ---
 
 ## 🎯 **何時使用觀察者模式**
 
 ### **✅ 完美適用：**
+
 - **事件驅動系統**（GUI 框架、遊戲引擎）
 - **通知系統**（推播通知、警報）
 - **模型-視圖架構**（MVC、MVP）
@@ -294,6 +313,7 @@ class EnhancedSecurityPanel : AlarmSystem {
 - **外掛架構**（可擴展系統）
 
 ### **❌ 避免使用：**
+
 - **簡單一對一關係**（使用直接呼叫）
 - **效能關鍵系統**（通知開銷）
 - **順序依賴操作**（觀察者執行順序未定）
@@ -313,6 +333,7 @@ class EnhancedSecurityPanel : AlarmSystem {
 ## 📈 **實務應用**
 
 ### **1. GUI 框架**
+
 ```kotlin
 // 按鈕點擊觀察者
 interface ButtonClickListener {
@@ -321,11 +342,11 @@ interface ButtonClickListener {
 
 class Button {
     private val listeners = mutableListOf<ButtonClickListener>()
-    
+
     fun addClickListener(listener: ButtonClickListener) {
         listeners.add(listener)
     }
-    
+
     fun click() {
         listeners.forEach { it.onClick(this) }
     }
@@ -333,6 +354,7 @@ class Button {
 ```
 
 ### **2. 股票市場應用**
+
 ```kotlin
 interface StockObserver {
     fun onPriceChange(symbol: String, price: Double)
@@ -340,7 +362,7 @@ interface StockObserver {
 
 class StockMarket {
     private val observers = mutableListOf<StockObserver>()
-    
+
     fun updatePrice(symbol: String, price: Double) {
         observers.forEach { it.onPriceChange(symbol, price) }
     }
@@ -348,6 +370,7 @@ class StockMarket {
 ```
 
 ### **3. 社交媒體通知**
+
 ```kotlin
 interface NotificationObserver {
     fun onNewPost(userId: String, content: String)
@@ -356,7 +379,7 @@ interface NotificationObserver {
 
 class SocialMediaPlatform {
     private val followers = mutableMapOf<String, MutableList<NotificationObserver>>()
-    
+
     fun addFollower(userId: String, observer: NotificationObserver) {
         followers.getOrPut(userId) { mutableListOf() }.add(observer)
     }
@@ -364,6 +387,7 @@ class SocialMediaPlatform {
 ```
 
 ### **4. IoT 裝置管理**
+
 ```kotlin
 interface SensorObserver {
     fun onSensorReading(sensorId: String, value: Double, timestamp: Long)
@@ -371,10 +395,10 @@ interface SensorObserver {
 
 class IoTHub {
     private val sensorObservers = mutableListOf<SensorObserver>()
-    
+
     fun sensorReading(sensorId: String, value: Double) {
-        sensorObservers.forEach { 
-            it.onSensorReading(sensorId, value, System.currentTimeMillis()) 
+        sensorObservers.forEach {
+            it.onSensorReading(sensorId, value, System.currentTimeMillis())
         }
     }
 }
@@ -385,11 +409,12 @@ class IoTHub {
 ## 📈 **常見陷阱與最佳實踐**
 
 ### **1. 記憶體洩漏**
+
 ```kotlin
 // ❌ 避免：觀察者未正確移除
 class BadSubject {
     private val observers = mutableListOf<Observer>()
-    
+
     fun addObserver(observer: Observer) {
         observers.add(observer) // 觀察者可能未被移除
     }
@@ -398,11 +423,11 @@ class BadSubject {
 // ✅ 推薦：弱參考或適當清理
 class GoodSubject {
     private val observers = mutableListOf<WeakReference<Observer>>()
-    
+
     fun addObserver(observer: Observer) {
         observers.add(WeakReference(observer))
     }
-    
+
     fun cleanup() {
         observers.removeAll { it.get() == null }
     }
@@ -410,6 +435,7 @@ class GoodSubject {
 ```
 
 ### **2. 通知順序**
+
 ```kotlin
 // ❌ 避免：不確定通知順序
 override fun notifyObservers(message: String) {
@@ -423,6 +449,7 @@ override fun notifyObservers(message: String) {
 ```
 
 ### **3. 例外處理**
+
 ```kotlin
 // ✅ 良好：優雅處理觀察者例外
 override fun notifyObservers(message: String) {
@@ -455,6 +482,7 @@ override fun notifyObservers(message: String) {
 透過觀察者模式，我們成功建構了一個靈活的通知系統，允許設備動態加入或離開，同時維持鬆耦合並遵循開放封閉原則（OCP）。
 
 **關鍵優勢：**
+
 - 🎯 **鬆耦合** - 主體與觀察者獨立
 - 🔧 **動態關係** - 觀察者可隨時加入/移除
 - 📈 **可擴展性** - 新增觀察者無需改主體
@@ -462,11 +490,13 @@ override fun notifyObservers(message: String) {
 - ⚡ **事件驅動架構** - 支援反應式程式設計
 
 **遵循設計原則：**
+
 - **單一職責原則（SRP）**：每個觀察者處理其專屬通知邏輯
 - **開放封閉原則（OCP）**：開放擴展（新觀察者），封閉修改
 - **依賴反轉原則（DIP）**：依賴抽象，而非具體實作
 
 **完美適用：**
+
 - **即時警報系統**（安全、監控）
 - **訊息推送系統**（通知、更新）
 - **事件分發系統**（日誌、分析）

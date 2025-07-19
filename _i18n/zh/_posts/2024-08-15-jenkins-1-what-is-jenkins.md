@@ -3,7 +3,19 @@ layout: post
 title: "Jenkins 1：什麼是 Jenkins——CI/CD 自動化伺服器全解析"
 date: 2024-08-15 15:00:00 +0800
 description: "深入了解 Jenkins 這款強大的開源自動化伺服器，掌握其核心理念、優勢及如何革新軟體開發流程。"
-tags: [Jenkins, CI/CD, DevOps, Automation, Continuous Integration, Continuous Delivery, Build Automation, Software Development, Pipeline, Automation Server]
+tags:
+  [
+    Jenkins,
+    CI/CD,
+    DevOps,
+    Automation,
+    Continuous Integration,
+    Continuous Delivery,
+    Build Automation,
+    Software Development,
+    Pipeline,
+    Automation Server,
+  ]
 categories: [DevOps, CI/CD, Software Development, Automation, Build Tools]
 toc:
   sidebar: right
@@ -37,6 +49,7 @@ Jenkins 完全開源，適合各類企業與團隊使用。
 ### 2. **外掛生態強大**
 
 擁有 1500+ 外掛，涵蓋：
+
 - **版本控制**：Git、SVN、Mercurial
 - **建置工具**：Maven、Gradle、Ant、Make
 - **測試**：JUnit、TestNG、Selenium
@@ -67,7 +80,7 @@ Jenkins Pipeline 是一組外掛，支援將持續交付流程以程式碼（Jen
 // 宣告式 Jenkinsfile 範例
 pipeline {
     agent any
-    
+
     stages {
         stage('Build') {
             steps {
@@ -96,12 +109,14 @@ pipeline {
 Jenkins 節點是 Jenkins 環境中的一台機器，可執行 Pipeline 或 Job。支援單節點或分散式部署。
 
 #### 節點類型
+
 - **主節點（Master）**：管理系統
 - **代理節點（Agent）**：執行任務
 
 ### 3. **Job（任務）**
 
 Jenkins Job 是建置任務的基本單元，可設定為：
+
 - 建置專案
 - 執行測試
 - 部署應用
@@ -109,6 +124,7 @@ Jenkins Job 是建置任務的基本單元，可設定為：
 - 發送通知
 
 #### Job 類型
+
 - **自由風格專案**：彈性簡單
 - **流水線**：多階段流程
 - **多設定專案**：矩陣建置
@@ -136,6 +152,7 @@ Executor 是節點上用於執行任務的插槽。每個節點可設定多個 E
 ```
 
 ### 主要元件
+
 1. **Web UI**：設定與監控介面
 2. **Scheduler**：任務排程與資源分配
 3. **Plugin Manager**：外掛管理
@@ -150,11 +167,11 @@ Executor 是節點上用於執行任務的插槽。每個節點可設定多個 E
 // CI 流水線範例
 pipeline {
     agent any
-    
+
     triggers {
         pollSCM('H/5 * * * *')  // 每 5 分鐘輪詢 SCM
     }
-    
+
     stages {
         stage('Checkout') {
             steps {
@@ -180,7 +197,7 @@ pipeline {
             }
         }
     }
-    
+
     post {
         always {
             cleanWs()
@@ -209,12 +226,12 @@ pipeline {
 // CD 流水線範例
 pipeline {
     agent any
-    
+
     environment {
         DOCKER_IMAGE = 'myapp:latest'
         KUBERNETES_NAMESPACE = 'production'
     }
-    
+
     stages {
         stage('Build Docker Image') {
             steps {
@@ -250,7 +267,7 @@ pipeline {
 // 多分支流水線範例
 pipeline {
     agent any
-    
+
     stages {
         stage('Build') {
             steps {
@@ -294,24 +311,28 @@ pipeline {
 ## 最佳實踐
 
 ### 1. **安全性**
+
 - 啟用基於角色的存取控制（RBAC）
 - 整合 LDAP 或 OAuth 認證
 - 定期更新 Jenkins 及外掛
 - 使用憑證管理敏感資訊
 
 ### 2. **效能優化**
+
 - 使用代理節點實現分散式建置
 - 建置快取策略
 - 優化工作區清理
 - 監控資源使用
 
 ### 3. **維護管理**
+
 - 定期備份 Jenkins 設定
 - 監控磁碟空間，清理舊建置
 - 外掛及時更新
 - 流水線設定文件化
 
 ### 4. **流水線設計**
+
 - 保持流水線簡潔可讀
 - 重複利用共用程式庫
 - 錯誤處理完善
@@ -319,13 +340,13 @@ pipeline {
 
 ## 與其他 CI/CD 工具對比
 
-| 特性 | Jenkins | GitLab CI | GitHub Actions | CircleCI |
-|------|---------|-----------|----------------|----------|
-| **開源** | ✅ | ✅ | ❌ | ❌ |
-| **外掛生態** | 豐富 | 一般 | 成長中 | 一般 |
-| **學習曲線** | 適中 | 簡單 | 簡單 | 簡單 |
-| **部署方式** | 自建 | 自建/雲端 | 雲端 | 雲端 |
-| **費用** | 免費 | 免費/付費 | 免費/付費 | 免費/付費 |
+| 特性         | Jenkins | GitLab CI | GitHub Actions | CircleCI  |
+| ------------ | ------- | --------- | -------------- | --------- |
+| **開源**     | ✅      | ✅        | ❌             | ❌        |
+| **外掛生態** | 豐富    | 一般      | 成長中         | 一般      |
+| **學習曲線** | 適中    | 簡單      | 簡單           | 簡單      |
+| **部署方式** | 自建    | 自建/雲端 | 雲端           | 雲端      |
+| **費用**     | 免費    | 免費/付費 | 免費/付費      | 免費/付費 |
 
 ## Jenkins 入門指南
 
@@ -340,6 +361,7 @@ java -jar jenkins.war --httpPort=8080
 ```
 
 ### 2. **初始化設定**
+
 1. 訪問 `http://localhost:8080`
 2. 取得初始管理員密碼
 3. 安裝推薦外掛
@@ -351,7 +373,7 @@ java -jar jenkins.war --httpPort=8080
 ```groovy
 pipeline {
     agent any
-    
+
     stages {
         stage('Hello') {
             steps {
@@ -376,7 +398,7 @@ Blue Ocean 是 Jenkins 的現代化 UI，極大提升流水線視覺化體驗。
 // 倉庫中的 Jenkinsfile
 pipeline {
     agent any
-    
+
     stages {
         stage('Build') {
             steps {
@@ -402,12 +424,14 @@ def call(String project) {
 ## 監控與分析
 
 ### 1. **建置指標**
+
 - 建置成功/失敗率
 - 建置時長趨勢
 - 佇列長度監控
 - 資源使用率
 
 ### 2. **報表分析**
+
 - 測試結果彙整
 - 程式碼覆蓋率報告
 - 安全掃描結果
@@ -416,18 +440,21 @@ def call(String project) {
 ## 常見問題排查
 
 ### 1. **建置失敗**
+
 - 檢查主控台輸出
 - 驗證環境變數與憑證
 - 檢查相依項
 - 檢查流水線語法
 
 ### 2. **效能問題**
+
 - 監控磁碟與記憶體
 - 優化建置腳本
 - 合理並行執行
 - 建置快取
 
 ### 3. **外掛問題**
+
 - 定期更新外掛
 - 檢查相容性
 - 閱讀外掛文件
@@ -436,18 +463,21 @@ def call(String project) {
 ## Jenkins 未來趨勢
 
 ### 1. **雲原生 Jenkins**
+
 - 支援 Kubernetes 部署
 - 自動擴縮容
 - 雲端儲存整合
 - Serverless 執行
 
 ### 2. **安全增強**
+
 - 更完善的認證方式
 - 更強的金鑰管理
 - 整合安全掃描
 - 合規性報告
 
 ### 3. **AI/ML 整合**
+
 - 智慧建置優化
 - 預測性失敗分析
 - 自動化測試推薦
@@ -458,6 +488,7 @@ def call(String project) {
 Jenkins 作為強大靈活的自動化伺服器，已成為眾多企業 CI/CD 的事實標準。其開源特性、豐富外掛生態與活躍社群，使其成為持續整合與交付的首選。
 
 **Jenkins 優勢：**
+
 - **彈性**：高度可自訂
 - **可擴充性**：適用於各類專案
 - **可靠性**：生產環境驗證

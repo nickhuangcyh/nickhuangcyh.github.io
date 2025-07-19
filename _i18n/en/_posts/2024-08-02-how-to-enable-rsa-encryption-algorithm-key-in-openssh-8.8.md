@@ -19,6 +19,7 @@ thumbnail: /assets/img/rsa-algorithm.jpg
 OpenSSH 8.8+ disables RSA/SHA-1 by default due to security and obsolescence concerns. However, some legacy systems (e.g., old Git servers) still require RSA keys for authentication.
 
 **Key Points:**
+
 - ✅ **RSA/SHA-1 is considered weak**
 - ✅ **OpenSSH prefers modern algorithms (ED25519, ECDSA)**
 - ✅ **Legacy servers may only support RSA**
@@ -28,10 +29,12 @@ OpenSSH 8.8+ disables RSA/SHA-1 by default due to security and obsolescence conc
 ## 🚀 **Step-by-Step: Re-Enabling RSA in OpenSSH 8.8+**
 
 ### **1. Prepare Your Environment**
+
 - Use Docker or a VM for safe testing
 - Ensure you have OpenSSH 8.8+ and a legacy server (e.g., GitLab)
 
 ### **2. Generate an RSA Key**
+
 ```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 eval "$(ssh-agent -s)"
@@ -39,12 +42,14 @@ ssh-add ~/.ssh/id_rsa
 ```
 
 ### **3. Upload Public Key to Server**
+
 ```bash
 cat ~/.ssh/id_rsa.pub
 # Copy to your Git server's SSH settings
 ```
 
 ### **4. Test SSH Connection**
+
 ```bash
 ssh -T -v git@x.x.x.x
 # If you see: send_pubkey_test: no mutual signature algorithm
@@ -56,6 +61,7 @@ ssh -T -v git@x.x.x.x
 ## 🔧 **How to Re-Enable RSA/SHA-1 in OpenSSH**
 
 Edit your `~/.ssh/config`:
+
 ```bash
 Host x.x.x.x
   HostkeyAlgorithms +ssh-rsa
@@ -63,6 +69,7 @@ Host x.x.x.x
 ```
 
 Save and retry your SSH connection:
+
 ```bash
 ssh -T -v git@x.x.x.x
 # You should now connect successfully
@@ -72,14 +79,15 @@ ssh -T -v git@x.x.x.x
 
 ## 📈 **OpenSSH 8.8+ vs Previous Versions**
 
-| Version         | Default RSA Support | Security Level | Recommended For         |
-|-----------------|--------------------|---------------|------------------------|
-| **OpenSSH <8.8**| ✅ Enabled          | ⚠️ Lower      | Legacy/compatibility   |
-| **OpenSSH 8.8+**| ❌ Disabled         | ✅ Higher      | Modern, secure systems |
+| Version          | Default RSA Support | Security Level | Recommended For        |
+| ---------------- | ------------------- | -------------- | ---------------------- |
+| **OpenSSH <8.8** | ✅ Enabled          | ⚠️ Lower       | Legacy/compatibility   |
+| **OpenSSH 8.8+** | ❌ Disabled         | ✅ Higher      | Modern, secure systems |
 
 ---
 
 ## 🚨 **Security Best Practices**
+
 - Use ED25519 or ECDSA keys for new systems
 - Only re-enable RSA for legacy compatibility
 - Regularly update OpenSSH and monitor security advisories
@@ -89,6 +97,7 @@ ssh -T -v git@x.x.x.x
 ---
 
 ## 🔗 **Related Articles**
+
 - [How to Use Multiple GitHub Accounts with SSH](/2025-05-18-how-to-use-multiple-github-accounts-using-ssh.md)
 - [Jenkins Server Setup with SSH Keys](/2024-08-15-jenkins-2-how-to-setup-jenkins-server.md)
 - [P2P Technology Fundamentals: IPv4 and NAT](/2022-01-03-p2p-tech-1-ipv4-nat)
@@ -101,6 +110,7 @@ ssh -T -v git@x.x.x.x
 Re-enabling RSA in OpenSSH 8.8+ is sometimes necessary for legacy compatibility, but always prefer modern, secure algorithms when possible.
 
 **Key Takeaways:**
+
 - 🎯 **RSA/SHA-1 is deprecated for security**
 - 🛡️ **Use only for legacy systems**
 - 🔧 **Configure SSH client for compatibility**

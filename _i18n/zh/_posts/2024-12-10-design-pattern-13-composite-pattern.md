@@ -3,7 +3,8 @@ layout: post
 title: "設計模式 13：組合模式（Composite Pattern）——檔案系統與 UI 元件樹的統一管理"
 date: 2024-12-10 22:28:00 +0800
 description: "精通組合模式，統一管理樹狀結構，讓單一物件與集合操作一致。檔案系統、UI 元件、組織架構等最佳實踐，圖文範例。"
-tags: [Composite Pattern, Design Patterns, Tree Structure, File System, UI Components, Object-Oriented Design, Software Architecture, Kotlin, Java, Swift]
+tags:
+  [Composite Pattern, Design Patterns, Tree Structure, File System, UI Components, Object-Oriented Design, Software Architecture, Kotlin, Java, Swift]
 categories: [Design Patterns, Software Development, Object-Oriented Programming]
 toc:
   sidebar: right

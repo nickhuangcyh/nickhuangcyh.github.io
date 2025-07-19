@@ -32,11 +32,9 @@ thumbnail: /assets/img/design_patterns.jpg
 在未使用設計模式的情況下，我們可能面臨以下挑戰：
 
 1. **高耦合性 (High Coupling)**
-
    - 如果主機直接與每一個設備互動，程式碼會變得難以維護，每次新增或移除設備都需要修改主機邏輯。
 
 2. **缺乏彈性 (Lack of Flexibility)**
-
    - 新增設備需要修改現有程式碼，違反開放關閉原則 (OCP)。
 
 3. **通知不一致 (Inconsistent Notifications)**

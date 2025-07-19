@@ -15,6 +15,7 @@ thumbnail: /assets/img/github.jpg
 Many developers work with multiple GitHub accounts - one for personal projects and another for work. Managing these accounts on the same computer can be challenging without proper SSH configuration. This guide will show you the most efficient way to handle multiple GitHub accounts using SSH keys.
 
 **Key Benefits:**
+
 - ✅ Seamlessly switch between work and personal accounts
 - ✅ Avoid permission conflicts and push errors
 - ✅ Maintain security with proper key management
@@ -39,6 +40,7 @@ ssh-add -l
 If you only see your default key (e.g., `id_ed25519`), you'll need to load additional keys for other accounts.
 
 **Example Output:**
+
 ```bash
 256 SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx nick25932219@gmail.com(ED25519)
 ```
@@ -116,28 +118,31 @@ Hi nickhuangCompany! You've successfully authenticated, but GitHub does not prov
 
 ## 📋 **Complete Setup Checklist**
 
-| Step | Action | Status |
-|------|--------|--------|
-| 1 | Generate SSH keys for each account | ✅ |
-| 2 | Add keys to SSH agent | ✅ |
-| 3 | Configure SSH config file | ✅ |
-| 4 | Update repository remote URLs | ✅ |
-| 5 | Test SSH connections | ✅ |
+| Step | Action                             | Status |
+| ---- | ---------------------------------- | ------ |
+| 1    | Generate SSH keys for each account | ✅     |
+| 2    | Add keys to SSH agent              | ✅     |
+| 3    | Configure SSH config file          | ✅     |
+| 4    | Update repository remote URLs      | ✅     |
+| 5    | Test SSH connections               | ✅     |
 
 ---
 
 ## 🎯 **Best Practices for Multiple GitHub Accounts**
 
 ### **Key Naming Convention**
+
 - Use descriptive names: `id_ed25519_personal`, `id_ed25519_work`
 - Include the account purpose in the filename
 
 ### **SSH Config Organization**
+
 - Group configurations by account
 - Add comments for clarity
 - Use consistent naming patterns
 
 ### **Repository Management**
+
 - Keep work and personal repositories in separate directories
 - Use different remote aliases for clarity
 - Document which account each repository belongs to
@@ -147,6 +152,7 @@ Hi nickhuangCompany! You've successfully authenticated, but GitHub does not prov
 ## 🚨 **Common Issues and Solutions**
 
 ### **Issue: Permission Denied**
+
 ```bash
 Permission denied (publickey)
 ```
@@ -154,9 +160,11 @@ Permission denied (publickey)
 **Solution:** Ensure the correct SSH key is loaded and the config file is properly set up.
 
 ### **Issue: Wrong Account Used**
+
 **Solution:** Double-check your SSH config and remote URLs. Make sure you're using the correct host alias.
 
 ### **Issue: Key Not Found**
+
 **Solution:** Verify the key path in your SSH config and ensure the key file exists.
 
 ---
@@ -184,6 +192,7 @@ For more advanced SSH key management and GitHub authentication:
 By using SSH config files with key pairing, you can efficiently manage multiple GitHub accounts on a single computer without creating new keys or modifying global settings. This approach is perfect for developers who need to maintain separate work and personal GitHub accounts.
 
 **Key Takeaways:**
+
 - SSH config files provide clean account separation
 - No need for complex key management
 - Easy to switch between accounts

@@ -3,7 +3,19 @@ layout: post
 title: "Design Pattern 16: Flyweight Pattern - Complete Guide with Real-World Forest Rendering Examples"
 date: 2024-12-14 15:00:00 +0800
 description: "Master the Flyweight Pattern with practical forest rendering examples. Learn how to reduce memory usage through object sharing, optimize performance, and build efficient systems."
-tags: [Flyweight Pattern, Design Patterns, Memory Optimization, Object-Oriented Design, Software Architecture, Kotlin, Programming, Structural Patterns, Forest Rendering, Performance]
+tags:
+  [
+    Flyweight Pattern,
+    Design Patterns,
+    Memory Optimization,
+    Object-Oriented Design,
+    Software Architecture,
+    Kotlin,
+    Programming,
+    Structural Patterns,
+    Forest Rendering,
+    Performance,
+  ]
 categories: [Design Pattern, Software Engineering, Programming]
 toc:
   sidebar: right
@@ -19,6 +31,7 @@ thumbnail: /assets/img/design_patterns.jpg
 The **Flyweight Pattern** is a structural design pattern that reduces memory usage by sharing common parts of state between multiple objects instead of keeping all of the data in each object. It separates intrinsic state (shared) from extrinsic state (unique to each object), enabling efficient memory usage for large numbers of similar objects.
 
 **Key Benefits:**
+
 - ✅ **Memory Efficiency** - Significantly reduce memory usage through object sharing
 - ✅ **Performance Optimization** - Faster object creation and manipulation
 - ✅ **Scalability** - Handle large numbers of objects efficiently
@@ -32,6 +45,7 @@ The **Flyweight Pattern** is a structural design pattern that reduces memory usa
 Let's design a **forest rendering system** with the following requirements:
 
 ### **System Requirements:**
+
 - **Render thousands of trees** in a 3D forest scene
 - **Multiple tree types** (Oak, Pine, Maple, etc.) with different appearances
 - **Efficient memory usage** - avoid creating duplicate tree data
@@ -39,6 +53,7 @@ Let's design a **forest rendering system** with the following requirements:
 - **Extensibility** - easy to add new tree types and properties
 
 ### **Business Rules:**
+
 - Each tree has intrinsic properties (type, texture, color) and extrinsic properties (position, size)
 - Trees of the same type should share intrinsic data
 - System should support dynamic tree placement and removal
@@ -86,6 +101,7 @@ After analyzing the forces, we can apply the **Flyweight Pattern** to create an 
 4. **Client** - Uses flyweight objects and manages extrinsic state
 
 **Benefits:**
+
 - **Memory efficiency** - Share intrinsic state across multiple objects
 - **Performance optimization** - Reduce object creation overhead
 - **Scalability** - Handle large numbers of objects efficiently
@@ -128,7 +144,7 @@ data class TreeExtrinsicState(
 class TreeType(
     private val intrinsicState: TreeIntrinsicState
 ) : TreeFlyweight {
-    
+
     override fun render(x: Int, y: Int, size: Double) {
         println("🌳 Rendering ${intrinsicState.name} tree:")
         println("   Position: ($x, $y)")
@@ -140,17 +156,17 @@ class TreeType(
         println("   Rotation: ${(System.currentTimeMillis() % 360)}°")
         println()
     }
-    
+
     override fun getTreeType(): String = intrinsicState.name
-    
+
     override fun getMemoryUsage(): Int {
         // Simulate memory usage calculation
-        return intrinsicState.name.length + 
-               intrinsicState.color.length + 
-               intrinsicState.texture.length + 
+        return intrinsicState.name.length +
+               intrinsicState.color.length +
+               intrinsicState.texture.length +
                24 // overhead for object
     }
-    
+
     fun getIntrinsicState(): TreeIntrinsicState = intrinsicState
 }
 ```
@@ -161,7 +177,7 @@ class TreeType(
 class TreeFactory {
     private val treeTypes = mutableMapOf<String, TreeType>()
     private var totalMemoryUsage = 0
-    
+
     fun getTreeType(name: String, color: String, texture: String, maxHeight: Double, leafDensity: Int): TreeType {
         return treeTypes.computeIfAbsent(name) {
             println("🆕 Creating new TreeType: $name")
@@ -171,13 +187,13 @@ class TreeFactory {
             treeType
         }
     }
-    
+
     fun getTreeTypeCount(): Int = treeTypes.size
-    
+
     fun getTotalMemoryUsage(): Int = totalMemoryUsage
-    
+
     fun getTreeTypeNames(): List<String> = treeTypes.keys.toList()
-    
+
     fun clearCache() {
         treeTypes.clear()
         totalMemoryUsage = 0
@@ -192,7 +208,7 @@ class TreeFactory {
 class Forest {
     private val trees = mutableListOf<TreeInstance>()
     private val factory = TreeFactory()
-    
+
     fun plantTree(x: Int, y: Int, size: Double, treeTypeName: String) {
         val treeType = when (treeTypeName.lowercase()) {
             "oak" -> factory.getTreeType("Oak", "Green", "Rough", 25.0, 80)
@@ -202,25 +218,25 @@ class Forest {
             "willow" -> factory.getTreeType("Willow", "Light Green", "Soft", 15.0, 90)
             else -> factory.getTreeType("Generic", "Brown", "Default", 20.0, 60)
         }
-        
+
         val tree = TreeInstance(treeType, TreeExtrinsicState(x, y, size))
         trees.add(tree)
     }
-    
+
     fun renderForest() {
         println("🌲 Rendering Forest with ${trees.size} trees...")
         println("📊 Tree Types: ${factory.getTreeTypeCount()}")
         println("💾 Memory Usage: ${factory.getTotalMemoryUsage()} bytes")
         println("=" * 60)
-        
+
         trees.forEach { tree ->
             tree.render()
         }
-        
+
         println("=" * 60)
         println("✅ Forest rendering complete!")
     }
-    
+
     fun getForestStats(): ForestStats {
         val treeTypeCounts = trees.groupBy { it.getTreeType() }.mapValues { it.value.size }
         return ForestStats(
@@ -243,9 +259,9 @@ class TreeInstance(
             extrinsicState.size
         )
     }
-    
+
     fun getTreeType(): String = treeType.getTreeType()
-    
+
     fun getPosition(): Pair<Int, Int> = extrinsicState.x to extrinsicState.y
 }
 
@@ -262,34 +278,34 @@ data class ForestStats(
 ```kotlin
 fun main() {
     val forest = Forest()
-    
+
     println("=== Forest Rendering Demo ===\n")
-    
+
     // Plant trees of different types
     println("🌱 Planting trees...")
-    
+
     // Plant multiple Oak trees
     repeat(5) { i ->
         forest.plantTree(10 + i * 5, 20 + i * 3, 1.2 + i * 0.1, "Oak")
     }
-    
+
     // Plant multiple Pine trees
     repeat(3) { i ->
         forest.plantTree(50 + i * 8, 30 + i * 4, 1.5 + i * 0.2, "Pine")
     }
-    
+
     // Plant multiple Maple trees
     repeat(4) { i ->
         forest.plantTree(80 + i * 6, 15 + i * 5, 1.0 + i * 0.15, "Maple")
     }
-    
+
     // Plant some Birch and Willow trees
     forest.plantTree(120, 25, 1.3, "Birch")
     forest.plantTree(140, 35, 1.1, "Willow")
     forest.plantTree(160, 20, 1.4, "Birch")
-    
+
     println("✅ Tree planting complete!\n")
-    
+
     // Display forest statistics
     val stats = forest.getForestStats()
     println("📊 Forest Statistics:")
@@ -301,17 +317,17 @@ fun main() {
         println("  • $type: $count trees")
     }
     println()
-    
+
     // Render the forest
     forest.renderForest()
-    
+
     // Demonstrate memory efficiency
     println("\n💡 Memory Efficiency Demonstration:")
     println("Without Flyweight Pattern:")
     println("- Each tree would store all its data independently")
     println("- Memory usage: ${stats.totalTrees * 200} bytes (estimated)")
     println("- Object count: ${stats.totalTrees} objects")
-    
+
     println("\nWith Flyweight Pattern:")
     println("- Shared intrinsic state across tree types")
     println("- Memory usage: ${stats.memoryUsage} bytes")
@@ -321,6 +337,7 @@ fun main() {
 ```
 
 **Expected Output:**
+
 ```
 === Forest Rendering Demo ===
 
@@ -387,18 +404,19 @@ With Flyweight Pattern:
 
 ## 📊 **Flyweight Pattern vs Alternative Approaches**
 
-| Approach | Pros | Cons |
-|----------|------|------|
-| **Flyweight Pattern** | ✅ Memory efficiency<br>✅ Performance optimization<br>✅ Scalability | ❌ Increased complexity<br>❌ State management overhead<br>❌ Debugging challenges |
-| **Direct Object Creation** | ✅ Simple implementation<br>✅ Easy to understand<br>✅ Direct state access | ❌ Memory explosion<br>❌ Performance degradation<br>❌ Resource waste |
-| **Object Pooling** | ✅ Reuse objects<br>✅ Reduce allocation overhead | ❌ No state sharing<br>❌ Complex lifecycle management |
-| **Caching** | ✅ Reduce computation<br>✅ Improve performance | ❌ Different purpose (computation vs memory) |
+| Approach                   | Pros                                                                        | Cons                                                                               |
+| -------------------------- | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Flyweight Pattern**      | ✅ Memory efficiency<br>✅ Performance optimization<br>✅ Scalability       | ❌ Increased complexity<br>❌ State management overhead<br>❌ Debugging challenges |
+| **Direct Object Creation** | ✅ Simple implementation<br>✅ Easy to understand<br>✅ Direct state access | ❌ Memory explosion<br>❌ Performance degradation<br>❌ Resource waste             |
+| **Object Pooling**         | ✅ Reuse objects<br>✅ Reduce allocation overhead                           | ❌ No state sharing<br>❌ Complex lifecycle management                             |
+| **Caching**                | ✅ Reduce computation<br>✅ Improve performance                             | ❌ Different purpose (computation vs memory)                                       |
 
 ---
 
 ## 🎯 **When to Use the Flyweight Pattern**
 
 ### **✅ Perfect For:**
+
 - **Large numbers of similar objects** (trees, particles, characters)
 - **Memory-constrained environments** (mobile apps, embedded systems)
 - **Performance-critical applications** (games, simulations)
@@ -406,6 +424,7 @@ With Flyweight Pattern:
 - **Graphics rendering** (sprites, textures, models)
 
 ### **❌ Avoid When:**
+
 - **Small object counts** (overhead not justified)
 - **Unique objects** (no sharing benefits)
 - **Frequently changing state** (complex state management)
@@ -421,7 +440,7 @@ With Flyweight Pattern:
 class ThreadSafeTreeFactory {
     private val treeTypes = ConcurrentHashMap<String, TreeType>()
     private val memoryUsage = AtomicInteger(0)
-    
+
     fun getTreeType(name: String, color: String, texture: String, maxHeight: Double, leafDensity: Int): TreeType {
         return treeTypes.computeIfAbsent(name) {
             println("🆕 Creating new TreeType: $name (Thread: ${Thread.currentThread().name})")
@@ -431,9 +450,9 @@ class ThreadSafeTreeFactory {
             treeType
         }
     }
-    
+
     fun getMemoryUsage(): Int = memoryUsage.get()
-    
+
     fun getTreeTypeCount(): Int = treeTypes.size
 }
 ```
@@ -443,7 +462,7 @@ class ThreadSafeTreeFactory {
 ```kotlin
 class LazyTreeFactory {
     private val treeTypes = mutableMapOf<String, Lazy<TreeType>>()
-    
+
     fun getTreeType(name: String, color: String, texture: String, maxHeight: Double, leafDensity: Int): TreeType {
         return treeTypes.getOrPut(name) {
             lazy {
@@ -453,7 +472,7 @@ class LazyTreeFactory {
             }
         }.value
     }
-    
+
     fun preloadTreeTypes(vararg treeSpecs: TreeSpec) {
         treeSpecs.forEach { spec ->
             treeTypes[spec.name] = lazy {
@@ -482,27 +501,27 @@ class MonitoredTreeFactory(
     private val treeTypes = mutableMapOf<String, TreeType>()
     private var totalMemoryUsage = 0
     private val memoryListeners = mutableListOf<(Int) -> Unit>()
-    
+
     fun getTreeType(name: String, color: String, texture: String, maxHeight: Double, leafDensity: Int): TreeType {
         return treeTypes.computeIfAbsent(name) {
             val treeType = TreeType(TreeIntrinsicState(name, color, texture, maxHeight, leafDensity))
             totalMemoryUsage += treeType.getMemoryUsage()
-            
+
             // Notify listeners if memory threshold exceeded
             if (totalMemoryUsage > memoryThreshold) {
                 memoryListeners.forEach { it(totalMemoryUsage) }
             }
-            
+
             treeType
         }
     }
-    
+
     fun addMemoryListener(listener: (Int) -> Unit) {
         memoryListeners.add(listener)
     }
-    
+
     fun getMemoryUsage(): Int = totalMemoryUsage
-    
+
     fun clearCache() {
         treeTypes.clear()
         totalMemoryUsage = 0
@@ -516,24 +535,28 @@ class MonitoredTreeFactory(
 ## 🚀 **Real-World Applications**
 
 ### **1. Game Development**
+
 - **Character sprites** - Share texture and animation data
 - **Particle systems** - Reuse particle properties
 - **Terrain rendering** - Share texture and mesh data
 - **UI elements** - Reuse button and widget styles
 
 ### **2. Text Processing**
+
 - **Character rendering** - Share font glyph data
 - **Document formatting** - Reuse paragraph and style information
 - **Code editors** - Share syntax highlighting rules
 - **Web browsers** - Reuse CSS and font data
 
 ### **3. Graphics and Visualization**
+
 - **3D model rendering** - Share mesh and texture data
 - **Chart components** - Reuse axis and legend styles
 - **Icon systems** - Share icon definitions
 - **Map rendering** - Reuse tile and symbol data
 
 ### **4. System Development**
+
 - **Database connections** - Share connection pool configurations
 - **Network protocols** - Reuse protocol definitions
 - **Configuration management** - Share configuration templates
@@ -544,12 +567,14 @@ class MonitoredTreeFactory(
 ## 📈 **Performance Considerations**
 
 ### **Memory Management**
+
 - **Object sharing** - Maximize sharing of intrinsic state
 - **Memory monitoring** - Track memory usage and set thresholds
 - **Cache management** - Implement cache eviction strategies
 - **Garbage collection** - Minimize GC pressure through object reuse
 
 ### **State Management**
+
 - **Intrinsic vs extrinsic** - Clear separation of shared and unique state
 - **State validation** - Ensure extrinsic state is properly managed
 - **Thread safety** - Handle concurrent access to shared flyweights
@@ -569,18 +594,21 @@ class MonitoredTreeFactory(
 ## 📚 **Best Practices**
 
 ### **1. Flyweight Design**
+
 - **Clear state separation** - Distinguish intrinsic from extrinsic state
 - **Immutable intrinsic state** - Prevent accidental modifications
 - **Efficient factory** - Optimize flyweight creation and retrieval
 - **Memory monitoring** - Track memory usage and implement limits
 
 ### **2. Performance Optimization**
+
 - **Maximize sharing** - Identify and share common state
 - **Minimize extrinsic state** - Keep unique state minimal
 - **Efficient storage** - Use appropriate data structures
 - **Cache management** - Implement effective caching strategies
 
 ### **3. Implementation Guidelines**
+
 - **Thread safety** - Handle concurrent access properly
 - **Error handling** - Graceful handling of memory limits
 - **Testing strategies** - Test with large object counts
@@ -600,10 +628,11 @@ The **Flyweight Pattern** provides a powerful way to optimize memory usage and p
 This pattern is essential for building efficient, scalable systems that need to handle large numbers of similar objects. Whether you're building game engines, text processors, or graphics applications, the Flyweight Pattern provides the foundation for memory-efficient object management.
 
 **Next Steps:**
+
 - Explore the **[Factory Method Pattern](/2024-07-07-design-pattern-6-factory-method-pattern/)** for creating flyweight objects
 - Learn about the **[Singleton Pattern](/2024-08-10-design-pattern-10-singleton-pattern/)** for unique instances
 - Discover the **[Composite Pattern](/2024-12-10-design-pattern-13-composite-pattern/)** for tree structures
 
 ---
 
-*Ready to implement the Flyweight Pattern in your projects? Download the complete code examples from our [design_pattern repository](https://github.com/nickhuangcyh/design_pattern) and start building more memory-efficient, high-performance systems today!*
+_Ready to implement the Flyweight Pattern in your projects? Download the complete code examples from our [design_pattern repository](https://github.com/nickhuangcyh/design_pattern) and start building more memory-efficient, high-performance systems today!_

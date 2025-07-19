@@ -3,7 +3,19 @@ layout: post
 title: 設計模式 22：備忘錄模式（Memento Pattern）完整實戰與 Undo/Redo 範例
 日期: 2024-12-22 14:00:00 +0800
 description: 精通備忘錄模式，學會實作狀態快照、歷史管理、強大 Undo/Redo 與資料復原。圖文範例，適合軟體工程師與架構師。
-tags: [Memento Pattern, Design Patterns, Undo Redo, State Recovery, Object-Oriented Design, Software Architecture, Kotlin, Programming, Behavioral Patterns, History Management]
+tags:
+  [
+    Memento Pattern,
+    Design Patterns,
+    Undo Redo,
+    State Recovery,
+    Object-Oriented Design,
+    Software Architecture,
+    Kotlin,
+    Programming,
+    Behavioral Patterns,
+    History Management,
+  ]
 categories: [Design Pattern, Software Engineering, Programming]
 toc:
   sidebar: right
@@ -19,6 +31,7 @@ thumbnail: /assets/img/design_patterns.jpg
 **備忘錄模式（Memento Pattern）** 是一種行為型設計模式，能在不暴露物件內部結構的前提下，捕捉並還原其狀態。常用於實作 Undo/Redo、狀態復原、歷史管理等功能。
 
 **主要優點：**
+
 - ✅ 狀態復原：輕鬆還原先前狀態
 - ✅ 封裝性：內部狀態對外隱藏
 - ✅ Undo/Redo 支援：實現強大歷史功能
@@ -30,11 +43,13 @@ thumbnail: /assets/img/design_patterns.jpg
 ## 🚀 實務案例：文字編輯器 Undo/Redo
 
 設計一個「文字編輯器」，需求如下：
+
 - 使用者可輸入文字並支援 Undo（Ctrl+Z）
 - 系統需保存歷史以便復原
 - Client 不需知道狀態管理細節
 
 **商業規則：**
+
 - 所有狀態變化由 Caretaker 管理
 - Originator 負責建立與還原備忘錄
 - Client 只需操作 Undo/Redo
@@ -46,6 +61,7 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_memento_pattern_uml_1.png" title="Memento Pattern - Problem Analysis" %}
 
 **核心挑戰：**
+
 1. 資料遺失風險：無法復原先前狀態
 2. 高耦合：Client 需自行管理狀態邏輯
 3. 擴展困難：新增狀態型別不易
@@ -59,6 +75,7 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_memento_pattern_uml_2.png" title="Memento Pattern - General Structure" %}
 
 **組件說明：**
+
 - Originator：建立與還原狀態
 - Memento：儲存狀態
 - Caretaker：管理歷史與復原
@@ -70,6 +87,7 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_memento_pattern_uml_3.png" title="Memento Pattern - Text Editor Example" %}
 
 ### 1. Originator
+
 ```kotlin
 class TextEditor {
     private var text: String = ""
@@ -82,6 +100,7 @@ class TextEditor {
 ```
 
 ### 2. Caretaker
+
 ```kotlin
 class History {
     private val mementos = mutableListOf<TextEditor.Memento>()
@@ -91,6 +110,7 @@ class History {
 ```
 
 ### 3. 用戶端程式碼
+
 ```kotlin
 fun main() {
     val textEditor = TextEditor()
@@ -109,6 +129,7 @@ fun main() {
 ```
 
 **預期輸出：**
+
 ```
 目前文字: Hello, World! This is Memento Pattern.
 Undo 復原: Hello, World!
@@ -122,6 +143,7 @@ Undo 復原: Hello
 備忘錄模式讓你能彈性實作狀態復原、Undo/Redo、歷史管理等功能，提升系統可靠性與使用者體驗。
 
 **適用場景：**
+
 - 文字編輯器 Undo/Redo
 - 遊戲存檔系統
 - 工作流引擎（回滾）
@@ -129,6 +151,7 @@ Undo 復原: Hello
 - 有狀態的 UI 元件
 
 **設計原則：**
+
 - 單一職責原則（SRP）：狀態管理分離
 - 開放封閉原則（OCP）：可輕鬆擴展新狀態
 

@@ -3,7 +3,19 @@ layout: post
 title: "Jenkins 1: What is Jenkins - Complete Guide to CI/CD Automation Server"
 date: 2024-08-15 15:00:00 +0800
 description: "Learn about Jenkins, the powerful open-source automation server for continuous integration and continuous delivery. Discover its core concepts, benefits, and how it revolutionizes software development workflows."
-tags: [Jenkins, CI/CD, DevOps, Automation, Continuous Integration, Continuous Delivery, Build Automation, Software Development, Pipeline, Automation Server]
+tags:
+  [
+    Jenkins,
+    CI/CD,
+    DevOps,
+    Automation,
+    Continuous Integration,
+    Continuous Delivery,
+    Build Automation,
+    Software Development,
+    Pipeline,
+    Automation Server,
+  ]
 categories: [DevOps, CI/CD, Software Development, Automation, Build Tools]
 toc:
   #   beginning: true
@@ -73,7 +85,7 @@ Jenkins Pipeline is a suite of plugins that supports implementing and integratin
 // Example Jenkinsfile (Declarative)
 pipeline {
     agent any
-    
+
     stages {
         stage('Build') {
             steps {
@@ -160,11 +172,11 @@ An executor is a slot for execution of work defined by a Pipeline or Project on 
 // CI Pipeline Example
 pipeline {
     agent any
-    
+
     triggers {
         pollSCM('H/5 * * * *')  // Poll SCM every 5 minutes
     }
-    
+
     stages {
         stage('Checkout') {
             steps {
@@ -190,7 +202,7 @@ pipeline {
             }
         }
     }
-    
+
     post {
         always {
             cleanWs()
@@ -219,12 +231,12 @@ pipeline {
 // CD Pipeline Example
 pipeline {
     agent any
-    
+
     environment {
         DOCKER_IMAGE = 'myapp:latest'
         KUBERNETES_NAMESPACE = 'production'
     }
-    
+
     stages {
         stage('Build Docker Image') {
             steps {
@@ -260,7 +272,7 @@ pipeline {
 // Multi-branch pipeline for different environments
 pipeline {
     agent any
-    
+
     stages {
         stage('Build') {
             steps {
@@ -333,13 +345,13 @@ pipeline {
 
 ## Comparison with Other CI/CD Tools
 
-| Feature | Jenkins | GitLab CI | GitHub Actions | CircleCI |
-|---------|---------|-----------|----------------|----------|
-| **Open Source** | ✅ | ✅ | ❌ | ❌ |
-| **Plugin Ecosystem** | Extensive | Limited | Growing | Limited |
-| **Learning Curve** | Moderate | Easy | Easy | Easy |
-| **Hosting** | Self-hosted | Self-hosted/Cloud | Cloud | Cloud |
-| **Cost** | Free | Free/Paid | Free/Paid | Free/Paid |
+| Feature              | Jenkins     | GitLab CI         | GitHub Actions | CircleCI  |
+| -------------------- | ----------- | ----------------- | -------------- | --------- |
+| **Open Source**      | ✅          | ✅                | ❌             | ❌        |
+| **Plugin Ecosystem** | Extensive   | Limited           | Growing        | Limited   |
+| **Learning Curve**   | Moderate    | Easy              | Easy           | Easy      |
+| **Hosting**          | Self-hosted | Self-hosted/Cloud | Cloud          | Cloud     |
+| **Cost**             | Free        | Free/Paid         | Free/Paid      | Free/Paid |
 
 ## Getting Started with Jenkins
 
@@ -366,7 +378,7 @@ java -jar jenkins.war --httpPort=8080
 ```groovy
 pipeline {
     agent any
-    
+
     stages {
         stage('Hello') {
             steps {
@@ -391,7 +403,7 @@ Define pipelines using Jenkinsfile in your source code repository:
 // Jenkinsfile in repository
 pipeline {
     agent any
-    
+
     stages {
         stage('Build') {
             steps {

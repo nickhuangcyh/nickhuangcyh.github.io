@@ -19,6 +19,7 @@ thumbnail: /assets/img/google_adsense.jpg
 **Google AdSense** 是一款由 Google 推出的廣告變現平台，允許網站主展示相關廣告，並通過點擊或展示獲得收入。對於部落格作者、內容創作者和站長來說，AdSense 是實現網站變現的主流選擇。
 
 **主要優勢：**
+
 - ✅ 免費使用
 - ✅ 自動化廣告投放
 - ✅ 多種廣告格式（文字、圖片、影片）
@@ -40,20 +41,24 @@ thumbnail: /assets/img/google_adsense.jpg
 ## 🛠️ **Google AdSense 設定全流程**
 
 ### **1. 註冊 AdSense 帳號**
+
 - 訪問 [Google AdSense 官網](https://www.google.com/adsense/)
 - 使用 Google 帳號登入並申請
 - 填寫網站網域與地區資訊
 - 同意服務條款
 
 ### **2. 新增網站資訊**
+
 - 提供準確的站點資料
 - 確保網站符合 AdSense 政策
 
 ### **3. 選擇廣告展示格式**
+
 - 了解不同廣告樣式（文字、展示、資訊流、文章內）
 - 選擇與網站風格匹配的廣告格式
 
 ### **4. 插入 AdSense 程式碼並提交審核**
+
 - 將 AdSense 提供的程式碼貼到網站 `<head>` 區域
 - 提交網站審核（通常需等待數天）
 
@@ -81,12 +86,12 @@ thumbnail: /assets/img/google_adsense.jpg
 
 ## 🆚 **Google AdSense 與其他平台對比**
 
-| 平台         | 優點                        | 缺點                       |
-|--------------|-----------------------------|----------------------------|
-| **AdSense**  | ✅ 簡單易用<br>✅ 填充率高   | ❌ 政策嚴格                 |
-| **Media.net**| ✅ 語意廣告                  | ❌ 填充率較低               |
-| **Ezoic**    | ✅ AI 優化                   | ❌ 審核流程較繁瑣           |
-| **Amazon Ads**| ✅ 電商流量協同             | ❌ 僅限亞馬遜站點           |
+| 平台           | 優點                       | 缺點              |
+| -------------- | -------------------------- | ----------------- |
+| **AdSense**    | ✅ 簡單易用<br>✅ 填充率高 | ❌ 政策嚴格       |
+| **Media.net**  | ✅ 語意廣告                | ❌ 填充率較低     |
+| **Ezoic**      | ✅ AI 優化                 | ❌ 審核流程較繁瑣 |
+| **Amazon Ads** | ✅ 電商流量協同            | ❌ 僅限亞馬遜站點 |
 
 ---
 
@@ -100,6 +105,7 @@ thumbnail: /assets/img/google_adsense.jpg
 ---
 
 ## 🔗 **相關文章推薦**
+
 - [如何為網站配置 Google Analytics](/2024-12-01-google-analytics.md)
 - [開發者 SEO 最佳實踐](/2024-01-11-setup-development-environment-on-a-new-macos.md)
 - [Jekyll + GitHub Pages 搭建部落格](/2021-12-30-creating_a_github_pages_with_jekyll_and_minimal_mistakes.md)
@@ -111,6 +117,7 @@ thumbnail: /assets/img/google_adsense.jpg
 Google AdSense 是實現網站變現的高效工具。專注優質內容與廣告位優化，可持續帶來被動收入，同時保障良好用戶體驗。
 
 **核心要點：**
+
 - 🎯 設定與整合簡單
 - 📈 被動收入潛力大
 - 🛠️ 數據分析全面

@@ -3,7 +3,19 @@ layout: post
 title: "Design Pattern 1: Object-Oriented Concepts - Foundation for Understanding Complex Design Patterns"
 date: 2024-07-02 23:00:00 +0800
 description: "Master the four core object-oriented concepts: Encapsulation, Inheritance, Polymorphism, and Abstraction. Learn how these fundamental principles form the foundation for understanding and implementing design patterns."
-tags: [Object-Oriented Concepts, Design Patterns, Encapsulation, Inheritance, Polymorphism, Abstraction, Software Architecture, Programming Fundamentals, OOP, Software Design]
+tags:
+  [
+    Object-Oriented Concepts,
+    Design Patterns,
+    Encapsulation,
+    Inheritance,
+    Polymorphism,
+    Abstraction,
+    Software Architecture,
+    Programming Fundamentals,
+    OOP,
+    Software Design,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Programming Fundamentals]
 toc:
   #   beginning: true
@@ -43,11 +55,11 @@ Encapsulation is the practice of hiding internal implementation details within a
 class BankAccount {
     private var balance: Double = 0.0
     private val accountNumber: String
-    
+
     constructor(accountNumber: String) {
         this.accountNumber = accountNumber
     }
-    
+
     fun deposit(amount: Double): Boolean {
         if (amount > 0) {
             balance += amount
@@ -55,7 +67,7 @@ class BankAccount {
         }
         return false
     }
-    
+
     fun withdraw(amount: Double): Boolean {
         if (amount > 0 && balance >= amount) {
             balance -= amount
@@ -63,7 +75,7 @@ class BankAccount {
         }
         return false
     }
-    
+
     fun getBalance(): Double = balance
     fun getAccountNumber(): String = accountNumber
 }
@@ -87,11 +99,11 @@ Inheritance allows a subclass to inherit properties and methods from a parent cl
 open class Animal {
     protected var name: String = ""
     protected var age: Int = 0
-    
+
     open fun makeSound() {
         println("Some animal sound")
     }
-    
+
     open fun move() {
         println("Moving like an animal")
     }
@@ -99,19 +111,19 @@ open class Animal {
 
 class Dog : Animal() {
     private var breed: String = ""
-    
+
     fun setBreed(breed: String) {
         this.breed = breed
     }
-    
+
     override fun makeSound() {
         println("Woof! Woof!")
     }
-    
+
     override fun move() {
         println("Running on four legs")
     }
-    
+
     fun fetch() {
         println("Fetching the ball")
     }
@@ -119,19 +131,19 @@ class Dog : Animal() {
 
 class Cat : Animal() {
     private var color: String = ""
-    
+
     fun setColor(color: String) {
         this.color = color
     }
-    
+
     override fun makeSound() {
         println("Meow! Meow!")
     }
-    
+
     override fun move() {
         println("Walking gracefully")
     }
-    
+
     fun climb() {
         println("Climbing the tree")
     }
@@ -164,32 +176,32 @@ interface PaymentMethod {
 class CreditCard : PaymentMethod {
     private var cardNumber: String = ""
     private var expiryDate: String = ""
-    
+
     fun setCardDetails(cardNumber: String, expiryDate: String) {
         this.cardNumber = cardNumber
         this.expiryDate = expiryDate
     }
-    
+
     override fun processPayment(amount: Double): Boolean {
         println("Processing $amount via Credit Card")
         return true
     }
-    
+
     override fun getPaymentType(): String = "Credit Card"
 }
 
 class PayPal : PaymentMethod {
     private var email: String = ""
-    
+
     fun setEmail(email: String) {
         this.email = email
     }
-    
+
     override fun processPayment(amount: Double): Boolean {
         println("Processing $amount via PayPal")
         return true
     }
-    
+
     override fun getPaymentType(): String = "PayPal"
 }
 
@@ -222,7 +234,7 @@ abstract class Database {
     abstract fun connect(): Boolean
     abstract fun disconnect()
     abstract fun executeQuery(query: String): List<Map<String, Any>>
-    
+
     fun isConnected(): Boolean {
         // Common implementation for all databases
         return true
@@ -234,11 +246,11 @@ class MySQLDatabase : Database() {
         println("Connecting to MySQL database")
         return true
     }
-    
+
     override fun disconnect() {
         println("Disconnecting from MySQL database")
     }
-    
+
     override fun executeQuery(query: String): List<Map<String, Any>> {
         println("Executing query on MySQL: $query")
         return emptyList()
@@ -250,11 +262,11 @@ class PostgreSQLDatabase : Database() {
         println("Connecting to PostgreSQL database")
         return true
     }
-    
+
     override fun disconnect() {
         println("Disconnecting from PostgreSQL database")
     }
-    
+
     override fun executeQuery(query: String): List<Map<String, Any>> {
         println("Executing query on PostgreSQL: $query")
         return emptyList()
@@ -292,7 +304,7 @@ class Engine {
 
 class Car {
     private val engine = Engine() // Composition
-    
+
     fun start() = engine.start()
     fun stop() = engine.stop()
 }
@@ -375,16 +387,17 @@ val userService2 = UserService(fileLogger)
 
 ## Performance Considerations
 
-| Concept | Memory Usage | Performance | Flexibility | Maintainability |
-|---------|--------------|-------------|-------------|-----------------|
-| Encapsulation | Low | High | Medium | High |
-| Inheritance | Medium | Medium | Low | Medium |
-| Polymorphism | Medium | Medium | High | High |
-| Abstraction | Medium | Medium | High | High |
+| Concept       | Memory Usage | Performance | Flexibility | Maintainability |
+| ------------- | ------------ | ----------- | ----------- | --------------- |
+| Encapsulation | Low          | High        | Medium      | High            |
+| Inheritance   | Medium       | Medium      | Low         | Medium          |
+| Polymorphism  | Medium       | Medium      | High        | High            |
+| Abstraction   | Medium       | Medium      | High        | High            |
 
 ## Common Anti-Patterns to Avoid
 
 ### 1. **Inheritance Abuse**
+
 ```kotlin
 // Avoid: Deep inheritance hierarchies
 class Animal
@@ -395,6 +408,7 @@ class MyGoldenRetriever : GoldenRetriever() // Too deep!
 ```
 
 ### 2. **Breaking Encapsulation**
+
 ```kotlin
 // Avoid: Exposing internal state
 class BankAccount {
@@ -404,6 +418,7 @@ class BankAccount {
 ```
 
 ### 3. **Tight Coupling**
+
 ```kotlin
 // Avoid: Direct dependencies
 class UserService {

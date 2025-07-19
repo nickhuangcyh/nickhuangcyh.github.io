@@ -15,6 +15,7 @@ thumbnail: /assets/img/nasa-1lfI7wkGWZ4-unsplash.jpg
 When developing IP camera streaming applications for mobile devices, I initially struggled with P2P concepts due to my lack of 3D graphics and network communication background. This article represents my deep dive into P2P technology research and serves as the first in a comprehensive series covering complete P2P technology and principles.
 
 **What You'll Learn:**
+
 - 🌐 **Network architecture fundamentals** behind P2P communication
 - 🔧 **NAT traversal techniques** for direct device connections
 - 📱 **IoT device communication** without central servers
@@ -27,6 +28,7 @@ When developing IP camera streaming applications for mobile devices, I initially
 Before diving into P2P traversal or hole-punching techniques, it's crucial to understand the problems they solve. P2P enables **direct device-to-device connections without relying on central servers**, which is critical for IoT devices, AR/VR systems, and self-hosted applications.
 
 ### **Key Benefits of P2P:**
+
 - ⚡ **Reduced latency** - Direct connections bypass server routing
 - 💰 **Lower costs** - No server infrastructure required
 - 🔒 **Enhanced privacy** - Data doesn't pass through third-party servers
@@ -46,11 +48,13 @@ Understanding these three fundamental network architectures is essential for cho
 All clients connect to a single server that manages and distributes messages. Think of it like a central bank issuing currency - everyone gets money from the central bank.
 
 **Advantages:**
+
 - ✅ Simple deployment and maintenance
 - ✅ Centralized data management
 - ✅ Easy to implement and debug
 
 **Disadvantages:**
+
 - ❌ Single point of failure
 - ❌ Privacy concerns
 - ❌ Latency limited by server location
@@ -63,11 +67,13 @@ All clients connect to a single server that manages and distributes messages. Th
 Multiple servers share data, and clients can retrieve information from any server.
 
 **Advantages:**
+
 - ✅ Higher fault tolerance
 - ✅ Better performance flexibility
 - ✅ Reduced single point of failure
 
 **Disadvantages:**
+
 - ❌ Complex system design
 - ❌ Higher operational costs
 - ❌ Security risks still present
@@ -81,12 +87,14 @@ The most evolved form of decentralization - no central servers, with each node c
 > **Example:** Blockchain technology, where each node has complete information without trusting central institutions
 
 **Advantages:**
+
 - ✅ High fault tolerance
 - ✅ Transparency and security
 - ✅ Cost savings
 - ✅ No central authority
 
 **Disadvantages:**
+
 - ❌ Complex system architecture
 - ❌ Challenging deployment
 - ❌ Need to consider device differences
@@ -102,11 +110,13 @@ Let's examine real-world applications using IP camera control as an example.
 {% include figure.liquid path="assets/img/p2p_centralized_connect.png" title="Centralized IP Camera Control" %}
 
 **Advantages:**
+
 - Server control and monitoring
 - Quick deployment
 - Centralized maintenance
 
 **Disadvantages:**
+
 - System failure if server goes down
 - High server/bandwidth rental costs
 - Privacy concerns with data passing through servers
@@ -116,17 +126,19 @@ Let's examine real-world applications using IP camera control as an example.
 {% include figure.liquid path="assets/img/p2p_distributed_connect.png" title="Distributed IP Camera Control" %}
 
 **Advantages:**
+
 - No server dependency
 - No rental fees
 - Direct device communication
 
 **Disadvantages:**
+
 - Complex programming requirements
 - Difficult app/firmware updates
 - Frequent disconnections requiring reconnection
 
 > **Key Question:** If the server doesn't participate, how do mobile devices and IP cameras communicate directly in a distributed architecture?
-> 
+>
 > This is the core focus of this article - **P2P + NAT Traversal technology**.
 
 ---
@@ -136,6 +148,7 @@ Let's examine real-world applications using IP camera control as an example.
 P2P is a "decentralized" architecture where each device acts as both client and server. Devices can access and share resources with each other without relying on intermediary nodes.
 
 ### **P2P Characteristics:**
+
 - **Equal peers** - No hierarchy between devices
 - **Resource sharing** - Direct file, data, or service sharing
 - **Scalability** - Network grows with each new peer
@@ -150,6 +163,7 @@ P2P is a "decentralized" architecture where each device acts as both client and 
 IPv4 is the foundation of the internet - every device needs a unique IP address (like a postal address) to connect online. However, IPv4 only provides approximately 4.3 billion addresses, which is insufficient for modern needs, leading to the development of NAT as an alternative solution.
 
 ### **IPv4 Address Structure**
+
 ```
 IPv4 Address: 192.168.1.100
               │   │   │ │
@@ -161,10 +175,10 @@ IPv4 Address: 192.168.1.100
 
 ### **Private vs Public IP Addresses**
 
-| Type | Range | Usage |
-|------|-------|-------|
+| Type        | Range                                     | Usage             |
+| ----------- | ----------------------------------------- | ----------------- |
 | **Private** | 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16 | Internal networks |
-| **Public** | All other ranges | Internet routing |
+| **Public**  | All other ranges                          | Internet routing  |
 
 ---
 
@@ -183,10 +197,10 @@ NAT allows multiple devices to share a single public IP address. It works by map
 
 ### **NAT Mapping Table Example:**
 
-| Internal IP:Port | External IP:Port | Protocol |
-|------------------|------------------|----------|
-| 192.168.1.100:5000 | 203.0.113.1:12345 | TCP |
-| 192.168.1.101:6000 | 203.0.113.1:12346 | UDP |
+| Internal IP:Port   | External IP:Port  | Protocol |
+| ------------------ | ----------------- | -------- |
+| 192.168.1.100:5000 | 203.0.113.1:12345 | TCP      |
+| 192.168.1.101:6000 | 203.0.113.1:12346 | UDP      |
 
 ---
 
@@ -205,6 +219,7 @@ The following diagram illustrates the logical flow of NAT traversal when both pa
 5. **Both NATs have mappings** → Bidirectional P2P established
 
 ### **Key Requirements for Success:**
+
 - **Timing coordination** between devices
 - **Compatible NAT types** on both sides
 - **Proper hole-punching sequence**
@@ -221,11 +236,13 @@ Understanding different NAT types is crucial for successful P2P implementation.
 {% include figure.liquid path="assets/img/p2p_full_cone_nat.png" title="Full Cone NAT" %}
 
 **Characteristics:**
+
 - Any external host can communicate with internal device
 - Most P2P-friendly NAT type
 - Easiest to traverse
 
 **Behavior:**
+
 - Once internal device sends packet, external host can send to any port
 - No restrictions on source IP or port
 
@@ -236,10 +253,12 @@ Understanding different NAT types is crucial for successful P2P implementation.
 {% include figure.liquid path="assets/img/p2p_restricted_cone_nat.png" title="Restricted Cone NAT" %}
 
 **Characteristics:**
+
 - Only external hosts that internal device has contacted can send packets back
 - Acceptable for P2P, but requires outbound traffic to establish mapping
 
 **Behavior:**
+
 - External host must have been contacted by internal device first
 - Port restrictions may apply
 
@@ -248,10 +267,12 @@ Understanding different NAT types is crucial for successful P2P implementation.
 {% include figure.liquid path="assets/img/p2p_port_restricted_cone_nat.png" title="Port Restricted Cone NAT" %}
 
 **Characteristics:**
+
 - Similar to Restricted Cone, but requires exact port matching
 - Higher difficulty for traversal
 
 **Behavior:**
+
 - External host must use same port that internal device contacted
 - More restrictive than Restricted Cone
 
@@ -260,6 +281,7 @@ Understanding different NAT types is crucial for successful P2P implementation.
 {% include figure.liquid path="assets/img/p2p_symmetric_nat.png" title="Symmetric NAT" %}
 
 **Characteristics:**
+
 - Different external port for each destination
 - Almost impossible to traverse directly
 - Requires TURN server as relay
@@ -271,16 +293,19 @@ Understanding different NAT types is crucial for successful P2P implementation.
 ## 🛠️ **NAT Traversal Techniques**
 
 ### **1. STUN (Session Traversal Utilities for NAT)**
+
 - **Purpose:** Discover NAT type and external IP
 - **Use case:** Full Cone and Restricted Cone NATs
 - **Limitation:** Doesn't work with Symmetric NAT
 
 ### **2. TURN (Traversal Using Relays around NAT)**
+
 - **Purpose:** Relay traffic when direct connection fails
 - **Use case:** Symmetric NAT or when STUN fails
 - **Trade-off:** Higher latency and server costs
 
 ### **3. ICE (Interactive Connectivity Establishment)**
+
 - **Purpose:** Framework combining STUN and TURN
 - **Use case:** WebRTC and modern P2P applications
 - **Advantage:** Automatic selection of best connection method
@@ -290,16 +315,19 @@ Understanding different NAT types is crucial for successful P2P implementation.
 ## 📈 **Real-World Applications**
 
 ### **IoT Device Communication**
+
 - **Smart home devices** connecting directly
 - **IP cameras** streaming to mobile apps
 - **Sensor networks** sharing data
 
 ### **Gaming and Entertainment**
+
 - **Multiplayer games** with direct connections
 - **Video streaming** between devices
 - **File sharing** applications
 
 ### **Business Applications**
+
 - **Video conferencing** without central servers
 - **Collaborative tools** with direct file sharing
 - **Distributed computing** networks
@@ -309,14 +337,17 @@ Understanding different NAT types is crucial for successful P2P implementation.
 ## 🚨 **Common Challenges and Solutions**
 
 ### **Challenge: NAT Type Detection**
+
 **Problem:** Determining client NAT type for optimal traversal
 **Solution:** Use STUN servers to analyze NAT behavior
 
 ### **Challenge: Connection Reliability**
+
 **Problem:** Frequent disconnections in P2P networks
 **Solution:** Implement automatic reconnection and fallback mechanisms
 
 ### **Challenge: Security Concerns**
+
 **Problem:** Direct connections may bypass security measures
 **Solution:** Implement end-to-end encryption and authentication
 
@@ -336,12 +367,14 @@ Understanding different NAT types is crucial for successful P2P implementation.
 P2P architecture and NAT types are fundamental underlying cores for IoT device communication that cannot be ignored. Understanding connection behavior in different scenarios is the first step toward ensuring stability and scalability.
 
 **Key Takeaways:**
+
 - 🌐 **NAT types significantly impact** P2P success rates
 - 🔧 **Proper traversal techniques** are essential for direct connections
 - 📱 **IoT applications benefit greatly** from P2P technology
 - 🛡️ **Security and reliability** must be considered in P2P implementations
 
 **Next Steps:**
+
 1. **Test your NAT type** using online tools
 2. **Implement STUN/TURN** for robust P2P connections
 3. **Consider WebRTC** for modern P2P applications
@@ -356,6 +389,7 @@ P2P architecture and NAT types are fundamental underlying cores for IoT device c
 ---
 
 **📚 Additional Resources:**
+
 - [Centralized vs Decentralized vs Distributed Systems](https://medium.com/berty-tech/berty-tech-centralized-vs-decentralized-vs-distributed-systems-2e9efd856c2)
 - [P2P Technology Detailed Explanation](http://www.52im.net/thread-50-1-1.html)
 - [Wikipedia: Peer-to-Peer Networks](https://en.wikipedia.org/wiki/Peer-to-peer)

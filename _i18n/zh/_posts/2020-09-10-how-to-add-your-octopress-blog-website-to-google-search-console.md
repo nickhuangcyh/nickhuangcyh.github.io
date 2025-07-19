@@ -68,6 +68,7 @@ rake gen_deploy
 ### 什麼是 Google Search Console？
 
 Google Search Console 是 Google 提供的免費服務，能協助你：
+
 - **監控網站表現**：追蹤網站在搜尋結果的曝光與點擊
 - **提交內容**：主動告知 Google 有新頁面或更新
 - **修正問題**：發現並解決搜尋相關問題
@@ -75,12 +76,12 @@ Google Search Console 是 Google 提供的免費服務，能協助你：
 
 ### 主要功能
 
-| 功能 | 說明 | 好處 |
-|------|------|------|
-| **成效報告** | 追蹤搜尋查詢與點擊 | 找出受歡迎內容 |
-| **收錄覆蓋** | 監控已被索引的頁面 | 確保所有內容都被發現 |
-| **核心網頁指標** | 檢查頁面速度與體驗 | 提升用戶體驗 |
-| **行動裝置可用性** | 測試手機版設計 | 擴展行動用戶 |
+| 功能               | 說明               | 好處                 |
+| ------------------ | ------------------ | -------------------- |
+| **成效報告**       | 追蹤搜尋查詢與點擊 | 找出受歡迎內容       |
+| **收錄覆蓋**       | 監控已被索引的頁面 | 確保所有內容都被發現 |
+| **核心網頁指標**   | 檢查頁面速度與體驗 | 提升用戶體驗         |
+| **行動裝置可用性** | 測試手機版設計     | 擴展行動用戶         |
 
 ---
 
@@ -124,11 +125,11 @@ Sitemap: https://yourdomain.com/sitemap.xml
 ```html
 <!-- 優化 HTML head 區塊 -->
 <head>
-    <title>你的部落格標題 - 描述性且含關鍵字</title>
-    <meta name="description" content="160 字以內、具吸引力且含關鍵字的描述">
-    <meta name="keywords" content="relevant, keywords, for, your, content">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://yourdomain.com/current-page">
+  <title>你的部落格標題 - 描述性且含關鍵字</title>
+  <meta name="description" content="160 字以內、具吸引力且含關鍵字的描述" />
+  <meta name="keywords" content="relevant, keywords, for, your, content" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yourdomain.com/current-page" />
 </head>
 ```
 
@@ -195,6 +196,7 @@ curl -w "@curl-format.txt" -o /dev/null -s "https://yourdomain.com"
 
 **問題**：網站未出現在搜尋結果
 **解決方式**：
+
 - 確認 Google Search Console 設定無誤
 - 檢查 robots.txt 是否有阻擋
 - 確保網站可被爬蟲存取
@@ -204,6 +206,7 @@ curl -w "@curl-format.txt" -o /dev/null -s "https://yourdomain.com"
 
 **問題**：網站有收錄但排名不佳
 **解決方式**：
+
 - 優化標題與 meta 描述
 - 提升內容品質與相關性
 - 建立高品質外部連結
@@ -213,6 +216,7 @@ curl -w "@curl-format.txt" -o /dev/null -s "https://yourdomain.com"
 
 **問題**：多個網址有相似內容
 **解決方式**：
+
 - 使用 canonical 標籤
 - 正確實作轉址
 - 合併相似內容
@@ -249,7 +253,7 @@ categories: [Category]
 
 ```html
 <!-- 使用描述性 alt 文字 -->
-<img src="/assets/img/example.jpg" alt="有助 SEO 的圖片描述文字">
+<img src="/assets/img/example.jpg" alt="有助 SEO 的圖片描述文字" />
 
 <!-- 優化圖片大小 -->
 <!-- 優先使用 WebP 格式 -->

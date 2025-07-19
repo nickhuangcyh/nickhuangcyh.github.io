@@ -21,6 +21,7 @@ thumbnail: /assets/img/matter.jpg
 Matter（前身為 Project CHIP, Connected Home over IP）是由 CSA（Connectivity Standards Alliance）主導的開源智慧家庭互聯標準，成員包括 Apple、Google、Amazon、Zigbee 等。Matter 強調安全性、易用性與開發友好，支援 Thread、Wi-Fi 等多種通訊協議，推動跨品牌智慧家庭互通。
 
 ### Matter 協議核心特性
+
 - **互通性**：跨品牌、跨生態相容
 - **安全性**：內建安全機制
 - **多傳輸層**：支援 Thread、Wi-Fi、乙太網路
@@ -32,35 +33,41 @@ Matter（前身為 Project CHIP, Connected Home over IP）是由 CSA（Connectiv
 建議使用官方 CHIP Docker 映像，避免本地環境污染。
 
 ### 必備工具
+
 - **Docker**：容器化建構環境
 - **Git**：原始碼管理
 - **磁碟空間**：建議 10GB 以上
 
 ### 系統需求
-| 元件 | 最低配置 | 推薦配置 |
-|------|----------|----------|
-| 記憶體 | 8GB | 16GB+ |
-| 儲存 | 10GB | 20GB+ |
-| CPU | 4核 | 8核+ |
-| 系統 | Linux/macOS/Windows | Linux |
+
+| 元件   | 最低配置            | 推薦配置 |
+| ------ | ------------------- | -------- |
+| 記憶體 | 8GB                 | 16GB+    |
+| 儲存   | 10GB                | 20GB+    |
+| CPU    | 4核                 | 8核+     |
+| 系統   | Linux/macOS/Windows | Linux    |
 
 ## 步驟 1：拉取 Docker 映像
+
 ```bash
 docker pull ghcr.io/project-chip/chip-build-android:latest
 ```
 
 ## 步驟 2：執行容器
+
 ```bash
 docker run -it -v ~/workspace/connectedhomeip:/connectedhomeip ghcr.io/project-chip/chip-build-android:latest
 ```
 
 ## 步驟 3：設定 Git 安全目錄
+
 ```bash
 git config --global --add safe.directory /connectedhomeip
 git config --global --add safe.directory /connectedhomeip/third_party/pigweed/repo
 ```
 
 ## 步驟 4：下載原始碼與子模組
+
 ```bash
 git clone https://github.com/project-chip/connectedhomeip.git
 cd connectedhomeip
@@ -68,6 +75,7 @@ git submodule sync && git submodule update --init
 ```
 
 ### 目錄結構說明
+
 ```
 connectedhomeip/
 ├── examples/           # 範例應用
@@ -79,29 +87,34 @@ connectedhomeip/
 ```
 
 ## 步驟 5：接受 Android SDK 授權協議
+
 ```bash
 export PATH=$PATH:/opt/android/sdk/tools/bin
 sdkmanager --licenses
 ```
 
 ## 步驟 6：驗證環境變數
+
 ```bash
 echo $ANDROID_HOME  # /opt/android/sdk
 echo $ANDROID_NDK_HOME  # /opt/android/android-ndk-r23c
 ```
 
 ## 步驟 7：專案初始化與相依安裝
+
 ```bash
 cd /connectedhomeip
 source scripts/bootstrap.sh
 ```
 
 ## 步驟 8：編譯 Android CHIPTool
+
 ```bash
 ./scripts/build/build_examples.py --target android-arm64-chip-tool build
 ```
 
 > 若遇到 `ninja: error: loading 'build.ninja': No such file or directory`，需手動產生 build.ninja：
+
 ```bash
 cd /connectedhomeip/out/android-arm64-chip-tool
 gn gen .
@@ -110,6 +123,7 @@ cd ../..
 ```
 
 編譯完成後，APK 路徑：
+
 ```
 out/android-arm64-chip-tool/outputs/apk/debug/app-debug.apk
 ```
@@ -117,6 +131,7 @@ out/android-arm64-chip-tool/outputs/apk/debug/app-debug.apk
 ## 進階建構與常見問題排查
 
 ### 1. 多架構與發佈模式
+
 ```bash
 # ARM64（推薦）
 ./scripts/build/build_examples.py --target android-arm64-chip-tool build
@@ -129,12 +144,14 @@ out/android-arm64-chip-tool/outputs/apk/debug/app-debug.apk
 ```
 
 ### 2. 常見錯誤與解決
+
 - **build.ninja 缺失**：手動執行 gn gen .
 - **SDK 授權未接受**：執行 sdkmanager --licenses
 - **記憶體不足**：增加 swap 或降低並行數
 - **網路逾時**：增大 git buffer 並重試
 
 ### 3. 測試 APK
+
 ```bash
 adb install out/android-arm64-chip-tool/outputs/apk/debug/app-debug.apk
 adb shell pm list packages | grep chip
@@ -142,6 +159,7 @@ adb shell am start -n com.matter.example.chip.tool/.MainActivity
 ```
 
 ### 4. 增量與清理建構
+
 ```bash
 # 增量建構
 ./scripts/build/build_examples.py --target android-arm64-chip-tool build --incremental
@@ -150,6 +168,7 @@ adb shell am start -n com.matter.example.chip.tool/.MainActivity
 ```
 
 ### 5. 效能優化建議
+
 - 並行編譯：`--jobs 8`
 - 增量建構：`--incremental`
 - 啟用 ccache：`--enable-ccache`
@@ -157,6 +176,7 @@ adb shell am start -n com.matter.example.chip.tool/.MainActivity
 - 降低記憶體佔用：`export MAKEFLAGS="-j2"`
 
 ### 6. 開發與 CI/CD 整合
+
 - 本地程式碼修改可即時同步到容器
 - GitHub Actions 自動化建構與 APK 上傳
 
@@ -186,6 +206,7 @@ jobs:
 ```
 
 ## 相關技術與參考資料
+
 - **Thread 協議**：低功耗組網
 - **Wi-Fi**：高頻寬通訊
 - **Bluetooth LE**：裝置發現與配對
@@ -194,6 +215,7 @@ jobs:
 - [相關 Issue 參考](https://github.com/project-chip/connectedhomeip/issues/28317)
 
 ## 相關文章
+
 - [Matter 協議概覽](/2024-07-05-google-wallet-smart-tap-exploring/)
 - [Android 開發最佳實踐](/2024-01-11-setup-development-environment-on-a-new-macos/)
 - [IoT 開發指南](/2024-07-23-getting-started-with-github-container-registry/)

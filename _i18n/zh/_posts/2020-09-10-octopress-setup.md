@@ -15,6 +15,7 @@ thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 身為開發者，我從社群分享的技術部落格與教學中受益良多。Medium、CSDN 及各種開發者部落格幫我解決了無數問題，也讓我學到新技術。
 
 **開始經營自己的部落格，是自然而然的下一步**——這不僅能：
+
 - 📝 **記錄學習歷程**
 - 🤝 **回饋開發者社群**
 - 💼 **建立專業線上形象**
@@ -28,13 +29,13 @@ thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 
 ### **主要優勢比較：**
 
-| 功能 | Octopress | 其他平台 |
-|------|-----------|----------|
-| **版本控制** | Git 整合 | 有限 |
-| **內容格式** | Markdown | 富文本編輯器 |
-| **自訂彈性** | 完全掌控 | 受限 |
-| **費用** | 免費託管 | 可能需付費 |
-| **學習價值** | 網頁開發技能 | 較少 |
+| 功能         | Octopress    | 其他平台     |
+| ------------ | ------------ | ------------ |
+| **版本控制** | Git 整合     | 有限         |
+| **內容格式** | Markdown     | 富文本編輯器 |
+| **自訂彈性** | 完全掌控     | 受限         |
+| **費用**     | 免費託管     | 可能需付費   |
+| **學習價值** | 網頁開發技能 | 較少         |
 
 ### **Octopress 為開發者量身打造：**
 
@@ -51,9 +52,11 @@ thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 開始前，請先安裝以下工具：
 
 ### **1. GitHub 帳號**
+
 若尚未註冊，請至 [GitHub](https://github.com) 免費建立帳號。
 
 ### **2. 安裝 Git**
+
 在系統上安裝 Git：
 
 ```bash
@@ -65,6 +68,7 @@ git --version
 ```
 
 ### **3. 安裝 Ruby**
+
 Octopress 需用到 Ruby。可用 Homebrew 安裝：
 
 ```bash
@@ -76,6 +80,7 @@ ruby --version
 ```
 
 **預期輸出：**
+
 ```bash
 ruby 3.0.0p0 (2020-12-25 revision 95aff21468) [x86_64-darwin20]
 ```
@@ -144,6 +149,7 @@ rake setup_github_pages
 ```
 
 依提示輸入你的倉庫 SSH URL：
+
 ```bash
 git@github.com:username/username.github.io.git
 ```
@@ -159,6 +165,7 @@ rake deploy
 ```
 
 **合併指令：**
+
 ```bash
 rake gen_deploy
 ```
@@ -186,6 +193,7 @@ rake new_post["你的文章標題"]
 ```
 
 這會在 `source/_posts/` 產生新檔案，格式如下：
+
 ```
 YYYY-MM-DD-post-title.markdown
 ```
@@ -235,11 +243,13 @@ git push origin source
 ## 🎨 **自訂化選項**
 
 ### **主題自訂**
+
 - 編輯 `source/_includes/` 變更版型
 - 修改 `sass/` 檔案調整樣式
 - 更新 `source/_config.yml` 設定網站資訊
 
 ### **自訂網域**
+
 若要使用自訂網域：
 
 1. **在 `source/` 目錄新增 CNAME 檔案**
@@ -247,6 +257,7 @@ git push origin source
 3. **更新 GitHub 倉庫設定**
 
 ### **分析工具整合**
+
 在 `source/_includes/` 加入 Google Analytics 或其他追蹤服務程式碼。
 
 ---
@@ -254,12 +265,14 @@ git push origin source
 ## 📊 **部落格效能與 SEO**
 
 ### **內建 SEO 功能**
+
 - 每篇文章支援 **Meta 描述**
 - **Open Graph 標籤** 方便社群分享
 - **自動產生 Sitemap**
 - **RSS 訂閱**
 
 ### **效能優勢**
+
 - **靜態網站產生**，載入速度快
 - **CDN 全球分發**（透過 GitHub Pages）
 - **極簡 JavaScript**，效能佳
@@ -270,15 +283,19 @@ git push origin source
 ## 🔧 **進階設定**
 
 ### **自訂外掛**
+
 在 `plugins/` 目錄加入 Ruby 外掛擴充功能。
 
 ### **多作者管理**
+
 於 `_config.yml` 設定作者資訊。
 
 ### **留言系統**
+
 整合 Disqus 或其他留言服務。
 
 ### **搜尋功能**
+
 可用外掛或第三方服務實作站內搜尋。
 
 ---
@@ -286,6 +303,7 @@ git push origin source
 ## 🚨 **常見問題與解決方案**
 
 ### **問題：bundle install 失敗**
+
 ```bash
 # 解法：更新 Ruby 與 Bundler
 gem update bundler
@@ -293,12 +311,14 @@ bundle update
 ```
 
 ### **問題：部署失敗**
+
 ```bash
 # 解法：檢查 SSH 金鑰設定
 ssh -T git@github.com
 ```
 
 ### **問題：網站未更新**
+
 ```bash
 # 解法：清除快取並重建
 rake clean
@@ -311,18 +331,21 @@ rake deploy
 ## 📈 **部落格成長策略**
 
 ### **內容規劃**
+
 - **固定發文時程**（每週/每兩週）
 - **技術教學與實作分享**
 - **問題解決經驗文**
 - **產業趨勢觀察**
 
 ### **推廣方法**
+
 - **社群媒體分享**（Twitter、LinkedIn）
 - **參與開發者社群**
 - **與其他部落格互相連結**
 - **投稿技術聚合平台**
 
 ### **SEO 優化**
+
 - **使用描述性標題與 meta 描述**
 - **自然融入關鍵字**
 - **建立內部連結**
@@ -343,6 +366,7 @@ rake deploy
 用 Octopress 與 GitHub Pages 架設部落格，讓開發者擁有強大又可自訂的平台，輕鬆分享知識、建立個人品牌。Git 版本控管、Markdown 撰寫、免費託管，都是技術部落客的理想選擇。
 
 **重點回顧：**
+
 - 🚀 **專業部落格**，完全自訂
 - 💰 **免費託管**與網域選擇
 - 📚 **內容版本控管**
@@ -350,6 +374,7 @@ rake deploy
 - 🔧 **開發者友善工作流**
 
 **下一步建議：**
+
 1. **開始撰寫**你的第一篇技術文章
 2. **自訂主題**展現個人風格
 3. **設定分析工具**追蹤流量
@@ -364,6 +389,7 @@ rake deploy
 ---
 
 **📚 進階資源：**
+
 - [Octopress 官方文件](https://octopress.org/)
 - [GitHub Pages 指南](https://pages.github.com/)
 - [Jekyll 官方文件](https://jekyllrb.com/)

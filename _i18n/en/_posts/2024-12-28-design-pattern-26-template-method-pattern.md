@@ -3,7 +3,19 @@ layout: post
 title: "Design Pattern 26: Template Method Pattern - Complete Guide with Real-World Examples"
 date: 2024-12-28 19:30:00 +0800
 description: "Master the Template Method Pattern with practical examples. Learn how to create reusable algorithm frameworks, implement data format conversions, and build extensible systems."
-tags: [Template Method Pattern, Design Patterns, Algorithm Framework, Code Reuse, Object-Oriented Design, Software Architecture, Kotlin, Programming, Behavioral Patterns, Data Processing]
+tags:
+  [
+    Template Method Pattern,
+    Design Patterns,
+    Algorithm Framework,
+    Code Reuse,
+    Object-Oriented Design,
+    Software Architecture,
+    Kotlin,
+    Programming,
+    Behavioral Patterns,
+    Data Processing,
+  ]
 categories: [Design Pattern, Software Engineering, Programming]
 toc:
   sidebar: right
@@ -19,6 +31,7 @@ thumbnail: /assets/img/design_patterns.jpg
 The **Template Method Pattern** is a behavioral design pattern that defines the skeleton of an algorithm in a base class, allowing subclasses to override specific steps without changing the algorithm's structure. This pattern promotes code reuse and ensures consistent algorithm execution while providing flexibility for customization.
 
 **Key Benefits:**
+
 - ✅ **Code reuse** - Common algorithm structure shared across subclasses
 - ✅ **Consistent execution** - Algorithm flow remains the same
 - ✅ **Flexibility** - Subclasses can customize specific steps
@@ -32,6 +45,7 @@ The **Template Method Pattern** is a behavioral design pattern that defines the 
 Let's design a **data format conversion system** with the following requirements:
 
 ### **System Requirements:**
+
 - **Support multiple format conversions** (JSON, XML, CSV, YAML)
 - **Maintain consistent conversion workflow** across all formats
 - **Easy extensibility** for new formats
@@ -39,6 +53,7 @@ Let's design a **data format conversion system** with the following requirements
 - **Handle different data sources** (files, databases, APIs)
 
 ### **Business Rules:**
+
 - All conversions follow the same 3-step process: Read → Format → Output
 - Each format has specific formatting rules
 - System should handle errors gracefully
@@ -97,6 +112,7 @@ After analyzing the forces, we can apply the **Template Method Pattern** to crea
    - Handles common operations
 
 **Benefits:**
+
 - **Consistent algorithm structure** across all implementations
 - **Code reuse** through shared template method
 - **Flexible customization** through method overriding
@@ -114,7 +130,7 @@ Here's the complete implementation using the Template Method Pattern:
 
 ```kotlin
 abstract class DataFormatter {
-    
+
     // Template method - defines the algorithm structure
     fun convert(data: Map<String, Any>): ConversionResult {
         return try {
@@ -122,28 +138,28 @@ abstract class DataFormatter {
             val validatedData = validateData(rawData)
             val formattedData = formatData(validatedData)
             val result = outputData(formattedData)
-            
+
             ConversionResult.Success(result, getFormatType())
         } catch (e: Exception) {
             ConversionResult.Error("Conversion failed: ${e.message}", getFormatType())
         }
     }
-    
+
     // Hook method - can be overridden by subclasses
     protected open fun validateData(data: String): String {
         return data.trim()
     }
-    
+
     // Common implementation - shared by all subclasses
     private fun readData(data: Map<String, Any>): String {
         return data.entries.joinToString(", ") { "${it.key}=${it.value}" }
     }
-    
+
     // Abstract methods - must be implemented by subclasses
     protected abstract fun formatData(data: String): String
     protected abstract fun outputData(data: String): String
     protected abstract fun getFormatType(): String
-    
+
     // Optional hook method for performance optimization
     protected open fun shouldOptimize(): Boolean = false
 }
@@ -164,14 +180,14 @@ class JsonFormatter : DataFormatter() {
             val (key, value) = entry.split("=", limit = 2)
             key to value
         }
-        
+
         return buildJsonObject {
             entries.forEach { (key, value) ->
                 put(key, value)
             }
         }.toString()
     }
-    
+
     override fun outputData(data: String): String {
         return if (shouldOptimize()) {
             "JSON (Optimized): $data"
@@ -179,9 +195,9 @@ class JsonFormatter : DataFormatter() {
             "JSON Output: $data"
         }
     }
-    
+
     override fun getFormatType(): String = "JSON"
-    
+
     override fun shouldOptimize(): Boolean = true
 }
 
@@ -191,7 +207,7 @@ class XmlFormatter : DataFormatter() {
             val (key, value) = entry.split("=", limit = 2)
             key to value
         }
-        
+
         return buildString {
             appendLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
             appendLine("<data>")
@@ -201,13 +217,13 @@ class XmlFormatter : DataFormatter() {
             append("</data>")
         }
     }
-    
+
     override fun outputData(data: String): String {
         return "XML Output: $data"
     }
-    
+
     override fun getFormatType(): String = "XML"
-    
+
     override fun validateData(data: String): String {
         // XML-specific validation
         return data.replace("<", "&lt;").replace(">", "&gt;")
@@ -220,7 +236,7 @@ class CsvFormatter : DataFormatter() {
             val (key, value) = entry.split("=", limit = 2)
             "$key,$value"
         }
-        
+
         return buildString {
             appendLine("key,value") // Header
             entries.forEach { entry ->
@@ -228,11 +244,11 @@ class CsvFormatter : DataFormatter() {
             }
         }
     }
-    
+
     override fun outputData(data: String): String {
         return "CSV Output: $data"
     }
-    
+
     override fun getFormatType(): String = "CSV"
 }
 
@@ -242,18 +258,18 @@ class YamlFormatter : DataFormatter() {
             val (key, value) = entry.split("=", limit = 2)
             key to value
         }
-        
+
         return buildString {
             entries.forEach { (key, value) ->
                 appendLine("$key: $value")
             }
         }
     }
-    
+
     override fun outputData(data: String): String {
         return "YAML Output: $data"
     }
-    
+
     override fun getFormatType(): String = "YAML"
 }
 ```
@@ -262,16 +278,16 @@ class YamlFormatter : DataFormatter() {
 
 ```kotlin
 abstract class AdvancedDataFormatter : DataFormatter() {
-    
+
     // Template method with additional hooks
     fun convertWithMetadata(data: Map<String, Any>): ConversionResult {
         val startTime = System.currentTimeMillis()
-        
+
         val result = convert(data)
-        
+
         val endTime = System.currentTimeMillis()
         val processingTime = endTime - startTime
-        
+
         return when (result) {
             is ConversionResult.Success -> {
                 ConversionResult.Success(
@@ -282,12 +298,12 @@ abstract class AdvancedDataFormatter : DataFormatter() {
             is ConversionResult.Error -> result
         }
     }
-    
+
     // Hook method for preprocessing
     protected open fun preprocess(data: Map<String, Any>): Map<String, Any> {
         return data
     }
-    
+
     // Hook method for postprocessing
     protected open fun postprocess(formattedData: String): String {
         return formattedData
@@ -300,21 +316,21 @@ class OptimizedJsonFormatter : AdvancedDataFormatter() {
         return data.filterValues { it != null }
             .toSortedMap()
     }
-    
+
     override fun postprocess(formattedData: String): String {
         // Minify JSON
         return formattedData.replace(Regex("\\s+"), "")
     }
-    
+
     override fun formatData(data: String): String {
         // Implementation similar to JsonFormatter but optimized
         return super.formatData(data)
     }
-    
+
     override fun outputData(data: String): String {
         return "Optimized JSON: $data"
     }
-    
+
     override fun getFormatType(): String = "Optimized JSON"
 }
 ```
@@ -324,14 +340,14 @@ class OptimizedJsonFormatter : AdvancedDataFormatter() {
 ```kotlin
 fun main() {
     println("=== Data Format Conversion Demo ===")
-    
+
     val data = mapOf(
         "name" to "John Doe",
         "age" to 30,
         "city" to "New York",
         "occupation" to "Software Engineer"
     )
-    
+
     // Test different formatters
     val formatters = listOf(
         JsonFormatter(),
@@ -340,11 +356,11 @@ fun main() {
         YamlFormatter(),
         OptimizedJsonFormatter()
     )
-    
+
     formatters.forEach { formatter ->
         println("\n--- ${formatter.javaClass.simpleName} ---")
         val result = formatter.convert(data)
-        
+
         when (result) {
             is ConversionResult.Success -> {
                 println("✅ ${result.format} conversion successful:")
@@ -356,12 +372,12 @@ fun main() {
             }
         }
     }
-    
+
     // Test with metadata
     println("\n--- Advanced Formatter with Metadata ---")
     val advancedFormatter = OptimizedJsonFormatter()
     val advancedResult = advancedFormatter.convertWithMetadata(data)
-    
+
     when (advancedResult) {
         is ConversionResult.Success -> {
             println("✅ Advanced conversion successful:")
@@ -376,6 +392,7 @@ fun main() {
 ```
 
 **Expected Output:**
+
 ```
 === Data Format Conversion Demo ===
 
@@ -444,7 +461,7 @@ class LenientValidationStrategy : ValidationStrategy {
 abstract class ConfigurableDataFormatter(
     private val validationStrategy: ValidationStrategy
 ) : DataFormatter() {
-    
+
     override fun validateData(data: String): String {
         return if (validationStrategy.validate(data)) {
             data.trim()
@@ -486,14 +503,14 @@ interface ConversionObserver {
 
 abstract class ObservableDataFormatter : DataFormatter() {
     private val observers = mutableListOf<ConversionObserver>()
-    
+
     fun addObserver(observer: ConversionObserver) {
         observers.add(observer)
     }
-    
+
     override fun convert(data: Map<String, Any>): ConversionResult {
         observers.forEach { it.onConversionStart(getFormatType()) }
-        
+
         return try {
             val result = super.convert(data)
             observers.forEach { it.onConversionComplete(getFormatType(), result) }
@@ -511,18 +528,19 @@ abstract class ObservableDataFormatter : DataFormatter() {
 
 ## 📊 **Template Method Pattern vs Alternative Approaches**
 
-| Approach | Pros | Cons |
-|----------|------|------|
-| **Template Method** | ✅ Code reuse<br>✅ Consistent structure<br>✅ Easy extension | ❌ Inheritance coupling<br>❌ Limited flexibility |
-| **Strategy Pattern** | ✅ Runtime flexibility<br>✅ No inheritance | ❌ No shared structure<br>❌ More complex setup |
-| **Command Pattern** | ✅ Undo/redo support<br>✅ Queue operations | ❌ Overkill for simple algorithms<br>❌ Complex implementation |
-| **Function Composition** | ✅ Functional approach<br>✅ High flexibility | ❌ No enforced structure<br>❌ Learning curve |
+| Approach                 | Pros                                                          | Cons                                                           |
+| ------------------------ | ------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Template Method**      | ✅ Code reuse<br>✅ Consistent structure<br>✅ Easy extension | ❌ Inheritance coupling<br>❌ Limited flexibility              |
+| **Strategy Pattern**     | ✅ Runtime flexibility<br>✅ No inheritance                   | ❌ No shared structure<br>❌ More complex setup                |
+| **Command Pattern**      | ✅ Undo/redo support<br>✅ Queue operations                   | ❌ Overkill for simple algorithms<br>❌ Complex implementation |
+| **Function Composition** | ✅ Functional approach<br>✅ High flexibility                 | ❌ No enforced structure<br>❌ Learning curve                  |
 
 ---
 
 ## 🎯 **When to Use the Template Method Pattern**
 
 ### **✅ Perfect For:**
+
 - **Algorithm frameworks** with consistent structure
 - **Data processing pipelines** (ETL, format conversion)
 - **Document generation** (reports, exports)
@@ -531,6 +549,7 @@ abstract class ObservableDataFormatter : DataFormatter() {
 - **Workflow engines** (approval processes, workflows)
 
 ### **❌ Avoid When:**
+
 - **Simple one-off algorithms** (use direct implementation)
 - **Highly variable algorithms** (use Strategy pattern)
 - **Runtime algorithm selection** (use Strategy pattern)
@@ -560,7 +579,7 @@ abstract class BuildProcess {
         package()
         return deploy()
     }
-    
+
     protected abstract fun clean()
     protected abstract fun compile()
     protected abstract fun test()
@@ -588,7 +607,7 @@ abstract class DatabaseOperation<T> {
         disconnect()
         return result
     }
-    
+
     protected abstract fun connect()
     protected abstract fun performOperation(): OperationResult<T>
     protected abstract fun commit()
@@ -617,7 +636,7 @@ abstract class RequestHandler {
         log(request, response)
         return response
     }
-    
+
     protected abstract fun authenticate(request: Request)
     protected abstract fun authorize(request: Request)
     protected abstract fun processRequest(request: Request): Response
@@ -642,7 +661,7 @@ abstract class TestCase {
         tearDown()
         return result
     }
-    
+
     protected abstract fun setUp()
     protected abstract fun runTest(): TestResult
     protected abstract fun tearDown()
@@ -709,7 +728,7 @@ abstract class RobustTemplate {
             Result.Error(e.message ?: "Unknown error")
         }
     }
-    
+
     protected abstract fun performAlgorithm(): Any
 }
 ```
@@ -731,6 +750,7 @@ abstract class RobustTemplate {
 Through the Template Method Pattern, we successfully created a flexible data format conversion system that maintains consistent workflow while allowing customization of specific steps.
 
 **Key Advantages:**
+
 - 🎯 **Code reuse** - Common algorithm structure shared across implementations
 - 🔧 **Consistent execution** - Algorithm flow remains the same for all formats
 - 📈 **Easy extension** - New formats can be added without modifying existing code
@@ -738,12 +758,14 @@ Through the Template Method Pattern, we successfully created a flexible data for
 - ⚡ **Performance optimization** - Hook methods allow for format-specific optimizations
 
 **Design Principles Followed:**
+
 - **Single Responsibility Principle (SRP)**: Each class handles one format conversion
 - **Open-Closed Principle (OCP)**: Open for extension (new formats), closed for modification
 - **Don't Repeat Yourself (DRY)**: Common logic shared in template method
 - **Template Method Pattern**: Defines algorithm skeleton with customizable steps
 
 **Perfect For:**
+
 - **Data processing pipelines** (ETL, format conversion, validation)
 - **Build systems** (compilation, testing, deployment)
 - **Workflow engines** (approval processes, business processes)

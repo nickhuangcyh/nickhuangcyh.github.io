@@ -32,15 +32,12 @@ thumbnail: /assets/img/design_patterns.jpg
 在未使用設計模式的情況下，上述需求可能會遇到以下問題：
 
 1. **類別爆炸 (Class Explosion)**：
-
    - 為每一種咖啡及其附加選項組合創建類別，導致類別數量迅速增長。
 
 2. **高耦合性 (Tight Coupling)**：
-
    - 咖啡與附加選項緊密耦合，修改某一部分時可能影響整體。
 
 3. **靈活性差 (Lack of Flexibility)**：
-
    - 系統無法動態地添加或移除附加選項，只能依賴預先定義的組合。
 
 4. **重複代碼 (Code Duplication)**：

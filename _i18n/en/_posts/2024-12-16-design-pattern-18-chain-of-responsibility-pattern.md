@@ -3,7 +3,19 @@ layout: post
 title: "Design Pattern 18: Chain of Responsibility Pattern - Complete Guide with Real-World Logging Examples"
 date: 2024-12-16 23:00:00 +0800
 description: "Master the Chain of Responsibility Pattern with practical logging system examples. Learn how to create flexible request processing chains, implement dynamic handlers, and build extensible systems."
-tags: [Chain of Responsibility Pattern, Design Patterns, Request Processing, Object-Oriented Design, Software Architecture, Kotlin, Programming, Behavioral Patterns, Logging, Middleware]
+tags:
+  [
+    Chain of Responsibility Pattern,
+    Design Patterns,
+    Request Processing,
+    Object-Oriented Design,
+    Software Architecture,
+    Kotlin,
+    Programming,
+    Behavioral Patterns,
+    Logging,
+    Middleware,
+  ]
 categories: [Design Pattern, Software Engineering, Programming]
 toc:
   sidebar: right
@@ -19,6 +31,7 @@ thumbnail: /assets/img/design_patterns.jpg
 The **Chain of Responsibility Pattern** is a behavioral design pattern that allows you to pass requests along a chain of handlers. Each handler decides either to process the request or to pass it to the next handler in the chain. This pattern promotes loose coupling and provides flexibility in handling requests.
 
 **Key Benefits:**
+
 - ✅ **Loose Coupling** - Handlers are independent and can be easily modified
 - ✅ **Flexibility** - Dynamic chain composition and reordering
 - ✅ **Single Responsibility** - Each handler has a specific responsibility
@@ -32,6 +45,7 @@ The **Chain of Responsibility Pattern** is a behavioral design pattern that allo
 Let's design a **multi-level logging system** with the following requirements:
 
 ### **System Requirements:**
+
 - **Support multiple log levels** (INFO, WARNING, ERROR, DEBUG)
 - **Dynamic handler chain** - handlers can be added/removed at runtime
 - **Independent handlers** - each handler processes specific log levels
@@ -39,6 +53,7 @@ Let's design a **multi-level logging system** with the following requirements:
 - **Performance optimization** - efficient processing for high-volume logging
 
 ### **Business Rules:**
+
 - Each log level should be handled by appropriate handlers
 - Handlers should be able to process multiple requests in sequence
 - System should support handler ordering and priority
@@ -83,6 +98,7 @@ After analyzing the forces, we can apply the **Chain of Responsibility Pattern**
 4. **Client** - Initiates requests without knowing chain details
 
 **Benefits:**
+
 - **Dynamic chain composition** - Handlers can be added/removed at runtime
 - **Loose coupling** - Client doesn't need to know about specific handlers
 - **Flexible processing** - Multiple handlers can process the same request
@@ -150,7 +166,7 @@ class FileLogger(
                 java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
             )
             val logEntry = "[${level.name}] $timestamp - $message\n"
-            
+
             try {
                 java.io.File(filename).appendText(logEntry)
                 println("📄 FileLogger: Logged to $filename")
@@ -172,7 +188,7 @@ class DatabaseLogger(
             val timestamp = java.time.LocalDateTime.now().format(
                 java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
             )
-            
+
             // Simulate database insertion
             println("🗄️ DatabaseLogger: INSERT INTO logs (level, message, timestamp) VALUES ('${level.name}', '$message', '$timestamp')")
         }
@@ -191,7 +207,7 @@ class EmailLogger(
             val timestamp = java.time.LocalDateTime.now().format(
                 java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
             )
-            
+
             // Simulate email sending
             println("📧 EmailLogger: Sending email to $adminEmail - Subject: [${level.name}] $timestamp - $message")
         }
@@ -241,7 +257,7 @@ class LoggingChainBuilder {
             while (lastLogger?.let { it::class.java.getDeclaredField("nextLogger").apply { isAccessible = true }.get(it) } != null) {
                 lastLogger = lastLogger::class.java.getDeclaredField("nextLogger").apply { isAccessible = true }.get(lastLogger) as Logger?
             }
-            
+
             // Set the next logger
             lastLogger?.let {
                 it::class.java.getDeclaredField("nextLogger").apply { isAccessible = true }.set(it, logger)
@@ -292,32 +308,33 @@ fun main() {
     // Test different log levels
     loggingManager.logDebug("This is a debug message - only console should show")
     println()
-    
+
     loggingManager.logInfo("This is an info message - console should show")
     println()
-    
+
     loggingManager.logWarning("This is a warning message - console and file should show")
     println()
-    
+
     loggingManager.logError("This is an error message - all handlers should show")
     println()
 
     // Test chain with different configuration
     println("=== Custom Logging Chain Demo ===\n")
-    
+
     val customLogger = LoggingChainBuilder()
         .addConsoleLogger(LogLevel.DEBUG)
         .addEmailLogger("dev@company.com", LogLevel.WARNING)
         .build()
 
     val customManager = LoggingManager(customLogger)
-    
+
     customManager.logDebug("Debug message with custom chain")
     customManager.logWarning("Warning message with custom chain")
 }
 ```
 
 **Expected Output:**
+
 ```
 === Multi-Level Logging Demo ===
 
@@ -342,18 +359,19 @@ fun main() {
 
 ## 📊 **Chain of Responsibility vs Alternative Approaches**
 
-| Approach | Pros | Cons |
-|----------|------|------|
+| Approach                    | Pros                                                                   | Cons                                                                                          |
+| --------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
 | **Chain of Responsibility** | ✅ Loose coupling<br>✅ Dynamic chain composition<br>✅ Easy extension | ❌ Potential performance overhead<br>❌ Chain traversal complexity<br>❌ Debugging challenges |
-| **Direct Handler Calls** | ✅ Simple implementation<br>✅ No overhead<br>✅ Easy debugging | ❌ Tight coupling<br>❌ Hard to extend<br>❌ Violates OCP |
-| **Strategy Pattern** | ✅ Runtime strategy switching<br>✅ Clean separation | ❌ Single handler per request<br>❌ No chain processing |
-| **Observer Pattern** | ✅ Multiple observers<br>✅ Decoupled communication | ❌ No control over processing order<br>❌ All observers process every event |
+| **Direct Handler Calls**    | ✅ Simple implementation<br>✅ No overhead<br>✅ Easy debugging        | ❌ Tight coupling<br>❌ Hard to extend<br>❌ Violates OCP                                     |
+| **Strategy Pattern**        | ✅ Runtime strategy switching<br>✅ Clean separation                   | ❌ Single handler per request<br>❌ No chain processing                                       |
+| **Observer Pattern**        | ✅ Multiple observers<br>✅ Decoupled communication                    | ❌ No control over processing order<br>❌ All observers process every event                   |
 
 ---
 
 ## 🎯 **When to Use the Chain of Responsibility Pattern**
 
 ### **✅ Perfect For:**
+
 - **Request processing pipelines** (web middleware, logging systems)
 - **Event handling systems** (GUI event processing, game event systems)
 - **Validation chains** (form validation, data processing)
@@ -361,6 +379,7 @@ fun main() {
 - **Authentication/Authorization** (security middleware)
 
 ### **❌ Avoid When:**
+
 - **Simple request handling** (single handler sufficient)
 - **Performance-critical applications** (chain traversal overhead)
 - **Fixed processing order** (static handler configuration)
@@ -389,7 +408,7 @@ class ConditionalLogger(
 
 // Usage example
 val conditionalLogger = ConditionalLogger(
-    condition = { level, message -> 
+    condition = { level, message ->
         level == LogLevel.ERROR && message.contains("database")
     }
 )
@@ -402,7 +421,7 @@ class PriorityLogger(
     nextLogger: Logger? = null,
     private val priority: Int = 0
 ) : Logger(nextLogger) {
-    
+
     override fun log(level: LogLevel, message: String) {
         println("⚡ PriorityLogger (Priority: $priority): Processing message")
         passToNext(level, message)
@@ -419,7 +438,7 @@ class PriorityChainBuilder {
 
     fun build(): Logger {
         val sortedHandlers = handlers.sortedBy { it.first }
-        
+
         var currentLogger: Logger? = null
         for (i in sortedHandlers.indices.reversed()) {
             val (priority, logger) = sortedHandlers[i]
@@ -430,7 +449,7 @@ class PriorityChainBuilder {
                 }
             }
         }
-        
+
         return currentLogger ?: throw IllegalStateException("No handlers added")
     }
 }
@@ -465,6 +484,7 @@ class ErrorHandlingLogger(
 ## 🚀 **Real-World Applications**
 
 ### **1. Web Application Middleware**
+
 - **Authentication middleware** - Check user credentials
 - **Authorization middleware** - Verify user permissions
 - **Logging middleware** - Log request/response data
@@ -472,18 +492,21 @@ class ErrorHandlingLogger(
 - **CORS middleware** - Handle cross-origin requests
 
 ### **2. GUI Event Processing**
+
 - **Event bubbling** - Process events up the component hierarchy
 - **Input validation** - Validate user input at multiple levels
 - **Error handling** - Handle errors at different UI layers
 - **Accessibility** - Process accessibility events
 
 ### **3. Game Development**
+
 - **Input processing** - Handle user input through multiple systems
 - **Collision detection** - Process collisions through different layers
 - **AI behavior** - Process AI decisions through behavior trees
 - **Event systems** - Handle game events through multiple listeners
 
 ### **4. Data Processing Pipelines**
+
 - **ETL processes** - Extract, transform, load data through stages
 - **Data validation** - Validate data at multiple checkpoints
 - **Data transformation** - Transform data through multiple processors
@@ -494,12 +517,14 @@ class ErrorHandlingLogger(
 ## 📈 **Performance Considerations**
 
 ### **Chain Traversal**
+
 - **Chain length** - Keep chains reasonably short for performance
 - **Early termination** - Stop processing when appropriate
 - **Caching** - Cache chain results for repeated requests
 - **Parallel processing** - Process independent handlers in parallel
 
 ### **Memory Management**
+
 - **Handler lifecycle** - Manage handler creation and destruction
 - **Memory leaks** - Avoid circular references in chains
 - **Resource cleanup** - Properly clean up handler resources
@@ -519,18 +544,21 @@ class ErrorHandlingLogger(
 ## 📚 **Best Practices**
 
 ### **1. Chain Design**
+
 - **Keep chains focused** - Each chain should have a specific purpose
 - **Limit chain length** - Avoid overly long chains for performance
 - **Handle failures gracefully** - Ensure chain continues even if handlers fail
 - **Document chain behavior** - Clear documentation of chain processing
 
 ### **2. Handler Implementation**
+
 - **Single responsibility** - Each handler should have one clear purpose
 - **Stateless handlers** - Avoid storing state in handlers when possible
 - **Error handling** - Proper error handling in each handler
 - **Performance optimization** - Optimize handler performance
 
 ### **3. Chain Management**
+
 - **Dynamic composition** - Allow runtime chain modification
 - **Configuration management** - Externalize chain configuration
 - **Monitoring and metrics** - Track chain performance and usage
@@ -550,10 +578,11 @@ The **Chain of Responsibility Pattern** provides a powerful way to process reque
 This pattern is essential for building robust, scalable systems that need to handle complex request processing workflows. Whether you're building web applications, logging systems, or data processing pipelines, the Chain of Responsibility Pattern provides the foundation for flexible and maintainable request handling.
 
 **Next Steps:**
+
 - Explore the **[Command Pattern](/2024-12-21-design-pattern-19-command-pattern/)** for encapsulating requests
 - Learn about the **[Observer Pattern](/2024-12-24-design-pattern-23-observer-pattern/)** for event notification
 - Discover the **[Decorator Pattern](/2024-12-11-design-pattern-14-decorator-pattern/)** for dynamic behavior addition
 
 ---
 
-*Ready to implement the Chain of Responsibility Pattern in your projects? Download the complete code examples from our [design_pattern repository](https://github.com/nickhuangcyh/design_pattern) and start building more flexible, maintainable systems today!*
+_Ready to implement the Chain of Responsibility Pattern in your projects? Download the complete code examples from our [design_pattern repository](https://github.com/nickhuangcyh/design_pattern) and start building more flexible, maintainable systems today!_

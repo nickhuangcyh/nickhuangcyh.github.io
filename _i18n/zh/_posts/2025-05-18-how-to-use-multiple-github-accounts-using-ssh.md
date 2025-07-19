@@ -15,6 +15,7 @@ thumbnail: /assets/img/github.jpg
 許多開發者同時擁有個人與公司（或學校）GitHub 帳號。若沒有正確的 SSH 設定，在同一台電腦上管理多個帳號會變得非常麻煩。本教學將帶你用最有效率的 SSH 金鑰配置，輕鬆切換多個 GitHub 帳號。
 
 **主要好處：**
+
 - ✅ 無縫切換工作與個人帳號
 - ✅ 避免權限衝突與 push 錯誤
 - ✅ 金鑰管理安全又簡單
@@ -39,6 +40,7 @@ ssh-add -l
 如果只看到預設金鑰（如 `id_ed25519`），代表還沒載入其他帳號的金鑰。
 
 **範例輸出：**
+
 ```bash
 256 SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx nick25932219@gmail.com(ED25519)
 ```
@@ -116,28 +118,31 @@ Hi nickhuangCompany! You've successfully authenticated, but GitHub does not prov
 
 ## 📋 完整設定檢查清單
 
-| 步驟 | 動作 | 狀態 |
-|------|------|------|
-| 1 | 為每個帳號產生 SSH 金鑰 | ✅ |
-| 2 | 將金鑰加入 SSH agent | ✅ |
-| 3 | 設定 SSH config 檔 | ✅ |
-| 4 | 更新 repo 遠端網址 | ✅ |
-| 5 | 測試 SSH 連線 | ✅ |
+| 步驟 | 動作                    | 狀態 |
+| ---- | ----------------------- | ---- |
+| 1    | 為每個帳號產生 SSH 金鑰 | ✅   |
+| 2    | 將金鑰加入 SSH agent    | ✅   |
+| 3    | 設定 SSH config 檔      | ✅   |
+| 4    | 更新 repo 遠端網址      | ✅   |
+| 5    | 測試 SSH 連線           | ✅   |
 
 ---
 
 ## 🎯 多帳號管理最佳實踐
 
 ### 金鑰命名建議
+
 - 用明確名稱：`id_ed25519_personal`、`id_ed25519_work`
 - 檔名直接標示用途
 
 ### SSH Config 組織
+
 - 依帳號分組
 - 加註解說明
 - 命名規則一致
 
 ### Repo 管理
+
 - 工作與個人 repo 分資料夾存放
 - 遠端別名清楚
 - 文件標註每個 repo 對應帳號
@@ -147,15 +152,19 @@ Hi nickhuangCompany! You've successfully authenticated, but GitHub does not prov
 ## 🚨 常見問題與解法
 
 ### 問題：Permission Denied
+
 ```bash
 Permission denied (publickey)
 ```
+
 **解法**：確認正確金鑰已載入，config 設定正確。
 
 ### 問題：用錯帳號 push
+
 **解法**：檢查 SSH config 與遠端 URL，確保用對 host alias。
 
 ### 問題：找不到金鑰
+
 **解法**：檢查 SSH config 金鑰路徑，檔案是否存在。
 
 ---
@@ -181,6 +190,7 @@ Permission denied (publickey)
 透過 SSH config 配合多組金鑰，你可以在同一台電腦上高效管理多個 GitHub 帳號，無需重複產生金鑰或改全域設定，對於需要分開工作與個人身份的開發者來說最方便！
 
 **重點整理：**
+
 - SSH config 讓帳號分流乾淨俐落
 - 金鑰管理簡單安全
 - 輕鬆切換多帳號

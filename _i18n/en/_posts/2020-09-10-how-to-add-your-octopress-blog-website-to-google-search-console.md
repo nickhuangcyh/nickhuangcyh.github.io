@@ -69,6 +69,7 @@ After deployment, return to Search Console and click "Verify." If everything goe
 ### What is Google Search Console?
 
 Google Search Console is a free service that helps you:
+
 - **Monitor Performance**: Track how your site appears in search results
 - **Submit Content**: Tell Google about new or updated pages
 - **Fix Issues**: Identify and resolve search-related problems
@@ -76,12 +77,12 @@ Google Search Console is a free service that helps you:
 
 ### Key Features
 
-| Feature | Description | Benefit |
-|---------|-------------|---------|
+| Feature                 | Description                     | Benefit                       |
+| ----------------------- | ------------------------------- | ----------------------------- |
 | **Performance Reports** | Track search queries and clicks | Understand what content works |
-| **Coverage Reports** | Monitor indexed pages | Ensure all content is found |
-| **Core Web Vitals** | Check page speed metrics | Improve user experience |
-| **Mobile Usability** | Test mobile-friendly design | Reach mobile users |
+| **Coverage Reports**    | Monitor indexed pages           | Ensure all content is found   |
+| **Core Web Vitals**     | Check page speed metrics        | Improve user experience       |
+| **Mobile Usability**    | Test mobile-friendly design     | Reach mobile users            |
 
 ---
 
@@ -125,11 +126,11 @@ Sitemap: https://yourdomain.com/sitemap.xml
 ```html
 <!-- Optimize your HTML head section -->
 <head>
-    <title>Your Blog Title - Descriptive and Keyword-Rich</title>
-    <meta name="description" content="Compelling description under 160 characters with relevant keywords">
-    <meta name="keywords" content="relevant, keywords, for, your, content">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://yourdomain.com/current-page">
+  <title>Your Blog Title - Descriptive and Keyword-Rich</title>
+  <meta name="description" content="Compelling description under 160 characters with relevant keywords" />
+  <meta name="keywords" content="relevant, keywords, for, your, content" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://yourdomain.com/current-page" />
 </head>
 ```
 
@@ -196,6 +197,7 @@ curl -w "@curl-format.txt" -o /dev/null -s "https://yourdomain.com"
 
 **Problem**: Your site doesn't appear in search results
 **Solutions**:
+
 - Verify Google Search Console setup
 - Check robots.txt for blocking directives
 - Ensure site is accessible to crawlers
@@ -205,6 +207,7 @@ curl -w "@curl-format.txt" -o /dev/null -s "https://yourdomain.com"
 
 **Problem**: Site appears but ranks poorly
 **Solutions**:
+
 - Optimize page titles and meta descriptions
 - Improve content quality and relevance
 - Build quality backlinks
@@ -214,6 +217,7 @@ curl -w "@curl-format.txt" -o /dev/null -s "https://yourdomain.com"
 
 **Problem**: Multiple URLs with similar content
 **Solutions**:
+
 - Use canonical tags
 - Implement proper redirects
 - Consolidate similar content
@@ -250,7 +254,7 @@ categories: [Category]
 
 ```html
 <!-- Use descriptive alt text -->
-<img src="/assets/img/example.jpg" alt="Descriptive image alt text for SEO">
+<img src="/assets/img/example.jpg" alt="Descriptive image alt text for SEO" />
 
 <!-- Optimize image size -->
 <!-- Use WebP format when possible -->

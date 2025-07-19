@@ -71,6 +71,7 @@ Sitemap 是一個 XML 檔案，能告訴搜尋引擎你網站所有內容，包�
 ### 什麼是 XML Sitemap？
 
 XML Sitemap 是一個結構化檔案：
+
 - 列出網站所有頁面
 - 提供每頁的中繼資料
 - 幫助搜尋引擎理解網站結構
@@ -173,6 +174,7 @@ keywords: "relevant, keywords, for, your, content"
 
 **問題**：網站未出現在搜尋結果
 **解決方式**：
+
 - 確認 Google Search Console 設定無誤
 - 檢查 robots.txt 是否有阻擋
 - 確保網站可被爬蟲存取
@@ -182,6 +184,7 @@ keywords: "relevant, keywords, for, your, content"
 
 **問題**：網站有收錄但排名不佳
 **解決方式**：
+
 - 優化標題與 meta 描述
 - 提升內容品質與相關性
 - 建立高品質外部連結
@@ -191,6 +194,7 @@ keywords: "relevant, keywords, for, your, content"
 
 **問題**：多個網址有相似內容
 **解決方式**：
+
 - 使用 canonical 標籤
 - 正確實作轉址
 - 合併相似內容

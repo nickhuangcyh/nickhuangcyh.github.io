@@ -35,15 +35,12 @@ thumbnail: /assets/img/design_patterns.jpg
 在未使用設計模式的情況下，我們可能面臨以下挑戰：
 
 1. **高耦合性 (High Coupling)**：
-
    - 使用者彼此之間直接通信，導致新增或移除使用者時需修改多處程式碼。
 
 2. **難以擴展 (Hard to Extend)**：
-
    - 若要增加新功能（如訊息過濾或廣播機制），需要修改多個使用者的邏輯。
 
 3. **複雜度上升 (Increased Complexity)**：
-
    - 使用者之間的關聯數量隨著使用者數量增長呈指數級增加。
 
 ## 套用 Mediator Pattern (Solution) 得到新的 Context (Resulting Context)

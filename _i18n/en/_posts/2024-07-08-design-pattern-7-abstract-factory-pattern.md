@@ -3,7 +3,19 @@ layout: post
 title: "Design Pattern 7: Abstract Factory Pattern - Creating Families of Related Objects for Multi-Region Applications"
 date: 2024-07-08 23:00:00 +0800
 description: "Master the Abstract Factory Pattern to create families of related objects. Learn how to implement region-specific product families for global applications with practical examples and best practices."
-tags: [Abstract Factory Pattern, Design Patterns, Product Families, Globalization, Software Architecture, Kotlin, Java, Swift, Factory Pattern, Object Creation]
+tags:
+  [
+    Abstract Factory Pattern,
+    Design Patterns,
+    Product Families,
+    Globalization,
+    Software Architecture,
+    Kotlin,
+    Java,
+    Swift,
+    Factory Pattern,
+    Object Creation,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Globalization]
 toc:
   #   beginning: true
@@ -272,51 +284,54 @@ interface BeverageFactory {
 {% tab data-struct Swift %}
 
 public class USBeverageFactory: BeverageFactory {
-    public init() {}
-    
+public init() {}
+
     public func createBlackTea() -> BlackTea {
         return CeylonBlackTea()
     }
-    
+
     public func createGreenTea() -> GreenTea {
         return GyokuroGreenTea()
     }
-    
+
     public func createMilkTea() -> MilkTea {
         return ThaiMilkTea()
     }
+
 }
 
 public class EUBeverageFactory: BeverageFactory {
-    public init() {}
-    
+public init() {}
+
     public func createBlackTea() -> BlackTea {
         return EarlGreyBlackTea()
     }
-    
+
     public func createGreenTea() -> GreenTea {
         return SenchaGreenTea()
     }
-    
+
     public func createMilkTea() -> MilkTea {
         return MasalaChaiMilkTea()
     }
+
 }
 
 public class JPBeverageFactory: BeverageFactory {
-    public init() {}
-    
+public init() {}
+
     public func createBlackTea() -> BlackTea {
         return AssamBlackTea()
     }
-    
+
     public func createGreenTea() -> GreenTea {
         return MatchaGreenTea()
     }
-    
+
     public func createMilkTea() -> MilkTea {
         return HokkaidoMilkTea()
     }
+
 }
 
 {% endtab %}
@@ -328,11 +343,11 @@ class USBeverageFactory: BeverageFactory {
     override fun createBlackTea(): BlackTea {
         return CeylonBlackTea()
     }
-    
+
     override fun createGreenTea(): GreenTea {
         return GyokuroGreenTea()
     }
-    
+
     override fun createMilkTea(): MilkTea {
         return ThaiMilkTea()
     }
@@ -342,11 +357,11 @@ class EUBeverageFactory: BeverageFactory {
     override fun createBlackTea(): BlackTea {
         return EarlGreyBlackTea()
     }
-    
+
     override fun createGreenTea(): GreenTea {
         return SenchaGreenTea()
     }
-    
+
     override fun createMilkTea(): MilkTea {
         return MasalaChaiMilkTea()
     }
@@ -356,11 +371,11 @@ class JPBeverageFactory: BeverageFactory {
     override fun createBlackTea(): BlackTea {
         return AssamBlackTea()
     }
-    
+
     override fun createGreenTea(): GreenTea {
         return MatchaGreenTea()
     }
-    
+
     override fun createMilkTea(): MilkTea {
         return HokkaidoMilkTea()
     }
@@ -491,7 +506,7 @@ class BootstrapUIFactory: UIFactory {
 // Good: Configuration-based factory selection
 class BeverageService {
     private val factory: BeverageFactory
-    
+
     constructor(region: String) {
         factory = when (region.lowercase()) {
             "us" -> USBeverageFactory()
@@ -500,7 +515,7 @@ class BeverageService {
             else -> USBeverageFactory() // Default
         }
     }
-    
+
     fun createBeverageMenu(): List<Beverage> {
         return listOf(
             factory.createBlackTea(),
@@ -519,7 +534,7 @@ abstract class AbstractBeverageFactory {
     abstract fun createBlackTea(): BlackTea
     abstract fun createGreenTea(): GreenTea
     abstract fun createMilkTea(): MilkTea
-    
+
     // Template method to ensure consistency
     fun createCompleteMenu(): BeverageMenu {
         return BeverageMenu(
@@ -552,12 +567,12 @@ class USBeverageFactory: BeverageFactory {
 
 ## Performance Considerations
 
-| Operation | Abstract Factory | Simple Factory | Direct Instantiation |
-|-----------|------------------|----------------|---------------------|
-| Object Creation | Medium | Fast | Fastest |
-| Memory Usage | Low | Low | Low |
-| Extensibility | High | Medium | Low |
-| Complexity | High | Medium | Low |
+| Operation       | Abstract Factory | Simple Factory | Direct Instantiation |
+| --------------- | ---------------- | -------------- | -------------------- |
+| Object Creation | Medium           | Fast           | Fastest              |
+| Memory Usage    | Low              | Low            | Low                  |
+| Extensibility   | High             | Medium         | Low                  |
+| Complexity      | High             | Medium         | Low                  |
 
 ## Related Design Patterns
 

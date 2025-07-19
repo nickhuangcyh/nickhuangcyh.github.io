@@ -43,12 +43,12 @@ Since building directly in a local environment can easily disrupt settings (such
 
 ### System Requirements
 
-| Component | Minimum Requirement | Recommended |
-|-----------|-------------------|-------------|
-| **RAM** | 8GB | 16GB+ |
-| **Storage** | 10GB free space | 20GB+ |
-| **CPU** | 4 cores | 8 cores+ |
-| **OS** | Linux/macOS/Windows | Linux |
+| Component   | Minimum Requirement | Recommended |
+| ----------- | ------------------- | ----------- |
+| **RAM**     | 8GB                 | 16GB+       |
+| **Storage** | 10GB free space     | 20GB+       |
+| **CPU**     | 4 cores             | 8 cores+    |
+| **OS**      | Linux/macOS/Windows | Linux       |
 
 ## Step 1: Pull Docker Image
 
@@ -233,7 +233,8 @@ You can build for different architectures:
 
 **Problem**: `ninja: error: loading 'build.ninja': No such file or directory`
 
-**Solution**: 
+**Solution**:
+
 ```bash
 cd /connectedhomeip/out/android-arm64-chip-tool
 gn gen .
@@ -246,6 +247,7 @@ cd ../..
 **Problem**: Build fails with license acceptance errors
 
 **Solution**:
+
 ```bash
 export PATH=$PATH:/opt/android/sdk/tools/bin
 sdkmanager --licenses
@@ -256,6 +258,7 @@ sdkmanager --licenses
 **Problem**: Build fails due to memory constraints
 
 **Solution**:
+
 ```bash
 # Increase swap space or use a machine with more RAM
 # Consider building with fewer parallel jobs
@@ -267,6 +270,7 @@ sdkmanager --licenses
 **Problem**: Git submodule update fails
 
 **Solution**:
+
 ```bash
 # Retry with increased timeout
 git config --global http.postBuffer 524288000
@@ -322,12 +326,12 @@ adb shell am start -n com.matter.example.chip.tool/.MainActivity
 
 ### Build Time Optimization
 
-| Optimization | Command | Impact |
-|--------------|---------|--------|
-| **Parallel Build** | `--jobs 8` | Faster compilation |
-| **Incremental Build** | `--incremental` | Skip unchanged files |
-| **CCache** | `--enable-ccache` | Cache compiled objects |
-| **Distributed Build** | `--distributed` | Use multiple machines |
+| Optimization          | Command           | Impact                 |
+| --------------------- | ----------------- | ---------------------- |
+| **Parallel Build**    | `--jobs 8`        | Faster compilation     |
+| **Incremental Build** | `--incremental`   | Skip unchanged files   |
+| **CCache**            | `--enable-ccache` | Cache compiled objects |
+| **Distributed Build** | `--distributed`   | Use multiple machines  |
 
 ### Memory Optimization
 
@@ -383,7 +387,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-      
+
       - name: Build CHIPTool
         run: |
           docker pull ghcr.io/project-chip/chip-build-android:latest
@@ -392,7 +396,7 @@ jobs:
             bash -c "cd /connectedhomeip && \
                      source scripts/bootstrap.sh && \
                      ./scripts/build/build_examples.py --target android-arm64-chip-tool build"
-      
+
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:

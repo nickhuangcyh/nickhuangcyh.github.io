@@ -15,6 +15,7 @@ thumbnail: /assets/img/raul-per-e-K2w9VegUIb0-unsplash.jpg
 Setting up a new Mac for development can be overwhelming, but having the right tools configured from the start will save you countless hours and boost your productivity. This comprehensive guide will transform your fresh macOS installation into a powerful development machine.
 
 **What You'll Achieve:**
+
 - ⚡ **Lightning-fast terminal** with advanced features
 - 🎨 **Beautiful, customizable shell** with syntax highlighting
 - 🔧 **Package management** for easy software installation
@@ -26,6 +27,7 @@ Setting up a new Mac for development can be overwhelming, but having the right t
 ## 📋 **Prerequisites Checklist**
 
 Before we begin, ensure you have:
+
 - ✅ **macOS** (preferably latest version)
 - ✅ **Administrator privileges**
 - ✅ **Stable internet connection**
@@ -50,6 +52,7 @@ brew --version
 ```
 
 **Expected Output:**
+
 ```zsh
 Homebrew 4.1.0
 Homebrew/homebrew-core (git revision 1234567890; last commit 2024-01-11)
@@ -58,6 +61,7 @@ Homebrew/homebrew-core (git revision 1234567890; last commit 2024-01-11)
 ### **🚨 Common Issue: PATH Configuration**
 
 If you encounter this warning:
+
 ```zsh
 Warning: /opt/homebrew/bin is not in your PATH
 ```
@@ -114,6 +118,7 @@ git config --global alias.unstage "reset HEAD --"
 ```
 
 **Usage Examples:**
+
 ```zsh
 git st          # Instead of git status
 git co main     # Instead of git checkout main
@@ -134,13 +139,13 @@ brew install --cask iterm2
 
 ### **Why iTerm2 is Superior:**
 
-| Feature | Default Terminal | iTerm2 |
-|---------|------------------|--------|
-| **Split Panes** | ❌ | ✅ |
-| **Search** | Basic | Advanced |
-| **Profiles** | Limited | Extensive |
-| **Performance** | Good | Excellent |
-| **Customization** | Minimal | Extensive |
+| Feature           | Default Terminal | iTerm2    |
+| ----------------- | ---------------- | --------- |
+| **Split Panes**   | ❌               | ✅        |
+| **Search**        | Basic            | Advanced  |
+| **Profiles**      | Limited          | Extensive |
+| **Performance**   | Good             | Excellent |
+| **Customization** | Minimal          | Extensive |
 
 ---
 
@@ -178,6 +183,7 @@ brew install --cask font-meslo-lg-nerd-font
 ```
 
 **Configure Font in iTerm2:**
+
 1. **Preferences** → **Profiles** → **Text**
 2. Set font to **MesloLGS NF**
 3. Size: **14pt** (adjust as needed)
@@ -247,6 +253,7 @@ source ~/.zshrc
 ```
 
 **Plugin Benefits:**
+
 - **Syntax Highlighting**: Commands are color-coded for better readability
 - **Autosuggestions**: See command suggestions as you type
 - **Git Integration**: Built-in Git status and aliases
@@ -268,6 +275,7 @@ brew install robotsandpencils/made/xcodes
 ```
 
 **Xcodes Tool Benefits:**
+
 - Manage multiple Xcode versions
 - Easy installation and switching
 - Command-line interface
@@ -277,6 +285,7 @@ brew install robotsandpencils/made/xcodes
 **Issue:** `xcrun: error: unable to find utility "xctest"`
 
 **Solution:**
+
 ```zsh
 # Reset Xcode command line tools
 sudo xcode-select --reset
@@ -288,6 +297,7 @@ sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
 ### **Alternative: Install Xcode from App Store**
 
 If you encounter persistent issues:
+
 1. Open **App Store**
 2. Search for **Xcode**
 3. Download and install (large file, ~15GB)
@@ -349,22 +359,23 @@ DISABLE_UPDATE_PROMPT=true
 
 ## 🎯 **Final Configuration Checklist**
 
-| Component | Status | Test Command |
-|-----------|--------|--------------|
-| **Homebrew** | ✅ | `brew --version` |
-| **Git** | ✅ | `git --version` |
-| **iTerm2** | ✅ | Open iTerm2 |
-| **Zsh** | ✅ | `echo $SHELL` |
-| **Oh-My-Zsh** | ✅ | Check prompt appearance |
-| **Powerlevel10k** | ✅ | `p10k configure` |
-| **Plugins** | ✅ | Type commands to see highlighting |
-| **Xcode** | ✅ | `xcode-select --print-path` |
+| Component         | Status | Test Command                      |
+| ----------------- | ------ | --------------------------------- |
+| **Homebrew**      | ✅     | `brew --version`                  |
+| **Git**           | ✅     | `git --version`                   |
+| **iTerm2**        | ✅     | Open iTerm2                       |
+| **Zsh**           | ✅     | `echo $SHELL`                     |
+| **Oh-My-Zsh**     | ✅     | Check prompt appearance           |
+| **Powerlevel10k** | ✅     | `p10k configure`                  |
+| **Plugins**       | ✅     | Type commands to see highlighting |
+| **Xcode**         | ✅     | `xcode-select --print-path`       |
 
 ---
 
 ## 🚨 **Troubleshooting Common Issues**
 
 ### **Issue: Homebrew Commands Not Found**
+
 ```zsh
 # Solution: Check PATH
 echo $PATH | grep homebrew
@@ -374,6 +385,7 @@ export PATH="/opt/homebrew/bin:$PATH"
 ```
 
 ### **Issue: Zsh Theme Not Loading**
+
 ```zsh
 # Solution: Check theme configuration
 cat ~/.zshrc | grep ZSH_THEME
@@ -383,6 +395,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 ```
 
 ### **Issue: Plugins Not Working**
+
 ```zsh
 # Solution: Check plugin configuration
 cat ~/.zshrc | grep plugins
@@ -406,6 +419,7 @@ plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 Congratulations! You've successfully set up a professional development environment on macOS. Your new setup includes:
 
 **Key Achievements:**
+
 - 🚀 **High-performance terminal** with iTerm2
 - 🎨 **Beautiful shell** with Powerlevel10k theme
 - 🔧 **Efficient package management** with Homebrew
@@ -413,6 +427,7 @@ Congratulations! You've successfully set up a professional development environme
 - ⚡ **Productivity-boosting** plugins and aliases
 
 **Next Steps:**
+
 1. **Customize your theme** further with `p10k configure`
 2. **Install project-specific tools** as needed
 3. **Set up your preferred code editor**
@@ -427,6 +442,7 @@ Congratulations! You've successfully set up a professional development environme
 ---
 
 **📚 Additional Resources:**
+
 - [Homebrew Documentation](https://docs.brew.sh/)
 - [Oh-My-Zsh Wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
 - [Powerlevel10k Documentation](https://github.com/romkatv/powerlevel10k)

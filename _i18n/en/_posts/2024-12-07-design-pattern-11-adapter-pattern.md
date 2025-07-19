@@ -3,7 +3,19 @@ layout: post
 title: "Design Pattern 11: Adapter Pattern - Complete Guide with Real-World Stock Data Integration Examples"
 date: 2024-12-07 23:00:00 +0800
 description: "Master the Adapter Pattern with practical stock data integration examples. Learn how to make incompatible interfaces work together, integrate legacy systems, and build flexible architectures."
-tags: [Adapter Pattern, Design Patterns, Interface Compatibility, Object-Oriented Design, Software Architecture, Kotlin, Programming, Structural Patterns, Legacy Integration, API Integration]
+tags:
+  [
+    Adapter Pattern,
+    Design Patterns,
+    Interface Compatibility,
+    Object-Oriented Design,
+    Software Architecture,
+    Kotlin,
+    Programming,
+    Structural Patterns,
+    Legacy Integration,
+    API Integration,
+  ]
 categories: [Design Pattern, Software Engineering, Programming]
 toc:
   sidebar: right
@@ -19,6 +31,7 @@ thumbnail: /assets/img/design_patterns.jpg
 The **Adapter Pattern** is a structural design pattern that allows incompatible interfaces to work together. It acts as a bridge between two incompatible interfaces by wrapping an existing class with a new interface, enabling objects with incompatible interfaces to collaborate.
 
 **Key Benefits:**
+
 - ✅ **Interface Compatibility** - Make incompatible interfaces work together
 - ✅ **Legacy Integration** - Integrate old systems with new code
 - ✅ **Third-party Integration** - Work with external APIs and libraries
@@ -32,6 +45,7 @@ The **Adapter Pattern** is a structural design pattern that allows incompatible 
 Let's design a **stock data integration system** with the following requirements:
 
 ### **System Requirements:**
+
 - **Integrate existing XML-based stock system** with new JSON-based analysis system
 - **Support multiple data formats** (XML, JSON, CSV) for future expansion
 - **Maintain backward compatibility** with existing XML system
@@ -39,6 +53,7 @@ Let's design a **stock data integration system** with the following requirements
 - **Provide unified interface** for all data sources
 
 ### **Business Rules:**
+
 - Existing system provides stock data in XML format
 - New analysis system expects JSON format
 - Data transformation should be transparent to clients
@@ -86,6 +101,7 @@ After analyzing the forces, we can apply the **Adapter Pattern** to create a com
 4. **Client** - Uses the target interface
 
 **Benefits:**
+
 - **Seamless integration** - Clients work with familiar interface
 - **No legacy modification** - Existing code remains unchanged
 - **Flexible design** - Support multiple adapters for different sources
@@ -150,7 +166,7 @@ class XmlStockData {
             )
         )
     )
-    
+
     fun getXmlData(): String {
         return buildString {
             appendLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
@@ -167,9 +183,9 @@ class XmlStockData {
             appendLine("</stocks>")
         }
     }
-    
+
     fun getStockCount(): Int = stockData["stocks"]?.size ?: 0
-    
+
     fun getLastUpdateTime(): Long = System.currentTimeMillis()
 }
 ```
@@ -180,26 +196,26 @@ class XmlStockData {
 class StockDataAdapter(
     private val xmlStockData: XmlStockData
 ) : JsonAnalyzer {
-    
+
     override fun analyzeJsonData(json: String): AnalysisResult {
         val startTime = System.currentTimeMillis()
-        
+
         return try {
             // Parse JSON data
             val jsonData = parseJson(json)
-            
+
             // Perform analysis
             val analysisData = performAnalysis(jsonData)
-            
+
             val processingTime = System.currentTimeMillis() - startTime
-            
+
             AnalysisResult(
                 success = true,
                 data = analysisData,
                 timestamp = System.currentTimeMillis(),
                 processingTime = processingTime
             )
-            
+
         } catch (e: Exception) {
             AnalysisResult(
                 success = false,
@@ -210,7 +226,7 @@ class StockDataAdapter(
             )
         }
     }
-    
+
     override fun validateJsonData(json: String): ValidationResult {
         return try {
             parseJson(json)
@@ -222,32 +238,32 @@ class StockDataAdapter(
             )
         }
     }
-    
+
     override fun getSupportedFormats(): List<String> = listOf("JSON", "XML")
-    
+
     // Adapter-specific method to convert XML to JSON
     fun convertAndAnalyze(): AnalysisResult {
         val startTime = System.currentTimeMillis()
-        
+
         return try {
             // Get XML data from existing system
             val xmlData = xmlStockData.getXmlData()
-            
+
             // Convert XML to JSON
             val jsonData = convertXmlToJson(xmlData)
-            
+
             // Analyze the converted data
             val analysisData = performAnalysis(jsonData)
-            
+
             val processingTime = System.currentTimeMillis() - startTime
-            
+
             AnalysisResult(
                 success = true,
                 data = analysisData,
                 timestamp = System.currentTimeMillis(),
                 processingTime = processingTime
             )
-            
+
         } catch (e: Exception) {
             AnalysisResult(
                 success = false,
@@ -258,7 +274,7 @@ class StockDataAdapter(
             )
         }
     }
-    
+
     private fun convertXmlToJson(xml: String): Map<String, Any> {
         // Simulate XML to JSON conversion
         return mapOf(
@@ -292,23 +308,23 @@ class StockDataAdapter(
             )
         )
     }
-    
+
     private fun parseJson(json: String): Map<String, Any> {
         // Simulate JSON parsing
         return mapOf("parsed" to true, "data" to json)
     }
-    
+
     private fun performAnalysis(data: Map<String, Any>): Map<String, Any> {
         val stocks = data["stocks"] as? List<Map<String, Any>> ?: emptyList()
-        
-        val totalValue = stocks.sumOf { 
-            (it["price"] as? Number)?.toDouble() ?: 0.0 
+
+        val totalValue = stocks.sumOf {
+            (it["price"] as? Number)?.toDouble() ?: 0.0
         }
         val averagePrice = if (stocks.isNotEmpty()) totalValue / stocks.size else 0.0
-        val totalVolume = stocks.sumOf { 
-            (it["volume"] as? Number)?.toLong() ?: 0L 
+        val totalVolume = stocks.sumOf {
+            (it["volume"] as? Number)?.toLong() ?: 0L
         }
-        
+
         return mapOf(
             "summary" to mapOf(
                 "totalStocks" to stocks.size,
@@ -340,21 +356,21 @@ class MultiSourceStockAdapter : JsonAnalyzer {
     private val xmlAdapter = StockDataAdapter(XmlStockData())
     private val csvAdapter = CsvStockDataAdapter()
     private val jsonAdapter = DirectJsonAdapter()
-    
+
     override fun analyzeJsonData(json: String): AnalysisResult {
         return jsonAdapter.analyzeJsonData(json)
     }
-    
+
     override fun validateJsonData(json: String): ValidationResult {
         return jsonAdapter.validateJsonData(json)
     }
-    
+
     override fun getSupportedFormats(): List<String> = listOf("JSON", "XML", "CSV")
-    
+
     fun analyzeFromXml(): AnalysisResult = xmlAdapter.convertAndAnalyze()
-    
+
     fun analyzeFromCsv(csvData: String): AnalysisResult = csvAdapter.convertAndAnalyze(csvData)
-    
+
     fun analyzeFromJson(jsonData: String): AnalysisResult = jsonAdapter.analyzeJsonData(jsonData)
 }
 
@@ -379,11 +395,11 @@ class DirectJsonAdapter : JsonAnalyzer {
             processingTime = 10
         )
     }
-    
+
     override fun validateJsonData(json: String): ValidationResult {
         return ValidationResult(isValid = true)
     }
-    
+
     override fun getSupportedFormats(): List<String> = listOf("JSON")
 }
 ```
@@ -393,35 +409,35 @@ class DirectJsonAdapter : JsonAnalyzer {
 ```kotlin
 fun main() {
     println("=== Stock Data Integration Demo ===\n")
-    
+
     // Create adapter
     val adapter = StockDataAdapter(XmlStockData())
     val multiAdapter = MultiSourceStockAdapter()
-    
+
     // Test XML to JSON conversion and analysis
     println("📊 Analyzing stock data from XML system...")
     val xmlResult = adapter.convertAndAnalyze()
-    
+
     if (xmlResult.success) {
         println("✅ XML analysis successful!")
         println("📈 Processing time: ${xmlResult.processingTime}ms")
         println("📊 Analysis results:")
-        
+
         val summary = xmlResult.data["summary"] as? Map<String, Any>
         println("   • Total Stocks: ${summary?.get("totalStocks")}")
         println("   • Total Value: $${summary?.get("totalValue")}")
         println("   • Average Price: $${summary?.get("averagePrice")}")
         println("   • Total Volume: ${summary?.get("totalVolume")}")
-        
+
         val topPerformers = xmlResult.data["topPerformers"] as? List<Map<String, Any>>
         println("   • Top Performers: ${topPerformers?.map { "${it["symbol"]} (+${it["changePercent"]}%)" }}")
-        
+
     } else {
         println("❌ XML analysis failed: ${xmlResult.errors}")
     }
-    
+
     println()
-    
+
     // Test direct JSON analysis
     println("📊 Analyzing direct JSON data...")
     val jsonData = """
@@ -432,7 +448,7 @@ fun main() {
         ]
     }
     """.trimIndent()
-    
+
     val jsonResult = adapter.analyzeJsonData(jsonData)
     if (jsonResult.success) {
         println("✅ JSON analysis successful!")
@@ -440,24 +456,24 @@ fun main() {
     } else {
         println("❌ JSON analysis failed: ${jsonResult.errors}")
     }
-    
+
     println()
-    
+
     // Test multi-source adapter
     println("🔄 Testing multi-source adapter...")
     println("📋 Supported formats: ${multiAdapter.getSupportedFormats()}")
-    
+
     val xmlMultiResult = multiAdapter.analyzeFromXml()
     val csvMultiResult = multiAdapter.analyzeFromCsv("AAPL,150.25,2.50")
     val jsonMultiResult = multiAdapter.analyzeFromJson(jsonData)
-    
+
     println("✅ Multi-source analysis complete!")
     println("   • XML: ${if (xmlMultiResult.success) "✅" else "❌"}")
     println("   • CSV: ${if (csvMultiResult.success) "✅" else "❌"}")
     println("   • JSON: ${if (jsonMultiResult.success) "✅" else "❌"}")
-    
+
     println()
-    
+
     // Performance comparison
     println("📊 Performance Comparison:")
     println("   • XML Analysis: ${xmlResult.processingTime}ms")
@@ -467,6 +483,7 @@ fun main() {
 ```
 
 **Expected Output:**
+
 ```
 === Stock Data Integration Demo ===
 
@@ -501,18 +518,19 @@ fun main() {
 
 ## 📊 **Adapter Pattern vs Alternative Approaches**
 
-| Approach | Pros | Cons |
-|----------|------|------|
-| **Adapter Pattern** | ✅ Interface compatibility<br>✅ No legacy modification<br>✅ Reusable design | ❌ Additional layer<br>❌ Potential performance overhead<br>❌ Increased complexity |
-| **Direct Modification** | ✅ No overhead<br>✅ Direct integration<br>✅ Simple implementation | ❌ Breaks existing code<br>❌ High risk<br>❌ Maintenance burden |
-| **Wrapper Classes** | ✅ Encapsulation<br>✅ Clean interface | ❌ Different purpose (encapsulation vs compatibility) |
-| **Interface Segregation** | ✅ Clean interfaces<br>✅ Better design | ❌ Requires system redesign<br>❌ Not always feasible |
+| Approach                  | Pros                                                                          | Cons                                                                                |
+| ------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| **Adapter Pattern**       | ✅ Interface compatibility<br>✅ No legacy modification<br>✅ Reusable design | ❌ Additional layer<br>❌ Potential performance overhead<br>❌ Increased complexity |
+| **Direct Modification**   | ✅ No overhead<br>✅ Direct integration<br>✅ Simple implementation           | ❌ Breaks existing code<br>❌ High risk<br>❌ Maintenance burden                    |
+| **Wrapper Classes**       | ✅ Encapsulation<br>✅ Clean interface                                        | ❌ Different purpose (encapsulation vs compatibility)                               |
+| **Interface Segregation** | ✅ Clean interfaces<br>✅ Better design                                       | ❌ Requires system redesign<br>❌ Not always feasible                               |
 
 ---
 
 ## 🎯 **When to Use the Adapter Pattern**
 
 ### **✅ Perfect For:**
+
 - **Legacy system integration** (old systems with new code)
 - **Third-party API integration** (external services with different interfaces)
 - **Interface compatibility** (making incompatible interfaces work together)
@@ -520,6 +538,7 @@ fun main() {
 - **Data format conversion** (XML to JSON, CSV to XML, etc.)
 
 ### **❌ Avoid When:**
+
 - **Simple interface changes** (direct modification is simpler)
 - **Performance-critical applications** (adapter overhead)
 - **Frequent interface changes** (adapter becomes maintenance burden)
@@ -537,39 +556,39 @@ class CachedStockDataAdapter(
     private val cache: MutableMap<String, AnalysisResult> = mutableMapOf(),
     private val cacheTimeout: Long = 60000 // 1 minute
 ) : JsonAnalyzer {
-    
+
     override fun analyzeJsonData(json: String): AnalysisResult {
         val cacheKey = "json_${json.hashCode()}"
         val cached = cache[cacheKey]
-        
+
         if (cached != null && !isExpired(cached.timestamp)) {
             println("📋 Returning cached result for JSON analysis")
             return cached
         }
-        
+
         val result = performJsonAnalysis(json)
         cache[cacheKey] = result
         return result
     }
-    
+
     fun convertAndAnalyze(): AnalysisResult {
         val cacheKey = "xml_conversion"
         val cached = cache[cacheKey]
-        
+
         if (cached != null && !isExpired(cached.timestamp)) {
             println("📋 Returning cached result for XML conversion")
             return cached
         }
-        
+
         val result = performXmlConversion()
         cache[cacheKey] = result
         return result
     }
-    
+
     private fun isExpired(timestamp: Long): Boolean {
         return System.currentTimeMillis() - timestamp > cacheTimeout
     }
-    
+
     private fun performJsonAnalysis(json: String): AnalysisResult {
         // Implementation for JSON analysis
         return AnalysisResult(
@@ -579,7 +598,7 @@ class CachedStockDataAdapter(
             processingTime = 15
         )
     }
-    
+
     private fun performXmlConversion(): AnalysisResult {
         // Implementation for XML conversion
         return AnalysisResult(
@@ -589,12 +608,12 @@ class CachedStockDataAdapter(
             processingTime = 50
         )
     }
-    
+
     fun clearCache() {
         cache.clear()
         println("🗑️ Cache cleared")
     }
-    
+
     fun getCacheSize(): Int = cache.size
 }
 ```
@@ -606,29 +625,29 @@ class ResilientStockDataAdapter(
     private val xmlStockData: XmlStockData,
     private val maxRetries: Int = 3
 ) : JsonAnalyzer {
-    
+
     override fun analyzeJsonData(json: String): AnalysisResult {
         return retryOperation("JSON Analysis") {
             performJsonAnalysis(json)
         }
     }
-    
+
     fun convertAndAnalyze(): AnalysisResult {
         return retryOperation("XML Conversion") {
             performXmlConversion()
         }
     }
-    
+
     private fun <T> retryOperation(operationName: String, operation: () -> T): T {
         var lastException: Exception? = null
-        
+
         for (attempt in 1..maxRetries) {
             try {
                 return operation()
             } catch (e: Exception) {
                 lastException = e
                 println("⚠️ $operationName attempt $attempt failed: ${e.message}")
-                
+
                 if (attempt < maxRetries) {
                     val delay = attempt * 1000L // Exponential backoff
                     println("⏳ Retrying in ${delay}ms...")
@@ -636,16 +655,16 @@ class ResilientStockDataAdapter(
                 }
             }
         }
-        
+
         throw RuntimeException("$operationName failed after $maxRetries attempts", lastException)
     }
-    
+
     private fun performJsonAnalysis(json: String): AnalysisResult {
         // Simulate potential failure
         if (Math.random() < 0.3) {
             throw RuntimeException("Simulated JSON analysis failure")
         }
-        
+
         return AnalysisResult(
             success = true,
             data = mapOf("source" to "JSON", "retry" to false),
@@ -653,13 +672,13 @@ class ResilientStockDataAdapter(
             processingTime = 20
         )
     }
-    
+
     private fun performXmlConversion(): AnalysisResult {
         // Simulate potential failure
         if (Math.random() < 0.2) {
             throw RuntimeException("Simulated XML conversion failure")
         }
-        
+
         return AnalysisResult(
             success = true,
             data = mapOf("source" to "XML", "retry" to false),
@@ -677,10 +696,10 @@ class MonitoredStockDataAdapter(
     private val adapter: JsonAnalyzer,
     private val monitor: AdapterMonitor
 ) : JsonAnalyzer {
-    
+
     override fun analyzeJsonData(json: String): AnalysisResult {
         val startTime = System.currentTimeMillis()
-        
+
         return try {
             monitor.recordOperation("json_analysis", startTime)
             val result = adapter.analyzeJsonData(json)
@@ -691,23 +710,23 @@ class MonitoredStockDataAdapter(
             throw e
         }
     }
-    
+
     override fun validateJsonData(json: String): ValidationResult {
         return adapter.validateJsonData(json)
     }
-    
+
     override fun getSupportedFormats(): List<String> = adapter.getSupportedFormats()
 }
 
 class AdapterMonitor {
     private val operations = mutableListOf<OperationRecord>()
     private val errors = mutableListOf<ErrorRecord>()
-    
+
     fun recordOperation(type: String, startTime: Long) {
         operations.add(OperationRecord(type, startTime, null, null))
         println("📊 Started operation: $type")
     }
-    
+
     fun recordSuccess(type: String, duration: Long) {
         operations.lastOrNull { it.type == type && it.duration == null }?.let {
             it.duration = duration
@@ -715,7 +734,7 @@ class AdapterMonitor {
         }
         println("✅ Operation completed: $type (${duration}ms)")
     }
-    
+
     fun recordError(type: String, error: String) {
         errors.add(ErrorRecord(type, error, System.currentTimeMillis()))
         operations.lastOrNull { it.type == type && it.duration == null }?.let {
@@ -724,12 +743,12 @@ class AdapterMonitor {
         }
         println("❌ Operation failed: $type - $error")
     }
-    
+
     fun getReport(): String {
         val successfulOps = operations.filter { it.success == true }
         val failedOps = operations.filter { it.success == false }
         val avgDuration = successfulOps.mapNotNull { it.duration }.average()
-        
+
         return buildString {
             appendLine("=== Adapter Monitor Report ===")
             appendLine("Total Operations: ${operations.size}")
@@ -764,24 +783,28 @@ data class ErrorRecord(
 ## 🚀 **Real-World Applications**
 
 ### **1. API Integration**
+
 - **Payment gateways** - Adapt different payment provider interfaces
 - **Social media APIs** - Unify different platform interfaces
 - **Cloud services** - Abstract cloud provider differences
 - **Database drivers** - Standardize database access interfaces
 
 ### **2. Legacy System Integration**
+
 - **Mainframe integration** - Connect old systems with modern applications
 - **File format conversion** - Convert between different data formats
 - **Protocol adaptation** - Bridge different communication protocols
 - **Hardware interfaces** - Adapt different device interfaces
 
 ### **3. Library and Framework Integration**
+
 - **Third-party libraries** - Adapt incompatible library interfaces
 - **Version compatibility** - Bridge different API versions
 - **Language interoperability** - Connect different programming languages
 - **Platform abstraction** - Abstract platform-specific differences
 
 ### **4. Data Processing**
+
 - **ETL pipelines** - Transform data between different formats
 - **Message queues** - Adapt different messaging protocols
 - **Stream processing** - Convert between different stream formats
@@ -792,12 +815,14 @@ data class ErrorRecord(
 ## 📈 **Performance Considerations**
 
 ### **Adapter Overhead**
+
 - **Method delegation** - Additional method calls through adapter
 - **Data transformation** - Cost of converting between formats
 - **Memory usage** - Adapter object memory footprint
 - **Caching strategies** - Cache expensive transformations
 
 ### **Optimization Techniques**
+
 - **Lazy loading** - Defer expensive operations until needed
 - **Connection pooling** - Reuse expensive connections
 - **Batch processing** - Process multiple items together
@@ -817,18 +842,21 @@ data class ErrorRecord(
 ## 📚 **Best Practices**
 
 ### **1. Adapter Design**
+
 - **Single responsibility** - Each adapter should handle one specific conversion
 - **Error handling** - Proper error handling for conversion failures
 - **Performance optimization** - Minimize conversion overhead
 - **Documentation** - Clear documentation of conversion logic
 
 ### **2. Interface Design**
+
 - **Target interface** - Design clean, stable target interfaces
 - **Extensibility** - Support future interface changes
 - **Compatibility** - Ensure backward compatibility when possible
 - **Validation** - Validate data during conversion
 
 ### **3. Implementation Guidelines**
+
 - **Thread safety** - Handle concurrent access properly
 - **Resource management** - Properly manage resources and connections
 - **Testing strategies** - Test with various data formats and edge cases
@@ -848,10 +876,11 @@ The **Adapter Pattern** provides a powerful way to integrate incompatible interf
 This pattern is essential for building flexible, maintainable systems that need to work with various external interfaces and legacy systems. Whether you're integrating APIs, connecting legacy systems, or handling multiple data formats, the Adapter Pattern provides the foundation for robust system integration.
 
 **Next Steps:**
+
 - Explore the **[Bridge Pattern](/2024-12-08-design-pattern-12-bridge-pattern/)** for abstraction-implementation separation
 - Learn about the **[Facade Pattern](/2024-12-12-design-pattern-15-facade-pattern/)** for interface simplification
 - Discover the **[Decorator Pattern](/2024-12-11-design-pattern-14-decorator-pattern/)** for adding functionality
 
 ---
 
-*Ready to implement the Adapter Pattern in your projects? Download the complete code examples from our [design_pattern repository](https://github.com/nickhuangcyh/design_pattern) and start building more flexible, integrable systems today!*
+_Ready to implement the Adapter Pattern in your projects? Download the complete code examples from our [design_pattern repository](https://github.com/nickhuangcyh/design_pattern) and start building more flexible, integrable systems today!_

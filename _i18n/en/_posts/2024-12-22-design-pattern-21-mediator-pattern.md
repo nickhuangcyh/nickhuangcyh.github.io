@@ -3,7 +3,19 @@ layout: post
 title: "Design Pattern 21: Mediator Pattern - Complete Guide with Real-World Chatroom Example"
 date: 2024-12-22 14:00:00 +0800
 description: "Master the Mediator Pattern with practical chatroom and system coordination examples. Learn how to reduce coupling, improve extensibility, and centralize communication logic."
-tags: [Mediator Pattern, Design Patterns, Decoupling, Object-Oriented Design, Software Architecture, Chatroom, Kotlin, Programming, Behavioral Patterns, Communication]
+tags:
+  [
+    Mediator Pattern,
+    Design Patterns,
+    Decoupling,
+    Object-Oriented Design,
+    Software Architecture,
+    Chatroom,
+    Kotlin,
+    Programming,
+    Behavioral Patterns,
+    Communication,
+  ]
 categories: [Design Pattern, Software Engineering, Programming]
 toc:
   sidebar: right
@@ -19,6 +31,7 @@ thumbnail: /assets/img/design_patterns.jpg
 The **Mediator Pattern** is a behavioral design pattern that centralizes complex communications and control between related objects. Instead of objects referring to each other directly, they communicate through a mediator, reducing dependencies and making the system easier to maintain and extend.
 
 **Key Benefits:**
+
 - ✅ **Reduces coupling** between components
 - ✅ **Centralizes communication logic**
 - ✅ **Improves extensibility** for new features
@@ -30,11 +43,13 @@ The **Mediator Pattern** is a behavioral design pattern that centralizes complex
 ## 🚀 **Real-World Problem: Chatroom Application**
 
 Suppose you are building a **chatroom application** with the following requirements:
+
 - Users can send messages to the chatroom
 - Users do not need to manage other users' information directly
 - Adding or removing users should not affect others
 
 ### **Business Rules:**
+
 - All communication is managed by a central mediator
 - Users interact only with the mediator, not with each other directly
 - The system should be easy to extend (e.g., add message filtering, broadcasting)
@@ -46,6 +61,7 @@ Suppose you are building a **chatroom application** with the following requireme
 {% include figure.liquid path="assets/img/design_pattern_mediator_pattern_uml_1.png" title="Mediator Pattern - Problem Analysis" %}
 
 ### **Identified Forces:**
+
 1. **High Coupling** - Direct communication between users increases maintenance cost
 2. **Hard to Extend** - Adding new features requires modifying multiple classes
 3. **Increased Complexity** - More users means exponentially more connections
@@ -59,6 +75,7 @@ By introducing a mediator, all communication is routed through a central object,
 {% include figure.liquid path="assets/img/design_pattern_mediator_pattern_uml_2.png" title="Mediator Pattern - General Structure" %}
 
 ### **Mediator Pattern Components:**
+
 - **Mediator Interface** - Defines methods for communication
 - **Concrete Mediator** - Implements communication logic
 - **Colleague Interface** - Represents participants
@@ -71,6 +88,7 @@ By introducing a mediator, all communication is routed through a central object,
 {% include figure.liquid path="assets/img/design_pattern_mediator_pattern_uml_3.png" title="Mediator Pattern - Chatroom Example" %}
 
 ### **1. Mediator Interface**
+
 ```kotlin
 interface ChatMediator {
     fun sendMessage(message: String, user: User)
@@ -79,6 +97,7 @@ interface ChatMediator {
 ```
 
 ### **2. Concrete Mediator**
+
 ```kotlin
 class ChatRoomMediator : ChatMediator {
     private val users = mutableListOf<User>()
@@ -92,6 +111,7 @@ class ChatRoomMediator : ChatMediator {
 ```
 
 ### **3. Colleague Interface**
+
 ```kotlin
 abstract class User(protected val mediator: ChatMediator, val name: String) {
     abstract fun send(message: String)
@@ -100,6 +120,7 @@ abstract class User(protected val mediator: ChatMediator, val name: String) {
 ```
 
 ### **4. Concrete Colleague**
+
 ```kotlin
 class ChatUser(mediator: ChatMediator, name: String) : User(mediator, name) {
     override fun send(message: String) {
@@ -113,6 +134,7 @@ class ChatUser(mediator: ChatMediator, name: String) : User(mediator, name) {
 ```
 
 ### **5. Client Code**
+
 ```kotlin
 fun main() {
     val chatMediator = ChatRoomMediator()
@@ -128,6 +150,7 @@ fun main() {
 ```
 
 **Expected Output:**
+
 ```
 Alice sends: Hello, everyone!
 Bob receives: Hello, everyone!
@@ -141,17 +164,18 @@ Charlie receives: Hi, Alice!
 
 ## 📊 **Mediator Pattern vs Alternative Approaches**
 
-| Approach | Pros | Cons |
-|----------|------|------|
-| **Mediator Pattern** | ✅ Reduces coupling<br>✅ Centralizes logic | ❌ Mediator can become complex<br>❌ Single point of failure |
-| **Direct Communication** | ✅ Simple for small systems | ❌ High coupling<br>❌ Hard to extend |
-| **Event Bus** | ✅ Decoupled communication | ❌ Harder to trace logic<br>❌ Global state |
+| Approach                 | Pros                                        | Cons                                                         |
+| ------------------------ | ------------------------------------------- | ------------------------------------------------------------ |
+| **Mediator Pattern**     | ✅ Reduces coupling<br>✅ Centralizes logic | ❌ Mediator can become complex<br>❌ Single point of failure |
+| **Direct Communication** | ✅ Simple for small systems                 | ❌ High coupling<br>❌ Hard to extend                        |
+| **Event Bus**            | ✅ Decoupled communication                  | ❌ Harder to trace logic<br>❌ Global state                  |
 
 ---
 
 ## 🎯 **When to Use the Mediator Pattern**
 
 ### **✅ Perfect For:**
+
 - **Chatroom systems**
 - **GUI component communication**
 - **Event-driven architectures**
@@ -159,6 +183,7 @@ Charlie receives: Hi, Alice!
 - **Complex system coordination**
 
 ### **❌ Avoid When:**
+
 - **Simple, small systems**
 - **Mediator logic becomes too complex**
 
@@ -174,6 +199,7 @@ Charlie receives: Hi, Alice!
 ---
 
 ## 📈 **Real-World Applications**
+
 - Chatroom and messaging apps
 - Air traffic control systems
 - GUI frameworks (dialog coordination)
@@ -182,6 +208,7 @@ Charlie receives: Hi, Alice!
 ---
 
 ## 🚨 **Common Pitfalls and Best Practices**
+
 - Avoid making the mediator too complex (split responsibilities if needed)
 - Document all communication flows
 - Use clear naming for mediator methods
@@ -189,6 +216,7 @@ Charlie receives: Hi, Alice!
 ---
 
 ## 🔗 **Related Articles**
+
 - [Design Pattern 1: Object-Oriented Concepts](/2024-07-02-design-pattern-1-object-oriented-concepts)
 - [Design Pattern 2: Design Principles](/2024-07-03-design-pattern-2-design-principle)
 - [Command Pattern](/2024-12-21-design-pattern-19-command-pattern)
@@ -202,6 +230,7 @@ Charlie receives: Hi, Alice!
 Through the Mediator Pattern, we successfully reduced coupling between users and centralized communication logic, making the system more maintainable and extensible.
 
 **Key Advantages:**
+
 - 🎯 **Reduces coupling**
 - 🔧 **Centralizes communication logic**
 - 📈 **Easy extension**
@@ -209,11 +238,13 @@ Through the Mediator Pattern, we successfully reduced coupling between users and
 - ⚡ **Scalability**
 
 **Design Principles Followed:**
+
 - **Single Responsibility Principle (SRP)**: Mediator handles communication
 - **Open-Closed Principle (OCP)**: Add new features without modifying users
 - **Don't Repeat Yourself (DRY)**: Centralize logic in mediator
 
 **Perfect For:**
+
 - **Chatroom systems**
 - **GUI frameworks**
 - **Workflow engines**

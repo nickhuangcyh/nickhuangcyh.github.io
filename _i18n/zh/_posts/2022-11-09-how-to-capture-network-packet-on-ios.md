@@ -3,7 +3,21 @@ layout: post
 title: "iOS 網路抓包全攻略：rvictl + Wireshark 實戰詳解"
 date: 2022-11-09 11:30:00 +0800
 description: "掌握 iOS 網路抓包技巧，結合 rvictl 與 Wireshark，助力行動開發、IoT 除錯與網路分析。"
-tags: [iOS, Network Packet Capture, Wireshark, rvictl, Network Debugging, iOS Development, IoT Development, Network Analysis, Xcode, USB Debugging, Network Troubleshooting, Mobile Development]
+tags:
+  [
+    iOS,
+    Network Packet Capture,
+    Wireshark,
+    rvictl,
+    Network Debugging,
+    iOS Development,
+    IoT Development,
+    Network Analysis,
+    Xcode,
+    USB Debugging,
+    Network Troubleshooting,
+    Mobile Development,
+  ]
 categories: [Tools, iOS Development, Network Analysis]
 toc:
   sidebar: right
@@ -24,6 +38,7 @@ thumbnail: /assets/img/jordan-harrison-40XgDxBfYXM-unsplash.jpg
 - 🧪 協議相容性測試
 
 **核心優勢：**
+
 - ✅ 無需越獄，官方工具支援
 - ✅ 即時抓包，完整流量可見
 - ✅ 支援所有網路介面
@@ -35,6 +50,7 @@ thumbnail: /assets/img/jordan-harrison-40XgDxBfYXM-unsplash.jpg
 ## 🛠️ 抓包前準備
 
 ### 必備裝置與軟體
+
 - iOS 裝置（iPhone/iPad/iPod Touch）
 - Mac 電腦（macOS 10.15+）
 - USB 傳輸線
@@ -48,6 +64,7 @@ thumbnail: /assets/img/jordan-harrison-40XgDxBfYXM-unsplash.jpg
 ## 🚀 iOS 抓包全流程實戰
 
 ### 步驟 1：工具安裝與檢查
+
 ```bash
 xcode-select --version
 which rvictl
@@ -55,10 +72,12 @@ brew install --cask wireshark
 ```
 
 ### 步驟 2：連接 iOS 裝置
+
 - USB 連接裝置，信任電腦
 - iOS 16+ 需開啟開發者模式（設定 → 隱私與安全性 → 開發者模式）
 
 ### 步驟 3：取得裝置 UUID
+
 ```bash
 # 推薦：Xcode → Window → Devices and Simulators
 xcrun devicectl list devices
@@ -66,34 +85,40 @@ xcrun devicectl list devices
 ```
 
 ### 步驟 4：檢查網路介面
+
 ```bash
 ifconfig -l
 ```
 
 ### 步驟 5：建立虛擬網路介面
+
 ```bash
 rvictl -s 裝置UUID
 # 成功輸出：Starting device [UUID] [SUCCESS]
 ```
 
 如遇錯誤：
+
 - bootstrap_look_up(): 1102 → 檢查 rpmuxd 服務
 - Permission denied → sudo rvictl -s 裝置UUID
 - Device not found → 檢查連線與 UUID
 
 ### 步驟 6：確認虛擬介面
+
 ```bash
 ifconfig -l
 ifconfig rvi0
 ```
 
 ### 步驟 7：Wireshark 抓包
+
 - 開啟 Wireshark，選擇 rvi0 介面
 - 可用過濾器：
   - tcp、udp、port 80、port 443、host 192.168.1.1
 - 開始抓包並操作 iOS 裝置
 
 ### 步驟 8：資料分析
+
 - 常用過濾：
   - http
   - http.request.method == "POST"
@@ -145,6 +170,7 @@ ifconfig rvi0
 ---
 
 ## 🔗 相關文章與資源
+
 - [Android 網路抓包實戰](/2022-11-06-how-to-capture-network-packet-on-android-using-tcpdump)
 - [P2P 技術基礎](/2022-01-03-p2p-tech-1-ipv4-nat)
 - [STUN/TURN/ICE 協議詳解](/2022-01-04-p2p-tech-2-stun-turn-ice)

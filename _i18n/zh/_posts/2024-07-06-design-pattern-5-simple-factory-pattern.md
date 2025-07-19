@@ -3,7 +3,19 @@ layout: post
 title: "設計模式 5：簡單工廠模式 - 動態飲品訂單系統的物件創建解法"
 date: 2024-07-06 23:00:00 +0800
 description: "精通簡單工廠模式，集中管理物件創建邏輯，分離變動與不變程式碼，提升維護性與彈性。圖文範例，適合軟體工程師與架構師。"
-tags: [Simple Factory Pattern, Design Patterns, Object Creation, Factory Pattern, Software Architecture, Kotlin, Java, Swift, Code Separation, Maintainability]
+tags:
+  [
+    Simple Factory Pattern,
+    Design Patterns,
+    Object Creation,
+    Factory Pattern,
+    Software Architecture,
+    Kotlin,
+    Java,
+    Swift,
+    Code Separation,
+    Maintainability,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Code Quality]
 toc:
   sidebar: right

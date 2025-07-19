@@ -3,7 +3,20 @@ layout: post
 title: "Design Pattern 4: UML Diagrams - Visual Modeling Language for Software Architecture and Design Patterns"
 date: 2024-07-05 23:00:00 +0800
 description: "Master UML (Unified Modeling Language) to visualize software architecture and design patterns. Learn class diagrams, relationships, and how to effectively communicate software design concepts."
-tags: [UML, Unified Modeling Language, Class Diagrams, Software Architecture, Design Patterns, Visual Modeling, Software Design, Object-Oriented Design, Relationships, Inheritance, Association]
+tags:
+  [
+    UML,
+    Unified Modeling Language,
+    Class Diagrams,
+    Software Architecture,
+    Design Patterns,
+    Visual Modeling,
+    Software Design,
+    Object-Oriented Design,
+    Relationships,
+    Inheritance,
+    Association,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Software Architecture]
 toc:
   #   beginning: true
@@ -63,12 +76,12 @@ Uses a circle to represent the interface.
 
 Visibility modifiers control access to class members:
 
-| Symbol | Modifier | Description |
-|--------|----------|-------------|
-| `+` | Public | Accessible from anywhere |
-| `#` | Protected | Accessible within class and subclasses |
-| `~` | Package | Accessible within the same package |
-| `-` | Private | Accessible only within the class |
+| Symbol | Modifier  | Description                            |
+| ------ | --------- | -------------------------------------- |
+| `+`    | Public    | Accessible from anywhere               |
+| `#`    | Protected | Accessible within class and subclasses |
+| `~`    | Package   | Accessible within the same package     |
+| `-`    | Private   | Accessible only within the class       |
 
 {% include figure.liquid path="assets/img/design_pattern_4_uml_attribute.png" title="UML attributes with visibility modifiers" %}
 
@@ -76,13 +89,13 @@ Visibility modifiers control access to class members:
 
 Multiplicity defines the number of objects in a relationship:
 
-| Symbol | Meaning | Description |
-|--------|---------|-------------|
-| `1` | Exactly one | Default relationship |
-| `*` | Zero or many | Unlimited number |
-| `0..1` | Zero or one | Optional relationship |
-| `1..*` | One or many | At least one required |
-| `n..m` | Range | Between n and m objects |
+| Symbol | Meaning      | Description             |
+| ------ | ------------ | ----------------------- |
+| `1`    | Exactly one  | Default relationship    |
+| `*`    | Zero or many | Unlimited number        |
+| `0..1` | Zero or one  | Optional relationship   |
+| `1..*` | One or many  | At least one required   |
+| `n..m` | Range        | Between n and m objects |
 
 ## UML Relationships
 
@@ -184,7 +197,7 @@ class User {
     private var id: String
     private var name: String
     private var email: String
-    
+
     fun createPost(content: String): Post
     fun updateProfile(newName: String)
     fun deleteAccount()
@@ -194,13 +207,14 @@ class Post {
     private var id: String
     private var content: String
     private var author: User
-    
+
     fun edit(newContent: String)
     fun delete()
 }
 ```
 
 **UML Representation:**
+
 - User has a composition relationship with Post (posts belong to users)
 - Post has a dependency on User (author parameter)
 
@@ -221,7 +235,7 @@ class ConcreteProductB : Product {
 
 abstract class Creator {
     abstract fun createProduct(): Product
-    
+
     fun someOperation(): String {
         val product = createProduct()
         return product.operation()
@@ -238,6 +252,7 @@ class ConcreteCreatorB : Creator() {
 ```
 
 **UML Relationships:**
+
 - Creator has generalization relationship with ConcreteCreatorA and ConcreteCreatorB
 - Creator has dependency on Product interface
 - ConcreteProductA and ConcreteProductB implement Product interface
@@ -270,26 +285,27 @@ class ConcreteCreatorB : Creator() {
 
 ## Common UML Tools
 
-| Tool | Platform | Features | Best For |
-|------|----------|----------|----------|
-| **Lucidchart** | Web-based | Collaboration, templates | Team projects |
-| **Draw.io** | Web-based | Free, integration | Quick diagrams |
-| **Visual Paradigm** | Desktop | Advanced features | Enterprise projects |
-| **StarUML** | Desktop | Open source | Individual developers |
-| **PlantUML** | Text-based | Version control friendly | Code-first approach |
+| Tool                | Platform   | Features                 | Best For              |
+| ------------------- | ---------- | ------------------------ | --------------------- |
+| **Lucidchart**      | Web-based  | Collaboration, templates | Team projects         |
+| **Draw.io**         | Web-based  | Free, integration        | Quick diagrams        |
+| **Visual Paradigm** | Desktop    | Advanced features        | Enterprise projects   |
+| **StarUML**         | Desktop    | Open source              | Individual developers |
+| **PlantUML**        | Text-based | Version control friendly | Code-first approach   |
 
 ## Performance Considerations
 
-| Diagram Type | Complexity | Readability | Maintenance |
-|--------------|------------|-------------|-------------|
-| Simple Class | Low | High | Easy |
-| Complex Class | High | Medium | Difficult |
-| Package | Medium | High | Medium |
-| Component | High | Medium | Difficult |
+| Diagram Type  | Complexity | Readability | Maintenance |
+| ------------- | ---------- | ----------- | ----------- |
+| Simple Class  | Low        | High        | Easy        |
+| Complex Class | High       | Medium      | Difficult   |
+| Package       | Medium     | High        | Medium      |
+| Component     | High       | Medium      | Difficult   |
 
 ## Anti-Patterns to Avoid
 
 ### 1. **Over-Engineering**
+
 ```kotlin
 // Avoid: Too many relationships
 class A
@@ -300,6 +316,7 @@ class D
 ```
 
 ### 2. **Inconsistent Notation**
+
 ```kotlin
 // Avoid: Mixing different UML styles
 class User {
@@ -311,6 +328,7 @@ class User {
 ```
 
 ### 3. **Missing Relationships**
+
 ```kotlin
 // Avoid: Not showing important dependencies
 class UserService {

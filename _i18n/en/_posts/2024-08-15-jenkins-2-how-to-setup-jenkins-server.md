@@ -15,6 +15,7 @@ thumbnail: /assets/img/jenkins.jpg
 In this comprehensive guide, we'll walk you through setting up a Jenkins server using Docker containers. This approach is not only simple and fast but also ensures environment consistency across different deployments.
 
 **What You'll Learn:**
+
 - 🐳 **Docker-based Jenkins installation** for consistency
 - 🔧 **Step-by-step setup process** with detailed instructions
 - 📱 **Android build environment** integration
@@ -26,6 +27,7 @@ In this comprehensive guide, we'll walk you through setting up a Jenkins server 
 ## 🎯 **Why Use Docker for Jenkins Setup?**
 
 ### **Benefits of Docker-Based Jenkins:**
+
 - ✅ **Environment Consistency** - Same setup across development, staging, and production
 - ✅ **Easy Deployment** - Quick setup and teardown
 - ✅ **Version Control** - Specific Jenkins versions for different projects
@@ -33,6 +35,7 @@ In this comprehensive guide, we'll walk you through setting up a Jenkins server 
 - ✅ **Scalability** - Easy to replicate for multiple environments
 
 ### **Available Jenkins Images:**
+
 - **Standard Jenkins**: `jenkins/jenkins:lts-jdk17`
 - **Android-Enabled Jenkins**: `ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17`
 
@@ -45,11 +48,13 @@ In this comprehensive guide, we'll walk you through setting up a Jenkins server 
 First, we need to pull the Jenkins Docker image from GitHub Container Registry. Open your terminal and execute one of the following commands:
 
 #### **Option A: Standard Jenkins Environment**
+
 ```bash
 docker pull jenkins/jenkins:lts-jdk17
 ```
 
 #### **Option B: Jenkins with Android Build Environment**
+
 ```bash
 docker pull ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17
 ```
@@ -65,6 +70,7 @@ docker pull ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17
 Next, we'll run the Jenkins container. Make sure to replace `${volume_path}` with your desired local path for Jenkins data storage.
 
 #### **Option A: Standard Jenkins Container**
+
 ```bash
 docker run -d \
   --name jenkins-server \
@@ -75,6 +81,7 @@ docker run -d \
 ```
 
 #### **Option B: Android-Enabled Jenkins Container**
+
 ```bash
 docker run -d \
   --name jenkins-android-server \
@@ -85,6 +92,7 @@ docker run -d \
 ```
 
 **Command Explanation:**
+
 - `-d`: Run container in detached mode (background)
 - `--name`: Assign a name to the container for easy management
 - `-v`: Mount local directory to container's Jenkins home
@@ -106,6 +114,7 @@ After the container starts, you can access Jenkins through your browser at [http
 > ```
 
 **Alternative Methods to Get Password:**
+
 ```bash
 # Method 1: Check container logs
 docker logs jenkins-server
@@ -148,6 +157,7 @@ docker run -d \
 ```
 
 **Advanced Options Explained:**
+
 - `--restart unless-stopped`: Automatically restart container on system reboot
 - `-v /var/run/docker.sock:/var/run/docker.sock`: Enable Docker-in-Docker capabilities
 - `-e JAVA_OPTS`: Customize JVM options
@@ -158,7 +168,7 @@ docker run -d \
 Create a `docker-compose.yml` file for easier management:
 
 ```yaml
-version: '3.8'
+version: "3.8"
 services:
   jenkins:
     image: jenkins/jenkins:lts-jdk17
@@ -184,6 +194,7 @@ networks:
 ```
 
 **Start with Docker Compose:**
+
 ```bash
 docker-compose up -d
 ```
@@ -193,6 +204,7 @@ docker-compose up -d
 ## 🚨 **Troubleshooting Common Issues**
 
 ### **Issue 1: Container Won't Start**
+
 ```bash
 # Check container status
 docker ps -a
@@ -208,6 +220,7 @@ sudo chown -R 1000:1000 ${volume_path}
 ```
 
 ### **Issue 2: Can't Access Jenkins Web UI**
+
 ```bash
 # Check if container is running
 docker ps
@@ -220,6 +233,7 @@ curl http://localhost:8080
 ```
 
 ### **Issue 3: Permission Denied Errors**
+
 ```bash
 # Fix volume permissions
 sudo chown -R 1000:1000 ${volume_path}
@@ -235,6 +249,7 @@ docker run -d \
 ```
 
 ### **Issue 4: Out of Memory Errors**
+
 ```bash
 # Increase container memory limit
 docker run -d \
@@ -253,11 +268,11 @@ docker run -d \
 
 ### **Resource Recommendations**
 
-| Environment | CPU | Memory | Storage |
-|-------------|-----|--------|---------|
-| **Development** | 1 core | 2GB | 10GB |
-| **Testing** | 2 cores | 4GB | 20GB |
-| **Production** | 4+ cores | 8GB+ | 50GB+ |
+| Environment     | CPU      | Memory | Storage |
+| --------------- | -------- | ------ | ------- |
+| **Development** | 1 core   | 2GB    | 10GB    |
+| **Testing**     | 2 cores  | 4GB    | 20GB    |
+| **Production**  | 4+ cores | 8GB+   | 50GB+   |
 
 ### **JVM Tuning**
 
@@ -277,6 +292,7 @@ docker run -d \
 ## 🔒 **Security Best Practices**
 
 ### **1. Use HTTPS in Production**
+
 ```bash
 # Mount SSL certificates
 docker run -d \
@@ -289,12 +305,14 @@ docker run -d \
 ```
 
 ### **2. Implement Authentication**
+
 - Use LDAP/Active Directory integration
 - Enable Jenkins security features
 - Regular password updates
 - Two-factor authentication (if available)
 
 ### **3. Network Security**
+
 ```bash
 # Use custom network with firewall rules
 docker network create --driver bridge --subnet=172.20.0.0/16 jenkins-network
@@ -313,6 +331,7 @@ docker run -d \
 ## 📈 **Monitoring and Maintenance**
 
 ### **Health Checks**
+
 ```bash
 # Add health check to container
 docker run -d \
@@ -328,6 +347,7 @@ docker run -d \
 ```
 
 ### **Backup Strategy**
+
 ```bash
 # Create backup script
 #!/bin/bash
@@ -362,6 +382,7 @@ echo "Backup completed: jenkins_backup_${DATE}.tar.gz"
 Congratulations! You've successfully set up a Jenkins server using Docker. This approach provides:
 
 **Key Benefits Achieved:**
+
 - 🚀 **Quick deployment** with Docker containers
 - 🔧 **Environment consistency** across different setups
 - 📱 **Android development support** (with custom image)
@@ -369,6 +390,7 @@ Congratulations! You've successfully set up a Jenkins server using Docker. This 
 - 📈 **Scalable architecture** for team growth
 
 **Next Steps:**
+
 1. **Configure your first pipeline** in Jenkins
 2. **Set up build agents** for distributed builds
 3. **Integrate with version control** systems
@@ -386,6 +408,7 @@ Congratulations! You've successfully set up a Jenkins server using Docker. This 
 ---
 
 **📚 Additional Resources:**
+
 - [Jenkins Official Documentation](https://jenkins.io/doc/)
 - [Docker Jenkins Image](https://hub.docker.com/r/jenkins/jenkins/)
 - [Jenkins Best Practices](https://jenkins.io/doc/book/architecting-for-scale/)

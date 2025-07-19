@@ -21,6 +21,7 @@ In our previous article, we discussed centralized, decentralized, and distribute
 This article will help you understand these three key technologies that make P2P communication possible.
 
 **What You'll Learn:**
+
 - 🌐 **STUN protocol** for NAT discovery and type detection
 - 🔄 **TURN protocol** for relay-based communication
 - ⚡ **ICE framework** for intelligent connection establishment
@@ -35,6 +36,7 @@ This article will help you understand these three key technologies that make P2P
 STUN is a protocol that allows devices behind NAT to discover their **public IP address, port, and NAT type**. Think of it as a mirror that shows you "how the outside world sees you."
 
 **Key Characteristics:**
+
 - **RFC Definition**: RFC 5389
 - **Purpose**: NAT discovery and type detection
 - **Method**: Client-server communication
@@ -61,6 +63,7 @@ Client                    STUN Server
 ```
 
 ### **STUN Benefits:**
+
 - ✅ **Free and open** - No licensing costs
 - ✅ **Low latency** - Direct P2P connection possible
 - ✅ **Scalable** - Minimal server resources required
@@ -77,6 +80,7 @@ Client                    STUN Server
 TURN is a "relay protocol" that comes into play when STUN hole-punching fails (e.g., when encountering Symmetric NAT). It acts as a communication intermediary.
 
 **Key Characteristics:**
+
 - **Purpose**: Relay-based communication when direct connection fails
 - **Method**: Server-mediated data transfer
 - **Use case**: Symmetric NAT or strict firewall environments
@@ -107,13 +111,13 @@ Client A                    TURN Server                    Client B
 
 ### **TURN Considerations:**
 
-| Aspect | Impact |
-|--------|--------|
-| **Latency** | Higher due to relay routing |
-| **Bandwidth** | Double consumption (client-server-client) |
-| **Cost** | Server infrastructure required |
-| **Reliability** | High (server-mediated) |
-| **Privacy** | Data passes through third-party server |
+| Aspect          | Impact                                    |
+| --------------- | ----------------------------------------- |
+| **Latency**     | Higher due to relay routing               |
+| **Bandwidth**   | Double consumption (client-server-client) |
+| **Cost**        | Server infrastructure required            |
+| **Reliability** | High (server-mediated)                    |
+| **Privacy**     | Data passes through third-party server    |
 
 > **⚠️ Warning:** TURN solves connectivity issues but routes all data through the TURN server, increasing bandwidth costs and latency. Commercial services typically require deploying their own TURN servers.
 
@@ -126,6 +130,7 @@ Client A                    TURN Server                    Client B
 ICE is a comprehensive NAT traversal framework that integrates STUN, TURN, and other protocols to make communication processes more intelligent.
 
 **Key Characteristics:**
+
 - **Purpose**: Intelligent connection establishment
 - **Method**: Multi-protocol integration
 - **Approach**: Automatic fallback mechanism
@@ -143,12 +148,12 @@ ICE is a comprehensive NAT traversal framework that integrates STUN, TURN, and o
 
 ### **ICE Candidate Types:**
 
-| Candidate Type | Description | Priority |
-|----------------|-------------|----------|
-| **Host** | Local network address | Highest |
-| **Server Reflexive** | STUN-discovered public address | High |
-| **Relay** | TURN server relay address | Medium |
-| **Peer Reflexive** | Discovered during connectivity checks | Variable |
+| Candidate Type       | Description                           | Priority |
+| -------------------- | ------------------------------------- | -------- |
+| **Host**             | Local network address                 | Highest  |
+| **Server Reflexive** | STUN-discovered public address        | High     |
+| **Relay**            | TURN server relay address             | Medium   |
+| **Peer Reflexive**   | Discovered during connectivity checks | Variable |
 
 ### **ICE Connectivity Check Process:**
 
@@ -177,27 +182,30 @@ Phase 3: Connection Establishment
 
 ### **Protocol Comparison Table:**
 
-| Protocol | Purpose | Use Case | Latency | Cost | Complexity |
-|----------|---------|----------|---------|------|------------|
-| **STUN** | NAT discovery | Direct P2P connection | Low | Free | Simple |
-| **TURN** | Relay communication | Symmetric NAT | High | Paid | Medium |
-| **ICE** | Framework integration | Complete solution | Variable | Variable | Complex |
+| Protocol | Purpose               | Use Case              | Latency  | Cost     | Complexity |
+| -------- | --------------------- | --------------------- | -------- | -------- | ---------- |
+| **STUN** | NAT discovery         | Direct P2P connection | Low      | Free     | Simple     |
+| **TURN** | Relay communication   | Symmetric NAT         | High     | Paid     | Medium     |
+| **ICE**  | Framework integration | Complete solution     | Variable | Variable | Complex    |
 
 ### **When to Use Each Protocol:**
 
 #### **STUN Only:**
+
 - ✅ **Simple NAT environments** (Full Cone, Restricted Cone)
 - ✅ **Low-latency requirements**
 - ✅ **Cost-sensitive applications**
 - ✅ **Basic P2P communication**
 
 #### **TURN Only:**
+
 - ✅ **Symmetric NAT environments**
 - ✅ **Strict firewall restrictions**
 - ✅ **Reliability over performance**
 - ✅ **Enterprise applications**
 
 #### **ICE Framework:**
+
 - ✅ **Production applications**
 - ✅ **Multiple NAT types support**
 - ✅ **Automatic fallback requirements**
@@ -214,9 +222,9 @@ Phase 3: Connection Establishment
 const configuration = {
   iceServers: [
     {
-      urls: 'stun:stun.l.google.com:19302'
-    }
-  ]
+      urls: "stun:stun.l.google.com:19302",
+    },
+  ],
 };
 
 const peerConnection = new RTCPeerConnection(configuration);
@@ -229,11 +237,11 @@ const peerConnection = new RTCPeerConnection(configuration);
 const configuration = {
   iceServers: [
     {
-      urls: 'turn:your-turn-server.com:3478',
-      username: 'username',
-      credential: 'password'
-    }
-  ]
+      urls: "turn:your-turn-server.com:3478",
+      username: "username",
+      credential: "password",
+    },
+  ],
 };
 ```
 
@@ -244,17 +252,17 @@ const configuration = {
 const configuration = {
   iceServers: [
     // STUN servers
-    { urls: 'stun:stun.l.google.com:19302' },
-    { urls: 'stun:stun1.l.google.com:19302' },
-    
+    { urls: "stun:stun.l.google.com:19302" },
+    { urls: "stun:stun1.l.google.com:19302" },
+
     // TURN servers
     {
-      urls: 'turn:your-turn-server.com:3478',
-      username: 'username',
-      credential: 'password'
-    }
+      urls: "turn:your-turn-server.com:3478",
+      username: "username",
+      credential: "password",
+    },
   ],
-  iceCandidatePoolSize: 10
+  iceCandidatePoolSize: 10,
 };
 ```
 
@@ -263,18 +271,22 @@ const configuration = {
 ## 🚨 **Common Challenges and Solutions**
 
 ### **Challenge 1: Symmetric NAT Detection**
+
 **Problem:** STUN fails with Symmetric NAT
 **Solution:** Implement TURN fallback mechanism
 
 ### **Challenge 2: Firewall Restrictions**
+
 **Problem:** Corporate firewalls block P2P traffic
 **Solution:** Use TURN servers with enterprise-grade infrastructure
 
 ### **Challenge 3: Connection Reliability**
+
 **Problem:** Intermittent connection failures
 **Solution:** Implement ICE with multiple candidate gathering
 
 ### **Challenge 4: Performance Optimization**
+
 **Problem:** High latency with TURN relay
 **Solution:** Deploy geographically distributed TURN servers
 
@@ -283,18 +295,21 @@ const configuration = {
 ## 📈 **Real-World Applications**
 
 ### **1. WebRTC Applications**
+
 - **Video conferencing** platforms
 - **Peer-to-peer file sharing**
 - **Real-time gaming**
 - **Collaborative tools**
 
 ### **2. IoT Device Communication**
+
 - **Smart home devices**
 - **Industrial sensors**
 - **Connected vehicles**
 - **Remote monitoring systems**
 
 ### **3. Mobile Applications**
+
 - **Voice and video calling**
 - **Real-time messaging**
 - **Location-based services**
@@ -315,19 +330,21 @@ const configuration = {
 
 The three protocols play the following roles in NAT traversal:
 
-| Protocol | Function Description |
-|----------|---------------------|
-| **STUN** | Helps you discover "how you appear to the external network" |
-| **TURN** | Provides relay communication when hole-punching fails |
-| **ICE** | Selects the best communication method with automatic fallback |
+| Protocol | Function Description                                          |
+| -------- | ------------------------------------------------------------- |
+| **STUN** | Helps you discover "how you appear to the external network"   |
+| **TURN** | Provides relay communication when hole-punching fails         |
+| **ICE**  | Selects the best communication method with automatic fallback |
 
 **Key Takeaways:**
+
 - 🌐 **STUN** is essential for NAT discovery but limited with Symmetric NAT
 - 🔄 **TURN** provides reliable relay communication at the cost of performance
 - ⚡ **ICE** integrates both protocols for optimal connection establishment
 - 🛠️ **Implementation** should consider NAT types and application requirements
 
 **Best Practices:**
+
 1. **Always implement ICE** for production applications
 2. **Deploy multiple STUN servers** for redundancy
 3. **Use TURN as fallback** for challenging NAT environments
@@ -344,6 +361,7 @@ The three protocols play the following roles in NAT traversal:
 ---
 
 **📚 Additional Resources:**
+
 - [STUN Protocol (RFC 5389)](https://tools.ietf.org/html/rfc5389)
 - [TURN Protocol (RFC 5766)](https://tools.ietf.org/html/rfc5766)
 - [ICE Protocol (RFC 5245)](https://tools.ietf.org/html/rfc5245)

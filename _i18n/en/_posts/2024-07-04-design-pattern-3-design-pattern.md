@@ -3,7 +3,19 @@ layout: post
 title: "Design Pattern 3: Design Patterns Overview - Systematic Approach to Solving Common Software Design Problems"
 date: 2024-07-04 23:00:00 +0800
 description: "Master the systematic approach to applying design patterns. Learn the Context-Forces-Problem-Solution framework, pattern categories, and step-by-step methodology for solving software design challenges."
-tags: [Design Patterns, Software Architecture, Object-Oriented Design, Problem Solving, Software Development, Design Methodology, Context-Forces-Problem-Solution, Creational Patterns, Structural Patterns, Behavioral Patterns]
+tags:
+  [
+    Design Patterns,
+    Software Architecture,
+    Object-Oriented Design,
+    Problem Solving,
+    Software Development,
+    Design Methodology,
+    Context-Forces-Problem-Solution,
+    Creational Patterns,
+    Structural Patterns,
+    Behavioral Patterns,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Software Architecture]
 toc:
   #   beginning: true
@@ -130,6 +142,7 @@ Patterns that define communication between objects:
 **Context**: Building a payment processing system for an e-commerce platform that needs to support multiple payment methods.
 
 **Forces**:
+
 - Support for multiple payment gateways (PayPal, Stripe, etc.)
 - Easy addition of new payment methods
 - Consistent interface for all payment operations
@@ -154,17 +167,17 @@ class PaymentProcessor {
             else -> false
         }
     }
-    
+
     private fun processPayPalPayment(amount: Double): Boolean {
         // PayPal specific logic
         return true
     }
-    
+
     private fun processStripePayment(amount: Double): Boolean {
         // Stripe specific logic
         return true
     }
-    
+
     private fun processCreditCardPayment(amount: Double): Boolean {
         // Credit card specific logic
         return true
@@ -193,7 +206,7 @@ class PayPalStrategy : PaymentStrategy {
         println("Processing $amount via PayPal")
         return true
     }
-    
+
     override fun getPaymentType(): String = "PayPal"
 }
 
@@ -202,7 +215,7 @@ class StripeStrategy : PaymentStrategy {
         println("Processing $amount via Stripe")
         return true
     }
-    
+
     override fun getPaymentType(): String = "Stripe"
 }
 
@@ -211,17 +224,17 @@ class CreditCardStrategy : PaymentStrategy {
         println("Processing $amount via Credit Card")
         return true
     }
-    
+
     override fun getPaymentType(): String = "Credit Card"
 }
 
 class PaymentProcessor {
     private var strategy: PaymentStrategy? = null
-    
+
     fun setPaymentStrategy(strategy: PaymentStrategy) {
         this.strategy = strategy
     }
-    
+
     fun processPayment(amount: Double): Boolean {
         return strategy?.processPayment(amount) ?: false
     }
@@ -231,6 +244,7 @@ class PaymentProcessor {
 #### Step 4: Resulting Context
 
 The new design provides:
+
 - **Extensibility**: New payment methods can be added without modifying existing code
 - **Maintainability**: Each payment strategy is isolated and easy to maintain
 - **Testability**: Individual strategies can be tested independently
@@ -283,7 +297,7 @@ class UserService {
     // Don't use Singleton if you need multiple instances for testing
     companion object {
         private var instance: UserService? = null
-        
+
         fun getInstance(): UserService {
             if (instance == null) {
                 instance = UserService()
@@ -307,10 +321,10 @@ class ComplexService {
 ## Performance Considerations
 
 | Pattern Category | Memory Usage | Performance | Complexity | Maintainability |
-|------------------|--------------|-------------|------------|-----------------|
-| Creational | Medium | Medium | Low | High |
-| Structural | Medium | Medium | Medium | High |
-| Behavioral | Low | High | Medium | High |
+| ---------------- | ------------ | ----------- | ---------- | --------------- |
+| Creational       | Medium       | Medium      | Low        | High            |
+| Structural       | Medium       | Medium      | Medium     | High            |
+| Behavioral       | Low          | High        | Medium     | High            |
 
 ## Related Design Patterns
 

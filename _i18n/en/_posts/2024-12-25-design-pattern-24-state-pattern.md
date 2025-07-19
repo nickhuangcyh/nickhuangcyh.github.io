@@ -19,6 +19,7 @@ thumbnail: /assets/img/design_patterns.jpg
 The **State Pattern** is a behavioral design pattern that allows an object to alter its behavior when its internal state changes. The object will appear to change its class, making it perfect for implementing state machines and managing complex state-dependent behavior.
 
 **Key Use Cases:**
+
 - ✅ **State machines** and workflow engines
 - ✅ **Game development** (character states, AI behavior)
 - ✅ **UI components** (button states, form validation)
@@ -32,6 +33,7 @@ The **State Pattern** is a behavioral design pattern that allows an object to al
 Let's design a **water dispenser** system with the following requirements:
 
 ### **System Requirements:**
+
 - **Three operational states:**
   - **Heating**: Raises water temperature to hot
   - **Cooling**: Lowers water temperature to cold
@@ -40,6 +42,7 @@ Let's design a **water dispenser** system with the following requirements:
 - **State-specific behavior**: Each state performs appropriate actions
 
 ### **Business Rules:**
+
 - Heating state cannot cool water simultaneously
 - Cooling state cannot heat water simultaneously
 - Standby state maintains current temperature
@@ -90,6 +93,7 @@ After analyzing the forces, we can apply the **State Pattern** to encapsulate st
    - Delegates requests to current state object
 
 **Benefits:**
+
 - **Reduced coupling** between context and state logic
 - **Single responsibility** for each state class
 - **Easy extension** without modifying existing code
@@ -118,7 +122,7 @@ class HeatingState : WaterDispenserState {
     override fun handleRequest() {
         println("🔥 Heating: Water temperature is rising, please wait...")
     }
-    
+
     override fun getStateName(): String = "Heating"
 }
 
@@ -126,7 +130,7 @@ class CoolingState : WaterDispenserState {
     override fun handleRequest() {
         println("❄️ Cooling: Water temperature is decreasing, please wait...")
     }
-    
+
     override fun getStateName(): String = "Cooling"
 }
 
@@ -134,7 +138,7 @@ class StandbyState : WaterDispenserState {
     override fun handleRequest() {
         println("⏸️ Standby: Water dispenser maintains current temperature, ready to use.")
     }
-    
+
     override fun getStateName(): String = "Standby"
 }
 ```
@@ -154,9 +158,9 @@ class WaterDispenser {
     fun pressButton() {
         currentState.handleRequest()
     }
-    
+
     fun getCurrentState(): String = currentState.getStateName()
-    
+
     fun getTemperature(): Int = temperature
 }
 ```
@@ -186,6 +190,7 @@ fun main() {
 ```
 
 **Expected Output:**
+
 ```
 === Water Dispenser State Machine Demo ===
 ⏸️ Standby: Water dispenser maintains current temperature, ready to use.
@@ -235,17 +240,18 @@ class EnhancedWaterDispenser {
 
 ## 📊 **State Pattern vs Alternative Approaches**
 
-| Approach | Pros | Cons |
-|----------|------|------|
-| **State Pattern** | ✅ Clean separation of concerns<br>✅ Easy to extend<br>✅ Follows OCP | ❌ More classes<br>❌ Slight overhead |
-| **If-Else Chains** | ✅ Simple for few states | ❌ Hard to maintain<br>❌ Violates OCP |
-| **Enum-Based** | ✅ Type-safe<br>✅ Compact | ❌ Mixed responsibilities<br>❌ Hard to extend |
+| Approach           | Pros                                                                   | Cons                                           |
+| ------------------ | ---------------------------------------------------------------------- | ---------------------------------------------- |
+| **State Pattern**  | ✅ Clean separation of concerns<br>✅ Easy to extend<br>✅ Follows OCP | ❌ More classes<br>❌ Slight overhead          |
+| **If-Else Chains** | ✅ Simple for few states                                               | ❌ Hard to maintain<br>❌ Violates OCP         |
+| **Enum-Based**     | ✅ Type-safe<br>✅ Compact                                             | ❌ Mixed responsibilities<br>❌ Hard to extend |
 
 ---
 
 ## 🎯 **When to Use the State Pattern**
 
 ### **✅ Perfect For:**
+
 - **Complex state machines** with many states
 - **Objects with state-dependent behavior**
 - **UI components** with multiple states
@@ -253,6 +259,7 @@ class EnhancedWaterDispenser {
 - **Workflow engines** and business processes
 
 ### **❌ Avoid When:**
+
 - **Simple state logic** (use if-else instead)
 - **Performance-critical** applications
 - **Few states** with simple transitions
@@ -271,6 +278,7 @@ class EnhancedWaterDispenser {
 ## 📈 **Real-World Applications**
 
 ### **1. Game Development**
+
 ```kotlin
 // Character states in a game
 interface CharacterState {
@@ -285,6 +293,7 @@ class FightingState : CharacterState { /* Implementation */ }
 ```
 
 ### **2. Network Connection Management**
+
 ```kotlin
 // Network connection states
 interface ConnectionState {
@@ -299,6 +308,7 @@ class ConnectedState : ConnectionState { /* Implementation */ }
 ```
 
 ### **3. Order Processing System**
+
 ```kotlin
 // E-commerce order states
 interface OrderState {
@@ -317,6 +327,7 @@ class ShippedState : OrderState { /* Implementation */ }
 ## 🚨 **Common Pitfalls and Best Practices**
 
 ### **1. State Transition Validation**
+
 ```kotlin
 // ❌ Avoid: No validation
 fun setState(newState: State) {
@@ -332,6 +343,7 @@ fun setState(newState: State) {
 ```
 
 ### **2. State Encapsulation**
+
 ```kotlin
 // ❌ Avoid: Exposing state directly
 class Context {
@@ -346,11 +358,12 @@ class Context {
 ```
 
 ### **3. State-Specific Data**
+
 ```kotlin
 // ✅ Good: State-specific data handling
 class HeatingState : WaterDispenserState {
     private var targetTemperature: Int = 80
-    
+
     override fun handleRequest() {
         // Use targetTemperature for heating logic
     }
@@ -374,17 +387,20 @@ class HeatingState : WaterDispenserState {
 Through the State Pattern, we successfully separated the water dispenser's state logic from its core functionality, achieving the following benefits:
 
 **Key Advantages:**
+
 - 🎯 **Reduced coupling** - State logic isolated from main class
 - 🔧 **Single responsibility** - Each state class focuses on its behavior
 - 📈 **Easy extension** - Add new states without modifying existing code
 - 🛡️ **Better maintainability** - Clear separation of concerns
 
 **Design Principles Followed:**
+
 - **Single Responsibility Principle (SRP)**: Each state class has one responsibility
 - **Open-Closed Principle (OCP)**: Open for extension, closed for modification
 - **Dependency Inversion Principle (DIP)**: Depend on abstractions, not concretions
 
 **Perfect For:**
+
 - **ATM machines** (card inserted, processing, card ejected)
 - **Document editors** (editing, viewing, printing modes)
 - **Game characters** (idle, walking, fighting states)

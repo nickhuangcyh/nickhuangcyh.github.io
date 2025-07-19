@@ -3,7 +3,19 @@ layout: post
 title: "Design Pattern 8: Builder Pattern - Step-by-Step Construction of Complex Objects for Flexible Configuration"
 date: 2024-07-09 23:00:00 +0800
 description: "Master the Builder Pattern to construct complex objects step by step. Learn how to create flexible object construction with optional parameters, improve code readability, and handle complex initialization scenarios."
-tags: [Builder Pattern, Design Patterns, Object Construction, Complex Objects, Fluent Interface, Software Architecture, Kotlin, Java, Swift, Telescoping Constructor]
+tags:
+  [
+    Builder Pattern,
+    Design Patterns,
+    Object Construction,
+    Complex Objects,
+    Fluent Interface,
+    Software Architecture,
+    Kotlin,
+    Java,
+    Swift,
+    Telescoping Constructor,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Code Quality]
 toc:
   #   beginning: true
@@ -32,6 +44,7 @@ The Builder Pattern is widely used in:
 We need to design an automated beverage machine that can create various bubble tea combinations. The machine should support multiple toppings and ingredients to attract a wide customer base.
 
 **Available Toppings:**
+
 - Pearls (珍珠)
 - Coconut Jelly (椰果)
 - Red Beans (紅豆)
@@ -65,6 +78,7 @@ The Builder Pattern provides an elegant solution by separating object constructi
 {% include figure.liquid path="assets/img/design_pattern_builder_pattern_uml_3.png" title="Builder Pattern UML diagram" %}
 
 **Key Components:**
+
 - **Product**: The complex object being built
 - **Builder**: Interface defining construction steps
 - **ConcreteBuilder**: Implements specific construction logic
@@ -86,7 +100,7 @@ interface Beverage {
     var hasRedBeans: Boolean
     var hasGrassJelly: Boolean
     var hasPudding: Boolean
-    
+
     fun getDescription(): String
     fun getPrice(): Double
 }
@@ -109,10 +123,10 @@ data class BubbleTea(
         if (hasRedBeans) toppings.add("Red Beans")
         if (hasGrassJelly) toppings.add("Grass Jelly")
         if (hasPudding) toppings.add("Pudding")
-        
+
         return "Bubble Tea with: ${toppings.joinToString(", ")}"
     }
-    
+
     override fun getPrice(): Double {
         var basePrice = 5.0
         if (hasPearls) basePrice += 1.0
@@ -138,10 +152,10 @@ data class GrassJellyPuddingTea(
         if (hasRedBeans) toppings.add("Red Beans")
         if (hasGrassJelly) toppings.add("Grass Jelly")
         if (hasPudding) toppings.add("Pudding")
-        
+
         return "Grass Jelly Pudding Tea with: ${toppings.joinToString(", ")}"
     }
-    
+
     override fun getPrice(): Double {
         var basePrice = 6.0
         if (hasPearls) basePrice += 1.0
@@ -288,14 +302,14 @@ fun main() {
     val classicBubbleTea = bubbleTeaBuilder
         .addPearls()
         .build()
-    
+
     println("Classic Bubble Tea: ${classicBubbleTea.getDescription()}")
     println("Price: $${classicBubbleTea.getPrice()}")
 
     // Using Director
     val beverageMaker = BeverageMaker(BubbleTeaBuilder())
     val deluxeBubbleTea = beverageMaker.makeDeluxeBubbleTea()
-    
+
     println("Deluxe Bubble Tea: ${deluxeBubbleTea.getDescription()}")
     println("Price: $${deluxeBubbleTea.getPrice()}")
 
@@ -305,7 +319,7 @@ fun main() {
             .addRedBeans()
             .addPudding()
     }
-    
+
     println("Custom Beverage: ${customBeverage.getDescription()}")
     println("Price: $${customBeverage.getPrice()}")
 }
@@ -363,7 +377,7 @@ class AdvancedBeverageBuilder {
         if (!hasPearls && !hasCoconutJelly && !hasRedBeans && !hasGrassJelly && !hasPudding) {
             throw IllegalArgumentException("At least one topping must be selected")
         }
-        
+
         return AdvancedBeverage(
             hasPearls, hasCoconutJelly, hasRedBeans, hasGrassJelly, hasPudding,
             sweetness, iceLevel
@@ -390,7 +404,7 @@ data class AdvancedBeverage(
         if (hasRedBeans) toppings.add("Red Beans")
         if (hasGrassJelly) toppings.add("Grass Jelly")
         if (hasPudding) toppings.add("Pudding")
-        
+
         return "Beverage with: ${toppings.joinToString(", ")}, " +
                "Sweetness: ${sweetness.name}, Ice: ${iceLevel.name}"
     }
@@ -406,17 +420,17 @@ data class AdvancedBeverage(
 class FluentBuilder {
     private var property1 = ""
     private var property2 = 0
-    
+
     fun setProperty1(value: String): FluentBuilder {
         property1 = value
         return this
     }
-    
+
     fun setProperty2(value: Int): FluentBuilder {
         property2 = value
         return this
     }
-    
+
     fun build(): Product {
         return Product(property1, property2)
     }
@@ -436,17 +450,17 @@ val product = FluentBuilder()
 class ValidatedBuilder {
     private var requiredField = ""
     private var optionalField = ""
-    
+
     fun setRequiredField(value: String): ValidatedBuilder {
         requiredField = value
         return this
     }
-    
+
     fun setOptionalField(value: String): ValidatedBuilder {
         optionalField = value
         return this
     }
-    
+
     fun build(): Product {
         if (requiredField.isEmpty()) {
             throw IllegalStateException("Required field must be set")
@@ -471,12 +485,12 @@ data class ImmutableProduct(
         private var description = ""
         private var price = 0.0
         private var tags = mutableListOf<String>()
-        
+
         fun name(value: String) = apply { name = value }
         fun description(value: String) = apply { description = value }
         fun price(value: Double) = apply { price = value }
         fun addTag(tag: String) = apply { tags.add(tag) }
-        
+
         fun build() = ImmutableProduct(name, description, price, tags.toList())
     }
 }
@@ -484,12 +498,12 @@ data class ImmutableProduct(
 
 ## Performance Considerations
 
-| Approach | Memory Usage | Performance | Readability | Maintainability |
-|----------|--------------|-------------|-------------|-----------------|
-| Telescoping Constructor | Low | High | Low | Low |
-| Builder Pattern | Medium | Medium | High | High |
-| Setter Methods | Low | High | Medium | Medium |
-| Factory Method | Low | High | Medium | Medium |
+| Approach                | Memory Usage | Performance | Readability | Maintainability |
+| ----------------------- | ------------ | ----------- | ----------- | --------------- |
+| Telescoping Constructor | Low          | High        | Low         | Low             |
+| Builder Pattern         | Medium       | Medium      | High        | High            |
+| Setter Methods          | Low          | High        | Medium      | Medium          |
+| Factory Method          | Low          | High        | Medium      | Medium          |
 
 ## Related Design Patterns
 

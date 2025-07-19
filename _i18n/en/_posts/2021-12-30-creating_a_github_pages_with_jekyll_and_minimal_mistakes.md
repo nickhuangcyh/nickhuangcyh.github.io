@@ -16,6 +16,7 @@ thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 In my professional work, I frequently gain inspiration and help from technical websites and blog articles. To document my learning, review knowledge, and help others, I decided to create my own technical blog.
 
 A well-maintained blog offers several benefits:
+
 - **Knowledge Documentation**: Preserve your learning journey
 - **Community Building**: Share insights with fellow developers
 - **Career Growth**: Establish thought leadership in your field
@@ -52,6 +53,7 @@ Now, let's build your professional blog step by step!
 GitHub Pages is **free**, requires no server management or SSL certificates, and automatically builds and deploys your site with just one push. You can later bind your own domain and SSL certificate.
 
 **Key Benefits:**
+
 - **Zero Cost**: Completely free hosting
 - **Automatic Deployment**: Push to trigger builds
 - **SSL Included**: HTTPS by default

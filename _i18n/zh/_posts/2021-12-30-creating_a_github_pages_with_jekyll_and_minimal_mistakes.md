@@ -15,6 +15,7 @@ thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 在工作中，我經常從技術網站與部落格文章獲得靈感與幫助。為了記錄學習、複習知識、幫助他人，我決定建立自己的技術部落格。
 
 一個經營良好的部落格有多重好處：
+
 - **知識紀錄**：保存你的學習歷程
 - **社群交流**：與開發者分享見解
 - **職涯成長**：建立專業影響力
@@ -51,6 +52,7 @@ thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 GitHub Pages **免費**、免伺服器維護、SSL 憑證自動配置，只需 push 一次就能自動建置與部署。日後還能綁定自有網域與 SSL。
 
 **主要優點：**
+
 - **零成本**：完全免費託管
 - **自動部署**：push 觸發建置
 - **SSL 內建**：預設 HTTPS
@@ -62,6 +64,7 @@ GitHub Pages **免費**、免伺服器維護、SSL 憑證自動配置，只需 p
 ## 前置準備
 
 ### 註冊 GitHub 帳號
+
 👉 [立即註冊](https://github.com)
 
 ### 安裝 Git 版本控管

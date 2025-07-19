@@ -15,6 +15,7 @@ thumbnail: /assets/img/raul-per-e-K2w9VegUIb0-unsplash.jpg
 新 Mac 開發環境的建置往往讓人頭痛，但一次性配置好合適的工具，將大幅提升你的開發效率。本文將帶你把全新 macOS 打造成高效的開發利器。
 
 **你將收穫：**
+
 - ⚡ 極速終端體驗
 - 🎨 美觀可自訂的 Shell，支援語法高亮
 - 🛠️ 便捷的套件管理
@@ -24,6 +25,7 @@ thumbnail: /assets/img/raul-per-e-K2w9VegUIb0-unsplash.jpg
 ---
 
 ## 📋 前置準備清單
+
 - ✅ 最新版 macOS
 - ✅ 管理員權限
 - ✅ 穩定網路
@@ -41,11 +43,13 @@ brew --version
 ```
 
 **如遇 PATH 警告：**
+
 ```zsh
 Warning: /opt/homebrew/bin is not in your PATH
 ```
 
 **解決方法：**
+
 ```zsh
 vim ~/.zshrc
 export PATH=/opt/homebrew/bin:$PATH
@@ -66,6 +70,7 @@ git config --list
 ```
 
 **常用 Git 別名：**
+
 ```zsh
 git config --global alias.co checkout
 git config --global alias.ci commit
@@ -101,10 +106,12 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 ```
 
 **iTerm2 配色建議：**
+
 - Profiles → Colors → Solarized
 - 可自訂背景/前景色
 
 **安裝 Nerd Fonts 字型：**
+
 ```zsh
 brew tap homebrew/cask-fonts
 brew install --cask font-meslo-lg-nerd-font
@@ -139,6 +146,7 @@ source ~/.zshrc
 ```
 
 **外掛亮點：**
+
 - 語法高亮
 - 自動補全
 - Git 狀態整合
@@ -153,10 +161,12 @@ brew install robotsandpencils/made/xcodes
 ```
 
 **Xcodes 工具優勢：**
+
 - 多版本 Xcode 管理
 - 指令列一鍵切換
 
 **常見 Xcode 問題：**
+
 ```zsh
 sudo xcode-select --reset
 sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
@@ -180,9 +190,9 @@ brew install --cask visual-studio-code
 ## 📈 效能優化建議
 
 - ~/.zshrc 新增：
-skip_global_compinit=1
-DISABLE_AUTO_UPDATE=true
-DISABLE_UPDATE_PROMPT=true
+  skip_global_compinit=1
+  DISABLE_AUTO_UPDATE=true
+  DISABLE_UPDATE_PROMPT=true
 
 - iTerm2 → Profiles → Terminal → Scrollback Buffer 10000 行
 - 啟用 Unlimited scrollback
@@ -191,16 +201,16 @@ DISABLE_UPDATE_PROMPT=true
 
 ## ✅ 最終配置檢查表
 
-| 元件 | 檢查 | 測試指令 |
-|------|------|----------|
-| Homebrew | ✅ | brew --version |
-| Git | ✅ | git --version |
-| iTerm2 | ✅ | 開啟 iTerm2 |
-| Zsh | ✅ | echo $SHELL |
-| Oh-My-Zsh | ✅ | 檢查提示字元 |
-| Powerlevel10k | ✅ | p10k configure |
-| 外掛 | ✅ | 輸入指令測試高亮 |
-| Xcode | ✅ | xcode-select --print-path |
+| 元件          | 檢查 | 測試指令                  |
+| ------------- | ---- | ------------------------- |
+| Homebrew      | ✅   | brew --version            |
+| Git           | ✅   | git --version             |
+| iTerm2        | ✅   | 開啟 iTerm2               |
+| Zsh           | ✅   | echo $SHELL               |
+| Oh-My-Zsh     | ✅   | 檢查提示字元              |
+| Powerlevel10k | ✅   | p10k configure            |
+| 外掛          | ✅   | 輸入指令測試高亮          |
+| Xcode         | ✅   | xcode-select --print-path |
 
 ---
 
@@ -213,6 +223,7 @@ DISABLE_UPDATE_PROMPT=true
 ---
 
 ## 🔗 相關文章
+
 - [完整 Git 工作流指南](/2025-05-18-how-to-use-multiple-github-accounts-using-ssh)
 - [GitHub Pages 架設](/2020-09-10-octopress-setup)
 - [SSH 金鑰管理](/2024-08-02-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8)
@@ -224,6 +235,7 @@ DISABLE_UPDATE_PROMPT=true
 恭喜你，已成功建置專業 macOS 開發環境！
 
 **核心收穫：**
+
 - 🚀 高效能終端與 iTerm2
 - 🎨 美觀 Shell + Powerlevel10k
 - 🛠️ 高效套件管理
@@ -231,6 +243,7 @@ DISABLE_UPDATE_PROMPT=true
 - ⚡ 提升生產力的外掛與別名
 
 **後續建議：**
+
 1. 用 `p10k configure` 深度自訂主題
 2. 按需安裝專案相關工具
 3. 設定你喜歡的編輯器
@@ -241,6 +254,7 @@ DISABLE_UPDATE_PROMPT=true
 **🔔 關注我們：** 持續關注開發環境與效率提升乾貨！
 
 **📚 延伸閱讀：**
+
 - [Homebrew 官方文件](https://docs.brew.sh/)
 - [Oh-My-Zsh Wiki](https://github.com/ohmyzsh/ohmyzsh/wiki)
 - [Powerlevel10k 文件](https://github.com/romkatv/powerlevel10k)

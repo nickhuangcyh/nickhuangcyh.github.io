@@ -3,7 +3,19 @@ layout: post
 title: "設計模式 2：物件導向設計原則（SOLID）全攻略"
 date: 2024-07-03 23:00:00 +0800
 description: "精通 SOLID 五大設計原則，打造高可維護、高擴展性的物件導向軟體。圖文範例，適合軟體工程師、架構師與進階開發者。"
-tags: [SOLID Principles, Design Principles, Object-Oriented Design, Software Architecture, Single Responsibility, Open-Closed Principle, Liskov Substitution, Interface Segregation, Dependency Inversion, Code Quality]
+tags:
+  [
+    SOLID Principles,
+    Design Principles,
+    Object-Oriented Design,
+    Software Architecture,
+    Single Responsibility,
+    Open-Closed Principle,
+    Liskov Substitution,
+    Interface Segregation,
+    Dependency Inversion,
+    Code Quality,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Code Quality]
 toc:
   sidebar: right
@@ -20,6 +32,7 @@ tabs: true
 ## 實務應用場景
 
 設計原則廣泛應用於：
+
 - **軟體架構**：打造可維護、可擴展系統
 - **程式碼審查**：評估設計品質
 - **重構**：優化現有程式結構
@@ -37,12 +50,15 @@ SOLID 是五大物件導向設計原則的縮寫，幫助開發者打造更靈�
 **生活比喻**：餐廳裡廚師負責煮菜、服務生負責送餐、收銀員負責結帳，每個人各司其職。
 
 #### 改善前
+
 （此處保留原有 Swift/Kotlin 範例，僅將說明與註解翻譯為中文）
 
 #### 改善後
+
 （此處保留原有 Swift/Kotlin 範例，僅將說明與註解翻譯為中文）
 
 **優點**：
+
 - **易維護**：網路邏輯變動不影響資料庫操作
 - **易測試**：各服務可獨立測試
 - **可重用**：服務可於其他模組重用

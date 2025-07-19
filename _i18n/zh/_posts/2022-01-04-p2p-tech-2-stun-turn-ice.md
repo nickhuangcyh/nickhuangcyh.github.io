@@ -21,6 +21,7 @@ thumbnail: /assets/img/nasa-1lfI7wkGWZ4-unsplash.jpg
 本文將帶你深入理解這三大 P2P 關鍵技術。
 
 **你將學到：**
+
 - 🌐 STUN 協議：NAT 探測與型態判斷
 - 🔄 TURN 協議：中繼式通訊解決方案
 - ⚡ ICE 框架：智慧連線建立
@@ -35,6 +36,7 @@ thumbnail: /assets/img/nasa-1lfI7wkGWZ4-unsplash.jpg
 STUN 是一種協議，讓 NAT 後的裝置能發現自己的**公網 IP、Port 與 NAT 類型**。就像一面鏡子，讓你知道「外部世界怎麼看你」。
 
 **重點特性：**
+
 - **RFC 標準：** RFC 5389
 - **用途：** NAT 探測與型態判斷
 - **方式：** Client-Server 通訊
@@ -61,6 +63,7 @@ Client                    STUN Server
 ```
 
 ### STUN 優勢：
+
 - ✅ 免費開放，無授權費
 - ✅ 低延遲，直連可行
 - ✅ 可擴展，伺服器負擔小
@@ -77,6 +80,7 @@ Client                    STUN Server
 TURN 是「中繼協議」，當 STUN 打洞失敗（如遇到 Symmetric NAT）時，充當通訊中介。
 
 **重點特性：**
+
 - **用途：** 直連失敗時的中繼通訊
 - **方式：** 伺服器轉發資料
 - **適用：** Symmetric NAT 或嚴格防火牆
@@ -107,13 +111,13 @@ Client A                    TURN Server                    Client B
 
 ### TURN 注意事項：
 
-| 層面 | 影響 |
-|------|------|
-| **延遲** | 因中繼路由而提升 |
-| **頻寬** | 伺服器需雙倍頻寬 |
-| **成本** | 需自建伺服器，費用高 |
-| **可靠性** | 高（伺服器中介） |
-| **隱私** | 資料經第三方伺服器 |
+| 層面       | 影響                 |
+| ---------- | -------------------- |
+| **延遲**   | 因中繼路由而提升     |
+| **頻寬**   | 伺服器需雙倍頻寬     |
+| **成本**   | 需自建伺服器，費用高 |
+| **可靠性** | 高（伺服器中介）     |
+| **隱私**   | 資料經第三方伺服器   |
 
 > ⚠️ 注意：TURN 解決連線問題，但所有資料都經過 TURN 伺服器，頻寬與延遲成本高。商用服務通常需自建 TURN 伺服器。
 
@@ -126,6 +130,7 @@ Client A                    TURN Server                    Client B
 ICE 是整合 STUN、TURN 等協議的 NAT 穿透框架，讓連線流程更智慧。
 
 **重點特性：**
+
 - **用途：** 智慧連線建立
 - **方式：** 多協議整合
 - **機制：** 自動備援切換
@@ -143,12 +148,12 @@ ICE 是整合 STUN、TURN 等協議的 NAT 穿透框架，讓連線流程更智�
 
 ### ICE 候選類型：
 
-| 類型 | 說明 | 優先級 |
-|------|------|--------|
-| **Host** | 本地網路位址 | 最高 |
-| **Server Reflexive** | STUN 探測到的公網位址 | 高 |
-| **Relay** | TURN 伺服器中繼位址 | 中 |
-| **Peer Reflexive** | 連線測試時動態發現 | 變動 |
+| 類型                 | 說明                  | 優先級 |
+| -------------------- | --------------------- | ------ |
+| **Host**             | 本地網路位址          | 最高   |
+| **Server Reflexive** | STUN 探測到的公網位址 | 高     |
+| **Relay**            | TURN 伺服器中繼位址   | 中     |
+| **Peer Reflexive**   | 連線測試時動態發現    | 變動   |
 
 ### ICE 連線檢查流程：
 
@@ -177,27 +182,30 @@ Phase 3: 建立連線
 
 ### 協議比較表：
 
-| 協議 | 主要用途 | 適用場景 | 延遲 | 成本 | 複雜度 |
-|------|----------|----------|------|------|--------|
-| **STUN** | NAT 探測 | 直連 P2P | 低 | 免費 | 簡單 |
-| **TURN** | 中繼通訊 | Symmetric NAT | 高 | 付費 | 中等 |
-| **ICE** | 框架整合 | 完整解決方案 | 變動 | 變動 | 複雜 |
+| 協議     | 主要用途 | 適用場景      | 延遲 | 成本 | 複雜度 |
+| -------- | -------- | ------------- | ---- | ---- | ------ |
+| **STUN** | NAT 探測 | 直連 P2P      | 低   | 免費 | 簡單   |
+| **TURN** | 中繼通訊 | Symmetric NAT | 高   | 付費 | 中等   |
+| **ICE**  | 框架整合 | 完整解決方案  | 變動 | 變動 | 複雜   |
 
 ### 適用時機：
 
 #### 僅用 STUN：
+
 - ✅ 簡單 NAT 環境（Full Cone、Restricted Cone）
 - ✅ 低延遲需求
 - ✅ 成本敏感應用
 - ✅ 基本 P2P 通訊
 
 #### 僅用 TURN：
+
 - ✅ Symmetric NAT 環境
 - ✅ 嚴格防火牆
 - ✅ 可靠性優先
 - ✅ 企業級應用
 
 #### ICE 框架：
+
 - ✅ 生產環境
 - ✅ 多種 NAT 類型支援
 - ✅ 自動備援需求
@@ -214,9 +222,9 @@ Phase 3: 建立連線
 const configuration = {
   iceServers: [
     {
-      urls: 'stun:stun.l.google.com:19302'
-    }
-  ]
+      urls: "stun:stun.l.google.com:19302",
+    },
+  ],
 };
 
 const peerConnection = new RTCPeerConnection(configuration);
@@ -229,11 +237,11 @@ const peerConnection = new RTCPeerConnection(configuration);
 const configuration = {
   iceServers: [
     {
-      urls: 'turn:your-turn-server.com:3478',
-      username: 'username',
-      credential: 'password'
-    }
-  ]
+      urls: "turn:your-turn-server.com:3478",
+      username: "username",
+      credential: "password",
+    },
+  ],
 };
 ```
 
@@ -244,16 +252,16 @@ const configuration = {
 const configuration = {
   iceServers: [
     // STUN servers
-    { urls: 'stun:stun.l.google.com:19302' },
-    { urls: 'stun:stun1.l.google.com:19302' },
+    { urls: "stun:stun.l.google.com:19302" },
+    { urls: "stun:stun1.l.google.com:19302" },
     // TURN servers
     {
-      urls: 'turn:your-turn-server.com:3478',
-      username: 'username',
-      credential: 'password'
-    }
+      urls: "turn:your-turn-server.com:3478",
+      username: "username",
+      credential: "password",
+    },
   ],
-  iceCandidatePoolSize: 10
+  iceCandidatePoolSize: 10,
 };
 ```
 
@@ -262,18 +270,22 @@ const configuration = {
 ## 🚨 常見挑戰與解法
 
 ### 挑戰 1：Symmetric NAT 偵測
+
 **問題：** STUN 對 Symmetric NAT 無效
 **解法：** 實作 TURN 備援
 
 ### 挑戰 2：防火牆限制
+
 **問題：** 企業防火牆阻擋 P2P 流量
 **解法：** 使用企業級 TURN 伺服器
 
 ### 挑戰 3：連線穩定性
+
 **問題：** 連線偶發失敗
 **解法：** ICE 多候選收集與測試
 
 ### 挑戰 4：效能最佳化
+
 **問題：** TURN 中繼延遲高
 **解法：** 部署多地區 TURN 伺服器
 
@@ -282,18 +294,21 @@ const configuration = {
 ## 📈 實際應用場景
 
 ### 1. WebRTC 應用
+
 - 視訊會議平台
 - P2P 檔案分享
 - 即時遊戲
 - 協作工具
 
 ### 2. IoT 裝置通訊
+
 - 智慧家庭裝置
 - 工業感測器
 - 連網車輛
 - 遠端監控
 
 ### 3. 行動應用
+
 - 語音/視訊通話
 - 即時訊息
 - 定位服務
@@ -314,19 +329,21 @@ const configuration = {
 
 三大協議在 NAT 穿透中分工如下：
 
-| 協議 | 功能說明 |
-|------|----------|
+| 協議     | 功能說明                       |
+| -------- | ------------------------------ |
 | **STUN** | 協助你發現「外部網路看到的你」 |
-| **TURN** | 打洞失敗時提供中繼通訊 |
-| **ICE** | 自動選擇最佳通訊方式並備援 |
+| **TURN** | 打洞失敗時提供中繼通訊         |
+| **ICE**  | 自動選擇最佳通訊方式並備援     |
 
 **重點整理：**
+
 - 🌐 **STUN** 是 NAT 探測關鍵，但遇 Symmetric NAT 受限
 - 🔄 **TURN** 提供可靠中繼，效能有代價
 - ⚡ **ICE** 整合兩者，智慧選路
 - 🛠️ **實作** 須依應用場景選擇協議
 
 **最佳實踐：**
+
 1. 生產環境務必實作 ICE
 2. 部署多組 STUN 伺服器提升可靠性
 3. TURN 做為困難 NAT 備援
@@ -343,6 +360,7 @@ const configuration = {
 ---
 
 **📚 延伸閱讀：**
+
 - [STUN 協議（RFC 5389）](https://tools.ietf.org/html/rfc5389)
 - [TURN 協議（RFC 5766）](https://tools.ietf.org/html/rfc5766)
 - [ICE 協議（RFC 5245）](https://tools.ietf.org/html/rfc5245)

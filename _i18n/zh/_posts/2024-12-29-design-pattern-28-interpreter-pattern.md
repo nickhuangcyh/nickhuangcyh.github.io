@@ -19,6 +19,7 @@ thumbnail: /assets/img/design_patterns.jpg
 **解譯器模式（Interpreter Pattern）** 是一種行為型設計模式，適合用來解析語法規則、運算式或自訂語言。常見於 DSL（領域專用語言）、規則引擎、表達式求值等場景。
 
 **主要應用：**
+
 - ✅ 運算式求值
 - ✅ DSL（自訂語言）實作
 - ✅ 規則引擎
@@ -30,11 +31,13 @@ thumbnail: /assets/img/design_patterns.jpg
 ## 🚀 實務案例：布林運算式解譯器
 
 設計一個布林運算式解譯器，能處理複雜邏輯運算：
+
 - `true AND false OR true`
 - `(true OR false) AND true`
 - `NOT (false AND true)`
 
 **需求：**
+
 1. 支援 AND、OR、NOT 運算子
 2. 支援括號分組
 3. 遵循開放封閉原則，易於擴展
@@ -47,6 +50,7 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_interpreter_pattern_uml_1.png" title="Interpreter Pattern - Problem Analysis" %}
 
 **核心挑戰：**
+
 1. 複雜度管理：運算子多時，手動解析難以維護
 2. 程式碼重複：不同運算子處理邏輯類似
 3. 擴展困難：新增運算子需改舊程式，違反 OCP
@@ -60,6 +64,7 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_interpreter_pattern_uml_2.png" title="Interpreter Pattern - General Structure" %}
 
 **核心組件：**
+
 1. 抽象運算式介面：定義所有運算式的共用介面
 2. 終端運算式：處理基本元素（如布林值）
 3. 非終端運算式：處理複雜運算（AND、OR、NOT），遞迴處理子運算式
@@ -124,6 +129,7 @@ fun main() {
 ```
 
 **輸出：**
+
 ```
 運算式: true AND false OR true
 結果: true
@@ -136,6 +142,7 @@ fun main() {
 解譯器模式讓你能彈性解析與求值複雜運算式，適合 DSL、規則引擎、設定檔等場景。每個語法規則獨立封裝，易於擴展與維護。
 
 **適用場景：**
+
 - DSL 實作
 - 運算式求值系統
 - 設定檔解析
@@ -143,6 +150,7 @@ fun main() {
 - 數學運算式解析
 
 **設計原則：**
+
 - 單一職責原則（SRP）：每個運算式類別專注一種規則
 - 開放封閉原則（OCP）：新增運算子無需改舊程式
 

@@ -3,7 +3,8 @@ layout: post
 title: "設計模式 6：工廠方法模式 - 多區域應用的彈性物件創建"
 date: 2024-07-07 23:00:00 +0800
 description: "精通工廠方法模式，讓物件創建更具彈性與擴展性。學會實作多區域工廠，支援全球化應用，提升軟體架構靈活度。圖文範例，適合軟體工程師與架構師。"
-tags: [Factory Method Pattern, Design Patterns, Object Creation, Globalization, Software Architecture, Kotlin, Java, Swift, Polymorphism, Extensibility]
+tags:
+  [Factory Method Pattern, Design Patterns, Object Creation, Globalization, Software Architecture, Kotlin, Java, Swift, Polymorphism, Extensibility]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Globalization]
 toc:
   sidebar: right
@@ -22,6 +23,7 @@ tabs: true
 ## 問題分析：滿足全球多元口味
 
 隨著業務拓展到美國、歐洲等地，不同地區顧客對飲品有不同偏好：
+
 - 美國偏好錫蘭紅茶
 - 歐洲偏好伯爵紅茶
 

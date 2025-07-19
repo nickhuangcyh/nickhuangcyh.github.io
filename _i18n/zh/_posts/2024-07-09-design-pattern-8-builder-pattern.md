@@ -3,7 +3,19 @@ layout: post
 title: "設計模式 8：建造者模式 - 複雜物件的彈性組裝與步驟化建構"
 date: 2024-07-09 23:00:00 +0800
 description: "精通建造者模式，逐步構建複雜物件，靈活配置選項參數，提升程式碼可讀性與維護性。圖文範例，適合軟體工程師與架構師。"
-tags: [Builder Pattern, Design Patterns, Object Construction, Complex Objects, Fluent Interface, Software Architecture, Kotlin, Java, Swift, Telescoping Constructor]
+tags:
+  [
+    Builder Pattern,
+    Design Patterns,
+    Object Construction,
+    Complex Objects,
+    Fluent Interface,
+    Software Architecture,
+    Kotlin,
+    Java,
+    Swift,
+    Telescoping Constructor,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Code Quality]
 toc:
   sidebar: right

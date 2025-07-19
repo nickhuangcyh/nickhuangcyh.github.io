@@ -3,7 +3,19 @@ layout: post
 title: "設計模式 19：命令模式（Command Pattern）——遙控器、Undo/Redo 與操作解耦實戰"
 date: 2024-12-21 15:00:00 +0800
 description: "精通命令模式，學會將操作封裝為物件，實現遙控器、Undo/Redo、操作日誌等彈性控制。圖文範例，適合軟體工程師、架構師與進階開發者。"
-tags: [Command Pattern, Design Patterns, Undo Redo, Remote Control, Object-Oriented Design, Software Architecture, Kotlin, Programming, Behavioral Patterns, Command History]
+tags:
+  [
+    Command Pattern,
+    Design Patterns,
+    Undo Redo,
+    Remote Control,
+    Object-Oriented Design,
+    Software Architecture,
+    Kotlin,
+    Programming,
+    Behavioral Patterns,
+    Command History,
+  ]
 categories: [Design Pattern, Software Engineering, Programming]
 toc:
   sidebar: right
@@ -19,6 +31,7 @@ thumbnail: /assets/img/design_patterns.jpg
 命令模式是一種行為型設計模式，將操作封裝為物件，讓你能參數化客戶端、排程/記錄操作、支援可復原（Undo/Redo）等功能。它解耦了發出操作的物件與執行操作的物件。
 
 **主要優點：**
+
 - 發送者與接收者解耦
 - 支援 Undo/Redo
 - 彈性命令歷史管理
@@ -30,6 +43,7 @@ thumbnail: /assets/img/design_patterns.jpg
 ## 實務情境：音樂播放器遙控器
 
 設計一個音樂播放器遙控器系統，需求如下：
+
 - 用戶可透過遙控器控制播放、暫停、停止
 - 支援 Undo（如取消暫停恢復播放）
 - 按鈕動作彈性，可擴展新功能（如下一首、重複播放）
@@ -41,6 +55,7 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_command_pattern_uml_1.png" title="Command Pattern - 問題分析" %}
 
 ### 設計痛點
+
 1. 高耦合：客戶端需了解所有裝置細節
 2. 彈性不足：難以擴展新裝置或動作
 3. Undo/Redo 複雜：缺乏統一管理機制
@@ -54,6 +69,7 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_command_pattern_uml_2.png" title="Command Pattern - 一般結構" %}
 
 ### 組成元件
+
 - 接收者（Receiver）：執行實際操作
 - 命令介面（Command Interface）：定義執行/復原方法
 - 具體命令（Concrete Command）：實作特定操作
@@ -70,17 +86,18 @@ thumbnail: /assets/img/design_patterns.jpg
 
 ## 命令模式 vs 其他做法
 
-| 做法 | 優點 | 缺點 |
-|------|------|------|
-| 命令模式 | 發送者/接收者解耦、支援Undo/Redo | 類別數增加、命令管理需設計 |
-| 直接呼叫 | 小型應用簡單 | 高耦合、無Undo/Redo |
-| 事件匯流排 | 解耦溝通 | 邏輯追蹤困難、全域狀態 |
+| 做法       | 優點                             | 缺點                       |
+| ---------- | -------------------------------- | -------------------------- |
+| 命令模式   | 發送者/接收者解耦、支援Undo/Redo | 類別數增加、命令管理需設計 |
+| 直接呼叫   | 小型應用簡單                     | 高耦合、無Undo/Redo        |
+| 事件匯流排 | 解耦溝通                         | 邏輯追蹤困難、全域狀態     |
 
 ---
 
 ## 什麼時候用命令模式？
 
 **適合：**
+
 - 遙控器（音樂、電視、智慧家庭）
 - Undo/Redo 系統
 - 巨集錄製/重播
@@ -88,6 +105,7 @@ thumbnail: /assets/img/design_patterns.jpg
 - GUI 按鈕動作
 
 **不適合：**
+
 - 單一、簡單操作
 - 小型、無狀態系統
 

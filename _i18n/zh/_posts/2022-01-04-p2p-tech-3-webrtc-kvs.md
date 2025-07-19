@@ -45,18 +45,18 @@ WebRTC 不限制訊號協議，你可用 WebSocket、HTTP、MQTT 等實作。
 
 ```javascript
 // WebSocket 訊號伺服器範例
-const WebSocket = require('ws');
+const WebSocket = require("ws");
 const wss = new WebSocket.Server({ port: 8080 });
 
-wss.on('connection', function connection(ws) {
-    ws.on('message', function incoming(message) {
-        // 廣播給所有連線用戶
-        wss.clients.forEach(function each(client) {
-            if (client !== ws && client.readyState === WebSocket.OPEN) {
-                client.send(message);
-            }
-        });
+wss.on("connection", function connection(ws) {
+  ws.on("message", function incoming(message) {
+    // 廣播給所有連線用戶
+    wss.clients.forEach(function each(client) {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(message);
+      }
     });
+  });
 });
 ```
 
@@ -86,14 +86,14 @@ a=orient:portrait
 
 ### SDP 組件說明
 
-| 組件 | 說明 | 範例 |
-|------|------|------|
-| **v** | 協議版本 | v=0 |
+| 組件  | 說明       | 範例                                                            |
+| ----- | ---------- | --------------------------------------------------------------- |
+| **v** | 協議版本   | v=0                                                             |
 | **o** | 發起者資訊 | o=username session-id version network-type address-type address |
-| **s** | 會話名稱 | s=SDP Seminar |
-| **c** | 連線資訊 | c=IN IP4 224.2.17.12/127 |
-| **t** | 時間資訊 | t=start-time stop-time |
-| **m** | 媒體描述 | m=media port transport format-list |
+| **s** | 會話名稱   | s=SDP Seminar                                                   |
+| **c** | 連線資訊   | c=IN IP4 224.2.17.12/127                                        |
+| **t** | 時間資訊   | t=start-time stop-time                                          |
+| **m** | 媒體描述   | m=media port transport format-list                              |
 
 ---
 
@@ -114,12 +114,12 @@ ICE 候選（ICE Candidates）是連線路徑資訊，包括 IP、Port、傳輸�
 
 ### ICE 候選類型
 
-| 類型 | 說明 | 適用場景 |
-|------|------|----------|
-| **host** | 本地網路位址 | 同網段通訊 |
-| **srflx** | STUN 探測（Server Reflexive） | NAT 穿透 |
-| **prflx** | Peer Reflexive | 直連發現 |
-| **relay** | TURN 中繼 | 直連失敗備援 |
+| 類型      | 說明                          | 適用場景     |
+| --------- | ----------------------------- | ------------ |
+| **host**  | 本地網路位址                  | 同網段通訊   |
+| **srflx** | STUN 探測（Server Reflexive） | NAT 穿透     |
+| **prflx** | Peer Reflexive                | 直連發現     |
+| **relay** | TURN 中繼                     | 直連失敗備援 |
 
 這些候選會透過訊號伺服器傳給對方。雙方收集所有路徑後，WebRTC 會用 ICE 機制決定最終通訊方式。
 
@@ -143,8 +143,8 @@ ICE 候選（ICE Candidates）是連線路徑資訊，包括 IP、Port、傳輸�
 const peerConnection = new RTCPeerConnection(configuration);
 
 // 2. 加入本地媒體串流
-localStream.getTracks().forEach(track => {
-    peerConnection.addTrack(track, localStream);
+localStream.getTracks().forEach((track) => {
+  peerConnection.addTrack(track, localStream);
 });
 
 // 3. 建立 offer
@@ -153,18 +153,18 @@ await peerConnection.setLocalDescription(offer);
 
 // 4. 透過訊號伺服器發送 offer
 signalingServer.send({
-    type: 'offer',
-    sdp: offer.sdp
+  type: "offer",
+  sdp: offer.sdp,
 });
 
 // 5. 處理 ICE 候選
-peerConnection.onicecandidate = event => {
-    if (event.candidate) {
-        signalingServer.send({
-            type: 'ice-candidate',
-            candidate: event.candidate
-        });
-    }
+peerConnection.onicecandidate = (event) => {
+  if (event.candidate) {
+    signalingServer.send({
+      type: "ice-candidate",
+      candidate: event.candidate,
+    });
+  }
 };
 ```
 
@@ -203,13 +203,13 @@ graph TD
 
 ### KVS 優勢
 
-| 特性 | 優點 | 適用場景 |
-|------|------|----------|
-| **託管架構** | 無需維運伺服器 | 快速開發 |
-| **全球部署** | 低延遲覆蓋全球 | 國際應用 |
-| **自動擴展** | 彈性應對流量 | 高併發 |
-| **高安全性** | 內建加密 | 企業應用 |
-| **按量計費** | 成本彈性 | 新創/中小企業 |
+| 特性         | 優點           | 適用場景      |
+| ------------ | -------------- | ------------- |
+| **託管架構** | 無需維運伺服器 | 快速開發      |
+| **全球部署** | 低延遲覆蓋全球 | 國際應用      |
+| **自動擴展** | 彈性應對流量   | 高併發        |
+| **高安全性** | 內建加密       | 企業應用      |
+| **按量計費** | 成本彈性       | 新創/中小企業 |
 
 ---
 
@@ -228,11 +228,11 @@ graph TD
 
 ### 效能指標
 
-| 平台 | 延遲 | 畫質 | 穩定性 |
-|------|------|------|--------|
-| **iOS** | < 100ms | 720p | 99.9% |
-| **Android** | < 120ms | 720p | 99.8% |
-| **Web** | < 80ms | 1080p | 99.9% |
+| 平台        | 延遲    | 畫質  | 穩定性 |
+| ----------- | ------- | ----- | ------ |
+| **iOS**     | < 100ms | 720p  | 99.9%  |
+| **Android** | < 120ms | 720p  | 99.8%  |
+| **Web**     | < 80ms  | 1080p | 99.9%  |
 
 ---
 
@@ -297,41 +297,41 @@ OkHttpClient client = new OkHttpClient.Builder()
 ```javascript
 // 最佳化 ICE 設定
 const configuration = {
-    iceServers: [
-        { urls: 'stun:stun.l.google.com:19302' },
-        { 
-            urls: 'turn:your-turn-server.com:3478',
-            username: 'username',
-            credential: 'password'
-        }
-    ],
-    iceCandidatePoolSize: 10
+  iceServers: [
+    { urls: "stun:stun.l.google.com:19302" },
+    {
+      urls: "turn:your-turn-server.com:3478",
+      username: "username",
+      credential: "password",
+    },
+  ],
+  iceCandidatePoolSize: 10,
 };
 ```
 
 ### 畫質設定
 
-| 等級 | 解析度 | 位元率 | 適用場景 |
-|------|--------|--------|----------|
-| **低** | 320x240 | 100 kbps | 行動、慢速網路 |
-| **中** | 640x480 | 500 kbps | 標準視訊通話 |
-| **高** | 1280x720 | 1.5 Mbps | HD 視訊會議 |
-| **超高** | 1920x1080 | 3 Mbps | 專業直播 |
+| 等級     | 解析度    | 位元率   | 適用場景       |
+| -------- | --------- | -------- | -------------- |
+| **低**   | 320x240   | 100 kbps | 行動、慢速網路 |
+| **中**   | 640x480   | 500 kbps | 標準視訊通話   |
+| **高**   | 1280x720  | 1.5 Mbps | HD 視訊會議    |
+| **超高** | 1920x1080 | 3 Mbps   | 專業直播       |
 
 ### 頻寬管理
 
 ```javascript
 // 動態位元率控制
-peerConnection.getSenders().forEach(sender => {
-    if (sender.track.kind === 'video') {
-        const params = sender.getParameters();
-        params.encodings = [
-            { maxBitrate: 100000 }, // 100 kbps
-            { maxBitrate: 500000 }, // 500 kbps
-            { maxBitrate: 1500000 } // 1.5 Mbps
-        ];
-        sender.setParameters(params);
-    }
+peerConnection.getSenders().forEach((sender) => {
+  if (sender.track.kind === "video") {
+    const params = sender.getParameters();
+    params.encodings = [
+      { maxBitrate: 100000 }, // 100 kbps
+      { maxBitrate: 500000 }, // 500 kbps
+      { maxBitrate: 1500000 }, // 1.5 Mbps
+    ];
+    sender.setParameters(params);
+  }
 });
 ```
 
@@ -349,13 +349,15 @@ peerConnection.getSenders().forEach(sender => {
 
 ```javascript
 // 實作安全訊號交換
-const signalingServer = new WebSocket('wss://your-server.com');
+const signalingServer = new WebSocket("wss://your-server.com");
 signalingServer.onopen = () => {
-    // 傳送認證 token
-    signalingServer.send(JSON.stringify({
-        type: 'auth',
-        token: 'your-jwt-token'
-    }));
+  // 傳送認證 token
+  signalingServer.send(
+    JSON.stringify({
+      type: "auth",
+      token: "your-jwt-token",
+    })
+  );
 };
 ```
 
@@ -382,18 +384,18 @@ signalingServer.onopen = () => {
 
 ```javascript
 peerConnection.oniceconnectionstatechange = () => {
-    switch(peerConnection.iceConnectionState) {
-        case 'checking':
-            console.log('Checking connection...');
-            break;
-        case 'connected':
-            console.log('Connected successfully!');
-            break;
-        case 'failed':
-            console.error('Connection failed');
-            // 實作備援或重試邏輯
-            break;
-    }
+  switch (peerConnection.iceConnectionState) {
+    case "checking":
+      console.log("Checking connection...");
+      break;
+    case "connected":
+      console.log("Connected successfully!");
+      break;
+    case "failed":
+      console.error("Connection failed");
+      // 實作備援或重試邏輯
+      break;
+  }
 };
 ```
 

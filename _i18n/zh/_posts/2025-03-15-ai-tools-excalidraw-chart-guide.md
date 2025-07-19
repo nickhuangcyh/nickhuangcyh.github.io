@@ -23,6 +23,7 @@ thumbnail: /assets/img/kelly-sikkema-lFtttcsx5Vk-unsplash.jpg
 **Excalidraw** 是一款開源手繪風格繪圖工具，結合 AI 自動繪圖功能後，只需描述需求，AI 就能幫你生成複雜圖表。
 
 **主要優勢：**
+
 - ⏱️ 製圖速度快：30-60 秒完成
 - 🧑‍💻 學習曲線低：無需專業設計背景
 - 🎨 完全可自訂：顏色、佈局、風格隨你調
@@ -82,6 +83,7 @@ thumbnail: /assets/img/kelly-sikkema-lFtttcsx5Vk-unsplash.jpg
 ### 步驟 3：AI 自動生成圖表
 
 Excalidraw AI 會根據描述自動產生專業流程圖，你可以：
+
 - 調整節點位置
 - 修改顏色與風格
 - 增加註解或元素
@@ -94,18 +96,22 @@ Excalidraw AI 會根據描述自動產生專業流程圖，你可以：
 ## 🎨 Excalidraw AI 各領域應用
 
 ### 軟體開發與工程
+
 - 技術架構圖、API 流程、資料庫關聯、微服務通訊
 - 協議流程圖（HTTP、WebSocket、MQTT）
 
 ### 設計與創意產業
+
 - UX/UI 流程、介面設計、手繪風草圖
 - 概念圖、故事板
 
 ### 商業與策略
+
 - 業務流程圖、組織結構、決策樹
 - 專案管理時程、團隊協作圖
 
 ### 教育與訓練
+
 - 心智圖、教學流程、知識結構
 - 研究方法、資料收集與分析
 

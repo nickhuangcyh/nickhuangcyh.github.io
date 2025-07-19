@@ -3,7 +3,19 @@ layout: post
 title: "設計模式 3：設計模式總覽與系統化解題思路"
 date: 2024-07-04 23:00:00 +0800
 description: "掌握設計模式的系統化應用方法，學會 Context-Forces-Problem-Solution 架構、模式分類與步驟，解決常見軟體設計難題。"
-tags: [Design Patterns, Software Architecture, Object-Oriented Design, Problem Solving, Software Development, Design Methodology, Context-Forces-Problem-Solution, Creational Patterns, Structural Patterns, Behavioral Patterns]
+tags:
+  [
+    Design Patterns,
+    Software Architecture,
+    Object-Oriented Design,
+    Problem Solving,
+    Software Development,
+    Design Methodology,
+    Context-Forces-Problem-Solution,
+    Creational Patterns,
+    Structural Patterns,
+    Behavioral Patterns,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Software Architecture]
 toc:
   sidebar: right
@@ -19,6 +31,7 @@ thumbnail: /assets/img/design_patterns.jpg
 ## 實務應用場景
 
 設計模式廣泛應用於：
+
 - **軟體架構**：打造可維護、可擴展系統
 - **框架開發**：設計可重用元件
 - **API 設計**：設計直觀易用的介面
@@ -59,12 +72,13 @@ thumbnail: /assets/img/design_patterns.jpg
 
 **情境**：建構一個支援多種支付方式的電商平台
 **設計力**：
+
 - 多支付通道（PayPal、Stripe 等）
 - 易於擴展新支付方式
 - 統一操作介面
 - 易於維護與測試
-**問題**：如何設計一個能支援多種支付方式且不耦合業務邏輯的系統？
-**解法**：套用策略模式（Strategy Pattern）封裝不同支付演算法
+  **問題**：如何設計一個能支援多種支付方式且不耦合業務邏輯的系統？
+  **解法**：套用策略模式（Strategy Pattern）封裝不同支付演算法
 
 （此處保留原有 UML、Kotlin 範例，僅將說明與註解翻譯為中文）
 

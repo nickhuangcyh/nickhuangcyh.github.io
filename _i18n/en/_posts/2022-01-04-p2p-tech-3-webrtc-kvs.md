@@ -46,18 +46,18 @@ You can implement a signaling server using WebSocket, HTTP, MQTT, or other proto
 
 ```javascript
 // WebSocket signaling server example
-const WebSocket = require('ws');
+const WebSocket = require("ws");
 const wss = new WebSocket.Server({ port: 8080 });
 
-wss.on('connection', function connection(ws) {
-    ws.on('message', function incoming(message) {
-        // Broadcast to all connected clients
-        wss.clients.forEach(function each(client) {
-            if (client !== ws && client.readyState === WebSocket.OPEN) {
-                client.send(message);
-            }
-        });
+wss.on("connection", function connection(ws) {
+  ws.on("message", function incoming(message) {
+    // Broadcast to all connected clients
+    wss.clients.forEach(function each(client) {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(message);
+      }
     });
+  });
 });
 ```
 
@@ -87,14 +87,14 @@ a=orient:portrait
 
 ### SDP Components Explained
 
-| Component | Description | Example |
-|-----------|-------------|---------|
-| **v** | Protocol version | v=0 |
-| **o** | Origin information | o=username session-id version network-type address-type address |
-| **s** | Session name | s=SDP Seminar |
-| **c** | Connection information | c=IN IP4 224.2.17.12/127 |
-| **t** | Timing information | t=start-time stop-time |
-| **m** | Media description | m=media port transport format-list |
+| Component | Description            | Example                                                         |
+| --------- | ---------------------- | --------------------------------------------------------------- |
+| **v**     | Protocol version       | v=0                                                             |
+| **o**     | Origin information     | o=username session-id version network-type address-type address |
+| **s**     | Session name           | s=SDP Seminar                                                   |
+| **c**     | Connection information | c=IN IP4 224.2.17.12/127                                        |
+| **t**     | Timing information     | t=start-time stop-time                                          |
+| **m**     | Media description      | m=media port transport format-list                              |
 
 ---
 
@@ -115,12 +115,12 @@ Each time WebRTC initiates a connection, it generates multiple candidates for ea
 
 ### ICE Candidate Types
 
-| Type | Description | Use Case |
-|------|-------------|----------|
-| **host** | Local network address | Same network communication |
-| **srflx** | Server reflexive (STUN) | NAT traversal |
-| **prflx** | Peer reflexive | Direct connection discovery |
-| **relay** | Relay (TURN) | Fallback when direct connection fails |
+| Type      | Description             | Use Case                              |
+| --------- | ----------------------- | ------------------------------------- |
+| **host**  | Local network address   | Same network communication            |
+| **srflx** | Server reflexive (STUN) | NAT traversal                         |
+| **prflx** | Peer reflexive          | Direct connection discovery           |
+| **relay** | Relay (TURN)            | Fallback when direct connection fails |
 
 These candidates are transmitted to the remote peer through the Signaling Server. After both parties collect all paths, WebRTC uses the ICE mechanism to determine the final communication method.
 
@@ -144,8 +144,8 @@ The overall process is divided into four major stages:
 const peerConnection = new RTCPeerConnection(configuration);
 
 // 2. Add local media streams
-localStream.getTracks().forEach(track => {
-    peerConnection.addTrack(track, localStream);
+localStream.getTracks().forEach((track) => {
+  peerConnection.addTrack(track, localStream);
 });
 
 // 3. Create offer
@@ -154,18 +154,18 @@ await peerConnection.setLocalDescription(offer);
 
 // 4. Send offer through signaling server
 signalingServer.send({
-    type: 'offer',
-    sdp: offer.sdp
+  type: "offer",
+  sdp: offer.sdp,
 });
 
 // 5. Handle ICE candidates
-peerConnection.onicecandidate = event => {
-    if (event.candidate) {
-        signalingServer.send({
-            type: 'ice-candidate',
-            candidate: event.candidate
-        });
-    }
+peerConnection.onicecandidate = (event) => {
+  if (event.candidate) {
+    signalingServer.send({
+      type: "ice-candidate",
+      candidate: event.candidate,
+    });
+  }
 };
 ```
 
@@ -204,13 +204,13 @@ graph TD
 
 ### KVS Benefits
 
-| Feature | Benefit | Use Case |
-|---------|---------|----------|
-| **Managed Infrastructure** | No server maintenance | Rapid development |
-| **Global Distribution** | Low-latency worldwide | International applications |
-| **Scalability** | Auto-scaling | Variable load handling |
-| **Security** | Built-in encryption | Enterprise applications |
-| **Cost-effective** | Pay-per-use | Startups and SMBs |
+| Feature                    | Benefit               | Use Case                   |
+| -------------------------- | --------------------- | -------------------------- |
+| **Managed Infrastructure** | No server maintenance | Rapid development          |
+| **Global Distribution**    | Low-latency worldwide | International applications |
+| **Scalability**            | Auto-scaling          | Variable load handling     |
+| **Security**               | Built-in encryption   | Enterprise applications    |
+| **Cost-effective**         | Pay-per-use           | Startups and SMBs          |
 
 ---
 
@@ -229,11 +229,11 @@ Below are the streaming screenshots from successful implementation on iOS and An
 
 ### Performance Metrics
 
-| Platform | Latency | Quality | Stability |
-|----------|---------|---------|-----------|
-| **iOS** | < 100ms | 720p | 99.9% |
-| **Android** | < 120ms | 720p | 99.8% |
-| **Web** | < 80ms | 1080p | 99.9% |
+| Platform    | Latency | Quality | Stability |
+| ----------- | ------- | ------- | --------- |
+| **iOS**     | < 100ms | 720p    | 99.9%     |
+| **Android** | < 120ms | 720p    | 99.8%     |
+| **Web**     | < 80ms  | 1080p   | 99.9%     |
 
 ---
 
@@ -300,41 +300,41 @@ OkHttpClient client = new OkHttpClient.Builder()
 ```javascript
 // Optimize ICE configuration
 const configuration = {
-    iceServers: [
-        { urls: 'stun:stun.l.google.com:19302' },
-        { 
-            urls: 'turn:your-turn-server.com:3478',
-            username: 'username',
-            credential: 'password'
-        }
-    ],
-    iceCandidatePoolSize: 10
+  iceServers: [
+    { urls: "stun:stun.l.google.com:19302" },
+    {
+      urls: "turn:your-turn-server.com:3478",
+      username: "username",
+      credential: "password",
+    },
+  ],
+  iceCandidatePoolSize: 10,
 };
 ```
 
 ### Quality Settings
 
-| Quality Level | Resolution | Bitrate | Use Case |
-|---------------|------------|---------|----------|
-| **Low** | 320x240 | 100 kbps | Mobile, slow networks |
-| **Medium** | 640x480 | 500 kbps | Standard video calls |
-| **High** | 1280x720 | 1.5 Mbps | HD video conferencing |
-| **Ultra** | 1920x1080 | 3 Mbps | Professional streaming |
+| Quality Level | Resolution | Bitrate  | Use Case               |
+| ------------- | ---------- | -------- | ---------------------- |
+| **Low**       | 320x240    | 100 kbps | Mobile, slow networks  |
+| **Medium**    | 640x480    | 500 kbps | Standard video calls   |
+| **High**      | 1280x720   | 1.5 Mbps | HD video conferencing  |
+| **Ultra**     | 1920x1080  | 3 Mbps   | Professional streaming |
 
 ### Bandwidth Management
 
 ```javascript
 // Adaptive bitrate control
-peerConnection.getSenders().forEach(sender => {
-    if (sender.track.kind === 'video') {
-        const params = sender.getParameters();
-        params.encodings = [
-            { maxBitrate: 100000 }, // 100 kbps
-            { maxBitrate: 500000 }, // 500 kbps
-            { maxBitrate: 1500000 } // 1.5 Mbps
-        ];
-        sender.setParameters(params);
-    }
+peerConnection.getSenders().forEach((sender) => {
+  if (sender.track.kind === "video") {
+    const params = sender.getParameters();
+    params.encodings = [
+      { maxBitrate: 100000 }, // 100 kbps
+      { maxBitrate: 500000 }, // 500 kbps
+      { maxBitrate: 1500000 }, // 1.5 Mbps
+    ];
+    sender.setParameters(params);
+  }
 });
 ```
 
@@ -352,13 +352,15 @@ peerConnection.getSenders().forEach(sender => {
 
 ```javascript
 // Implement secure signaling
-const signalingServer = new WebSocket('wss://your-server.com');
+const signalingServer = new WebSocket("wss://your-server.com");
 signalingServer.onopen = () => {
-    // Send authentication token
-    signalingServer.send(JSON.stringify({
-        type: 'auth',
-        token: 'your-jwt-token'
-    }));
+  // Send authentication token
+  signalingServer.send(
+    JSON.stringify({
+      type: "auth",
+      token: "your-jwt-token",
+    })
+  );
 };
 ```
 
@@ -385,18 +387,18 @@ signalingServer.onopen = () => {
 
 ```javascript
 peerConnection.oniceconnectionstatechange = () => {
-    switch(peerConnection.iceConnectionState) {
-        case 'checking':
-            console.log('Checking connection...');
-            break;
-        case 'connected':
-            console.log('Connected successfully!');
-            break;
-        case 'failed':
-            console.error('Connection failed');
-            // Implement fallback or retry logic
-            break;
-    }
+  switch (peerConnection.iceConnectionState) {
+    case "checking":
+      console.log("Checking connection...");
+      break;
+    case "connected":
+      console.log("Connected successfully!");
+      break;
+    case "failed":
+      console.error("Connection failed");
+      // Implement fallback or retry logic
+      break;
+  }
 };
 ```
 

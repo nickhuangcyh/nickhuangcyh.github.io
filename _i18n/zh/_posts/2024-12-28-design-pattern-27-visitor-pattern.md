@@ -3,7 +3,19 @@ layout: post
 title: 設計模式 27：訪問者模式（Visitor Pattern）IoT 實戰全攻略
 日期: 2024-12-28 21:30:00 +0800
 description: 精通訪問者模式，學會如何為物件結構新增操作、提升系統擴展性，並維持乾淨的程式架構。IoT 與軟體開發實例，適合進階工程師。
-tags: [Visitor Pattern, Design Patterns, Extensibility, Object-Oriented Design, Software Architecture, IoT, Kotlin, Programming, Behavioral Patterns, Maintainability]
+tags:
+  [
+    Visitor Pattern,
+    Design Patterns,
+    Extensibility,
+    Object-Oriented Design,
+    Software Architecture,
+    IoT,
+    Kotlin,
+    Programming,
+    Behavioral Patterns,
+    Maintainability,
+  ]
 categories: [Design Pattern, Software Engineering, Programming]
 toc:
   sidebar: right
@@ -19,6 +31,7 @@ thumbnail: /assets/img/design_patterns.jpg
 **訪問者模式（Visitor Pattern）** 是一種行為型設計模式，讓你能在不更動物件結構的前提下，為其新增操作。它將演算法與資料結構分離，讓系統更易於擴展與維護。
 
 **主要優點：**
+
 - ✅ 開放封閉原則：新增操作無需改動物件結構
 - ✅ 邏輯集中：相關操作集中管理
 - ✅ 易於擴展：支援新操作與新物件型別
@@ -32,6 +45,7 @@ thumbnail: /assets/img/design_patterns.jpg
 假設你要打造一個 IoT App，需同時支援多家 IPCam（如 HIKVISION、DAHUA），每家品牌串流與快照 API 不同：
 
 **系統需求：**
+
 - 支援多品牌 IPCam
 - 各品牌串流、快照方式不同
 - App 程式碼不依賴品牌細節
@@ -39,6 +53,7 @@ thumbnail: /assets/img/design_patterns.jpg
 - 避免修改 IPCam 核心結構（多為廠商提供）
 
 **商業規則：**
+
 - 所有 IPCam 操作（串流、快照）需可擴展
 - 新增操作不應更動既有 IPCam 類別
 - 維持乾淨、易維護的程式碼
@@ -50,6 +65,7 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_visitor_pattern_uml_1.png" title="Visitor Pattern - Problem Analysis" %}
 
 **核心挑戰：**
+
 1. 新品牌擴展困難
 2. 違反開放封閉原則（OCP）
 3. 各品牌操作處理不一致
@@ -63,12 +79,14 @@ thumbnail: /assets/img/design_patterns.jpg
 {% include figure.liquid path="assets/img/design_pattern_visitor_pattern_uml_2.png" title="Visitor Pattern - General Structure" %}
 
 **組件說明：**
+
 1. 訪問者介面：定義每種物件型別的操作
 2. 具體訪問者：實作特定操作（如串流、快照）
 3. 元素介面：定義 `accept(visitor)` 方法
 4. 具體元素：實作 `accept` 與品牌專屬邏輯
 
 **好處：**
+
 - 新增操作只需新增訪問者
 - 操作邏輯集中管理
 - 物件結構穩定不變
@@ -153,6 +171,7 @@ fun main() {
 ```
 
 **預期輸出：**
+
 ```
 串流: rtsp://hikvision/stream
 快照: Hikvision Snapshot
@@ -167,11 +186,13 @@ fun main() {
 訪問者模式讓你能在不更動物件結構的前提下，彈性新增操作，並集中管理邏輯，提升系統可維護性與擴展性。
 
 **適用場景：**
+
 - 複雜物件結構（如 AST、IoT 裝置）
 - 需頻繁新增操作的系統
 - 編譯器、解譯器、UI 元件樹
 
 **設計原則：**
+
 - 單一職責原則（SRP）：操作與結構分離
 - 開放封閉原則（OCP）：新增功能無需改舊程式
 

@@ -3,7 +3,20 @@ layout: post
 title: "Design Pattern 9: Prototype Pattern - Efficient Object Cloning for Resource Management and Performance Optimization"
 date: 2024-07-21 23:00:00 +0800
 description: "Master the Prototype Pattern to create object copies efficiently. Learn how to implement cloning mechanisms for complex objects, reduce resource overhead, and improve application performance with practical examples."
-tags: [Prototype Pattern, Design Patterns, Object Cloning, Performance Optimization, Resource Management, Software Architecture, Kotlin, Java, Swift, Deep Copy, Shallow Copy]
+tags:
+  [
+    Prototype Pattern,
+    Design Patterns,
+    Object Cloning,
+    Performance Optimization,
+    Resource Management,
+    Software Architecture,
+    Kotlin,
+    Java,
+    Swift,
+    Deep Copy,
+    Shallow Copy,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Performance]
 toc:
   #   beginning: true
@@ -69,6 +82,7 @@ The Prototype Pattern provides an elegant solution by allowing objects to clone 
 {% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_2.png" title="Prototype Pattern UML diagram" %}
 
 **Key Components:**
+
 - **Prototype**: Abstract interface defining the clone method
 - **Concrete Prototype**: Implements the clone method to create exact copies
 
@@ -133,6 +147,7 @@ fun main() {
 ```
 
 By using the `clone()` method, we avoid repeating the expensive computation:
+
 ```kotlin
 originalDataList.subList(1, originalDataList.size).map { it * 2 }
 ```
@@ -146,7 +161,7 @@ class UserProfile: Cloneable {
     var name: String = ""
     var email: String = ""
     var preferences: MutableList<String> = mutableListOf()
-    
+
     public override fun clone(): UserProfile {
         return super.clone() as UserProfile
     }
@@ -160,7 +175,7 @@ class UserProfile: Cloneable {
     var name: String = ""
     var email: String = ""
     var preferences: MutableList<String> = mutableListOf()
-    
+
     public override fun clone(): UserProfile {
         val cloned = super.clone() as UserProfile
         cloned.preferences = preferences.toMutableList() // Deep copy of list
@@ -176,9 +191,9 @@ abstract class Shape: Cloneable {
     var color: String = "black"
     var x: Int = 0
     var y: Int = 0
-    
+
     abstract fun draw()
-    
+
     public override fun clone(): Shape {
         return super.clone() as Shape
     }
@@ -186,11 +201,11 @@ abstract class Shape: Cloneable {
 
 class Circle: Shape() {
     var radius: Int = 10
-    
+
     override fun draw() {
         println("Drawing circle at ($x, $y) with radius $radius and color $color")
     }
-    
+
     override fun clone(): Circle {
         val cloned = super.clone() as Circle
         cloned.radius = this.radius
@@ -201,11 +216,11 @@ class Circle: Shape() {
 class Rectangle: Shape() {
     var width: Int = 20
     var height: Int = 15
-    
+
     override fun draw() {
         println("Drawing rectangle at ($x, $y) with size ${width}x${height} and color $color")
     }
-    
+
     override fun clone(): Rectangle {
         val cloned = super.clone() as Rectangle
         cloned.width = this.width
@@ -224,7 +239,7 @@ class Rectangle: Shape() {
 class ComplexObject: Cloneable {
     private var data: MutableList<String> = mutableListOf()
     private var metadata: Map<String, Any> = mapOf()
-    
+
     public override fun clone(): ComplexObject {
         val cloned = super.clone() as ComplexObject
         cloned.data = data.toMutableList() // Deep copy
@@ -236,7 +251,7 @@ class ComplexObject: Cloneable {
 // Avoid: Incomplete cloning
 class BadClone: Cloneable {
     private var data: MutableList<String> = mutableListOf()
-    
+
     public override fun clone(): BadClone {
         return super.clone() as BadClone // Shallow copy of mutable list!
     }
@@ -248,11 +263,11 @@ class BadClone: Cloneable {
 ```kotlin
 class PrototypeRegistry {
     private val prototypes = mutableMapOf<String, Cloneable>()
-    
+
     fun addPrototype(name: String, prototype: Cloneable) {
         prototypes[name] = prototype
     }
-    
+
     fun getClone(name: String): Cloneable? {
         return prototypes[name]?.let { it.clone() }
     }
@@ -269,19 +284,19 @@ val newUser = registry.getClone("default-user") as UserProfile
 ```kotlin
 class ExpensiveObject: Cloneable {
     private var computedValue: String? = null
-    
+
     private fun computeExpensiveValue(): String {
         // Expensive computation
         return "computed result"
     }
-    
+
     fun getValue(): String {
         if (computedValue == null) {
             computedValue = computeExpensiveValue()
         }
         return computedValue!!
     }
-    
+
     public override fun clone(): ExpensiveObject {
         val cloned = super.clone() as ExpensiveObject
         cloned.computedValue = this.computedValue // Preserve computed value
@@ -292,11 +307,11 @@ class ExpensiveObject: Cloneable {
 
 ## Performance Comparison
 
-| Approach | Memory Usage | Performance | Complexity |
-|----------|--------------|-------------|------------|
-| New Constructor | High | Low | High |
-| Prototype Clone | Low | High | Low |
-| Factory Method | Medium | Medium | Medium |
+| Approach        | Memory Usage | Performance | Complexity |
+| --------------- | ------------ | ----------- | ---------- |
+| New Constructor | High         | Low         | High       |
+| Prototype Clone | Low          | High        | Low        |
+| Factory Method  | Medium       | Medium      | Medium     |
 
 ## Related Design Patterns
 

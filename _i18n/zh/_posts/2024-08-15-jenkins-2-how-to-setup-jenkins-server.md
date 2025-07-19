@@ -15,6 +15,7 @@ thumbnail: /assets/img/jenkins.jpg
 本指南將帶你透過 Docker 容器快速建置 Jenkins 伺服器。這種方式不僅簡單高效，還能確保多環境一致性。
 
 **你將學到：**
+
 - 🐳 基於 Docker 的 Jenkins 安裝
 - 🛠️ 步驟詳盡的建置流程
 - 📱 整合 Android 建置環境
@@ -26,6 +27,7 @@ thumbnail: /assets/img/jenkins.jpg
 ## 🎯 **為什麼用 Docker 部署 Jenkins？**
 
 ### **Docker 方案優勢：**
+
 - ✅ 環境一致性，開發/測試/生產無差異
 - ✅ 部署快速，易於擴充與遷移
 - ✅ 版本可控，支援多版本並存
@@ -33,6 +35,7 @@ thumbnail: /assets/img/jenkins.jpg
 - ✅ 易於橫向擴充
 
 ### **主流 Jenkins 映像：**
+
 - **標準版 Jenkins**：`jenkins/jenkins:lts-jdk17`
 - **整合 Android 環境**：`ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17`
 
@@ -45,11 +48,13 @@ thumbnail: /assets/img/jenkins.jpg
 在終端執行以下指令，拉取所需 Jenkins 映像：
 
 #### **A. 標準 Jenkins 環境**
+
 ```bash
 docker pull jenkins/jenkins:lts-jdk17
 ```
 
 #### **B. 整合 Android 建置環境**
+
 ```bash
 docker pull ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17
 ```
@@ -65,6 +70,7 @@ docker pull ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17
 將 `${volume_path}` 替換為本機 Jenkins 資料儲存路徑。
 
 #### **A. 標準 Jenkins 容器**
+
 ```bash
 docker run -d \
   --name jenkins-server \
@@ -75,6 +81,7 @@ docker run -d \
 ```
 
 #### **B. 整合 Android 環境容器**
+
 ```bash
 docker run -d \
   --name jenkins-android-server \
@@ -85,6 +92,7 @@ docker run -d \
 ```
 
 **指令說明：**
+
 - `-d`：背景執行
 - `--name`：容器命名
 - `-v`：掛載本機目錄
@@ -106,6 +114,7 @@ docker run -d \
 > ```
 
 **其他取得方式：**
+
 ```bash
 # 查看容器日誌
 docker logs jenkins-server
@@ -148,6 +157,7 @@ docker run -d \
 ```
 
 **參數說明：**
+
 - `--restart unless-stopped`：自動重啟
 - `-v /var/run/docker.sock:/var/run/docker.sock`：支援 Docker in Docker
 - `-e JAVA_OPTS`：JVM 參數
@@ -158,7 +168,7 @@ docker run -d \
 編寫 `docker-compose.yml`，便於多容器管理：
 
 ```yaml
-version: '3.8'
+version: "3.8"
 services:
   jenkins:
     image: jenkins/jenkins:lts-jdk17
@@ -184,6 +194,7 @@ networks:
 ```
 
 **啟動指令：**
+
 ```bash
 docker-compose up -d
 ```
@@ -193,6 +204,7 @@ docker-compose up -d
 ## 🚨 **常見問題排查**
 
 ### **1. 容器無法啟動**
+
 ```bash
 # 查看容器狀態
 docker ps -a
@@ -205,6 +217,7 @@ sudo chown -R 1000:1000 ${volume_path}
 ```
 
 ### **2. 無法存取 Web 介面**
+
 ```bash
 # 檢查容器是否執行
 docker ps
@@ -215,6 +228,7 @@ curl http://localhost:8080
 ```
 
 ### **3. 權限拒絕**
+
 ```bash
 # 修復權限
 sudo chown -R 1000:1000 ${volume_path}
@@ -229,6 +243,7 @@ docker run -d \
 ```
 
 ### **4. 記憶體不足**
+
 ```bash
 # 增加記憶體限制
 docker run -d \
@@ -247,11 +262,11 @@ docker run -d \
 
 ### **資源推薦配置**
 
-| 環境 | CPU | 記憶體 | 儲存 |
-|------|-----|------|------|
-| 開發 | 1核 | 2GB  | 10GB |
-| 測試 | 2核 | 4GB  | 20GB |
-| 生產 | 4核+| 8GB+ | 50GB+|
+| 環境 | CPU  | 記憶體 | 儲存  |
+| ---- | ---- | ------ | ----- |
+| 開發 | 1核  | 2GB    | 10GB  |
+| 測試 | 2核  | 4GB    | 20GB  |
+| 生產 | 4核+ | 8GB+   | 50GB+ |
 
 ### **JVM 調校**
 
@@ -271,6 +286,7 @@ docker run -d \
 ## 🔒 **安全最佳實踐**
 
 ### **1. 生產環境啟用 HTTPS**
+
 ```bash
 # 掛載 SSL 憑證
 docker run -d \
@@ -283,12 +299,14 @@ docker run -d \
 ```
 
 ### **2. 啟用認證與權限管理**
+
 - 整合 LDAP/AD
 - 啟用 Jenkins 安全功能
 - 定期更換密碼
 - 開啟雙因素認證
 
 ### **3. 網路安全**
+
 ```bash
 # 自訂網路與防火牆
 docker network create --driver bridge --subnet=172.20.0.0/16 jenkins-network
@@ -307,6 +325,7 @@ docker run -d \
 ## 🛡️ **監控與維護**
 
 ### **健康檢查**
+
 ```bash
 # 新增健康檢查
 docker run -d \
@@ -322,6 +341,7 @@ docker run -d \
 ```
 
 ### **備份策略**
+
 ```bash
 # 備份腳本範例
 #!/bin/bash
@@ -350,6 +370,7 @@ echo "Backup completed: jenkins_backup_${DATE}.tar.gz"
 恭喜你，已成功透過 Docker 建置 Jenkins 伺服器！
 
 **本方案優勢：**
+
 - 🚀 部署高效
 - 🛠️ 環境一致性
 - 📱 支援 Android 建置
@@ -357,6 +378,7 @@ echo "Backup completed: jenkins_backup_${DATE}.tar.gz"
 - 📈 架構可擴充
 
 **後續建議：**
+
 1. 設定首個流水線
 2. 設定分散式建置代理
 3. 整合版本控制系統
@@ -374,6 +396,7 @@ echo "Backup completed: jenkins_backup_${DATE}.tar.gz"
 ---
 
 **📚 延伸閱讀：**
+
 - [Jenkins 官方文件](https://jenkins.io/doc/)
 - [Docker Jenkins 映像](https://hub.docker.com/r/jenkins/jenkins/)
 - [Jenkins 最佳實踐](https://jenkins.io/doc/book/architecting-for-scale/)

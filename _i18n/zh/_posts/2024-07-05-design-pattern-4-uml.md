@@ -3,7 +3,20 @@ layout: post
 title: "設計模式 4：UML 圖解軟體架構與設計模式"
 date: 2024-07-05 23:00:00 +0800
 description: "精通 UML（統一建模語言），用圖像化方式規劃軟體架構與設計模式。學會類別圖、關係、最佳實踐，提升團隊溝通與設計能力。"
-tags: [UML, Unified Modeling Language, Class Diagrams, Software Architecture, Design Patterns, Visual Modeling, Software Design, Object-Oriented Design, Relationships, Inheritance, Association]
+tags:
+  [
+    UML,
+    Unified Modeling Language,
+    Class Diagrams,
+    Software Architecture,
+    Design Patterns,
+    Visual Modeling,
+    Software Design,
+    Object-Oriented Design,
+    Relationships,
+    Inheritance,
+    Association,
+  ]
 categories: [Design Patterns, Software Development, Object-Oriented Programming, Software Architecture]
 toc:
   sidebar: right
@@ -23,6 +36,7 @@ UML（統一建模語言）是規劃與構建軟體系統的標準圖像語言�
 ## 實務應用場景
 
 UML 圖廣泛應用於：
+
 - **軟體架構**：實作前先規劃系統結構
 - **設計模式**：視覺化模式關係與互動
 - **團隊溝通**：跨部門設計協作
@@ -34,7 +48,7 @@ UML 圖廣泛應用於：
 - **類別表示法**：分為類名、屬性、操作三區塊
 - **介面表示法**：可用 <<interface>> 標註或棒棒糖符號
 - **可見性修飾詞**：+ 公開、# 保護、~ 套件、- 私有
-- **多重性**：1（唯一）、*（多個）、0..1（可選）、1..*（至少一個）、n..m（範圍）
+- **多重性**：1（唯一）、_（多個）、0..1（可選）、1.._（至少一個）、n..m（範圍）
 
 ## UML 關係
 
