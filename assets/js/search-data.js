@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-how-to-use-multiple-github-accounts-on-one-computer-complete-ssh-setup-guide",
+        },{id: "post-ai-agent-系列-一-搞懂-llm-rag-與-mcp-的核心互動邏輯",
+        
+          title: "🤖 AI Agent 系列（一）：搞懂 LLM、RAG 與 MCP 的核心互動邏輯",
+        
+        description: "這篇文章會帶你從零開始理解什麼是 AI Agent，深入介紹 LLM、RAG、MCP 等背後技術，並揭開它們如何協作完成智慧任務的神秘面紗。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/ai/agent/developer%20tools/intro-to-ai-agents-mcp-rag-llm/";
+          
+        },
+      },{id: "post-how-to-use-multiple-github-accounts-on-one-computer-complete-ssh-setup-guide",
         
           title: "How to Use Multiple GitHub Accounts on One Computer: Complete SSH Setup Guide...",
         
