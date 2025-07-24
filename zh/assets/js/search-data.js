@@ -52,7 +52,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/ai/agent/developer%20tools/intro-to-ai-agents-mcp-rag-llm/";
+            window.location.href = "/zh/blog/ai/agent/developer%20tools/intro-to-ai-agents-mcp-rag-llm/";
           
         },
       },{id: "post-如何在一台電腦上管理多個-github-帳號-完整-ssh-設定教學",
