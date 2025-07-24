@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 🤖 AI Agent Series (Part 1): Understanding the Core Logic of LLM, RAG, and MCP
+title: "🤖 AI Agent Series (Part 1): Understanding the Core Logic of LLM, RAG, and MCP"
 date: 2025-07-24 20:00:00 +0800
-description: This article will guide you from the basics to a deep understanding of AI Agents, introducing the key technologies behind LLM, RAG, and MCP, and revealing how they work together to accomplish intelligent tasks.
+description: "A concise guide to AI Agents, LLM, RAG, and MCP, and how they work together."
 tags: [AI Agent, LLM, RAG, MCP, AI Programming]
 categories: [AI, Agent, Developer Tools]
 toc:
