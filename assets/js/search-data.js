@@ -44,15 +44,15 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-",
+        },{id: "post-ai-agent-series-part-1-understanding-the-core-logic-of-llm-rag-and-mcp",
         
-          title: "",
+          title: "🤖 AI Agent Series (Part 1): Understanding the Core Logic of LLM, RAG,...",
         
-        description: "",
+        description: "A concise guide to AI Agents, LLM, RAG, and MCP, and how they work together.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/_i18n/en/2025-07-24-intro-to-ai-agents-mcp-rag-llm/";
+            window.location.href = "/blog/ai/agent/developer%20tools/intro-to-ai-agents-mcp-rag-llm/";
           
         },
       },{id: "post-how-to-use-multiple-github-accounts-on-one-computer-complete-ssh-setup-guide",
