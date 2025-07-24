@@ -13,8 +13,6 @@ thumbnail: /assets/img/igor-omilaev-eGGFZ5X2LnA-unsplash.jpg
 
 # 🧠 AI Agent 系列（一）：解密 AI Agent、MCP、LLM 與 RAG
 
-> 本文由一位軟體技術大師撰寫，將以專業且淺顯的方式，帶你從本質理解 AI、AI Agent 及其背後的核心技術。
-
 ---
 
 ## 🤖 什麼是 AI？

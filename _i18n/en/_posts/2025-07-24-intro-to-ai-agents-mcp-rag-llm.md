@@ -13,8 +13,6 @@ thumbnail: /assets/img/igor-omilaev-eGGFZ5X2LnA-unsplash.jpg
 
 # 🧠 AI Agent Series (Part 1): Demystifying AI Agents, MCP, LLM, and RAG
 
-> Written by a seasoned software engineer, this article will help you truly understand AI, AI Agents, and the core technologies behind them in a clear and professional way.
-
 ---
 
 ## 🤖 What is AI?
