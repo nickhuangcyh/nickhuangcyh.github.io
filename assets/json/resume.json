@@ -81,7 +81,18 @@
       "startDate": "2010-09",
       "endDate": "2014-06",
       "score": "10",
-      "courses": ["Theory of Relativity"]
+      "courses": [
+        "C Programming",
+        "Embedded Systems",
+        "Digital Logic",
+        "Introduction to Networking",
+        "Network Practice",
+        "Discrete Mathematics",
+        "Calculus",
+        "Linear Algebra",
+        "Electronics",
+        "Electromagnetics"
+      ]
     }
   ],
   "awards": [
