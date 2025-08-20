@@ -13,21 +13,27 @@ thumbnail: /assets/img/matter.jpg
 
 ## 前言
 
-最近因工作需要，研究了一下如何從源碼 Build CHIPTool 的 Android apk。雖然官方文件提供了基本流程，但實際操作時會遇到一些沒提到的錯誤，我也因此多花了不少時間逐一解決。這篇文章就是要幫大家避開這些坑，也方便日後自己複習🙂
+最近因工作需要，研究了一下如何從源碼 Build CHIPTool 的 Android apk。官方文件雖然提供了基本流程，但實際操作時會遇到一些未提及的錯誤。
+
+這些問題讓我多花了不少時間逐一解決。因此，這篇文章將幫助大家避開這些常見陷阱。同時也方便日後自己複習查閱。
 
 ---
 
 ## 簡介
 
-Matter（原名 Project CHIP，Connected Home over IP）是一個開源連接標準，目的是讓智慧家庭設備之間的互通性與相容性更加流暢。這個標準由連接標準聯盟（CSA）發起，成員包含 Apple、Google、Amazon 和 Zigbee 等業界大廠。
+Matter（原名 Project CHIP，Connected Home over IP）是一個開源連接標準。其主要目的是提升智慧家庭設備之間的互通性與相容性。
 
-Matter 強調安全性、可用性與開發友善，支援 Thread 與 Wi-Fi 通訊協議，是打造跨品牌智慧家居的基礎。
+這個標準由連接標準聯盟（CSA）發起，成員包含 Apple、Google、Amazon 和 Zigbee 等業界大廠。Matter 的核心優勢在於強調安全性、可用性與開發友善性。
+
+它支援 Thread 與 Wi-Fi 等主流通訊協議，為打造跨品牌智慧家居生態系統奠定了重要基礎。
 
 ---
 
 ## 事前準備
 
-由於直接在本機環境 Build 容易打亂設定（例如 ANDROID_HOME、ANDROID_NDK_HOME），這邊推薦使用 CHIP 官方提供的 Docker image，避免環境汙染。
+直接在本機環境進行 Build 操作容易打亂現有設定，特別是 ANDROID_HOME、ANDROID_NDK_HOME 等重要環境變數。
+
+為了避免環境汙染問題，本文推薦使用 CHIP 官方提供的 Docker image。這種方式不僅能確保環境純淨，還能避免與既有開發環境產生衝突。
 
 ---
 
@@ -37,38 +43,46 @@ Matter 強調安全性、可用性與開發友善，支援 Thread 與 Wi-Fi 通�
 
 ---
 
-## Pull Docker Image
+## 下載 Docker Image
 
-這個步驟會花點時間，可以去喝杯咖啡。
+首先需要下載官方的 Docker image。這個步驟會需要一些時間，建議可以先去喝杯咖啡。
 
 ```bash
 docker pull ghcr.io/project-chip/chip-build-android:latest
 ```
 
+該 image 包含了所有必要的建置工具和預配置環境，大幅簡化了後續的設置步驟。
+
 ---
 
-## Run container
+## 啟動容器
+
+下載完成後，使用以下指令啟動 Docker 容器：
 
 ```bash
 docker run -it -v ~/workspace/connectedhomeip:/connectedhomeip ghcr.io/project-chip/chip-build-android:latest
 ```
 
-執行完後，我們就完成了一個乾淨、可用來 Build CHIPTool 的開發環境。
+這個指令會將本地的 `~/workspace/connectedhomeip` 目錄掛載到容器內的 `/connectedhomeip` 路徑。執行完成後，我們就獲得了一個乾淨且完整的 CHIPTool 建置環境。
 
 ---
 
-## 將目錄標示為安全，方便 git 操作
+## 設定 Git 安全目錄
+
+在容器環境中，Git 可能會將某些目錄視為不安全。為了順利進行後續的 Git 操作，需要將相關目錄標示為安全：
 
 ```bash
 git config --global --add safe.directory /connectedhomeip
 git config --global --add safe.directory /connectedhomeip/third_party/pigweed/repo
 ```
 
+這個設定確保我們能在容器內正常執行 Git 指令，避免權限相關的錯誤訊息。
+
 ---
 
-## 下載源碼與 submodules
+## 下載源碼與子模組
 
-資料量非常大，這步驟可能會跑一陣子，不妨先去處理其他事，或睡個午覺😂
+接下來需要下載 Matter 專案的完整源碼。由於 Matter 專案包含大量的第三方依賴，資料量相當龐大。
 
 ```bash
 git clone https://github.com/project-chip/connectedhomeip.git
@@ -76,11 +90,13 @@ cd connectedhomeip
 git submodule sync && git submodule update --init
 ```
 
+這個過程可能需要等待較長時間，建議可以先去處理其他事情。下載時間取決於網路速度，通常需要 30 分鐘到數小時不等。
+
 ---
 
-## 同意 Android SDK 的 licenses
+## 同意 Android SDK 授權條款
 
-若沒先同意 licenses，Build 過程會失敗並出現如下錯誤：
+在開始建置之前，必須先同意 Android SDK 的授權條款。如果跳過這個步驟，建置過程會失敗並出現以下錯誤訊息：
 
 ```bash
 > Failed to install the following Android SDK packages as some licences have not been accepted.
@@ -88,25 +104,25 @@ git submodule sync && git submodule update --init
 > platforms;android-31 Android SDK Platform 31
 ```
 
-為了避免這問題，我們先把路徑加入環境變數：
+為了解決這個問題，首先需要將 Android SDK 工具路徑加入環境變數：
 
 ```bash
 export PATH=$PATH:/opt/android/sdk/tools/bin
 ```
 
-然後同意所有 licenses：
+接著執行以下指令來同意所有必要的授權條款：
 
 ```bash
 sdkmanager --licenses
 ```
 
-過程中輸入 `y` or `yes` 即可。
+執行過程中，系統會詢問是否同意各項授權條款，輸入 `y` 或 `yes` 即可完成設定。
 
 ---
 
-## 檢查環境變數
+## 驗證環境變數
 
-使用官方 Docker image 最大的好處之一，就是 SDK 與 NDK 都已經配置好了，不用再手動設置：
+使用官方 Docker image 的一大優勢，在於 Android SDK 與 NDK 都已經預先配置完成。我們可以透過以下指令來確認環境變數是否設定正確：
 
 ```bash
 echo $ANDROID_HOME
@@ -116,60 +132,75 @@ echo $ANDROID_NDK_HOME
 # /opt/android/android-ndk-r23c
 ```
 
+這些路徑確認無誤後，就表示建置環境已經準備就緒，可以進入下一個階段。
+
 ---
 
-## Preparing for build
+## 建置前準備
 
-1. 切換到 Matter 專案目錄：
+在開始正式建置之前，還需要完成幾個重要的準備步驟。
+
+首先，切換到 Matter 專案的根目錄：
 
 ```bash
 cd /connectedhomeip
 ```
 
-2. 執行 bootstrap（首次必需）：
+接著執行 bootstrap 腳本來初始化建置環境。這個步驟對於首次建置是必要的：
 
 ```bash
 source scripts/bootstrap.sh
 ```
 
-這一步也會花一段時間。
+bootstrap 過程會下載並配置所有必要的建置工具和依賴項目。同樣地，這個步驟也需要一段時間來完成。
 
 ---
 
-## 使用官方 script 建構 Android CHIPTool
+## 建置 Android CHIPTool
 
-1. 執行 build script：
+現在可以開始執行實際的建置過程。使用官方提供的建置腳本來產生 CHIPTool APK：
 
 ```bash
 ./scripts/build/build_examples.py --target android-arm64-chip-tool build
 ```
 
-但跑到最後會出錯，訊息如下：
+### 解決常見建置錯誤
+
+在執行上述指令時，很可能會遇到以下錯誤：
 
 ```bash
 ninja: error: loading 'build.ninja': No such file or directory
 ```
 
-這應該是官方文件漏寫了部分步驟，我的解法是手動在目標目錄下執行以下指令來產生 `build.ninja`：
+這個問題在官方文件中並未提及，但可以透過手動產生 `build.ninja` 檔案來解決。
+
+首先，切換到建置輸出目錄：
 
 ```bash
 cd /connectedhomeip/out/android-arm64-chip-tool
+```
+
+然後執行 GN 工具來產生必要的建置檔案：
+
+```bash
 gn gen .
 ```
 
-接著回到專案根目錄：
+接著返回專案根目錄：
 
 ```bash
 cd ../..
 ```
 
-再執行一次 Build：
+最後重新執行建置指令：
 
 ```bash
 ./scripts/build/build_examples.py --target android-arm64-chip-tool build
 ```
 
-完成後你就可以在以下路徑找到 APK：
+### 取得建置結果
+
+建置完成後，您可以在以下路徑找到產生的 APK 檔案：
 
 ```
 out/android-arm64-chip-tool/outputs/apk/debug/app-debug.apk

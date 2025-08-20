@@ -50,11 +50,26 @@ thumbnail: /assets/img/design_patterns.jpg
 
 {% include figure.liquid path="assets/img/design_pattern_composite_pattern_uml_2.png" title="design_pattern_composite_pattern_uml_2" %}
 
-- **Component (組件介面)**：定義統一的操作介面，單一檔案與目錄都需實作此介面。
-- **Leaf (葉子節點)**：表示檔案，不能再包含子節點。
-- **Composite (組合節點)**：表示目錄，可包含子節點（檔案或子目錄），並實作遞迴操作的邏輯。
+### Composite Pattern 的三個核心角色：
 
-將 Composite Pattern 套用到我們的應用吧
+**1. Component (組件介面)**
+- 定義所有組件（葉子和組合）的通用介面
+- 對客戶端提供一致的操作方式
+- 在我們的檔案系統中，就是 `FileSystemComponent`
+
+**2. Leaf (葉子節點)**
+- 代表樹狀結構中的末端節點，不能再包含其他組件
+- 實現 Component 介面的基本行為
+- 在我們的例子中，就是單一檔案 `File`
+
+**3. Composite (組合節點)**
+- 代表可以包含子組件的容器節點
+- 實現 Component 介面，並將操作委託給子組件
+- 這就是我們的目錄 `Directory`，它可以包含檔案和子目錄
+
+### 套用到我們的檔案系統
+
+現在讓我們將 Composite Pattern 應用到檔案系統的設計中：
 
 {% include figure.liquid path="assets/img/design_pattern_composite_pattern_uml_3.png" title="design_pattern_composite_pattern_uml_3" %}
 

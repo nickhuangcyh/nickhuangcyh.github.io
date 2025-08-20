@@ -15,7 +15,9 @@ thumbnail: /assets/img/design_patterns.jpg
 
 ## 前言
 
-這次的 Pattern 讓我想到以前做過的一個 App，但當時還沒有學習到 Pattern，所以沒有用 Pattern 來處理，現在發現這個功能很適合套用 prototype pattern
+在創造型設計模式（Creational Design Patterns）的學習旅程中，我們已經探索了 Factory Method、Abstract Factory、Builder 等多種模式。今天要介紹的是原型模式（Prototype Pattern），這個模式主要解決物件複製的問題。
+
+這次的 Pattern 讓我想到以前開發過的一個音樂燈光秀編輯 App。當時還沒有學習到設計模式，所以沒有用 Pattern 來處理相關功能。現在回想起來，發現那個功能場景很適合套用 Prototype Pattern。
 
 這是一個用來編輯音樂燈光秀的 App，有興趣的讀者可以下載玩玩看 🙂
 
@@ -23,52 +25,66 @@ thumbnail: /assets/img/design_patterns.jpg
 
 {% include figure.liquid path="assets/img/taptap_app_edit.png" title="taptap_app_edit" %}
 
-## 需求
+## 需求背景
 
-今天收到了客人的需求，客人反應編輯完一條燈光還要編輯另外六條好浪費時間，能不能新增 Copy & Paste 的功能，加快編輯以節省時間，如下圖
+在開發音樂燈光秀 App 的過程中，收到了客戶的反饋需求。客戶表示：編輯完一條燈光序列後，還需要重新編輯另外六條類似的燈光序列，這個過程相當耗時。
+
+客戶希望能夠新增 Copy & Paste 的功能，透過複製已編輯好的燈光序列，快速產生新的序列並進行微調，大幅節省編輯時間。具體的操作流程如下圖所示：
 
 {% include figure.liquid path="assets/img/taptap_app_copy.png" title="taptap_app_copy" %}
 
 {% include figure.liquid path="assets/img/taptap_app_paste.png" title="taptap_app_paste" %}
 
-## 物件導向分析 (OOA)
+## 初步設計分析 (OOA)
 
-理解需求後，讓我們來快速實作物件導向分析吧!
+理解需求後，讓我們進行物件導向分析，設計一個簡單直觀的解決方案。
 
 {% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_1.png" title="design_pattern_prototype_pattern_uml_1" %}
 
-當我們需要複製 `LightShowData` 時，只需要同樣的 jsonObject 資料重新 new 一個 `LightShowData` 即可複製一份
+在最直接的做法中，當我們需要複製 `LightShowData` 時，可以使用相同的 jsonObject 資料重新建立一個新的 `LightShowData` 實體。這種方式看似簡單，但實際上會帶來一些問題。
 
-## 察覺 Forces
+## 問題分析 (Forces)
 
-來看看上面這樣的設計會有哪些問題
+透過初步分析，我們可以發現上述簡單設計存在以下幾個關鍵問題：
 
-1. 如果我們的 constructor 很複雜，參數非常多，那麼重新 new 一個實體會需要知道很多細節。
-2. 如果 constructor 創建實體的過程，是很耗時複雜的計算，重新 new 一個實體會讓創建過程效率變差。
+### 複雜度問題
+如果 `LightShowData` 的建構子（constructor）變得複雜，需要傳入大量參數，那麼每次複製都需要了解所有內部實作細節。這違反了封裝原則，增加了程式碼的耦合度。
 
-## 套用 Prototype Pattern ( Solution ) 得到新的 Context ( Resulting Context )
+### 效能問題
+假設建構子在創建實體的過程中需要進行複雜的計算或資料處理（如音樂節拍分析、燈光效果運算等），那麼每次重新 new 一個實體都會重複執行這些耗時的操作，嚴重影響程式效能。
 
-做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Prototype Pattern 解決這個問題
+這些問題促使我們需要尋找一個更優雅的解決方案。
 
-先來看一下 Prototype Pattern 的 UML
+## 原型模式解決方案 (Prototype Pattern)
+
+識別出問題癥結後，我們可以套用 Prototype Pattern 來解決這些挑戰。原型模式的核心思想是「透過複製現有物件來創建新物件」，而不是重新建構。
+
+### 模式結構
+讓我們先來看一下 Prototype Pattern 的標準 UML 結構：
 
 {% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_2.png" title="design_pattern_prototype_pattern_uml_2" %}
 
-原型模式主要包含以下兩個角色：
+### 核心角色說明
 
-1. **Prototype（原型）**：這是一個抽象介面，定義了複製自身的方法。在實體實現中，這個介面可以是一個抽象類或者實體類，主要目的是提供一個複製自己的方法。這使得在不需要知道物件實體類別的情況下也能創建物件的副本。
+原型模式主要包含以下兩個關鍵角色：
 
-2. **Concrete Prototype（實體原型）**：實現或繼承自原型介面的類。這個類實現了在原型介面中定義的複製（clone）方法，用於創建自身的一個精確副本。在實體實現時，這個類需要提供一個方法來複製自身的屬性，確保新創建的物件與原有物件在狀態上是相同的，但在記憶體中是獨立的。
+#### 1. Prototype（原型介面）
+這是一個抽象介面或抽象類，定義了複製自身的標準方法（通常是 `clone()` 方法）。這個介面的主要目的是提供一個統一的複製規範，讓用戶端可以在不需要知道具體物件類別的情況下創建物件副本。
 
-我們來將 LightShow App 套用 Prototype Pattern
+#### 2. Concrete Prototype（具體原型）
+實現原型介面的具體類別。這個類別必須實現 `clone()` 方法，負責創建自身的精確副本。在實作時，需要確保新創建的物件與原物件在狀態上完全相同，但在記憶體中是完全獨立的兩個實體。
+
+### 套用到燈光秀應用程式
+
+現在讓我們將 Prototype Pattern 套用到 LightShow App 的設計中：
 
 {% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_3.png" title="design_pattern_prototype_pattern_uml_3" %}
 
-如此我們就得到了一個全新的 `Resulting Context`
+透過引入原型模式，我們重新設計了系統架構。`LightShowData` 現在實現了 `LightShowDataPrototype` 介面，提供了 `clone()` 方法來進行高效的物件複製。這種設計讓我們得到了一個更加靈活且高效的新架構。
 
-## 物件導向程式設計 (OOP)
+## 程式實作 (OOP)
 
-再來我們就可以開始進行物件導向程式開發
+理解了設計結構後，接下來我們進行具體的程式碼實作。讓我們逐步建構出完整的原型模式實現：
 
 [LightShowDataPrototype]
 
@@ -127,8 +143,22 @@ fun main() {
 }
 ```
 
-我們可以發現，透過 clone() 方法複製，就可以不重複執行下面的程式碼，提升程式碼效能了
+### 效能優勢分析
+
+透過上面的實作，我們可以清楚看到原型模式的優勢。使用 `clone()` 方法進行複製時，可以避免重複執行耗時的初始化邏輯：
 
 ```kotlin
 originalDataList.subList(1, originalDataList.size).map { it * 2 }
 ```
+
+這行程式碼代表複雜的燈光資料處理邏輯。在原本的設計中，每次創建新物件都需要重新計算。但透過原型模式，我們只需要在第一次建立時計算一次，之後的複製都能直接重用已處理的資料，大幅提升程式效能。
+
+## 模式總結
+
+原型模式是創造型設計模式的最後一個重要成員。它透過物件複製的方式解決了複雜物件創建的效能問題，特別適用於：
+
+- 物件創建成本較高的場景
+- 需要避免複雂建構子參數的情況
+- 需要創建相似物件的場合
+
+至此，我們已經完成了所有創造型設計模式的學習。下一階段將進入結構型設計模式（Structural Design Patterns）的探索，學習如何優雅地組合物件和類別，創建更靈活的系統架構。

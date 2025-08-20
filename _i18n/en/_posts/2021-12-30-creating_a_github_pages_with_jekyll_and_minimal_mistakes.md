@@ -13,34 +13,43 @@ thumbnail: /assets/img/alfons-morales-YLSwjSy7stw-unsplash.jpg
 
 ## Why Start a Technical Blog?
 
-In my professional work, I frequently gain inspiration and help from technical websites and blog articles. To document my learning, review knowledge, and help others, I decided to create my own technical blog.
+In my professional work, I frequently gain inspiration and help from technical websites and blog articles. These resources have solved countless problems for me over the years.
+
+To document my learning, review knowledge, and help others, I decided to create my own technical blog.
+
+### Benefits of Technical Blogging
 
 A well-maintained blog offers several benefits:
 
-- **Knowledge Documentation**: Preserve your learning journey
-- **Community Building**: Share insights with fellow developers
+- **Knowledge Documentation**: Preserve your learning journey and insights
+- **Community Building**: Share insights with fellow developers worldwide
 - **Career Growth**: Establish thought leadership in your field
 - **Skill Development**: Improve writing and communication skills
+- **Learning Reinforcement**: Teaching others helps solidify your own understanding
 
 ---
 
 ## Why Choose Jekyll + Minimal Mistakes?
 
-### Jekyll Advantages:
+### Why Jekyll?
+
+Jekyll is a static site generator that offers several key advantages:
 
 1. **Markdown Support**: Write content in Markdown, automatically converted to HTML
-2. **Active Community**: Large ecosystem with extensive documentation
+2. **Active Community**: Large ecosystem with extensive documentation and support
 3. **Highly Customizable**: Complete control over design and functionality
-4. **Static Site Generation**: Fast loading times and excellent SEO
-5. **Git Integration**: Version control for your entire website
+4. **Performance**: Fast loading times and excellent SEO out of the box
+5. **Developer-Friendly**: Git integration means version control for your entire website
 
-### Minimal Mistakes Theme Features:
+### Why Minimal Mistakes Theme?
 
-1. **9k+ GitHub Stars**: Widely adopted and well-maintained
-2. **Dark Mode Support**: Modern user experience
-3. **Image Zoom**: Medium-like image viewing experience
-4. **Responsive Design**: Works perfectly on all devices
-5. **SEO Optimized**: Built-in SEO features and structured data
+Minimal Mistakes is one of the most popular Jekyll themes for good reason:
+
+1. **Proven Track Record**: 9k+ GitHub Stars and widely adopted
+2. **Modern Features**: Dark mode support and responsive design
+3. **User Experience**: Medium-like image viewing experience
+4. **SEO Ready**: Built-in SEO features and structured data
+5. **Well-Maintained**: Regular updates and active community support
 
 > I previously used Octopress, but since it's no longer maintained and has limited themes, I chose Jekyll to rebuild my blog 👉 [Octopress](http://octopress.org/)
 
@@ -50,25 +59,35 @@ Now, let's build your professional blog step by step!
 
 ## Why Use GitHub Pages?
 
-GitHub Pages is **free**, requires no server management or SSL certificates, and automatically builds and deploys your site with just one push. You can later bind your own domain and SSL certificate.
+GitHub Pages is the perfect hosting solution for Jekyll sites. It's completely **free** and integrates seamlessly with your development workflow.
+
+### What Makes GitHub Pages Special?
+
+Unlike traditional web hosting, GitHub Pages requires no server management or SSL certificates. It automatically builds and deploys your site with just one push to your repository.
 
 **Key Benefits:**
 
-- **Zero Cost**: Completely free hosting
-- **Automatic Deployment**: Push to trigger builds
-- **SSL Included**: HTTPS by default
-- **Custom Domains**: Use your own domain name
-- **Version Control**: Full Git integration
+- **Zero Cost**: Completely free hosting with generous bandwidth
+- **Automatic Deployment**: Push to trigger builds - no manual deployment needed
+- **Security Built-in**: HTTPS by default for all sites
+- **Custom Domains**: Easy setup for your own domain name
+- **Developer-Friendly**: Full Git integration and version control
+- **Reliable**: Backed by GitHub's infrastructure
 
 ---
 
 ## Prerequisites
 
-### Register a GitHub Account
+Before we start building your Jekyll blog, let's make sure you have all the necessary tools installed.
 
+### 1. Register a GitHub Account
+
+If you don't already have one, create a free GitHub account:
 👉 [Register here](https://github.com)
 
-### Install Git for Version Control
+### 2. Install Git for Version Control
+
+Git is essential for managing your blog's source code and deploying to GitHub Pages.
 
 ```bash
 # macOS
