@@ -1,158 +1,143 @@
 ---
 layout: post
-title: 設計模式 22：備忘錄模式（Memento Pattern）完整實戰與 Undo/Redo 範例
-日期: 2024-12-22 14:00:00 +0800
-description: 精通備忘錄模式，學會實作狀態快照、歷史管理、強大 Undo/Redo 與資料復原。圖文範例，適合軟體工程師與架構師。
-tags:
-  [
-    Memento Pattern,
-    Design Patterns,
-    Undo Redo,
-    State Recovery,
-    Object-Oriented Design,
-    Software Architecture,
-    Kotlin,
-    Programming,
-    Behavioral Patterns,
-    History Management,
-  ]
-categories: [Design Pattern, Software Engineering, Programming]
+title: Design Pattern (22) - Memento Pattern (備忘錄模式)
+date: 2024-12-22 14:00:00 +0800
+description: 了解備忘錄模式如何幫助我們實現狀態恢復，像是常見的 Ctrl+Z 功能，讓我們回到之前的操作狀態。
+tags: [Memento Pattern]
+categories: [Design Pattern]
 toc:
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 📁 **設計模式系列完整程式碼下載**：[design_pattern repository](https://github.com/nickhuangcyh/design_pattern)
+> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
 
----
+## 需求
 
-## 🎯 備忘錄模式是什麼？
+我們的任務是設計一個文字編輯器，需求如下：
 
-**備忘錄模式（Memento Pattern）** 是一種行為型設計模式，能在不暴露物件內部結構的前提下，捕捉並還原其狀態。常用於實作 Undo/Redo、狀態復原、歷史管理等功能。
+- 使用者可以輸入文字，並隨時按下 `Ctrl+Z` 回復上一步。
+- 系統需要保存歷史狀態以供回復。
+- 客戶端不需要了解狀態保存的實現細節，只需使用一個簡單的回復操作即可。
 
-**主要優點：**
+## 物件導向分析 (OOA)
 
-- ✅ 狀態復原：輕鬆還原先前狀態
-- ✅ 封裝性：內部狀態對外隱藏
-- ✅ Undo/Redo 支援：實現強大歷史功能
-- ✅ 易於維護：職責分離
-- ✅ 易於擴展：可輕鬆新增狀態型別
+理解需求後，讓我們來快速實作物件導向分析吧!
 
----
+{% include figure.liquid path="assets/img/design_pattern_memento_pattern_uml_1.png" title="design_pattern_memento_pattern_uml_1" %}
 
-## 🚀 實務案例：文字編輯器 Undo/Redo
+### 察覺 Forces
 
-設計一個「文字編輯器」，需求如下：
+在未使用設計模式的情況下，我們可能面臨以下挑戰：
 
-- 使用者可輸入文字並支援 Undo（Ctrl+Z）
-- 系統需保存歷史以便復原
-- Client 不需知道狀態管理細節
+1. **資料喪失風險 (Data Loss Risk)**：
+   - 如果我們僅保留當前狀態，將無法回復到之前的狀態。
 
-**商業規則：**
+2. **高耦合性 (High Coupling)**：
+   - 客戶端需要直接操作狀態管理邏輯，導致複雜性增加。
 
-- 所有狀態變化由 Caretaker 管理
-- Originator 負責建立與還原備忘錄
-- Client 只需操作 Undo/Redo
+3. **難以擴展 (Hard to Extend)**：
+   - 新增功能或改變狀態保存方式時，可能需要修改大量程式碼。
 
----
+## 套用 Memento Pattern (Solution) 得到新的 Context (Resulting Context)
 
-## 🧩 物件導向分析（OOA）
+做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Memento Pattern 解決這個問題
 
-{% include figure.liquid path="assets/img/design_pattern_memento_pattern_uml_1.png" title="Memento Pattern - Problem Analysis" %}
+先來看一下 Memento Pattern 的 UML
 
-**核心挑戰：**
+{% include figure.liquid path="assets/img/design_pattern_memento_pattern_uml_2.png" title="design_pattern_memento_pattern_uml_2" %}
 
-1. 資料遺失風險：無法復原先前狀態
-2. 高耦合：Client 需自行管理狀態邏輯
-3. 擴展困難：新增狀態型別不易
+備忘錄模式引入了三個角色：
 
----
+1. **Originator (發起者)**：保存當前狀態到備忘錄，或從備忘錄中恢復狀態。
+2. **Memento (備忘錄)**：存儲 Originator 的內部狀態。
+3. **Caretaker (管理者)**：負責保存和恢復備忘錄，但不直接操作其內容。
 
-## 💡 備忘錄模式解決方案
+將 Memento Pattern 套用到我們的應用吧
 
-引入備忘錄模式，能捕捉並還原物件狀態，且不暴露內部細節。
+{% include figure.liquid path="assets/img/design_pattern_memento_pattern_uml_3.png" title="design_pattern_memento_pattern_uml_3" %}
 
-{% include figure.liquid path="assets/img/design_pattern_memento_pattern_uml_2.png" title="Memento Pattern - General Structure" %}
+## 物件導向程式設計 (OOP)
 
-**組件說明：**
-
-- Originator：建立與還原狀態
-- Memento：儲存狀態
-- Caretaker：管理歷史與復原
-
----
-
-## 🛠️ 實作：文字編輯器 Undo/Redo
-
-{% include figure.liquid path="assets/img/design_pattern_memento_pattern_uml_3.png" title="Memento Pattern - Text Editor Example" %}
-
-### 1. Originator
+### Originator
 
 ```kotlin
 class TextEditor {
     private var text: String = ""
-    fun type(newText: String) { text += newText }
+
+    fun type(newText: String) {
+        text += newText
+    }
+
     fun getText(): String = text
+
     fun save(): Memento = Memento(text)
-    fun restore(memento: Memento) { text = memento.getText() }
-    data class Memento(private val state: String) { fun getText(): String = state }
+
+    fun restore(memento: Memento) {
+        text = memento.getText()
+    }
+
+    data class Memento(private val state: String) {
+        fun getText(): String = state
+    }
 }
 ```
 
-### 2. Caretaker
+### Caretaker
 
 ```kotlin
 class History {
     private val mementos = mutableListOf<TextEditor.Memento>()
-    fun save(memento: TextEditor.Memento) { mementos.add(memento) }
-    fun undo(): TextEditor.Memento? = if (mementos.isNotEmpty()) mementos.removeAt(mementos.size - 1) else null
+
+    fun save(memento: TextEditor.Memento) {
+        mementos.add(memento)
+    }
+
+    fun undo(): TextEditor.Memento? {
+        if (mementos.isNotEmpty()) {
+            return mementos.removeAt(mementos.size - 1)
+        }
+        return null
+    }
 }
 ```
 
-### 3. 用戶端程式碼
+### Client
 
 ```kotlin
 fun main() {
     val textEditor = TextEditor()
     val history = History()
+
+    // Typing string
     textEditor.type("Hello")
     history.save(textEditor.save())
+
     textEditor.type(", World")
     history.save(textEditor.save())
+
     textEditor.type("! This is Memento Pattern.")
-    println("目前文字: ${textEditor.getText()}")
+    println("Current Text：${textEditor.getText()}") // Output: Hello, World! This is Memento Pattern.
+
+    // Pressed Ctrl+Z
     textEditor.restore(history.undo()!!)
-    println("Undo 復原: ${textEditor.getText()}")
+    println("Excute undo Text：${textEditor.getText()}") // Output: Hello, World!
+
+    // Pressed Ctrl+Z again
     textEditor.restore(history.undo()!!)
-    println("Undo 復原: ${textEditor.getText()}")
+    println("Excute undo Text：${textEditor.getText()}") // Output: Hello
 }
 ```
 
-**預期輸出：**
+### Output
 
+```bash
+Current Text： Hello, World! This is Memento Pattern.
+Excute undo Text： Hello, World!
+Excute undo Text： Hello
 ```
-目前文字: Hello, World! This is Memento Pattern.
-Undo 復原: Hello, World!
-Undo 復原: Hello
-```
 
----
+## 結論
 
-## 🏆 結論
-
-備忘錄模式讓你能彈性實作狀態復原、Undo/Redo、歷史管理等功能，提升系統可靠性與使用者體驗。
-
-**適用場景：**
-
-- 文字編輯器 Undo/Redo
-- 遊戲存檔系統
-- 工作流引擎（回滾）
-- 設定檔管理
-- 有狀態的 UI 元件
-
-**設計原則：**
-
-- 單一職責原則（SRP）：狀態管理分離
-- 開放封閉原則（OCP）：可輕鬆擴展新狀態
-
-立即將備忘錄模式應用於你的專案，讓系統更可靠、易於維護！
+透過備忘錄模式，我們成功實現了文字編輯器的狀態恢復功能，讓使用者能夠輕鬆地回復到之前的操作狀態。這種模式廣泛應用於文字處理器、遊戲保存系統以及其他需要狀態恢復的場景。

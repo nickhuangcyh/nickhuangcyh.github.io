@@ -1,134 +1,166 @@
 ---
 layout: post
-title: "設計模式 17：代理模式（Proxy Pattern）——存取控制、快取與分散式系統效能最佳化"
+title: Design Pattern (17) - Proxy Pattern (代理模式)
 date: 2024-12-15 21:30:00 +0800
-description: "精通代理模式，學會透過代理物件控制存取、實現快取與安全，優化分散式系統效能。以影音串流、API、資料庫等場景為例，圖文範例與進階應用。"
-tags:
-  [
-    Proxy Pattern,
-    Design Patterns,
-    Access Control,
-    Performance Optimization,
-    Object-Oriented Design,
-    Software Architecture,
-    Kotlin,
-    Programming,
-    Structural Patterns,
-    Caching,
-    Security,
-  ]
-categories: [Design Pattern, Software Engineering, Programming]
+description: 了解代理模式如何通過控制對物件的訪問來提升系統的安全性、效能及靈活性。
+tags: [Proxy Pattern]
+categories: [Design Pattern]
 toc:
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 📁 **下載完整設計模式系列程式碼**：[design_pattern repository](https://github.com/nickhuangcyh/design_pattern)
+> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
 
----
+## 需求
 
-## 什麼是代理模式（Proxy Pattern）？
+我們的任務是建立一個影片播放系統，需求如下：
 
-代理模式是一種結構型設計模式，為其他物件提供一個代理或替身，以控制對其的存取。代理可作為中介，實現快取、權限控管、延遲載入等功能，常用於分散式系統、資源管理與安全場景。
+- 應用能播放多個影片，但避免每次都重複下載相同的影片。
+- 影片需要在用戶第一次訪問時下載，之後從快取中取得以節省資源。
+- 提供一個透明的介面，無需讓客戶端知道影片是透過代理取得的。
 
-**主要優點：**
+## 物件導向分析 (OOA)
 
-- 存取控制：控管敏感物件的存取權限
-- 效能優化：實現快取、延遲載入
-- 資源管理：高效管理昂貴資源
-- 透明性：客戶端無感知代理存在
-- 安全性：加入認證與授權層
+理解需求後，讓我們來快速實作物件導向分析吧！
 
----
+{% include figure.liquid path="assets/img/design_pattern_proxy_pattern_uml_1.png" title="design_pattern_proxy_pattern_uml_1" %}
 
-## 實務情境：影音串流系統
+## 察覺 Forces
 
-設計一個影音串流系統，需求如下：
+在未使用設計模式的情況下，我們可能面臨以下挑戰：
 
-- 支援多種影音來源（YouTube、Vimeo、本地檔案）
-- 實現智慧快取，避免重複下載
-- 客戶端介面統一，無需關心快取邏輯
-- 資源最佳化，減少頻寬與載入時間
-- 易於擴展新來源與快取策略
+1. **高頻寬消耗 (High Bandwidth Usage)**：
+   - 如果每次播放影片都重新下載，將導致不必要的頻寬浪費。
 
----
+2. **延遲時間 (High Latency)**：
+   - 每次下載影片會增加播放前的等待時間，影響用戶體驗。
 
-## 物件導向分析（OOA）
+3. **客戶端耦合 (Client Coupling)**：
+   - 如果客戶端需要處理影片的下載邏輯，會增加不必要的複雜性。
 
-{% include figure.liquid path="assets/img/design_pattern_proxy_pattern_uml_1.png" title="Proxy Pattern - 問題分析" %}
+## 套用 Proxy Pattern (Solution) 得到新的 Context (Resulting Context)
 
-### 設計痛點
+做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Proxy Pattern 解決這個問題。
 
-1. 頻寬浪費：重複下載同一影片，資源耗損
-2. 高延遲：每次存取都需完整下載，體驗差
-3. 客戶端耦合：需處理下載邏輯，維護困難
+Proxy Pattern 提供了解決方案，通過引入 Proxy 物件來控制對核心物件的訪問，實現快取功能並提升效能。
 
----
+先來看一下 Proxy Pattern 的 UML：
 
-## 代理模式解決方案
+{% include figure.liquid path="assets/img/design_pattern_proxy_pattern_uml_2.png" title="design_pattern_proxy_pattern_uml_2" %}
 
-{% include figure.liquid path="assets/img/design_pattern_proxy_pattern_uml_2.png" title="Proxy Pattern - 一般結構" %}
+以下是 Proxy Pattern 的主要角色：
 
-### 組成元件
+- **Subject (主題介面)**：定義核心物件與代理物件的共同介面。
+- **RealSubject (具體主題)**：核心物件，負責實際下載與播放影片。
+- **Proxy (代理)**：代理物件，控制對核心物件的訪問，實現快取功能。
 
-1. 主體介面（Subject）：定義真實物件與代理的共用介面
-2. 真實主體（Real Subject）：實際執行工作的物件
-3. 代理（Proxy）：控制存取並加入額外功能
-4. 客戶端（Client）：只與主體介面互動
+將 Proxy Pattern 套用到我們的應用吧
 
-**優點：**
+{% include figure.liquid path="assets/img/design_pattern_proxy_pattern_uml_3.png" title="design_pattern_proxy_pattern_uml_3" %}
 
-- 智慧快取，避免重複操作
-- 存取控管，提升安全性
-- 資源最佳化，提升效能
-- 介面統一，客戶端無需感知代理
+## 物件導向程式設計 (OOP)
 
----
+[Subject: VideoPlayer]
 
-## 實作：影音串流系統
+```kotlin
+interface VideoPlayer {
+    fun download(name: String): String
+    fun play(data: String)
+}
+```
 
-（此處保留原有 UML、Kotlin 範例，僅將說明與註解翻譯為中文）
+[RealSubject: YoutubeVideoPlayer]
 
----
+```kotlin
+class YoutubeVideoPlayer : VideoPlayer {
+    override fun download(name: String): String {
+        println("Downloading video from YouTube: $name")
+        // 模擬下載結果返回的影片資料
+        return "VideoData($name)"
+    }
 
-## 代理模式 vs 其他做法
+    override fun play(data: String) {
+        println("Playing video: $data")
+    }
+}
+```
 
-| 做法       | 優點                         | 缺點                                 |
-| ---------- | ---------------------------- | ------------------------------------ |
-| 代理模式   | 存取控管、效能優化、介面統一 | 複雜度提升、潛在效能損耗、除錯較難   |
-| 直接存取   | 實作簡單、無額外開銷、易除錯 | 無存取控管、無快取、耦合高           |
-| 裝飾者模式 | 動態行為擴充、多層裝飾       | 無存取控管、目的不同（行為 vs 存取） |
-| 外觀模式   | 介面簡化、子系統封裝         | 無存取控管、目的不同（介面 vs 存取） |
+[Proxy: ProxyVideoPlayer]
 
----
+```kotlin
+class ProxyVideoPlayer(
+    private val player: YoutubeVideoPlayer
+) : VideoPlayer {
 
-## 什麼時候用代理模式？
+    private val cacheVideoList = mutableMapOf<String, String>()
 
-**適合：**
+    override fun download(name: String): String {
+        return if (cacheVideoList.containsKey(name)) {
+            println("Fetching video from cache: $name")
+            cacheVideoList[name]!!
+        } else {
+            println("First time download for: $name")
+            val videoData = player.download(name)
+            cacheVideoList[name] = videoData
+            videoData
+        }
+    }
 
-- 遠端存取（RMI、Web 服務、分散式系統）
-- 虛擬代理（延遲載入昂貴資源）
-- 保護代理（存取控管與安全）
-- 快取代理（效能最佳化）
-- 日誌與監控（存取紀錄與分析）
+    override fun play(data: String) {
+        player.play(data)
+    }
+}
+```
 
-**不適合：**
+[Client: VideoPlayerManager]
 
-- 簡單物件存取（無需額外功能）
-- 極度效能敏感（代理開銷）
-- 強耦合需求（需直接存取）
-- 簡單快取（可用內建快取機制）
+```kotlin
+class VideoPlayerManager(private val player: VideoPlayer) {
+    fun playVideo(name: String) {
+        println("Request to play video: $name")
+        val videoData = player.download(name)
+        player.play(videoData)
+    }
+}
 
----
+fun main() {
+    // Using ProxyVideoPlayer
+    val youtubePlayer = YoutubeVideoPlayer()
+    val proxyPlayer = ProxyVideoPlayer(youtubePlayer)
+    val manager = VideoPlayerManager(proxyPlayer)
 
-## 進階應用：保護代理、遠端代理、智慧代理
+    // Play video
+    manager.playVideo("funny_cats.mp4")
+    manager.playVideo("funny_cats.mp4") // using cache
+    manager.playVideo("epic_fail.mp4")
+    manager.playVideo("funny_cats.mp4") // using cache
+}
+```
 
-（此處保留原有進階代理、Kotlin 範例，僅將說明與註解翻譯為中文）
+[Output]
 
----
+```bash
+Request to play video: funny_cats.mp4
+First time download for: funny_cats.mp4
+Downloading video from YouTube: funny_cats.mp4
+Playing video: VideoData(funny_cats.mp4)
+
+Request to play video: funny_cats.mp4
+Fetching video from cache: funny_cats.mp4
+Playing video: VideoData(funny_cats.mp4)
+
+Request to play video: epic_fail.mp4
+First time download for: epic_fail.mp4
+Downloading video from YouTube: epic_fail.mp4
+Playing video: VideoData(epic_fail.mp4)
+
+Request to play video: funny_cats.mp4
+Fetching video from cache: funny_cats.mp4
+Playing video: VideoData(funny_cats.mp4)
+```
 
 ## 結論
 
-代理模式是存取控制、效能優化與安全管理的關鍵設計模式。無論是影音串流、API、資料庫、檔案系統，代理模式都能有效提升系統彈性與可維護性。
-
-> 歡迎收藏本系列，持續關注更多設計模式與軟體架構實戰！
+透過 **Proxy Pattern**，我們成功實現了影片快取的功能，解決了頻寬消耗與延遲時間過長的問題。此外，代理物件與核心物件共享相同的介面，對客戶端保持透明性，進一步降低耦合性。此模式特別適用於需要控制對資源訪問的場景，例如遠端代理、安全代理與智慧代理，為系統提供了靈活性與可擴展性。

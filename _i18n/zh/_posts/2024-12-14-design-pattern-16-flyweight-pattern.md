@@ -1,131 +1,149 @@
 ---
 layout: post
-title: "設計模式 16：享元模式（Flyweight Pattern）——大規模物件共享與效能最佳化實戰"
+title: Design Pattern (16) - Flyweight Pattern (享元模式)
 date: 2024-12-14 15:00:00 +0800
-description: "精通享元模式，學會透過物件共享大幅降低記憶體用量，優化效能，打造高效能大規模系統。以森林渲染、遊戲、圖形處理等場景為例，圖文範例與進階應用。"
-tags:
-  [
-    Flyweight Pattern,
-    Design Patterns,
-    Memory Optimization,
-    Object-Oriented Design,
-    Software Architecture,
-    Kotlin,
-    Programming,
-    Structural Patterns,
-    Forest Rendering,
-    Performance,
-  ]
-categories: [Design Pattern, Software Engineering, Programming]
+description: 探索享元模式如何透過共享技術有效減少記憶體使用，提升應用效能。
+tags: [Flyweight Pattern]
+categories: [Design Pattern]
 toc:
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 📁 **下載完整設計模式系列程式碼**：[design_pattern repository](https://github.com/nickhuangcyh/design_pattern)
+> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
 
----
+## 需求
 
-## 什麼是享元模式（Flyweight Pattern）？
+假設我們正在開發一個森林場景的渲染系統，該系統需要顯示數百棵甚至數千棵樹木。
 
-享元模式是一種結構型設計模式，透過物件共享，將共用狀態（內部狀態）與唯一狀態（外部狀態）分離，讓大量相似物件能有效共用記憶體，適合大規模物件管理與效能優化。
+每棵樹包含兩類資料：
 
-**主要優點：**
+1. 內部狀態 (Intrinsic State)：不隨環境改變的資料，例如樹的種類、顏色、紋理等。
+2. 外部狀態 (Extrinsic State)：因環境而異的資料，例如樹的座標 (x, y)。
 
-- 記憶體效率：大幅降低物件數量與用量
-- 效能最佳化：加速物件建立與操作
-- 可擴展性：輕鬆管理大量物件
-- 資源管理：集中控管共用資源
-- 物件池化：重複利用物件
+如果為每棵樹都建立完整的物件，將導致記憶體消耗過大。因此，我們需要一種共享內部狀態的方式來優化記
 
----
+## 物件導向分析 (OOA)
 
-## 實務情境：森林渲染系統
+理解需求後，讓我們來快速實作物件導向分析吧！
 
-設計一個森林渲染系統，需求如下：
+{% include figure.liquid path="assets/img/design_pattern_flyweight_pattern_uml_1.png" title="design_pattern_flyweight_pattern_uml_1" %}
 
-- 渲染數千棵樹，支援多種樹型（橡樹、松樹、楓樹等）
-- 高效記憶體利用，避免重複儲存樹型資料
-- 即時渲染效能佳，適合遊戲、模擬等場景
-- 易於擴展新樹型與屬性
+## 察覺 Forces
 
----
+在設計階段，我們注意到以下設計難題：
 
-## 物件導向分析（OOA）
+1. 大量重複資料：每棵樹都包含相同的種類、顏色和紋理資料。
+2. 性能問題：對於數千棵樹的場景渲染，過多的物件會導致記憶體不足或性能瓶頸。
+3. 共享與獨立的平衡：如何在共享資料的同時，保留每棵樹的獨立外部狀態。
 
-{% include figure.liquid path="assets/img/design_pattern_flyweight_pattern_uml_1.png" title="Flyweight Pattern - 問題分析" %}
+為解決這些問題，我們採用了享元模式。
 
-### 設計痛點
+## 套用 Flyweight Pattern (Solution) 得到新的 Context (Resulting Context)
 
-1. 記憶體爆炸：每棵樹都建立獨立物件，浪費資源
-2. 效能下降：大量物件建立與管理拖慢系統
-3. 資源浪費：相同樹型資料重複儲存
+做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Flyweight Pattern 解決這個問題。
 
----
+先來看一下 flyweight Pattern 的 UML：
 
-## 享元模式解決方案
+{% include figure.liquid path="assets/img/design_pattern_flyweight_pattern_uml_2.png" title="design_pattern_flyweight_pattern_uml_2" %}
 
-{% include figure.liquid path="assets/img/design_pattern_flyweight_pattern_uml_2.png" title="Flyweight Pattern - 一般結構" %}
+- **Flyweight (享元介面)**：定義共享物件的操作。
+- **ConcreteFlyweight (具體享元類別)**：實作共享物件的功能，儲存可以共享的狀態。
+- **FlyweightFactory (享元工廠)**：用於創建和管理共享物件，確保相同的物件只創建一次。
+- **Client (客戶端)**：使用享元物件，並管理不能共享的狀態。
 
-### 組成元件
+將 flyweight Pattern 套用到我們的應用吧
 
-1. 享元介面：定義共用操作
-2. 具體享元：儲存內部狀態
-3. 享元工廠：建立與管理享元物件
-4. 客戶端：管理外部狀態並使用享元
+{% include figure.liquid path="assets/img/design_pattern_flyweight_pattern_uml_3.png" title="design_pattern_flyweight_pattern_uml_3" %}
 
-**優點：**
+## 物件導向程式設計 (OOP)
 
-- 記憶體節省，效能提升
-- 可擴展性佳，易於管理
-- 資源集中控管
+[FFlyweight: Tree & TreeType (樹類別)]
 
----
+```kotlin
+class Tree(
+    private val x: Int,
+    private val y: Int,
+    private val type: TreeType
+) {
+    fun draw() {
+        type.draw(x, y)
+    }
+}
 
-## 實作：森林渲染系統
+class TreeType(
+    val name: String,
+    val color: String,
+    val texture: String
+) {
+    fun draw(x: Int, y: Int) {
+        println("Drawing tree: $name, color: $color, texture: $texture at ($x, $y)")
+    }
+}
+```
 
-（此處保留原有 UML、Kotlin 範例，僅將說明與註解翻譯為中文）
+[FlyweightFactory: TreeFactory (樹工廠類別)]
 
----
+```kotlin
+object TreeFactory {
+    private val treeTypes = mutableMapOf<String, TreeType>()
 
-## 享元模式 vs 其他做法
+    fun getTreeType(name: String, color: String, texture: String): TreeType {
+        return treeTypes.computeIfAbsent(name) {
+            println("Creating new TreeType: $name")
+            TreeType(name, color, texture)
+        }
+    }
+}
+```
 
-| 做法         | 優點                         | 缺點                               |
-| ------------ | ---------------------------- | ---------------------------------- |
-| 享元模式     | 記憶體效率高、效能佳、可擴展 | 複雜度提升、狀態管理困難、除錯較難 |
-| 直接建立物件 | 實作簡單、易懂、狀態直接存取 | 記憶體爆炸、效能下降、資源浪費     |
-| 物件池       | 重複利用物件、降低配置開銷   | 無狀態共用、生命週期管理複雜       |
-| 快取         | 降低運算、提升效能           | 目的不同（運算 vs 記憶體）         |
+[Client: Forest (森林類別)]
 
----
+```kotlin
+class Forest {
+    private val trees = mutableListOf<Tree>()
 
-## 什麼時候用享元模式？
+    fun plantTree(x: Int, y: Int, name: String, color: String, texture: String) {
+        val treeType = TreeFactory.getTreeType(name, color, texture)
+        val tree = Tree(x, y, treeType)
+        trees.add(tree)
+    }
 
-**適合：**
+    fun draw() {
+        for (tree in trees) {
+            tree.draw()
+        }
+    }
+}
+```
 
-- 大量相似物件（樹、粒子、角色等）
-- 記憶體受限環境（行動裝置、嵌入式）
-- 效能要求高（遊戲、模擬）
-- 文字處理（字元渲染、文件格式化）
-- 圖形渲染（精靈、貼圖、模型）
+[Main Function]
 
-**不適合：**
+```kotlin
+fun main() {
+    val forest = Forest()
 
-- 物件數量少（管理成本高）
-- 物件唯一（無共用價值）
-- 狀態頻繁變動（管理複雜）
-- 簡單應用（不需額外複雜度）
+    // Planting trees in the forest
+    forest.plantTree(10, 20, "Oak", "Green", "Rough")
+    forest.plantTree(15, 25, "Pine", "Dark Green", "Smooth")
+    forest.plantTree(10, 20, "Oak", "Green", "Rough") // Reuses the same TreeType as the first Oak
 
----
+    // Draw all trees
+    forest.draw()
+}
+```
 
-## 進階應用：執行緒安全、延遲載入、記憶體監控
+[Output]
 
-（此處保留原有進階工廠、記憶體監控、Kotlin 範例，僅將說明與註解翻譯為中文）
-
----
+```bash
+Creating new TreeType: Oak
+Creating new TreeType: Pine
+Drawing tree: Oak, color: Green, texture: Rough at (10, 20)
+Drawing tree: Pine, color: Dark Green, texture: Smooth at (15, 25)
+Drawing tree: Oak, color: Green, texture: Rough at (10, 20)
+```
 
 ## 結論
 
-享元模式是大規模物件管理、效能優化的關鍵設計模式。透過分離內部與外部狀態，能大幅節省記憶體、提升效能，適合遊戲引擎、圖形處理、文字渲染等高效能應用。
-
-> 歡迎收藏本系列，持續關注更多設計模式與軟體架構實戰！
+享元模式通過共享技術，有效降低了系統的記憶體使用量，提升了效能。它特別適用於需要大量重複物件的情境，例如文字編輯器、遊戲開發等場景。然而，在使用時需要小心區分內部與外部狀態，以確保系統設計的正確性與靈活性。

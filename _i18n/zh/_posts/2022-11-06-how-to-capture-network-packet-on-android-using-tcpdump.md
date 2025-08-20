@@ -1,182 +1,113 @@
 ---
 layout: post
-title: "Android 網路抓包全攻略：tcpdump + Wireshark 實戰詳解"
+title: 如何抓取 Android 的網路封包
 date: 2022-11-06 23:30:00 +0800
-description: "掌握 Android 網路抓包技巧，結合 tcpdump 與 Wireshark，助力行動開發、流量分析與疑難排查。"
-tags: [Android, Network Packet Capture, tcpdump, Wireshark, Network Analysis, Debugging, Network Troubleshooting, ADB, Root Access]
-categories: [Android Development, Network Analysis, Debugging, Tools]
+description: 實戰教你如何使用 tcpdump 搭配 Wireshark 抓取 Android 手機的封包資料，解決連線與串流問題的強大除錯技巧。
+tags: [Android, Network, Packet, Wireshark, tcpdump]
+categories: [Tools]
 toc:
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/jordan-harrison-40XgDxBfYXM-unsplash.jpg
 ---
 
-## 🚀 Android 網路抓包概述
+## 前言
 
-網路抓包是行動開發中最有價值的除錯手段之一。與 iOS 的 rvictl 抓包不同，Android 主要依賴 tcpdump 工具。本文將手把手教你用 tcpdump + Wireshark 實現高效抓包與分析。
+最近工作上遇到需要抓封包分析才能釐清的問題。
 
-**你將學到：**
-
-- 📱 Android 裝置抓包環境建置
-- 🔍 tcpdump 抓包與 Wireshark 分析
-- 🛠️ 連線與流量疑難排查技巧
-- 📈 效能與安全分析
-- 🧩 非 root 裝置抓包替代方案
+以前開發 iOS 時，用 `rvictl -s [UUID]` 就能創建虛擬網卡，透過 Wireshark 抓封包超簡單。  
+但 Android 就沒那麼直觀了，研究後成功抓到封包，這篇紀錄分享希望對你也有幫助🙂
 
 ---
 
-## 🎯 為什麼要抓包？
+## 事前準備
 
-- API 除錯與後端聯調
-- 串流/推流問題定位
-- 第三方函式庫網路行為分析
-- 效能瓶頸與安全分析
-- 跨平台相容性驗證
+你會需要：
 
-**抓包優勢：**
+1. 一台 **root 過的 Android 裝置**
+2. [tcpdump](https://www.androidtcpdump.com/) 可執行檔
+3. [Wireshark](https://www.wireshark.org/download.html)
 
-- ✅ 揭露日誌無法發現的問題
-- ✅ 即時流量監控
-- ✅ 協議層級深度分析
-- ✅ 跨平台除錯
-- ✅ 效能瓶頸定位
+> ##### WARNING
+>
+> 如果沒有 root 權限，也能用 [tPacketCapture](https://play.google.com/store/apps/details?id=jp.co.taosoftware.android.packetcapture&hl=zh_TW&gl=US)，但它會以 VPN 方式攔截封包，我實測會有封包漏掉問題，不建議依賴。
+> {: .block-warning }
 
 ---
 
-## 🛠️ 抓包環境準備
-
-- 已 root 的 Android 裝置（推薦）
-- tcpdump for Android
-- Wireshark
-- ADB 工具
-
-**可選工具：**
-
-- tPacketCapture（非 root 方案）
-- NetworkMiner、Ettercap（進階分析）
-
-> ⚠️ 非 root 方案如 tPacketCapture 可能丟包，僅適合簡單場景。
-
----
-
-## 📝 tcpdump 抓包實戰
-
-### 1. 下載並推送 tcpdump
+## 將 tcpdump 放入 Android 裝置
 
 ```bash
-adb shell getprop ro.product.cpu.abi
 adb push tcpdump /data/local/tcpdump
 ```
 
-### 2. 設定權限並驗證
+如果出現 `can't execute: Permission denied` 錯誤，可先取得 root 權限再上傳：
+
+```bash
+adb root
+adb push tcpdump /data/local/tcpdump
+adb unroot
+```
+
+---
+
+## 執行 tcpdump 抓封包
+
+1. 進入裝置 shell 並切換目錄：
 
 ```bash
 adb shell
 su
 cd /data/local
-chmod a+x tcpdump
-./tcpdump --version
 ```
 
-### 3. 開始抓包
+2. 修改 tcpdump 權限為可執行：
+
+```bash
+chmod a+x tcpdump
+```
+
+3. 開始抓封包，輸出為 `.pcap` 檔：
 
 ```bash
 ./tcpdump -i any -p -s 0 -w /sdcard/capture.pcap
 ```
 
-**常用參數說明：**
-
-- `-i any`：監聽所有介面
-- `-p`：非混雜模式
-- `-s 0`：抓取完整封包
-- `-w`：輸出到檔案
-
-### 4. 進階抓包用法
-
-- 指定介面：`-i wlan0`（WiFi）、`-i rmnet_data0`（行動數據）
-- 協議過濾：`port 80 or port 443`、`tcp`、`host 192.168.1.100`
-- 限制封包大小/檔案輪轉：`-s 1500`、`-W 5 -C 10`
-- 即時輸出：`-v`、`-vvv`
+用 `Control + C` 結束後，封包就會被儲存在 SD 卡上。
 
 ---
 
-## 🖥️ 抓包檔案分析
-
-### 1. 拉取檔案到電腦
+## 將封包檔案匯出到電腦
 
 ```bash
 adb pull /sdcard/capture.pcap
 ```
 
-### 2. 用 Wireshark 開啟分析
+使用 Wireshark 開啟 `.pcap` 文件即可開始分析：
 
-- 常用過濾：`http`、`ssl or tls`、`ip.addr == 192.168.1.100`、`tcp.port == 8080`、`dns`
-- 連線問題排查：`tcp.flags.syn == 1 and tcp.flags.ack == 0`、`tcp.flags.reset == 1`
-
----
-
-## 🧩 非 root 裝置抓包方案
-
-- tPacketCapture（VPN 方式，易丟包）
-- 代理抓包：設定 WiFi 代理，電腦端抓包
-- ADB 埠轉發：`adb forward tcp:8080 tcp:8080`
+{% include figure.liquid path="assets/img/wireshark_test_1.png" title="Wireshark 抓到封包畫面" %}
 
 ---
 
-## 🚨 常見問題排查
+## 總結
 
-- 權限不足：su 後 chmod 755 /data/local/tcpdump
-- 無資料包：檢查 root 權限、介面、命令參數
-- 儲存空間不足：用外部儲存或限制檔案大小
-- ADB 連線異常：重啟 adb、檢查 USB 除錯
+封包分析是除錯中最有價值的技術之一。  
+不論是後端串接異常、網路斷線、第三方 library 無回應，都可能從封包中看出端倪。
 
----
+舉例來說：
 
-## 🏆 真實案例與最佳實踐
+我曾遇到 iOS + FFMpeg 串 RTSP，1 分鐘後連線就自動斷開。  
+後來透過 Wireshark 抓到 FFMpeg 沒發送 `GET_PARAMETER` 保活封包，修改原始碼後問題迎刃而解！
 
-- RTSP 推流斷線：抓包分析 keep-alive 問題
-- API 逾時：定位 TCP reset
-- 第三方函式庫異常：協議相容性分析
-
-**安全合規建議：**
-
-- 僅抓取授權流量，遵守隱私法規
-- 用過濾器縮小抓包範圍
-- 敏感資料加密儲存，分析後及時刪除
+> ##### TIP
+>
+> 當 log 看不到東西、console 沉默不語時，封包永遠會說實話。會抓封包，能讓你在 debug 上省下好幾倍時間。
+> {: .block-tip }
 
 ---
 
-## 🔗 相關文章
-
-- [iOS 網路抓包實戰](/2022-11-09-how-to-capture-network-packet-on-ios)
-- [P2P 技術基礎](/2022-01-03-p2p-tech-1-ipv4-nat)
-- [STUN/TURN/ICE 協議詳解](/2022-01-04-p2p-tech-2-stun-turn-ice)
-- [WebRTC 實現](/2022-01-04/p2p-tech-3-webrtc-kvs)
-
----
-
-## ✅ 總結
-
-網路抓包是行動開發與疑難排查的利器。掌握 tcpdump + Wireshark，你將獲得：
-
-- 🔍 深度網路洞察
-- 🚀 快速定位問題
-- 📈 效能與安全分析
-- 🛠️ 跨平台除錯能力
-
-**最佳實踐：**
-
-1. 用過濾器聚焦目標流量
-2. 控制環境，確保資料準確
-3. 系統化分析與文件紀錄
-4. 尊重隱私與安全合規
-
-> 💡 日誌無聲、控制台無輸出時，網路封包最誠實。精通抓包能讓你除錯效率提升 10 倍！
-
-**🔔 關注我們：** 持續關注網路分析與除錯系列乾貨！
-
-**📚 延伸閱讀：**
+## 參考資源
 
 - [tcpdump for Android](https://www.androidtcpdump.com/)
-- [Wireshark 官方文件](https://www.wireshark.org/docs/)
-- [Android 網路除錯](https://developer.android.com/studio/debug/network-profiler)
-- [協議分析實戰](https://www.wireshark.org/docs/wsug_html_chunked/)
+- [Wireshark](https://www.wireshark.org/)
+- [tPacketCapture - Google Play](https://play.google.com/store/apps/details?id=jp.co.taosoftware.android.packetcapture&hl=zh_TW&gl=US)

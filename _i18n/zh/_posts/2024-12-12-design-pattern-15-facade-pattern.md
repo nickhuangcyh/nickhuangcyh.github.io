@@ -1,64 +1,161 @@
 ---
 layout: post
-title: "設計模式 15：外觀模式 - 家庭劇院系統簡化與統一介面實戰"
+title: Design Pattern (15) - Facade Pattern (外觀模式)
 date: 2024-12-12 23:30:00 +0800
-description: "精通外觀模式，簡化複雜子系統，提供統一介面，提升程式碼可維護性。以家庭劇院系統為例，圖文範例，適合軟體工程師與架構師。"
-tags:
-  [
-    Facade Pattern,
-    Design Patterns,
-    Interface Simplification,
-    Object-Oriented Design,
-    Software Architecture,
-    Kotlin,
-    Programming,
-    Structural Patterns,
-    Home Theater,
-    Subsystem Management,
-  ]
-categories: [Design Pattern, Software Engineering, Programming]
+description: 探索外觀模式如何簡化系統複雜性，提供一個統一的介面來訪問子系統的功能，提升程式碼的可讀性與維護性。
+tags: [Facade Pattern]
+categories: [Design Pattern]
 toc:
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 下載完整設計模式系列程式碼：[design_pattern repo](https://github.com/nickhuangcyh/design_pattern)
+> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
 
-## 前言：什麼是外觀模式？
+## 需求
 
-外觀模式是一種結構型設計模式，能為複雜子系統提供簡單統一的介面。它像一個「總機」或「前台」，隱藏底層複雜性，讓客戶端只需面對簡單 API。
+假設我們正在開發一個家庭影院系統，該系統包含以下子系統：
 
-## 主要優勢
+- DVD 播放器
+- 環繞音響
+- 燈光
+- 投影機
 
-- [32m簡化介面 [0m：隱藏複雜子系統細節
-- [32m降低耦合 [0m：客戶端只依賴外觀類
-- [32m易於維護 [0m：子系統變動不影響客戶端
-- [32m集中協調 [0m：統一管理多子系統
-- [32m提升易用性 [0m：高階操作一鍵完成
+用戶希望能輕鬆開啟或關閉家庭影院的所有功能，而不需要逐一操作各個設備。
 
-## 實務案例：家庭劇院系統
+## 物件導向分析 (OOA)
 
-設計一套家庭劇院系統，需支援：
+理解需求後，讓我們來快速實作物件導向分析吧！
 
-- 多子系統（DVD 播放器、環繞音響、燈光、投影機等）
-- 複雜協調（多步驟操作）
-- 友善介面（簡單指令完成複雜操作）
-- 易於擴展與錯誤處理
+{% include figure.liquid path="assets/img/design_pattern_facade_pattern_uml_1.png" title="design_pattern_facade_pattern_uml_1" %}
 
-（此處保留原有 UML、Kotlin 範例，僅將說明與註解翻譯為中文）
+## 察覺 Forces
 
-## 設計力辨識
+在設計階段，我們注意到以下設計難題：
 
-- 子系統複雜，協調困難
-- 高耦合，維護成本高
-- 操作不一致，體驗差
+1. 子系統過於複雜：需要多個步驟才能完成操作。
 
-## 外觀模式解法
+2. 操作繁瑣：用戶需要熟悉每個子系統的細節。
 
-外觀模式提供簡單統一的介面，集中協調多子系統，讓客戶端操作更直觀、易維護。
+3. 缺乏一致性：不同子系統之間的操作方式可能不同，導致混亂。
 
-（此處保留原有 UML、Kotlin 範例，僅將說明與註解翻譯為中文）
+這些 Forces 驅使我們採用外觀模式來簡化介面，減少系統的操作複雜度。
 
----
+## 套用 Facade Pattern (Solution) 得到新的 Context (Resulting Context)
 
-> 歡迎收藏本系列，持續關注更多設計模式與軟體架構實戰！
+做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Facade Pattern 解決這個問題。
+
+先來看一下 Facade Pattern 的 UML：
+
+{% include figure.liquid path="assets/img/design_pattern_facade_pattern_uml_2.png" title="design_pattern_facade_pattern_uml_2" %}
+
+- **Subsystems (子系統)**：表示系統中的一組類別或模組，它們各自負責不同的功能。例如，在家庭影院系統中，包括 DVDPlayer、SurroundSound、Lights 和 Projector 等子系統。
+- **Facade (外觀類別)**：提供一個簡化的介面來封裝子系統的複雜性。它負責協調多個子系統，以完成用戶的一個請求。例如，HomeTheaterFacade 提供 watchMovie() 和 endMovie() 方法來簡化對子系統的操作。
+
+將 Facade Pattern 套用到我們的應用吧
+
+{% include figure.liquid path="assets/img/design_pattern_facade_pattern_uml_3.png" title="design_pattern_facade_pattern_uml_3" %}
+
+## 物件導向程式設計 (OOP)
+
+[Subsystems]
+
+```kotlin
+class DVDPlayer {
+    fun on() = println("DVD Player is ON")
+    fun play() = println("DVD Player is playing")
+    fun off() = println("DVD Player is OFF")
+}
+
+class SurroundSound {
+    fun on() = println("Surround Sound is ON")
+    fun setVolume(level: Int) = println("Surround Sound volume set to $level")
+    fun off() = println("Surround Sound is OFF")
+}
+
+class Lights {
+    fun dim(level: Int) = println("Lights dimmed to $level%")
+    fun on() = println("Lights are ON")
+}
+
+class Projector {
+    fun on() = println("Projector is ON")
+    fun setMode(mode: String) = println("Projector set to $mode mode")
+    fun off() = println("Projector is OFF")
+}
+```
+
+[Facade: HomeTheaterFacade]
+
+```kotlin
+class HomeTheaterFacade(
+    private val dvdPlayer: DVDPlayer,
+    private val surroundSound: SurroundSound,
+    private val lights: Lights,
+    private val projector: Projector
+) {
+    fun watchMovie() {
+        println("Get ready to watch a movie...")
+        lights.dim(10)
+        projector.on()
+        projector.setMode("Cinema")
+        surroundSound.on()
+        surroundSound.setVolume(5)
+        dvdPlayer.on()
+        dvdPlayer.play()
+    }
+
+    fun endMovie() {
+        println("Shutting down the home theater...")
+        dvdPlayer.off()
+        surroundSound.off()
+        projector.off()
+        lights.on()
+    }
+}
+```
+
+[Client]
+
+```kotlin
+fun main() {
+    val dvdPlayer = DVDPlayer()
+    val surroundSound = SurroundSound()
+    val lights = Lights()
+    val projector = Projector()
+
+    val homeTheater = HomeTheaterFacade(dvdPlayer, surroundSound, lights, projector)
+
+    // The Start
+    homeTheater.watchMovie()
+
+    println()
+
+    // The End
+    homeTheater.endMovie()
+}
+```
+
+[Output]
+
+```bash
+Get ready to watch a movie...
+Lights dimmed to 10%
+Projector is ON
+Projector set to Cinema mode
+Surround Sound is ON
+Surround Sound volume set to 5
+DVD Player is ON
+DVD Player is playing
+
+Shutting down the home theater...
+DVD Player is OFF
+Surround Sound is OFF
+Projector is OFF
+Lights are ON
+```
+
+## 結論
+
+外觀模式通過為複雜系統提供一個簡單的介面，降低了系統的操作成本，提升了用戶體驗。它特別適用於子系統較多且操作繁瑣的情境。藉由使用外觀模式，開發者能夠更專注於系統核心邏輯，同時提升程式碼的可維護性與擴展性。

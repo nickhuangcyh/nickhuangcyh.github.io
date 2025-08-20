@@ -1,63 +1,134 @@
 ---
 layout: post
-title: "設計模式 9：原型模式 - 高效物件複製與資源最佳化實戰"
+title: Design Pattern (9) - Prototype Pattern (原型模式)
 date: 2024-07-21 23:00:00 +0800
-description: "精通原型模式，快速複製複雜物件，減少資源消耗，提升效能。圖文範例，適合軟體工程師、遊戲開發與高效能應用。"
-tags:
-  [
-    Prototype Pattern,
-    Design Patterns,
-    Object Cloning,
-    Performance Optimization,
-    Resource Management,
-    Software Architecture,
-    Kotlin,
-    Java,
-    Swift,
-    Deep Copy,
-    Shallow Copy,
-  ]
-categories: [Design Patterns, Software Development, Object-Oriented Programming, Performance]
+description: 深入原型模式：探索如何透過物件複製技術，有效提升軟體開發中的資源管理與設計模式的靈活性。
+tags: [Prototype Pattern]
+categories: [Design Pattern]
 toc:
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 下載完整設計模式系列程式碼：[design_pattern repo](https://github.com/nickhuangcyh/design_pattern)
+> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
 
-## 前言：物件複製的威力
+## 前言
 
-原型模式是一種創建型設計模式，能透過複製現有物件快速產生新實例，適合物件建立成本高或需大量相似物件的場景。
+這次的 Pattern 讓我想到以前做過的一個 App，但當時還沒有學習到 Pattern，所以沒有用 Pattern 來處理，現在發現這個功能很適合套用 prototype pattern
 
-## 實務應用場景
+這是一個用來編輯音樂燈光秀的 App，有興趣的讀者可以下載玩玩看 🙂
 
-- **圖形應用**：複製圖形、UI 元件
-- **遊戲開發**：大量遊戲物件複製
-- **文件編輯器**：複製複雜物件
-- **組態管理**：快速產生多組設定
-- **資料庫操作**：DTO 複製
+- [Asante TapTap 3](https://apps.apple.com/tw/app/asante-taptap-3/id1581054107?platform=iphone)
 
-## 案例分析：音樂燈光秀 App
+{% include figure.liquid path="assets/img/taptap_app_edit.png" title="taptap_app_edit" %}
 
-（此處保留原有 UML、Kotlin 範例，僅將說明與註解翻譯為中文）
+## 需求
 
-## 問題分析：複製貼上功能
+今天收到了客人的需求，客人反應編輯完一條燈光還要編輯另外六條好浪費時間，能不能新增 Copy & Paste 的功能，加快編輯以節省時間，如下圖
 
-（此處保留原有 UML、Kotlin 範例，僅將說明與註解翻譯為中文）
+{% include figure.liquid path="assets/img/taptap_app_copy.png" title="taptap_app_copy" %}
 
-## 設計力辨識
+{% include figure.liquid path="assets/img/taptap_app_paste.png" title="taptap_app_paste" %}
 
-- 建構子參數多，複製困難
-- 建立成本高，效能低
-- 狀態同步難
-- 記憶體消耗大
+## 物件導向分析 (OOA)
 
-## 原型模式解法
+理解需求後，讓我們來快速實作物件導向分析吧!
 
-原型模式讓物件自我複製，支援淺複製與深複製，提升效能與彈性。
+{% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_1.png" title="design_pattern_prototype_pattern_uml_1" %}
 
-（此處保留原有 UML、Kotlin 範例，僅將說明與註解翻譯為中文）
+當我們需要複製 `LightShowData` 時，只需要同樣的 jsonObject 資料重新 new 一個 `LightShowData` 即可複製一份
 
----
+## 察覺 Forces
 
-> 歡迎收藏本系列，持續關注更多設計模式與軟體架構實戰！
+來看看上面這樣的設計會有哪些問題
+
+1. 如果我們的 constructor 很複雜，參數非常多，那麼重新 new 一個實體會需要知道很多細節。
+2. 如果 constructor 創建實體的過程，是很耗時複雜的計算，重新 new 一個實體會讓創建過程效率變差。
+
+## 套用 Prototype Pattern ( Solution ) 得到新的 Context ( Resulting Context )
+
+做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Prototype Pattern 解決這個問題
+
+先來看一下 Prototype Pattern 的 UML
+
+{% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_2.png" title="design_pattern_prototype_pattern_uml_2" %}
+
+原型模式主要包含以下兩個角色：
+
+1. **Prototype（原型）**：這是一個抽象介面，定義了複製自身的方法。在實體實現中，這個介面可以是一個抽象類或者實體類，主要目的是提供一個複製自己的方法。這使得在不需要知道物件實體類別的情況下也能創建物件的副本。
+
+2. **Concrete Prototype（實體原型）**：實現或繼承自原型介面的類。這個類實現了在原型介面中定義的複製（clone）方法，用於創建自身的一個精確副本。在實體實現時，這個類需要提供一個方法來複製自身的屬性，確保新創建的物件與原有物件在狀態上是相同的，但在記憶體中是獨立的。
+
+我們來將 LightShow App 套用 Prototype Pattern
+
+{% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_3.png" title="design_pattern_prototype_pattern_uml_3" %}
+
+如此我們就得到了一個全新的 `Resulting Context`
+
+## 物件導向程式設計 (OOP)
+
+再來我們就可以開始進行物件導向程式開發
+
+[LightShowDataPrototype]
+
+```kotlin
+interface LightShowDataPrototype {
+    val startIndex: Int
+    val lightDataList: List<Int>
+    fun clone(): LightShowDataPrototype
+}
+```
+
+[LightShowData]
+
+```kotlin
+package prototypepattern.source
+
+class LightShowData: LightShowDataPrototype {
+
+    override val startIndex: Int
+    override val lightDataList: List<Int>
+
+    constructor(originalDataList: List<Int>) {
+        startIndex = originalDataList[0]
+        lightDataList = originalDataList.subList(1, originalDataList.size).map { it * 2 }
+    }
+
+    constructor(startIndex: Int, lightDataList: List<Int>) {
+        this.startIndex = startIndex
+        this.lightDataList = lightDataList
+    }
+
+    override fun clone(): LightShowDataPrototype {
+        return LightShowData(startIndex, lightDataList.toList())
+    }
+}
+```
+
+[main]
+
+```kotlin
+fun main() {
+    val originalData = listOf(1, 2, 3, 4, 5)
+
+    // Before using prototype pattern
+    val originalLightShowData: LightShowDataPrototype = LightShowData(originalData)
+    val newLightShowData: LightShowDataPrototype = LightShowData(originalData)
+
+    println(originalLightShowData)
+    println(newLightShowData)
+
+    // After using prototype pattern
+    val clonedLightShowData: LightShowDataPrototype = LightShowData(originalData)
+
+    println(originalLightShowData)
+    println(clonedLightShowData)
+}
+```
+
+我們可以發現，透過 clone() 方法複製，就可以不重複執行下面的程式碼，提升程式碼效能了
+
+```kotlin
+originalDataList.subList(1, originalDataList.size).map { it * 2 }
+```

@@ -1,173 +1,167 @@
 ---
 layout: post
-title: "設計模式 12：橋接模式（Bridge Pattern）——抽象與實作分離的彈性架構設計"
+title: Design Pattern (12) - Bridge Pattern (橋接模式)
 date: 2024-12-08 20:00:00 +0800
-description: "精通橋接模式，學會抽象與實作分離，打造高彈性、易擴展的安全系統與通知架構。圖文範例，適合軟體工程師、架構師與進階開發者。"
-tags:
-  [
-    Bridge Pattern,
-    Design Patterns,
-    Abstraction-Implementation Separation,
-    Object-Oriented Design,
-    Software Architecture,
-    Kotlin,
-    Programming,
-    Structural Patterns,
-    Security System,
-    Notification System,
-  ]
-categories: [Design Pattern, Software Engineering, Programming]
+description: 深入了解橋接模式如何解耦抽象與實現，打造更靈活且易於擴展的系統設計，滿足複雜需求的同時降低維護成本。
+tags: [Bridge Pattern]
+categories: [Design Pattern]
 toc:
+  #   beginning: true
   sidebar: right
 thumbnail: /assets/img/design_patterns.jpg
 ---
 
-> 📁 **下載完整設計模式系列程式碼**：[design_pattern repository](https://github.com/nickhuangcyh/design_pattern)
+> 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
 
----
+## 需求
 
-## 什麼是橋接模式（Bridge Pattern）？
+我們收到了一個需求：公司現有的 保全系統，在偵測到不同類型的事件（如火警、竊盜警鈴）時，需要以多種通知方式向用戶發送警報訊息。支援的通知方式包括：
 
-橋接模式是一種結構型設計模式，將抽象與實作分離，使兩者可以獨立變化。它為抽象與實作之間建立一座橋樑，讓你能在不影響彼此的情況下，靈活擴展系統功能。
+- APNS (Apple iOS Push)
+- FCM (Google Android Push)
+- Email
+- SMS
 
-**主要優點：**
+警報事件則可能包括：
 
-- 抽象與實作分離，降低耦合
-- 易於擴展，新增抽象或實作皆方便
-- 彈性組合，任意搭配抽象與實作
-- 易於維護，單一變動不影響全局
-- 符合開放封閉原則
+- Fire (火警)
+- Burglar (竊盜警鈴)
 
----
+## 物件導向分析 (OOA)
 
-## 實務情境：多通知方式的安全警報系統
+理解需求後，讓我們來快速實作物件導向分析吧!
 
-設計一個安全系統，需求如下：
+{% include figure.liquid path="assets/img/design_pattern_bridge_pattern_uml_1.png" title="design_pattern_bridge_pattern_uml_1" %}
 
-- 多種警報類型（火災、竊盜、環境、醫療）
-- 多種通知方式（APNS、FCM、Email、SMS、Slack）
-- 任意組合警報與通知方式
-- 易於擴展新警報或通知方式
-- 高效能，支援多警報並發處理
+## 察覺 Forces
 
----
+在未使用設計模式的情況下，上述程式碼可以運行，但存在以下問題：
 
-## 物件導向分析（OOA）
+1. 高耦合性 (Tight Coupling)：
 
-{% include figure.liquid path="assets/img/design_pattern_bridge_pattern_uml_1.png" title="Bridge Pattern - 問題分析" %}
+- 警報類型 和 通知方式 被緊密地耦合在一起，這使得每次新增警報類型或通知方式時，都必須在多個類別中進行修改。
+- 系統的維護成本較高，每個新需求都可能導致代碼的重構。
 
-### 設計痛點
+2. 難以擴展 (Difficulty in Extending)：
 
-1. 類別爆炸：每種組合都需新類別，維護困難
-2. 高耦合：警報與通知方式緊密綁定，難以擴展
-3. 彈性不足：無法動態切換通知方式，測試困難
+- 每增加一種新的警報類型或通知方式，都需要在每個組合中創建新的類別，導致代碼增長迅速。
+- 如果需求變更（例如新增一種新的通知方式或警報類型），則需要修改大量的程式碼。
 
----
+3. 重複代碼 (Code Duplication)：
 
-## 橋接模式解決方案
+- 由於每一種通知方式與警報事件的組合都需要實現一個具體的類別，導致了大量重複代碼，增加了程式碼維護的困難。
 
-{% include figure.liquid path="assets/img/design_pattern_bridge_pattern_uml_2.png" title="Bridge Pattern - 一般結構" %}
+4. 靈活性差 (Lack of Flexibility)：
 
-### 組成元件
+- 當某一層次（例如警報事件類型或通知方式）需要進行修改時，必須修改多個相關類別，這樣的設計使得系統的變動成本高。
 
-1. 抽象層（Abstraction）：定義抽象介面
-2. 擴充抽象層（Refined Abstraction）：具體功能擴展
-3. 實作層（Implementor）：定義實作介面
-4. 具體實作層（Concrete Implementor）：實作細節
+## 套用 Bridge Pattern ( Solution ) 得到新的 Context ( Resulting Context )
 
-**優點：**
+做完 OOA，察覺 Forces，看清楚整個 Context 後，就可以來套用 Bridge Pattern 解決這個問題
 
-- 抽象與實作可獨立變化
-- 彈性組合，易於擴展
-- 測試方便，單元測試更簡單
+先來看一下 Bridge Pattern 的 UML
 
----
+{% include figure.liquid path="assets/img/design_pattern_bridge_pattern_uml_2.png" title="design_pattern_bridge_pattern_uml_2" %}
 
-## 實作：多通知方式安全系統
+- Abstraction (抽象層)：定義通知功能，負責使用具體的消息發送方式來發送通知。
+- RefinedAbstraction (具體化的抽象層)：擴展抽象層，實現不同類型的警報通知，例如火警通知或竊盜警鈴通知。
+- Implementor (實作層)：定義消息發送的接口，負責處理具體的消息發送邏輯。
+- ConcreteImplementor (具體的實作層)：提供具體的消息發送實作，例如 APNS、FCM、Email、SMS。
 
-{% include figure.liquid path="assets/img/design_pattern_bridge_pattern_uml_3.png" title="安全系統 Bridge 實作" %}
+將 Bridge Pattern 套用到我們的應用吧
 
-### 1. 實作層（通知方式）
+{% include figure.liquid path="assets/img/design_pattern_bridge_pattern_uml_3.png" title="design_pattern_bridge_pattern_uml_3" %}
+
+## 物件導向程式設計 (OOP)
+
+[Abstraction: AlarmNotification]
 
 ```kotlin
-interface MessageSender { ... }
-// ...各種通知方式實作略...
-```
+abstract class AlarmNotification(sender: MessageSender) {
+    protected var sender: MessageSender
 
-### 2. 抽象層（警報通知）
+    init {
+        this.sender = sender
+    }
 
-```kotlin
-abstract class AlarmNotification(protected val sender: MessageSender) { ... }
-// ...各種警報類型擴展略...
-```
-
-### 3. 客戶端範例
-
-```kotlin
-fun main() {
-    // ...示範警報與通知方式任意組合、觸發與統計...
+    abstract fun notifyUser(details: String?)
 }
 ```
 
----
-
-## 橋接模式 vs 其他做法
-
-| 做法     | 優點                           | 缺點                             |
-| -------- | ------------------------------ | -------------------------------- |
-| 橋接模式 | 抽象與實作分離、彈性高、易擴展 | 複雜度提升、多一層抽象、學習曲線 |
-| 繼承     | 小型層級簡單、關係明確         | 類別爆炸、耦合高、難擴展         |
-| 組合     | 可重用、彈性設計               | 抽象界線不明、潛在複雜度         |
-| 策略模式 | 行為可切換、分離清楚           | 目的不同（行為 vs 結構）         |
-
----
-
-## 什麼時候用橋接模式？
-
-**適合：**
-
-- 多實作需求（多平台、多協定、多格式）
-- 執行時彈性（可動態切換實作）
-- 易於擴展（新增抽象或實作）
-- 跨平台設計（抽象平台細節）
-- 複雜層級（避免類別爆炸）
-
-**不適合：**
-
-- 簡單系統（過度設計）
-- 靜態實作（無需彈性）
-- 效能極度敏感（多一層抽象有損耗）
-- 可接受耦合（彈性非首要）
-
----
-
-## 進階應用：工廠、組態、監控
-
-### 1. 工廠結合橋接
+[RefinedAbstraction: FireAlarmNotification and BurglarAlarmNotification]
 
 ```kotlin
-class NotificationFactory { ... }
-// ...註冊與建立通知範例...
+class FireAlarmNotification(sender: MessageSender) : AlarmNotification(sender) {
+    override fun notifyUser(details: String?) {
+        sender.sendMessage("Fire Alarm: $details")
+    }
+}
+
+class BurglarAlarmNotification(sender: MessageSender) : AlarmNotification(sender) {
+    override fun notifyUser(details: String?) {
+        sender.sendMessage("Theft Alarm: $details")
+    }
+}
 ```
 
-### 2. 組態式安全系統
+[Implementor: MessageSender]
 
 ```kotlin
-class ConfigurableSecuritySystem(...) { ... }
-// ...根據組態自動建立通知...
+interface MessageSender {
+    fun sendMessage(message: String?)
+}
 ```
 
-### 3. 監控與統計
+[ConcreteImplementor: APNSSender, FCMSender, EmailSender, and SMSSender]
 
 ```kotlin
-class MonitoredSecuritySystem(...) { ... }
-// ...觸發警報時記錄與報表...
+class APNSSender : MessageSender {
+    override fun sendMessage(message: String?) {
+        println("Sending APNS Notification: $message")
+    }
+}
+
+class FCMSender : MessageSender {
+    override fun sendMessage(message: String?) {
+        println("Sending FCM Notification: $message")
+    }
+}
+
+class EmailSender : MessageSender {
+    override fun sendMessage(message: String?) {
+        println("Sending Email: $message")
+    }
+}
+
+class SMSSender : MessageSender {
+    override fun sendMessage(message: String?) {
+        println("Sending SMS: $message")
+    }
+}
 ```
 
----
+[Client]
+
+```kotlin
+fun main() {
+    // Sending Fire Alarm via APNS
+    val fireAPNS: AlarmNotification = FireAlarmNotification(APNSSender())
+    fireAPNS.notifyUser("Smoke detected in Zone 1.")
+
+    // Sending Burglar Alarm via FCM
+    val burglarFCM: AlarmNotification = BurglarAlarmNotification(FCMSender())
+    burglarFCM.notifyUser("Unauthorized access detected at Main Door.")
+
+    // Sending Fire Alarm via Email
+    val fireEmail: AlarmNotification = FireAlarmNotification(EmailSender())
+    fireEmail.notifyUser("Temperature exceeds threshold in Zone 3.")
+
+    // Sending Burglar Alarm via SMS
+    val burglarSMS: AlarmNotification = BurglarAlarmNotification(SMSSender())
+    burglarSMS.notifyUser("Motion detected in Warehouse.")
+}
+```
 
 ## 結論
 
-橋接模式能有效分離抽象與實作，讓系統具備高度彈性與可擴展性。無論是多通知方式的安全系統、跨平台應用，還是複雜層級的架構設計，橋接模式都是打造高品質軟體的關鍵利器。
-
-> 歡迎收藏本系列，持續關注更多設計模式與軟體架構實戰！
+通過套用 **Bridge Pattern**，我們成功將通知的抽象層與實際的消息發送方式進行了分離，這樣一來，每種警報通知類型和發送方式可以獨立演進，並且能夠輕鬆地新增新型的通知方式或警報類型。這不僅提高了程式的靈活性，還減少了維護的難度，當需求變更時，也能夠更輕鬆地應對擴展需求。

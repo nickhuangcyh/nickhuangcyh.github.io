@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "🤖 AI Agent 系列（一）： 搞懂 LLM、RAG 與 MCP 的核心互動邏輯"
+title: 🤖 AI Agent 系列（一）：搞懂 LLM、RAG 與 MCP 的核心互動邏輯
 date: 2025-07-24 20:00:00 +0800
-description: "本文將帶你快速了解 AI Agent、LLM、RAG 與 MCP 的核心原理及其協作方式。"
+description: 本文將帶你快速了解 AI Agent、LLM、RAG 與 MCP 的核心原理及其協作方式。
 tags: [AI Agent, LLM, RAG, MCP, AI Programming]
 categories: [AI, Agent, Developer Tools]
 toc:
