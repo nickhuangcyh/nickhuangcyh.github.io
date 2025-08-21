@@ -44,554 +44,554 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-ai-agent-series-part-1-understanding-the-core-logic-of-llm-rag-and-mcp",
+        },{id: "post-",
         
-          title: "🤖 AI Agent Series (Part 1): Understanding the Core Logic of LLM, RAG,...",
+          title: "",
         
-        description: "A concise guide to AI Agents, LLM, RAG, and MCP, and how they work together.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/ai/agent/developer%20tools/intro-to-ai-agents-mcp-rag-llm/";
+            window.location.href = "/blog/_i18n/en/2025-07-24-intro-to-ai-agents-mcp-rag-llm/";
           
         },
-      },{id: "post-how-to-use-multiple-github-accounts-on-one-computer-complete-ssh-setup-guide",
+      },{id: "post-",
         
-          title: "How to Use Multiple GitHub Accounts on One Computer: Complete SSH Setup Guide...",
+          title: "",
         
-        description: "Learn how to manage multiple GitHub accounts on a single computer using SSH keys. Perfect for developers who need to switch between work and personal accounts seamlessly. Step-by-step guide with practical examples.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/devops/productivity/github/development/how-to-use-multiple-github-accounts-using-ssh/";
+            window.location.href = "/blog/_i18n/en/2025-05-18-how-to-use-multiple-github-accounts-using-ssh/";
           
         },
-      },{id: "post-excalidraw-ai-create-professional-diagrams-with-text-commands-complete-guide",
+      },{id: "post-",
         
-          title: "Excalidraw AI: Create Professional Diagrams with Text Commands - Complete Guide",
+          title: "",
         
-        description: "Transform your workflow with Excalidraw AI. Generate professional diagrams, flowcharts, and technical architecture diagrams using simple text descriptions. Perfect for developers, designers, and business analysts.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/ai%20tools/visualization/productivity/development/ai-tools-excalidraw-chart-guide/";
+            window.location.href = "/blog/_i18n/en/2025-03-15-ai-tools-excalidraw-chart-guide/";
           
         },
-      },{id: "post-complete-macos-development-environment-setup-guide-for-2024",
+      },{id: "post-",
         
-          title: "Complete macOS Development Environment Setup Guide for 2024",
+          title: "",
         
-        description: "Master the complete setup of a professional development environment on macOS. Step-by-step guide covering Homebrew, Git, iTerm2, Zsh, and mobile development tools for maximum productivity.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/setup%20guide/development/macos/productivity/setup-development-environment-on-a-new-macos/";
+            window.location.href = "/blog/_i18n/en/2024-12-29-design-pattern-28-interpreter-pattern/";
           
         },
-      },{id: "post-design-pattern-28-interpreter-pattern-complete-guide-with-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 28: Interpreter Pattern - Complete Guide with Examples",
+          title: "",
         
-        description: "Master the Interpreter Pattern with practical examples. Learn how to build language interpreters, parse expressions, and create flexible rule engines. Perfect for developers working with domain-specific languages.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-28-interpreter-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-12-28-design-pattern-27-visitor-pattern/";
           
         },
-      },{id: "post-design-pattern-27-visitor-pattern-complete-guide-with-real-world-iot-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 27: Visitor Pattern - Complete Guide with Real-World IoT Examples",
+          title: "",
         
-        description: "Master the Visitor Pattern with practical IoT and software examples. Learn how to add new operations to object structures, improve extensibility, and maintain clean code architecture.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-27-visitor-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-12-28-design-pattern-26-template-method-pattern/";
           
         },
-      },{id: "post-design-pattern-26-template-method-pattern-complete-guide-with-real-world-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 26: Template Method Pattern - Complete Guide with Real-World Examples",
+          title: "",
         
-        description: "Master the Template Method Pattern with practical examples. Learn how to create reusable algorithm frameworks, implement data format conversions, and build extensible systems.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-26-template-method-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-12-26-design-pattern-25-strategy-pattern/";
           
         },
-      },{id: "post-design-pattern-25-strategy-pattern-complete-guide-with-real-world-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 25: Strategy Pattern - Complete Guide with Real-World Examples",
+          title: "",
         
-        description: "Master the Strategy Pattern with practical examples. Learn how to implement flexible algorithms, dynamic behavior switching, and create maintainable code with low coupling.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-25-strategy-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-12-25-design-pattern-24-state-pattern/";
           
         },
-      },{id: "post-design-pattern-24-state-pattern-complete-guide-with-real-world-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 24: State Pattern - Complete Guide with Real-World Examples",
+          title: "",
         
-        description: "Master the State Pattern with practical examples. Learn how to implement state machines, manage object behavior based on state, and create flexible state-driven applications.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-24-state-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-12-24-design-pattern-23-observer-pattern/";
           
         },
-      },{id: "post-design-pattern-23-observer-pattern-complete-guide-with-real-world-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 23: Observer Pattern - Complete Guide with Real-World Examples",
+          title: "",
         
-        description: "Master the Observer Pattern with practical examples. Learn how to implement event-driven systems, notification mechanisms, and create loosely coupled architectures.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-23-observer-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-12-23-design-pattern-22-memento-pattern/";
           
         },
-      },{id: "post-design-pattern-22-memento-pattern-complete-guide-with-undo-redo-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 22: Memento Pattern - Complete Guide with Undo/Redo Examples",
+          title: "",
         
-        description: "Master the Memento Pattern with practical undo/redo and state recovery examples. Learn how to implement state snapshots, history management, and robust data recovery.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-22-memento-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-12-22-design-pattern-21-mediator-pattern/";
           
         },
-      },{id: "post-design-pattern-21-mediator-pattern-complete-guide-with-real-world-chatroom-example",
+      },{id: "post-",
         
-          title: "Design Pattern 21: Mediator Pattern - Complete Guide with Real-World Chatroom Example",
+          title: "",
         
-        description: "Master the Mediator Pattern with practical chatroom and system coordination examples. Learn how to reduce coupling, improve extensibility, and centralize communication logic.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-21-mediator-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-12-22-design-pattern-20-iterator-pattern/";
           
         },
-      },{id: "post-design-pattern-20-iterator-pattern-complete-guide-with-real-world-file-system-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 20: Iterator Pattern - Complete Guide with Real-World File System Examples...",
+          title: "",
         
-        description: "Master the Iterator Pattern with practical file system traversal examples. Learn how to provide sequential access to collection elements without exposing internal structure, improving code flexibility and maintainability.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-20-iterator-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-12-21-design-pattern-19-command-pattern/";
           
         },
-      },{id: "post-design-pattern-19-command-pattern-complete-guide-with-undo-redo-and-remote-control-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 19: Command Pattern - Complete Guide with Undo/Redo and Remote Control...",
+          title: "",
         
-        description: "Master the Command Pattern with practical remote control and undo/redo examples. Learn how to decouple operations, implement flexible controls, and support extensible command history.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-19-command-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-12-08-design-pattern-12-bridge-pattern/";
           
         },
-      },{id: "post-design-pattern-18-chain-of-responsibility-pattern-complete-guide-with-real-world-logging-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 18: Chain of Responsibility Pattern - Complete Guide with Real-World Logging...",
+          title: "",
         
-        description: "Master the Chain of Responsibility Pattern with practical logging system examples. Learn how to create flexible request processing chains, implement dynamic handlers, and build extensible systems.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-18-chain-of-responsibility-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-12-07-design-pattern-11-adapter-pattern/";
           
         },
-      },{id: "post-design-pattern-17-proxy-pattern-complete-guide-with-real-world-video-streaming-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 17: Proxy Pattern - Complete Guide with Real-World Video Streaming Examples...",
+          title: "",
         
-        description: "Master the Proxy Pattern with practical video streaming examples. Learn how to control object access for improved performance, security, and resource management in distributed systems.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-17-proxy-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-12-01-google-adsense/";
           
         },
-      },{id: "post-design-pattern-16-flyweight-pattern-complete-guide-with-real-world-forest-rendering-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 16: Flyweight Pattern - Complete Guide with Real-World Forest Rendering Examples...",
+          title: "",
         
-        description: "Master the Flyweight Pattern with practical forest rendering examples. Learn how to reduce memory usage through object sharing, optimize performance, and build efficient systems.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-16-flyweight-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-08-02-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8/";
           
         },
-      },{id: "post-design-pattern-15-facade-pattern-complete-guide-with-real-world-home-theater-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 15: Facade Pattern - Complete Guide with Real-World Home Theater Examples...",
+          title: "",
         
-        description: "Master the Facade Pattern with practical home theater system examples. Learn how to simplify complex subsystems, provide unified interfaces, and improve code maintainability.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-15-facade-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-07-23-getting-started-with-github-container-registry/";
           
         },
-      },{id: "post-design-pattern-14-decorator-pattern-complete-guide-with-real-world-coffee-shop-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 14: Decorator Pattern - Complete Guide with Real-World Coffee Shop Examples...",
+          title: "",
         
-        description: "Master the Decorator Pattern with practical coffee shop POS system examples. Learn how to dynamically add functionality to objects while maintaining flexibility and extensibility.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-14-decorator-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-07-16-how-to-build-chiptool-for-android/";
           
         },
-      },{id: "post-design-pattern-13-composite-pattern-unified-tree-structure-management-for-file-systems-and-ui-components",
+      },{id: "post-",
         
-          title: "Design Pattern 13: Composite Pattern - Unified Tree Structure Management for File Systems...",
+          title: "",
         
-        description: "Master the Composite Pattern to treat individual objects and collections uniformly. Learn how to implement tree structures for file systems, UI components, and organizational hierarchies with practical examples and best practices.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/design-pattern-13-composite-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-07-05-google-wallet-smart-tap-exploring/";
           
         },
-      },{id: "post-jenkins-3-configure-ssh-credentials-for-secure-git-code-retrieval",
+      },{id: "post-",
         
-          title: "Jenkins 3: Configure SSH Credentials for Secure Git Code Retrieval",
+          title: "",
         
-        description: "Learn how to configure SSH credentials in Jenkins for secure Git repository access. Step-by-step guide for setting up SSH keys, adding credentials, and configuring Jenkins jobs for secure code retrieval.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/devops/ci/cd/security/jenkins/git/authentication/jenkins-3-configure-credentials-ssh/";
+            window.location.href = "/blog/_i18n/en/2024-07-05-design-pattern-4-uml/";
           
         },
-      },{id: "post-design-pattern-12-bridge-pattern-complete-guide-with-real-world-security-system-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 12: Bridge Pattern - Complete Guide with Real-World Security System Examples...",
+          title: "",
         
-        description: "Master the Bridge Pattern with practical security system examples. Learn how to decouple abstraction from implementation, create flexible architectures, and build extensible systems.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-12-bridge-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-07-04-design-pattern-3-design-pattern/";
           
         },
-      },{id: "post-design-pattern-11-adapter-pattern-complete-guide-with-real-world-stock-data-integration-examples",
+      },{id: "post-",
         
-          title: "Design Pattern 11: Adapter Pattern - Complete Guide with Real-World Stock Data Integration...",
+          title: "",
         
-        description: "Master the Adapter Pattern with practical stock data integration examples. Learn how to make incompatible interfaces work together, integrate legacy systems, and build flexible architectures.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20pattern/software%20engineering/programming/design-pattern-11-adapter-pattern/";
+            window.location.href = "/blog/_i18n/en/2024-07-03-design-pattern-2-design-principle/";
           
         },
-      },{id: "post-how-to-monetize-your-website-with-google-adsense-complete-guide-for-developers",
+      },{id: "post-",
         
-          title: "How to Monetize Your Website with Google AdSense: Complete Guide for Developers",
+          title: "",
         
-        description: "Learn how to earn passive income by integrating Google AdSense into your website. Step-by-step setup, optimization tips, and best practices for maximizing ad revenue.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/monetization/google/web%20development/google-adsense/";
+            window.location.href = "/blog/_i18n/en/2024-07-02-design-pattern-1-object-oriented-concepts/";
           
         },
-      },{id: "post-jenkins-server-setup-complete-docker-installation-guide",
+      },{id: "post-",
         
-          title: "Jenkins Server Setup: Complete Docker Installation Guide",
+          title: "",
         
-        description: "Learn how to set up Jenkins server using Docker containers. Step-by-step guide for CI/CD automation, including Android build environment setup and best practices.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/devops/ci/cd/docker/automation/jenkins-2-how-to-setup-jenkins-server/";
+            window.location.href = "/blog/_i18n/en/2024-01-11-setup-development-environment-on-a-new-macos/";
           
         },
-      },{id: "post-jenkins-1-what-is-jenkins-complete-guide-to-ci-cd-automation-server",
+      },{id: "post-",
         
-          title: "Jenkins 1: What is Jenkins - Complete Guide to CI/CD Automation Server",
+          title: "",
         
-        description: "Learn about Jenkins, the powerful open-source automation server for continuous integration and continuous delivery. Discover its core concepts, benefits, and how it revolutionizes software development workflows.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/devops/ci/cd/software%20development/automation/build%20tools/jenkins-1-what-is-jenkins/";
+            window.location.href = "/blog/_i18n/en/2022-11-09-how-to-capture-network-packet-on-ios/";
           
         },
-      },{id: "post-design-pattern-10-singleton-pattern-ensuring-single-instance-access-for-database-connections-and-global-state-management",
+      },{id: "post-",
         
-          title: "Design Pattern 10: Singleton Pattern - Ensuring Single Instance Access for Database Connections...",
+          title: "",
         
-        description: "Master the Singleton Pattern to ensure only one instance of a class exists. Learn how to implement thread-safe singletons for database connections, logging systems, and global configuration management with best practices.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/database/design-pattern-10-singleton-pattern/";
+            window.location.href = "/blog/_i18n/en/2022-11-06-how-to-capture-network-packet-on-android-using-tcpdump/";
           
         },
-      },{id: "post-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8-step-by-step-guide-for-secure-ssh-connections",
+      },{id: "post-",
         
-          title: "How to Enable RSA Encryption Algorithm Key in OpenSSH 8.8: Step-by-Step Guide for...",
+          title: "",
         
-        description: "Learn how to re-enable RSA encryption support in OpenSSH 8.8+ for legacy systems and Git servers. Step-by-step troubleshooting, security best practices, and configuration tips.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/cryptography/openssh/security/devops/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8/";
+            window.location.href = "/blog/_i18n/en/2022-01-02-3d-graphic-tips/";
           
         },
-      },{id: "post-complete-guide-getting-started-with-github-container-registry-ghcr",
+      },{id: "post-",
         
-          title: "Complete Guide: Getting Started with GitHub Container Registry (GHCR)",
+          title: "",
         
-        description: "Master GitHub Container Registry with step-by-step tutorials. Learn Docker image management, GitHub Actions automation, and CI/CD best practices for containerized applications.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/devops/github/container%20technology/ci/cd/getting-started-with-github-container-registry/";
+            window.location.href = "/blog/_i18n/en/2021-12-31-how-to-add-your-jekyll-blog-website-to-google-search-console/";
           
         },
-      },{id: "post-design-pattern-9-prototype-pattern-efficient-object-cloning-for-resource-management-and-performance-optimization",
+      },{id: "post-",
         
-          title: "Design Pattern 9: Prototype Pattern - Efficient Object Cloning for Resource Management and...",
+          title: "",
         
-        description: "Master the Prototype Pattern to create object copies efficiently. Learn how to implement cloning mechanisms for complex objects, reduce resource overhead, and improve application performance with practical examples.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/performance/design-pattern-9-prototype-pattern/";
+            window.location.href = "/blog/_i18n/en/2021-12-30-creating-a-github-pages-with-jekyll-and-minimal-mistakes/";
           
         },
-      },{id: "post-how-to-build-chiptool-for-android-complete-guide-to-matter-protocol-development",
+      },{id: "post-",
         
-          title: "How to Build CHIPTool for Android: Complete Guide to Matter Protocol Development",
+          title: "",
         
-        description: "Learn how to build CHIPTool APK for Android from source code. Step-by-step guide for Matter protocol development, Docker setup, and troubleshooting common build issues.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/android%20development/iot/smart%20home/development%20tools/protocol%20development/how-to-build-chiptool-for-android/";
+            window.location.href = "/blog/_i18n/en/2020-09-10-octopress-setup/";
           
         },
-      },{id: "post-design-pattern-8-builder-pattern-step-by-step-construction-of-complex-objects-for-flexible-configuration",
+      },{id: "post-",
         
-          title: "Design Pattern 8: Builder Pattern - Step-by-Step Construction of Complex Objects for Flexible...",
+          title: "",
         
-        description: "Master the Builder Pattern to construct complex objects step by step. Learn how to create flexible object construction with optional parameters, improve code readability, and handle complex initialization scenarios.",
+        description: "",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/code%20quality/design-pattern-8-builder-pattern/";
+            window.location.href = "/blog/_i18n/en/2020-09-10-how-to-add-your-octopress-blog-website-to-google-search-console/";
           
         },
-      },{id: "post-design-pattern-7-abstract-factory-pattern-creating-families-of-related-objects-for-multi-region-applications",
+      },{id: "post-design-pattern-18-chain-of-responsibility-pattern-dynamic-log-processing-system-design-guide",
         
-          title: "Design Pattern 7: Abstract Factory Pattern - Creating Families of Related Objects for...",
+          title: "Design Pattern (18) Chain of Responsibility Pattern: Dynamic Log Processing System Design Guide...",
         
-        description: "Master the Abstract Factory Pattern to create families of related objects. Learn how to implement region-specific product families for global applications with practical examples and best practices.",
+        description: "Complete analysis of Chain of Responsibility Pattern implementation techniques, learn to design flexible log systems through dynamic processing chains, master core applications and best practices of behavioral design patterns.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/globalization/design-pattern-7-abstract-factory-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-18-chain-of-responsibility-pattern/";
           
         },
-      },{id: "post-design-pattern-6-factory-method-pattern-flexible-object-creation-for-multi-region-applications",
+      },{id: "post-design-pattern-17-proxy-pattern-smart-caching-system-design-guide",
         
-          title: "Design Pattern 6: Factory Method Pattern - Flexible Object Creation for Multi-Region Applications...",
+          title: "Design Pattern (17) Proxy Pattern: Smart Caching System Design Guide",
         
-        description: "Master the Factory Method Pattern to create objects without specifying exact classes. Learn how to implement region-specific factories, improve flexibility, and support global application expansion.",
+        description: "Deep dive into Proxy Pattern implementation techniques, learn how to control access permissions through smart proxy objects, implement caching mechanisms and performance optimization, master advanced application techniques in structural design patterns.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/globalization/design-pattern-6-factory-method-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-17-proxy-pattern/";
           
         },
-      },{id: "post-design-pattern-5-simple-factory-pattern-centralized-object-creation-for-dynamic-beverage-ordering-systems",
+      },{id: "post-design-pattern-16-flyweight-pattern-memory-optimization-and-performance-enhancement-guide",
         
-          title: "Design Pattern 5: Simple Factory Pattern - Centralized Object Creation for Dynamic Beverage...",
+          title: "Design Pattern (16) Flyweight Pattern: Memory Optimization and Performance Enhancement Guide",
         
-        description: "Master the Simple Factory Pattern to centralize object creation logic. Learn how to separate variable and constant code, improve maintainability, and create flexible object instantiation systems.",
+        description: "Deep dive into Flyweight Pattern implementation techniques, learn how to dramatically reduce memory usage through object sharing technology, master large-scale object management and performance optimization core concepts in structural design patterns.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/code%20quality/design-pattern-5-simple-factory-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-16-flyweight-pattern/";
           
         },
-      },{id: "post-design-pattern-4-uml-diagrams-visual-modeling-language-for-software-architecture-and-design-patterns",
+      },{id: "post-design-pattern-15-facade-pattern-unified-interface-design-and-system-integration-guide",
         
-          title: "Design Pattern 4: UML Diagrams - Visual Modeling Language for Software Architecture and...",
+          title: "Design Pattern (15) Facade Pattern: Unified Interface Design and System Integration Guide",
         
-        description: "Master UML (Unified Modeling Language) to visualize software architecture and design patterns. Learn class diagrams, relationships, and how to effectively communicate software design concepts.",
+        description: "Complete analysis of Facade Pattern implementation techniques, learn how to simplify complex subsystems through unified interfaces, master system integration and interface encapsulation core concepts and best practices in structural design patterns.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/software%20architecture/design-pattern-4-uml/";
+            window.location.href = "/blog/design%20pattern/design-pattern-15-facade-pattern/";
           
         },
-      },{id: "post-google-wallet-smart-tap-deep-dive-exploring-the-future-of-contactless-payments",
+      },{id: "post-design-pattern-14-decorator-pattern-dynamic-feature-extension-and-composition-design-guide",
         
-          title: "Google Wallet Smart Tap Deep Dive: Exploring the Future of Contactless Payments",
+          title: "Design Pattern (14) Decorator Pattern: Dynamic Feature Extension and Composition Design Guide",
         
-        description: "Explore Google Wallet Smart Tap technology and how it&#39;s revolutionizing payment systems. Learn about NFC communication, terminal integration, and the future of contactless transactions.",
+        description: "Deep dive into Decorator Pattern implementation techniques, learn how to dynamically extend functionality through object wrapping techniques, master compositional feature enhancement and flexible system design methods in structural design patterns.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/payments/technology/mobile%20development/digital%20wallets/google-wallet-smart-tap-exploring/";
+            window.location.href = "/blog/design%20pattern/design-pattern-14-decorator-pattern/";
           
         },
-      },{id: "post-design-pattern-3-design-patterns-overview-systematic-approach-to-solving-common-software-design-problems",
+      },{id: "post-design-pattern-13-composite-pattern-tree-structure-unified-operation-design-guide",
         
-          title: "Design Pattern 3: Design Patterns Overview - Systematic Approach to Solving Common Software...",
+          title: "Design Pattern (13) Composite Pattern: Tree Structure Unified Operation Design Guide",
         
-        description: "Master the systematic approach to applying design patterns. Learn the Context-Forces-Problem-Solution framework, pattern categories, and step-by-step methodology for solving software design challenges.",
+        description: "Deep dive into Composite Pattern implementation techniques, learn how to uniformly handle individual objects and object collections, master tree structure management and recursive operations in structural design patterns core application techniques.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/software%20architecture/design-pattern-3-design-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-13-composite-pattern/";
           
         },
-      },{id: "post-design-pattern-2-object-oriented-design-principles-solid-principles-for-building-maintainable-software-systems",
+      },{id: "post-jenkins-3-complete-ssh-credentials-configuration-guide-secure-git-repository-connection-implementation-tutorial",
         
-          title: "Design Pattern 2: Object-Oriented Design Principles - SOLID Principles for Building Maintainable Software...",
+          title: "Jenkins (3) Complete SSH Credentials Configuration Guide: Secure Git Repository Connection Implementation Tutorial...",
         
-        description: "Master the SOLID principles to improve object-oriented design quality. Learn Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion principles with practical examples.",
+        description: "In-depth analysis of Jenkins SSH credentials configuration techniques, learn how to securely connect to GitHub GitLab and other Git repositories through SSH keys, master authentication and code pulling best practices in CI/CD workflows.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/code%20quality/design-pattern-2-design-principle/";
+            window.location.href = "/blog/devops/jenkins-3-configure-credentials-ssh/";
           
         },
-      },{id: "post-design-pattern-1-object-oriented-concepts-foundation-for-understanding-complex-design-patterns",
+      },{id: "post-jenkins-2-complete-server-setup-guide-docker-environment-quick-deployment-tutorial",
         
-          title: "Design Pattern 1: Object-Oriented Concepts - Foundation for Understanding Complex Design Patterns",
+          title: "Jenkins (2) Complete Server Setup Guide: Docker Environment Quick Deployment Tutorial",
         
-        description: "Master the four core object-oriented concepts: Encapsulation, Inheritance, Polymorphism, and Abstraction. Learn how these fundamental principles form the foundation for understanding and implementing design patterns.",
+        description: "Comprehensive analysis of Jenkins server setup steps, learn to quickly deploy Jenkins CI/CD environment using Docker, including standard version and Android build environment configuration, master DevOps automation infrastructure building techniques.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/design%20patterns/software%20development/object-oriented%20programming/programming%20fundamentals/design-pattern-1-object-oriented-concepts/";
+            window.location.href = "/blog/devops/jenkins-2-how-to-setup-jenkins-server/";
           
         },
-      },{id: "post-how-to-capture-network-packets-on-ios-complete-guide-with-rvictl-and-wireshark",
+      },{id: "post-jenkins-1-what-is-jenkins-complete-guide-to-devops-automation-introduction",
         
-          title: "How to Capture Network Packets on iOS: Complete Guide with rvictl and Wireshark...",
+          title: "Jenkins (1) What is Jenkins: Complete Guide to DevOps Automation Introduction",
         
-        description: "Master iOS network packet capture using rvictl and Wireshark. Learn debugging techniques for iOS apps, IoT development, and network troubleshooting with step-by-step instructions.",
+        description: "Comprehensive analysis of Jenkins automation server core concepts, learn CI/CD Continuous Integration Continuous Delivery fundamentals, master DevOps tool selection and Pipeline design, essential skills for development team efficiency improvement.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/tools/ios%20development/network%20analysis/how-to-capture-network-packet-on-ios/";
+            window.location.href = "/blog/devops/jenkins-1-what-is-jenkins/";
           
         },
-      },{id: "post-android-network-packet-capture-complete-guide-with-tcpdump-and-wireshark",
+      },{id: "post-design-pattern-10-singleton-pattern-complete-tutorial-ensuring-single-instance-with-global-access",
         
-          title: "Android Network Packet Capture: Complete Guide with tcpdump and Wireshark",
+          title: "Design Pattern (10) - Singleton Pattern Complete Tutorial - Ensuring Single Instance with...",
         
-        description: "Master Android network packet capture using tcpdump and Wireshark. Step-by-step guide for debugging network issues, analyzing traffic, and troubleshooting connectivity problems.",
+        description: "Deep dive into Singleton Pattern - how to ensure a class has only one instance and provide global access point",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/android%20development/network%20analysis/debugging/tools/how-to-capture-network-packet-on-android-using-tcpdump/";
+            window.location.href = "/blog/design-patterns/software-engineering/programming/system-architecture/design-pattern-10-singleton-pattern/";
           
         },
-      },{id: "post-complete-webrtc-guide-understanding-p2p-technology-with-aws-kvs-implementation",
+      },{id: "post-design-pattern-9-prototype-pattern-complete-tutorial-object-cloning-and-performance-optimization",
         
-          title: "Complete WebRTC Guide: Understanding P2P Technology with AWS KVS Implementation",
+          title: "Design Pattern (9) Prototype Pattern Complete Tutorial - Object Cloning and Performance Optimization...",
         
-        description: "Deep dive into WebRTC architecture, signaling server design, ICE protocol flow, and AWS Kinesis Video Streams implementation. Master P2P technology for real-time communication and IoT applications.",
+        description: "Learn how Prototype Pattern solves performance issues through object cloning. Deep dive into shallow and deep copy concepts, Cloneable interface implementation, and best practices through game character creation system examples. Includes UML design and example code.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/web%20development/cloud%20computing/p2p-tech-3-webrtc-kvs/";
+            window.location.href = "/blog/design%20pattern/design-pattern-9-prototype-pattern/";
           
         },
-      },{id: "post-stun-turn-and-ice-complete-guide-to-nat-traversal-protocols",
+      },{id: "post-design-pattern-8-builder-pattern-complete-tutorial-step-by-step-construction-of-complex-objects",
         
-          title: "STUN, TURN, and ICE: Complete Guide to NAT Traversal Protocols",
+          title: "Design Pattern (8) Builder Pattern Complete Tutorial - Step-by-Step Construction of Complex Objects...",
         
-        description: "Master NAT traversal with STUN, TURN, and ICE protocols. Learn how to establish P2P connections, handle Symmetric NAT, and build robust real-time communication systems.",
+        description: "Learn how Builder Pattern solves complex object creation problems. Deep dive into designing step-by-step builders through beverage customization system examples, improving object initialization readability and flexibility. Includes UML design, implementation examples, and best practices.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/p2p/network%20technology/webrtc/development/p2p-tech-2-stun-turn-ice/";
+            window.location.href = "/blog/design%20pattern/design-pattern-8-builder-pattern/";
           
         },
-      },{id: "post-p2p-technology-deep-dive-understanding-ipv4-nat-and-peer-to-peer-communication",
+      },{id: "post-design-pattern-7-abstract-factory-pattern-complete-tutorial-unified-creation-of-product-families",
         
-          title: "P2P Technology Deep Dive: Understanding IPv4, NAT, and Peer-to-Peer Communication",
+          title: "Design Pattern (7) Abstract Factory Pattern Complete Tutorial - Unified Creation of Product...",
         
-        description: "Master P2P technology fundamentals: IPv4 addressing, NAT traversal techniques, and peer-to-peer communication protocols. Essential guide for IoT developers and network engineers.",
+        description: "Learn how Abstract Factory Pattern solves the creation problem of related object groups. Deep dive into designing unified product family creation interfaces through beverage shop themed package examples. Includes UML design, implementation examples, and best practices.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/p2p/network%20technology/iot/development/p2p-tech-1-ipv4-nat/";
+            window.location.href = "/blog/design%20pattern/design-pattern-7-abstract-factory-pattern/";
           
         },
-      },{id: "post-3d-graphics-engine-fundamentals-triangles-uv-mapping-vertices-amp-indices-explained",
+      },{id: "post-design-pattern-6-factory-method-pattern-complete-tutorial-extensible-object-creation",
         
-          title: "3D Graphics Engine Fundamentals: Triangles, UV Mapping, Vertices &amp; Indices Explained",
+          title: "Design Pattern (6) Factory Method Pattern Complete Tutorial - Extensible Object Creation",
         
-        description: "Essential knowledge for 3D graphics programming. Master basic modeling logic, UV mapping concepts, and vertex/index management for game development, AR, and 3D applications.",
+        description: "Learn how Factory Method Pattern solves the extensibility issues of Simple Factory. Deep dive into designing extensible object creation systems through a global beverage chain example. Includes UML design, implementation examples, and best practices.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/computer%20graphics/game%20development/3d-graphic-tips/";
+            window.location.href = "/blog/design%20pattern/design-pattern-6-factory-method-pattern/";
           
         },
-      },{id: "post-seo-guide-add-your-jekyll-blog-to-google-search-console-and-submit-sitemap",
+      },{id: "post-design-pattern-5-simple-factory-pattern-complete-tutorial-encapsulating-object-creation-logic",
         
-          title: "SEO Guide: Add Your Jekyll Blog to Google Search Console and Submit Sitemap...",
+          title: "Design Pattern (5) Simple Factory Pattern Complete Tutorial - Encapsulating Object Creation Logic...",
         
-        description: "Complete step-by-step guide to make your Jekyll blog discoverable on Google. Learn how to verify site ownership with Google Search Console and submit XML sitemaps for better SEO indexing.",
+        description: "Learn the core concepts of Simple Factory Pattern through a beverage ordering system example. Deep dive into encapsulating object creation logic, reducing code duplication, and improving maintainability. Includes UML design, Swift/Kotlin implementation, and best practices.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/seo/web%20development/how-to-add-your-jekyll-blog-website-to-google-search-console/";
+            window.location.href = "/blog/design%20pattern/design-pattern-5-simple-factory-pattern/";
           
         },
-      },{id: "post-complete-guide-build-a-professional-blog-with-jekyll-minimal-mistakes-on-github-pages",
+      },{id: "post-p2p-technology-3-complete-implementation-of-webrtc-and-aws-kvs-in-depth-tutorial-on-real-time-communication-and-streaming-technology",
         
-          title: "Complete Guide: Build a Professional Blog with Jekyll + Minimal Mistakes on GitHub...",
+          title: "P2P Technology (3) Complete Implementation of WebRTC and AWS KVS - In-depth Tutorial...",
         
-        description: "Step-by-step tutorial to create a modern, SEO-friendly blog using Jekyll and Minimal Mistakes theme on GitHub Pages. Learn Ruby setup, theme customization, and deployment best practices for developers.",
+        description: "Learn how WebRTC integrates STUN/TURN/ICE technologies for real-time communication. Deep dive into Signaling Server design, SDP exchange process, AWS Kinesis Video Streams cloud streaming service. From theory to practice, build complete P2P communication systems.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/web%20development/tutorial/creating-a-github-pages-with-jekyll-and-minimal-mistakes/";
+            window.location.href = "/blog/p2p/aws/p2p-tech-3-webrtc-kvs/";
           
         },
-      },{id: "post-seo-guide-add-your-octopress-blog-to-google-search-console-for-better-visibility",
+      },{id: "post-p2p-technology-2-complete-guide-to-stun-turn-ice-protocols-in-depth-analysis-of-nat-traversal-solutions",
         
-          title: "SEO Guide: Add Your Octopress Blog to Google Search Console for Better Visibility...",
+          title: "P2P Technology (2) Complete Guide to STUN, TURN, ICE Protocols - In-depth Analysis...",
         
-        description: "Step-by-step guide to make your Octopress or Jekyll blog discoverable on Google. Learn how to verify site ownership and submit your blog to Google Search Console for improved SEO.",
+        description: "Deep dive into how STUN, TURN, ICE protocols solve NAT traversal problems. From server reflexive, relay transmission to connectivity candidate collection, master how to establish stable P2P connections and build high-efficiency real-time communication systems.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/seo/web%20development/how-to-add-your-octopress-blog-website-to-google-search-console/";
+            window.location.href = "/blog/p2p/p2p-tech-2-stun-turn-ice/";
           
         },
-      },{id: "post-complete-guide-setting-up-a-static-blog-with-octopress-and-github-pages",
+      },{id: "post-p2p-technology-1-complete-analysis-of-ipv4-and-nat-traversal-in-depth-tutorial-on-network-architecture-and-connection-principles",
         
-          title: "Complete Guide: Setting Up a Static Blog with Octopress and GitHub Pages",
+          title: "P2P Technology (1) Complete Analysis of IPv4 and NAT Traversal - In-depth Tutorial...",
         
-        description: "Learn how to create a professional static blog using Octopress and GitHub Pages. Step-by-step tutorial covering installation, configuration, deployment, and content management for developers.",
+        description: "Master the core concepts of P2P network communication and IPv4/NAT architecture limitations. Deep dive into four types of NAT, traversal challenges and solutions. Learn IoT device communication principles through IPCam video streaming examples, laying the foundation for subsequent STUN/TURN/ICE protocols.",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/blog/web%20development/tutorial/octopress-setup/";
+            window.location.href = "/blog/p2p/p2p-tech-1-ipv4-nat/";
           
         },
       },{id: "books-die-kunst-über-geld-nachzudenken",
