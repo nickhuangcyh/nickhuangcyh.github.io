@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (10) - Singleton Pattern Complete Tutorial - Ensuring Single Instance with Global Access
+title: "Design Pattern (10) - Singleton Pattern Complete Tutorial - Ensuring Single Instance with Global Access"
 date: 2024-08-10 15:00:00 +0800
-description: Deep dive into Singleton Pattern - how to ensure a class has only one instance and provide global access point
-excerpt: Complete analysis of Singleton Pattern implementation and application in software design - how to ensure a class has only one instance and provide global access point. Includes multiple implementation approaches - lazy initialization, thread safety, double-checked locking, etc. Suitable for database connection management, system configuration, logger, cache management scenarios. Essential tutorial for learning object-oriented programming and improving software architecture skills.
+description: "Deep dive into Singleton Pattern - how to ensure a class has only one instance and provide global access point"
+excerpt: "Complete analysis of Singleton Pattern implementation and application in software design - how to ensure a class has only one instance and provide global access point. Includes multiple implementation approaches - lazy initialization, thread safety, double-checked locking, etc. Suitable for database connection management, system configuration, logger, cache management scenarios. Essential tutorial for learning object-oriented programming and improving software architecture skills."
 tags: [singleton-pattern, design-patterns, creational-patterns, software-architecture, object-oriented-programming, thread-safety, lazy-initialization, global-access, database-connection, system-design]
 categories: [design-patterns, software-engineering, programming, system-architecture]
 toc:

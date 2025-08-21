@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 3D Graphic Engine Tips - 三角形 x UV mapping x Vertices & Indices
+title: "3D Graphic Engine Tips - 三角形 x UV mapping x Vertices & Indices"
 date: 2022-01-02 10:04:00 +0800
-description: 寫 3D 繪圖程式必需要知道的知識，這篇帶你快速掌握基本建模邏輯與映射概念。
+description: "寫 3D 繪圖程式必需要知道的知識，這篇帶你快速掌握基本建模邏輯與映射概念。"
 tags: [iOS, Android, 3D, OpenGL, ARKit, ARCore, Sceneform, SceneKit]
 categories: [Mobile]
 toc:

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 如何讓 Jekyll 網站被 Google 搜尋到｜Search Console + Sitemap 教學
+title: "如何讓 Jekyll 網站被 Google 搜尋到｜Search Console + Sitemap 教學"
 date: 2021-12-31 11:26:00 +0800
-description: Google 大大，你把我的網頁藏哪去了？教你兩步驟：提交 Search Console、啟用 Sitemap！
+description: "Google 大大，你把我的網頁藏哪去了？教你兩步驟：提交 Search Console、啟用 Sitemap！"
 tags: [Jekyll, Google, SEO, Search Console, Sitemap]
 categories: [Blog]
 toc:

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (16) - Flyweight Pattern (享元模式)
+title: "Design Pattern (16) - Flyweight Pattern (享元模式)"
 date: 2024-12-14 15:00:00 +0800
-description: 探索享元模式如何透過共享技術有效減少記憶體使用，提升應用效能。
+description: "探索享元模式如何透過共享技術有效減少記憶體使用，提升應用效能。"
 tags: [Flyweight Pattern]
 categories: [Design Pattern]
 toc:

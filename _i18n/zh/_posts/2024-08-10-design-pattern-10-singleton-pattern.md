@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (10) - Singleton Pattern (單例模式)
+title: "Design Pattern (10) - Singleton Pattern (單例模式)"
 date: 2024-08-10 15:00:00 +0800
-description: 深入單例模式：如何確保一個類別只有一個實體，提供一個全域
-excerpt: 完整解析單例模式（Singleton Pattern）在軟體設計中的實作與應用：如何確保類別只有一個實體並提供全域存取點。包含多種實作方式：懶惰初始化、執行緒安全、雙重檢查鎖定等。適用於資料庫連接管理、系統設定、記錄器、快取管理等情境。學習物件導向程式設計、提升軟體架構能力的必備教學。
+description: "深入單例模式：如何確保一個類別只有一個實體，提供一個全域"
+excerpt: "完整解析單例模式（Singleton Pattern）在軟體設計中的實作與應用：如何確保類別只有一個實體並提供全域存取點。包含多種實作方式：懶惰初始化、執行緒安全、雙重檢查鎖定等。適用於資料庫連接管理、系統設定、記錄器、快取管理等情境。學習物件導向程式設計、提升軟體架構能力的必備教學。"
 tags: [singleton-pattern, design-patterns, creational-patterns, software-architecture, object-oriented-programming, thread-safety, lazy-initialization, global-access, database-connection, system-design]
 categories: [design-patterns, software-engineering, programming, system-architecture]
 toc:

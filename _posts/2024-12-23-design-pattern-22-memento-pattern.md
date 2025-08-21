@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (22) - Memento Pattern (備忘錄模式)
+title: "Design Pattern (22) - Memento Pattern (備忘錄模式)"
 date: 2024-12-22 14:00:00 +0800
-description: 了解備忘錄模式如何幫助我們實現狀態恢復，像是常見的 Ctrl+Z 功能，讓我們回到之前的操作狀態。
+description: "了解備忘錄模式如何幫助我們實現狀態恢復，像是常見的 Ctrl+Z 功能，讓我們回到之前的操作狀態。"
 tags: [Memento Pattern]
 categories: [Design Pattern]
 toc:

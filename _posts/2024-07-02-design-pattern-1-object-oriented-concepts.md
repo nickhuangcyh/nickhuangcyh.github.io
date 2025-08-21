@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (1) - Object-Oriented Concepts (物件導向概念)
+title: "Design Pattern (1) - Object-Oriented Concepts (物件導向概念)"
 date: 2024-07-02 23:00:00 +0800
-description: 探索封裝、繼承、多態和抽象的力量，為理解複雜設計模式奠定基礎。
+description: "探索封裝、繼承、多態和抽象的力量，為理解複雜設計模式奠定基礎。"
 tags: [Object-Oriented Concepts]
 categories: [Design Pattern]
 toc:

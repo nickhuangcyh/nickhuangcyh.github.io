@@ -1,8 +1,8 @@
 ---
 layout: post
-title: P2P Technology (3) Complete Implementation of WebRTC and AWS KVS - In-depth Tutorial on Real-time Communication and Streaming Technology
+title: "P2P Technology (3) Complete Implementation of WebRTC and AWS KVS - In-depth Tutorial on Real-time Communication and Streaming Technology"
 date: 2022-01-04 23:13:00 +0800
-description: Learn how WebRTC integrates STUN/TURN/ICE technologies for real-time communication. Deep dive into Signaling Server design, SDP exchange process, AWS Kinesis Video Streams cloud streaming service. From theory to practice, build complete P2P communication systems.
+description: "Learn how WebRTC integrates STUN/TURN/ICE technologies for real-time communication. Deep dive into Signaling Server design, SDP exchange process, AWS Kinesis Video Streams cloud streaming service. From theory to practice, build complete P2P communication systems."
 tags: [WebRTC Technology, AWS KVS, Real-time Communication, P2P Streaming, Signaling Server, SDP Protocol, IoT Communication, Cloud Streaming]
 categories: [P2P, AWS]
 toc:

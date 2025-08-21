@@ -1,8 +1,8 @@
 ---
 layout: post
-title: a post with image galleries
+title: "a post with image galleries"
 date: 1970-01-01 01:59:00
-description: this is what included image galleries could look like
+description: "this is what included image galleries could look like"
 tags: formatting images
 categories: sample-posts
 published: false

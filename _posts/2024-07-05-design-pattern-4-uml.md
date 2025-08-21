@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (4) - UML (統一建模語言)
+title: "Design Pattern (4) - UML (統一建模語言)"
 date: 2024-07-05 23:00:00 +0800
-description: 深入了解UML，學習如何用UML圖清晰展現設計模式，提升軟體設計能力。
+description: "深入了解UML，學習如何用UML圖清晰展現設計模式，提升軟體設計能力。"
 tags: [UML]
 categories: [Design Pattern]
 toc:

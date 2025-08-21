@@ -1,8 +1,8 @@
 ---
 layout: post
-title: a post with typograms
+title: "a post with typograms"
 date: 1970-01-01 23:36:10
-description: this is what included typograms code could look like
+description: "this is what included typograms code could look like"
 tags: formatting diagrams
 categories: sample-posts
 published: false

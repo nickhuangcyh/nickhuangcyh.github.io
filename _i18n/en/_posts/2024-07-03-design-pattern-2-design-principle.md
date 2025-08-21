@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Patterns (2) SOLID Design Principles Complete Guide: Five Principles for Improving Code Quality
+title: "Design Patterns (2) SOLID Design Principles Complete Guide: Five Principles for Improving Code Quality"
 date: 2024-07-03 23:00:00 +0800
-description: In-depth analysis of the five SOLID design principles: Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion. Learn to design robust, maintainable software systems through practical examples and code demonstrations.
+description: "In-depth analysis of the five SOLID design principles: Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion. Learn to design robust, maintainable software systems through practical examples and code demonstrations."
 tags: [Design Principles, SOLID Principles, Object-Oriented Design, Software Architecture, Clean Code, Design Pattern, Software Development, Code Quality]
 categories: [Design Pattern]
 toc:

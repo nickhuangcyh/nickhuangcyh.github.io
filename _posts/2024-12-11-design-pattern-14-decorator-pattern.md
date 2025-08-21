@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (14) - Decorator Pattern (裝飾者模式)
+title: "Design Pattern (14) - Decorator Pattern (裝飾者模式)"
 date: 2024-12-11 23:30:00 +0800
-description: 深入了解裝飾者模式如何動態為物件增加功能，同時保持系統的靈活性與開放性。
+description: "深入了解裝飾者模式如何動態為物件增加功能，同時保持系統的靈活性與開放性。"
 tags: [Decorator Pattern]
 categories: [Design Pattern]
 toc:

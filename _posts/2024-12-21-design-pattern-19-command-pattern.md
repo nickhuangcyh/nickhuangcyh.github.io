@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (19) - Command Pattern (命令模式)
+title: "Design Pattern (19) - Command Pattern (命令模式)"
 date: 2024-12-21 15:00:00 +0800
-description: 了解命令模式如何將操作與執行解耦，讓程式具備更高的靈活性與可擴展性。
+description: "了解命令模式如何將操作與執行解耦，讓程式具備更高的靈活性與可擴展性。"
 tags: [Command Pattern]
 categories: [Design Pattern]
 toc:

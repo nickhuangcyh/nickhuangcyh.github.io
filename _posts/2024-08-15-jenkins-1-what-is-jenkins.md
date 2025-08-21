@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Jenkins (1) - 什麼是 Jenkins
+title: "Jenkins (1) - 什麼是 Jenkins"
 date: 2024-08-15 15:00:00 +0800
-description: 了解Jenkins這個強大的自動化伺服器，如何幫助開發團隊實現持續整合與持續交付，提升軟體開發效率。
+description: "了解Jenkins這個強大的自動化伺服器，如何幫助開發團隊實現持續整合與持續交付，提升軟體開發效率。"
 tags: [Jenkins, CI/CD, DevOps]
 categories: [DevOps]
 toc:

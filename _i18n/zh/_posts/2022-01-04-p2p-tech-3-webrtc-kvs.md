@@ -1,8 +1,8 @@
 ---
 layout: post
-title: P2P 技術（3）WebRTC 與 AWS KVS 完整實作：即時通訊與串流技術深入教學
+title: "P2P 技術（3）WebRTC 與 AWS KVS 完整實作：即時通訊與串流技術深入教學"
 date: 2022-01-04 23:13:00 +0800
-description: 學會 WebRTC 如何整合 STUN/TURN/ICE 技術實現即時通訊。深入了解 Signaling Server 設計、SDP 交換流程、AWS Kinesis Video Streams 雲端串流服務。從理論到實作，打造完整的 P2P 通訊系統。
+description: "學會 WebRTC 如何整合 STUN/TURN/ICE 技術實現即時通訊。深入了解 Signaling Server 設計、SDP 交換流程、AWS Kinesis Video Streams 雲端串流服務。從理論到實作，打造完整的 P2P 通訊系統。"
 tags: [WebRTC Technology, AWS KVS, Real-time Communication, P2P Streaming, Signaling Server, SDP Protocol, IoT Communication, Cloud Streaming]
 categories: [P2P, AWS]
 toc:

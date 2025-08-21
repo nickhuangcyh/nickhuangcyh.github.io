@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Complete iOS Network Packet Capture Tutorial: Using rvictl and Wireshark Debugging Techniques
+title: "Complete iOS Network Packet Capture Tutorial: Using rvictl and Wireshark Debugging Techniques"
 date: 2022-11-09 11:30:00 +0800
-description: Learn the complete process of capturing and analyzing network packets on iOS devices. Detailed analysis of rvictl virtual network interface setup, Wireshark packet analysis, and common troubleshooting. Suitable for iOS app development, IoT debugging, and network security analysis.
+description: "Learn the complete process of capturing and analyzing network packets on iOS devices. Detailed analysis of rvictl virtual network interface setup, Wireshark packet analysis, and common troubleshooting. Suitable for iOS app development, IoT debugging, and network security analysis."
 tags: [iOS Network Analysis, Packet Capture, Wireshark Analysis, rvictl Tool, Network Debugging, iOS Development, Mobile Network, Traffic Analysis]
 categories: [Tools]
 toc:

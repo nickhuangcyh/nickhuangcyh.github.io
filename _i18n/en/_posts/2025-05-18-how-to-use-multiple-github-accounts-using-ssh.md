@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 💡 Managing Multiple GitHub Accounts on One Computer: The Simplest SSH Configuration Method
+title: "💡 Managing Multiple GitHub Accounts on One Computer: The Simplest SSH Configuration Method"
 date: 2025-05-18 14:00:00 +0800
-description: Enable your computer to operate multiple GitHub accounts simultaneously, perfect for developers with multiple identities or work/personal accounts.
-excerpt: Complete solution: How to manage multiple GitHub accounts on one computer simultaneously. Detailed tutorial on SSH key configuration, config file setup, and automatic identity switching techniques. Includes troubleshooting, automation scripts, and advanced tips from practical experience. Perfect for developers who need to separate work and personal projects, completely solving account confusion issues and improving Git workflow efficiency.
+description: "Enable your computer to operate multiple GitHub accounts simultaneously, perfect for developers with multiple identities or work/personal accounts."
+excerpt: "Complete solution: How to manage multiple GitHub accounts on one computer simultaneously. Detailed tutorial on SSH key configuration, config file setup, and automatic identity switching techniques. Includes troubleshooting, automation scripts, and advanced tips from practical experience. Perfect for developers who need to separate work and personal projects, completely solving account confusion issues and improving Git workflow efficiency."
 tags: [github, ssh, git, multiple-accounts, devops, ssh-config, git-workflow, version-control, developer-tools, automation]
 categories: [devops, git, github, developer-tools]
 toc:

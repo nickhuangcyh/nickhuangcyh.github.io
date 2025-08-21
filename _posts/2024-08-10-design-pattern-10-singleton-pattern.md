@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (10) - Singleton Pattern (單例模式)
+title: "Design Pattern (10) - Singleton Pattern (單例模式)"
 date: 2024-08-10 15:00:00 +0800
-description: 深入單例模式：如何確保一個類別只有一個實體，提供一個全域
+description: "深入單例模式：如何確保一個類別只有一個實體，提供一個全域"
 tags: [Singleton Pattern]
 categories: [Design Pattern]
 toc:

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Complete Android CHIPTool Build Tutorial: Matter Development Tool Compilation Guide from Source Code
+title: "Complete Android CHIPTool Build Tutorial: Matter Development Tool Compilation Guide from Source Code"
 date: 2024-07-16 19:50:00 +0800
-description: Learn how to compile CHIPTool Android APK from Matter source code. Detailed solutions for common environment configuration, dependency packages, and troubleshooting issues during compilation. Includes complete development environment setup, compilation commands, and practical tips.
+description: "Learn how to compile CHIPTool Android APK from Matter source code. Detailed solutions for common environment configuration, dependency packages, and troubleshooting issues during compilation. Includes complete development environment setup, compilation commands, and practical tips."
 tags: [Android Development, CHIPTool, Matter Protocol, IoT Development, Android Build, Source Code Compilation, Smart Home, Connected Devices]
 categories: [Tools]
 toc:

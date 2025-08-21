@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Android CHIPTool 建置完整教學：從原始碼編譯 Matter 開發工具指南
+title: "Android CHIPTool 建置完整教學：從原始碼編譯 Matter 開發工具指南"
 date: 2024-07-16 19:50:00 +0800
-description: 學會如何從 Matter 原始碼編譯出 CHIPTool Android APK。詳細解決編譯過程中常見的環境配置、依賴套件與錯誤排除問題。包含完整的開發環境設置、編譯指令與實用技巧。
+description: "學會如何從 Matter 原始碼編譯出 CHIPTool Android APK。詳細解決編譯過程中常見的環境配置、依賴套件與錯誤排除問題。包含完整的開發環境設置、編譯指令與實用技巧。"
 tags: [Android Development, CHIPTool, Matter Protocol, IoT Development, Android Build, Source Code Compilation, Smart Home, Connected Devices]
 categories: [Tools]
 toc:

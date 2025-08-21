@@ -1,8 +1,8 @@
 ---
 layout: post
-title: P2P Technology (2) Complete Guide to STUN, TURN, ICE Protocols - In-depth Analysis of NAT Traversal Solutions
+title: "P2P Technology (2) Complete Guide to STUN, TURN, ICE Protocols - In-depth Analysis of NAT Traversal Solutions"
 date: 2022-01-04 15:09:00 +0800
-description: Deep dive into how STUN, TURN, ICE protocols solve NAT traversal problems. From server reflexive, relay transmission to connectivity candidate collection, master how to establish stable P2P connections and build high-efficiency real-time communication systems.
+description: "Deep dive into how STUN, TURN, ICE protocols solve NAT traversal problems. From server reflexive, relay transmission to connectivity candidate collection, master how to establish stable P2P connections and build high-efficiency real-time communication systems."
 tags: [STUN Protocol, TURN Protocol, ICE Protocol, P2P Technology, NAT Traversal, Real-time Communication, Network Protocol, WebRTC]
 categories: [P2P]
 toc:

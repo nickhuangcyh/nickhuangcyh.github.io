@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 設計模式（12）橋接模式 Bridge Pattern 完整解析：解耦抽象與實現，打造靈活系統架構
+title: "設計模式（12）橋接模式 Bridge Pattern 完整解析：解耦抽象與實現，打造靈活系統架構"
 date: 2024-12-08 20:00:00 +0800
-description: 深入剖析橋接模式如何解決多維度設計難題，透過分離抽象與實現避免類別爆炸問題。從保全系統實例學會 Bridge Pattern 核心概念、UML設計、Kotlin實作與最佳實踐。
+description: "深入剖析橋接模式如何解決多維度設計難題，透過分離抽象與實現避免類別爆炸問題。從保全系統實例學會 Bridge Pattern 核心概念、UML設計、Kotlin實作與最佳實踐。"
 tags: [Bridge Pattern, Design Pattern, Software Architecture, Structural Pattern, OOP Design, System Design, Kotlin Programming, Enterprise Development]
 categories: [Design Pattern]
 toc:

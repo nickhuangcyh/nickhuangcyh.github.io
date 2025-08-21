@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (17) - Proxy Pattern (代理模式)
+title: "Design Pattern (17) - Proxy Pattern (代理模式)"
 date: 2024-12-15 21:30:00 +0800
-description: 了解代理模式如何通過控制對物件的訪問來提升系統的安全性、效能及靈活性。
+description: "了解代理模式如何通過控制對物件的訪問來提升系統的安全性、效能及靈活性。"
 tags: [Proxy Pattern]
 categories: [Design Pattern]
 toc:

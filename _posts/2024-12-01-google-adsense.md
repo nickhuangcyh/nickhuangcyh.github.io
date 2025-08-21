@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Google AdSense
+title: "Google AdSense"
 date: 2024-12-01 15:00:00 +0800
-description: 如何透過 Google AdSense 爲我們的網站加入廣告賺取收益
+description: "如何透過 Google AdSense 爲我們的網站加入廣告賺取收益"
 tags: [AdSense]
 categories: [Google]
 toc:

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (19) Command Pattern: Smart Home Remote Control System, Implementing Operation Encapsulation and Undo Mechanism
+title: "Design Pattern (19) Command Pattern: Smart Home Remote Control System, Implementing Operation Encapsulation and Undo Mechanism"
 date: 2024-12-21 15:00:00 +0800
-description: In-depth analysis of Command Pattern core concepts, through smart home remote control example, learn how to encapsulate operation requests as objects, implement undo functionality and operation history management.
+description: "In-depth analysis of Command Pattern core concepts, through smart home remote control example, learn how to encapsulate operation requests as objects, implement undo functionality and operation history management."
 tags: [Command Pattern, Design Patterns, Behavioral Patterns, Smart Home, Remote Control, Undo Functionality]
 categories: [Design Pattern]
 toc:

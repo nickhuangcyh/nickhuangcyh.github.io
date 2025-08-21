@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 設計模式（8）建造者模式 Builder Pattern 完整教學：分步構建複雜物件
+title: "設計模式（8）建造者模式 Builder Pattern 完整教學：分步構建複雜物件"
 date: 2024-07-09 23:00:00 +0800
-description: 學會 Builder Pattern 如何解決複雜物件的創建問題。從飲料客製化系統實例深入了解如何設計步驟式構建器，提升物件初始化的可讀性與靈活性。包含 UML 設計、實作範例與最佳實踐。
+description: "學會 Builder Pattern 如何解決複雜物件的創建問題。從飲料客製化系統實例深入了解如何設計步驟式構建器，提升物件初始化的可讀性與靈活性。包含 UML 設計、實作範例與最佳實踐。"
 tags: [Builder Pattern, Design Pattern, Creational Pattern, Complex Object Creation, Fluent Interface, Software Architecture, OOP, Step by Step Construction]
 categories: [Design Pattern]
 toc:

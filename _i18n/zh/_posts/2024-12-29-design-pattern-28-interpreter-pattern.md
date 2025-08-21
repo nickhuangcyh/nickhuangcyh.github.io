@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (28) - Interpreter Pattern (解譯器模式)
+title: "Design Pattern (28) - Interpreter Pattern (解譯器模式)"
 date: 2024-12-29 16:30:00 +0800
-description: 解譯器模式用於構建一個可解讀特定語言或語法的系統，適合於處理複雜的規則判斷或指令語法。
-excerpt: 深入探討解譯器模式（Interpreter Pattern）在軟體設計中的應用：如何構建可解讀特定語言和語法的系統。包含完整的 Kotlin 程式碼範例，展示布林運算解譯系統的實作。適合處理複雜的規則判斷、指令語法、數學表達式計算器、SQL 查詢條件解析等情境。學習物件導向程式設計、提升系統架構能力的必備經典教學。
+description: "解譯器模式用於構建一個可解讀特定語言或語法的系統，適合於處理複雜的規則判斷或指令語法。"
+excerpt: "深入探討解譯器模式（Interpreter Pattern）在軟體設計中的應用：如何構建可解讀特定語言和語法的系統。包含完整的 Kotlin 程式碼範例，展示布林運算解譯系統的實作。適合處理複雜的規則判斷、指令語法、數學表達式計算器、SQL 查詢條件解析等情境。學習物件導向程式設計、提升系統架構能力的必備經典教學。"
 tags: [interpreter-pattern, design-patterns, software-architecture, object-oriented-programming, behavioral-patterns, kotlin, expression-parsing, software-design, programming-patterns, code-examples]
 categories: [design-patterns, software-engineering, programming, object-oriented-design]
 toc:

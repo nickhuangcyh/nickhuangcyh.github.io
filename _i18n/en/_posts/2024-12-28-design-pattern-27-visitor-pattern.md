@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (27) - Visitor Pattern
+title: "Design Pattern (27) - Visitor Pattern"
 date: 2024-12-28 21:30:00 +0800
-description: The Visitor Pattern provides a way to add new operation logic to objects without modifying their structure, achieving high extensibility.
-excerpt: In-depth exploration of Visitor Pattern application in IoT development: how to uniformly handle multi-brand IPCam devices. Complete Kotlin code examples showing how to add operations without modifying object structures. Suitable for software architecture design, object-oriented programming, behavioral design pattern learning. Implement highly extensible systems conforming to Open-Closed Principle, improving code maintainability and system stability.
+description: "The Visitor Pattern provides a way to add new operation logic to objects without modifying their structure, achieving high extensibility."
+excerpt: "In-depth exploration of Visitor Pattern application in IoT development: how to uniformly handle multi-brand IPCam devices. Complete Kotlin code examples showing how to add operations without modifying object structures. Suitable for software architecture design, object-oriented programming, behavioral design pattern learning. Implement highly extensible systems conforming to Open-Closed Principle, improving code maintainability and system stability."
 tags: [visitor-pattern, design-patterns, behavioral-patterns, iot-development, software-architecture, object-oriented-programming, kotlin, mobile-app-development, system-design, code-maintainability]
 categories: [design-patterns, software-engineering, iot, mobile-development]
 toc:

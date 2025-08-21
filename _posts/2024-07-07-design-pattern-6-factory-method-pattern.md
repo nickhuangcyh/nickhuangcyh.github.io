@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (6) - Factory Method Pattern (工廠方法模式)
+title: "Design Pattern (6) - Factory Method Pattern (工廠方法模式)"
 date: 2024-07-07 23:00:00 +0800
-description: 深入探討工廠方法模式，通過實例展示其應用，提升程式碼的靈活性和可擴展性。
+description: "深入探討工廠方法模式，通過實例展示其應用，提升程式碼的靈活性和可擴展性。"
 tags: [Factory Method Pattern]
 categories: [Design Pattern]
 toc:

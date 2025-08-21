@@ -1,8 +1,8 @@
 ---
 layout: post
-title: a post with giscus comments
+title: "a post with giscus comments"
 date: 1970-01-01 11:59:00-0400
-description: an example of a blog post with giscus comments
+description: "an example of a blog post with giscus comments"
 tags: comments
 categories: sample-posts external-services
 published: false

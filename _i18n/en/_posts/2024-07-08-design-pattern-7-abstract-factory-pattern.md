@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (7) Abstract Factory Pattern Complete Tutorial - Unified Creation of Product Families
+title: "Design Pattern (7) Abstract Factory Pattern Complete Tutorial - Unified Creation of Product Families"
 date: 2024-07-08 23:00:00 +0800
-description: Learn how Abstract Factory Pattern solves the creation problem of related object groups. Deep dive into designing unified product family creation interfaces through beverage shop themed package examples. Includes UML design, implementation examples, and best practices.
+description: "Learn how Abstract Factory Pattern solves the creation problem of related object groups. Deep dive into designing unified product family creation interfaces through beverage shop themed package examples. Includes UML design, implementation examples, and best practices."
 tags: [Abstract Factory Pattern, Design Pattern, Creational Pattern, Product Family, Object Creation, Software Architecture, OOP, Interface Design]
 categories: [Design Pattern]
 toc:

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (13) - Composite Pattern (組合模式)
+title: "Design Pattern (13) - Composite Pattern (組合模式)"
 date: 2024-12-10 22:28:00 +0800
-description: 深入了解組合模式如何以一致的方式操作單個物件與物件集合，實現對樹狀結構的靈活管理。
+description: "深入了解組合模式如何以一致的方式操作單個物件與物件集合，實現對樹狀結構的靈活管理。"
 tags: [Composite Pattern]
 categories: [Design Pattern]
 toc:

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (7) - Abstract Factory Pattern (抽象工廠模式)
+title: "Design Pattern (7) - Abstract Factory Pattern (抽象工廠模式)"
 date: 2024-07-08 23:00:00 +0800
-description: 探索如何使用抽象工廠模式創建一系列相關或依賴的物件，提升設計靈活性。
+description: "探索如何使用抽象工廠模式創建一系列相關或依賴的物件，提升設計靈活性。"
 tags: [Abstract Factory Pattern]
 categories: [Design Pattern]
 toc:

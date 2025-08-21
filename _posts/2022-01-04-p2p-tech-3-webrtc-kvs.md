@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 搞懂 P2P 技術 (3) - WebRTC x AWS x KVS
+title: "搞懂 P2P 技術 (3) - WebRTC x AWS x KVS"
 date: 2022-01-04 23:13:00 +0800
-description: 深入解析 WebRTC 架構、Signaling Server 設計、ICE 協議流程與 AWS KVS 串流實作，搞懂 P2P 在即時通訊與 IoT 中的應用。
+description: "深入解析 WebRTC 架構、Signaling Server 設計、ICE 協議流程與 AWS KVS 串流實作，搞懂 P2P 在即時通訊與 IoT 中的應用。"
 tags: [iOS, Android, WebRTC, KVS, ICE, SDP, Signaling]
 categories: [P2P, AWS]
 toc:

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Octopress SEO 完整教學：Google Search Console 與搜尋引擎索引優化
+title: "Octopress SEO 完整教學：Google Search Console 與搜尋引擎索引優化"
 date: 2020-09-10 23:29:22 +0800
-description: 學會如何讓 Octopress 靜態網站被 Google 收錄與索引。詳細解析 Google Search Console 設定、Sitemap 提交、網站驗證與 SEO 優化流程。包含 robots.txt 配置、網址結構與最佳實踐。
+description: "學會如何讓 Octopress 靜態網站被 Google 收錄與索引。詳細解析 Google Search Console 設定、Sitemap 提交、網站驗證與 SEO 優化流程。包含 robots.txt 配置、網址結構與最佳實踐。"
 tags: [Octopress SEO, Google Search Console, Search Engine Indexing, Static Site SEO, Website Visibility, Sitemap Optimization, Blog SEO, Search Marketing]
 categories: [Blog]
 toc:

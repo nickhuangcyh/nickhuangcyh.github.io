@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 🤖 AI Agent 系列（一）：搞懂 LLM、RAG 與 MCP 的核心互動邏輯
+title: "🤖 AI Agent 系列（一）：搞懂 LLM、RAG 與 MCP 的核心互動邏輯"
 date: 2025-07-24 20:00:00 +0800
-description: 本文將帶你快速了解 AI Agent、LLM、RAG 與 MCP 的核心原理及其協作方式。
-excerpt: 深入解析 AI Agent 核心技術架構：從 LLM 大語言模型的推理能力，到 RAG 檢索增強生成的資料處理，再到 MCP 多組件協議的工具整合。了解如何讓 AI 從單純的對話機器人進化為能夠主動執行複雜任務的智能助理，掌握 Google Gemini、Claude、GPT-4 等頂級 AI 模型的實戰應用技巧。
+description: "本文將帶你快速了解 AI Agent、LLM、RAG 與 MCP 的核心原理及其協作方式。"
+excerpt: "深入解析 AI Agent 核心技術架構：從 LLM 大語言模型的推理能力，到 RAG 檢索增強生成的資料處理，再到 MCP 多組件協議的工具整合。了解如何讓 AI 從單純的對話機器人進化為能夠主動執行複雜任務的智能助理，掌握 Google Gemini、Claude、GPT-4 等頂級 AI 模型的實戰應用技巧。"
 tags: [ai-agent, llm, rag, mcp, artificial-intelligence, machine-learning, generative-ai, ai-programming, chatbot, automation]
 categories: [ai, machine-learning, developer-tools, programming]
 toc:

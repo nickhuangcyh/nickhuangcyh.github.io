@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 3D Graphics Development Fundamentals Tutorial: Complete Analysis of Triangle Meshes, UV Mapping, and Vertex Indices
+title: "3D Graphics Development Fundamentals Tutorial: Complete Analysis of Triangle Meshes, UV Mapping, and Vertex Indices"
 date: 2022-01-02 10:04:00 +0800
-description: Master the core concepts and implementation techniques of 3D graphics programming. Deep dive into triangle mesh modeling, UV texture mapping, vertex and index management, and other core technologies. Suitable for developers working with OpenGL, ARKit, ARCore, and other platforms.
+description: "Master the core concepts and implementation techniques of 3D graphics programming. Deep dive into triangle mesh modeling, UV texture mapping, vertex and index management, and other core technologies. Suitable for developers working with OpenGL, ARKit, ARCore, and other platforms."
 tags: [3D Graphics Programming, OpenGL Development, UV Mapping, Triangle Mesh, Vertex Buffer, Mobile 3D, ARKit Development, Computer Graphics]
 categories: [Mobile]
 toc:

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (20) Iterator Pattern: Unified Data Traversal Interface, Elegant Access to Multiple Collection Structures
+title: "Design Pattern (20) Iterator Pattern: Unified Data Traversal Interface, Elegant Access to Multiple Collection Structures"
 date: 2024-12-22 14:00:00 +0800
-description: Detailed exploration of Iterator Pattern design essence, through music playlist management examples, learn how to build unified traversal interfaces, hiding collection internal structure complexity.
+description: "Detailed exploration of Iterator Pattern design essence, through music playlist management examples, learn how to build unified traversal interfaces, hiding collection internal structure complexity."
 tags: [Iterator Pattern, Design Patterns, Behavioral Patterns, Data Structure, Collection Traversal, Music Playlist]
 categories: [Design Pattern]
 toc:

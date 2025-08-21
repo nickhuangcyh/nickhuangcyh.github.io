@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (8) Builder Pattern Complete Tutorial - Step-by-Step Construction of Complex Objects
+title: "Design Pattern (8) Builder Pattern Complete Tutorial - Step-by-Step Construction of Complex Objects"
 date: 2024-07-09 23:00:00 +0800
-description: Learn how Builder Pattern solves complex object creation problems. Deep dive into designing step-by-step builders through beverage customization system examples, improving object initialization readability and flexibility. Includes UML design, implementation examples, and best practices.
+description: "Learn how Builder Pattern solves complex object creation problems. Deep dive into designing step-by-step builders through beverage customization system examples, improving object initialization readability and flexibility. Includes UML design, implementation examples, and best practices."
 tags: [Builder Pattern, Design Pattern, Creational Pattern, Complex Object Creation, Fluent Interface, Software Architecture, OOP, Step by Step Construction]
 categories: [Design Pattern]
 toc:

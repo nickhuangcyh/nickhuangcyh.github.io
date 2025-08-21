@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (21) - Mediator Pattern (中介者模式)
+title: "Design Pattern (21) - Mediator Pattern (中介者模式)"
 date: 2024-12-22 14:00:00 +0800
-description: 了解中介者模式如何協調物件之間的交互，減少物件之間的耦合性並促進系統的可擴展性。
+description: "了解中介者模式如何協調物件之間的交互，減少物件之間的耦合性並促進系統的可擴展性。"
 tags: [Mediator Pattern]
 categories: [Design Pattern]
 toc:

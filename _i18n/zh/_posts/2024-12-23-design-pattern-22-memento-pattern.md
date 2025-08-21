@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 設計模式（22）備忘錄模式：實現文字編輯器復原功能，完美封裝物件狀態快照
+title: "設計模式（22）備忘錄模式：實現文字編輯器復原功能，完美封裝物件狀態快照"
 date: 2024-12-22 14:00:00 +0800
-description: 深入剖析備忘錄模式（Memento Pattern）核心原理，透過文字編輯器復原（Undo）功能實例，學習如何安全保存與恢復物件狀態，實現完整的狀態管理系統。
+description: "深入剖析備忘錄模式（Memento Pattern）核心原理，透過文字編輯器復原（Undo）功能實例，學習如何安全保存與恢復物件狀態，實現完整的狀態管理系統。"
 tags: [Memento Pattern, Design Patterns, Behavioral Patterns, State Management, Undo Functionality, Text Editor]
 categories: [Design Pattern]
 toc:

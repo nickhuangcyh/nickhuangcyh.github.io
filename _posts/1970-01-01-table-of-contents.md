@@ -1,8 +1,8 @@
 ---
 layout: post
-title: a post with table of contents
+title: "a post with table of contents"
 date: 1970-01-01 11:59:00-0400
-description: an example of a blog post with table of contents
+description: "an example of a blog post with table of contents"
 tags: formatting toc
 categories: sample-posts
 published: false

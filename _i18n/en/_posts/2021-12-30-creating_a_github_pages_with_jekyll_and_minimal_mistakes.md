@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Complete Jekyll Website Creation Tutorial: Building a Blog with Minimal Mistakes Theme on GitHub Pages
+title: "Complete Jekyll Website Creation Tutorial: Building a Blog with Minimal Mistakes Theme on GitHub Pages"
 date: 2021-12-29 15:45:03 +0800
-description: Learn to build a personal blog from scratch using Jekyll and the Minimal Mistakes theme. Detailed analysis of GitHub Pages deployment, theme customization, website configuration, and content management workflow. Includes Ruby environment setup, Markdown writing, and SEO optimization.
+description: "Learn to build a personal blog from scratch using Jekyll and the Minimal Mistakes theme. Detailed analysis of GitHub Pages deployment, theme customization, website configuration, and content management workflow. Includes Ruby environment setup, Markdown writing, and SEO optimization."
 tags: [Jekyll Tutorial, Minimal Mistakes Theme, GitHub Pages, Static Site Generator, Blog Setup, Ruby Development, Markdown Writing, Website Deployment]
 categories: [Blog]
 toc:

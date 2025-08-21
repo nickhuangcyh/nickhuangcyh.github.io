@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 如何讓 Octopress 網站被 Google 找到｜Search Console 實作教學
+title: "如何讓 Octopress 網站被 Google 找到｜Search Console 實作教學"
 date: 2020-09-10 23:29:22 +0800
-description: Google 大大，你把我的網頁藏哪去了？
+description: "Google 大大，你把我的網頁藏哪去了？"
 tags: [Octopress, SEO, Google Search Console]
 categories: [Blog]
 toc:

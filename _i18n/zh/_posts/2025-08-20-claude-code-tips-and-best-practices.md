@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Claude Code 使用技巧與最佳實踐 - Tips and Best Practices
+title: "Claude Code 使用技巧與最佳實踐 - Tips and Best Practices"
 date: 2025-08-20 22:00:00 +0800
-description: 探索 Claude Code 的最佳使用方式，從基礎操作到進階工作流程，提升 AI 輔助開發的效率與品質。
+description: "探索 Claude Code 的最佳使用方式，從基礎操作到進階工作流程，提升 AI 輔助開發的效率與品質。"
 tags: [Claude Code, AI Tools, Development Tips, Best Practices]
 categories: [AI Development Tools]
 toc:

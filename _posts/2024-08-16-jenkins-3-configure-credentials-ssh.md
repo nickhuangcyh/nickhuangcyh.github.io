@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Jenkins (3) - 如何配置 Credentials 以透過 SSH 從 git 上拉取程式碼
+title: "Jenkins (3) - 如何配置 Credentials 以透過 SSH 從 git 上拉取程式碼"
 date: 2024-12-09 20:00:00 +0800
-description: 學習如何在 Jenkins 中配置憑證（Credentials），以便透過 SSH 安全地拉取程式碼。
+description: "學習如何在 Jenkins 中配置憑證（Credentials），以便透過 SSH 安全地拉取程式碼。"
 tags: [Jenkins, CI/CD, DevOps, Credentials, SSH]
 categories: [DevOps]
 toc:

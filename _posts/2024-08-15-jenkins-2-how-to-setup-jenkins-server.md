@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Jenkins (2) - 如何架設 Jenkins 伺服器
+title: "Jenkins (2) - 如何架設 Jenkins 伺服器"
 date: 2024-08-15 17:00:00 +0800
-description: 學習如何使用 Docker 映像檔來架設 Jenkins 伺服器，提升開發團隊的自動化能力。
+description: "學習如何使用 Docker 映像檔來架設 Jenkins 伺服器，提升開發團隊的自動化能力。"
 tags: [Jenkins, CI/CD, DevOps, Docker]
 categories: [DevOps]
 toc:

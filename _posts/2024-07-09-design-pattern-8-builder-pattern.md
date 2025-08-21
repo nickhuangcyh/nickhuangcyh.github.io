@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (8) - Builder Pattern (建造者模式)
+title: "Design Pattern (8) - Builder Pattern (建造者模式)"
 date: 2024-07-09 23:00:00 +0800
-description: 探索建造者模式，學習如何分步構建複雜對象，使程式碼更加靈活和易於維護。通過實例展示如何使用建造者模式簡化對象創建過程，提升程式碼的可讀性和可擴展性。
+description: "探索建造者模式，學習如何分步構建複雜對象，使程式碼更加靈活和易於維護。通過實例展示如何使用建造者模式簡化對象創建過程，提升程式碼的可讀性和可擴展性。"
 tags: [Builder Pattern]
 categories: [Design Pattern]
 toc:

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (26) - Template Method Pattern (模板方法模式)
+title: "Design Pattern (26) - Template Method Pattern (模板方法模式)"
 date: 2024-12-28 19:30:00 +0800
-description: 模板方法模式提供了一個框架，允許子類別重新定義特定步驟的實作，保持核心流程的一致性，實現高復用性與靈活性。
+description: "模板方法模式提供了一個框架，允許子類別重新定義特定步驟的實作，保持核心流程的一致性，實現高復用性與靈活性。"
 tags: [Template Method Pattern]
 categories: [Design Pattern]
 toc:

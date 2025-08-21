@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 搞懂 P2P 技術 (1) - P2P x IPv4 x NAT
+title: "搞懂 P2P 技術 (1) - P2P x IPv4 x NAT"
 date: 2022-01-03 23:45:03 +0800
-description: 深入解析 P2P 穿透技術、NAT 類型與通訊限制，掌握物聯網與分佈式架構下的網路連線原理。
+description: "深入解析 P2P 穿透技術、NAT 類型與通訊限制，掌握物聯網與分佈式架構下的網路連線原理。"
 tags: [iOS, Android, IPv4, NAT, P2P, NAT Traversal]
 categories: [P2P]
 toc:

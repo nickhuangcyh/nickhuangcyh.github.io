@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Getting Started with GitHub Container Registry
+title: "Getting Started with GitHub Container Registry"
 date: 2024-07-23 18:00:00 +0800
-description: A Guide to Using and Managing Container Images
+description: "A Guide to Using and Managing Container Images"
 tags: [Docker, Container Registry, GitHub Actions, CI/CD, DevOps Tools]
 categories: [DevOps]
 toc:

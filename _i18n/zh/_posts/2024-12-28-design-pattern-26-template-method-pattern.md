@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 設計模式（26）模板方法模式：定義演算法骨架，提升程式碼復用性與系統擴展能力
+title: "設計模式（26）模板方法模式：定義演算法骨架，提升程式碼復用性與系統擴展能力"
 date: 2024-12-28 19:30:00 +0800
-description: 深入解析模板方法模式（Template Method Pattern），學習如何定義演算法骨架、實現程式碼復用，並透過資料格式轉換系統實例，掌握行為型設計模式的核心應用技巧。
+description: "深入解析模板方法模式（Template Method Pattern），學習如何定義演算法骨架、實現程式碼復用，並透過資料格式轉換系統實例，掌握行為型設計模式的核心應用技巧。"
 tags: [Template Method Pattern, Design Patterns, Behavioral Patterns, Code Reusability, Algorithm Structure, Software Architecture]
 categories: [Design Pattern]
 toc:

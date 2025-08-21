@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (11) - Adapter Pattern (轉接器模式)
+title: "Design Pattern (11) - Adapter Pattern (轉接器模式)"
 date: 2024-12-07 23:00:00 +0800
-description: 了解如何使用轉接器模式來解決介面不兼容問題，讓不同類別無縫合作，增強程式設計靈活性。
+description: "了解如何使用轉接器模式來解決介面不兼容問題，讓不同類別無縫合作，增強程式設計靈活性。"
 tags: [Adapter Pattern]
 categories: [Design Pattern]
 toc:

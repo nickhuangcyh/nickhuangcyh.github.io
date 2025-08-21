@@ -1,8 +1,8 @@
 ---
 layout: post
-title: a post with custom blockquotes
+title: "a post with custom blockquotes"
 date: 1970-01-01 15:53:00-0400
-description: an example of a blog post with custom blockquotes
+description: "an example of a blog post with custom blockquotes"
 tags: formatting blockquotes
 categories: sample-posts
 published: false

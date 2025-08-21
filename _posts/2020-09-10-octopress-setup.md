@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 用 Octopress 架設靜態部落格｜GitHub Pages 實戰教學
+title: "用 Octopress 架設靜態部落格｜GitHub Pages 實戰教學"
 date: 2020-09-10 23:18:16 +0800
-description: 想不到架一個部落格，其實可以這麼簡單又有趣！
+description: "想不到架一個部落格，其實可以這麼簡單又有趣！"
 tags: [Octopress, 靜態網站, GitHub Pages, 部落格架設]
 categories: [Blog]
 toc:

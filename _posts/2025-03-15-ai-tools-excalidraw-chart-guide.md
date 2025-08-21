@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 🚀 如何使用 Excalidraw AI 快速生成專業級圖表，提升工作效率！
+title: "🚀 如何使用 Excalidraw AI 快速生成專業級圖表，提升工作效率！"
 date: 2025-03-15 16:30:00 +0800
-description: 使用 Excalidraw AI 只需輸入文字描述，即可快速生成流程圖、技術架構圖、心智圖等，提升工作效率！
+description: "使用 Excalidraw AI 只需輸入文字描述，即可快速生成流程圖、技術架構圖、心智圖等，提升工作效率！"
 tags: [Excalidraw, AI Drawing, Diagram Tool, Flowchart, Mind Map]
 categories: [AI Tools, Visualization, Productivity]
 toc:

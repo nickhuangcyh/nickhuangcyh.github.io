@@ -1,8 +1,8 @@
 ---
 layout: post
-title: In-Depth Analysis of Google Wallet Smart Tap: The Future of Payment Methods
+title: "In-Depth Analysis of Google Wallet Smart Tap: The Future of Payment Methods"
 date: 2024-07-05 20:00:00 +0800
-description: Explore the working principles of Google Wallet Smart Tap and how it's changing our payment habits. This article will take you through the technology behind it and its impact on the future payment ecosystem.
+description: "Explore the working principles of Google Wallet Smart Tap and how it's changing our payment habits. This article will take you through the technology behind it and its impact on the future payment ecosystem."
 tags: [Google Wallet, Smart Tap, NFC, Payment Systems]
 categories: [Pay, Technology]
 toc:

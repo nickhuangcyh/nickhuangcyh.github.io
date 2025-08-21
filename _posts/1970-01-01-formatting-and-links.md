@@ -1,8 +1,8 @@
 ---
 layout: post
-title: a post with formatting and links
+title: "a post with formatting and links"
 date: 1970-01-01 16:40:16
-description: march & april, looking forward to summer
+description: "march & april, looking forward to summer"
 tags: formatting links
 categories: sample-posts
 published: false

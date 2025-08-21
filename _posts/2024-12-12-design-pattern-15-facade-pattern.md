@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (15) - Facade Pattern (外觀模式)
+title: "Design Pattern (15) - Facade Pattern (外觀模式)"
 date: 2024-12-12 23:30:00 +0800
-description: 探索外觀模式如何簡化系統複雜性，提供一個統一的介面來訪問子系統的功能，提升程式碼的可讀性與維護性。
+description: "探索外觀模式如何簡化系統複雜性，提供一個統一的介面來訪問子系統的功能，提升程式碼的可讀性與維護性。"
 tags: [Facade Pattern]
 categories: [Design Pattern]
 toc:

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: How to build CHIPTool for Android
+title: "How to build CHIPTool for Android"
 date: 2024-07-16 19:50:00 +0800
-description: 本篇文章我將介紹如何按照步驟 Build 出 CHIPTool apk
+description: "本篇文章我將介紹如何按照步驟 Build 出 CHIPTool apk"
 tags: [Android, CHIP, Matter]
 categories: [Tools]
 toc:

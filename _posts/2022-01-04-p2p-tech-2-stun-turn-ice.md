@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 搞懂 P2P 技術 (2) - STUN x TURN x ICE
+title: "搞懂 P2P 技術 (2) - STUN x TURN x ICE"
 date: 2022-01-04 15:09:00 +0800
-description: 解析 STUN、TURN 與 ICE 協議，搞懂 P2P 穿透技術，突破 NAT 限制建立穩定連線，打造強大 iOS / Android 即時通訊架構。
+description: "解析 STUN、TURN 與 ICE 協議，搞懂 P2P 穿透技術，突破 NAT 限制建立穩定連線，打造強大 iOS / Android 即時通訊架構。"
 tags: [iOS, Android, STUN, TURN, ICE, NAT Traversal]
 categories: [P2P]
 toc:

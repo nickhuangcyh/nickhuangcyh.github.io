@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (22) Memento Pattern: Implementing Text Editor Undo Functionality, Perfect Encapsulation of Object State Snapshots
+title: "Design Pattern (22) Memento Pattern: Implementing Text Editor Undo Functionality, Perfect Encapsulation of Object State Snapshots"
 date: 2024-12-22 14:00:00 +0800
-description: In-depth analysis of Memento Pattern core principles, through text editor undo functionality examples, learn how to safely save and restore object states, implementing complete state management systems.
+description: "In-depth analysis of Memento Pattern core principles, through text editor undo functionality examples, learn how to safely save and restore object states, implementing complete state management systems."
 tags: [Memento Pattern, Design Patterns, Behavioral Patterns, State Management, Undo Functionality, Text Editor]
 categories: [Design Pattern]
 toc:

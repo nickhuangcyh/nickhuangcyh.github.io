@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (25) Strategy Pattern: Dynamic Algorithm Switching, Building Highly Extensible E-commerce Shipping System
+title: "Design Pattern (25) Strategy Pattern: Dynamic Algorithm Switching, Building Highly Extensible E-commerce Shipping System"
 date: 2024-12-26 23:50:00 +0800
-description: Complete analysis of Strategy Pattern core concepts and practical applications, through e-commerce shipping calculation system examples, learn how to implement dynamic algorithm switching, improving code extensibility and maintainability.
+description: "Complete analysis of Strategy Pattern core concepts and practical applications, through e-commerce shipping calculation system examples, learn how to implement dynamic algorithm switching, improving code extensibility and maintainability."
 tags: [Strategy Pattern, Design Patterns, Behavioral Patterns, Algorithm Switching, E-commerce System, Software Architecture]
 categories: [Design Pattern]
 toc:

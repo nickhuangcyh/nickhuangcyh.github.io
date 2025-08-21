@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (27) - Visitor Pattern (訪問者模式)
+title: "Design Pattern (27) - Visitor Pattern (訪問者模式)"
 date: 2024-12-28 21:30:00 +0800
-description: 訪問者模式提供了一種方式，讓我們能在不修改物件結構的前提下，為其增加新的操作邏輯，實現高擴展性。
-excerpt: 深入探討訪問者模式（Visitor Pattern）在 IoT 應用開發中的實際應用：如何統一處理多品牌 IPCam 設備。完整 Kotlin 程式碼範例，展示如何在不修改物件結構的前提下新增操作。適用於軟體架構設計、物件導向程式設計、行為型設計模式學習。實現高度可擴展且符合開放關閉原則的系統架構，提升程式碼可維護性和系統穩定性。
+description: "訪問者模式提供了一種方式，讓我們能在不修改物件結構的前提下，為其增加新的操作邏輯，實現高擴展性。"
+excerpt: "深入探討訪問者模式（Visitor Pattern）在 IoT 應用開發中的實際應用：如何統一處理多品牌 IPCam 設備。完整 Kotlin 程式碼範例，展示如何在不修改物件結構的前提下新增操作。適用於軟體架構設計、物件導向程式設計、行為型設計模式學習。實現高度可擴展且符合開放關閉原則的系統架構，提升程式碼可維護性和系統穩定性。"
 tags: [visitor-pattern, design-patterns, behavioral-patterns, iot-development, software-architecture, object-oriented-programming, kotlin, mobile-app-development, system-design, code-maintainability]
 categories: [design-patterns, software-engineering, iot, mobile-development]
 toc:

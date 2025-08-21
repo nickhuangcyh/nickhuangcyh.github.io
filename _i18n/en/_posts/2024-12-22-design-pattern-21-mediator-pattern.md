@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (21) Mediator Pattern: Smart Home System Component Coordination, Reducing Complex Coupling Relationships Between Objects
+title: "Design Pattern (21) Mediator Pattern: Smart Home System Component Coordination, Reducing Complex Coupling Relationships Between Objects"
 date: 2024-12-22 14:00:00 +0800
-description: Comprehensive analysis of Mediator Pattern design principles, through smart home control system examples, learn how to elegantly coordinate complex interactions between multiple objects, implementing low-coupling high-cohesion system architecture.
+description: "Comprehensive analysis of Mediator Pattern design principles, through smart home control system examples, learn how to elegantly coordinate complex interactions between multiple objects, implementing low-coupling high-cohesion system architecture."
 tags: [Mediator Pattern, Design Patterns, Behavioral Patterns, Object Coordination, Smart Home System, Low Coupling]
 categories: [Design Pattern]
 toc:

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (25) - Strategy Pattern (策略模式)
+title: "Design Pattern (25) - Strategy Pattern (策略模式)"
 date: 2024-12-26 23:50:00 +0800
-description: 策略模式提供了一種靈活的解決方案，讓系統能根據需求動態切換不同的行為邏輯，實現高可擴展性與低耦合性。
+description: "策略模式提供了一種靈活的解決方案，讓系統能根據需求動態切換不同的行為邏輯，實現高可擴展性與低耦合性。"
 tags: [Strategy Pattern]
 categories: [Design Pattern]
 toc:

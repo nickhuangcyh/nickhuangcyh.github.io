@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (9) - Prototype Pattern (原型模式)
+title: "Design Pattern (9) - Prototype Pattern (原型模式)"
 date: 2024-07-21 23:00:00 +0800
-description: 深入原型模式：探索如何透過物件複製技術，有效提升軟體開發中的資源管理與設計模式的靈活性。
+description: "深入原型模式：探索如何透過物件複製技術，有效提升軟體開發中的資源管理與設計模式的靈活性。"
 tags: [Prototype Pattern]
 categories: [Design Pattern]
 toc:

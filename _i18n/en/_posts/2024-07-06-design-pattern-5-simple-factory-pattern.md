@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (5) Simple Factory Pattern Complete Tutorial - Encapsulating Object Creation Logic
+title: "Design Pattern (5) Simple Factory Pattern Complete Tutorial - Encapsulating Object Creation Logic"
 date: 2024-07-06 23:00:00 +0800
-description: Learn the core concepts of Simple Factory Pattern through a beverage ordering system example. Deep dive into encapsulating object creation logic, reducing code duplication, and improving maintainability. Includes UML design, Swift/Kotlin implementation, and best practices.
+description: "Learn the core concepts of Simple Factory Pattern through a beverage ordering system example. Deep dive into encapsulating object creation logic, reducing code duplication, and improving maintainability. Includes UML design, Swift/Kotlin implementation, and best practices."
 tags: [Simple Factory Pattern, Factory Pattern, Creational Pattern, Object Creation, Design Pattern, Software Architecture, OOP Design, Programming]
 categories: [Design Pattern]
 toc:

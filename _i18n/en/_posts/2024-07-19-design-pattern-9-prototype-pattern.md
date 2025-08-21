@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (9) Prototype Pattern Complete Tutorial - Object Cloning and Performance Optimization
+title: "Design Pattern (9) Prototype Pattern Complete Tutorial - Object Cloning and Performance Optimization"
 date: 2024-07-21 23:00:00 +0800
-description: Learn how Prototype Pattern solves performance issues through object cloning. Deep dive into shallow and deep copy concepts, Cloneable interface implementation, and best practices through game character creation system examples. Includes UML design and example code.
+description: "Learn how Prototype Pattern solves performance issues through object cloning. Deep dive into shallow and deep copy concepts, Cloneable interface implementation, and best practices through game character creation system examples. Includes UML design and example code."
 tags: [Prototype Pattern, Design Pattern, Creational Pattern, Object Cloning, Performance Optimization, Deep Copy, Shallow Copy, Software Architecture]
 categories: [Design Pattern]
 toc:

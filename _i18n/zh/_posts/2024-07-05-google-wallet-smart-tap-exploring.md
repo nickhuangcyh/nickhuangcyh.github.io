@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 深入解析 Google Wallet Smart Tap：未來的支付方式
+title: "深入解析 Google Wallet Smart Tap：未來的支付方式"
 date: 2024-07-05 20:00:00 +0800
-description: 探索 Google Wallet Smart Tap 的運作原理和它如何改變我們的支付習慣。本文將帶你了解其背後的技術，以及它對未來支付生態系統的影響。
+description: "探索 Google Wallet Smart Tap 的運作原理和它如何改變我們的支付習慣。本文將帶你了解其背後的技術，以及它對未來支付生態系統的影響。"
 tags: [Google Wallet, Smart Tap, NFC, Payment Systems]
 categories: [Pay, Technology]
 toc:

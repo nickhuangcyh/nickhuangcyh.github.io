@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 💡 一台電腦操作多個 GitHub 帳號：最簡單快速的 SSH 設定方法
+title: "💡 一台電腦操作多個 GitHub 帳號：最簡單快速的 SSH 設定方法"
 date: 2025-05-18 14:00:00 +0800
-description: 讓你的電腦同時操作多個 GitHub 帳號，適合有多個身分或工作/個人帳號的開發者使用。
-excerpt: 完整解決方案：如何在一台電腦上同時管理多個 GitHub 帳號。詳細教學 SSH 金鑰配置、config 檔案設定、自動身分切換技巧。包含疑難排解、自動化腳本、進階技巧等實戰經驗。適合需要分離工作與個人專案的開發者，徹底解決帳號混淆問題，提升 Git 工作流程效率。
+description: "讓你的電腦同時操作多個 GitHub 帳號，適合有多個身分或工作/個人帳號的開發者使用。"
+excerpt: "完整解決方案：如何在一台電腦上同時管理多個 GitHub 帳號。詳細教學 SSH 金鑰配置、config 檔案設定、自動身分切換技巧。包含疑難排解、自動化腳本、進階技巧等實戰經驗。適合需要分離工作與個人專案的開發者，徹底解決帳號混淆問題，提升 Git 工作流程效率。"
 tags: [github, ssh, git, multiple-accounts, devops, ssh-config, git-workflow, version-control, developer-tools, automation]
 categories: [devops, git, github, developer-tools]
 toc:

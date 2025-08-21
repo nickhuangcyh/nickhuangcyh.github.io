@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Setup Development Environment on a New macOS
+title: "Setup Development Environment on a New macOS"
 date: 2025-01-11 15:00:00 +0800
-description: Step-by-step guide to setting up a mobile development environment on a new macOS system.
+description: "Step-by-step guide to setting up a mobile development environment on a new macOS system."
 tags: [macOS, Development, Mobile Development]
 categories: [Setup Guide]
 toc:

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (5) - Simple Factory Pattern (簡單工廠模式)
+title: "Design Pattern (5) - Simple Factory Pattern (簡單工廠模式)"
 date: 2024-07-06 23:00:00 +0800
-description: 通過飲料點餐系統案例，學習如何使用簡單工廠模式提升程式碼的可讀性和維護性。
+description: "通過飲料點餐系統案例，學習如何使用簡單工廠模式提升程式碼的可讀性和維護性。"
 tags: [Simple Factory Pattern]
 categories: [Design Pattern]
 toc:

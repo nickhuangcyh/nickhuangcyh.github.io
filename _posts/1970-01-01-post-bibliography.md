@@ -1,8 +1,8 @@
 ---
 layout: post
-title: a post with bibliography
+title: "a post with bibliography"
 date: 1970-01-01 09:56:00-0400
-description: an example of a blog post with bibliography
+description: "an example of a blog post with bibliography"
 tags: formatting bib
 categories: sample-posts
 published: false

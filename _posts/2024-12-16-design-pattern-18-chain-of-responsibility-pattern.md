@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (18) - Chain of Responsibility Pattern (責任鏈模式)
+title: "Design Pattern (18) - Chain of Responsibility Pattern (責任鏈模式)"
 date: 2024-12-16 23:00:00 +0800
-description: 了解責任鏈模式如何讓請求能被多個對象動態處理，提升系統靈活性與可擴展性。
+description: "了解責任鏈模式如何讓請求能被多個對象動態處理，提升系統靈活性與可擴展性。"
 tags: [Chain of Responsibility Pattern]
 categories: [Design Pattern]
 toc:

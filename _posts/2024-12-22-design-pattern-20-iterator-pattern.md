@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (20) - Iterator Pattern (迭代器模式)
+title: "Design Pattern (20) - Iterator Pattern (迭代器模式)"
 date: 2024-12-22 14:00:00 +0800
-description: 了解迭代器模式如何提供一種順序來訪問集合內元素的方法，而不需要暴露集合的底層表示。
+description: "了解迭代器模式如何提供一種順序來訪問集合內元素的方法，而不需要暴露集合的底層表示。"
 tags: [Iterator Pattern]
 categories: [Design Pattern]
 toc:

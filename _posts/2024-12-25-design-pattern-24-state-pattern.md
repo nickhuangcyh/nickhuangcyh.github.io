@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (24) - State Pattern (狀態模式)
+title: "Design Pattern (24) - State Pattern (狀態模式)"
 date: 2024-12-22 15:00:00 +0800
-description: 透過狀態模式，設計一個飲水機的運作機制，根據不同狀態執行加熱、冷卻或待機的行為。
+description: "透過狀態模式，設計一個飲水機的運作機制，根據不同狀態執行加熱、冷卻或待機的行為。"
 tags: [State Pattern]
 categories: [Design Pattern]
 toc:

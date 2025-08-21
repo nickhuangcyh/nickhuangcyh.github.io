@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 設計模式（23）觀察者模式：智慧安全系統一對多通知機制，實現即時警報推送
+title: "設計模式（23）觀察者模式：智慧安全系統一對多通知機制，實現即時警報推送"
 date: 2024-12-22 14:00:00 +0800
-description: 深入探討觀察者模式（Observer Pattern）核心原理，透過智慧安全系統警報機制實例，學習如何建構鬆耦合的一對多通知系統，提升系統擴展性與維護性。
+description: "深入探討觀察者模式（Observer Pattern）核心原理，透過智慧安全系統警報機制實例，學習如何建構鬆耦合的一對多通知系統，提升系統擴展性與維護性。"
 tags: [Observer Pattern, Design Patterns, Behavioral Patterns, Notification System, Security System, Event Handling]
 categories: [Design Pattern]
 toc:

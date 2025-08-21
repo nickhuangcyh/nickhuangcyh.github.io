@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 設計模式（20）迭代器模式：統一資料遍歷介面，優雅存取多種集合結構
+title: "設計模式（20）迭代器模式：統一資料遍歷介面，優雅存取多種集合結構"
 date: 2024-12-22 14:00:00 +0800
-description: 詳細探討迭代器模式（Iterator Pattern）的設計精髓，透過音樂播放清單管理實例，學習如何建立統一的遍歷介面，隱藏集合內部結構複雜度。
+description: "詳細探討迭代器模式（Iterator Pattern）的設計精髓，透過音樂播放清單管理實例，學習如何建立統一的遍歷介面，隱藏集合內部結構複雜度。"
 tags: [Iterator Pattern, Design Patterns, Behavioral Patterns, Data Structure, Collection Traversal, Music Playlist]
 categories: [Design Pattern]
 toc:

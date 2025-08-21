@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 🤖 AI Agent Series (Part 1): Understanding the Core Interaction Logic of LLM, RAG, and MCP
+title: "🤖 AI Agent Series (Part 1): Understanding the Core Interaction Logic of LLM, RAG, and MCP"
 date: 2025-07-24 20:00:00 +0800
-description: This article will help you quickly understand the core principles of AI Agents, LLMs, RAG, and MCP and how they collaborate.
-excerpt: Deep analysis of AI Agent core technology architecture: from LLM large language models' reasoning capabilities, to RAG retrieval-augmented generation's data processing, to MCP multi-component protocol's tool integration. Learn how AI evolves from simple chatbots to intelligent assistants capable of actively executing complex tasks, and master practical application techniques for top AI models like Google Gemini, Claude, and GPT-4.
+description: "This article will help you quickly understand the core principles of AI Agents, LLMs, RAG, and MCP and how they collaborate."
+excerpt: "Deep analysis of AI Agent core technology architecture: from LLM large language models' reasoning capabilities, to RAG retrieval-augmented generation's data processing, to MCP multi-component protocol's tool integration. Learn how AI evolves from simple chatbots to intelligent assistants capable of actively executing complex tasks, and master practical application techniques for top AI models like Google Gemini, Claude, and GPT-4."
 tags: [ai-agent, llm, rag, mcp, artificial-intelligence, machine-learning, generative-ai, ai-programming, chatbot, automation]
 categories: [ai, machine-learning, developer-tools, programming]
 toc:

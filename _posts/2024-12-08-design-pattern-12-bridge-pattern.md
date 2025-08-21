@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (12) - Bridge Pattern (橋接模式)
+title: "Design Pattern (12) - Bridge Pattern (橋接模式)"
 date: 2024-12-08 20:00:00 +0800
-description: 深入了解橋接模式如何解耦抽象與實現，打造更靈活且易於擴展的系統設計，滿足複雜需求的同時降低維護成本。
+description: "深入了解橋接模式如何解耦抽象與實現，打造更靈活且易於擴展的系統設計，滿足複雜需求的同時降低維護成本。"
 tags: [Bridge Pattern]
 categories: [Design Pattern]
 toc:

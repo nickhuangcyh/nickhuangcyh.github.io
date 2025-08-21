@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Patterns (1) Object-Oriented Programming Concepts Complete Guide: Core Principles of Encapsulation, Inheritance, Polymorphism, and Abstraction
+title: "Design Patterns (1) Object-Oriented Programming Concepts Complete Guide: Core Principles of Encapsulation, Inheritance, Polymorphism, and Abstraction"
 date: 2024-07-02 23:00:00 +0800
-description: Deep dive into the four core concepts of Object-Oriented Programming: encapsulation, inheritance, polymorphism, and abstraction. Build a solid technical foundation for learning Design Pattern series through practical examples and relatable analogies.
+description: "Deep dive into the four core concepts of Object-Oriented Programming: encapsulation, inheritance, polymorphism, and abstraction. Build a solid technical foundation for learning Design Pattern series through practical examples and relatable analogies."
 tags: [Object-Oriented Programming, OOP Concepts, Encapsulation, Inheritance, Polymorphism, Abstraction, Design Pattern, Software Development]
 categories: [Design Pattern]
 toc:

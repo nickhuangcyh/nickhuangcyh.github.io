@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 設計模式（24）狀態模式：智慧飲水機狀態管理，實現物件行為動態切換
+title: "設計模式（24）狀態模式：智慧飲水機狀態管理，實現物件行為動態切換"
 date: 2024-12-22 15:00:00 +0800
-description: 深度解析狀態模式（State Pattern）核心概念，透過智慧飲水機系統實例，學習如何優雅管理物件狀態轉換，降低程式耦合度並提升系統擴展性。
+description: "深度解析狀態模式（State Pattern）核心概念，透過智慧飲水機系統實例，學習如何優雅管理物件狀態轉換，降低程式耦合度並提升系統擴展性。"
 tags: [State Pattern, Design Patterns, Behavioral Patterns, State Management, Object Behavior, Software Architecture]
 categories: [Design Pattern]
 toc:

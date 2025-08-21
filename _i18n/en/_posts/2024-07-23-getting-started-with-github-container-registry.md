@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Complete GitHub Container Registry Guide: Container Image Management and CI/CD Deployment Tutorial
+title: "Complete GitHub Container Registry Guide: Container Image Management and CI/CD Deployment Tutorial"
 date: 2024-07-23 18:00:00 +0800
-description: Learn how to use GitHub Container Registry to manage Docker images and build CI/CD pipelines. Deep dive into containerized deployment, version management, authentication, and best practices through Jenkins Master-Slave architecture examples. Suitable for DevOps engineers.
+description: "Learn how to use GitHub Container Registry to manage Docker images and build CI/CD pipelines. Deep dive into containerized deployment, version management, authentication, and best practices through Jenkins Master-Slave architecture examples. Suitable for DevOps engineers."
 tags: [GitHub Container Registry, Docker Registry, Container Management, CI/CD Pipeline, DevOps, Jenkins Master-Slave, GitHub Actions, Image Versioning]
 categories: [DevOps]
 toc:

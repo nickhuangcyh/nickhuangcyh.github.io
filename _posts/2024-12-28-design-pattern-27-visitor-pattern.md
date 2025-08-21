@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (27) - Visitor Pattern (訪問者模式)
+title: "Design Pattern (27) - Visitor Pattern (訪問者模式)"
 date: 2024-12-28 21:30:00 +0800
-description: 訪問者模式提供了一種方式，讓我們能在不修改物件結構的前提下，為其增加新的操作邏輯，實現高擴展性。
+description: "訪問者模式提供了一種方式，讓我們能在不修改物件結構的前提下，為其增加新的操作邏輯，實現高擴展性。"
 tags: [Visitor Pattern]
 categories: [Design Pattern]
 toc:

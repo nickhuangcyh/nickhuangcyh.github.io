@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Complete Octopress Static Blog Tutorial: GitHub Pages Deployment and Theme Customization Guide
+title: "Complete Octopress Static Blog Tutorial: GitHub Pages Deployment and Theme Customization Guide"
 date: 2020-09-10 23:18:16 +0800
-description: Learn to build professional static blogs using the Octopress framework. Detailed analysis of Ruby environment setup, GitHub Pages deployment, theme customization, and content management workflow. Includes Markdown writing, website optimization, and maintenance techniques.
+description: "Learn to build professional static blogs using the Octopress framework. Detailed analysis of Ruby environment setup, GitHub Pages deployment, theme customization, and content management workflow. Includes Markdown writing, website optimization, and maintenance techniques."
 tags: [Octopress Framework, Static Site Generator, GitHub Pages, Blog Development, Ruby Environment, Markdown Writing, Website Deployment, Theme Customization]
 categories: [Blog]
 toc:

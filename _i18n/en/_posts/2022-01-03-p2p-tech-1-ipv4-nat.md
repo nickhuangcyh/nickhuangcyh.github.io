@@ -1,8 +1,8 @@
 ---
 layout: post
-title: P2P Technology (1) Complete Analysis of IPv4 and NAT Traversal - In-depth Tutorial on Network Architecture and Connection Principles
+title: "P2P Technology (1) Complete Analysis of IPv4 and NAT Traversal - In-depth Tutorial on Network Architecture and Connection Principles"
 date: 2022-01-03 23:45:03 +0800
-description: Master the core concepts of P2P network communication and IPv4/NAT architecture limitations. Deep dive into four types of NAT, traversal challenges and solutions. Learn IoT device communication principles through IPCam video streaming examples, laying the foundation for subsequent STUN/TURN/ICE protocols.
+description: "Master the core concepts of P2P network communication and IPv4/NAT architecture limitations. Deep dive into four types of NAT, traversal challenges and solutions. Learn IoT device communication principles through IPCam video streaming examples, laying the foundation for subsequent STUN/TURN/ICE protocols."
 tags: [P2P Technology, IPv4 Network, NAT Traversal, Network Architecture, IoT Communication, Distributed Systems, Network Protocol, Real-time Communication]
 categories: [P2P]
 toc:

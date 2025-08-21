@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (6) Factory Method Pattern Complete Tutorial - Extensible Object Creation
+title: "Design Pattern (6) Factory Method Pattern Complete Tutorial - Extensible Object Creation"
 date: 2024-07-07 23:00:00 +0800
-description: Learn how Factory Method Pattern solves the extensibility issues of Simple Factory. Deep dive into designing extensible object creation systems through a global beverage chain example. Includes UML design, implementation examples, and best practices.
+description: "Learn how Factory Method Pattern solves the extensibility issues of Simple Factory. Deep dive into designing extensible object creation systems through a global beverage chain example. Includes UML design, implementation examples, and best practices."
 tags: [Factory Method Pattern, Design Pattern, Creational Pattern, Polymorphism, Extensibility, Object Creation, Software Architecture, OOP]
 categories: [Design Pattern]
 toc:

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (2) - Design Principles (設計原則)
+title: "Design Pattern (2) - Design Principles (設計原則)"
 date: 2024-07-03 23:00:00 +0800
-description: 學習如何透過單一職責和開放封閉等設計原則提升程式碼質量，打造靈活、可維護的軟體系統。
+description: "學習如何透過單一職責和開放封閉等設計原則提升程式碼質量，打造靈活、可維護的軟體系統。"
 tags: [Design Principle]
 categories: [Design Pattern]
 toc:

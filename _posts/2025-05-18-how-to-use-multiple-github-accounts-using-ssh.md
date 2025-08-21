@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 💡 一台電腦操作多個 GitHub 帳號：最簡單快速的 SSH 設定方法
+title: "💡 一台電腦操作多個 GitHub 帳號：最簡單快速的 SSH 設定方法"
 date: 2025-05-18 14:00:00 +0800
-description: 讓你的電腦同時操作多個 GitHub 帳號，適合有多個身分或工作/個人帳號的開發者使用。
+description: "讓你的電腦同時操作多個 GitHub 帳號，適合有多個身分或工作/個人帳號的開發者使用。"
 tags: [GitHub, SSH, Git]
 categories: [DevOps, Productivity, GitHub]
 toc:

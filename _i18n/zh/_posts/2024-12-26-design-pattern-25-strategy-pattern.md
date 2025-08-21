@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 設計模式（25）策略模式：動態演算法切換，打造高擴展性電商運費系統
+title: "設計模式（25）策略模式：動態演算法切換，打造高擴展性電商運費系統"
 date: 2024-12-26 23:50:00 +0800
-description: 完整解析策略模式（Strategy Pattern）的核心概念與實際應用，透過電商運費計算系統範例，學習如何實現動態演算法切換，提升程式碼的擴展性與維護性。
+description: "完整解析策略模式（Strategy Pattern）的核心概念與實際應用，透過電商運費計算系統範例，學習如何實現動態演算法切換，提升程式碼的擴展性與維護性。"
 tags: [Strategy Pattern, Design Patterns, Behavioral Patterns, Algorithm Switching, E-commerce System, Software Architecture]
 categories: [Design Pattern]
 toc:

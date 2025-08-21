@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (23) - Observer Pattern (觀察者模式)
+title: "Design Pattern (23) - Observer Pattern (觀察者模式)"
 date: 2024-12-22 14:00:00 +0800
-description: 透過觀察者模式，實現安全系統主機的警報通知機制，當警報觸發時，主機自動通知平板、iOS 和 Android 手機。
+description: "透過觀察者模式，實現安全系統主機的警報通知機制，當警報觸發時，主機自動通知平板、iOS 和 Android 手機。"
 tags: [Observer Pattern]
 categories: [Design Pattern]
 toc:

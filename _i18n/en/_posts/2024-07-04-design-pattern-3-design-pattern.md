@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Patterns (3) Core Design Pattern Concepts Complete Introduction: Four Elements and Classification System
+title: "Design Patterns (3) Core Design Pattern Concepts Complete Introduction: Four Elements and Classification System"
 date: 2024-07-04 23:00:00 +0800
-description: Master the definition, purpose, and structured thinking of Design Patterns. Deep dive into the four elements of design patterns: Context, Forces, Problem, and Solution, plus a complete classification system for Creational, Structural, and Behavioral patterns.
+description: "Master the definition, purpose, and structured thinking of Design Patterns. Deep dive into the four elements of design patterns: Context, Forces, Problem, and Solution, plus a complete classification system for Creational, Structural, and Behavioral patterns."
 tags: [Design Pattern, Software Design, Gang of Four, Creational Pattern, Structural Pattern, Behavioral Pattern, Software Architecture, Programming]
 categories: [Design Pattern]
 toc:

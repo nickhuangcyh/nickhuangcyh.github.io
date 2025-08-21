@@ -1,8 +1,8 @@
 ---
 layout: post
-title: a post with jupyter notebook
+title: "a post with jupyter notebook"
 date: 1970-01-01 08:57:00-0400
-description: an example of a blog post with jupyter notebook
+description: "an example of a blog post with jupyter notebook"
 tags: formatting jupyter
 categories: sample-posts
 published: false

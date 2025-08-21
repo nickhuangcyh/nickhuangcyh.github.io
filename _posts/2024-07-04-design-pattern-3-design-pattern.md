@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Pattern (3) - Design Patterns (設計模式)
+title: "Design Pattern (3) - Design Patterns (設計模式)"
 date: 2024-07-04 23:00:00 +0800
-description: 深入探討設計模式的概念及其應用步驟，助你高效解決軟體問題。
+description: "深入探討設計模式的概念及其應用步驟，助你高效解決軟體問題。"
 tags: [Design Pattern]
 categories: [Design Pattern]
 toc:

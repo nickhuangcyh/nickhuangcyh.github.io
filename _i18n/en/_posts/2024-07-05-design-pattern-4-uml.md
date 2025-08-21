@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Design Patterns (4) UML Unified Modeling Language Complete Guide: Class Diagrams and Design Pattern Visual Expression
+title: "Design Patterns (4) UML Unified Modeling Language Complete Guide: Class Diagrams and Design Pattern Visual Expression"
 date: 2024-07-05 23:00:00 +0800
-description: Master UML class diagram basic elements and relationship representations, including Class, Interface, inheritance, association, composition, and aggregation core concepts. Learn how to use UML for visual expression of design patterns to enhance system architecture design capabilities.
+description: "Master UML class diagram basic elements and relationship representations, including Class, Interface, inheritance, association, composition, and aggregation core concepts. Learn how to use UML for visual expression of design patterns to enhance system architecture design capabilities."
 tags: [UML, Unified Modeling Language, Class Diagram, Software Design, System Architecture, Visual Modeling, Design Pattern, Object-Oriented Design]
 categories: [Design Pattern]
 toc:

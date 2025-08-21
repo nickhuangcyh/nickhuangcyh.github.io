@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Octopress 靜態部落格完整教學：GitHub Pages 部署與主題客製化指南
+title: "Octopress 靜態部落格完整教學：GitHub Pages 部署與主題客製化指南"
 date: 2020-09-10 23:18:16 +0800
-description: 學會使用 Octopress 框架建置專業的靜態部落格。詳細解析 Ruby 環境設置、GitHub Pages 部署、主題客製化與內容管理流程。包含 Markdown 寫作、網站優化與維護技巧。
+description: "學會使用 Octopress 框架建置專業的靜態部落格。詳細解析 Ruby 環境設置、GitHub Pages 部署、主題客製化與內容管理流程。包含 Markdown 寫作、網站優化與維護技巧。"
 tags: [Octopress Framework, Static Site Generator, GitHub Pages, Blog Development, Ruby Environment, Markdown Writing, Website Deployment, Theme Customization]
 categories: [Blog]
 toc:
