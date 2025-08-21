@@ -44,12 +44,12 @@
 | 2024-12-21-design-pattern-19-command-pattern.md | 2024-12-21 | 設計模式（19）命令模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
 | 2024-12-16-design-pattern-18-chain-of-responsibility-pattern.md | 2024-12-16 | 設計模式（18）責任鏈模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
 | 2024-12-15-design-pattern-17-proxy-pattern.md | 2024-12-15 | 設計模式（17）代理模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
-| 2024-12-14-design-pattern-16-flyweight-pattern.md | 2024-12-14 | 設計模式（16）享元模式 | ⏳ | ⏳ | ⏳ | 設計模式 | |
-| 2024-12-12-design-pattern-15-facade-pattern.md | 2024-12-12 | 設計模式（15）外觀模式 | ⏳ | ⏳ | ⏳ | 設計模式 | |
-| 2024-12-11-design-pattern-14-decorator-pattern.md | 2024-12-11 | 設計模式（14）裝飾者模式 | ⏳ | ⏳ | ⏳ | 設計模式 | |
-| 2024-12-10-design-pattern-13-composite-pattern.md | 2024-12-10 | 設計模式（13）組合模式 | ⏳ | ⏳ | ⏳ | 設計模式 | |
-| 2024-12-08-design-pattern-12-bridge-pattern.md | 2024-12-08 | 設計模式（12）橋接模式 | ⏳ | ⏳ | ⏳ | 設計模式 | |
-| 2024-12-07-design-pattern-11-adapter-pattern.md | 2024-12-07 | 設計模式（11）適配器模式 | ⏳ | ⏳ | ⏳ | 設計模式 | |
+| 2024-12-14-design-pattern-16-flyweight-pattern.md | 2024-12-14 | 設計模式（16）享元模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
+| 2024-12-12-design-pattern-15-facade-pattern.md | 2024-12-12 | 設計模式（15）外觀模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
+| 2024-12-11-design-pattern-14-decorator-pattern.md | 2024-12-11 | 設計模式（14）裝飾者模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
+| 2024-12-10-design-pattern-13-composite-pattern.md | 2024-12-10 | 設計模式（13）組合模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
+| 2024-12-08-design-pattern-12-bridge-pattern.md | 2024-12-08 | 設計模式（12）橋接模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
+| 2024-12-07-design-pattern-11-adapter-pattern.md | 2024-12-07 | 設計模式（11）適配器模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
 | 2024-12-01-google-adsense.md | 2024-12-01 | Google AdSense 申請與設定 | ✅ | ⏳ | ⏳ | Google 服務 | |
 | 2024-08-16-jenkins-3-configure-credentials-ssh.md | 2024-08-16 | Jenkins（3）配置 SSH 憑證 | ✅ | ⏳ | ⏳ | Jenkins 系列 | |
 | 2024-08-15-jenkins-2-how-to-setup-jenkins-server.md | 2024-08-15 | Jenkins（2）如何設定 Jenkins 伺服器 | ✅ | ⏳ | ⏳ | Jenkins 系列 | |
@@ -77,8 +77,8 @@
 | 2022-01-02-3d_graphic_tips.md | 2022-01-02 | 3D 圖形開發技巧 | ⏳ | ⏳ | ⏳ | 圖形開發 | |
 | 2021-12-31-how-to-add-your-jekyll-blog-website-to-google-search-console.md | 2021-12-31 | 將 Jekyll 網站新增到 Google Search Console | ⏳ | ⏳ | ⏳ | Jekyll SEO | |
 | 2021-12-30-creating_a_github_pages_with_jekyll_and_minimal_mistakes.md | 2021-12-30 | 使用 Jekyll 與 Minimal Mistakes 建立 GitHub Pages | ⏳ | ⏳ | ⏳ | Jekyll 教學 | |
-| 2020-09-10-octopress-setup.md | 2020-09-10 | Octopress 設定教學 | ⏳ | ⏳ | ⏳ | Octopress | |
-| 2020-09-10-how-to-add-your-octopress-blog-website-to-google-search-console.md | 2020-09-10 | 將 Octopress 網站新增到 Google Search Console | ⏳ | ⏳ | ⏳ | Octopress SEO | |
+| 2020-09-10-octopress-setup.md | 2020-09-10 | Octopress 設定教學 | ✅ | ⏳ | ⏳ | Octopress | |
+| 2020-09-10-how-to-add-your-octopress-blog-website-to-google-search-console.md | 2020-09-10 | 將 Octopress 網站新增到 Google Search Console | ✅ | ⏳ | ⏳ | Octopress SEO | |
 
 ## 系列文章統計
 
