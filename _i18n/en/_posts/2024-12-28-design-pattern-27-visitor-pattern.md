@@ -4,7 +4,19 @@ title: "Design Pattern (27) - Visitor Pattern"
 date: 2024-12-28 21:30:00 +0800
 description: "The Visitor Pattern provides a way to add new operation logic to objects without modifying their structure, achieving high extensibility."
 excerpt: "In-depth exploration of Visitor Pattern application in IoT development: how to uniformly handle multi-brand IPCam devices. Complete Kotlin code examples showing how to add operations without modifying object structures. Suitable for software architecture design, object-oriented programming, behavioral design pattern learning. Implement highly extensible systems conforming to Open-Closed Principle, improving code maintainability and system stability."
-tags: [visitor-pattern, design-patterns, behavioral-patterns, iot-development, software-architecture, object-oriented-programming, kotlin, mobile-app-development, system-design, code-maintainability]
+tags:
+  [
+    visitor-pattern,
+    design-patterns,
+    behavioral-patterns,
+    iot-development,
+    software-architecture,
+    object-oriented-programming,
+    kotlin,
+    mobile-app-development,
+    system-design,
+    code-maintainability,
+  ]
 categories: [design-patterns, software-engineering, iot, mobile-development]
 toc:
   #   beginning: true
@@ -21,15 +33,18 @@ thumbnail: /assets/img/design_patterns.jpg
 When developing modern **IoT smart home applications integrating multi-brand IPCam surveillance systems**, we face a common challenge in software architecture design: how to use the visitor pattern to uniformly handle products from different manufacturers. This scenario is very common in Internet of Things (IoT) and embedded systems development. Let's look at specific requirements:
 
 ### 1. Multi-brand Support
+
 We need to support multiple IPCam brands, each with its own unique interface methods:
 
 - **HIKVISION**: Uses standard RTSP protocol, providing universal streaming and screenshot functions
 - **DAHUA**: Uses proprietary SDK, all operations must go through its specific API methods
 
 ### 2. Architectural Independence
+
 **App code structure should not depend on IPCam brand implementation details**. This means our core logic should be decoupled from specific brands, maintaining open extensibility. This way, when adding other brands, it won't affect existing code architecture.
 
 ### 3. Preserve Original Structure
+
 **Avoiding modification of IPCam core structure** is another important consideration. Since these brand implementations are usually provided by manufacturers, we cannot and should not directly modify their core code.
 
 ---
@@ -45,12 +60,15 @@ Before diving into solutions, let's first perform object-oriented analysis to un
 Through analysis, we discover that without appropriate design patterns, we'll face the following core problems:
 
 #### 1. Difficult to Extend New Brands
+
 Every time we want to add a new brand of IPCam, we must modify the App's core logic. This approach not only increases error risks but also makes code increasingly complex.
 
 #### 2. Violates Open-Closed Principle (OCP)
+
 Since core logic is tightly coupled with brand implementation details, every time we add functionality, we need to modify core code. This violates the "open for extension, closed for modification" design principle.
 
 #### 3. Cannot Uniformly Handle Operations from Different Brands
+
 Each brand has different streaming and screenshot methods. Without unified processing mechanisms, code becomes chaotic and difficult to maintain. This leads to duplicate code and scattered logic problems.
 
 ---
@@ -70,18 +88,22 @@ First, let's understand the standard architecture of Visitor Pattern:
 The visitor pattern consists of four main components, each playing a key role:
 
 #### 1. Visitor (Visitor Interface)
+
 **Function**: Defines operation methods for each type of object
 **Characteristics**: Provides a visit method for each concrete element type
 
 #### 2. ConcreteVisitor (Concrete Visitor)
+
 **Function**: Implements specific operation logic
 **Characteristics**: Executes corresponding operations for different types of elements
 
 #### 3. Element (Element Interface)
+
 **Function**: Defines standard interface for accepting visitors
 **Core Method**: `accept()` method, receives visitor and passes itself to the visitor
 
 #### 4. ConcreteElement (Concrete Element)
+
 **Function**: Implements specific element logic
 **Characteristics**: Through `accept()` method, allows visitors to access and operate on itself
 
@@ -144,6 +166,7 @@ class DahuaIPCam : IPCam {
 ```
 
 **Important Observations**:
+
 - Each camera implements the `accept()` method, passing itself to the corresponding visitor method
 - Each brand retains its own special methods (HIKVISION uses RTSP, DAHUA uses SDK)
 
@@ -225,7 +248,9 @@ Through implementing Visitor Pattern, we successfully solved the challenges of m
 ### Main Achievements
 
 #### 1. Easy to Extend New Brands
+
 When needing to support new camera brands (like AXIS or Panasonic), we only need to:
+
 - Create new `ConcreteElement` class (like `AxisIPCam`)
 - Add corresponding visit methods in existing visitor interfaces
 - Implement brand-specific logic in each concrete visitor
@@ -233,12 +258,16 @@ When needing to support new camera brands (like AXIS or Panasonic), we only need
 **Importantly**: This entire process won't affect existing code structure.
 
 #### 2. Centralized Operation Logic Management
+
 Same operations for different brands (like streaming, snapshots) are all centralized in corresponding visitor classes. This centralization brings two benefits:
+
 - **Simplified Maintenance**: Modifying streaming logic only needs to be done in `IPCamStreamingVisitor`
 - **Clear Code**: Each visitor focuses on single responsibility
 
 #### 3. Complies with Core Design Principles
+
 Our solution perfectly embodies two important design principles:
+
 - **Single Responsibility Principle (SRP)**: Operation logic completely separated from object structure
 - **Open-Closed Principle (OCP)**: Open for extension, closed for modification
 
@@ -247,9 +276,11 @@ Our solution perfectly embodies two important design principles:
 Visitor Pattern is particularly suitable for the following development scenarios:
 
 #### Scenario 1: Unified Operations on Multi-type Objects
+
 When you have multiple types of objects needing to perform same category but differently implemented operations.
 
 #### Scenario 2: Stable Structure vs Variable Operations
+
 Object structure is relatively stable (camera brands don't change frequently), but operation logic changes often (might add recording, settings adjustment functions).
 
 ### Overall Value

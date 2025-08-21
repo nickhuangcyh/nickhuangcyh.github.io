@@ -4,7 +4,19 @@ title: "Design Pattern (27) - Visitor Pattern (訪問者模式)"
 date: 2024-12-28 21:30:00 +0800
 description: "訪問者模式提供了一種方式，讓我們能在不修改物件結構的前提下，為其增加新的操作邏輯，實現高擴展性。"
 excerpt: "深入探討訪問者模式（Visitor Pattern）在 IoT 應用開發中的實際應用：如何統一處理多品牌 IPCam 設備。完整 Kotlin 程式碼範例，展示如何在不修改物件結構的前提下新增操作。適用於軟體架構設計、物件導向程式設計、行為型設計模式學習。實現高度可擴展且符合開放關閉原則的系統架構，提升程式碼可維護性和系統穩定性。"
-tags: [visitor-pattern, design-patterns, behavioral-patterns, iot-development, software-architecture, object-oriented-programming, kotlin, mobile-app-development, system-design, code-maintainability]
+tags:
+  [
+    visitor-pattern,
+    design-patterns,
+    behavioral-patterns,
+    iot-development,
+    software-architecture,
+    object-oriented-programming,
+    kotlin,
+    mobile-app-development,
+    system-design,
+    code-maintainability,
+  ]
 categories: [design-patterns, software-engineering, iot, mobile-development]
 toc:
   #   beginning: true
@@ -21,15 +33,18 @@ thumbnail: /assets/img/design_patterns.jpg
 在開發現代 **IoT 智慧家庭應用程式整合多品牌 IPCam 監控系統** 時，我們面臨一個在軟體架構設計中常見的挑戰：如何使用訪問者模式統一處理不同廠商的產品。這種情境在物聯網（IoT）和嵌入式系統開發中非常常見。讓我們來看看具體的需求：
 
 ### 1. 多品牌支援
+
 我們需要支援多種 IPCam 品牌，而每個品牌都有自己獨特的接口方式：
 
 - **HIKVISION**：採用標準 RTSP 協定，提供通用的串流與截圖功能
 - **DAHUA**：使用專屬 SDK，所有操作都必須透過其特定的 API 方法
 
 ### 2. 架構獨立性
+
 **App 的程式碼結構不應依賴 IPCam 品牌的實現細節**。這意味著我們的核心邏輯要與特定品牌解耦，保持開放擴展性。這樣當需要新增其他品牌時，不會影響既有的程式碼架構。
 
 ### 3. 保持原有結構
+
 **避免修改 IPCam 的核心結構**是另一個重要考量。由於這些品牌的實現通常由廠商提供，我們無法也不應該直接修改其核心程式碼。
 
 ---
@@ -45,12 +60,15 @@ thumbnail: /assets/img/design_patterns.jpg
 透過分析，我們發現如果不使用適當的設計模式，將會面臨以下核心問題：
 
 #### 1. 難以擴展新品牌
+
 每當要新增一個品牌的 IPCam，我們就必須修改 App 的核心邏輯。這種做法不僅增加了出錯風險，也讓程式碼變得越來越複雜。
 
 #### 2. 違反開放關閉原則 (OCP)
+
 由於核心邏輯與品牌實現細節緊密耦合，每次新增功能都需要修改核心程式碼。這違背了「對擴展開放，對修改關閉」的設計原則。
 
 #### 3. 無法統一處理不同品牌的操作
+
 每個品牌的串流與截圖方式都不同，如果沒有統一的處理機制，程式碼將變得混亂且難以維護。這會導致重複程式碼和邏輯分散的問題。
 
 ---
@@ -70,18 +88,22 @@ thumbnail: /assets/img/design_patterns.jpg
 訪問者模式由四個主要組件構成，每個都扮演著關鍵角色：
 
 #### 1. Visitor (訪問者介面)
+
 **作用**：定義對每種類型物件的操作方法
 **特點**：為每種具體元素類型提供一個訪問方法
 
 #### 2. ConcreteVisitor (具體訪問者)
+
 **作用**：實現特定的操作邏輯
 **特點**：針對不同類型的元素，執行相對應的操作
 
 #### 3. Element (元素介面)
+
 **作用**：定義接受訪問者的標準介面
 **核心方法**：`accept()` 方法，接收訪問者並將自己傳遞給訪問者
 
 #### 4. ConcreteElement (具體元素)
+
 **作用**：實現具體的元素邏輯
 **特點**：透過 `accept()` 方法讓訪問者能夠訪問並操作自己
 
@@ -144,6 +166,7 @@ class DahuaIPCam : IPCam {
 ```
 
 **重要觀察**：
+
 - 每個攝影機都實作了 `accept()` 方法，將自己傳遞給對應的訪問者方法
 - 各品牌保留了自己的特殊方法（HIKVISION 用 RTSP，DAHUA 用 SDK）
 
@@ -225,7 +248,9 @@ Snapshot: Dahua Snapshot
 ### 主要成效
 
 #### 1. 易於擴展新品牌
+
 當需要支援新的攝影機品牌（如 AXIS 或 Panasonic）時，我們只需要：
+
 - 建立新的 `ConcreteElement` 類別（如 `AxisIPCam`）
 - 在現有的訪問者介面中新增對應的訪問方法
 - 在各個具體訪問者中實作品牌特定的邏輯
@@ -233,12 +258,16 @@ Snapshot: Dahua Snapshot
 **重要的是**：這整個過程不會影響到現有的程式碼結構。
 
 #### 2. 操作邏輯集中管理
+
 不同品牌的相同操作（如串流、截圖）都集中在對應的訪問者類別中。這種集中化帶來兩個好處：
+
 - **維護簡化**：修改串流邏輯只需要在 `IPCamStreamingVisitor` 中進行
 - **程式碼清晰**：每個訪問者都專注於單一職責
 
 #### 3. 符合核心設計原則
+
 我們的解決方案完美體現了兩個重要的設計原則：
+
 - **單一職責原則 (SRP)**：操作邏輯與物件結構完全分離
 - **開放關閉原則 (OCP)**：對擴展開放，對修改關閉
 
@@ -247,9 +276,11 @@ Snapshot: Dahua Snapshot
 Visitor Pattern 特別適合以下開發情境：
 
 #### 情境一：多類型物件的統一操作
+
 當你有多種類型的物件，需要對它們執行相同類別但實作方式不同的操作時。
 
 #### 情境二：穩定結構 vs 多變操作
+
 物件結構相對穩定（攝影機品牌不會頻繁變動），但操作邏輯經常變化（可能新增錄影、設定調整等功能）。
 
 ### 總體價值

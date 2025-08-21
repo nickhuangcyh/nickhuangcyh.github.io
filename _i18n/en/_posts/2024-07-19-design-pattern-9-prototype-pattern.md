@@ -3,7 +3,8 @@ layout: post
 title: "Design Pattern (9) Prototype Pattern Complete Tutorial - Object Cloning and Performance Optimization"
 date: 2024-07-21 23:00:00 +0800
 description: "Learn how Prototype Pattern solves performance issues through object cloning. Deep dive into shallow and deep copy concepts, Cloneable interface implementation, and best practices through game character creation system examples. Includes UML design and example code."
-tags: [Prototype Pattern, Design Pattern, Creational Pattern, Object Cloning, Performance Optimization, Deep Copy, Shallow Copy, Software Architecture]
+tags:
+  [Prototype Pattern, Design Pattern, Creational Pattern, Object Cloning, Performance Optimization, Deep Copy, Shallow Copy, Software Architecture]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -48,9 +49,11 @@ In the most direct approach, when we need to copy `LightShowData`, we can use th
 Through initial analysis, we can discover the following key problems with the above simple design:
 
 ### Complexity Issues
+
 If the `LightShowData` constructor becomes complex, requiring many parameters, then every copy would need to understand all internal implementation details. This violates the encapsulation principle and increases code coupling.
 
 ### Performance Issues
+
 Suppose the constructor needs to perform complex calculations or data processing during instance creation (such as music beat analysis, lighting effect calculations, etc.). Then every time we create a new instance, we would repeat these time-consuming operations, seriously affecting program performance.
 
 These problems drive us to seek a more elegant solution.
@@ -60,6 +63,7 @@ These problems drive us to seek a more elegant solution.
 After identifying the core problems, we can apply the Prototype Pattern to solve these challenges. The core idea of the Prototype Pattern is "create new objects by copying existing objects" rather than reconstructing them.
 
 ### Pattern Structure
+
 Let's first look at the standard UML structure of the Prototype Pattern:
 
 {% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_2.png" title="design_pattern_prototype_pattern_uml_2" %}
@@ -69,9 +73,11 @@ Let's first look at the standard UML structure of the Prototype Pattern:
 The Prototype Pattern mainly includes the following two key roles:
 
 #### 1. Prototype (Prototype Interface)
+
 This is an abstract interface or abstract class that defines the standard method for copying itself (usually the `clone()` method). The main purpose of this interface is to provide a unified copying specification, allowing clients to create object copies without needing to know the specific object class.
 
 #### 2. Concrete Prototype
+
 Concrete classes that implement the prototype interface. These classes must implement the `clone()` method, responsible for creating exact copies of themselves. During implementation, it's necessary to ensure that newly created objects are exactly the same in state as the original objects, but are completely independent entities in memory.
 
 ### Applying to Light Show Application

@@ -3,7 +3,17 @@ layout: post
 title: "Complete Octopress SEO Tutorial: Google Search Console and Search Engine Indexing Optimization"
 date: 2020-09-10 23:29:22 +0800
 description: "Learn how to get your Octopress static website indexed and crawled by Google. Detailed analysis of Google Search Console setup, Sitemap submission, website verification, and SEO optimization processes. Includes robots.txt configuration, URL structure, and best practices."
-tags: [Octopress SEO, Google Search Console, Search Engine Indexing, Static Site SEO, Website Visibility, Sitemap Optimization, Blog SEO, Search Marketing]
+tags:
+  [
+    Octopress SEO,
+    Google Search Console,
+    Search Engine Indexing,
+    Static Site SEO,
+    Website Visibility,
+    Sitemap Optimization,
+    Blog SEO,
+    Search Marketing,
+  ]
 categories: [Blog]
 toc:
   #   beginning: true
@@ -86,7 +96,7 @@ Completing verification just lets Google recognize your website. This is only th
 Next you can:
 
 - **Monitor indexing status**: See which pages have been indexed by Google
-- **Analyze search performance**: Understand what keywords users use to find your website  
+- **Analyze search performance**: Understand what keywords users use to find your website
 - **Submit sitemap**: Tell Google your website structure to speed up indexing
 - **Fix errors**: Discover and resolve SEO issues
 

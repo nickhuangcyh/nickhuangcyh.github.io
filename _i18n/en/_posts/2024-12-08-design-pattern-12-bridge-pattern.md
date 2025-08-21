@@ -3,7 +3,8 @@ layout: post
 title: "Design Pattern (12) Bridge Pattern Complete Analysis: Decoupling Abstraction and Implementation, Building Flexible System Architecture"
 date: 2024-12-08 20:00:00 +0800
 description: "Deep dive into how the Bridge Pattern solves multi-dimensional design challenges by separating abstraction and implementation to avoid class explosion problems. Learn Bridge Pattern core concepts, UML design, Kotlin implementation, and best practices through a security system example."
-tags: [Bridge Pattern, Design Pattern, Software Architecture, Structural Pattern, OOP Design, System Design, Kotlin Programming, Enterprise Development]
+tags:
+  [Bridge Pattern, Design Pattern, Software Architecture, Structural Pattern, OOP Design, System Design, Kotlin Programming, Enterprise Development]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -22,16 +23,19 @@ We received a complex enterprise-level requirement:
 The company's smart **security system** needs to send alerts to relevant personnel through multiple communication channels when different security events are detected. This system needs to have high flexibility and scalability.
 
 ### Supported Notification Channels:
+
 - **APNS** (Apple iOS Push Notification)
 - **FCM** (Google Firebase Cloud Messaging)
 - **Email** (Electronic Mail)
 - **SMS** (Short Message Service)
 
 ### Alert Event Types:
+
 - **Fire** (Fire Alarm)
 - **Burglar** (Intrusion Alarm)
 
 ### System Requirements:
+
 Each alert type should be able to be sent through any notification channel, and new alert types or notification methods may be added in the future.
 
 ## Object-Oriented Analysis (OOA)
@@ -45,27 +49,33 @@ Before starting the design, let's first conduct object-oriented analysis to unde
 When facing this type of multi-dimensional design problem, without using appropriate design patterns, we face the following challenges:
 
 ### 1. Combinatorial Explosion Problem
+
 When we have 2 alert types and 4 notification methods, if we create a class for each combination:
+
 - We need 2 × 4 = 8 concrete classes
 - If we add one alert type, we need to add 4 more classes
 - If we add one notification method, we need to add 2 more classes
 
 ### 2. Tight Coupling Problem
+
 - **Alert types** and **notification methods** are forcibly bound together
 - Modifying one dimension may affect multiple classes
 - Dependencies between system parts are too tight
 
 ### 3. Poor Extensibility
+
 - **Adding alert types**: Need to create corresponding classes for each notification method
 - **Adding notification methods**: Need to create corresponding classes for each alert type
 - Each extension may lead to large-scale code modifications
 
 ### 4. Code Duplication Problem
+
 - Similar alert handling logic appears repeatedly in multiple classes
 - Same notification method implementations are copied to multiple places
 - When core logic needs modification, must update synchronously in multiple places
 
 ### 5. High Maintenance Cost
+
 - Any change in one dimension may affect multiple classes
 - Difficult to predict the impact scope of modifications
 - System complexity grows exponentially with the number of combinations
@@ -180,6 +190,7 @@ fun main() {
 ## Execution Results and Analysis
 
 When we execute the above code, we get the following output:
+
 ```
 Sending APNS Notification: Fire Alarm: Smoke detected in Zone 1.
 Sending FCM Notification: Theft Alarm: Unauthorized access detected at Main Door.
@@ -196,24 +207,30 @@ By applying the **Bridge Pattern**, we successfully solved the multi-dimensional
 ### Benefits Achieved:
 
 **1. Separation of Concerns**
+
 - Alert types and notification methods are independent of each other and can evolve separately
 - Modifying one dimension does not affect the other dimension
 
 **2. Elegant Extensibility**
+
 - Adding alert types: Only need to create a new RefinedAbstraction
 - Adding notification methods: Only need to create a new ConcreteImplementor
 - Avoids the combinatorial explosion problem
 
 **3. Improved Code Reusability**
+
 - Same notification methods can be reused by different alert types
 - Same alert logic can work with different notification methods
 
 **4. Reduced System Complexity**
+
 - Number of classes reduced from O(m×n) to O(m+n)
 - System understandability and maintainability greatly improved
 
 ### Applicable Scenarios:
+
 Bridge Pattern is particularly suitable for:
+
 - Systems that need to provide flexibility between abstraction and implementation
 - Design problems with multiple combination dimensions
 - Situations that need to dynamically switch implementation methods at runtime

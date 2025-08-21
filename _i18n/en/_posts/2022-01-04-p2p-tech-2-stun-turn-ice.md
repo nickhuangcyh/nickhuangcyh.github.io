@@ -41,7 +41,7 @@ When your device is behind NAT, it only knows its internal IP (like 192.168.1.10
 **STUN Workflow:**
 
 1. **Query Phase**: Device A sends a query request to STUN Server
-2. **Response Phase**: STUN Server returns A's public IP and port information  
+2. **Response Phase**: STUN Server returns A's public IP and port information
 3. **Exchange Phase**: A and B exchange their respective public addresses through Signaling Server
 4. **Traversal Phase**: Both parties use the obtained information for NAT hole punching to establish direct P2P connection
 
@@ -110,10 +110,10 @@ This design ensures finding viable communication solutions in various network en
 
 The three technologies have clear role divisions, forming a complete P2P communication solution:
 
-| Protocol | Function Description                              | Applicable Scenarios                    |
-| -------- | ------------------------------------------------- | -------------------------------------- |
-| STUN     | Help you know "what I look like in external network" | Device discovery in most NAT environments |
-| TURN     | Help relay data when hole punching fails         | Symmetric NAT or strictly restricted network environments |
+| Protocol | Function Description                                              | Applicable Scenarios                                          |
+| -------- | ----------------------------------------------------------------- | ------------------------------------------------------------- |
+| STUN     | Help you know "what I look like in external network"              | Device discovery in most NAT environments                     |
+| TURN     | Help relay data when hole punching fails                          | Symmetric NAT or strictly restricted network environments     |
 | ICE      | Help choose the best communication method with automatic fallback | Unified management of entire connection establishment process |
 
 **Technology Development Timeline:**

@@ -3,7 +3,8 @@ layout: post
 title: "Jekyll SEO 完整教學：Google Search Console 與 Sitemap 配置指南"
 date: 2021-12-31 11:26:00 +0800
 description: "學會如何讓 Jekyll 静態網站被 Google 收錄與索引。從 Google Search Console 設定、Sitemap 產生到網站驗證等完整流程。包含 robots.txt 配置、網址結構優化與 SEO 最佳實踐。"
-tags: [Jekyll SEO, Google Search Console, Sitemap Optimization, Search Engine Indexing, Static Site SEO, Blog SEO, Website Visibility, Google Analytics]
+tags:
+  [Jekyll SEO, Google Search Console, Sitemap Optimization, Search Engine Indexing, Static Site SEO, Blog SEO, Website Visibility, Google Analytics]
 categories: [Blog]
 toc:
   #   beginning: true

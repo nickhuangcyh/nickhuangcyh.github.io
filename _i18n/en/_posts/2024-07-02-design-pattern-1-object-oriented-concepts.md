@@ -26,6 +26,7 @@ Let's master these essential concepts step by step through clear explanations an
 Encapsulation is the first important concept in object-oriented programming. It involves hiding the implementation details of properties and methods within a class, exposing only necessary methods to users. This protects internal properties and methods from arbitrary modification, ensuring object integrity and security.
 
 **Encapsulation in Daily Life**:
+
 > Imagine when you're driving a car, you only need to know that pressing the gas pedal makes the car accelerate and pressing the brake pedal makes it stop. You don't need to understand the internal combustion process of the engine, the gear mechanisms of the transmission, or the hydraulic principles of the brake system. These complex mechanical details are all "encapsulated" under the hood, making driving simple and intuitive.
 
 **Significance in Programming**: Encapsulation makes code safer, more maintainable, and reduces the learning burden for users.
@@ -37,6 +38,7 @@ Encapsulation is the first important concept in object-oriented programming. It 
 Inheritance is the second important concept in object-oriented programming. It allows child classes to inherit properties and methods from parent classes, achieving code reuse. Through inheritance, we can build hierarchical class structures and avoid writing duplicate code.
 
 **Inheritance in Nature**:
+
 > In biological taxonomy, we can clearly see the concept of inheritance. Dogs and cats are both animals, inheriting basic animal characteristics: ability to breathe, need for food, growth and reproduction. Similarly, roses and sunflowers are both plants, inheriting common plant characteristics: photosynthesis, need for sunlight and water, and root-stem-leaf structures.
 
 **Advantages of Inheritance**: This hierarchical relationship allows us to extract common characteristics into parent classes while implementing specialized functionality in child classes, greatly improving code reusability and maintainability.
@@ -48,9 +50,11 @@ Inheritance is the second important concept in object-oriented programming. It a
 Polymorphism is the third important concept in object-oriented programming. It provides a unified interface or abstract class for different classes, allowing us to operate different concrete objects in the same way. The power of polymorphism lies in the ability to add new object types without modifying existing code.
 
 **Polymorphism in Daily Life**:
+
 > Consider the act of charging a phone. Whether you're using an iPhone, Samsung Galaxy, or other brand phones, when you see the "charging" notification, you know all phones are performing the same function. Although each brand's charging mechanism may differ (wireless charging, fast charging technology, battery management), to users, the "charging" interface is unified.
 
 Another example is remote controls from different brands:
+
 > Although Sony, LG, and Samsung TV remote controls have different internal circuit designs, when you press the "Volume+" button, all TVs increase volume. This is an embodiment of polymorphism.
 
 **Programming Flexibility**: Polymorphism allows us to write more flexible code that easily adapts to future requirement changes.
@@ -62,9 +66,11 @@ Another example is remote controls from different brands:
 Abstraction is the fourth important concept in object-oriented programming. It hides complex implementation details through classes or interfaces, providing only necessary functionality to users. Abstraction helps us establish clearer, more understandable program architecture.
 
 **Abstract Thinking in Daily Life**:
+
 > When we say "mobile app," this term itself is a form of abstraction. Whether it's social media, games, or utility applications, they all appear the same way on the phone desktop: an icon and a name. We don't need to know what programming language each app was developed in or what algorithms were used; we just need to tap the icon to use it.
 
 Another everyday example:
+
 > When shopping for "fruit" at the supermarket, apples, bananas, and oranges are all categorized as fruit. This classification helps us quickly understand their common characteristics: high nutritional value, can be eaten directly, contain vitamins, etc., without worrying about each fruit's specific origin or cultivation methods.
 
 **Relationship between Abstraction and Encapsulation**: Abstraction focuses on "what to do," while encapsulation focuses on "how to do it." They complement each other, together improving code readability and maintainability.

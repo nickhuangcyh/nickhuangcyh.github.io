@@ -16,6 +16,7 @@ thumbnail: /assets/img/jenkins.jpg
 In the [previous article](/en/blog/2024/jenkins-1-what-is-jenkins/), we learned about Jenkins' basic concepts and core features. Now, let's enter the practical phase and learn how to set up our own Jenkins server.
 
 This article will introduce the method of setting up Jenkins using Docker. We choose Docker for three reasons:
+
 - **Environment Consistency**: You can get the same execution environment on Windows, macOS, or Linux
 - **Quick Deployment**: Installation can be completed with just a few commands, eliminating complex environment configuration
 - **Easy Maintenance**: You can easily upgrade, backup, or redeploy
@@ -29,15 +30,19 @@ Before starting, please ensure that Docker is installed on your computer. If not
 Next, we need to pull the Jenkins Docker image from the official repository. Open your terminal (or command prompt) and execute one of the following commands:
 
 #### Option 1: Standard Jenkins Environment
+
 ```bash
 docker pull jenkins/jenkins:lts-jdk17
 ```
+
 This is the official maintained standard Jenkins image, including Java 17 runtime environment, suitable for most general purposes.
 
 #### Option 2: Jenkins + Android Build Environment
+
 ```bash
 docker pull ghcr.io/nickhuangcyh/docker-jenkins-and-android-env:v1.0.0-jdk17
 ```
+
 This is a customized image that includes Android build tools. If you need to build Android applications, we recommend using this version.
 
 ---
@@ -47,16 +52,20 @@ This is a customized image that includes Android build tools. If you need to bui
 Now we're going to start the Jenkins container. Before executing the command, please prepare a local folder to store Jenkins data, so that even if the container restarts, your settings and data won't be lost.
 
 #### Prepare Data Storage Directory
+
 First, create a folder to store Jenkins data:
+
 ```bash
 # Create jenkins_home folder in your home directory
 mkdir ~/jenkins_home
 ```
 
 #### Start Container
+
 Based on the image you chose in step 1, execute the corresponding command:
 
 **Using Standard Jenkins Environment:**
+
 ```bash
 docker run -d \
   --name jenkins \
@@ -67,6 +76,7 @@ docker run -d \
 ```
 
 **Using Jenkins + Android Environment:**
+
 ```bash
 docker run -d \
   --name jenkins \
@@ -77,7 +87,9 @@ docker run -d \
 ```
 
 #### Parameter Explanation
+
 Let's understand the meaning of these parameters:
+
 - `-d`: Run the container in the background
 - `--name jenkins`: Give the container a name for easier management later
 - `-v ~/jenkins_home:/var/jenkins_home`: Mount the local folder to the Jenkins data directory inside the container
@@ -97,19 +109,23 @@ docker logs jenkins
 When you see a message like `Jenkins is fully up and running`, it means Jenkins is ready.
 
 #### Open Jenkins Web Interface
+
 Open [http://localhost:8080](http://localhost:8080) in your browser to access Jenkins' Web interface. When accessing for the first time, you'll see a page asking for the initial administrator password.
 
 {% include figure.liquid path="assets/img/jenkins_setup_initialAdminPassword.png" title="Jenkins Initial Password Page" %}
 
 #### Get Initial Password
+
 There are two ways to get the initial administrator password:
 
 **Method 1: Get from Docker logs**
+
 ```bash
 docker logs jenkins | grep -A 5 -B 5 "password"
 ```
 
 **Method 2: Get from stored file**
+
 ```bash
 cat ~/jenkins_home/secrets/initialAdminPassword
 ```
@@ -120,6 +136,7 @@ cat ~/jenkins_home/secrets/initialAdminPassword
 > {: .block-tip }
 
 #### Complete Initial Setup
+
 1. **Enter Password**: Input the obtained password into the password field
 2. **Install Plugins**: We recommend selecting "Install suggested plugins" to install commonly used plugins
 3. **Create Admin Account**: Set your administrator username and password
@@ -136,16 +153,19 @@ After completing these steps, you have successfully set up Jenkins!
 Congratulations! Through this article, we have successfully completed Jenkins server setup. Let's review the important steps we completed:
 
 ### What We Accomplished
+
 1. **Chose Appropriate Docker Image**: Selected standard version or version with Android environment based on needs
 2. **Correctly Configured Container Parameters**: Including important settings like data persistence and port mapping
 3. **Completed Initial Setup Process**: From getting password to installing plugins, establishing complete Jenkins environment
 
 ### Advantages of Using Docker
+
 - **Quick Deployment**: Complete installation process with just a few commands
 - **Environment Isolation**: Won't affect your local system environment
 - **Easy Maintenance**: Easy to backup, restore, or upgrade
 
 ### Next Steps
+
 Now you have a running Jenkins server. Next, we will learn [how to configure the credential system](/en/blog/2024/jenkins-3-configure-credentials-ssh/) to enable Jenkins to securely pull code from Git repositories. This is a crucial step in implementing automated build processes.
 
 Ready to move to the next stage? Let's continue exploring Jenkins' powerful features!
@@ -159,6 +179,7 @@ Ready to move to the next stage? Let's continue exploring Jenkins' powerful feat
 3. **[Jenkins (3) Complete SSH Credentials Configuration Guide](/en/blog/2024/jenkins-3-configure-credentials-ssh/)** - Next step: Setting up secure code access
 
 ### Recommended Related Technical Articles
+
 - [Getting Started with GitHub Container Registry](/en/blog/2024/getting-started-with-github-container-registry/) - Advanced container deployment applications
 - [Using SSH to Manage Multiple GitHub Accounts](/en/blog/2025/how-to-use-multiple-github-accounts-using-ssh/) - Git multi-account management techniques
 - [Setting Up Development Environment on New macOS](/en/blog/2024/setup-development-environment-on-a-new-macos/) - Complete development environment building guide

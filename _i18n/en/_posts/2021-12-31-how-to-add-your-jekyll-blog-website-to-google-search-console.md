@@ -3,7 +3,8 @@ layout: post
 title: "Complete Jekyll SEO Tutorial: Google Search Console and Sitemap Configuration Guide"
 date: 2021-12-31 11:26:00 +0800
 description: "Learn how to get your Jekyll static website indexed and crawled by Google. Complete process from Google Search Console setup, Sitemap generation to website verification. Includes robots.txt configuration, URL structure optimization, and SEO best practices."
-tags: [Jekyll SEO, Google Search Console, Sitemap Optimization, Search Engine Indexing, Static Site SEO, Blog SEO, Website Visibility, Google Analytics]
+tags:
+  [Jekyll SEO, Google Search Console, Sitemap Optimization, Search Engine Indexing, Static Site SEO, Blog SEO, Website Visibility, Google Analytics]
 categories: [Blog]
 toc:
   #   beginning: true

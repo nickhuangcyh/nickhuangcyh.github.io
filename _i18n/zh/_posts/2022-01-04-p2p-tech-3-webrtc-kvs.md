@@ -101,6 +101,7 @@ WebRTC 每次啟動連線時，會自動為每個網路介面（網卡）產生�
 ```
 
 讓我們解析這個 candidate 字串：
+
 - `2999745851`：candidate ID
 - `1`：component ID（通常 1 是 RTP，2 是 RTCP）
 - `udp`：傳輸協議
@@ -159,18 +160,21 @@ AWS Kinesis Video Streams for WebRTC（簡稱 KVS）是 Amazon 推出的 WebRTC 
 **KVS 的核心優勢：**
 
 ### 全套基礎設施
+
 - **Signaling Server**：內建 WebSocket 基的信令伺服器
 - **STUN/TURN 服務**：全球分佈的 NAT 穿透基礎設施
 - **負載平衡**：自動處理高併發連線請求
 
 ### 企業級安全
+
 - **IAM 整合**：與 AWS 身份認證系統無縫整合
 - **資料加密**：支援端到端加密傳輸
 - **存取控制**：細粒度的權限管理
 
 ### 多平台支援
+
 - **Web**：原生 JavaScript SDK
-- **iOS**：原生 Swift/Objective-C SDK  
+- **iOS**：原生 Swift/Objective-C SDK
 - **Android**：原生 Java/Kotlin SDK
 
 **使用情境：**
@@ -228,16 +232,19 @@ KVS 特別適合需要快速上線且不想維護複雜基礎設施的場景，�
 經過三篇文章的深入探討，我們已經建立了完整的 P2P 技術知識體系：
 
 ### 第一篇：基礎架構與 NAT 問題
+
 - 理解了中心化、去中心化、分佈式架構的區別
 - 掌握了 IPv4 位址稀缺和 NAT 技術的關係
 - 學會了各種 NAT 類型的特性與限制
 
 ### 第二篇：NAT 穿透核心技術
+
 - STUN：解決裝置發現問題，讓裝置知道自己的公共 IP
 - TURN：提供中繼服務，解決嚴格 NAT 環境下的連線問題
 - ICE：整合框架，智慧選擇最佳通訊路徑
 
 ### 第三篇：實用框架與雲端服務
+
 - WebRTC：現代 P2P 通訊的主流標準實作
 - SDP 與 ICE Candidates：連線建立的核心資訊交換機制
 - AWS KVS：商業級的 WebRTC 雲端解決方案

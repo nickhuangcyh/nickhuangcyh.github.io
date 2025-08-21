@@ -4,7 +4,19 @@ title: "Design Pattern (10) - Singleton Pattern Complete Tutorial - Ensuring Sin
 date: 2024-08-10 15:00:00 +0800
 description: "Deep dive into Singleton Pattern - how to ensure a class has only one instance and provide global access point"
 excerpt: "Complete analysis of Singleton Pattern implementation and application in software design - how to ensure a class has only one instance and provide global access point. Includes multiple implementation approaches - lazy initialization, thread safety, double-checked locking, etc. Suitable for database connection management, system configuration, logger, cache management scenarios. Essential tutorial for learning object-oriented programming and improving software architecture skills."
-tags: [singleton-pattern, design-patterns, creational-patterns, software-architecture, object-oriented-programming, thread-safety, lazy-initialization, global-access, database-connection, system-design]
+tags:
+  [
+    singleton-pattern,
+    design-patterns,
+    creational-patterns,
+    software-architecture,
+    object-oriented-programming,
+    thread-safety,
+    lazy-initialization,
+    global-access,
+    database-connection,
+    system-design,
+  ]
 categories: [design-patterns, software-engineering, programming, system-architecture]
 toc:
   #   beginning: true
@@ -41,12 +53,15 @@ This direct design approach looks simple, but it brings some key challenges in a
 When we use the above simple design in enterprise applications, we encounter the following key problems:
 
 ### Resource Management Issues
+
 In enterprise-level systems, each database connection consumes significant system resources (memory, network connections, threads). If we repeatedly create multiple `DatabaseClient` instances in different places, it will cause resource exhaustion and performance degradation.
 
 ### Data Consistency Issues
+
 In multi-threaded environments, if different program modules use different database connection instances, it may lead to transaction state inconsistency, data synchronization problems, and other serious situations.
 
 ### Performance Cost Issues
+
 Database connection establishment and destruction are time-consuming operations. Frequently creating and closing connections not only affects system performance but also increases program complexity and maintenance difficulty.
 
 These problems all point to the same solution direction: we need a unified database connection management mechanism.
@@ -56,11 +71,13 @@ These problems all point to the same solution direction: we need a unified datab
 After identifying the core problems, we can apply the Singleton Pattern to fundamentally solve these challenges. The core concept of the Singleton Pattern is to ensure that only one instance of a certain class can exist in the entire system.
 
 ### Pattern Structure Design
+
 Let's first look at the standard UML structure of the Singleton Pattern:
 
 {% include figure.liquid path="assets/img/design_pattern_singleton_pattern_uml_2.png" title="design_pattern_singleton_pattern_uml_2" %}
 
 ### Core Implementation Mechanism
+
 The Singleton Pattern's implementation mechanism is quite elegant and practical:
 
 1. **Lazy Initialization**: Obtain instances through the `getInstance()` static method, not directly exposing the constructor.

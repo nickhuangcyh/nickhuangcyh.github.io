@@ -3,7 +3,8 @@ layout: post
 title: "Complete Jekyll Website Creation Tutorial: Building a Blog with Minimal Mistakes Theme on GitHub Pages"
 date: 2021-12-29 15:45:03 +0800
 description: "Learn to build a personal blog from scratch using Jekyll and the Minimal Mistakes theme. Detailed analysis of GitHub Pages deployment, theme customization, website configuration, and content management workflow. Includes Ruby environment setup, Markdown writing, and SEO optimization."
-tags: [Jekyll Tutorial, Minimal Mistakes Theme, GitHub Pages, Static Site Generator, Blog Setup, Ruby Development, Markdown Writing, Website Deployment]
+tags:
+  [Jekyll Tutorial, Minimal Mistakes Theme, GitHub Pages, Static Site Generator, Blog Setup, Ruby Development, Markdown Writing, Website Deployment]
 categories: [Blog]
 toc:
   #   beginning: true
@@ -305,6 +306,7 @@ After successful local testing, we now need to deploy the website to GitHub Page
 Log into your GitHub account and create a new repository.
 
 **Repository Setup Recommendations:**
+
 - Choose **Public**, so you can use the free GitHub Pages service
 - Repository name can be freely chosen, for example: `blog` or `my-website`
 - No need to initialize README, .gitignore, or license (since we already have a local project)
@@ -336,6 +338,7 @@ Remember to replace `USERNAME` with your GitHub username and `REPOSITORY` with t
 After successfully pushing the code, you need to enable the Pages feature on GitHub.
 
 **Setup Steps:**
+
 1. Return to the GitHub project page
 2. Click the **Settings** option at the top
 3. Find and click **Pages** in the left menu
@@ -394,8 +397,9 @@ plugins:
 
 Add the above settings to `_config.yml`. Remember the following important points:
 
-> **Important Reminder**  
-> - Remove other `theme:` or `remote_theme:` settings to avoid conflicts  
+> **Important Reminder**
+>
+> - Remove other `theme:` or `remote_theme:` settings to avoid conflicts
 > - Keep your previously set `domain`, `url`, `baseurl` and other basic settings
 
 ---
@@ -417,9 +421,11 @@ This step will download the Minimal Mistakes theme and related dependency packag
 To make the theme work properly, we need to adjust some files:
 
 **Adjust Homepage:**
+
 - Replace `index.md` with a template provided by Minimal Mistakes, or create a new homepage according to theme documentation
 
 **Modify Article Format:**
+
 - Edit `_posts/0000-00-00-welcome-to-jekyll.md` (date may differ)
 - Ensure article frontmatter includes correct layout:
   ```yaml
@@ -427,6 +433,7 @@ To make the theme work properly, we need to adjust some files:
   ```
 
 **Clean Up Unnecessary Files:**
+
 - Delete `about.md` (if you don't plan to use the default about page)
 
 ---
@@ -466,6 +473,7 @@ Wait for GitHub Pages to rebuild (usually takes several minutes), then refresh y
 🎉🎉🎉 Congratulations! You've successfully set up a modern technical blog using Jekyll + Minimal Mistakes on GitHub Pages!
 
 **Features you now have:**
+
 - Responsive design with good experience on both mobile and desktop
 - Dark mode toggle support
 - Image zoom functionality
@@ -474,6 +482,7 @@ Wait for GitHub Pages to rebuild (usually takes several minutes), then refresh y
 - Comment functionality (optional)
 
 **Next Step Recommendations:**
+
 - Start writing your first technical article
 - Customize theme settings according to your needs
 - Add Google Analytics to track website traffic

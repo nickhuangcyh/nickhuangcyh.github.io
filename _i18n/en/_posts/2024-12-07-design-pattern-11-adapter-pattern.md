@@ -3,7 +3,17 @@ layout: post
 title: "Design Pattern (11) Adapter Pattern Complete Tutorial: Solving Interface Incompatibility Issues"
 date: 2024-12-07 23:00:00 +0800
 description: "Learn how the Adapter Pattern solves interface incompatibility issues in system integration. Master design pattern core concepts, UML architecture, Kotlin implementation, applicable scenarios, and best practices through a stock data XML-JSON conversion example."
-tags: [Adapter Pattern, Design Pattern, System Integration, Structural Pattern, OOP Design, Interface Compatibility, Kotlin Programming, Enterprise Development]
+tags:
+  [
+    Adapter Pattern,
+    Design Pattern,
+    System Integration,
+    Structural Pattern,
+    OOP Design,
+    Interface Compatibility,
+    Kotlin Programming,
+    Enterprise Development,
+  ]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -34,18 +44,22 @@ After understanding the requirements, let's first conduct object-oriented analys
 In a direct implementation without design patterns, although functionality can work normally, it faces several important issues:
 
 ### 1. Responsibility Distribution Problem
+
 - The `Client` takes on the responsibility of data conversion, which violates the Single Responsibility Principle (SRP)
 - When conversion logic becomes complex, the `Client`'s code will become bloated and difficult to maintain
 
 ### 2. Code Duplication Problem
+
 - If other systems also need the same XML to JSON conversion logic, they must implement it repeatedly
 - This duplication not only wastes development time but also increases maintenance costs
 
 ### 3. High Coupling Problem
+
 - The `Client` must have deep understanding of the specific implementation details of `XmlStockData` and `JsonAnalyzer`
 - When data source formats or target system interfaces change, the `Client` must undergo significant modifications
 
 ### 4. Insufficient Extensibility
+
 - If support for more data formats (such as CSV, YAML, etc.) is needed in the future, each new format requires adding conversion logic to the `Client`
 - This approach makes the system difficult to extend and continuously increases maintenance costs
 
@@ -64,16 +78,19 @@ Let's first look at the standard UML structure of the Adapter Pattern:
 ### Three Core Roles of Adapter Pattern:
 
 **Target (Target Interface)**
+
 - Defines the interface that the client expects to use
 - In our example, this is the `analyzeJsonData` method of JsonAnalyzer
 - It represents the data format and operation method expected by the third-party analysis system
 
 **Adaptee (Adaptee)**
+
 - Represents the existing class that needs to be adapted
 - In our example, this is the `XmlStockData` that provides XML format data
 - It has its own interface but is incompatible with the target system
 
 **Adapter (Adapter)**
+
 - Implements the Target interface while internally holding a reference to the Adaptee
 - Responsible for converting Adaptee's data to the format expected by the Target
 - In our example, `StockDataAdapter` is responsible for converting XML to JSON
@@ -155,6 +172,7 @@ fun main() {
 ## Execution Results and Analysis
 
 When we run the above code, the adapter will:
+
 1. Get XML format stock data from `XmlStockData`
 2. Convert XML to JSON format
 3. Call the analysis method to process JSON data
@@ -164,13 +182,16 @@ When we run the above code, the adapter will:
 By applying the **Adapter Pattern**, we successfully solved the system integration problem:
 
 ### Benefits Achieved:
+
 - **Clear Responsibilities**: Data conversion logic is encapsulated in a dedicated adapter
 - **Reduced Coupling**: Client no longer needs to understand XML to JSON conversion details
 - **Improved Reusability**: `StockDataAdapter` can be reused in other places that need the same conversion
 - **Easy to Extend**: If support for other formats is needed in the future, just create new adapters
 
 ### Applicable Scenarios:
+
 Adapter Pattern is particularly suitable for:
+
 - Integrating third-party libraries or legacy systems
 - Data format conversion
 - Integration of classes with incompatible interfaces

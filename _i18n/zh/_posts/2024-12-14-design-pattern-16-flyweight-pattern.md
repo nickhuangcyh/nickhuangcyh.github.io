@@ -180,6 +180,7 @@ Drawing tree: Oak, color: Green, texture: Rough at (10, 20)
 ## 適用場景與注意事項
 
 享元模式特別適合以下應用情境：
+
 - **文字編輯器**：字元物件的共享（相同字元、字型、大小的文字）
 - **遊戲開發**：場景中大量相似的遊戲物件（子彈、粒子效果、NPC）
 - **圖形渲染**：重複的圖形元素或材質
@@ -189,6 +190,7 @@ Drawing tree: Oak, color: Green, texture: Rough at (10, 20)
 ## 系列文章導覽
 
 ### 結構型設計模式系列
+
 - [適配器模式 (Adapter Pattern)](/zh/blog/2024/design-pattern-11-adapter-pattern/) - 讓不相容的介面能夠協同工作
 - [橋接模式 (Bridge Pattern)](/zh/blog/2024/design-pattern-12-bridge-pattern/) - 將抽象與實作分離，支援獨立演化
 - [組合模式 (Composite Pattern)](/zh/blog/2024/design-pattern-13-composite-pattern/) - 統一處理個別物件與物件組合
@@ -197,10 +199,12 @@ Drawing tree: Oak, color: Green, texture: Rough at (10, 20)
 - [代理模式 (Proxy Pattern)](/zh/blog/2024/design-pattern-17-proxy-pattern/) - 透過智慧代理物件控制資源存取
 
 ### 行為型設計模式系列
+
 - [責任鏈模式 (Chain of Responsibility)](/zh/blog/2024/design-pattern-18-chain-of-responsibility-pattern/) - 建立動態請求處理鏈
 - [命令模式 (Command Pattern)](/zh/blog/2024/design-pattern-19-command-pattern/) - 將請求封裝為物件實現撤銷重做
 
 ### 創建型設計模式基礎
+
 - [單例模式 (Singleton Pattern)](/zh/blog/2024/design-pattern-10-singleton-pattern/) - 確保類別只有一個實例
 - [設計原則](/zh/blog/2024/design-pattern-2-design-principle/) - 掌握 SOLID 原則與設計基礎
 

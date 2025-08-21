@@ -3,7 +3,8 @@ layout: post
 title: "GitHub Container Registry 完整教學：容器映像管理與 CI/CD 部署指南"
 date: 2024-07-23 18:00:00 +0800
 description: "學會如何使用 GitHub Container Registry 管理 Docker 映像與建置 CI/CD 流程。從 Jenkins Master-Slave 架構實例深入了解容器化部署、版本管理、身份驗證與最佳實踐。適用於 DevOps 工程師。"
-tags: [GitHub Container Registry, Docker Registry, Container Management, CI/CD Pipeline, DevOps, Jenkins Master-Slave, GitHub Actions, Image Versioning]
+tags:
+  [GitHub Container Registry, Docker Registry, Container Management, CI/CD Pipeline, DevOps, Jenkins Master-Slave, GitHub Actions, Image Versioning]
 categories: [DevOps]
 toc:
   #   beginning: true
@@ -198,8 +199,9 @@ docker tag node_sample:latest ghcr.io/{NAMESPACE}/node_sample:latest
 > 打開 GitHub → 右上角 Profile → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token
 
 在權限設定中，請勾選以下三個套件相關權限：
+
 - `write:packages` - 上傳套件權限
-- `read:packages` - 讀取套件權限  
+- `read:packages` - 讀取套件權限
 - `delete:packages` - 刪除套件權限
 
 {% include figure.liquid path="assets/img/github_container_registry_generate_github_token.png" title="Generate GitHub Token" %}
@@ -243,6 +245,7 @@ docker push ghcr.io/{NAMESPACE}/node_sample:latest
 相較於手動上傳，GitHub Actions 提供了更優雅的自動化解決方案。每當程式碼有變更時，它會自動建置並推送容器映像，大幅提升開發效率。
 
 GitHub Actions 的優勢包括：
+
 - **自動觸發**：程式碼推送時自動執行
 - **無需本機環境**：在 GitHub 的雲端環境中執行
 - **內建權限管理**：無需手動設定存取權杖
@@ -335,6 +338,7 @@ git push -u origin release
 ```
 
 當你推送到 `release` 分支時，GitHub Actions 會自動執行以下流程：
+
 1. 檢出程式碼
 2. 建置 Docker 映像
 3. 推送到 GitHub Container Registry

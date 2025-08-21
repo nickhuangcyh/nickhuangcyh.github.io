@@ -299,16 +299,19 @@ GUI 中的滑鼠事件、鍵盤事件在組件層次中的傳遞。事件會沿�
 ## 系列文章導覽
 
 ### 行為型設計模式系列
+
 - [命令模式 (Command Pattern)](/zh/blog/2024/design-pattern-19-command-pattern/) - 將請求封裝為物件，支援操作的撤銷與重做
 - [迭代器模式 (Iterator Pattern)](/zh/blog/2024/design-pattern-20-iterator-pattern/) - 提供循序訪問聚合物件的標準方法
 - [中介者模式 (Mediator Pattern)](/zh/blog/2024/design-pattern-21-mediator-pattern/) - 定義物件間的互動方式，降低耦合度
 - [觀察者模式 (Observer Pattern)](/zh/blog/2024/design-pattern-23-observer-pattern/) - 實作事件驅動的通知機制
 
 ### 結構型設計模式系列
+
 - [適配器模式 (Adapter Pattern)](/zh/blog/2024/design-pattern-11-adapter-pattern/) - 讓不相容的介面能夠協同工作
 - [橋接模式 (Bridge Pattern)](/zh/blog/2024/design-pattern-12-bridge-pattern/) - 將抽象與實作分離，支援獨立演化
 
 ### 創建型設計模式基礎
+
 - [設計模式概念](/zh/blog/2024/design-pattern-3-design-pattern/) - 了解設計模式的基本概念
 - [設計原則](/zh/blog/2024/design-pattern-2-design-principle/) - 掌握 SOLID 原則與設計基礎
 

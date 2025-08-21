@@ -61,12 +61,12 @@ Attributes represent data members in a class, defining the state and characteris
 
 UML uses specific symbols to indicate attribute visibility, with these symbols placed before the attribute name:
 
-| Sign | Modifiers | Description |
-| ---- | --------- | ----------- |
-| `+`  | Public    | Public access, accessible from anywhere |
-| `#`  | Protected | Protected access, limited to class itself and subclasses |
+| Sign | Modifiers | Description                                                   |
+| ---- | --------- | ------------------------------------------------------------- |
+| `+`  | Public    | Public access, accessible from anywhere                       |
+| `#`  | Protected | Protected access, limited to class itself and subclasses      |
 | `~`  | Package   | Package access, accessible by classes within the same package |
-| `-`  | Private   | Private access, limited to class itself internally |
+| `-`  | Private   | Private access, limited to class itself internally            |
 
 Proper use of visibility helps implement encapsulation principles, protecting object internal state from inappropriate access or modification.
 
@@ -78,10 +78,10 @@ Multiplicity describes quantitative relationships between objects. When an assoc
 
 If not specifically marked, the default multiplicity is 1, indicating a one-to-one relationship.
 
-| Sign    | Amount               | Real Application Example |
-| ------- | -------------------- | ------------------------ |
-| `1`     | 1 object             | One person has one ID card |
-| `*`     | Unlimited number     | One school has many students |
+| Sign    | Amount                | Real Application Example          |
+| ------- | --------------------- | --------------------------------- |
+| `1`     | 1 object              | One person has one ID card        |
+| `*`     | Unlimited number      | One school has many students      |
 | `n...m` | At least n, at most m | One project team has 3-10 members |
 
 Understanding multiplicity is very important for designing database relationships and inter-class relationships, helping developers correctly implement interaction logic between objects.
@@ -91,6 +91,7 @@ Understanding multiplicity is very important for designing database relationship
 Dependency is the weakest form of association in UML, indicating that one class depends on another class to some extent to function properly. This relationship is usually temporary and does not establish persistent references in classes.
 
 **Characteristics of dependency relationships:**
+
 - Represents "A uses B" relationship
 - Usually appears in method parameters, local variables, or return values
 - Changes in dependent classes may affect user classes
@@ -109,6 +110,7 @@ Dependency is the weakest form of association in UML, indicating that one class 
 Association relationships are stronger than dependency relationships, indicating persistent structural connections between two classes. In association relationships, one object holds a reference to another object, usually existing as class attributes or global variables.
 
 **Characteristics of association relationships:**
+
 - Represents "A has a B" relationship
 - Established at the class attribute level, is a persistent relationship
 - Associated objects are relatively independent in lifecycle
@@ -127,6 +129,7 @@ Association relationships are stronger than dependency relationships, indicating
 Aggregation is a special form of association relationship, representing a "whole-part" relationship. In aggregation relationships, the whole owns the part, but the part can exist independently of the whole. This is a weaker ownership relationship.
 
 **Characteristics of aggregation relationships:**
+
 - Represents "A owns B" relationship
 - Is a special form of Association, more semantic than general association
 - Part objects can exist independently of whole objects
@@ -146,6 +149,7 @@ Aggregation is a special form of association relationship, representing a "whole
 Composition is the strongest association relationship, also representing a "whole-part" relationship, but unlike aggregation, parts are completely dependent on the whole for existence. Once the whole disappears, parts will also disappear.
 
 **Characteristics of composition relationships:**
+
 - Represents "B is part of A" relationship
 - Is the strongest ownership relationship
 - Part objects cannot exist independently of whole objects
@@ -168,6 +172,7 @@ Composition is the strongest association relationship, also representing a "whol
 Understanding the differences between these three relationships is crucial for correctly modeling interactions between objects. They represent different degrees of coupling strength:
 
 **Increasing relationship strength:**
+
 1. **Association**: Most basic structural relationship
 2. **Aggregation**: Special form of Association, representing weak ownership relationship
 3. **Composition**: Special form of Association, representing strong ownership relationship
@@ -175,11 +180,11 @@ Understanding the differences between these three relationships is crucial for c
 **Core difference lies in independence:**
 
 > **Aggregation** means child objects can exist independently of parent objects.
-> 
+>
 > For example: Class (parent) and Student (child). Even if the class is disbanded, students still exist.
 >
 > **Composition** means child objects cannot exist independently of parent objects.
-> 
+>
 > For example: House (parent) and Room (child). Without a house, rooms lose their meaning for existence.
 
 This design consideration directly affects program memory management and object lifecycle design.
@@ -191,6 +196,7 @@ This design consideration directly affects program memory management and object 
 Realization relationships represent concrete class implementation of interface contracts. When a class implements an interface, it must provide concrete implementations of all methods defined in the interface.
 
 **Characteristics of realization relationships:**
+
 - Represents "B implements A" relationship
 - Interface defines method signatures, implementing classes provide concrete logic
 - Realizes the foundation of polymorphism, same interface can have multiple implementations
@@ -210,6 +216,7 @@ Realization relationships represent concrete class implementation of interface c
 Inheritance relationships represent child classes inheriting attributes and methods from parent classes. This is one of the core concepts in object-oriented programming, realizing the foundation of code reuse and polymorphism.
 
 **Characteristics of inheritance relationships:**
+
 - Represents "C is-a A" relationship
 - Child classes automatically have all public and protected members of parent classes
 - Child classes can override parent class methods
@@ -230,11 +237,13 @@ Inheritance relationships represent child classes inheriting attributes and meth
 UML class diagrams are indispensable communication tools in software design. Through this article's introduction, we learned:
 
 **Basic Elements:**
+
 - **Class**: Three-layer rectangular box structure containing name, attributes, methods
 - **Interface**: Abstract concept defining contracts, with two representation methods
 - **Visibility**: Symbol system for controlling access permissions
 
 **Relationship Types and Strength:**
+
 1. **Dependency**: Weakest relationship, temporary usage
 2. **Association**: Basic structural relationship, persistent connection
 3. **Aggregation**: Weak ownership relationship, parts can exist independently

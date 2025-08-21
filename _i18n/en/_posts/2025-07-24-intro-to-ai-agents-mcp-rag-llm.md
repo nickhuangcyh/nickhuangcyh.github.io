@@ -21,6 +21,7 @@ thumbnail: /assets/img/igor-omilaev-eGGFZ5X2LnA-unsplash.jpg
 Artificial Intelligence (AI) is the technology that enables computer systems to perform "intelligent" tasks. These tasks were previously only achievable by humans, such as understanding language, recognizing images, path planning, playing chess, and even creating content. With the rapid development of machine learning and deep learning technologies, AI has become the core driving force of modern software development.
 
 **Simply put, AI is about teaching machines four key capabilities:**
+
 - Perception: Understanding the surrounding environment and input information
 - Reasoning: Analyzing problems and finding logical relationships
 - Learning: Improving performance through experience
@@ -51,6 +52,7 @@ AI Agent is an advanced application of AI technology, far more powerful than sim
 Imagine that ordinary chatbots are like "knowledge-based customer service," only able to answer questions. But AI Agents are more like an "all-capable digital assistant," not only able to chat but also proactively help you get things done.
 
 **Three core capabilities of AI Agents:**
+
 1. **Proactive environment perception** - Can understand current situations and needs
 2. **Planning action steps** - Knows how to solve problems step by step
 3. **Executing specific tasks** - Actually operates tools to complete work
@@ -67,6 +69,7 @@ Think of an AI Agent as a super assistant with the following workflow:
 ### Three Core Components
 
 **AI Agent is like a three-person team:**
+
 - **LLM (Brain)**: Responsible for thinking and understanding
 - **RAG (Research Assistant)**: Specialized in finding and organizing data
 - **MCP (Communication Expert)**: Responsible for coordinating and collaborating with external tools
@@ -82,6 +85,7 @@ Next, let's dive deep into the three technological pillars of AI Agents. Each pl
 Large Language Models (LLMs) are the "thinking center" of AI Agents. As the core technology of modern artificial intelligence, LLMs are responsible for three key tasks: understanding what you say, remembering conversational context, and generating appropriate responses. This advanced natural language processing capability enables AI Agents to perform complex code analysis and automated development tasks.
 
 **Think of LLM as a learned consultant:**
+
 - Can read complex natural language
 - Can write various types of code
 - Has logical reasoning capabilities
@@ -98,6 +102,7 @@ Large Language Models (LLMs) are the "thinking center" of AI Agents. As the core
 Although LLMs are smart, they have an important "memory limitation" called the context window.
 
 **This is like human short-term memory:**
+
 - Can only remember a limited amount of information simultaneously
 - When dealing with huge projects, might "forget" details mentioned earlier
 - When information is insufficient, might "guess" or produce inaccurate responses
@@ -111,6 +116,7 @@ Although LLMs are smart, they have an important "memory limitation" called the c
 RAG (Retrieval-Augmented Generation) is the key technology that solves LLM memory limitations. This innovative AI technology combines information retrieval with generative artificial intelligence, enabling AI Agents to handle large-scale datasets and provide precise code analysis results.
 
 **RAG is like a professional research assistant:**
+
 - When LLM needs specific information, RAG proactively goes to the "library" to search for data
 - After finding relevant content, it precisely provides it to LLM for reference
 - Allows LLM to respond based on the latest and most accurate information
@@ -121,6 +127,7 @@ RAG (Retrieval-Augmented Generation) is the key technology that solves LLM memor
 You ask the AI Agent: "Please help me summarize the utils functions of this project"
 
 **RAG's three-step working method:**
+
 1. **Understanding requirements** - Analyze that you want to know about "utils function summary"
 2. **Smart search** - Search for all utils-related files and functions in the entire codebase
 3. **Precise provision** - Organize the found code content and deliver it to LLM
@@ -141,6 +148,7 @@ LLM no longer guesses randomly but generates accurate and detailed function summ
 MCP (Multi-Component Protocol) is the key bridge that enables AI Agents to communicate with the external world. This advanced communication protocol realizes seamless integration between AI systems and various development tools, making it the core technology for achieving automated software development workflows.
 
 **MCP is like a professional translator:**
+
 - Translates LLM's "thoughts" into "commands" that external tools can understand
 - Translates external tools' "responses" into "information" that LLM can process
 - Enables AI Agents to seamlessly integrate various development tools
@@ -152,6 +160,7 @@ MCP (Multi-Component Protocol) is the key bridge that enables AI Agents to commu
 LLM's inner thoughts: "I need to first understand the entire project structure, then find files that need refactoring, and finally execute refactoring and testing"
 
 **MCP converts this thought into specific commands:**
+
 1. `get_codebase_summary` - Get project overview
 2. `analyze_file_dependencies` - Analyze file dependencies
 3. `refactor_file` - Execute refactoring
@@ -161,11 +170,13 @@ LLM's inner thoughts: "I need to first understand the entire project structure, 
 ### MCP's Technical Features
 
 **Structured Communication:**
+
 - Uses standardized JSON format
 - Ensures both commands and responses have clear formats
 - Supports complex multi-turn conversations
 
 **Multi-tool Integration:**
+
 - CLI command-line tools
 - Git version control
 - IDE integrated development environments
@@ -187,21 +198,25 @@ Now that we know the three core technologies, how do they work together like a t
 ### Four-step Collaboration Process
 
 **Step 1: LLM Understanding and Planning**
+
 - LLM analyzes your requirement: "Need to refactor utils module"
 - Formulates action plan: "First understand current situation → Analyze problems → Execute refactoring → Verify results"
 
 **Step 2: RAG Collecting Data**
+
 - Search for all utils-related files in the entire project
 - Analyze the structure and functionality of existing code
 - Find dependency relationships and potential problem points
 
 **Step 3: MCP Executing Operations**
+
 - Use `analyze_code_quality` to check code quality
 - Use `refactor_functions` to reorganize code structure
 - Execute `generate_documentation` to update documentation
 - Run `run_tests` to ensure functionality works properly
 
 **Step 4: LLM Integrating Response**
+
 - Synthesize all execution results
 - Generate refactoring reports and recommendations
 - Explain improvements and benefits
@@ -218,6 +233,7 @@ Now that we know the three core technologies, how do they work together like a t
 ### Core Value of Collaboration
 
 This trinity collaboration model enables AI Agents to:
+
 - **Understand complex requirements** - Not just superficial command understanding
 - **Based on real data** - Avoid imagination and wrong judgments
 - **Execute actual operations** - Actually complete work, not just suggestions
@@ -230,19 +246,20 @@ Many people ask: "What's the difference between AI Agents and regular chatbots?"
 
 ### Core Difference Comparison
 
-| Feature | Traditional Chatbot | AI Agent |
-|---------|-------------------|-----------|
-| **Main Function** | Q&A dialogue, passive response | Proactive task execution, work completion |
-| **Memory Capability** | Short-term conversation memory | Long-term memory + RAG database |
-| **Tool Integration** | Few or none | Deep integration with various development tools |
-| **Task Processing** | Question-answer mode | Multi-step complex task execution |
-| **Learning Capability** | Static response | Dynamic learning and improvement |
+| Feature                 | Traditional Chatbot            | AI Agent                                        |
+| ----------------------- | ------------------------------ | ----------------------------------------------- |
+| **Main Function**       | Q&A dialogue, passive response | Proactive task execution, work completion       |
+| **Memory Capability**   | Short-term conversation memory | Long-term memory + RAG database                 |
+| **Tool Integration**    | Few or none                    | Deep integration with various development tools |
+| **Task Processing**     | Question-answer mode           | Multi-step complex task execution               |
+| **Learning Capability** | Static response                | Dynamic learning and improvement                |
 
 ### Practical Application Scenario Comparison
 
 **Scenario: "Help me optimize the performance of this React project"**
 
 **Traditional Chatbot's Response:**
+
 ```
 You can try the following methods:
 1. Use React.memo to avoid unnecessary re-renders
@@ -253,6 +270,7 @@ You can try the following methods:
 ```
 
 **AI Agent's Actual Actions:**
+
 ```
 1. 🔍 First use RAG to analyze your project structure
 2. 📊 Execute performance testing tools through MCP
@@ -265,11 +283,13 @@ You can try the following methods:
 ### Evolution Key: From "Saying" to "Doing"
 
 **Chatbot: Knowledge-based Consultant**
+
 - Good at answering questions and providing advice
 - Like a talking encyclopedia
 - But cannot actually help you complete work
 
 **AI Agent: Executive Assistant**
+
 - Not only provides answers but also executes actions
 - Like an experienced development partner
 - Can actually help you complete complex development tasks
@@ -285,16 +305,19 @@ Now that you understand the core principles of AI Agents, the upcoming series ar
 ### Upcoming In-depth Analysis
 
 **🎯 Development Tool Category:**
+
 - **Cursor**: How to understand and refactor entire projects through AI
 - **Claude Code**: Expert in multi-file reasoning and code collaboration
 - **GitHub Copilot**: The evolved version of code auto-completion
 
 **🛠️ Framework Tool Category:**
+
 - **Trae**: The lightweight Agent framework most suitable for developers
 - **Gemini CLI**: Google ecosystem's command-line Agent
 - **Kiro**: Emerging Agent development platform
 
 **📊 Comparative Analysis of Various Tools:**
+
 - Learning difficulty, integration convenience, functionality completeness
 - Applicable scenarios and best practices
 - Developer community and ecosystem
@@ -304,6 +327,7 @@ Now that you understand the core principles of AI Agents, the upcoming series ar
 👉 **"AI Agent Series (Part 2): Trae in Practice - Building Your First Development Assistant"**
 
 We'll start from scratch:
+
 1. Install and configure Trae environment
 2. Build your first Agent
 3. Integrate LLM, RAG, and MCP
@@ -314,6 +338,7 @@ We'll start from scratch:
 ## 🤝 Interact with Me
 
 📌 **If this article helped you:**
+
 - Feel free to share it with friends interested in AI programming
 - Leave a comment telling me which AI Agent tool you'd most like to learn about in depth
 - Or share challenges you've encountered when using AI Agents

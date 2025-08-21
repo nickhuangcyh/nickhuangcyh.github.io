@@ -3,7 +3,8 @@ layout: post
 title: "Jekyll 建站完整教學：使用 Minimal Mistakes 主題在 GitHub Pages 架設部落格"
 date: 2021-12-29 15:45:03 +0800
 description: "學會從零開始使用 Jekyll 與 Minimal Mistakes 主題建置個人部落格。詳細解析 GitHub Pages 部署、主題客製化、網站配置與內容管理流程。包含 Ruby 環境設定、Markdown 寫作與 SEO 優化。"
-tags: [Jekyll Tutorial, Minimal Mistakes Theme, GitHub Pages, Static Site Generator, Blog Setup, Ruby Development, Markdown Writing, Website Deployment]
+tags:
+  [Jekyll Tutorial, Minimal Mistakes Theme, GitHub Pages, Static Site Generator, Blog Setup, Ruby Development, Markdown Writing, Website Deployment]
 categories: [Blog]
 toc:
   #   beginning: true
@@ -305,6 +306,7 @@ Server address: http://127.0.0.1:4000/
 登入你的 GitHub 帳號，建立一個新的 repository。
 
 **Repository 設定建議：**
+
 - 選擇 **Public**（公開），這樣才能使用免費的 GitHub Pages 服務
 - Repository 名稱可以自由命名，例如：`blog` 或 `my-website`
 - 不需要初始化 README、.gitignore 或 license（因為我們已經有本地專案了）
@@ -336,6 +338,7 @@ git push -u origin gh-pages
 程式碼推送成功後，需要在 GitHub 上啟用 Pages 功能。
 
 **設定步驟：**
+
 1. 回到 GitHub 專案頁面
 2. 點選頂部的 **Settings** 選項
 3. 在左側選單找到並點選 **Pages**
@@ -394,8 +397,9 @@ plugins:
 
 在 `_config.yml` 中加入上述設定。記住以下重要事項：
 
-> **重要提醒**  
-> - 移除其他 `theme:` 或 `remote_theme:` 設定，避免衝突  
+> **重要提醒**
+>
+> - 移除其他 `theme:` 或 `remote_theme:` 設定，避免衝突
 > - 保留你先前設定的 `domain`, `url`, `baseurl` 等基本設定
 
 ---
@@ -417,9 +421,11 @@ bundle install
 為了讓主題正常運作，我們需要調整一些檔案：
 
 **調整首頁：**
+
 - 將 `index.md` 替換為 Minimal Mistakes 提供的範本，或根據主題文件建立新的首頁
 
 **修改文章格式：**
+
 - 編輯 `_posts/0000-00-00-welcome-to-jekyll.md`（日期可能不同）
 - 確保文章的 frontmatter 包含正確的 layout：
   ```yaml
@@ -427,6 +433,7 @@ bundle install
   ```
 
 **清理不需要的檔案：**
+
 - 刪除 `about.md`（如果你不打算使用預設的關於頁面）
 
 ---
@@ -466,6 +473,7 @@ git push origin gh-pages
 🎉🎉🎉 恭喜你！你已經成功使用 Jekyll + Minimal Mistakes 在 GitHub Pages 上架設了一個現代化的技術 Blog！
 
 **你現在擁有的功能：**
+
 - 響應式設計，在手機和電腦上都有良好體驗
 - 支援深色模式切換
 - 圖片放大功能
@@ -474,6 +482,7 @@ git push origin gh-pages
 - 評論功能（可選）
 
 **下一步建議：**
+
 - 開始撰寫你的第一篇技術文章
 - 根據需求客製化主題設定
 - 加入 Google Analytics 追蹤網站流量

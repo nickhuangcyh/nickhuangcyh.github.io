@@ -36,6 +36,7 @@ For example, when you need to ensure that a class has only one instance througho
 Forces refer to various factors and constraints that need to be balanced during the design process. These factors often conflict with each other, requiring finding the optimal balance point.
 
 Common Forces include:
+
 - **Performance requirements**: How fast should the system response be?
 - **Scalability**: Will it need to easily add new features in the future?
 - **Maintainability**: Is the code easy to understand and modify?
@@ -58,24 +59,31 @@ A good Solution skillfully balances various Forces, providing a validated and el
 Successfully applying design patterns requires following a structured process. This seven-step method ensures we can systematically analyze problems and choose the most suitable solutions.
 
 ### 1. Object-Oriented Analysis (OOA)
+
 Analyze and understand application requirements and overall structure from a high level. This stage requires drawing UML diagrams to visualize the current state of the system, helping us grasp the global perspective.
 
 ### 2. Understand the Context
+
 Through UML diagrams, deeply understand the specific scenario and environmental conditions where design patterns need to be applied. Clearly answer "what kind of situation are we facing now?"
 
 ### 3. Perceive Forces
+
 Identify and analyze key factors that influence design decisions. These factors may include performance requirements, extensibility needs, maintenance difficulty, and other conflicting constraints.
 
 ### 4. Find the Problem
+
 Under the constraints of specific Context and Forces, clearly define the core design problem that needs to be solved. The problem description should be specific and actionable.
 
 ### 5. Apply the Pattern
+
 Based on the identified Problem and Forces, select the most suitable pattern from the design pattern library. This selection process requires weighing various trade-offs.
 
 ### 6. Get New Resulting Context
+
 After applying the design pattern, re-analyze and review the improved design solution. Similarly, new UML diagrams need to be drawn to present the improved system architecture.
 
 ### 7. Object-Oriented Programming (OOP)
+
 Based on the new Resulting Context UML diagrams, begin actual code writing and implementation work. Implementation at this time should follow the structure defined by UML diagrams.
 
 ## Classification of Design Patterns
@@ -89,6 +97,7 @@ Design patterns can be classified into three major categories based on the types
 This category of patterns focuses on "how to create objects" rather than "what objects to create." They provide optimal ways to create objects while hiding the complexity of creation logic.
 
 **Common Patterns**:
+
 - **Factory Method Pattern**: Create objects through factory methods
 - **Abstract Factory Pattern**: Create families of related objects
 - **Builder Pattern**: Construct complex objects step by step
@@ -102,6 +111,7 @@ This category of patterns focuses on "how to create objects" rather than "what o
 This category of patterns focuses on how to combine classes and objects into larger, more complex structures while maintaining structural flexibility and efficiency.
 
 **Common Patterns**:
+
 - **Adapter Pattern**: Make incompatible interfaces work together
 - **Bridge Pattern**: Separate abstraction from implementation
 - **Decorator Pattern**: Dynamically add new functionality to objects
@@ -117,6 +127,7 @@ This category of patterns focuses on how to combine classes and objects into lar
 This category of patterns focuses on algorithms and responsibility allocation between objects, describing not only object or class patterns but also communication patterns between them.
 
 **Common Patterns**:
+
 - **Chain of Responsibility Pattern**: Pass requests along a processing chain
 - **Mediator Pattern**: Define how objects interact
 - **Iterator Pattern**: Provide unified way to access collection elements

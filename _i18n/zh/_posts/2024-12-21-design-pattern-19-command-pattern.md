@@ -89,6 +89,7 @@ thumbnail: /assets/img/design_patterns.jpg
 ### 模式帶來的優勢
 
 這個模式讓我們能夠：
+
 - 用不同的請求來參數化客戶端
 - 將操作排入佇列或記錄到日誌中
 - 支援撤銷和重做操作

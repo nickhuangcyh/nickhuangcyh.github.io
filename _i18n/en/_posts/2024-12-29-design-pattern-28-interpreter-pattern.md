@@ -4,7 +4,19 @@ title: "Design Pattern (28) - Interpreter Pattern"
 date: 2024-12-29 16:30:00 +0800
 description: "The Interpreter Pattern is used to build a system that can interpret specific languages or syntax, suitable for handling complex rule judgments or command syntax."
 excerpt: "In-depth exploration of Interpreter Pattern application in software design: how to build systems that can interpret specific languages and syntax. Includes complete Kotlin code examples demonstrating boolean operation interpreter system implementation. Suitable for handling complex rule judgments, command syntax, mathematical expression calculators, SQL query condition parsing and other scenarios. Learn object-oriented programming and improve system architecture skills with this essential classic tutorial."
-tags: [interpreter-pattern, design-patterns, software-architecture, object-oriented-programming, behavioral-patterns, kotlin, expression-parsing, software-design, programming-patterns, code-examples]
+tags:
+  [
+    interpreter-pattern,
+    design-patterns,
+    software-architecture,
+    object-oriented-programming,
+    behavioral-patterns,
+    kotlin,
+    expression-parsing,
+    software-design,
+    programming-patterns,
+    code-examples,
+  ]
 categories: [design-patterns, software-engineering, programming, object-oriented-design]
 toc:
   #   beginning: true
@@ -192,6 +204,7 @@ Through this boolean operation system implementation, we deeply explored how the
 ### Practical Application Scenarios
 
 Interpreter Pattern is particularly suitable for the following scenarios:
+
 - Configuration file rule parsing
 - Mathematical expression calculators
 - SQL query condition parsing

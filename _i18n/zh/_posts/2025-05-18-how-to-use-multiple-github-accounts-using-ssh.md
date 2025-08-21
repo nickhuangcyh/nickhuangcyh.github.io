@@ -38,6 +38,7 @@ thumbnail: /assets/img/github.jpg
 你可能曾經嘗試過以下方法，但很快就發現它們的問題：
 
 ❌ **低效率的做法**：
+
 - **頻繁登入登出**：每次都要在瀏覽器中切換 GitHub 帳號
 - **手動修改配置**：不斷更改全域 Git 設定 (`git config --global`)
 - **人工檢查身分**：每次 commit 前都要確認使用者資訊
@@ -45,6 +46,7 @@ thumbnail: /assets/img/github.jpg
 這些方法不僅浪費時間，還容易出錯。一個不小心，你的個人專案就可能以公司名義提交，造成尷尬的狀況。
 
 ✅ **我們的智慧解決方案**：
+
 - **SSH 金鑰自動配對**：讓系統自動識別應該使用哪個 GitHub 帳號，實現智慧化版本控制
 - **智慧身分切換**：透過 SSH config 實現無感切換
 - **零手動干預**：設定一次，終身受用
@@ -58,6 +60,7 @@ thumbnail: /assets/img/github.jpg
 在進入具體設定步驟之前，我們需要確認幾個基本條件：
 
 **必要條件檢查**：
+
 - ✅ **SSH 金鑰已準備**：為每個 GitHub 帳號生成獨立的 SSH 金鑰對
 - ✅ **公鑰已上傳**：將對應的公鑰添加到各自的 GitHub 帳號中
 - ✅ **基本操作技能**：熟悉 Terminal 或命令提示字元的基本使用
@@ -77,6 +80,7 @@ thumbnail: /assets/img/github.jpg
 讓我們先了解系統目前的金鑰載入情況。這一步就像檢查你錢包裡有哪些身分證件一樣重要。
 
 **執行檢查指令**：
+
 ```bash
 ssh-add -l
 ```
@@ -84,18 +88,23 @@ ssh-add -l
 **可能看到的結果**：
 
 **情況一**：已有預設金鑰
+
 ```bash
 256 SHA256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx nick25932219@gmail.com (ED25519)
 ```
+
 這表示你的個人帳號金鑰已經載入，狀況良好！
 
 **情況二**：沒有任何金鑰
+
 ```bash
 The agent has no identities.
 ```
+
 這表示系統還沒有載入任何金鑰，我們需要從頭開始設定。
 
 **結果解讀**：
+
 - **單一金鑰**：通常是你的個人 GitHub 帳號
 - **多組金鑰**：太好了！你可能已經部分設定過
 - **無金鑰**：別擔心，我們會一步步建立完整配置
@@ -105,6 +114,7 @@ The agent has no identities.
 現在是時候讓系統認識你的其他身分了！我們將把工作帳號的金鑰也載入到系統中。
 
 **載入工作帳號金鑰**：
+
 ```bash
 ssh-add ~/.ssh/id_ed25519_company
 ```
@@ -114,6 +124,7 @@ ssh-add ~/.ssh/id_ed25519_company
 不同的檔名代表不同的用途，建議使用有意義的命名：
 
 > 📝 **常見命名範例**：
+>
 > - `id_ed25519` → 個人帳號的預設金鑰
 > - `id_ed25519_company` → 公司工作帳號
 > - `id_ed25519_client` → 特定客戶專案
@@ -128,6 +139,7 @@ ssh-add -l
 ```
 
 **成功的輸出應該像這樣**：
+
 ```bash
 256 SHA256:abcd1234... nick25932219@gmail.com (ED25519)
 256 SHA256:efgh5678... nickhuang@company.com (ED25519)
@@ -194,16 +206,17 @@ Host github.com-client
 
 每個參數都有特定的作用，了解它們能幫你更好地掌控設定：
 
-| 參數 | 作用說明 | 重要性 |
-|------|----------|--------|
-| `Host` | 你自定義的「暱稱」，用來區分不同帳號 | ⭐⭐⭐ |
-| `HostName` | 真正的 GitHub 服務器位址（都是 github.com） | ⭐⭐⭐ |
-| `AddKeysToAgent` | 自動載入金鑰，避免重複輸入密碼 | ⭐⭐ |
-| `UseKeychain` | 將金鑰安全存放在 macOS 鑰匙圈中 | ⭐⭐ |
-| `PreferredAuthentications` | 優先使用更安全的公鑰認證方式 | ⭐⭐ |
-| `IdentityFile` | 告訴系統要使用哪個私鑰檔案 | ⭐⭐⭐ |
+| 參數                       | 作用說明                                    | 重要性 |
+| -------------------------- | ------------------------------------------- | ------ |
+| `Host`                     | 你自定義的「暱稱」，用來區分不同帳號        | ⭐⭐⭐ |
+| `HostName`                 | 真正的 GitHub 服務器位址（都是 github.com） | ⭐⭐⭐ |
+| `AddKeysToAgent`           | 自動載入金鑰，避免重複輸入密碼              | ⭐⭐   |
+| `UseKeychain`              | 將金鑰安全存放在 macOS 鑰匙圈中             | ⭐⭐   |
+| `PreferredAuthentications` | 優先使用更安全的公鑰認證方式                | ⭐⭐   |
+| `IdentityFile`             | 告訴系統要使用哪個私鑰檔案                  | ⭐⭐⭐ |
 
 **重點理解**：
+
 - `Host` 是你給每個身分取的「代號」
 - `IdentityFile` 指向對應的私鑰檔案
 - 其他參數主要是為了提升使用體驗和安全性
@@ -219,16 +232,19 @@ Host github.com-client
 這是最簡單的情況，因為我們可以在一開始就設定正確的身分。
 
 **clone 個人專案**（使用預設帳號）：
+
 ```bash
 git clone git@github.com:personal-username/repo-name.git
 ```
 
 **clone 工作專案**（使用工作帳號）：
+
 ```bash
 git clone git@github.com-company:company-username/repo-name.git
 ```
 
 **注意差異**：
+
 - 個人專案：`git@github.com:`
 - 工作專案：`git@github.com-company:`
 
@@ -239,27 +255,32 @@ git clone git@github.com-company:company-username/repo-name.git
 你可能已經有一些專案，需要從個人帳號切換到工作帳號，或是反過來。別擔心，這很容易處理！
 
 **步驟 1：檢查目前狀態**
+
 ```bash
 git remote -v
 ```
 
 你可能會看到類似這樣的輸出：
+
 ```bash
 origin  git@github.com:username/repo-name.git (fetch)
 origin  git@github.com:username/repo-name.git (push)
 ```
 
 **步驟 2：切換到工作帳號**
+
 ```bash
 git remote set-url origin git@github.com-company:company-username/repo-name.git
 ```
 
 **步驟 3：驗證修改結果**
+
 ```bash
 git remote -v
 ```
 
 現在應該會顯示：
+
 ```bash
 origin  git@github.com-company:company-username/repo-name.git (fetch)
 origin  git@github.com-company:company-username/repo-name.git (push)
@@ -274,11 +295,13 @@ origin  git@github.com-company:company-username/repo-name.git (push)
 **進入專案目錄並設定身分**：
 
 首先，確保你在正確的專案目錄中：
+
 ```bash
 cd /path/to/your/work-project
 ```
 
 然後設定這個專案的提交者資訊：
+
 ```bash
 # 設定工作專案的使用者資訊
 git config user.name "Nick Huang"
@@ -286,6 +309,7 @@ git config user.email "nickhuang@company.com"
 ```
 
 **驗證設定是否正確**：
+
 ```bash
 # 檢查設定結果
 git config user.name
@@ -293,6 +317,7 @@ git config user.email
 ```
 
 **關鍵觀念**：
+
 - 這些設定只影響當前專案
 - 不會覆蓋你的全域設定
 - 每個專案都可以有獨立的身分資訊
@@ -310,26 +335,31 @@ git config user.email
 我們需要分別測試每個帳號的連線狀況：
 
 **測試個人帳號連線**：
+
 ```bash
 ssh -T git@github.com
 ```
 
 **成功的話會看到**：
+
 ```bash
 Hi personal-username! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
 **測試工作帳號連線**：
+
 ```bash
 ssh -T git@github.com-company
 ```
 
 **成功的話會看到**：
+
 ```bash
 Hi company-username! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
 **如何解讀結果**：
+
 - 看到正確的使用者名稱 = 連線成功！
 - 「GitHub does not provide shell access」是正常訊息，不是錯誤
 - 如果看到「Permission denied」，請檢查前面的設定步驟
@@ -357,16 +387,19 @@ git push -u origin main
 **檢查結果**：
 
 提交完成後，檢查 commit 記錄：
+
 ```bash
 git log --oneline -1
 ```
 
 你應該會看到類似這樣的輸出，顯示正確的作者資訊：
+
 ```bash
 a1b2c3d (HEAD -> main, origin/main) Test commit with company account
 ```
 
 **最終確認**：
+
 - commit 成功推送到 GitHub
 - 在 GitHub 網站上查看，commit 作者顯示為工作帳號
 - 沒有出現權限錯誤或身分混淆
@@ -382,6 +415,7 @@ a1b2c3d (HEAD -> main, origin/main) Test commit with company account
 建立一個腳本來快速設定專案的 Git 配置：
 
 **建立 `setup-work-project.sh`**：
+
 ```bash
 #!/bin/bash
 
@@ -411,6 +445,7 @@ echo "🔗 Remote URL：$(git remote get-url origin)"
 ```
 
 **使用方式**：
+
 ```bash
 chmod +x setup-work-project.sh
 ./setup-work-project.sh
@@ -424,15 +459,16 @@ chmod +x setup-work-project.sh
 [alias]
     # 快速檢查目前專案的設定
     whoami = !echo "Name: $(git config user.name)" && echo "Email: $(git config user.email)" && echo "Remote: $(git remote get-url origin)"
-    
+
     # 快速設定為工作帳號
     work = !git config user.name "Nick Huang" && git config user.email "nickhuang@company.com"
-    
+
     # 快速設定為個人帳號
     personal = !git config user.name "Nick Huang" && git config user.email "nick25932219@gmail.com"
 ```
 
 **使用範例**：
+
 ```bash
 # 檢查目前專案設定
 git whoami
@@ -453,6 +489,7 @@ git personal
 ### 問題 1：連線被拒絕 (Permission denied)
 
 **當你看到這個錯誤時**：
+
 ```bash
 git@github.com: Permission denied (publickey).
 ```
@@ -463,10 +500,13 @@ git@github.com: Permission denied (publickey).
 **解決步驟**：
 
 1. **檢查金鑰是否已載入**：
+
    ```bash
    ssh-add -l
    ```
+
    如果看不到你需要的金鑰，重新載入：
+
    ```bash
    ssh-add ~/.ssh/id_ed25519_company
    ```
@@ -488,12 +528,14 @@ git@github.com: Permission denied (publickey).
 **立即修正方法**：
 
 1. **檢查目前的設定**：
+
    ```bash
    git config user.name
    git config user.email
    ```
 
 2. **如果顯示錯誤或空值，重新設定**：
+
    ```bash
    git config user.name "正確的使用者名稱"
    git config user.email "正確的email@domain.com"
@@ -520,6 +562,7 @@ git@github.com: Permission denied (publickey).
 我們在 SSH config 中已經設定了 `AddKeysToAgent yes`，這表示當你第一次使用某個金鑰時，系統會自動載入它。
 
 **手動載入所有金鑰**：
+
 ```bash
 ssh-add ~/.ssh/id_ed25519
 ssh-add ~/.ssh/id_ed25519_company
@@ -530,6 +573,7 @@ ssh-add ~/.ssh/id_ed25519_company
 如果你希望開機時自動載入，可以建立腳本：
 
 1. **建立載入腳本** `~/.ssh/load-keys.sh`：
+
    ```bash
    #!/bin/bash
    ssh-add ~/.ssh/id_ed25519
@@ -538,6 +582,7 @@ ssh-add ~/.ssh/id_ed25519_company
    ```
 
 2. **設定執行權限**：
+
    ```bash
    chmod +x ~/.ssh/load-keys.sh
    ```
@@ -585,10 +630,12 @@ ssh-add ~/.ssh/id_ed25519_company
 ### 整合到 IDE 中
 
 **VS Code 使用者**：
+
 - 安裝 "GitLens" 擴充套件來更好地管理 Git 資訊
 - 在工作區設定中指定 Git 路徑
 
 **JetBrains IDE 使用者**：
+
 - 在 Settings > Version Control > Git 中確認使用正確的 Git 執行檔
 - 使用 "Git Branch" 面板檢查目前分支和遠端資訊
 
@@ -606,11 +653,13 @@ ssh-add ~/.ssh/id_ed25519_company
 ## 📚 延伸閱讀與參考資源
 
 ### 官方文件
+
 - [GitHub：連接到 GitHub 使用 SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)
 - [GitHub：管理多個帳號](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address)
 - [Git 官方文件：配置 Git](https://git-scm.com/book/zh-tw/v2/自訂-Git-Git-配置)
 
 ### 相關工具
+
 - **Git Credential Manager**：跨平台的 Git 憑證管理工具
 - **SSH Keychain**：macOS 的 SSH 金鑰管理工具
 - **GitHub CLI**：GitHub 的官方命令列工具
@@ -626,12 +675,14 @@ ssh-add ~/.ssh/id_ed25519_company
 通過本文的完整設定，你已經實現了：
 
 **工作效率大提升**：
+
 - ✅ 在同一台電腦上無縫操作多個 GitHub 帳號
 - ✅ 告別手動切換帳號的繁瑣過程
 - ✅ 徹底避免權限混淆和身分錯亂問題
 - ✅ 讓開發工作流程變得前所未有的順暢
 
 **技術掌握要點**：
+
 - ✅ SSH config 檔案是整個解決方案的核心大腦
 - ✅ Host 別名機制讓系統智慧識別不同身分
 - ✅ 專案層級的 Git 設定確保每次 commit 都有正確的作者標記
@@ -647,8 +698,9 @@ ssh-add ~/.ssh/id_ed25519_company
 ### 🚀 擴展應用
 
 這套方法的威力遠不止於 GitHub：
+
 - **GitLab 專案**：同樣適用
-- **Bitbucket 倉庫**：完美兼容  
+- **Bitbucket 倉庫**：完美兼容
 - **自建 Git 服務**：通用解決方案
 
 現在就開始享受多帳號開發的便利吧！你會發現，原本複雜的身分管理問題已經徹底解決，剩下的只有專注於程式碼本身的純粹快樂。
@@ -656,6 +708,7 @@ ssh-add ~/.ssh/id_ed25519_company
 ---
 
 🔖 **相關文章推薦**：
+
 - Git 分支管理最佳實踐
-- GitHub Actions 自動化部署指南  
+- GitHub Actions 自動化部署指南
 - SSH 安全性配置深度解析

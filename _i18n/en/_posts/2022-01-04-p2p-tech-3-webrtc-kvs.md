@@ -101,6 +101,7 @@ Each time WebRTC initiates a connection, it automatically generates multiple Can
 ```
 
 Let's parse this candidate string:
+
 - `2999745851`: candidate ID
 - `1`: component ID (usually 1 is RTP, 2 is RTCP)
 - `udp`: transport protocol
@@ -159,18 +160,21 @@ AWS Kinesis Video Streams for WebRTC (abbreviated as KVS) is Amazon's fully mana
 **Core Advantages of KVS:**
 
 ### Complete Infrastructure
+
 - **Signaling Server**: Built-in WebSocket-based signaling server
 - **STUN/TURN Services**: Globally distributed NAT traversal infrastructure
 - **Load Balancing**: Automatically handles high-concurrency connection requests
 
 ### Enterprise-grade Security
+
 - **IAM Integration**: Seamless integration with AWS identity authentication system
 - **Data Encryption**: Supports end-to-end encrypted transmission
 - **Access Control**: Fine-grained permission management
 
 ### Multi-platform Support
+
 - **Web**: Native JavaScript SDK
-- **iOS**: Native Swift/Objective-C SDK  
+- **iOS**: Native Swift/Objective-C SDK
 - **Android**: Native Java/Kotlin SDK
 
 **Use Cases:**
@@ -228,16 +232,19 @@ This example reminds us that when using third-party libraries, we need to pay sp
 Through three in-depth articles, we have established a complete P2P technology knowledge system:
 
 ### First Article: Basic Architecture and NAT Problems
+
 - Understood the differences between centralized, decentralized, and distributed architectures
 - Grasped the relationship between IPv4 address scarcity and NAT technology
 - Learned characteristics and limitations of various NAT types
 
 ### Second Article: Core NAT Traversal Technologies
+
 - STUN: Solves device discovery problems, letting devices know their public IP
 - TURN: Provides relay services, solving connection issues in strict NAT environments
 - ICE: Integration framework, intelligently selecting optimal communication paths
 
 ### Third Article: Practical Frameworks and Cloud Services
+
 - WebRTC: Mainstream standard implementation for modern P2P communication
 - SDP and ICE Candidates: Core information exchange mechanisms for connection establishment
 - AWS KVS: Commercial-grade WebRTC cloud solution

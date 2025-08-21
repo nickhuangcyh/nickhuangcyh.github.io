@@ -20,21 +20,27 @@ thumbnail: /assets/img/design_patterns.jpg
 When designing a **data format conversion system**, we need to meet the following requirements:
 
 ### 1. Multi-format Support Requirements
+
 Support conversion functionality for multiple data formats:
-   - **JSON Format Conversion**: Convert data to JSON format
-   - **XML Format Conversion**: Convert data to XML format
-   - **CSV Format Conversion**: Convert data to CSV format
+
+- **JSON Format Conversion**: Convert data to JSON format
+- **XML Format Conversion**: Convert data to XML format
+- **CSV Format Conversion**: Convert data to CSV format
 
 ### 2. System Extensibility Requirements
+
 The system must have good extensibility capabilities. When business needs to add other formats (such as YAML, Protocol Buffers), it should be able to integrate quickly without affecting existing functionality.
 
 ### 3. Process Consistency Requirements
+
 **Maintaining core consistency of conversion processes** is a key requirement. Regardless of which format conversion, all must follow standard processes:
-   - Read raw data
-   - Format data content
-   - Output final results
+
+- Read raw data
+- Format data content
+- Output final results
 
 ### 4. Code Quality Requirements
+
 **Avoid duplicate code** generation, improve code maintainability and readability.
 
 ---
@@ -52,14 +58,17 @@ First, let's observe the current system architecture:
 If we don't apply design patterns, we'll face the following core problems:
 
 #### 1. Code Duplication Problem
+
 Each format's conversion logic contains the same processing steps. These common steps are repeatedly written in various implementations, causing code redundancy.
 
 When we have 10 formats, we might have 10 copies of almost identical process code.
 
 #### 2. Violates Open-Closed Principle (OCP)
+
 Every time we need to add a format conversion, we must modify existing core conversion logic. This violates the "open for extension, closed for modification" design principle.
 
 #### 3. Maintenance and Extension Difficulties
+
 Conversion logic for various formats is scattered in different places, lacking unified management. When core processes need adjustment, all related implementations must be modified synchronously, increasing error risks.
 
 ---
@@ -83,13 +92,17 @@ Let's first understand Template Method Pattern's standard structure:
 Template Method Pattern contains two main roles:
 
 #### 1. AbstractClass (Abstract Class)
+
 The abstract class is the pattern's core, responsible for the following duties:
+
 - **Define Template Method**: Encapsulate complete algorithm process skeleton
 - **Provide Common Implementation**: Implement universal steps that don't need changes
 - **Declare Abstract Methods**: Let subclasses implement specific steps needing customization
 
 #### 2. ConcreteClass (Concrete Class)
+
 Concrete classes inherit abstract classes, focusing on implementing business logic:
+
 - **Implement Abstract Methods**: Provide concrete implementations for specific steps
 - **Follow Established Processes**: Cannot change algorithm structure defined by parent class
 
@@ -207,15 +220,19 @@ Through Template Method Pattern application, we successfully solved core problem
 ### Core Advantages of the Solution
 
 #### 1. Significantly Improved Code Reusability
+
 Common conversion process logic is centrally implemented in abstract classes, completely avoiding code duplication problems. All format converters share the same core process, ensuring consistency.
 
 #### 2. Greatly Enhanced System Extensibility
+
 When adding any format conversion functionality, only need to:
+
 - Inherit `DataFormatter` abstract class
 - Implement `formatData()` and `outputData()` two methods
 - No need to modify any existing code
 
 #### 3. Fully Complies with Important Design Principles
+
 - **Single Responsibility Principle (SRP)**: Core process control completely separated from specific format logic
 - **Open-Closed Principle (OCP)**: System open for extension, closed for modification
 
@@ -224,16 +241,19 @@ When adding any format conversion functionality, only need to:
 Template Method Pattern is particularly suitable for the following business scenarios:
 
 #### Data Processing Domain
+
 - Multiple data format conversion processes (JSON, XML, CSV, YAML)
 - Data validation processing (unified validation processes for different data sources)
 - Data cleaning and standardization processing
 
 #### Document Generation Domain
+
 - Multi-format report generation (PDF, Excel, Word)
 - Document template processing for different styles
 - Batch document processing systems
 
 #### Workflow Management
+
 - Standardized business process handling
 - Unified management of multi-stage tasks
 - Template-based design for approval processes

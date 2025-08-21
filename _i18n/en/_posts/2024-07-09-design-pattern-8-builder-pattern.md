@@ -3,7 +3,17 @@ layout: post
 title: "Design Pattern (8) Builder Pattern Complete Tutorial - Step-by-Step Construction of Complex Objects"
 date: 2024-07-09 23:00:00 +0800
 description: "Learn how Builder Pattern solves complex object creation problems. Deep dive into designing step-by-step builders through beverage customization system examples, improving object initialization readability and flexibility. Includes UML design, implementation examples, and best practices."
-tags: [Builder Pattern, Design Pattern, Creational Pattern, Complex Object Creation, Fluent Interface, Software Architecture, OOP, Step by Step Construction]
+tags:
+  [
+    Builder Pattern,
+    Design Pattern,
+    Creational Pattern,
+    Complex Object Creation,
+    Fluent Interface,
+    Software Architecture,
+    OOP,
+    Step by Step Construction,
+  ]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -24,6 +34,7 @@ In the previous two articles, we explored the Factory Method Pattern and Abstrac
 Today we want to design an intelligent machine that can automatically make bubble tea. After market research, we found that if a bubble tea shop only sells basic black tea and green tea, it definitely cannot satisfy the diverse needs of modern consumers.
 
 Modern customers pursue personalized experiences, and they hope to be able to:
+
 - **Freely choose toppings**: Add different toppings based on personal preferences
 - **Flexible combinations**: The same drink can contain multiple types of toppings
 - **Personalized taste**: Create their own unique flavors
@@ -51,6 +62,7 @@ After understanding the requirements, let's conduct object-oriented analysis. Th
 This design brings serious problems: if we only want to add red beans and pudding today, we must pass `false` or `null` for other unused parameters.
 
 **Problem Points**:
+
 - **Lengthy Parameters**: As toppings increase, the parameter list becomes very long
 - **Poor Readability**: Difficult to understand the meaning of each parameter
 - **Maintenance Difficulties**: All calling locations need modification when adding toppings
@@ -71,6 +83,7 @@ After deep analysis of the second approach, we discovered more serious problems:
 **Combinatorial Explosion**: As the number of toppings increases, the number of required constructors grows exponentially. With 5 types of toppings, we theoretically need 2^5 = 32 different constructors to cover all combinations!
 
 **Maintenance Nightmare**:
+
 - Every time we add toppings, we need to significantly modify existing code
 - Constructors can easily be confused, increasing the risk of usage errors
 - The class becomes extremely large and difficult to understand
@@ -82,6 +95,7 @@ This phenomenon is called the **Telescoping Constructor** anti-pattern:
 > **Definition**: When a class has multiple constructors with different numbers of parameters, leading to code that's difficult to maintain and use.
 
 **Typical Characteristics**:
+
 - Number of constructors grows exponentially with parameter combinations
 - High code duplication
 - Users easily choose wrong constructors
@@ -104,18 +118,23 @@ Let's first understand the standard structure of the Builder Pattern:
 The Builder Pattern mainly includes the following five key roles:
 
 #### 1. Product
+
 The final result of complex objects. It may contain multiple components or parts, whose structure varies according to different builder implementations. Product is usually a class whose attributes represent different parts constructed by the Builder.
 
 #### 2. Builder (Abstract Builder)
+
 Defines the abstract interface for constructing complex objects. It declares methods for constructing various parts of the product, allowing creation of different concrete builders to produce different variants of the product.
 
 #### 3. ConcreteBuilder (Concrete Builder)
+
 Implements the Builder interface, providing concrete implementations for constructing each part of the product. Each ConcreteBuilder is tailored for specific product variants and is responsible for tracking the state of the product being constructed.
 
 #### 4. Director
+
 Responsible for managing the construction process of complex objects. It works with the Builder to provide high-level construction process control, but doesn't need to know the specific construction details of each part of the object.
 
 #### 5. Client
+
 The code that initiates the complex object construction process. It creates Builder objects and passes them to the Director, retrieving the final product from the Builder after construction is complete.
 
 ### Applying to Bubble Tea System
@@ -151,6 +170,7 @@ interface Beverage {
 Next, implement concrete beverage products:
 
 **Bubble Tea**:
+
 ```kotlin
 data class BubbleTea(override var hasPearls: Boolean,
                      override var hasCoconutJelly: Boolean = false,
@@ -162,6 +182,7 @@ data class BubbleTea(override var hasPearls: Boolean,
 ```
 
 **Grass Jelly Pudding Tea**:
+
 ```kotlin
 data class GrassJellyPuddingTea(override var hasPearls: Boolean = false,
                      override var hasCoconutJelly: Boolean = false,
@@ -189,6 +210,7 @@ interface Builder {
 #### Concrete Builder Implementations
 
 **Bubble Tea Builder**:
+
 ```kotlin
 class BubbleTeaBuilder: Builder {
     private var bubbleTea = BubbleTea(false)
@@ -213,6 +235,7 @@ class BubbleTeaBuilder: Builder {
 ```
 
 **Grass Jelly Pudding Tea Builder**:
+
 ```kotlin
 class GrassJellyPuddingTeaBuilder: Builder {
     private var grassJellyPuddingTea = GrassJellyPuddingTea(
@@ -308,6 +331,7 @@ The Builder Pattern is particularly useful in the following situations:
 ### Real-World Examples
 
 **SQL Query Builder**:
+
 ```kotlin
 val query = QueryBuilder()
     .select("name", "email")
@@ -318,6 +342,7 @@ val query = QueryBuilder()
 ```
 
 **HTTP Request Builder**:
+
 ```kotlin
 val request = HttpRequestBuilder()
     .url("https://api.example.com/users")

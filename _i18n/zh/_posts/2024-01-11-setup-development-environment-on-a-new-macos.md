@@ -3,7 +3,8 @@ layout: post
 title: "macOS 開發環境完整設定教學：行動裝置開發工具鏈配置指南"
 date: 2025-01-11 15:00:00 +0800
 description: "學會在新 macOS 系統上建置完整的行動裝置開發環境。詳細解析 Homebrew、Git、Xcode、Android Studio 等工具的安裝與配置。包含終端優化、環境變數設定與最佳實踐。"
-tags: [macOS Setup, Development Environment, Mobile Development, iOS Development, Android Development, Homebrew, Developer Tools, System Configuration]
+tags:
+  [macOS Setup, Development Environment, Mobile Development, iOS Development, Android Development, Homebrew, Developer Tools, System Configuration]
 categories: [Setup Guide]
 toc:
   #   beginning: true

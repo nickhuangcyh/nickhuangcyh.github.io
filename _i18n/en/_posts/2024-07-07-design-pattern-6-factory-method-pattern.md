@@ -292,6 +292,7 @@ val euGreenTea = euBeverageShop.order("green tea")
 Through the Factory Method Pattern, we successfully achieved true extensibility by abstracting the factory:
 
 **Expanding to New Regions Becomes Simple**: If we want to expand to Japan stores, we only need to:
+
 1. Add a `JPBeverageFactory` that implements the `BeverageFactory` interface
 2. Implement beverage creation logic that suits Japanese tastes within it
 

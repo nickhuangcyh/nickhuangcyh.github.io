@@ -265,6 +265,7 @@ The Proxy Pattern demonstrates the true value of design patterns: it allows us t
 ## Series Navigation
 
 ### Structural Design Pattern Series
+
 - [Adapter Pattern](/en/blog/2024/design-pattern-11-adapter-pattern/) - Making incompatible interfaces work together
 - [Bridge Pattern](/en/blog/2024/design-pattern-12-bridge-pattern/) - Separating abstraction from implementation, supporting independent evolution
 - [Composite Pattern](/en/blog/2024/design-pattern-13-composite-pattern/) - Uniformly handling individual objects and object combinations
@@ -273,9 +274,11 @@ The Proxy Pattern demonstrates the true value of design patterns: it allows us t
 - [Flyweight Pattern](/en/blog/2024/design-pattern-16-flyweight-pattern/) - Efficiently managing memory usage of large numbers of similar objects
 
 ### Behavioral Design Pattern Series
+
 - [Chain of Responsibility Pattern](/en/blog/2024/design-pattern-18-chain-of-responsibility-pattern/) - Building dynamic request handling chains
 
 ### Creational Design Pattern Basics
+
 - [Design Pattern Concepts](/en/blog/2024/design-pattern-3-design-pattern/) - Understanding basic concepts of design patterns
 - [Design Principles](/en/blog/2024/design-pattern-2-design-principle/) - Mastering SOLID principles and design foundations
 

@@ -3,7 +3,8 @@ layout: post
 title: "設計模式（2）設計原則 SOLID Principles 完整教學：提升程式碼品質的五大原則"
 date: 2024-07-03 23:00:00 +0800
 description: "深入解析 SOLID 五大設計原則：單一職責、開放封閉、里氏替換、介面隔離與依賴反轉。透過實用範例與程式碼演示，學會如何設計穩健、可維護的軟體系統。"
-tags: [Design Principles, SOLID Principles, Object-Oriented Design, Software Architecture, Clean Code, Design Pattern, Software Development, Code Quality]
+tags:
+  [Design Principles, SOLID Principles, Object-Oriented Design, Software Architecture, Clean Code, Design Pattern, Software Development, Code Quality]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -79,6 +80,7 @@ class LoginActivity {
 
 **問題分析**：
 上述程式碼違反了 SRP 原則，因為 `LoginViewController` 同時承擔了三個不同的職責：
+
 - 處理使用者介面邏輯
 - 管理網路 API 請求
 - 處理資料庫操作
@@ -172,6 +174,7 @@ class LoginActivitySRP {
 
 **改善效果**：
 現在每個類別都有明確且單一的職責：
+
 - `ServerApiRequestService`：專注於網路請求處理
 - `DBService`：專注於資料庫操作
 - `LoginViewControllerSRP`：專注於協調各個服務和處理 UI 邏輯
@@ -284,6 +287,7 @@ class Validator {
 上述設計存在一個重大問題：當客戶要求增加新的驗證類型（如 Email、Phone Number、Device Mac 等）時，我們必須修改 `Validator` 類別的程式碼。
 
 這違反了開放封閉原則，因為：
+
 - 每次新增功能都要修改現有程式碼
 - 可能影響已經穩定運行的驗證邏輯
 - 增加了引入 Bug 的風險
@@ -368,6 +372,7 @@ class PasswordValidator: ValidatorConvertible {
 3. 完全不需要修改既有的程式碼
 
 這樣的設計真正實現了：
+
 - **對擴充開放**：可以輕鬆新增新的驗證器
 - **對修改封閉**：不會影響既有的穩定程式碼
 
@@ -453,6 +458,7 @@ println("${square.getArea()}")
 在數學概念上，雖然正方形是長方形的特例，但在程式設計中，這種繼承關係破壞了可替換性。使用者期望所有 `Rectangle` 物件都能正常計算面積，但 `Square` 卻可能回傳錯誤訊息。
 
 **遵循 LSP 的好處**：
+
 - **增強程式碼健全度**：在使用不同子類別時，能大幅保證彼此間的相容性
 - **保證多型有效性**：只要父類別可以使用的地方，子類別也能正常使用
 - **清晰的功能劃分**：子類別新增功能時應獨立於父類別功能之外，避免在不同子類別間移植時產生問題
@@ -552,6 +558,7 @@ class Engineer: Car {
 
 **問題分析**：
 在上述設計中，所有實作 `Car` 介面的類別都必須實作 `enableDebugMode()` 方法。但實際上：
+
 - 工程師（Engineer）需要開啟 DebugMode 來進行車輛診斷
 - 一般駕駛（Driver）不應該也不需要開啟 DebugMode
 
@@ -644,10 +651,12 @@ class Engineer1: Car1, Debuggable {
 
 **改善效果**：
 現在我們有了兩個獨立的介面：
+
 - `Car1`：包含基本的車輛操作功能（啟動/停止引擎）
 - `Debuggable`：包含除錯功能
 
 這樣的設計確保：
+
 - 一般駕駛只需實作基本的車輛操作功能
 - 只有工程師才實作除錯功能
 - 各個角色都只實作它們真正需要的介面方法
@@ -655,6 +664,7 @@ class Engineer1: Car1, Debuggable {
 ### Dependency Inversion Principle (DIP) 依賴反向原則
 
 **核心概念**：
+
 - 高階模組不應該依賴於低階模組，兩者都應該依賴抽象
 - 抽象不應該依賴細節，細節應該依賴抽象
 
@@ -937,11 +947,13 @@ room2VC.deleteRoomFromDB(room2.no)
 - 每個資料庫實作都是獨立的，互不影響
 
 **DIP 的實作方式**：
+
 - **Interface**（介面）
 - **Protocol**（協議）
 - **Abstract Class**（抽象類別）
 
 **依賴抽象的好處**：
+
 - **提升彈性**：使程式碼更加靈活，容易抽換依賴物件
 - **改善維護性**：多寫一層抽象能讓程式碼更好維護和測試
 - **簡化測試**：抽象層讓我們能輕鬆製作假物件（Mock Objects）來快速測試程式邏輯
@@ -1013,6 +1025,7 @@ fun orderPancake(type: String) {
 
 **問題分析**：
 在上述程式碼中，我們可以識別出兩個不同的部分：
+
 - **會變化的程式碼**：根據口味類型建立不同鬆餅物件的邏輯
 - **不會變化的程式碼**：`cook()`、`plate()`、`addButter()` 這些製作流程
 
@@ -1091,10 +1104,12 @@ fun orderPancakeWithFactory(type: String) {
 
 **改善效果**：
 透過封裝變化，我們成功地將職責分離：
+
 - `SimplePancakeFactory`：專門負責處理會變化的鬆餅建立邏輯
 - `orderPancakeWithFactory()`：專注於穩定的製作流程
 
 現在當需要新增新口味時：
+
 - 只需修改 `SimplePancakeFactory` 中的建立邏輯
 - 完全不需要觸碰製作流程的程式碼
 - 降低了修改風險，提升了程式碼的穩定性
@@ -1106,6 +1121,7 @@ fun orderPancakeWithFactory(type: String) {
 這個原則建議我們盡量使用合成來取代繼承。這並不是完全不使用繼承，而是在多數情況下應該優先考慮合成。合成提供了更大的靈活性，避免了繼承可能帶來的複雜性和限制。
 
 **為什麼合成更好？**
+
 - 可以在執行時期動態改變行為
 - 避免繼承階層過深的問題
 - 減少類別數量的爆炸性增長
@@ -1120,6 +1136,7 @@ fun orderPancakeWithFactory(type: String) {
 當客人想要 Butter 和 Milk 雙重口味時，我們需要定義新的類別 `CoffeeWithButterAndMilk`。
 
 這種設計會遭遇嚴重問題：
+
 - 隨著調味料種類增多，咖啡組合呈指數增長
 - 類別數量爆炸性增加（如需要 `CoffeeWithMilk`、`CoffeeWithButter`、`CoffeeWithMilkAndButter`等）
 - 當牛奶價格上漲時，所有包含牛奶的 Coffee 類別都必須修改
@@ -1185,6 +1202,7 @@ fun orderPancakeWithFactory(type: String) {
 這個原則是現代軟體開發的重要思維模式。當你習慣基於介面編程，會發現程式碼變得非常靈活且容易維護。
 
 **基於介面編程的優勢**：
+
 - **高度可抽換性**：任何物件都能輕易替換
 - **便於測試**：可以輕鬆建立假物件（Mock Objects）來測試
 - **架構靈活性**：在 MVC、MVP 等架構中，能夠輕易替換組件
@@ -1210,6 +1228,7 @@ fun orderPancakeWithFactory(type: String) {
 透過建立 `AbstractDB` 介面，讓 `CommercialDB` 和 `TestDB` 都實作相同的介面。現在 `KillerWebSystem` 依賴的是抽象介面而非具體實作。
 
 這樣的設計帶來了巨大的好處：
+
 - 可以輕鬆在測試環境和正式環境間切換資料庫
 - 新增新的資料庫類型（如 MockDB）變得簡單
 - 程式碼更加靈活且易於維護
@@ -1222,6 +1241,7 @@ fun orderPancakeWithFactory(type: String) {
 **我們學習的設計原則回顧**：
 
 **SOLID 原則**：
+
 - **單一職責原則（SRP）**：讓每個類別專注於單一功能，提升程式碼的內聚性
 - **開放封閉原則（OCP）**：對擴充開放、對修改封閉，通過抽象化實現靈活擴展
 - **里氏替換原則（LSP）**：確保子類別能夠完全替換父類別，保證多型的正確性
@@ -1229,6 +1249,7 @@ fun orderPancakeWithFactory(type: String) {
 - **依賴反向原則（DIP）**：依賴抽象而非具體實作，提升系統的靈活性
 
 **其他重要原則**：
+
 - **封裝變化**：識別並封裝系統中的變化點，保護穩定的程式碼
 - **多用合成，少用繼承**：優先考慮組合關係，避免繼承帶來的複雜性
 - **鬆耦合**：降低組件間的相互依賴，提升系統的可維護性

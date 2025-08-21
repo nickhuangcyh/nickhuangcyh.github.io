@@ -3,7 +3,8 @@ layout: post
 title: "Design Patterns (2) SOLID Design Principles Complete Guide: Five Principles for Improving Code Quality"
 date: 2024-07-03 23:00:00 +0800
 description: "In-depth analysis of the five SOLID design principles: Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion. Learn to design robust, maintainable software systems through practical examples and code demonstrations."
-tags: [Design Principles, SOLID Principles, Object-Oriented Design, Software Architecture, Clean Code, Design Pattern, Software Development, Code Quality]
+tags:
+  [Design Principles, SOLID Principles, Object-Oriented Design, Software Architecture, Clean Code, Design Pattern, Software Development, Code Quality]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -79,6 +80,7 @@ class LoginActivity {
 
 **Problem Analysis**:
 The above code violates the SRP principle because `LoginViewController` takes on three different responsibilities:
+
 - Handling user interface logic
 - Managing network API requests
 - Handling database operations
@@ -172,6 +174,7 @@ class LoginActivitySRP {
 
 **Improvement Effects**:
 Now each class has a clear and single responsibility:
+
 - `ServerApiRequestService`: Focused on network request handling
 - `DBService`: Focused on database operations
 - `LoginViewControllerSRP`: Focused on coordinating various services and handling UI logic
@@ -284,6 +287,7 @@ class Validator {
 The above design has a major problem: when clients request adding new validation types (like Email, Phone Number, Device Mac, etc.), we must modify the code of the `Validator` class.
 
 This violates the Open-Closed Principle because:
+
 - Every new feature requires modifying existing code
 - It may affect already stable validation logic
 - It increases the risk of introducing bugs
@@ -368,6 +372,7 @@ Now when we need to add Email, Phone Number, Device Mac format checks, we only n
 3. No need to modify existing code at all
 
 This design truly achieves:
+
 - **Open for extension**: Easy to add new validators
 - **Closed for modification**: No impact on existing stable code
 
@@ -453,6 +458,7 @@ In the above example, we make Square inherit Rectangle, but Square's `getArea()`
 Mathematically, although a square is a special case of a rectangle, in programming, this inheritance relationship breaks substitutability. Users expect all `Rectangle` objects to calculate area normally, but `Square` may return error messages.
 
 **Benefits of Following LSP**:
+
 - **Enhanced code robustness**: Greatly ensures compatibility when using different subclasses
 - **Guaranteed polymorphism effectiveness**: Wherever parent classes can be used, child classes can also be used normally
 - **Clear functional division**: Child classes should add functionality independently of parent class functionality, avoiding problems when porting between different child classes
@@ -552,6 +558,7 @@ class Engineer: Car {
 
 **Problem Analysis**:
 In the above design, all classes implementing the `Car` interface must implement the `enableDebugMode()` method. But in reality:
+
 - Engineers need to enable DebugMode for vehicle diagnostics
 - Regular drivers should not and do not need to enable DebugMode
 
@@ -644,10 +651,12 @@ class Engineer1: Car1, Debuggable {
 
 **Improvement Effects**:
 Now we have two independent interfaces:
+
 - `Car1`: Contains basic vehicle operation functions (start/stop engine)
 - `Debuggable`: Contains debugging functionality
 
 This design ensures:
+
 - Regular drivers only need to implement basic vehicle operation functions
 - Only engineers implement debugging functionality
 - Each role only implements the interface methods they truly need
@@ -655,6 +664,7 @@ This design ensures:
 ### Dependency Inversion Principle (DIP)
 
 **Core Concept**:
+
 - High-level modules should not depend on low-level modules; both should depend on abstractions
 - Abstractions should not depend on details; details should depend on abstractions
 
@@ -937,11 +947,13 @@ Now `Room2ViewController` depends on the abstract `DataBaseService` interface ra
 - Each database implementation is independent and doesn't affect others
 
 **DIP Implementation Methods**:
+
 - **Interface**
 - **Protocol**
 - **Abstract Class**
 
 **Benefits of Depending on Abstractions**:
+
 - **Enhanced flexibility**: Makes code more flexible and easy to swap dependency objects
 - **Improved maintainability**: Adding an abstraction layer makes code easier to maintain and test
 - **Simplified testing**: Abstraction layers allow us to easily create mock objects for quickly testing program logic
@@ -1013,6 +1025,7 @@ fun orderPancake(type: String) {
 
 **Problem Analysis**:
 In the above code, we can identify two different parts:
+
 - **Code that varies**: Logic for creating different pancake objects based on flavor type
 - **Code that doesn't vary**: The preparation process of `cook()`, `plate()`, `addButter()`
 
@@ -1091,10 +1104,12 @@ fun orderPancakeWithFactory(type: String) {
 
 **Improvement Effects**:
 By encapsulating variation, we successfully separated responsibilities:
+
 - `SimplePancakeFactory`: Specifically handles the varying pancake creation logic
 - `orderPancakeWithFactory()`: Focuses on the stable preparation process
 
 Now when we need to add new flavors:
+
 - Only need to modify the creation logic in `SimplePancakeFactory`
 - No need to touch the preparation process code at all
 - Reduces modification risk and improves code stability
@@ -1106,6 +1121,7 @@ Now when we need to add new flavors:
 This principle suggests we should use composition to replace inheritance whenever possible. This doesn't mean completely avoiding inheritance, but rather prioritizing composition in most situations. Composition provides greater flexibility, avoiding the complexity and limitations that inheritance might bring.
 
 **Why is composition better?**
+
 - Can dynamically change behavior at runtime
 - Avoids the problem of overly deep inheritance hierarchies
 - Reduces explosive growth in the number of classes
@@ -1120,6 +1136,7 @@ Suppose we want to design an ordering system for a coffee shop, initially we mig
 When customers want both Butter and Milk flavors, we need to define a new class `CoffeeWithButterAndMilk`.
 
 This design encounters serious problems:
+
 - As condiment types increase, coffee combinations grow exponentially
 - Explosive increase in number of classes (need `CoffeeWithMilk`, `CoffeeWithButter`, `CoffeeWithMilkAndButter`, etc.)
 - When milk price increases, all Coffee classes containing milk must be modified
@@ -1185,6 +1202,7 @@ By introducing the `DisplayDevice` interface, we successfully achieved loose cou
 This principle is an important mindset in modern software development. When you get used to programming to interfaces, you'll find code becomes very flexible and easy to maintain.
 
 **Advantages of programming to interfaces**:
+
 - **High interchangeability**: Any object can be easily replaced
 - **Easy to test**: Can easily create mock objects for testing
 - **Architecture flexibility**: In MVC, MVP and other architectures, can easily replace components
@@ -1210,6 +1228,7 @@ Solve this problem by introducing abstract interfaces:
 By creating the `AbstractDB` interface, both `CommercialDB` and `TestDB` implement the same interface. Now `KillerWebSystem` depends on abstract interfaces rather than concrete implementations.
 
 This design brings huge benefits:
+
 - Can easily switch between test and production databases
 - Adding new database types (like MockDB) becomes simple
 - Code is more flexible and maintainable
@@ -1222,6 +1241,7 @@ In this article, we deeply explored the core concepts and practical applications
 **Review of design principles we learned**:
 
 **SOLID Principles**:
+
 - **Single Responsibility Principle (SRP)**: Let each class focus on a single function, improving code cohesion
 - **Open-Closed Principle (OCP)**: Open for extension, closed for modification, achieving flexible extension through abstraction
 - **Liskov Substitution Principle (LSP)**: Ensure child classes can completely replace parent classes, guaranteeing polymorphism correctness
@@ -1229,6 +1249,7 @@ In this article, we deeply explored the core concepts and practical applications
 - **Dependency Inversion Principle (DIP)**: Depend on abstractions rather than concrete implementations, improving system flexibility
 
 **Other important principles**:
+
 - **Encapsulate What Varies**: Identify and encapsulate variation points in the system, protecting stable code
 - **Favor composition over inheritance**: Prioritize composition relationships, avoiding complexity brought by inheritance
 - **Loose Coupling**: Reduce mutual dependencies between components, improving system maintainability

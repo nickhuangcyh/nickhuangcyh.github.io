@@ -18,6 +18,7 @@ thumbnail: /assets/img/jenkins.jpg
 ### 為什麼需要 SSH 憑證？
 
 當 Jenkins 需要從私有的 Git 倉庫（如 GitHub、GitLab）拉取程式碼時，就需要適當的身份驗證。SSH（Secure Shell）提供了一種安全且便利的驗證方式：
+
 - **安全性高**：使用公鑰加密，避免密碼外洩風險
 - **自動化友善**：無需手動輸入密碼，適合 CI/CD 流程
 - **權限控制**：可以針對特定倉庫設定不同的存取權限
@@ -29,10 +30,12 @@ thumbnail: /assets/img/jenkins.jpg
 ### 步驟一：生成 SSH 金鑰
 
 SSH 金鑰採用非對稱加密，包含一對相關聯的金鑰：
+
 - **私鑰（Private Key）**：保存在 Jenkins 伺服器上，用於身份驗證
 - **公鑰（Public Key）**：上傳到 Git 服務商（如 GitHub），用於驗證私鑰的合法性
 
 #### 生成金鑰對
+
 打開終端機，執行以下指令來生成 SSH 金鑰：
 
 ```bash
@@ -40,11 +43,13 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
 #### 參數說明
+
 - `-t rsa`：指定加密類型為 RSA
 - `-b 4096`：設定金鑰長度為 4096 位元（更安全）
 - `-C "your_email@example.com"`：加入註解，通常使用你的 email
 
 #### 生成過程
+
 執行指令後，系統會詢問幾個問題：
 
 1. **儲存位置**：預設為 `~/.ssh/id_rsa`，通常直接按 Enter 使用預設位置
@@ -52,6 +57,7 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 3. **確認密碼**：如果上一步設定了密碼，這裡需要再次確認
 
 完成後，你會在指定目錄下看到兩個檔案：
+
 - `id_rsa`：私鑰檔案（保密）
 - `id_rsa.pub`：公鑰檔案（可以公開分享）
 
@@ -62,6 +68,7 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 現在我們需要將公鑰上傳到 Git 服務商，讓它能夠識別和信任我們的私鑰。以下以 GitHub 為例說明設定流程：
 
 #### 複製公鑰內容
+
 首先，我們需要取得公鑰的內容：
 
 ```bash
@@ -69,6 +76,7 @@ cat ~/.ssh/id_rsa.pub
 ```
 
 這會顯示類似下面的內容：
+
 ```
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDTgvwj... your_email@example.com
 ```
@@ -76,6 +84,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDTgvwj... your_email@example.com
 選取並複製整段內容（從 `ssh-rsa` 到你的 email）。
 
 #### 在 GitHub 上新增 SSH 金鑰
+
 接下來在 GitHub 上進行設定：
 
 1. **進入 GitHub 設定**
@@ -92,7 +101,9 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDTgvwj... your_email@example.com
    - 點擊「Add SSH key」完成新增
 
 #### 其他 Git 服務商
+
 如果你使用其他 Git 服務商，設定方式大同小異：
+
 - **GitLab**：User Settings → SSH Keys
 - **Bitbucket**：Personal settings → SSH keys
 - **Azure DevOps**：User settings → SSH public keys
@@ -122,20 +133,24 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDTgvwj... your_email@example.com
 點擊「Add Credentials」按鈕，然後填寫以下資訊：
 
 **基本設定**
+
 - **Kind**：選擇「SSH Username with private key」
 - **Scope**：選擇「Global (Jenkins, nodes, items, all child items, etc)」
 
 **身份識別資訊**
+
 - **ID**：設定一個容易識別的 ID（例如：`github-ssh-key`）
 - **Description**：輸入描述，方便日後管理（例如：「GitHub SSH Key for Jenkins」）
 - **Username**：輸入 `git`（這是 Git 服務商的標準使用者名稱）
 
 **私鑰設定**
+
 - **Private Key**：選擇「Enter directly」
 - 點擊「Add」按鈕
 - 將步驟一生成的私鑰內容完整貼上
 
 #### 取得私鑰內容
+
 如果你忘記私鑰內容，可以用以下指令查看：
 
 ```bash
@@ -143,6 +158,7 @@ cat ~/.ssh/id_rsa
 ```
 
 私鑰內容看起來會像這樣：
+
 ```
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
@@ -152,6 +168,7 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
 請確保包含開頭和結尾的標記行，並且完整複製所有內容。
 
 #### 完成設定
+
 填寫完所有資訊後，點擊「OK」按鈕保存憑證設定。
 
 ---
@@ -180,10 +197,11 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
 
 2. **設定倉庫資訊**
    - **Repository URL**：輸入 SSH 格式的 Git 倉庫連結
+
    ```bash
    git@github.com:username/repository.git
    ```
-   
+
    注意：SSH 格式的 URL 特徵是以 `git@` 開頭，而不是 `https://`
 
 3. **選擇憑證**
@@ -209,11 +227,11 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
 
 #### 常見的 URL 格式對照
 
-| Git 服務商 | SSH URL 格式 |
-|-----------|-------------|
-| GitHub | `git@github.com:username/repository.git` |
-| GitLab | `git@gitlab.com:username/repository.git` |
-| Bitbucket | `git@bitbucket.org:username/repository.git` |
+| Git 服務商 | SSH URL 格式                                |
+| ---------- | ------------------------------------------- |
+| GitHub     | `git@github.com:username/repository.git`    |
+| GitLab     | `git@gitlab.com:username/repository.git`    |
+| Bitbucket  | `git@bitbucket.org:username/repository.git` |
 
 ---
 
@@ -232,6 +250,7 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
 ### 安全性提升
 
 透過使用 SSH 憑證，我們達成了以下安全優勢：
+
 - **無密碼風險**：避免在程式碼或配置中暴露密碼
 - **自動化友善**：CI/CD 流程可以自動執行，無需人工介入
 - **存取控制**：可以針對不同專案使用不同的 SSH 金鑰
@@ -239,6 +258,7 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
 ### 下一步探索
 
 現在你已經具備了 Jenkins 的核心技能：
+
 - ✅ 了解 Jenkins 基本概念
 - ✅ 成功架設 Jenkins 伺服器
 - ✅ 配置 SSH 憑證系統
@@ -252,10 +272,11 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
 恭喜你完成了 Jenkins 系列教學的基礎三部曲！
 
 1. **[Jenkins（1）什麼是 Jenkins](/zh/blog/2024/jenkins-1-what-is-jenkins/)** - Jenkins 基本概念與核心功能介紹 ✅
-2. **[Jenkins（2）如何設定 Jenkins 伺服器](/zh/blog/2024/jenkins-2-how-to-setup-jenkins-server/)** - 使用 Docker 快速建立 Jenkins 環境 ✅  
+2. **[Jenkins（2）如何設定 Jenkins 伺服器](/zh/blog/2024/jenkins-2-how-to-setup-jenkins-server/)** - 使用 Docker 快速建立 Jenkins 環境 ✅
 3. **Jenkins（3）SSH 憑證配置完全指南** ← 你正在閱讀 ✅
 
 ### 相關技術文章推薦
+
 - [使用 SSH 管理多個 GitHub 帳號](/zh/blog/2025/how-to-use-multiple-github-accounts-using-ssh/) - 進階 SSH 金鑰管理技巧
 - [GitHub Container Registry 入門](/zh/blog/2024/getting-started-with-github-container-registry/) - 容器化部署整合
 - [在 OpenSSH 8.8 中啟用 RSA 加密演算法](/zh/blog/2024/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8/) - SSH 兼容性問題解決

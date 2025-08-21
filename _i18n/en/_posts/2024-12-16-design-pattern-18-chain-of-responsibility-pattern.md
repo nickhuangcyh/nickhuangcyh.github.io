@@ -299,16 +299,19 @@ These application scenarios all reflect the core advantages of the Chain of Resp
 ## Series Navigation
 
 ### Behavioral Design Patterns Series
+
 - [Command Pattern](/en/blog/2024/design-pattern-19-command-pattern/) - Encapsulate requests as objects, support operation undo and redo
 - [Iterator Pattern](/en/blog/2024/design-pattern-20-iterator-pattern/) - Provide standard methods for sequentially accessing aggregate objects
 - [Mediator Pattern](/en/blog/2024/design-pattern-21-mediator-pattern/) - Define interaction methods between objects, reducing coupling
 - [Observer Pattern](/en/blog/2024/design-pattern-23-observer-pattern/) - Implement event-driven notification mechanisms
 
 ### Structural Design Patterns Series
+
 - [Adapter Pattern](/en/blog/2024/design-pattern-11-adapter-pattern/) - Enable incompatible interfaces to work together
 - [Bridge Pattern](/en/blog/2024/design-pattern-12-bridge-pattern/) - Separate abstraction from implementation, support independent evolution
 
 ### Creational Design Patterns Foundation
+
 - [Design Pattern Concepts](/en/blog/2024/design-pattern-3-design-pattern/) - Understand basic design pattern concepts
 - [Design Principles](/en/blog/2024/design-pattern-2-design-principle/) - Master SOLID principles and design foundations
 

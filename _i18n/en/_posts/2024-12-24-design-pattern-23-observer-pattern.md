@@ -37,15 +37,15 @@ After understanding the requirements, let's begin object-oriented analysis. Thro
 When designing this security system, what problems would we encounter if we don't use appropriate design patterns? Let's analyze the potential challenges:
 
 1. **High Coupling**
-   
+
    If the panel directly interacts with each device, the code becomes difficult to maintain. Imagine that every time we add or remove devices, we need to modify the panel's core logic, making the system very fragile.
 
 2. **Lack of Flexibility**
-   
+
    When we want to add a new type of device, we must modify existing code. This violates the Open-Closed Principle (OCP) in software design, which states "open for extension, closed for modification."
 
 3. **Inconsistent Notifications**
-   
+
    In emergency situations, how do we ensure that every device receives alert notifications correctly and timely? If notification mechanisms don't have unified standards, omissions or errors easily occur.
 
 These problems all point to a core issue: we need a solution that can effectively manage "one-to-many" relationships.

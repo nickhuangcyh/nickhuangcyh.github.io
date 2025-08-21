@@ -54,16 +54,19 @@ Let's first look at the UML of the Composite Pattern:
 ### Three Core Roles of Composite Pattern:
 
 **1. Component (Component Interface)**
+
 - Defines common interface for all components (leaves and composites)
 - Provides consistent operation method for clients
 - In our file system, this is `FileSystemComponent`
 
 **2. Leaf (Leaf Node)**
+
 - Represents terminal nodes in the tree structure that cannot contain other components
 - Implements basic behavior of the Component interface
 - In our example, this is the individual file `File`
 
 **3. Composite (Composite Node)**
+
 - Represents container nodes that can contain child components
 - Implements Component interface and delegates operations to child components
 - This is our directory `Directory`, which can contain files and subdirectories
@@ -170,6 +173,7 @@ By applying the Composite Pattern, we successfully achieved unified operations f
 ## Series Navigation
 
 ### Structural Design Pattern Series
+
 - [Adapter Pattern](/en/blog/2024/design-pattern-11-adapter-pattern/) - Making incompatible interfaces work together
 - [Bridge Pattern](/en/blog/2024/design-pattern-12-bridge-pattern/) - Separating abstraction from implementation, supporting independent evolution
 - [Decorator Pattern](/en/blog/2024/design-pattern-14-decorator-pattern/) - Dynamically adding object functionality without modifying structure
@@ -178,10 +182,12 @@ By applying the Composite Pattern, we successfully achieved unified operations f
 - [Proxy Pattern](/en/blog/2024/design-pattern-17-proxy-pattern/) - Controlling resource access through smart proxy objects
 
 ### Behavioral Design Pattern Series
+
 - [Chain of Responsibility Pattern](/en/blog/2024/design-pattern-18-chain-of-responsibility-pattern/) - Building dynamic request handling chains
 - [Command Pattern](/en/blog/2024/design-pattern-19-command-pattern/) - Encapsulating requests as objects to implement undo/redo
 
 ### Creational Design Pattern Basics
+
 - [Singleton Pattern](/en/blog/2024/design-pattern-10-singleton-pattern/) - Ensuring a class has only one instance
 - [Design Principles](/en/blog/2024/design-pattern-2-design-principle/) - Mastering SOLID principles and design foundations
 

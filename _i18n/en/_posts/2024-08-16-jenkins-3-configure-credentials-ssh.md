@@ -18,6 +18,7 @@ In previous articles, we learned about [Jenkins basic concepts](/en/blog/2024/je
 ### Why Do We Need SSH Credentials?
 
 When Jenkins needs to pull code from private Git repositories (such as GitHub, GitLab), it requires proper authentication. SSH (Secure Shell) provides a secure and convenient authentication method:
+
 - **High Security**: Uses public key encryption, avoiding password leak risks
 - **Automation Friendly**: No need for manual password input, suitable for CI/CD workflows
 - **Permission Control**: Can set different access permissions for specific repositories
@@ -29,10 +30,12 @@ This article will explain in detail how to set up SSH credentials to enable your
 ### Step 1: Generate SSH Key
 
 SSH keys use asymmetric encryption, including a pair of related keys:
+
 - **Private Key**: Stored on the Jenkins server, used for authentication
 - **Public Key**: Uploaded to Git service providers (like GitHub), used to verify the legitimacy of the private key
 
 #### Generate Key Pair
+
 Open your terminal and execute the following command to generate SSH keys:
 
 ```bash
@@ -40,11 +43,13 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
 #### Parameter Explanation
+
 - `-t rsa`: Specify encryption type as RSA
 - `-b 4096`: Set key length to 4096 bits (more secure)
 - `-C "your_email@example.com"`: Add comment, usually using your email
 
 #### Generation Process
+
 After executing the command, the system will ask several questions:
 
 1. **Storage Location**: Default is `~/.ssh/id_rsa`, usually press Enter to use default location
@@ -52,6 +57,7 @@ After executing the command, the system will ask several questions:
 3. **Confirm Password**: If you set a password in the previous step, you need to confirm it again here
 
 After completion, you'll see two files in the specified directory:
+
 - `id_rsa`: Private key file (keep secret)
 - `id_rsa.pub`: Public key file (can be shared publicly)
 
@@ -62,6 +68,7 @@ After completion, you'll see two files in the specified directory:
 Now we need to upload the public key to the Git service provider so it can recognize and trust our private key. The following uses GitHub as an example to explain the setup process:
 
 #### Copy Public Key Content
+
 First, we need to get the public key content:
 
 ```bash
@@ -69,6 +76,7 @@ cat ~/.ssh/id_rsa.pub
 ```
 
 This will display content similar to the following:
+
 ```
 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDTgvwj... your_email@example.com
 ```
@@ -76,6 +84,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDTgvwj... your_email@example.com
 Select and copy the entire content (from `ssh-rsa` to your email).
 
 #### Add SSH Key on GitHub
+
 Next, configure on GitHub:
 
 1. **Enter GitHub Settings**
@@ -92,7 +101,9 @@ Next, configure on GitHub:
    - Click "Add SSH key" to complete the addition
 
 #### Other Git Service Providers
+
 If you use other Git service providers, the setup process is similar:
+
 - **GitLab**: User Settings → SSH Keys
 - **Bitbucket**: Personal settings → SSH keys
 - **Azure DevOps**: User settings → SSH public keys
@@ -122,20 +133,24 @@ Now we need to add the private key to Jenkins' credential system. This is the co
 Click the "Add Credentials" button, then fill in the following information:
 
 **Basic Settings**
+
 - **Kind**: Select "SSH Username with private key"
 - **Scope**: Select "Global (Jenkins, nodes, items, all child items, etc)"
 
 **Identity Information**
+
 - **ID**: Set an easily identifiable ID (e.g., `github-ssh-key`)
 - **Description**: Enter description for easier future management (e.g., "GitHub SSH Key for Jenkins")
 - **Username**: Enter `git` (this is the standard username for Git service providers)
 
 **Private Key Settings**
+
 - **Private Key**: Select "Enter directly"
 - Click the "Add" button
 - Paste the complete private key content generated in step 1
 
 #### Get Private Key Content
+
 If you forgot the private key content, you can view it with the following command:
 
 ```bash
@@ -143,6 +158,7 @@ cat ~/.ssh/id_rsa
 ```
 
 The private key content will look like this:
+
 ```
 -----BEGIN OPENSSH PRIVATE KEY-----
 b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
@@ -152,6 +168,7 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
 Please ensure you include the beginning and ending marker lines and copy all content completely.
 
 #### Complete Setup
+
 After filling in all information, click the "OK" button to save the credential settings.
 
 ---
@@ -180,10 +197,11 @@ In the Job configuration page:
 
 2. **Set Repository Information**
    - **Repository URL**: Enter SSH format Git repository link
+
    ```bash
    git@github.com:username/repository.git
    ```
-   
+
    Note: SSH format URLs are characterized by starting with `git@`, not `https://`
 
 3. **Select Credentials**
@@ -209,11 +227,11 @@ In the Job configuration page:
 
 #### Common URL Format Reference
 
-| Git Service Provider | SSH URL Format |
-|---------------------|----------------|
-| GitHub | `git@github.com:username/repository.git` |
-| GitLab | `git@gitlab.com:username/repository.git` |
-| Bitbucket | `git@bitbucket.org:username/repository.git` |
+| Git Service Provider | SSH URL Format                              |
+| -------------------- | ------------------------------------------- |
+| GitHub               | `git@github.com:username/repository.git`    |
+| GitLab               | `git@gitlab.com:username/repository.git`    |
+| Bitbucket            | `git@bitbucket.org:username/repository.git` |
 
 ---
 
@@ -232,6 +250,7 @@ Congratulations on completing the complete configuration of Jenkins SSH credenti
 ### Security Improvements
 
 By using SSH credentials, we achieved the following security advantages:
+
 - **No Password Risk**: Avoid exposing passwords in code or configuration
 - **Automation Friendly**: CI/CD processes can execute automatically without human intervention
 - **Access Control**: Can use different SSH keys for different projects
@@ -239,6 +258,7 @@ By using SSH credentials, we achieved the following security advantages:
 ### Next Steps to Explore
 
 Now you have the core Jenkins skills:
+
 - ✅ Understanding Jenkins basic concepts
 - ✅ Successfully setting up Jenkins server
 - ✅ Configuring SSH credential system
@@ -252,10 +272,11 @@ Next, you can start exploring more advanced features such as creating Pipelines,
 Congratulations on completing the foundational trilogy of the Jenkins tutorial series!
 
 1. **[Jenkins (1) What is Jenkins](/en/blog/2024/jenkins-1-what-is-jenkins/)** - Jenkins basic concepts and core feature introduction ✅
-2. **[Jenkins (2) How to Set Up Jenkins Server](/en/blog/2024/jenkins-2-how-to-setup-jenkins-server/)** - Quick Jenkins environment setup using Docker ✅  
+2. **[Jenkins (2) How to Set Up Jenkins Server](/en/blog/2024/jenkins-2-how-to-setup-jenkins-server/)** - Quick Jenkins environment setup using Docker ✅
 3. **Jenkins (3) Complete SSH Credentials Configuration Guide** ← You are reading ✅
 
 ### Recommended Related Technical Articles
+
 - [Using SSH to Manage Multiple GitHub Accounts](/en/blog/2025/how-to-use-multiple-github-accounts-using-ssh/) - Advanced SSH key management techniques
 - [Getting Started with GitHub Container Registry](/en/blog/2024/getting-started-with-github-container-registry/) - Container deployment integration
 - [Enabling RSA Encryption Algorithm in OpenSSH 8.8](/en/blog/2024/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8/) - SSH compatibility issue resolution

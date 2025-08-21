@@ -20,17 +20,20 @@ After learning the [Adapter Pattern](/en/blog/2024/design-pattern-11-adapter-pat
 We need to develop a unified control interface for a modern **home theater system**. This high-end audio-visual system consists of multiple sophisticated subsystems.
 
 ### System Components:
+
 - **DVD Player**: Handles media playback functionality
 - **Surround Sound System**: Provides high-quality audio effects
 - **Smart Lighting System**: Adjusts lighting ambiance for different scenarios
 - **HD Projector**: Provides theater-grade visual experience
 
 ### User Requirements:
+
 - **One-Click Operation**: Users want to turn the entire theater system on or off with a single command
 - **Simplified Interface**: No need to understand complex configurations and operation steps of individual subsystems
 - **Unified Control**: No need to switch between various independent controllers
 
 ### Technical Challenges:
+
 - **Complexity**: Each subsystem has its own initialization and configuration steps
 - **Dependencies**: Subsystems may have startup sequence dependencies
 - **Learning Curve**: New users need to learn multiple different operation interfaces
@@ -46,42 +49,54 @@ Before starting the design, let's first analyze the core components and usage sc
 When dealing with this type of **multi-subsystem integration** complexity, without using appropriate design patterns, we face the following key challenges:
 
 ### 1. Complexity Explosion
+
 **Problem Scale**:
+
 - To properly start the home theater, users need to execute 8-12 different steps in a specific order
 - Each subsystem has 3-5 different configuration points and parameters
 - Shutdown steps need to be performed in reverse order, adding to operation complexity
 
 **Concrete Impact**:
+
 - Users need to remember numerous operation steps and parameters
 - Incorrect operations may lead to inconsistent system states
 
 ### 2. High Learning Curve
+
 **Problem Description**:
+
 - Users need to separately learn how to use DVD player, audio system, lighting, and projector
 - Each subsystem has different interface designs and interaction logic
 - Cannot quickly get started, affecting user experience
 
 **Concrete Impact**:
+
 - New users need to spend significant time learning system usage
 - Inconsistent usage among family members causes confusion
 
 ### 3. Error Accumulation Risk
+
 **Problem Description**:
+
 - Manual multi-step operations are prone to errors at any step
 - Errors in different subsystems may affect each other, creating chain reactions
 - Lack of unified error handling mechanisms
 
 **Concrete Impact**:
+
 - System may fall into inconsistent states with partial startup
 - Troubleshooting becomes complex and time-consuming
 
 ### 4. Dependency Management Difficulties
+
 **Problem Description**:
+
 - Complex dependencies exist between subsystems
 - Modifying one subsystem may affect multiple other subsystems
 - Users need to understand these internal dependencies
 
 **Concrete Impact**:
+
 - High system extension and maintenance costs
 - Adding new features may break existing workflows
 
@@ -100,6 +115,7 @@ The essence of Facade Pattern is **"encapsulating complexity, providing simple i
 ### Real-Life Analogy
 
 Imagine using remote controls:
+
 - **Traditional Way**: You need to use 4 different remote controls to separately control TV, audio, air conditioning, and lighting
 - **Facade Way**: A smart remote with a "Movie Mode" button that adjusts all devices to optimal state with one click
 
@@ -112,17 +128,20 @@ Let's first understand the structural design of the Facade Pattern:
 ### Core Components of Facade Pattern:
 
 **1. Subsystems (Subsystem Collection)**
+
 - Represents multiple independent subsystems in the system, each providing specific functionality
 - They can collaborate with each other but can also operate independently
 - In our example: `DVDPlayer`, `SurroundSound`, `Lights`, `Projector`
 
 **2. Facade (Facade Class)**
+
 - Provides a unified, simplified interface to encapsulate subsystem complexity
 - Responsible for coordinating and managing interactions between multiple subsystems
 - Selectively combines subsystem functionalities into higher-level convenient operations
 - In our example: `HomeTheaterFacade`
 
 ### Differences from Other Structural Patterns:
+
 - **vs Adapter**: Both handle interface concerns, but Facade simplifies without conversion
 - **vs Decorator**: Both change object behavior, but Facade combines multiple objects into one
 - **vs Composite**: Both handle multiple components, but Facade doesn't emphasize tree structures
@@ -262,6 +281,7 @@ Lights are ON
 ```
 
 This result perfectly demonstrates the power of the Facade Pattern:
+
 - **Startup Process**: One `watchMovie()` call automatically completes 6 different subsystem configurations
 - **Shutdown Process**: One `endMovie()` call automatically completes proper shutdown of 4 subsystems
 - **Consistent Order**: All operations execute in the correct sequence, avoiding manual operation errors
@@ -273,34 +293,42 @@ By applying the **Facade Pattern**, we successfully solved all challenges of mul
 ### Core Benefits Achieved:
 
 **1. Dramatically Simplified Operation Complexity**
+
 - Reduced from 10+ manual operations to 1-step one-click operation
 - Users no longer need to remember complex operation sequences and parameters
 - Completely eliminated manual operation error risks
 
 **2. Enhanced System Usability**
+
 - Reduced learning costs, newcomers can get started quickly
 - Provided consistent user experience, reducing user confusion
 - Enhanced system professionalism and reliability
 
 **3. Elegant Architectural Design**
+
 - Encapsulated complex dependencies between subsystems
 - Provided clear responsibility division: subsystems handle specific functions, Facade handles coordination
 - Easy to maintain and extend, modifying subsystems doesn't affect clients
 
 **4. Advanced Intelligent Possibilities**
+
 - Facade can incorporate advanced business logic (scenario modes, personalized configurations, etc.)
 - Can integrate error handling, logging, performance monitoring and other advanced features
 - Provides structured foundation for future AI control and voice interaction
 
 ### Practical Application Scenarios:
+
 Facade Pattern is particularly useful in:
+
 - **System Integration**: Integrating multiple third-party APIs or legacy systems
 - **Microservice Architecture**: Providing unified BFF (Backend for Frontend) services for frontends
 - **SDK Design**: Providing simplified library interfaces for developers
 - **Enterprise Systems**: Encapsulating complex internal systems into simple business operations
 
 ### Structural Pattern Learning Summary:
+
 So far, we have completed learning all five important structural design patterns:
+
 - **Adapter Pattern**: Solving interface incompatibility problems
 - **Bridge Pattern**: Solving complexity of multi-dimensional changes
 - **Composite Pattern**: Solving unified operations on tree structures
@@ -312,6 +340,7 @@ These five patterns form a complete structural design pattern toolkit, providing
 ## Series Navigation
 
 ### Structural Design Pattern Series
+
 - [Adapter Pattern](/en/blog/2024/design-pattern-11-adapter-pattern/) - Making incompatible interfaces work together
 - [Bridge Pattern](/en/blog/2024/design-pattern-12-bridge-pattern/) - Separating abstraction from implementation, supporting independent evolution
 - [Composite Pattern](/en/blog/2024/design-pattern-13-composite-pattern/) - Uniformly handling individual objects and object combinations
@@ -320,10 +349,12 @@ These five patterns form a complete structural design pattern toolkit, providing
 - [Proxy Pattern](/en/blog/2024/design-pattern-17-proxy-pattern/) - Controlling resource access through smart proxy objects
 
 ### Behavioral Design Pattern Series
+
 - [Chain of Responsibility Pattern](/en/blog/2024/design-pattern-18-chain-of-responsibility-pattern/) - Building dynamic request handling chains
 - [Command Pattern](/en/blog/2024/design-pattern-19-command-pattern/) - Encapsulating requests as objects to implement undo/redo
 
 ### Creational Design Pattern Basics
+
 - [Singleton Pattern](/en/blog/2024/design-pattern-10-singleton-pattern/) - Ensuring a class has only one instance
 - [Design Principles](/en/blog/2024/design-pattern-2-design-principle/) - Mastering SOLID principles and design foundations
 

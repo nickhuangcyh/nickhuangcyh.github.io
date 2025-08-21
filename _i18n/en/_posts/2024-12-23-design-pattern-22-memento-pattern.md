@@ -31,6 +31,7 @@ This is a typical **behavioral design pattern** application scenario, requiring 
 After understanding the requirements, we perform object-oriented analysis. In this text editor scenario, the core challenge we face is how to effectively manage object state saving and restoration.
 
 From a system perspective, we can identify four key elements:
+
 - **Text Editor Object**: As the state owner, responsible for text content processing
 - **Text Content State**: Core data that needs to be saved and restored
 - **State Snapshot**: Encapsulates states for convenient transmission and storage
@@ -45,21 +46,25 @@ The core challenge here is: How can we safely save and restore object internal s
 In direct implementation without design patterns, we encounter the following core challenges:
 
 ### 1. State Management Complexity (State Management Complexity)
+
 If we only keep the current state, we cannot implement undo functionality. But to save historical states creates complex management problems.
 
 We need to decide: Which state data needs to be saved? How to efficiently save it? When to clean up expired old states? These questions make code complex and difficult to maintain.
 
 ### 2. Encapsulation Violation (Encapsulation Violation)
+
 To implement state saving, clients often need direct access to editor's internal state data. This approach breaks object encapsulation principles.
 
 When editor's internal implementation details are exposed externally, system coupling increases significantly. Any internal structural changes may affect code that uses it.
 
 ### 3. Performance and Memory Issues (Performance and Memory Issues)
+
 When document content is large, directly copying entire object state consumes significant memory. Each state save requires copying complete data.
 
 Under frequent user operations, this full copying becomes a serious performance bottleneck and may even cause application crashes.
 
 ### 4. Limited Extensibility (Limited Extensibility)
+
 When we want to add advanced features like redo operations, multi-step undo, or state persistent storage, we often need to significantly modify existing architecture.
 
 Such modifications have broad impact and may require redesigning the entire system, increasing development costs and risks.
@@ -89,16 +94,19 @@ It's like taking a "state photo" of the object, where only the object itself kno
 Memento Pattern solves system problems through the following three core roles:
 
 #### 1. Originator - Text Editor
+
 This is the main object that owns internal state, responsible for creating memento snapshots and restoring state from mementos.
 
 In our example, the text editor is the originator. It knows how to save its own text content state and how to recover to previous states from snapshots.
 
 #### 2. Memento - State Snapshot
+
 This is an immutable snapshot object specifically used to store the originator's internal state at specific time points.
 
 The memento object design is clever: it provides a limited interface for caretakers to use, but simultaneously allows originators to access all necessary data to restore state. This "dual interface" ensures encapsulation.
 
 #### 3. Caretaker - History Manager
+
 The caretaker is responsible for safekeeping all memento snapshots, but with an important principle: it never modifies or examines memento contents.
 
 The caretaker only needs to know "when" to save snapshots and "when" to execute restoration operations, but doesn't need to know what the snapshot's specific content is. This responsibility separation makes the system more robust.

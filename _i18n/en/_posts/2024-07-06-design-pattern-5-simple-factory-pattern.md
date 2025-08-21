@@ -19,6 +19,7 @@ tabs: true
 Imagine you're developing an ordering system for a beverage shop. This system needs to dynamically create different types of beverage objects based on customer selections.
 
 The core requirements of the system include:
+
 - Support for multiple beverage types (black tea, green tea, etc.)
 - Unified preparation process (add sugar, add ice, shake, package)
 - Good extensibility for easily adding new beverage items in the future

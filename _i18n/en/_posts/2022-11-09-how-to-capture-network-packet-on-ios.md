@@ -26,11 +26,13 @@ This tutorial will guide you step-by-step through the complete iOS network packe
 Before getting started, please ensure you have the following essential tools prepared:
 
 **Hardware Requirements:**
+
 1. An iOS device (iPhone or iPad)
 2. A USB cable
 3. A Mac computer
 
 **Software Requirements:**
+
 1. `rvictl` tool (Remote Virtual Interface, usually included after installing Xcode)
 2. [Wireshark](https://www.wireshark.org/download.html) packet analysis tool
 
@@ -65,14 +67,17 @@ To create a virtual network interface, we need to obtain the iOS device's Unique
 Follow these steps to obtain your iOS device UUID:
 
 **Step 1: Connect Device**
+
 1. Connect your iPhone or iPad to your Mac using a USB cable
 2. Ensure the device is unlocked and trusts this computer
 
 **Step 2: Open Xcode**
+
 1. Launch the Xcode application
 2. From the menu bar, select **Window** ➜ **Devices and Simulators**
 
 **Step 3: View UUID**
+
 1. Find your iOS device in the left device list
 2. Click on the device name, and detailed information will appear on the right
 3. Copy the UUID from the **Identifier** field, as shown in the image below
@@ -107,11 +112,13 @@ Starting device 00xxxxxx-xxxxxxxxxxxxxx1E [FAILED]
 This usually indicates that the system service `com.apple.rpmuxd` has not yet started. Please follow these troubleshooting steps:
 
 **Step 1: Check service status**
+
 ```bash
 sudo launchctl list com.apple.rpmuxd
 ```
 
 **Step 2: If the service hasn't started, execute:**
+
 ```bash
 sudo launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.rpmuxd.plist
 ```
@@ -156,6 +163,7 @@ Now that the virtual network interface has been created, we can begin using Wire
 {% include figure.liquid path="assets/img/wireshark_test_2.png" title="iOS Packet Capture Screen" %}
 
 **Useful Tips:**
+
 - Use Wireshark's filtering features to focus on specific types of traffic
 - You can filter by IP address, port, protocol, etc.
 - For HTTPS traffic, although the content is encrypted, you can still see connection destination addresses and timing information
@@ -193,11 +201,13 @@ Through this tutorial, we've completed the entire iOS network packet capture pro
 ### iOS vs Android Packet Capture Comparison
 
 **iOS Advantages:**
+
 - No need to root or jailbreak the device
 - Uses officially provided `rvictl` tool, safe and reliable
 - Simple setup process, only requires a few steps to complete
 
 **Android Challenges:**
+
 - Usually requires root permissions for deep packet analysis
 - Setup process is relatively complex, requiring more technical background
 

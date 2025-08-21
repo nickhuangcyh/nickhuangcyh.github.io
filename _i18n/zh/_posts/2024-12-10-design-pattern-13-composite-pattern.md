@@ -53,16 +53,19 @@ thumbnail: /assets/img/design_patterns.jpg
 ### Composite Pattern 的三個核心角色：
 
 **1. Component (組件介面)**
+
 - 定義所有組件（葉子和組合）的通用介面
 - 對客戶端提供一致的操作方式
 - 在我們的檔案系統中，就是 `FileSystemComponent`
 
 **2. Leaf (葉子節點)**
+
 - 代表樹狀結構中的末端節點，不能再包含其他組件
 - 實現 Component 介面的基本行為
 - 在我們的例子中，就是單一檔案 `File`
 
 **3. Composite (組合節點)**
+
 - 代表可以包含子組件的容器節點
 - 實現 Component 介面，並將操作委託給子組件
 - 這就是我們的目錄 `Directory`，它可以包含檔案和子目錄
@@ -169,6 +172,7 @@ fun main() {
 ## 系列文章導覽
 
 ### 結構型設計模式系列
+
 - [適配器模式 (Adapter Pattern)](/zh/blog/2024/design-pattern-11-adapter-pattern/) - 讓不相容的介面能夠協同工作
 - [橋接模式 (Bridge Pattern)](/zh/blog/2024/design-pattern-12-bridge-pattern/) - 將抽象與實作分離，支援獨立演化
 - [裝飾者模式 (Decorator Pattern)](/zh/blog/2024/design-pattern-14-decorator-pattern/) - 動態增加物件功能而不修改結構
@@ -177,10 +181,12 @@ fun main() {
 - [代理模式 (Proxy Pattern)](/zh/blog/2024/design-pattern-17-proxy-pattern/) - 透過智慧代理物件控制資源存取
 
 ### 行為型設計模式系列
+
 - [責任鏈模式 (Chain of Responsibility)](/zh/blog/2024/design-pattern-18-chain-of-responsibility-pattern/) - 建立動態請求處理鏈
 - [命令模式 (Command Pattern)](/zh/blog/2024/design-pattern-19-command-pattern/) - 將請求封裝為物件實現撤銷重做
 
 ### 創建型設計模式基礎
+
 - [單例模式 (Singleton Pattern)](/zh/blog/2024/design-pattern-10-singleton-pattern/) - 確保類別只有一個實例
 - [設計原則](/zh/blog/2024/design-pattern-2-design-principle/) - 掌握 SOLID 原則與設計基礎
 

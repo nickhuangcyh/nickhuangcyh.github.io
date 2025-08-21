@@ -3,7 +3,17 @@ layout: post
 title: "P2P 技術（1）IPv4 與 NAT 穿透完整解析：網路架構與連線原理深入教學"
 date: 2022-01-03 23:45:03 +0800
 description: "學會 P2P 網路通訊的核心概念與 IPv4/NAT 架構限制。深入了解四種 NAT 類型、穿透挑戰與解決方案。從 IPCam 影音串流實例學習物聯網裝置通訊原理，為後續 STUN/TURN/ICE 協定奠基礎。"
-tags: [P2P Technology, IPv4 Network, NAT Traversal, Network Architecture, IoT Communication, Distributed Systems, Network Protocol, Real-time Communication]
+tags:
+  [
+    P2P Technology,
+    IPv4 Network,
+    NAT Traversal,
+    Network Architecture,
+    IoT Communication,
+    Distributed Systems,
+    Network Protocol,
+    Real-time Communication,
+  ]
 categories: [P2P]
 toc:
   #   beginning: true
@@ -95,7 +105,7 @@ P2P 目的是讓裝置之間**不依賴中心伺服器也能直接建立連線**
 - 缺點：程式複雜、App/Firmware 更新困難、頻繁斷線需重連
 
 > **關鍵疑問**：既然 Server 不參與，那麼「分佈式架構下手機與 IPCam 怎麼直接通訊？」
-> 
+>
 > 這就是本篇核心 —— **P2P + NAT Traversal 技術**。我們需要解決的是：兩台分別位於不同網路環境的裝置，如何突破 NAT 限制建立直接連線？
 
 ---
@@ -142,7 +152,7 @@ NAT 是讓多台裝置共用一個公共 IP 的技術。它的運作原理是在
 
 1. **A 發出封包** → 在 A 的 NAT 路由器上建立對映記錄
 2. **A 封包被 B NAT 阻擋** → B 的 NAT 沒有對應記錄，封包被丟棄
-3. **B 發出封包** → 在 B 的 NAT 路由器上建立對映記錄  
+3. **B 發出封包** → 在 B 的 NAT 路由器上建立對映記錄
 4. **B 封包通過 A NAT** → A 的 NAT 已有記錄，允許封包通過
 5. **雙向通道建立** → 兩方 NAT 都有記錄，後續可進行雙向 P2P 通訊
 
@@ -161,6 +171,7 @@ NAT 是讓多台裝置共用一個公共 IP 的技術。它的運作原理是在
 Full Cone NAT 是最寬鬆的 NAT 類型。一旦內部裝置建立了對外連線，任何知道對應公共 IP 和 Port 的外部裝置都能主動連線進來。
 
 **特性：**
+
 - 任意外部主機皆可與內部裝置通訊
 - 最友善的 P2P NAT 類型
 - 穿透成功率最高
@@ -179,6 +190,7 @@ Full Cone NAT 是最寬鬆的 NAT 類型。一旦內部裝置建立了對外連�
 Restricted Cone NAT 增加了 IP 位址限制。只有內部裝置曾經主動連線過的外部 IP 位址，才能透過建立的映射回傳封包。
 
 **特性：**
+
 - 僅曾被內部主機連過的外部主機可回傳封包
 - 安全性比 Full Cone 更高
 - P2P 穿透還算可接受，但需先有 outbound 流量建立 mapping
@@ -192,6 +204,7 @@ Restricted Cone NAT 增加了 IP 位址限制。只有內部裝置曾經主動�
 Port Restricted Cone NAT 是最嚴格的錐型 NAT。除了 IP 位址限制外，還要求外部裝置的 Port 必須完全對應。
 
 **特性：**
+
 - 與 Restricted Cone 相似，但進一步要求 port 完全對應
 - 安全性最高，但 P2P 穿透難度較高
 - 需要精確的 Port 預測或協調機制

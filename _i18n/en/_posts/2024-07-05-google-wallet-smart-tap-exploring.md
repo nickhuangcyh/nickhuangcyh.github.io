@@ -26,6 +26,7 @@ In this article, I'll start from basic concepts and gradually introduce how to a
 NFC (Near Field Communication) is a short-range wireless communication technology. Simply put, it allows two devices to transfer data at extremely short distances (usually a few centimeters).
 
 The main characteristics of this technology include:
+
 - **Ultra-close communication**: Effective range is about 4 centimeters, ensuring security
 - **Low power consumption**: Does not heavily consume battery
 - **Fast connection**: Establishing a connection takes less than one second
@@ -39,6 +40,7 @@ NFC technology has quite extensive applications in daily life, including mobile 
 Smart Tap is a proprietary communication protocol developed by Google based on NFC technology. Its core function is to enable users to conduct fast and secure transactions on supported terminals through their mobile phones.
 
 The advantages of this technology include:
+
 - **Fast transactions**: Operations can be completed with just a tap on the terminal
 - **Secure and reliable**: Uses encrypted communication protocols
 - **Convenient to use**: No need for additional physical cards
@@ -60,16 +62,20 @@ In short, you need to provide detailed information about your terminal equipment
 Before implementing Smart Tap functionality, we need to meet two basic conditions first. These conditions ensure the entire system can operate normally:
 
 ### 1. Create Digital Pass System
+
 First, you need to establish a complete digital pass architecture, including:
+
 - **Pass Class**: Defines the basic template and attributes of passes
 - **Pass Objects**: Individual passes actually issued to users
 
 ### 2. Establish Terminal Equipment Partnership
+
 Second, you must establish partnerships with terminal suppliers that support Smart Tap technology.
 
 **Currently supported major suppliers include:**
+
 - Verifone
-- Ingenico  
+- Ingenico
 - Pax
 - HID
 - Equinox
@@ -85,6 +91,7 @@ These suppliers can provide compatible hardware equipment and technical support,
 The Smart Tap protocol uses multiple identifiers to manage different entities and permissions. Before starting to create passes, we must first understand these core concepts:
 
 **Three key identifiers:**
+
 - **Redemption Issuer ID**: Represents a specific merchant or redemption party
 - **Collector ID**: Terminal equipment identity identifier
 - **Pass Class ID**: Unique identifier for pass categories
@@ -117,6 +124,7 @@ Redemption Issuer ID is a special type of Issuer ID specifically used to represe
 **Application Scope**
 
 Issuer ID can represent various different entities:
+
 - Individual merchants (such as coffee shops, restaurants)
 - Coupon issuers
 - Large shopping malls (such as SOGO, Shin Kong Mitsukoshi)
@@ -126,10 +134,10 @@ Issuer ID can represent various different entities:
 
 When you create pass classes and pass objects, they will be associated with the Redemption Issuer ID. The system uses the following format:
 
-| ID Type   | Format                | Description                                                           |
-| --------- | --------------------- | --------------------------------------------------------------------- |
+| ID Type   | Format                | Description                                                                                                  |
+| --------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
 | Class ID  | issuerId.classSuffix  | classSuffix is a unique value defined by developers for specific pass categories (such as membership levels) |
-| Object ID | issuerId.objectSuffix | objectSuffix is a unique value defined by developers for specific pass objects (such as user ID)|
+| Object ID | issuerId.objectSuffix | objectSuffix is a unique value defined by developers for specific pass objects (such as user ID)             |
 
 ---
 
@@ -140,6 +148,7 @@ When you create pass classes and pass objects, they will be associated with the 
 Collector ID is the terminal equipment identity identifier and plays a key role in Smart Tap communication processes.
 
 **Technical Specifications**
+
 - **Format**: 8-digit ID
 - **Scope**: Each merchant terminal supporting Smart Tap has a dedicated Collector ID
 
@@ -152,7 +161,9 @@ When users bring their phones close to Smart Tap-enabled terminals, the followin
 3. **Data Exchange**: After successful verification, secure data transmission begins
 
 **Important Limitations**
+
 > **Allocation Rules**:
+>
 > 1. One Issuer ID can only be allocated one set of Collector ID
 > 2. Collector ID must be unique throughout the entire system
 
@@ -165,21 +176,25 @@ When users bring their phones close to Smart Tap-enabled terminals, the followin
 Pass Class ID is used to identify specific pass types or levels, such as different levels of membership cards or different types of coupons.
 
 **ID Format**
+
 ```
 issuerId.classSuffix
 ```
 
 **Component Explanation**
+
 - **issuerId**: Your issuer ID
 - **classSuffix**: Pass category identifier customized by you
 
 This classSuffix is a unique identifier you design for each pass category. Through this Pass Class, you can create multiple Pass Objects that will inherit the basic attributes of this category.
 
 **Permission Management**
+
 > **Ownership Rules**:
+>
 > - Pass Class ID belongs to a single Issuer account
 > - But can be associated with multiple Redemption Issuers
-> 
+>
 > This means one pass category can be used at multiple merchants, increasing system flexibility.
 
 ---
@@ -193,7 +208,7 @@ The Smart Tap communication mechanism is the core of the entire system. Understa
 The entire communication process can be divided into four stages:
 
 1. **Terminal Identification Stage**: The terminal uses Collector ID to identify itself
-2. **ID Mapping Stage**: Collector ID maps to specific Redemption Issuer ID  
+2. **ID Mapping Stage**: Collector ID maps to specific Redemption Issuer ID
 3. **Pass Search Stage**: When Smart Tap is triggered, the terminal sends Collector ID to the user device
 4. **Pass Transmission Stage**: Google Wallet App searches for matching passes and returns them to the terminal
 
@@ -229,16 +244,17 @@ In this example, there are two different participants:
 
 Assuming fooPizza wants to enable Smart Tap functionality in their store, here's the complete setup process:
 
-| Step | Responsible Role    | Specific Operations                                                                                        |
-| :--: | :-----------------: | :--------------------------------------------------------------------------------------------------------- |
-|  1   | Aggregator          | **Create pass structure**: Create pass class (Class ID: abc) and pass object (Object ID: 123)           |
-|  2   | Aggregator          | **Set redemption permissions**: Add fooPizza's Issuer ID (1990) to the `redemptionIssuers` attribute in the pass class |
-|  3   | Redemption Issuer   | **Obtain device identifier**: Apply to Google and obtain dedicated Collector ID (example: 12345678)      |
-|  4   | Redemption Issuer   | **Configure terminal equipment**: Set Collector ID 12345678 on all Smart Tap-enabled card readers in the store |
+| Step | Responsible Role  | Specific Operations                                                                                                    |
+| :--: | :---------------: | :--------------------------------------------------------------------------------------------------------------------- |
+|  1   |    Aggregator     | **Create pass structure**: Create pass class (Class ID: abc) and pass object (Object ID: 123)                          |
+|  2   |    Aggregator     | **Set redemption permissions**: Add fooPizza's Issuer ID (1990) to the `redemptionIssuers` attribute in the pass class |
+|  3   | Redemption Issuer | **Obtain device identifier**: Apply to Google and obtain dedicated Collector ID (example: 12345678)                    |
+|  4   | Redemption Issuer | **Configure terminal equipment**: Set Collector ID 12345678 on all Smart Tap-enabled card readers in the store         |
 
 **Operation Results**
 
 After setup completion, any passes that simultaneously meet the following conditions will operate smoothly on fooPizza's terminals:
+
 - Pass Class ID is `abc`
 - Terminal Collector ID is `12345678`
 
@@ -251,6 +267,7 @@ This ensures only authorized passes can be used at designated merchants.
 **Application Scenario**
 
 This case demonstrates a more advanced deployment model: one pass category can be used at multiple different merchants. This architecture is particularly suitable for:
+
 - Unified membership card systems in shopping malls
 - Multi-store integration for chain brands
 - Shared coupons for alliance merchants
@@ -273,16 +290,17 @@ This example involves three different participants:
 
 To allow the same pass to be used at two different stores, the following steps need to be completed:
 
-| Step | Responsible Role    | Specific Operations                                                                                      |
-| :--: | :-----------------: | :------------------------------------------------------------------------------------------------------ |
-|  1   | Aggregator          | **Create shared pass**: Create pass class (Class ID: abc) and pass object (Object ID: 123)           |
-|  2   | Aggregator          | **Authorize multiple merchants**: Add both stores' IDs (1990 and 2018) to the `redemptionIssuers` attribute |
-|  3   | Redemption Issuer   | **Each obtains ID**: fooPizza gets Collector ID `12345678`, yumPie gets Collector ID `18802001`      |
-|  4   | Redemption Issuer   | **Configure terminals per store**: Each store configures their dedicated Collector ID on their terminal equipment |
+| Step | Responsible Role  | Specific Operations                                                                                               |
+| :--: | :---------------: | :---------------------------------------------------------------------------------------------------------------- |
+|  1   |    Aggregator     | **Create shared pass**: Create pass class (Class ID: abc) and pass object (Object ID: 123)                        |
+|  2   |    Aggregator     | **Authorize multiple merchants**: Add both stores' IDs (1990 and 2018) to the `redemptionIssuers` attribute       |
+|  3   | Redemption Issuer | **Each obtains ID**: fooPizza gets Collector ID `12345678`, yumPie gets Collector ID `18802001`                   |
+|  4   | Redemption Issuer | **Configure terminals per store**: Each store configures their dedicated Collector ID on their terminal equipment |
 
 **System Operation Logic**
 
 After setup completion, users holding passes with Class ID `abc` can use them at both stores:
+
 - At fooPizza: Terminal Collector ID `12345678` will identify and accept the pass
 - At yumPie: Terminal Collector ID `18802001` will also identify and accept the pass
 
@@ -295,6 +313,7 @@ This architecture greatly enhances pass usage flexibility while maintaining term
 **Application Scenario**
 
 This case demonstrates the most streamlined deployment model: merchants develop and manage their own pass systems without needing third-party platform agents. This model is particularly suitable for:
+
 - Large enterprises with technical teams
 - Merchants who want complete control over their pass systems
 - Independent businesses that don't need integration with other merchants
@@ -308,27 +327,30 @@ In this model, the developer and redemption party are the same entity. In other 
 **Role Integration**
 
 In this example, there's only one main participant:
+
 - **Issuer `2018`**: Plays both the role of pass developer and Redemption Issuer
 
 **Implementation Process**
 
 Since the developer is the user, the setup process becomes relatively simple:
 
-| Step | Responsible Role | Specific Operations                                                                               |
-| :--: | :--------------: | :----------------------------------------------------------------------------------------------- |
-|  1   | Pass Developer   | **Create pass system**: Create pass class (Class ID: abc) and pass object (Object ID: 123)    |
-|  2   | Pass Developer   | **Self-authorization**: Add own Issuer ID (2018) to the `redemptionIssuers` attribute         |
-|  3   | Pass Developer   | **Apply for device ID**: Apply to Google and obtain Collector ID (example: 12345678)         |
-|  4   | Pass Developer   | **Configure own terminals**: Configure Collector ID 12345678 on all own Smart Tap terminal equipment |
+| Step | Responsible Role | Specific Operations                                                                                  |
+| :--: | :--------------: | :--------------------------------------------------------------------------------------------------- |
+|  1   |  Pass Developer  | **Create pass system**: Create pass class (Class ID: abc) and pass object (Object ID: 123)           |
+|  2   |  Pass Developer  | **Self-authorization**: Add own Issuer ID (2018) to the `redemptionIssuers` attribute                |
+|  3   |  Pass Developer  | **Apply for device ID**: Apply to Google and obtain Collector ID (example: 12345678)                 |
+|  4   |  Pass Developer  | **Configure own terminals**: Configure Collector ID 12345678 on all own Smart Tap terminal equipment |
 
 **Advantages and Considerations**
 
 Main advantages of this model:
+
 - **Simplified management**: No need to coordinate with other roles
 - **Complete control**: Absolute control over the pass system
 - **Rapid deployment**: Reduced communication costs, faster time to market
 
 Factors to consider:
+
 - **Technical threshold**: Need complete development and maintenance capabilities
 - **Scalability**: If future collaboration with other merchants is desired, system re-architecture may be needed
 
@@ -348,11 +370,11 @@ The system intelligently decides which pass information to send to terminal devi
 
 This is the most direct usage method where users clearly know which pass they want to use:
 
-| Step | Operating Role | Detailed Description                                                                           |
-| :--: | :------------: | :--------------------------------------------------------------------------------------------- |
-|  1   | User           | **Select pass**: Actively choose the specific pass to use in the Google Wallet app           |
-|  2   | User           | **Execute Smart Tap**: Bring phone close to Smart Tap-enabled contactless card reader       |
-|  3   | Terminal       | **Verify and respond**: System checks if Collector ID matches, decides whether to send pass  |
+| Step | Operating Role | Detailed Description                                                                        |
+| :--: | :------------: | :------------------------------------------------------------------------------------------ |
+|  1   |      User      | **Select pass**: Actively choose the specific pass to use in the Google Wallet app          |
+|  2   |      User      | **Execute Smart Tap**: Bring phone close to Smart Tap-enabled contactless card reader       |
+|  3   |    Terminal    | **Verify and respond**: System checks if Collector ID matches, decides whether to send pass |
 
 **System Behavior Logic**
 
@@ -373,9 +395,9 @@ In this situation, users haven't pre-selected a specific pass, so the system nee
 
 | Step | Operating Role | Detailed Description                                                                         |
 | :--: | :------------: | :------------------------------------------------------------------------------------------- |
-|  1   | User           | **Ready state**: Stay on Google Wallet home screen or in lock screen state                 |
-|  2   | User           | **Execute Smart Tap**: Bring phone close to Smart Tap-enabled contactless card reader     |
-|  3   | Terminal       | **Smart selection**: System adopts different processing strategies based on available passes |
+|  1   |      User      | **Ready state**: Stay on Google Wallet home screen or in lock screen state                   |
+|  2   |      User      | **Execute Smart Tap**: Bring phone close to Smart Tap-enabled contactless card reader        |
+|  3   |    Terminal    | **Smart selection**: System adopts different processing strategies based on available passes |
 
 **System Smart Judgment Mechanism**
 
@@ -485,6 +507,7 @@ The `GOOGLE_APPLICATION_CREDENTIALS` environment variable tells Google SDK where
 
 2. **Actual operation**:
    - Execute the following command in terminal (please modify file path):
+
    ```bash
    export GOOGLE_APPLICATION_CREDENTIALS="/Users/nickhuang/Documents/wallet_serviceaccount_key.json"
    ```
@@ -563,7 +586,7 @@ Now we'll set up the Issuer account, which is the central control center for man
 Before starting, you need to understand a potential order problem:
 
 > **Chicken and egg problem**: Some terminal suppliers might require you to provide Collector ID first before they give you Public Key. But to generate Collector ID, you need to upload Public Key first.
-> 
+>
 > **Solution**: You can first use the demonstration key provided below to generate Collector ID, then replace the demonstration key after the terminal supplier provides the actual public key.
 
 **Demonstration Public Key**
@@ -681,7 +704,7 @@ const httpClient = new GoogleAuth({
 
 /**
  * Get Collector ID from Issuer account
- * 
+ *
  * @param {string} issuerId Your Issuer ID
  * @returns {string} Collector ID
  */
@@ -739,8 +762,9 @@ This stage involves merchant-side setup work, including coordination with termin
 **Information to Prepare**
 
 Before starting merchant setup, please ensure you have prepared the following information:
+
 - Specific merchant's Issuer Account ID
-- Redemption Issuer ID to enable Smart Tap functionality  
+- Redemption Issuer ID to enable Smart Tap functionality
 - Pass classes that have completed Smart Tap setup
 
 ---
@@ -752,15 +776,18 @@ Before starting merchant setup, please ensure you have prepared the following in
 Here's the complete process for merchants to enable Smart Tap functionality:
 
 **Step 1: Coordinate with Terminal Supplier**
+
 - Request public key and key version from contactless card reader supplier
 - If supplier requires you to provide Collector ID first, complete the aforementioned issuer setup steps to generate Collector ID
 
 **Step 2: Provide Collector ID**
+
 - Provide the Collector ID you obtained to the contactless card reader supplier
 - Supplier will use this ID to configure their terminal equipment
 
 **Step 3: Merchant Information Delivery**
 Provide the following key information to merchants:
+
 - **Redemption Issuer ID**: Merchant's unique identifier
 - **Google Pay & Wallet Console Link**: Convenient for merchants to manage and view
 - **Collector ID**: Identifier needed for terminal equipment configuration
@@ -777,6 +804,7 @@ Remind merchants to permanently preserve Redemption Issuer ID and Collector ID. 
 Contactless card reader suppliers are responsible for configuring the following parameters for all merchant terminal equipment:
 
 **Required Configuration Items**
+
 - **Collector ID**: Unique identifier for equipment
 - **Key Version**: Key version number
 - **Private Key**: Private key paired with public key
@@ -784,6 +812,7 @@ Contactless card reader suppliers are responsible for configuring the following 
 **Advantages After Configuration Completion**
 
 After terminal equipment completes Smart Tap configuration, you can:
+
 - Enable any pass class on that merchant's card readers
 - No additional terminal settings needed when adding more pass class support
 - Enjoy flexible pass management system
@@ -805,12 +834,14 @@ Now we enter the core configuration stage of the pass system. This includes crea
 To make pass classes support Smart Tap functionality, you must set two key attributes:
 
 **Required Attribute Settings**
+
 - **`enableSmartTap`**: Set to `true` to enable Smart Tap functionality
 - **`redemptionIssuers`**: Array containing all Redemption Issuer IDs that can redeem this class of passes
 
 **Importance of Settings**
 
 These two settings determine:
+
 1. Whether passes can be used through Smart Tap
 2. Which merchant terminals can accept this class of passes
 
@@ -822,8 +853,8 @@ The following example demonstrates how to create a loyalty card pass class that 
 const { GoogleAuth } = require("google-auth-library");
 
 // 🔧 Set your basic information
-let issuerId = "Your issuer ID";        // Your Issuer ID
-let classSuffix = "Your classSuffix";   // Pass class suffix (custom)
+let issuerId = "Your issuer ID"; // Your Issuer ID
+let classSuffix = "Your classSuffix"; // Pass class suffix (custom)
 const classId = `${issuerId}.${classSuffix}`; // Complete pass class ID
 const keyFilePath = process.env.GOOGLE_APPLICATION_CREDENTIALS || "/path/to/key.json";
 
@@ -844,14 +875,15 @@ let loyaltyClass = {
   id: `${classId}`,
   issuerName: "Climax technology",
   programName: "Climax Loyalty SmartTap 2 Program Test",
-  
+
   // ⭐ Core Smart Tap settings
-  enableSmartTap: true,              // Enable Smart Tap functionality
-  redemptionIssuers: [               // List of merchant IDs that can redeem this pass
-    "Your Redemption issuer ID",    // 🔧 Please replace with actual Redemption Issuer ID
+  enableSmartTap: true, // Enable Smart Tap functionality
+  redemptionIssuers: [
+    // List of merchant IDs that can redeem this pass
+    "Your Redemption issuer ID", // 🔧 Please replace with actual Redemption Issuer ID
   ],
-  
-  reviewStatus: "underReview",       // Review status
+
+  reviewStatus: "underReview", // Review status
   // Loyalty program logo settings
   programLogo: {
     sourceUri: {
@@ -926,7 +958,7 @@ httpClient
     if (err.response && err.response.status === 404) {
       // Pass class doesn't exist, create a new one
       console.log("📝 Creating new pass class...");
-      
+
       httpClient
         .request({
           url: `${baseUrl}/loyaltyClass`,
@@ -961,11 +993,13 @@ httpClient
 For Pass Objects, Smart Tap functionality requires setting one key attribute:
 
 **Required Attribute**
+
 - **`smartTapRedemptionValue`**: The value sent to the terminal when the pass is used through Smart Tap
 
 **Purpose Explanation**
 
 This value can represent:
+
 - Loyalty points balance
 - Coupon value
 - Remaining pass uses
@@ -978,9 +1012,9 @@ const { GoogleAuth } = require("google-auth-library");
 const jwt = require("jsonwebtoken");
 
 // 🔧 Set your basic information
-let issuerId = "Your issuer ID";         // Your Issuer ID
-let classSuffix = "Your classSuffix";    // Use previously created pass class ID
-let objectSuffix = "Your objectSuffix";  // Pass object suffix (usually user ID)
+let issuerId = "Your issuer ID"; // Your Issuer ID
+let classSuffix = "Your classSuffix"; // Use previously created pass class ID
+let objectSuffix = "Your objectSuffix"; // Pass object suffix (usually user ID)
 const objectId = `${issuerId}.${objectSuffix}`; // Complete pass object ID
 const keyFilePath = process.env.GOOGLE_APPLICATION_CREDENTIALS || "/path/to/key.json";
 
@@ -998,11 +1032,11 @@ const httpClient = new GoogleAuth({
 
 // Create loyalty card pass object supporting Smart Tap
 let loyaltyObject = {
-  id: `${objectId}`,                      // Pass object unique ID
-  classId: `${issuerId}.${classSuffix}`,  // Corresponding pass class ID
-  state: "active",                       // Pass status: active
-  accountId: "123",                      // User account ID
-  accountName: "Nick Huang",             // User name
+  id: `${objectId}`, // Pass object unique ID
+  classId: `${issuerId}.${classSuffix}`, // Corresponding pass class ID
+  state: "active", // Pass status: active
+  accountId: "123", // User account ID
+  accountName: "Nick Huang", // User name
   // Text modules: Display loyalty points information
   textModulesData: [
     {
@@ -1014,13 +1048,13 @@ let loyaltyObject = {
   // Geographic location settings (optional)
   locations: [
     {
-      latitude: 37.422,   // Latitude
+      latitude: 37.422, // Latitude
       longitude: -122.084, // Longitude
     },
   ],
-  
+
   // ⭐ Smart Tap core setting: redemption value
-  smartTapRedemptionValue: "500",  // Value sent when using Smart Tap (500 points here)
+  smartTapRedemptionValue: "500", // Value sent when using Smart Tap (500 points here)
   // Info modules: Display additional pass information
   infoModuleData: {
     labelValueRows: [
@@ -1053,7 +1087,7 @@ httpClient
     if (err.response && err.response.status === 404) {
       // Pass object doesn't exist, create a new one
       console.log("📝 Creating new pass object...");
-      
+
       httpClient
         .request({
           url: `${baseUrl}/loyaltyObject`,
@@ -1086,12 +1120,13 @@ httpClient
 function generateAddToWalletLink(objectId) {
   // Create JWT payload
   const payload = {
-    iss: credentials.client_email,  // Service account email
-    aud: "google",                  // Target audience
+    iss: credentials.client_email, // Service account email
+    aud: "google", // Target audience
     origins: ["http://localhost:3000"], // Allowed domains
-    typ: "savetowallet",            // Mark as "save to wallet" type
+    typ: "savetowallet", // Mark as "save to wallet" type
     payload: {
-      loyaltyObjects: [             // Loyalty card object list
+      loyaltyObjects: [
+        // Loyalty card object list
         {
           id: objectId,
         },
@@ -1103,7 +1138,7 @@ function generateAddToWalletLink(objectId) {
   const token = jwt.sign(payload, credentials.private_key, {
     algorithm: "RS256",
   });
-  
+
   // Combine into complete "Add to Google Wallet" link
   const addToWalletLink = `https://pay.google.com/gp/v/save/${token}`;
 
@@ -1172,6 +1207,7 @@ Here are actual screenshots when Smart Tap executes successfully:
 **Indicators of Test Success**
 
 When you see the above screens, it indicates your Smart Tap system is working successfully:
+
 - Phone successfully identifies terminal's Collector ID
 - Pass data is smoothly transmitted to terminal application
 - `smartTapRedemptionValue` is correctly displayed on terminal
@@ -1183,16 +1219,19 @@ When you see the above screens, it indicates your Smart Tap system is working su
 Through this article's detailed introduction, we've completely understood all aspects of Google Wallet Smart Tap technology:
 
 **Technical Architecture Understanding**
+
 - Basic principles of NFC near field communication
 - Smart Tap protocol communication mechanisms
 - Roles and relationships of various ID systems
 
 **Implementation Capability Building**
+
 - Complete system setup process
 - Methods for creating pass classes and objects
 - Specific steps for testing and verification
 
 **Business Application Value**
+
 - Supports various business models (single merchant, multi-merchant alliance, self-development)
 - Provides flexible pass management systems
 - Creates convenient payment experiences for users

@@ -119,11 +119,11 @@ The Abstract Factory Pattern has an important judgment method: **When the produc
 
 Let's look at our beverage series:
 
-| Country / Tea | BlackTea       | GreenTea      | MilkTea                   |
-| ------------- | -------------- | ------------- | ------------------------- |
-| US Flavor     | Ceylon         | Gyokuro       | Thai                      |
-| EU Flavor     | EarlGrey       | Sencha        | Masala Chai               |
-| JP Flavor     | Assam          | Matcha        | Hokkaido                  |
+| Country / Tea | BlackTea | GreenTea | MilkTea     |
+| ------------- | -------- | -------- | ----------- |
+| US Flavor     | Ceylon   | Gyokuro  | Thai        |
+| EU Flavor     | EarlGrey | Sencha   | Masala Chai |
+| JP Flavor     | Assam    | Matcha   | Hokkaido    |
 
 This two-dimensional table clearly shows our requirements: different regions (horizontal axis) need to create different types of beverage families (vertical axis).
 
@@ -340,6 +340,7 @@ Understanding the differences between these two factory patterns helps us choose
 ### Factory Method Pattern
 
 **Applicable Scenarios**: Multiple implementations of single products
+
 - **Product Extensibility**: High - easy to add new product types
 - **Factory Extensibility**: Medium - each additional product requires corresponding factories
 - **Usage Timing**: When you need to create single products but have multiple different implementations
@@ -347,6 +348,7 @@ Understanding the differences between these two factory patterns helps us choose
 ### Abstract Factory Pattern
 
 **Applicable Scenarios**: Multiple implementation combinations of product families
+
 - **Factory Extensibility**: High - easy to add new product families (like new regions)
 - **Product Extensibility**: Low - adding product types requires modifying all concrete factories
 - **Usage Timing**: When you need to create a series of related products, and these product combinations present a two-dimensional relationship
@@ -372,6 +374,7 @@ In this article, we deeply explored how the Abstract Factory Pattern solves the 
 ### Application Timing
 
 Consider using the Abstract Factory Pattern when your system needs to handle the following situations:
+
 - Products have relationships between them, forming product families
 - Product combinations to be created present two-dimensional relationships
 - System needs to switch between different product families at runtime

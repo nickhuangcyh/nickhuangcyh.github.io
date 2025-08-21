@@ -3,7 +3,17 @@ layout: post
 title: "Android 網路封包分析完整教學：使用 tcpdump 與 Wireshark 除錯實戰"
 date: 2022-11-06 23:30:00 +0800
 description: "學會在 Android 裝置上使用 tcpdump 捕獲網路封包的完整流程。詳細解析 root 權限設定、tcpdump 指令使用、Wireshark 分析技巧與常見問題排除。適用於 Android App 開發者。"
-tags: [Android Network Analysis, tcpdump Tool, Packet Capture, Network Debugging, Wireshark Analysis, Mobile Development, Traffic Monitoring, Network Security]
+tags:
+  [
+    Android Network Analysis,
+    tcpdump Tool,
+    Packet Capture,
+    Network Debugging,
+    Wireshark Analysis,
+    Mobile Development,
+    Traffic Monitoring,
+    Network Security,
+  ]
 categories: [Tools]
 toc:
   #   beginning: true
@@ -87,6 +97,7 @@ chmod a+x tcpdump
 ```
 
 **參數說明：**
+
 - `-i any`：監聽所有網路介面
 - `-p`：不將網卡設為混雜模式
 - `-s 0`：抓取完整封包（不截斷）
@@ -117,6 +128,7 @@ adb pull /sdcard/capture.pcap
 封包分析是除錯技術中最有價值的工具之一。無論遇到什麼網路相關問題，封包都能提供最直接的證據。
 
 **常見應用場景包括：**
+
 - 後端 API 串接異常
 - 網路連線不穩定或斷線
 - 第三方函式庫無回應

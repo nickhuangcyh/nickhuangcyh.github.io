@@ -3,7 +3,17 @@ layout: post
 title: "P2P Technology (1) Complete Analysis of IPv4 and NAT Traversal - In-depth Tutorial on Network Architecture and Connection Principles"
 date: 2022-01-03 23:45:03 +0800
 description: "Master the core concepts of P2P network communication and IPv4/NAT architecture limitations. Deep dive into four types of NAT, traversal challenges and solutions. Learn IoT device communication principles through IPCam video streaming examples, laying the foundation for subsequent STUN/TURN/ICE protocols."
-tags: [P2P Technology, IPv4 Network, NAT Traversal, Network Architecture, IoT Communication, Distributed Systems, Network Protocol, Real-time Communication]
+tags:
+  [
+    P2P Technology,
+    IPv4 Network,
+    NAT Traversal,
+    Network Architecture,
+    IoT Communication,
+    Distributed Systems,
+    Network Protocol,
+    Real-time Communication,
+  ]
 categories: [P2P]
 toc:
   #   beginning: true
@@ -95,7 +105,7 @@ In this architecture, each participant is both a user and a provider of the serv
 - Disadvantages: Complex programming, difficult App/Firmware updates, frequent disconnections requiring reconnection
 
 > **Key Question**: Since the server doesn't participate, how do mobile phones and IPCams communicate directly in a distributed architecture?
-> 
+>
 > This is the core of this article — **P2P + NAT Traversal technology**. What we need to solve is: How can two devices located in different network environments establish direct connections by breaking through NAT limitations?
 
 ---
@@ -142,7 +152,7 @@ The following diagrams illustrate the logical flow of NAT traversal step by step
 
 1. **A sends packet** → Creates mapping record on A's NAT router
 2. **A's packet blocked by B's NAT** → B's NAT has no corresponding record, packet is dropped
-3. **B sends packet** → Creates mapping record on B's NAT router  
+3. **B sends packet** → Creates mapping record on B's NAT router
 4. **B's packet passes through A's NAT** → A's NAT already has record, allows packet through
 5. **Bidirectional channel established** → Both NATs have records, subsequent bidirectional P2P communication is possible
 
@@ -161,6 +171,7 @@ This process is called "Hole Punching" because we punch a communication hole in 
 Full Cone NAT is the most permissive NAT type. Once an internal device establishes an outbound connection, any external device that knows the corresponding public IP and port can actively connect in.
 
 **Characteristics:**
+
 - Any external host can communicate with internal devices
 - Most P2P-friendly NAT type
 - Highest traversal success rate
@@ -179,6 +190,7 @@ Full Cone NAT is the most permissive NAT type. Once an internal device establish
 Restricted Cone NAT adds IP address restrictions. Only external IP addresses that the internal device has previously actively connected to can send packets back through the established mapping.
 
 **Characteristics:**
+
 - Only external hosts previously connected by internal hosts can send packets back
 - Higher security than Full Cone
 - P2P traversal is still acceptable, but requires prior outbound traffic to establish mapping
@@ -192,6 +204,7 @@ Restricted Cone NAT adds IP address restrictions. Only external IP addresses tha
 Port Restricted Cone NAT is the strictest cone NAT. In addition to IP address restrictions, it also requires the external device's port to match exactly.
 
 **Characteristics:**
+
 - Similar to Restricted Cone, but further requires exact port matching
 - Highest security, but higher P2P traversal difficulty
 - Requires precise port prediction or coordination mechanisms

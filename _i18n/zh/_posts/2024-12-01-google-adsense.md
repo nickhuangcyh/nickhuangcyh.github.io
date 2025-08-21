@@ -4,7 +4,19 @@ title: "💰 Google AdSense 申請與設定完整教學：讓網站開始獲利"
 date: 2024-12-01 15:00:00 +0800
 description: "如何透過 Google AdSense 爲我們的網站加入廣告賺取收益"
 excerpt: "完整 Google AdSense 申請與設定教學：從網站獲利方案、申請流程、審核準備到廣告代碼部署。深入介紹廣告格式選擇、智能廣告配對、收益最佳化策略。適合部落格主、內容創作者、網站管理員使用。包含實際用法、數據分析、常見問題解答，創造被動收入並支持網站持續營運。"
-tags: [google-adsense, website-monetization, online-advertising, passive-income, blogger-revenue, content-creator, digital-marketing, google-ads, web-development, seo]
+tags:
+  [
+    google-adsense,
+    website-monetization,
+    online-advertising,
+    passive-income,
+    blogger-revenue,
+    content-creator,
+    digital-marketing,
+    google-ads,
+    web-development,
+    seo,
+  ]
 categories: [digital-marketing, monetization, google-services, web-development]
 toc:
   #   beginning: true

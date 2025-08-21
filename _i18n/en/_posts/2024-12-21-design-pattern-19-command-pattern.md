@@ -89,6 +89,7 @@ After object-oriented analysis and recognizing the challenges the system faces, 
 ### Advantages Brought by the Pattern
 
 This pattern allows us to:
+
 - Parameterize clients with different requests
 - Queue operations or log them
 - Support undo and redo operations

@@ -3,7 +3,17 @@ layout: post
 title: "Complete Android Network Packet Analysis Tutorial: Using tcpdump and Wireshark for Debugging"
 date: 2022-11-06 23:30:00 +0800
 description: "Learn the complete process of using tcpdump to capture network packets on Android devices. Detailed analysis of root permission setup, tcpdump command usage, Wireshark analysis techniques, and common troubleshooting. Suitable for Android app developers."
-tags: [Android Network Analysis, tcpdump Tool, Packet Capture, Network Debugging, Wireshark Analysis, Mobile Development, Traffic Monitoring, Network Security]
+tags:
+  [
+    Android Network Analysis,
+    tcpdump Tool,
+    Packet Capture,
+    Network Debugging,
+    Wireshark Analysis,
+    Mobile Development,
+    Traffic Monitoring,
+    Network Security,
+  ]
 categories: [Tools]
 toc:
   #   beginning: true
@@ -87,6 +97,7 @@ This command makes the tcpdump file executable. If you skip this step, the syste
 ```
 
 **Parameter explanations:**
+
 - `-i any`: Monitor all network interfaces
 - `-p`: Don't put network card in promiscuous mode
 - `-s 0`: Capture complete packets (no truncation)
@@ -117,6 +128,7 @@ This command will download the packet file to your current working directory. If
 Packet analysis is one of the most valuable tools in debugging techniques. Regardless of what network-related problems you encounter, packets can provide the most direct evidence.
 
 **Common application scenarios include:**
+
 - Backend API integration anomalies
 - Unstable network connections or disconnections
 - Third-party library non-responsiveness

@@ -3,7 +3,17 @@ layout: post
 title: "設計模式（8）建造者模式 Builder Pattern 完整教學：分步構建複雜物件"
 date: 2024-07-09 23:00:00 +0800
 description: "學會 Builder Pattern 如何解決複雜物件的創建問題。從飲料客製化系統實例深入了解如何設計步驟式構建器，提升物件初始化的可讀性與靈活性。包含 UML 設計、實作範例與最佳實踐。"
-tags: [Builder Pattern, Design Pattern, Creational Pattern, Complex Object Creation, Fluent Interface, Software Architecture, OOP, Step by Step Construction]
+tags:
+  [
+    Builder Pattern,
+    Design Pattern,
+    Creational Pattern,
+    Complex Object Creation,
+    Fluent Interface,
+    Software Architecture,
+    OOP,
+    Step by Step Construction,
+  ]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -24,6 +34,7 @@ thumbnail: /assets/img/design_patterns.jpg
 今天我們要設計一個能夠自動製作手搖飲的智能機器。經過市場調研後發現，如果手搖飲店只賣基本的紅茶、綠茶，肯定無法滿足現代消費者多樣化的需求。
 
 現代顧客追求個人化體驗，他們希望能夠：
+
 - **自由選擇配料**：根據個人喜好添加不同配料
 - **靈活組合**：同一杯飲品可能包含多種配料
 - **個性化口感**：創造屬於自己的獨特口味
@@ -51,6 +62,7 @@ thumbnail: /assets/img/design_patterns.jpg
 這種設計會帶來嚴重問題：假如我們今天只想加入紅豆和布丁，就必須在其他用不到的參數傳入 `false` 或 `null`。
 
 **問題點**：
+
 - **參數冗長**：隨著配料增加，參數列表會變得非常長
 - **可讀性差**：難以理解每個參數的意義
 - **維護困難**：新增配料時所有呼叫處都需要修改
@@ -71,6 +83,7 @@ thumbnail: /assets/img/design_patterns.jpg
 **組合爆炸**：當配料種類越多，所需的建構子數量會呈指數級成長。以5種配料為例，理論上需要 2^5 = 32 個不同的建構子來涵蓋所有組合！
 
 **維護噩夢**：
+
 - 每次新增配料，都需要大幅修改現有程式碼
 - 建構子之間容易混淆，增加使用錯誤的風險
 - 類別會變得極其龐大且難以理解
@@ -82,6 +95,7 @@ thumbnail: /assets/img/design_patterns.jpg
 > **定義**：當一個類別擁有多個建構子，每個建構子的參數數量不同，導致程式碼難以維護和使用的問題。
 
 **典型特徵**：
+
 - 建構子數量隨參數組合呈指數增長
 - 程式碼重複度高
 - 使用者容易選錯建構子
@@ -104,18 +118,23 @@ thumbnail: /assets/img/design_patterns.jpg
 建造者模式主要包含以下五個關鍵角色：
 
 #### 1. Product（產品）
+
 複雜對象的最終成品。它可能包含多個組件或部分，其結構根據不同的建造者實現而變化。Product 通常是一個類，其屬性代表 Builder 構建的不同部分。
 
 #### 2. Builder（抽象建造者）
+
 定義構建複雜對象的抽象介面。它宣告了構建產品各個部分的方法，允許創建不同的具體建造者來生產產品的不同變體。
 
 #### 3. ConcreteBuilder（具體建造者）
+
 實現 Builder 介面，提供構建產品每個部分的具體實現。每個 ConcreteBuilder 都為特定的產品變體量身定制，負責跟踪正在構建的產品狀態。
 
 #### 4. Director（指導者）
+
 負責管理複雜對象的構建過程。它與 Builder 合作，提供高層次的建構流程控制，但不需要知道對象每個部分的具體構建細節。
 
 #### 5. Client（客戶端）
+
 啟動複雜對象構建過程的程式碼。它創建 Builder 對象並將其傳遞給 Director，在構建完成後從 Builder 檢索最終產品。
 
 ### 應用到手搖飲系統
@@ -151,6 +170,7 @@ interface Beverage {
 接著實作具體的飲料產品：
 
 **珍珠奶茶 (BubbleTea)**：
+
 ```kotlin
 data class BubbleTea(override var hasPearls: Boolean,
                      override var hasCoconutJelly: Boolean = false,
@@ -162,6 +182,7 @@ data class BubbleTea(override var hasPearls: Boolean,
 ```
 
 **仙草布丁茶 (GrassJellyPuddingTea)**：
+
 ```kotlin
 data class GrassJellyPuddingTea(override var hasPearls: Boolean = false,
                      override var hasCoconutJelly: Boolean = false,
@@ -189,6 +210,7 @@ interface Builder {
 #### 具體建造者實作
 
 **珍珠奶茶建造者**：
+
 ```kotlin
 class BubbleTeaBuilder: Builder {
     private var bubbleTea = BubbleTea(false)
@@ -213,6 +235,7 @@ class BubbleTeaBuilder: Builder {
 ```
 
 **仙草布丁茶建造者**：
+
 ```kotlin
 class GrassJellyPuddingTeaBuilder: Builder {
     private var grassJellyPuddingTea = GrassJellyPuddingTea(
@@ -308,6 +331,7 @@ fun main() {
 ### 現實世界的範例
 
 **SQL 查詢建構器**：
+
 ```kotlin
 val query = QueryBuilder()
     .select("name", "email")
@@ -318,6 +342,7 @@ val query = QueryBuilder()
 ```
 
 **HTTP 請求建構器**：
+
 ```kotlin
 val request = HttpRequestBuilder()
     .url("https://api.example.com/users")

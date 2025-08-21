@@ -180,6 +180,7 @@ Through implementing the Flyweight Pattern, we successfully achieved the followi
 ## Applicable Scenarios and Considerations
 
 The Flyweight Pattern is particularly suitable for the following application scenarios:
+
 - **Text Editors**: Sharing character objects (text with same characters, fonts, sizes)
 - **Game Development**: Large numbers of similar game objects in scenes (bullets, particle effects, NPCs)
 - **Graphics Rendering**: Repeated graphic elements or materials
@@ -189,6 +190,7 @@ The Flyweight Pattern is particularly suitable for the following application sce
 ## Series Navigation
 
 ### Structural Design Pattern Series
+
 - [Adapter Pattern](/en/blog/2024/design-pattern-11-adapter-pattern/) - Making incompatible interfaces work together
 - [Bridge Pattern](/en/blog/2024/design-pattern-12-bridge-pattern/) - Separating abstraction from implementation, supporting independent evolution
 - [Composite Pattern](/en/blog/2024/design-pattern-13-composite-pattern/) - Uniformly handling individual objects and object combinations
@@ -197,10 +199,12 @@ The Flyweight Pattern is particularly suitable for the following application sce
 - [Proxy Pattern](/en/blog/2024/design-pattern-17-proxy-pattern/) - Controlling resource access through smart proxy objects
 
 ### Behavioral Design Pattern Series
+
 - [Chain of Responsibility Pattern](/en/blog/2024/design-pattern-18-chain-of-responsibility-pattern/) - Building dynamic request handling chains
 - [Command Pattern](/en/blog/2024/design-pattern-19-command-pattern/) - Encapsulating requests as objects to implement undo/redo
 
 ### Creational Design Pattern Basics
+
 - [Singleton Pattern](/en/blog/2024/design-pattern-10-singleton-pattern/) - Ensuring a class has only one instance
 - [Design Principles](/en/blog/2024/design-pattern-2-design-principle/) - Mastering SOLID principles and design foundations
 

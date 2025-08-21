@@ -3,7 +3,8 @@ layout: post
 title: "設計模式（9）原型模式 Prototype Pattern 完整教學：物件複製與效能優化"
 date: 2024-07-21 23:00:00 +0800
 description: "學會 Prototype Pattern 如何透過物件複製解決性能問題。從遊戲角色創建系統實例深入了解淺層與深層複製概念、Cloneable 介面實作與最佳實踐。包含 UML 設計與範例程式碼。"
-tags: [Prototype Pattern, Design Pattern, Creational Pattern, Object Cloning, Performance Optimization, Deep Copy, Shallow Copy, Software Architecture]
+tags:
+  [Prototype Pattern, Design Pattern, Creational Pattern, Object Cloning, Performance Optimization, Deep Copy, Shallow Copy, Software Architecture]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -48,9 +49,11 @@ thumbnail: /assets/img/design_patterns.jpg
 透過初步分析，我們可以發現上述簡單設計存在以下幾個關鍵問題：
 
 ### 複雜度問題
+
 如果 `LightShowData` 的建構子（constructor）變得複雜，需要傳入大量參數，那麼每次複製都需要了解所有內部實作細節。這違反了封裝原則，增加了程式碼的耦合度。
 
 ### 效能問題
+
 假設建構子在創建實體的過程中需要進行複雜的計算或資料處理（如音樂節拍分析、燈光效果運算等），那麼每次重新 new 一個實體都會重複執行這些耗時的操作，嚴重影響程式效能。
 
 這些問題促使我們需要尋找一個更優雅的解決方案。
@@ -60,6 +63,7 @@ thumbnail: /assets/img/design_patterns.jpg
 識別出問題癥結後，我們可以套用 Prototype Pattern 來解決這些挑戰。原型模式的核心思想是「透過複製現有物件來創建新物件」，而不是重新建構。
 
 ### 模式結構
+
 讓我們先來看一下 Prototype Pattern 的標準 UML 結構：
 
 {% include figure.liquid path="assets/img/design_pattern_prototype_pattern_uml_2.png" title="design_pattern_prototype_pattern_uml_2" %}
@@ -69,9 +73,11 @@ thumbnail: /assets/img/design_patterns.jpg
 原型模式主要包含以下兩個關鍵角色：
 
 #### 1. Prototype（原型介面）
+
 這是一個抽象介面或抽象類，定義了複製自身的標準方法（通常是 `clone()` 方法）。這個介面的主要目的是提供一個統一的複製規範，讓用戶端可以在不需要知道具體物件類別的情況下創建物件副本。
 
 #### 2. Concrete Prototype（具體原型）
+
 實現原型介面的具體類別。這個類別必須實現 `clone()` 方法，負責創建自身的精確副本。在實作時，需要確保新創建的物件與原物件在狀態上完全相同，但在記憶體中是完全獨立的兩個實體。
 
 ### 套用到燈光秀應用程式

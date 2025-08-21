@@ -26,6 +26,7 @@ thumbnail: /assets/img/mika-baumeister-m7HWPWVjfJ4-unsplash.jpg
 NFC（Near Field Communication，近場通訊）是一種短距離無線通訊技術。簡單來說，它讓兩個裝置可以在極短距離內（通常是幾厘米）進行資料傳輸。
 
 這項技術的主要特點包括：
+
 - **超近距離通訊**：有效範圍約 4 厘米，確保安全性
 - **低功耗**：不會大量消耗電池
 - **快速連接**：建立連接只需不到一秒
@@ -39,6 +40,7 @@ NFC 技術在日常生活中的應用相當廣泛，包括行動支付、交通�
 Smart Tap 是 Google 基於 NFC 技術開發的專有通訊協議。它的核心功能是讓使用者能夠透過手機，在支援的終端機上進行快速且安全的交易。
 
 這項技術的優勢在於：
+
 - **快速交易**：只需輕觸終端機即可完成操作
 - **安全可靠**：採用加密通訊協議
 - **使用便利**：不需要額外的實體卡片
@@ -60,16 +62,20 @@ Smart Tap 是 Google 基於 NFC 技術開發的專有通訊協議。它的核心
 在實作 Smart Tap 功能之前，我們需要先滿足兩個基本條件。這些條件確保整個系統能夠正常運作：
 
 ### 1. 創建數位票證系統
+
 首先，您需要建立完整的數位票證架構，包括：
+
 - **Pass Class（票證類別）**：定義票證的基本模板和屬性
 - **Pass Objects（票證物件）**：實際發給使用者的個別票證
 
 ### 2. 建立終端設備合作關係
+
 其次，您必須與支援 Smart Tap 技術的終端供應商建立合作關係。
 
 **目前支援的主要供應商包括：**
+
 - Verifone
-- Ingenico  
+- Ingenico
 - Pax
 - HID
 - Equinox
@@ -85,6 +91,7 @@ Smart Tap 是 Google 基於 NFC 技術開發的專有通訊協議。它的核心
 Smart Tap 協議使用多種識別碼來管理不同的實體和權限。在開始建立票證之前，我們必須先理解這些核心概念：
 
 **三個關鍵識別碼：**
+
 - **Redemption Issuer ID**（兌換核發機構 ID）：代表特定商家或兌換方
 - **Collector ID**：終端設備的身份識別碼
 - **Pass Class ID**：票證類別的唯一識別碼
@@ -117,6 +124,7 @@ Redemption Issuer ID 是一種特殊的 Issuer ID，專門用來代表「可以�
 **應用範圍**
 
 Issuer ID 可以代表各種不同的實體：
+
 - 個別商家（如咖啡店、餐廳）
 - 優惠券發行商
 - 大型商場（如 SOGO、新光三越）
@@ -126,10 +134,10 @@ Issuer ID 可以代表各種不同的實體：
 
 當您創建 pass class 和 pass objects 時，它們會與 Redemption Issuer ID 建立關聯。系統採用以下格式：
 
-| ID 類型    | 格式                  | 說明                                                        |
-| --------- | --------------------- | ---------------------------------------------------------- |
-| Class ID  | issuerId.classSuffix  | classSuffix 是開發者為特定票證類別定義的唯一值（如會員等級） |
-| Object ID | issuerId.objectSuffix | objectSuffix 是開發者為特定票證物件定義的唯一值（如使用者 ID）|
+| ID 類型   | 格式                  | 說明                                                           |
+| --------- | --------------------- | -------------------------------------------------------------- |
+| Class ID  | issuerId.classSuffix  | classSuffix 是開發者為特定票證類別定義的唯一值（如會員等級）   |
+| Object ID | issuerId.objectSuffix | objectSuffix 是開發者為特定票證物件定義的唯一值（如使用者 ID） |
 
 ---
 
@@ -140,6 +148,7 @@ Issuer ID 可以代表各種不同的實體：
 Collector ID 是終端設備的身份識別碼，在 Smart Tap 通訊過程中扮演關鍵角色。
 
 **技術規格**
+
 - **格式**：8 位數字的 ID
 - **作用範圍**：每個支援 Smart Tap 的商家終端都有專屬的 Collector ID
 
@@ -152,7 +161,9 @@ Collector ID 是終端設備的身份識別碼，在 Smart Tap 通訊過程中�
 3. **資料交換**：驗證成功後開始安全的資料傳輸
 
 **重要限制**
+
 > **分配規則**：
+>
 > 1. 一個 Issuer ID 只能分配一組 Collector ID
 > 2. Collector ID 在整個系統中必須是唯一的
 
@@ -165,21 +176,25 @@ Collector ID 是終端設備的身份識別碼，在 Smart Tap 通訊過程中�
 Pass Class ID 用來標示特定的票證類型或層級，例如不同等級的會員卡、不同種類的優惠券等。
 
 **ID 格式**
+
 ```
 issuerId.classSuffix
 ```
 
 **組成說明**
+
 - **issuerId**：您的核發機構 ID
 - **classSuffix**：由您自定義的票證類別識別碼
 
 這個 classSuffix 是您為每個票證類別設計的獨特標識符。透過這個 Pass Class，您可以創建多個 Pass Objects，這些物件都會繼承該類別的基本屬性。
 
 **權限管理**
+
 > **所有權規則**：
+>
 > - Pass Class ID 屬於單一 Issuer 帳號
 > - 但可以與多個 Redemption Issuer 建立關聯
-> 
+>
 > 這意味著一個票證類別可以在多個商家使用，增加了系統的靈活性。
 
 ---
@@ -193,7 +208,7 @@ Smart Tap 的通訊機制是整個系統的核心。理解這個流程有助於�
 整個通訊過程可以分為四個階段：
 
 1. **終端識別階段**：終端使用 Collector ID 來識別自己的身份
-2. **ID 對映階段**：Collector ID 會對應到特定的 Redemption Issuer ID  
+2. **ID 對映階段**：Collector ID 會對應到特定的 Redemption Issuer ID
 3. **票證搜尋階段**：當 Smart Tap 觸發時，終端將 Collector ID 發送給使用者設備
 4. **票證傳輸階段**：Google Wallet App 搜尋匹配的票證並回傳給終端
 
@@ -229,16 +244,17 @@ Smart Tap 的通訊機制是整個系統的核心。理解這個流程有助於�
 
 假設 fooPizza 想要在他們的店內啟用 Smart Tap 功能，以下是完整的設定流程：
 
-| 步驟 | 負責角色          | 具體操作內容                                                                                        |
-| :--: | :---------------: | :------------------------------------------------------------------------------------------------- |
-|  1   | Aggregator        | **建立票證架構**：創建票證類別（Class ID: abc）和票證物件（Object ID: 123）                        |
-|  2   | Aggregator        | **設定兌換權限**：在票證類別的 `redemptionIssuers` 屬性中加入 fooPizza 的 Issuer ID (1990)        |
-|  3   | Redemption Issuer | **取得設備識別碼**：向 Google 申請並獲得專屬的 Collector ID（範例中為 12345678）                   |
-|  4   | Redemption Issuer | **配置終端設備**：在店內所有支援 Smart Tap 的刷卡機上設定 Collector ID 12345678                   |
+| 步驟 |     負責角色      | 具體操作內容                                                                               |
+| :--: | :---------------: | :----------------------------------------------------------------------------------------- |
+|  1   |    Aggregator     | **建立票證架構**：創建票證類別（Class ID: abc）和票證物件（Object ID: 123）                |
+|  2   |    Aggregator     | **設定兌換權限**：在票證類別的 `redemptionIssuers` 屬性中加入 fooPizza 的 Issuer ID (1990) |
+|  3   | Redemption Issuer | **取得設備識別碼**：向 Google 申請並獲得專屬的 Collector ID（範例中為 12345678）           |
+|  4   | Redemption Issuer | **配置終端設備**：在店內所有支援 Smart Tap 的刷卡機上設定 Collector ID 12345678            |
 
 **運作結果**
 
 設定完成後，任何同時符合以下條件的票證都會在 fooPizza 的終端上順利運作：
+
 - 票證的 Class ID 為 `abc`
 - 終端的 Collector ID 為 `12345678`
 
@@ -251,6 +267,7 @@ Smart Tap 的通訊機制是整個系統的核心。理解這個流程有助於�
 **應用情境**
 
 這個案例展示了更進階的部署模式：一個票證類別可以在多個不同的商家使用。這種架構特別適用於：
+
 - 購物中心的統一會員卡系統
 - 連鎖品牌的多店面整合
 - 聯盟商家的共用優惠券
@@ -273,16 +290,17 @@ Smart Tap 的通訊機制是整個系統的核心。理解這個流程有助於�
 
 為了讓同一張票證能在兩家不同店面使用，需要完成以下步驟：
 
-| 步驟 | 負責角色          | 具體操作內容                                                                                      |
-| :--: | :---------------: | :----------------------------------------------------------------------------------------------- |
-|  1   | Aggregator        | **建立共用票證**：創建票證類別（Class ID: abc）和票證物件（Object ID: 123）                     |
-|  2   | Aggregator        | **授權多商家**：在 `redemptionIssuers` 屬性中同時加入兩家店的 ID (1990 和 2018)                |
-|  3   | Redemption Issuer | **各自取得 ID**：fooPizza 獲得 Collector ID `12345678`，yumPie 獲得 Collector ID `18802001`   |
-|  4   | Redemption Issuer | **各店配置終端**：每家店在自己的終端設備上配置專屬的 Collector ID                              |
+| 步驟 |     負責角色      | 具體操作內容                                                                                |
+| :--: | :---------------: | :------------------------------------------------------------------------------------------ |
+|  1   |    Aggregator     | **建立共用票證**：創建票證類別（Class ID: abc）和票證物件（Object ID: 123）                 |
+|  2   |    Aggregator     | **授權多商家**：在 `redemptionIssuers` 屬性中同時加入兩家店的 ID (1990 和 2018)             |
+|  3   | Redemption Issuer | **各自取得 ID**：fooPizza 獲得 Collector ID `12345678`，yumPie 獲得 Collector ID `18802001` |
+|  4   | Redemption Issuer | **各店配置終端**：每家店在自己的終端設備上配置專屬的 Collector ID                           |
 
 **系統運作邏輯**
 
 設定完成後，持有 Class ID 為 `abc` 票證的用戶可以在兩家店使用：
+
 - 在 fooPizza：終端 Collector ID `12345678` 會識別並接受該票證
 - 在 yumPie：終端 Collector ID `18802001` 同樣會識別並接受該票證
 
@@ -295,6 +313,7 @@ Smart Tap 的通訊機制是整個系統的核心。理解這個流程有助於�
 **應用情境**
 
 這個案例展示了最簡化的部署模式：商家自己開發和管理票證系統，不需要第三方平台代理。這種模式特別適合：
+
 - 具備技術團隊的大型企業
 - 想要完全掌控票證系統的商家
 - 不需要與其他商家整合的獨立業者
@@ -308,27 +327,30 @@ Smart Tap 的通訊機制是整個系統的核心。理解這個流程有助於�
 **角色整合**
 
 在這個範例中，只有一個主要參與者：
+
 - **Issuer `2018`**：同時扮演票證開發者和 Redemption Issuer 的角色
 
 **實作流程**
 
 由於開發者就是使用者，設定流程變得相對簡單：
 
-| 步驟 | 負責角色       | 具體操作內容                                                                               |
-| :--: | :------------: | :----------------------------------------------------------------------------------------- |
-|  1   | Pass Developer | **建立票證系統**：創建票證類別（Class ID: abc）和票證物件（Object ID: 123）               |
-|  2   | Pass Developer | **自我授權**：在 `redemptionIssuers` 屬性中加入自己的 Issuer ID (2018)                   |
-|  3   | Pass Developer | **申請設備 ID**：向 Google 申請並獲得 Collector ID（範例中為 12345678）                   |
-|  4   | Pass Developer | **配置自家終端**：在自己的所有 Smart Tap 終端設備上配置 Collector ID 12345678             |
+| 步驟 |    負責角色    | 具體操作內容                                                                  |
+| :--: | :------------: | :---------------------------------------------------------------------------- |
+|  1   | Pass Developer | **建立票證系統**：創建票證類別（Class ID: abc）和票證物件（Object ID: 123）   |
+|  2   | Pass Developer | **自我授權**：在 `redemptionIssuers` 屬性中加入自己的 Issuer ID (2018)        |
+|  3   | Pass Developer | **申請設備 ID**：向 Google 申請並獲得 Collector ID（範例中為 12345678）       |
+|  4   | Pass Developer | **配置自家終端**：在自己的所有 Smart Tap 終端設備上配置 Collector ID 12345678 |
 
 **優勢與考量**
 
 這種模式的主要優勢：
+
 - **簡化管理**：不需要與其他角色協調
 - **完全控制**：對票證系統有絕對的掌控權
 - **快速部署**：減少溝通成本，加快上線速度
 
 需要考慮的因素：
+
 - **技術門檻**：需要具備完整的開發和維護能力
 - **擴展性**：如果未來想與其他商家合作，需要重新架構系統
 
@@ -348,11 +370,11 @@ Smart Tap 的使用體驗會根據使用者當下與 Google Wallet 應用程式�
 
 這是最直接的使用方式，使用者明確知道要使用哪張票證：
 
-| 步驟 | 操作角色 | 詳細說明                                                                                   |
-| :--: | :------: | :---------------------------------------------------------------------------------------- |
-|  1   |   使用者 | **選擇票證**：在 Google Wallet 應用程式中主動選取要使用的特定票證                        |
-|  2   |   使用者 | **執行 Smart Tap**：將手機靠近支援 Smart Tap 的感應式讀卡機                             |
-|  3   |   終端   | **驗證與回應**：系統檢查 Collector ID 是否匹配，決定是否傳送票證                         |
+| 步驟 | 操作角色 | 詳細說明                                                          |
+| :--: | :------: | :---------------------------------------------------------------- |
+|  1   |  使用者  | **選擇票證**：在 Google Wallet 應用程式中主動選取要使用的特定票證 |
+|  2   |  使用者  | **執行 Smart Tap**：將手機靠近支援 Smart Tap 的感應式讀卡機       |
+|  3   |   終端   | **驗證與回應**：系統檢查 Collector ID 是否匹配，決定是否傳送票證  |
 
 **系統行為邏輯**
 
@@ -371,11 +393,11 @@ Smart Tap 的使用體驗會根據使用者當下與 Google Wallet 應用程式�
 
 這種情況下，使用者沒有預先選擇特定票證，系統需要智慧判斷：
 
-| 步驟 | 操作角色 | 詳細說明                                                                                 |
-| :--: | :------: | :-------------------------------------------------------------------------------------- |
-|  1   |   使用者 | **準備狀態**：停留在 Google Wallet 首頁，或在鎖定畫面狀態                             |
-|  2   |   使用者 | **執行 Smart Tap**：將手機靠近支援 Smart Tap 的感應式讀卡機                           |
-|  3   |   終端   | **智慧選擇**：系統根據可用票證數量，採用不同的處理策略                                |
+| 步驟 | 操作角色 | 詳細說明                                                    |
+| :--: | :------: | :---------------------------------------------------------- |
+|  1   |  使用者  | **準備狀態**：停留在 Google Wallet 首頁，或在鎖定畫面狀態   |
+|  2   |  使用者  | **執行 Smart Tap**：將手機靠近支援 Smart Tap 的感應式讀卡機 |
+|  3   |   終端   | **智慧選擇**：系統根據可用票證數量，採用不同的處理策略      |
 
 **系統智慧判斷機制**
 
@@ -485,6 +507,7 @@ Google Wallet API 是整個 Smart Tap 系統的基礎。沒有啟用這個 API�
 
 2. **實際操作**：
    - 在終端機執行以下指令（請修改檔案路徑）：
+
    ```bash
    export GOOGLE_APPLICATION_CREDENTIALS="/Users/nickhuang/Documents/wallet_serviceaccount_key.json"
    ```
@@ -563,7 +586,7 @@ Google Wallet API 是整個 Smart Tap 系統的基礎。沒有啟用這個 API�
 在開始之前，您需要了解一個可能的順序問題：
 
 > **先有雞還是先有蛋的問題**：有些終端供應商可能要求您先提供 Collector ID，他們才會給您 Public Key。但是要產生 Collector ID，您又需要先上傳 Public Key。
-> 
+>
 > **解決方案**：您可以先使用下方提供的示範金鑰來產生 Collector ID，等終端供應商提供實際的公開金鑰後，再替換掉示範金鑰。
 
 **示範公開金鑰**
@@ -681,7 +704,7 @@ const httpClient = new GoogleAuth({
 
 /**
  * 從 Issuer 帳戶取得 Collector ID
- * 
+ *
  * @param {string} issuerId 您的 Issuer ID
  * @returns {string} Collector ID
  */
@@ -739,8 +762,9 @@ node get_collector_id.js
 **需要準備的資訊**
 
 在開始商家設定之前，請確保您已經準備好以下資訊：
+
 - 特定商家的 Issuer Account ID
-- 要啟用 Smart Tap 功能的 Redemption Issuer ID  
+- 要啟用 Smart Tap 功能的 Redemption Issuer ID
 - 已完成 Smart Tap 設定的票證類別
 
 ---
@@ -752,15 +776,18 @@ node get_collector_id.js
 以下是商家啟用 Smart Tap 功能的完整流程：
 
 **步驟 1：與終端供應商協調**
+
 - 向感應式刷卡機供應商索取公開金鑰和金鑰版本
 - 如果供應商要求您先提供 Collector ID，請完成前述的核發者設定步驟來產生 Collector ID
 
 **步驟 2：提供 Collector ID**
+
 - 將您取得的 Collector ID 提供給感應式刷卡機供應商
 - 供應商會使用這個 ID 來配置他們的終端設備
 
 **步驟 3：商家資訊交付**
 將以下關鍵資訊提供給商家：
+
 - **Redemption Issuer ID**：商家的唯一識別碼
 - **Google Pay & Wallet Console 連結**：方便商家管理和查看
 - **Collector ID**：終端設備需要配置的識別碼
@@ -777,6 +804,7 @@ node get_collector_id.js
 感應式刷卡機供應商負責為商家的所有終端設備配置以下參數：
 
 **必要設定項目**
+
 - **Collector ID**：設備的唯一識別碼
 - **Key Version**：金鑰版本號
 - **Private Key**：與公開金鑰配對的私密金鑰
@@ -784,6 +812,7 @@ node get_collector_id.js
 **配置完成後的優勢**
 
 終端設備完成 Smart Tap 配置後，您就可以：
+
 - 在該商家的刷卡機上啟用任何票證類別
 - 新增更多票證類別支援時，無需額外的終端設定
 - 享受彈性的票證管理系統
@@ -805,12 +834,14 @@ node get_collector_id.js
 要讓票證類別支援 Smart Tap 功能，您必須設定兩個關鍵屬性：
 
 **必要屬性設定**
+
 - **`enableSmartTap`**：設為 `true`，啟用 Smart Tap 功能
 - **`redemptionIssuers`**：陣列，包含所有可以兌換此類別票證的 Redemption Issuer ID
 
 **設定的重要性**
 
 這兩個設定決定了：
+
 1. 票證是否能透過 Smart Tap 使用
 2. 哪些商家終端可以接受此類票證
 
@@ -822,8 +853,8 @@ node get_collector_id.js
 const { GoogleAuth } = require("google-auth-library");
 
 // 🔧 設定您的基本資訊
-let issuerId = "Your issuer ID";        // 您的 Issuer ID
-let classSuffix = "Your classSuffix";   // 票證類別後綴（自定義）
+let issuerId = "Your issuer ID"; // 您的 Issuer ID
+let classSuffix = "Your classSuffix"; // 票證類別後綴（自定義）
 const classId = `${issuerId}.${classSuffix}`; // 完整的票證類別 ID
 const keyFilePath = process.env.GOOGLE_APPLICATION_CREDENTIALS || "/path/to/key.json";
 
@@ -844,14 +875,15 @@ let loyaltyClass = {
   id: `${classId}`,
   issuerName: "Climax technology",
   programName: "Climax Loyalty SmartTap 2 Program Test",
-  
+
   // ⭐ Smart Tap 的核心設定
-  enableSmartTap: true,              // 啟用 Smart Tap 功能
-  redemptionIssuers: [               // 可兌換此票證的商家 ID 列表
-    "Your Redemption issuer ID",    // 🔧 請替換為實際的 Redemption Issuer ID
+  enableSmartTap: true, // 啟用 Smart Tap 功能
+  redemptionIssuers: [
+    // 可兌換此票證的商家 ID 列表
+    "Your Redemption issuer ID", // 🔧 請替換為實際的 Redemption Issuer ID
   ],
-  
-  reviewStatus: "underReview",       // 審核狀態
+
+  reviewStatus: "underReview", // 審核狀態
   // 會員計畫標誌設定
   programLogo: {
     sourceUri: {
@@ -926,7 +958,7 @@ httpClient
     if (err.response && err.response.status === 404) {
       // 票證類別不存在，現在建立一個新的
       console.log("📝 正在建立新的票證類別...");
-      
+
       httpClient
         .request({
           url: `${baseUrl}/loyaltyClass`,
@@ -961,11 +993,13 @@ httpClient
 對於票證物件（Pass Object），Smart Tap 功能需要設定一個關鍵屬性：
 
 **必要屬性**
+
 - **`smartTapRedemptionValue`**：當票證透過 Smart Tap 使用時傳送給終端的數值
 
 **用途說明**
 
 這個數值可以代表：
+
 - 會員點數餘額
 - 優惠券面額
 - 票證剩餘次數
@@ -978,9 +1012,9 @@ const { GoogleAuth } = require("google-auth-library");
 const jwt = require("jsonwebtoken");
 
 // 🔧 設定您的基本資訊
-let issuerId = "Your issuer ID";         // 您的 Issuer ID
-let classSuffix = "Your classSuffix";    // 使用之前建立的票證類別 ID
-let objectSuffix = "Your objectSuffix";  // 票證物件後綴（通常是用戶 ID）
+let issuerId = "Your issuer ID"; // 您的 Issuer ID
+let classSuffix = "Your classSuffix"; // 使用之前建立的票證類別 ID
+let objectSuffix = "Your objectSuffix"; // 票證物件後綴（通常是用戶 ID）
 const objectId = `${issuerId}.${objectSuffix}`; // 完整的票證物件 ID
 const keyFilePath = process.env.GOOGLE_APPLICATION_CREDENTIALS || "/path/to/key.json";
 
@@ -998,11 +1032,11 @@ const httpClient = new GoogleAuth({
 
 // 建立支援 Smart Tap 的會員卡票證物件
 let loyaltyObject = {
-  id: `${objectId}`,                      // 票證物件的唯一 ID
-  classId: `${issuerId}.${classSuffix}`,  // 對應的票證類別 ID
-  state: "active",                       // 票證狀態：活躍
-  accountId: "123",                      // 用戶帳號 ID
-  accountName: "Nick Huang",             // 用戶姓名
+  id: `${objectId}`, // 票證物件的唯一 ID
+  classId: `${issuerId}.${classSuffix}`, // 對應的票證類別 ID
+  state: "active", // 票證狀態：活躍
+  accountId: "123", // 用戶帳號 ID
+  accountName: "Nick Huang", // 用戶姓名
   // 文字模組：顯示會員點數資訊
   textModulesData: [
     {
@@ -1014,13 +1048,13 @@ let loyaltyObject = {
   // 地理位置設定（可選）
   locations: [
     {
-      latitude: 37.422,   // 緯度
+      latitude: 37.422, // 緯度
       longitude: -122.084, // 經度
     },
   ],
-  
+
   // ⭐ Smart Tap 的核心設定：兑換數值
-  smartTapRedemptionValue: "500",  // 當使用 Smart Tap 時傳送的數值（這裡是 500 點）
+  smartTapRedemptionValue: "500", // 當使用 Smart Tap 時傳送的數值（這裡是 500 點）
   // 資訊模組：顯示額外的票證資訊
   infoModuleData: {
     labelValueRows: [
@@ -1053,7 +1087,7 @@ httpClient
     if (err.response && err.response.status === 404) {
       // 票證物件不存在，現在建立一個新的
       console.log("📝 正在建立新的票證物件...");
-      
+
       httpClient
         .request({
           url: `${baseUrl}/loyaltyObject`,
@@ -1086,12 +1120,13 @@ httpClient
 function generateAddToWalletLink(objectId) {
   // 建立 JWT 負載
   const payload = {
-    iss: credentials.client_email,  // 服務帳號電子郵件
-    aud: "google",                  // 目標受眾
+    iss: credentials.client_email, // 服務帳號電子郵件
+    aud: "google", // 目標受眾
     origins: ["http://localhost:3000"], // 允許的域名
-    typ: "savetowallet",            // 標記為「保存到錢包」類型
+    typ: "savetowallet", // 標記為「保存到錢包」類型
     payload: {
-      loyaltyObjects: [             // 會員卡物件列表
+      loyaltyObjects: [
+        // 會員卡物件列表
         {
           id: objectId,
         },
@@ -1103,7 +1138,7 @@ function generateAddToWalletLink(objectId) {
   const token = jwt.sign(payload, credentials.private_key, {
     algorithm: "RS256",
   });
-  
+
   // 組合成完整的「加入 Google Wallet」連結
   const addToWalletLink = `https://pay.google.com/gp/v/save/${token}`;
 
@@ -1172,6 +1207,7 @@ https://pay.google.com/gp/v/save/{JWT}
 **測試成功的指標**
 
 當看到上述畫面時，表示您的 Smart Tap 系統已成功運作：
+
 - 手機成功識別終端的 Collector ID
 - 票證資料順利傳輸到終端應用程式
 - `smartTapRedemptionValue` 正確顯示在終端上
@@ -1183,16 +1219,19 @@ https://pay.google.com/gp/v/save/{JWT}
 通過本文的詳細介紹，我們完整了解了 Google Wallet Smart Tap 技術的各個面向：
 
 **技術架構理解**
+
 - NFC 近場通訊的基本原理
 - Smart Tap 協議的通訊機制
 - 各種 ID 系統的角色和關係
 
 **實作能力建立**
+
 - 完整的系統設定流程
 - 票證類別和物件的建立方法
 - 測試和驗證的具體步驟
 
 **商業應用價值**
+
 - 支援多種商業模式（單商家、多商家聯盟、自主開發）
 - 提供彈性的票證管理系統
 - 為使用者創造便利的支付體驗

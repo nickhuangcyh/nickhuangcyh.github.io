@@ -3,7 +3,8 @@ layout: post
 title: "Complete GitHub Container Registry Guide: Container Image Management and CI/CD Deployment Tutorial"
 date: 2024-07-23 18:00:00 +0800
 description: "Learn how to use GitHub Container Registry to manage Docker images and build CI/CD pipelines. Deep dive into containerized deployment, version management, authentication, and best practices through Jenkins Master-Slave architecture examples. Suitable for DevOps engineers."
-tags: [GitHub Container Registry, Docker Registry, Container Management, CI/CD Pipeline, DevOps, Jenkins Master-Slave, GitHub Actions, Image Versioning]
+tags:
+  [GitHub Container Registry, Docker Registry, Container Management, CI/CD Pipeline, DevOps, Jenkins Master-Slave, GitHub Actions, Image Versioning]
 categories: [DevOps]
 toc:
   #   beginning: true
@@ -198,6 +199,7 @@ Follow these steps to generate a token on GitHub:
 > Open GitHub → Top right Profile → Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token
 
 In the permissions settings, please check the following three package-related permissions:
+
 - `write:packages` - Upload package permission
 - `read:packages` - Read package permission
 - `delete:packages` - Delete package permission
@@ -243,6 +245,7 @@ After the push is complete, you can see the container image you just uploaded on
 Compared to manual upload, GitHub Actions provides a more elegant automated solution. It automatically builds and pushes container images whenever there are code changes, significantly improving development efficiency.
 
 Advantages of GitHub Actions include:
+
 - **Automatic Triggering**: Executes automatically when code is pushed
 - **No Local Environment Needed**: Runs in GitHub's cloud environment
 - **Built-in Permission Management**: No need to manually set access tokens
@@ -335,6 +338,7 @@ git push -u origin release
 ```
 
 When you push to the `release` branch, GitHub Actions will automatically execute the following process:
+
 1. Check out code
 2. Build Docker image
 3. Push to GitHub Container Registry

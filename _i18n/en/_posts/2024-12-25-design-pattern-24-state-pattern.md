@@ -22,6 +22,7 @@ Our task is to design a smart **water dispenser system**. This system needs to s
 ### Core Functional Requirements
 
 The water dispenser needs to support three operating states:
+
 - **Heating**: Raising water temperature to hot water temperature
 - **Cooling**: Lowering water temperature to cold water temperature
 - **Standby**: Maintaining current water temperature, energy-saving mode
@@ -82,15 +83,15 @@ State Pattern has similar structure to [Strategy Pattern]({% post_url 2024-12-26
 
 State Pattern contains three important participants, each with clear responsibility division:
 
-#### 1. **State (State Interface)**  
+#### 1. **State (State Interface)**
 
 This is an abstract interface defining behavioral methods that all concrete states must implement. It provides a unified operation interface for different states.
 
-#### 2. **ConcreteState (Concrete State)**  
+#### 2. **ConcreteState (Concrete State)**
 
 Each concrete state class implements the State interface. Each state class focuses on handling specific behavioral logic for that state, with single and clear responsibilities.
 
-#### 3. **Context**  
+#### 3. **Context**
 
 The context class is responsible for maintaining the current state object and providing external operation interfaces. When external requests operations, the context delegates requests to the current state object for processing.
 
@@ -172,6 +173,7 @@ class WaterDispenser {
 ```
 
 Note the design key points here:
+
 - Water dispenser initial state is set to standby mode, which matches actual usage scenarios
 - `setState()` method allows external state switching and provides visual state switching prompts
 - `pressButton()` method delegates actual processing logic to current state object
@@ -232,6 +234,7 @@ The water dispenser class now only needs to focus on state switching and managem
 #### 2. **Fully Complies with Object-Oriented Design Principles**
 
 Our design perfectly follows two important design principles:
+
 - **Single Responsibility Principle (SRP)**: Each state class focuses only on its own behavioral logic with single and clear responsibilities
 - **Open-Closed Principle (OCP)**: When adding new states, we only need to create new state classes without modifying any existing code
 
@@ -244,14 +247,17 @@ When adding or modifying state behavior, these changes are completely confined t
 State Pattern is particularly suitable for handling systems with complex state transition logic. Here are some typical application scenarios:
 
 #### Financial Systems
+
 - **ATM Machines**: Different states like card insertion, password verification, operation selection, card ejection
 - **Credit Card Systems**: State management for normal, frozen, overdue, cancelled states
 
 #### Office Software
+
 - **Document Editors**: Edit mode, view mode, print preview mode
 - **Multimedia Players**: Play, pause, stop, fast forward states
 
 #### Game Development
+
 - **Character States**: Different behavioral states like moving, attacking, defending, injured
 - **Game Levels**: State transitions for start, in progress, paused, ended
 

@@ -28,6 +28,7 @@ This requirement scenario demonstrates typical application characteristics of **
 After understanding the requirements, we perform object-oriented analysis. In this scenario, we need to identify key elements in the system.
 
 From requirement analysis, we have the following important elements:
+
 - File system structure (tree data structure)
 - Multiple traversal algorithms (BFS, DFS, etc.)
 - Unified access interface

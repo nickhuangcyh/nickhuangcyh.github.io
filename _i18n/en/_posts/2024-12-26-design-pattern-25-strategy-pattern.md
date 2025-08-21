@@ -80,16 +80,16 @@ First, let's understand the standard structure of Strategy Pattern:
 
 Strategy Pattern consists of three key components, each with clear responsibilities:
 
-1. **Strategy (Strategy Interface)**  
+1. **Strategy (Strategy Interface)**
    - Defines common behavioral specifications that all concrete strategies must implement
    - Ensures different strategies have the same interface for unified client invocation
 
-2. **ConcreteStrategy (Concrete Strategy)**  
+2. **ConcreteStrategy (Concrete Strategy)**
    - Implements behaviors defined in the strategy interface
    - Each concrete strategy encapsulates specific algorithm logic
    - Strategies are independent of each other and don't affect one another
 
-3. **Context**  
+3. **Context**
    - Maintains reference to current strategy object
    - Provides strategy switching mechanisms
    - Delegates client requests to current strategy for execution

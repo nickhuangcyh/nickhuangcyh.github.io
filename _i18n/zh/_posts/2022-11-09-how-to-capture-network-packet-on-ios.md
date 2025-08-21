@@ -26,11 +26,13 @@ thumbnail: /assets/img/jordan-harrison-40XgDxBfYXM-unsplash.jpg
 在開始之前，請確保你已經準備好以下必要工具：
 
 **硬體需求：**
+
 1. 一台 iOS 裝置（iPhone 或 iPad）
 2. 一條 USB 連接線
 3. 一台 Mac 電腦
 
 **軟體需求：**
+
 1. `rvictl` 工具（Remote Virtual Interface，通常安裝 Xcode 後會自動包含）
 2. [Wireshark](https://www.wireshark.org/download.html) 封包分析工具
 
@@ -65,14 +67,17 @@ lo0 gif0 stf0 anpi1 anpi0 anpi2 en4 en5 en6 en1 en2 en3 ap1 en0 awdl0 bridge0 ut
 按照以下步驟來取得你的 iOS 裝置 UUID：
 
 **第一步：連接裝置**
+
 1. 使用 USB 連接線將你的 iPhone 或 iPad 連接到 Mac
 2. 確保裝置已解鎖並信任這台電腦
 
 **第二步：開啟 Xcode**
+
 1. 啟動 Xcode 應用程式
 2. 在選單列選擇 **Window** ➜ **Devices and Simulators**
 
 **第三步：查看 UUID**
+
 1. 在左側裝置清單中找到你的 iOS 裝置
 2. 點選裝置名稱，右側會顯示詳細資訊
 3. 複製 **Identifier** 欄位中的 UUID，如下圖所示
@@ -107,11 +112,13 @@ Starting device 00xxxxxx-xxxxxxxxxxxxxx1E [FAILED]
 這通常表示系統服務 `com.apple.rpmuxd` 尚未啟動。請按照以下步驟進行排解：
 
 **第一步：檢查服務狀態**
+
 ```bash
 sudo launchctl list com.apple.rpmuxd
 ```
 
 **第二步：如果服務未啟動，請執行：**
+
 ```bash
 sudo launchctl load -w /Library/Apple/System/Library/LaunchDaemons/com.apple.rpmuxd.plist
 ```
@@ -156,6 +163,7 @@ lo0 gif0 stf0 ... en10 rvi0
 {% include figure.liquid path="assets/img/wireshark_test_2.png" title="iOS 封包抓取畫面" %}
 
 **實用技巧：**
+
 - 使用 Wireshark 的篩選功能來專注於特定類型的流量
 - 可以根據 IP 位址、通訊埠、通訊協定等進行篩選
 - 對於 HTTPS 流量，雖然內容已加密，但你仍可以看到連線的目標位址和時間資訊
@@ -193,11 +201,13 @@ ifconfig -l
 ### iOS vs Android 封包擷取比較
 
 **iOS 的優勢：**
+
 - 無需 root 或越獄裝置
 - 使用官方提供的 `rvictl` 工具，安全可靠
 - 設定過程簡潔，只需要幾個步驟即可完成
 
 **Android 的挑戰：**
+
 - 通常需要 root 權限才能進行深度的封包分析
 - 設定過程相對複雜，需要更多的技術背景
 

@@ -40,21 +40,25 @@ From a system architecture perspective, we need to address two key issues:
 In direct implementation without design patterns, we encounter the following four core challenges:
 
 ### 1. Mesh Coupling Problem (Mesh Coupling)
+
 Users communicate directly with each other, forming complex mesh relationships. When adding a new user, all other users' code needs to be updated to recognize this new member.
 
 Similarly, when users leave, multiple reference relationships need to be cleaned up. This design makes system maintenance extremely difficult, where any small change can affect multiple components.
 
 ### 2. Difficulty in Feature Extension (Hard to Extend)
+
 When advanced features need to be added (such as message filtering, private chat, group management, message history, etc.), multiple users' logic must be modified simultaneously. This approach violates the Open-Closed Principle and significantly increases the risk of introducing bugs.
 
 Each feature extension becomes a "pulling one hair affects the whole body" challenge, with low development efficiency and prone to errors.
 
 ### 3. Combinatorial Explosion Problem (Combinatorial Explosion)
+
 As the number of users increases, the number of possible connections between users grows exponentially (n(n-1)/2). With 10 users, 45 connections need to be managed; with 100 users, 4950 connections are required.
 
 This mathematical combinatorial explosion makes systems difficult to manage and maintain when scaling.
 
 ### 4. Responsibility Confusion (Responsibility Confusion)
+
 Each user must bear communication management responsibilities, but this has no direct relationship with their main function (sending and receiving messages).
 
 This responsibility confusion makes code difficult to understand and maintain, violating the Single Responsibility Principle design spirit.
@@ -82,21 +86,25 @@ In traditional design, each user needs to understand the existence and state of 
 Mediator Pattern systematically solves interaction complexity problems through the following four core roles:
 
 #### 1. Mediator (Mediator Interface)
+
 Defines standard protocols for mediators, clearly specifying how to coordinate interactions between participants. In chat room scenarios, this interface covers core functions like message transmission and user management.
 
 Through interface design, we ensure system extensibility and testability.
 
 #### 2. ConcreteMediator (Concrete Mediator)
+
 Implements specific coordination logic, bearing the heavy responsibility of managing message exchange between all participants. It's the only role that knows about the existence of all participants, responsible for coordinating all their interactions.
 
 This role centralizes system control logic, making behavior more predictable and maintainable.
 
 #### 3. Colleague (Colleague Class)
+
 Defines basic behavioral norms for participants and standard interaction methods with the mediator. This abstract layer ensures all participants follow unified protocols.
 
 Importantly, all participants can only interact through the mediator, not allowing direct communication with other participants.
 
 #### 4. ConcreteColleague (Concrete Colleague Class)
+
 Implements actual behaviors of specific participants. In our chat room example, these are different user entities.
 
 Each concrete participant completely depends on the mediator to send and receive messages, ensuring system consistency and controllability.

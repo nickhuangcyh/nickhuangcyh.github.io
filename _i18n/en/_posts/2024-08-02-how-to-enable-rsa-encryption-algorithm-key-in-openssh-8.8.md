@@ -147,6 +147,7 @@ Host x.x.x.x
 ```
 
 The meaning of this configuration is:
+
 - `HostkeyAlgorithms +ssh-rsa`: Allow using RSA algorithm for host authentication
 - `PubkeyAcceptedAlgorithms +ssh-rsa`: Allow using RSA algorithm for public key authentication
 - The `+` symbol means **adding** this option to the existing algorithm list, rather than completely replacing it

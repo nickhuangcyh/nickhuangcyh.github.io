@@ -20,16 +20,19 @@ After learning the [Adapter Pattern](/en/blog/2024/design-pattern-11-adapter-pat
 We need to develop a flexible POS system for a boutique **coffee shop**. The challenge of this system lies in handling various combinations of coffee and add-ons.
 
 ### Core Requirements:
+
 - **Base Coffee Types**: The system supports multiple base coffees (Espresso, House Blend, etc.)
 - **Add-on Options**: Each coffee can have multiple add-ons (milk, chocolate syrup, whipped cream, etc.)
 - **Unlimited Combinations**: Customers can combine different add-ons without restrictions
 
 ### Technical Requirements:
+
 - **Dynamic Composition**: The system must support dynamically combining different add-ons at runtime
 - **Price Calculation**: Accurately calculate total prices for all combinations
 - **Order Description**: Provide clear order content descriptions
 
 ### Design Challenges:
+
 - **Combinatorial Explosion**: If we create a class for every combination, the number of classes will grow exponentially
 - **Extensibility**: It should be easy to add new base coffees or add-ons in the future
 - **Flexibility**: Customers should be able to freely combine without restrictions
@@ -45,41 +48,53 @@ Before diving into the design, let's first conduct object-oriented analysis to i
 When dealing with **dynamic composition** requirements like the coffee ordering system, without using appropriate design patterns, we face the following serious challenges:
 
 ### 1. Combinatorial Explosion Crisis
+
 **Problem Scale**:
+
 - 2 base coffees × 3 add-ons = at least 8 classes needed (no add-ons + single add-ons + double add-ons + triple add-ons)
 - If expanded to 5 base coffees and 5 add-ons, combinations can reach 2^5 × 5 = 160 types
 
 **Concrete Impact**:
+
 - Number of classes grows exponentially, making the codebase difficult to manage
 - Each new add-on requires creating new classes for all existing combinations
 
 ### 2. Static Structure Limitations
+
 **Problem Description**:
+
 - All possible combinations must be determined at compile time
 - Cannot dynamically add or remove add-ons at runtime
 - Cannot support special requirements like "double whipped cream" or "triple chocolate syrup"
 
 **Concrete Impact**:
+
 - Customer personalization needs are difficult to satisfy
 - System's business value is limited
 
 ### 3. High Coupling & Low Reusability
+
 **Problem Description**:
+
 - Various combination classes lack common abstraction
 - Same add-on logic is repeatedly implemented in different combinations
 - When modifying an add-on's price, updates are needed in multiple places
 
 **Concrete Impact**:
+
 - High maintenance cost and error-prone
 - Slow new feature development
 
 ### 4. Poor Extensibility
+
 **Problem Description**:
+
 - When adding new base coffee types, corresponding classes need to be created for each add-on combination
 - When adding new add-on types, corresponding classes need to be created for each existing combination
 - Any addition in later system development may become a massive project
 
 **Concrete Impact**:
+
 - Slow product iteration, declining competitiveness
 - Development team productivity severely affected
 
@@ -98,6 +113,7 @@ The essence of the Decorator Pattern lies in **"dynamically extending object fun
 ### Real-Life Analogy
 
 Imagine decorating a Christmas tree:
+
 1. **Base Tree**: This is our base coffee (Espresso)
 2. **Add Lights**: First layer of decoration (adding milk)
 3. **Add Ribbons**: Second layer of decoration (adding chocolate syrup)
@@ -114,21 +130,25 @@ Let's first understand the standard structure of the Decorator Pattern:
 ### Four Core Roles of Decorator Pattern:
 
 **1. Component (Component Interface)**
+
 - Defines common interface for basic components and decorators
 - Ensures decorators and decorated objects can be interchangeable
 - In our example, this is the `Beverage` interface
 
 **2. ConcreteComponent (Concrete Component)**
+
 - Concrete classes that implement basic functionality
 - This is the starting point of the decoration chain, providing the most basic functionality
 - In our example: `Espresso` and `HouseBlend`
 
 **3. Decorator (Decorator Base Class)**
+
 - Maintains reference to Component, implements common logic for decoration behavior
 - Provides unified basic structure for all concrete decorators
 - In our example: `CondimentDecorator`
 
 **4. ConcreteDecorator (Concrete Decorator)**
+
 - Implements specific decoration functionality, adding new behavior or state
 - Can add additional logic before or after calling the decorated object
 - In our example: `Milk`, `ChocolateSyrup`, `WhippedCream`
@@ -248,6 +268,7 @@ House Blend, Milk, Whipped Cream, Whipped Cream: $2.49
 ```
 
 This result perfectly demonstrates the power of the Decorator Pattern:
+
 - **First line**: Pure base Espresso
 - **Second line**: Rich Espresso with multiple layers of decoration
 - **Third line**: Even the same add-ons can be added repeatedly
@@ -259,34 +280,42 @@ By applying the **Decorator Pattern**, we successfully solved all challenges of 
 ### Core Benefits Achieved:
 
 **1. Incremental Feature Extension**
+
 - Each decorator focuses only on its specific functionality with single, clear responsibility
 - Adds new functionality through wrapping without modifying the original object
 - Complies with the Open-Closed Principle
 
 **2. Complete Solution to Combinatorial Explosion**
+
 - Number of classes reduced from O(m^n) to O(m+n)
 - 2 base coffees + 3 add-ons = only 5 classes needed
 - Adding add-ons or base coffees only requires adding one class each
 
 **3. Unlimited Flexibility**
+
 - Supports arbitrary order and number of combinations
 - Can dynamically combine different add-ons at runtime
 - Supports nested combinations, meeting personalization needs
 
 **4. Elegant Code Structure**
+
 - High decoupling between decorators, can be developed and tested independently
 - Same code structure makes it easy for newcomers to get started
 - High readability and maintainability
 
 ### Practical Application Scenarios:
+
 Decorator Pattern is particularly useful in:
+
 - **Beverage Ordering Systems**: Like Starbucks, Noble Family add-on configurations
 - **GUI Components**: Adding borders, scrollbars, shadows to buttons, text boxes
 - **IO Stream Processing**: Like Java's BufferedReader, FileReader hierarchical wrapping
 - **Middleware**: Adding logging, authentication, caching functionality to web requests
 
 ### Relationships with Other Patterns:
+
 Decorator Pattern complements patterns we've learned before:
+
 - **With Composite Pattern**: Both use recursive structures, but with different purposes (decoration vs structural organization)
 - **With Adapter Pattern**: Both change object behavior, but in different ways (adaptation vs enhancement)
 - **With Bridge Pattern**: Both focus on flexible design, but solve different problems
@@ -296,6 +325,7 @@ Through the Decorator Pattern, we learned how to elegantly handle dynamic featur
 ## Series Navigation
 
 ### Structural Design Pattern Series
+
 - [Adapter Pattern](/en/blog/2024/design-pattern-11-adapter-pattern/) - Making incompatible interfaces work together
 - [Bridge Pattern](/en/blog/2024/design-pattern-12-bridge-pattern/) - Separating abstraction from implementation, supporting independent evolution
 - [Composite Pattern](/en/blog/2024/design-pattern-13-composite-pattern/) - Uniformly handling individual objects and object combinations
@@ -304,10 +334,12 @@ Through the Decorator Pattern, we learned how to elegantly handle dynamic featur
 - [Proxy Pattern](/en/blog/2024/design-pattern-17-proxy-pattern/) - Controlling resource access through smart proxy objects
 
 ### Behavioral Design Pattern Series
+
 - [Chain of Responsibility Pattern](/en/blog/2024/design-pattern-18-chain-of-responsibility-pattern/) - Building dynamic request handling chains
 - [Command Pattern](/en/blog/2024/design-pattern-19-command-pattern/) - Encapsulating requests as objects to implement undo/redo
 
 ### Creational Design Pattern Basics
+
 - [Singleton Pattern](/en/blog/2024/design-pattern-10-singleton-pattern/) - Ensuring a class has only one instance
 - [Design Principles](/en/blog/2024/design-pattern-2-design-principle/) - Mastering SOLID principles and design foundations
 

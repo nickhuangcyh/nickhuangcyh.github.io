@@ -4,7 +4,19 @@ title: "Design Pattern (10) - Singleton Pattern (單例模式)"
 date: 2024-08-10 15:00:00 +0800
 description: "深入單例模式：如何確保一個類別只有一個實體，提供一個全域"
 excerpt: "完整解析單例模式（Singleton Pattern）在軟體設計中的實作與應用：如何確保類別只有一個實體並提供全域存取點。包含多種實作方式：懶惰初始化、執行緒安全、雙重檢查鎖定等。適用於資料庫連接管理、系統設定、記錄器、快取管理等情境。學習物件導向程式設計、提升軟體架構能力的必備教學。"
-tags: [singleton-pattern, design-patterns, creational-patterns, software-architecture, object-oriented-programming, thread-safety, lazy-initialization, global-access, database-connection, system-design]
+tags:
+  [
+    singleton-pattern,
+    design-patterns,
+    creational-patterns,
+    software-architecture,
+    object-oriented-programming,
+    thread-safety,
+    lazy-initialization,
+    global-access,
+    database-connection,
+    system-design,
+  ]
 categories: [design-patterns, software-engineering, programming, system-architecture]
 toc:
   #   beginning: true
@@ -41,12 +53,15 @@ thumbnail: /assets/img/design_patterns.jpg
 當我們在企業應用中使用上述簡單設計時，會遇到以下幾個關鍵問題：
 
 ### 資源管理問題
+
 在企業級系統中，每個資料庫連接都會消耗大量的系統資源（記憶體、網絡連接、執行緒）。如果在不同的地方重複創建多個 `DatabaseClient` 實體，將會造成資源耗盡和性能下降。
 
 ### 資料一致性問題
+
 在多執行緒環境中，如果不同的程式模塊使用不同的資料庫連接實體，可能會導致交易狀態不一致、資料同步問題等嚴重狀況。
 
 ### 效能經濟性問題
+
 資料庫連接的建立和銷毀都是耗時的操作。頻繁地創建和關閉連接不僅會影響系統效能，還會增加程式複雜性和維護難度。
 
 這些問題都指向同一個解決方向：我們需要一個統一的資料庫連接管理機制。
@@ -56,11 +71,13 @@ thumbnail: /assets/img/design_patterns.jpg
 識別出核心問題後，我們可以套用單例模式（Singleton Pattern）來從根本上解決這些挑戰。單例模式的核心理念是確保整個系統中某個類別只能存在一個實體。
 
 ### 模式結構設計
+
 讓我們先來看一下單例模式的標準 UML 結構：
 
 {% include figure.liquid path="assets/img/design_pattern_singleton_pattern_uml_2.png" title="design_pattern_singleton_pattern_uml_2" %}
 
 ### 核心實作機制
+
 單例模式的實作機制相當优雅而實用：
 
 1. **備懶初始化（Lazy Initialization）**：透過 `getInstance()` 静態方法取得實體，不直接暴露 constructor。

@@ -147,6 +147,7 @@ Host x.x.x.x
 ```
 
 這個設定的含意是：
+
 - `HostkeyAlgorithms +ssh-rsa`：允許使用 RSA 演算法進行主機認證
 - `PubkeyAcceptedAlgorithms +ssh-rsa`：允許使用 RSA 演算法進行公鑰認證
 - `+` 符號代表在現有演算法清單中**新增**這個選項，而不是完全取代

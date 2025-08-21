@@ -9,6 +9,7 @@ This is a personal academic website built with the **al-folio** Jekyll theme, sp
 ## Common Development Commands
 
 ### Local Development with Docker (Recommended)
+
 ```bash
 # Pull and run the latest pre-built image
 docker compose pull
@@ -22,6 +23,7 @@ docker compose up --build
 ```
 
 ### Local Development (Legacy)
+
 ```bash
 # Install dependencies
 bundle install
@@ -38,6 +40,7 @@ purgecss -c purgecss.config.js
 ```
 
 ### Code Formatting
+
 ```bash
 # Format code with Prettier (required for PRs)
 npx prettier . --check
@@ -47,12 +50,14 @@ npx prettier . --write
 ## Architecture and Structure
 
 ### Jekyll Theme Framework
+
 - Based on **al-folio** theme with extensive customizations
 - Uses Liquid templating engine with `.liquid` files
 - Supports responsive design with Bootstrap
 - Multi-language support (English/Chinese) via `_i18n/` structure
 
 ### Key Content Organization
+
 - **Posts**: Blog entries in `_posts/` with date-based naming (`YYYY-MM-DD-title.md`)
 - **Projects**: Portfolio items in `_projects/` with custom layouts
 - **CV Data**: Dual format support - JSON (`assets/json/resume.json`) and YAML (`_data/cv.yml`)
@@ -60,27 +65,32 @@ npx prettier . --write
 - **Collections**: Custom collections for books, news, and projects
 
 ### Layouts and Components
+
 - **Layouts**: Core page templates in `_layouts/` (about, post, cv, distill, etc.)
 - **Includes**: Reusable components in `_includes/` (header, footer, CV sections, etc.)
 - **Sass Styling**: Modular styles in `_sass/` with theme customization support
 
 ### Configuration System
+
 - Main config in `_config.yml` with extensive plugin configuration
 - Data files in `_data/` for CV, repositories, social links
 - Plugin ecosystem including Jekyll Scholar, Archives, and custom plugins
 
 ### Build and Deployment
+
 - GitHub Actions workflow for automatic deployment to `gh-pages` branch
 - Docker containerization for consistent development environment
 - Jekyll-based static site generation with plugin pipeline
 
 ### Content Management
+
 - Markdown-based content with YAML frontmatter
 - BibTeX bibliography management with custom fields
 - Image optimization with responsive WebP generation
 - Search functionality across posts and bibliography
 
 ### Development Notes
+
 - The site uses Jekyll's collections feature extensively
 - Custom plugins in `_plugins/` extend functionality
 - Theme supports dark/light mode switching

@@ -292,6 +292,7 @@ val euGreenTea = euBeverageShop.order("green tea")
 透過工廠方法模式，我們成功將工廠抽象化，達到了真正的可擴展性：
 
 **擴展新地區變得簡單**：如果要擴展到日本分店，我們只需要：
+
 1. 新增一個 `JPBeverageFactory` 實作 `BeverageFactory` 介面
 2. 在其中實作符合日本人口味的飲料創建邏輯
 
