@@ -7,7 +7,7 @@ tags: [Claude Code, AI Tools, Development Tips, Best Practices]
 categories: [AI Development Tools]
 toc:
   sidebar: right
-thumbnail: /assets/img/claude_code_tips.jpg
+thumbnail: /assets/img/igor-omilaev-eGGFZ5X2LnA-unsplash.jpg
 ---
 
 > 本文結合 **Anthropic 官方最佳實踐** 與個人使用經驗，分享如何有效運用 Claude Code 進行軟體開發。目標是讓你把 AI 當成「得力助手」而不是「失控黑箱」，用規則、記憶與正確的工作流程，真正提升開發效率。
