@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-ai-agent-系列-一-搞懂-llm-rag-與-mcp-的核心互動邏輯",
+        },{id: "post-claude-code-使用技巧與最佳實踐-tips-and-best-practices",
+        
+          title: "Claude Code 使用技巧與最佳實踐 - Tips and Best Practices",
+        
+        description: "探索 Claude Code 的最佳使用方式，從基礎操作到進階工作流程，提升 AI 輔助開發的效率與品質。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/ai%20development%20tools/claude-code-tips-and-best-practices/";
+          
+        },
+      },{id: "post-ai-agent-系列-一-搞懂-llm-rag-與-mcp-的核心互動邏輯",
         
           title: "🤖 AI Agent 系列（一）：搞懂 LLM、RAG 與 MCP 的核心互動邏輯",
         

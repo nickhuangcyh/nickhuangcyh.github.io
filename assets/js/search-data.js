@@ -396,6 +396,17 @@ ninja.data = [{
             window.location.href = "/blog/_i18n/en/2020-09-10-how-to-add-your-octopress-blog-website-to-google-search-console/";
           
         },
+      },{id: "post-claude-code-使用技巧與最佳實踐-tips-and-best-practices",
+        
+          title: "Claude Code 使用技巧與最佳實踐 - Tips and Best Practices",
+        
+        description: "探索 Claude Code 的最佳使用方式，從基礎操作到進階工作流程，提升 AI 輔助開發的效率與品質。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/ai%20development%20tools/claude-code-tips-and-best-practices/";
+          
+        },
       },{id: "post-design-pattern-18-chain-of-responsibility-pattern-dynamic-log-processing-system-design-guide",
         
           title: "Design Pattern (18) Chain of Responsibility Pattern: Dynamic Log Processing System Design Guide...",
