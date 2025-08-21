@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (17) - Proxy Pattern (代理模式)
+title: "設計模式（17）代理模式：智能快取系統設計指南 Proxy Pattern"
 date: 2024-12-15 21:30:00 +0800
-description: 了解代理模式如何通過控制對物件的訪問來提升系統的安全性、效能及靈活性。
-tags: [Proxy Pattern]
+description: "深入解析代理模式 Proxy Pattern 實作技巧，學習透過智慧代理物件控制存取權限，實現快取機制與效能優化，掌握結構型設計模式的進階應用技術。"
+tags: [Design Patterns, Proxy Pattern, Structural Patterns, Software Architecture, OOP, Kotlin, Java, Caching, Performance Optimization]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -261,3 +261,22 @@ Playing video: VideoData(funny_cats.mp4)
 ## 設計模式的威力
 
 代理模式展現了設計模式的真正價值：它讓我們能夠在不破壞既有程式碼的前提下，優雅地添加新功能。這種非侵入式的設計方法，為系統提供了強大的靈活性和可擴展性，是每個軟體開發者都應該掌握的重要技能。
+
+## 系列文章導覽
+
+### 結構型設計模式系列
+- [適配器模式 (Adapter Pattern)](/zh/blog/2024/design-pattern-11-adapter-pattern/) - 讓不相容的介面能夠協同工作
+- [橋接模式 (Bridge Pattern)](/zh/blog/2024/design-pattern-12-bridge-pattern/) - 將抽象與實作分離，支援獨立演化
+- [組合模式 (Composite Pattern)](/zh/blog/2024/design-pattern-13-composite-pattern/) - 統一處理個別物件與物件組合
+- [裝飾者模式 (Decorator Pattern)](/zh/blog/2024/design-pattern-14-decorator-pattern/) - 動態增加物件功能而不修改結構
+- [外觀模式 (Facade Pattern)](/zh/blog/2024/design-pattern-15-facade-pattern/) - 提供統一介面簡化複雜子系統
+- [享元模式 (Flyweight Pattern)](/zh/blog/2024/design-pattern-16-flyweight-pattern/) - 有效管理大量相似物件的記憶體使用
+
+### 行為型設計模式系列
+- [責任鏈模式 (Chain of Responsibility)](/zh/blog/2024/design-pattern-18-chain-of-responsibility-pattern/) - 建立動態請求處理鏈
+
+### 創建型設計模式基礎
+- [設計模式概念](/zh/blog/2024/design-pattern-3-design-pattern/) - 了解設計模式的基本概念
+- [設計原則](/zh/blog/2024/design-pattern-2-design-principle/) - 掌握 SOLID 原則與設計基礎
+
+透過代理模式，我們學會了如何透過智慧代理物件控制資源存取，實現高效的快取機制。在下一篇文章中，我們將進入行為型設計模式的領域，探討物件間互動的進階技巧。

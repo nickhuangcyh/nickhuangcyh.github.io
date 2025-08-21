@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (25) - Strategy Pattern (策略模式)
+title: 設計模式（25）策略模式：動態演算法切換，打造高擴展性電商運費系統
 date: 2024-12-26 23:50:00 +0800
-description: 策略模式提供了一種靈活的解決方案，讓系統能根據需求動態切換不同的行為邏輯，實現高可擴展性與低耦合性。
-tags: [Strategy Pattern]
+description: 完整解析策略模式（Strategy Pattern）的核心概念與實際應用，透過電商運費計算系統範例，學習如何實現動態演算法切換，提升程式碼的擴展性與維護性。
+tags: [Strategy Pattern, Design Patterns, Behavioral Patterns, Algorithm Switching, E-commerce System, Software Architecture]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -68,7 +68,7 @@ thumbnail: /assets/img/design_patterns.jpg
 
 完成物件導向分析並察覺到現有架構的問題後，我們可以運用 **Strategy Pattern（策略模式）** 來解決這些挑戰。
 
-策略模式的核心思想是將不同的演算法封裝成獨立的策略類別，讓系統能在執行時動態選擇適合的策略。
+**策略模式**的核心思想是將不同的演算法封裝成獨立的策略類別，讓系統能在執行時動態選擇適合的策略。這種設計方式與[狀態模式]({% post_url 2024-12-25-design-pattern-24-state-pattern %})有相似之處，但策略模式著重於演算法的替換，而非狀態的轉換。
 
 ### Strategy Pattern 標準架構
 
@@ -227,6 +227,8 @@ fun main() {
 
 ### 總結
 
-策略模式透過封裝演算法家族，讓系統在保持穩定的同時具備高度彈性。
+**策略模式**透過封裝演算法家族，讓系統在保持穩定的同時具備高度彈性。
 
 這不僅解決了當前的技術挑戰，更為未來的需求變更奠定了良好的基礎。當業務邏輯變得複雜時，策略模式提供了一個優雅、可維護的解決方案。
+
+在行為型設計模式的學習路徑中，策略模式與[觀察者模式]({% post_url 2024-12-24-design-pattern-23-observer-pattern %})、[模板方法模式]({% post_url 2024-12-28-design-pattern-26-template-method-pattern %})等模式相互補充，共同構建了豐富的軟體設計工具庫。掌握策略模式，將大幅提升您處理複雜業務邏輯的能力。

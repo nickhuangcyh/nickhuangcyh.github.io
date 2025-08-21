@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 如何讓 Jekyll 網站被 Google 搜尋到｜Search Console + Sitemap 教學
+title: Jekyll SEO 完整教學：Google Search Console 與 Sitemap 配置指南
 date: 2021-12-31 11:26:00 +0800
-description: Google 大大，你把我的網頁藏哪去了？教你兩步驟：提交 Search Console、啟用 Sitemap！
-tags: [Jekyll, Google, SEO, Search Console, Sitemap]
+description: 學會如何讓 Jekyll 静態網站被 Google 收錄與索引。從 Google Search Console 設定、Sitemap 產生到網站驗證等完整流程。包含 robots.txt 配置、網址結構優化與 SEO 最佳實踐。
+tags: [Jekyll SEO, Google Search Console, Sitemap Optimization, Search Engine Indexing, Static Site SEO, Blog SEO, Website Visibility, Google Analytics]
 categories: [Blog]
 toc:
   #   beginning: true

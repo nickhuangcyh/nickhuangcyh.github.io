@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (4) - UML (統一建模語言)
+title: 設計模式（4）UML 統一建模語言完整指南：類別圖與設計模式視覺化表達
 date: 2024-07-05 23:00:00 +0800
-description: 深入了解UML，學習如何用UML圖清晰展現設計模式，提升軟體設計能力。
-tags: [UML]
+description: 學會 UML 類別圖的基礎元素與關係表示法，包含 Class、Interface、繼承、關聯、組合與聚合等核心概念。掌握如何用 UML 視覺化表達設計模式，提升系統架構設計能力。
+tags: [UML, Unified Modeling Language, Class Diagram, Software Design, System Architecture, Visual Modeling, Design Pattern, Object-Oriented Design]
 categories: [Design Pattern]
 toc:
   #   beginning: true

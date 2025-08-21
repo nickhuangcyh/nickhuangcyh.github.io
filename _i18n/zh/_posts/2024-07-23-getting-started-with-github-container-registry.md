@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Getting Started with GitHub Container Registry
+title: GitHub Container Registry 完整教學：容器映像管理與 CI/CD 部署指南
 date: 2024-07-23 18:00:00 +0800
-description: A Guide to Using and Managing Container Images
-tags: [Docker, Container Registry, GitHub Actions, CI/CD, DevOps Tools]
+description: 學會如何使用 GitHub Container Registry 管理 Docker 映像與建置 CI/CD 流程。從 Jenkins Master-Slave 架構實例深入了解容器化部署、版本管理、身份驗證與最佳實踐。適用於 DevOps 工程師。
+tags: [GitHub Container Registry, Docker Registry, Container Management, CI/CD Pipeline, DevOps, Jenkins Master-Slave, GitHub Actions, Image Versioning]
 categories: [DevOps]
 toc:
   #   beginning: true

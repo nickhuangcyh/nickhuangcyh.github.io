@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (15) - Facade Pattern (外觀模式)
+title: "設計模式（15）外觀模式：統一介面設計與系統整合指南 Facade Pattern"
 date: 2024-12-12 23:30:00 +0800
-description: 探索外觀模式如何簡化系統複雜性，提供一個統一的介面來訪問子系統的功能，提升程式碼的可讀性與維護性。
-tags: [Facade Pattern]
+description: "完整解析外觀模式 Facade Pattern 實作技巧，學習如何透過統一介面簡化複雜子系統，掌握結構型設計模式的系統整合與介面封裝核心概念與最佳實踐。"
+tags: [Design Patterns, Facade Pattern, Structural Patterns, System Integration, Software Architecture, OOP, Kotlin, Java, Interface Design]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -13,7 +13,7 @@ thumbnail: /assets/img/design_patterns.jpg
 
 > 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
 
-經過學習 Adapter、Bridge、Composite 和 Decorator Pattern，我們已經掌握了結構型模式的核心精髓。現在讓我們學習最後一個結構型模式：Facade Pattern（外觀模式），它將為我們的結構型模式學習旅程畫下完美句號。
+經過學習[適配器模式](/zh/blog/2024/design-pattern-11-adapter-pattern/)、[橋接模式](/zh/blog/2024/design-pattern-12-bridge-pattern/)、[組合模式](/zh/blog/2024/design-pattern-13-composite-pattern/) 和[裝飾者模式](/zh/blog/2024/design-pattern-14-decorator-pattern/)，我們已經掌握了結構型模式的核心精髓。現在讓我們學習重要的結構型模式：Facade Pattern（外觀模式），它將為我們的結構型模式學習提供統一介面設計的完整解決方案。
 
 ## 需求
 
@@ -308,3 +308,23 @@ Facade Pattern 在以下情況下特別有用：
 - **Facade Pattern**：解決多子系統整合的複雜性
 
 這五個模式形成了一個完整的結構型設計模式工具箱，為我們提供了處理各種結構設計挑戰的有力工具。這些模式之間相互補強，能夠應對現實世界中絕大多數的結構設計需求。
+
+## 系列文章導覽
+
+### 結構型設計模式系列
+- [適配器模式 (Adapter Pattern)](/zh/blog/2024/design-pattern-11-adapter-pattern/) - 讓不相容的介面能夠協同工作
+- [橋接模式 (Bridge Pattern)](/zh/blog/2024/design-pattern-12-bridge-pattern/) - 將抽象與實作分離，支援獨立演化
+- [組合模式 (Composite Pattern)](/zh/blog/2024/design-pattern-13-composite-pattern/) - 統一處理個別物件與物件組合
+- [裝飾者模式 (Decorator Pattern)](/zh/blog/2024/design-pattern-14-decorator-pattern/) - 動態增加物件功能而不修改結構
+- [享元模式 (Flyweight Pattern)](/zh/blog/2024/design-pattern-16-flyweight-pattern/) - 有效管理大量相似物件的記憶體使用
+- [代理模式 (Proxy Pattern)](/zh/blog/2024/design-pattern-17-proxy-pattern/) - 透過智慧代理物件控制資源存取
+
+### 行為型設計模式系列
+- [責任鏈模式 (Chain of Responsibility)](/zh/blog/2024/design-pattern-18-chain-of-responsibility-pattern/) - 建立動態請求處理鏈
+- [命令模式 (Command Pattern)](/zh/blog/2024/design-pattern-19-command-pattern/) - 將請求封裝為物件實現撤銷重做
+
+### 創建型設計模式基礎
+- [單例模式 (Singleton Pattern)](/zh/blog/2024/design-pattern-10-singleton-pattern/) - 確保類別只有一個實例
+- [設計原則](/zh/blog/2024/design-pattern-2-design-principle/) - 掌握 SOLID 原則與設計基礎
+
+透過外觀模式，我們學會了如何透過統一介面簡化複雜子系統的存取，在下一篇享元模式中，我們將探討如何有效管理大量物件的記憶體使用技巧。

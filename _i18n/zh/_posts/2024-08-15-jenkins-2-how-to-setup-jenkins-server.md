@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Jenkins (2) - 如何架設 Jenkins 伺服器
+title: "Jenkins（2）伺服器架設完全指南：Docker 環境快速部署教學"
 date: 2024-08-15 17:00:00 +0800
-description: 學習如何使用 Docker 映像檔來架設 Jenkins 伺服器，提升開發團隊的自動化能力。
-tags: [Jenkins, CI/CD, DevOps, Docker]
+description: "完整解析 Jenkins 伺服器架設步驟，學習使用 Docker 快速部署 Jenkins CI/CD 環境，包含標準版與 Android 建構環境配置，掌握 DevOps 自動化基礎設施建置技巧。"
+tags: [Jenkins, CI/CD, DevOps, Docker, Server Setup, Automation, Container, Infrastructure, Build Environment, Development Tools]
 categories: [DevOps]
 toc:
   #   beginning: true
@@ -13,7 +13,7 @@ thumbnail: /assets/img/jenkins.jpg
 
 ## 如何架設 Jenkins 伺服器
 
-在上一篇文章中，我們了解了 Jenkins 的基本概念和核心功能。現在，讓我們進入實戰階段，學習如何架設自己的 Jenkins 伺服器。
+在[上一篇文章](/zh/blog/2024/jenkins-1-what-is-jenkins/)中，我們了解了 Jenkins 的基本概念和核心功能。現在，讓我們進入實戰階段，學習如何架設自己的 Jenkins 伺服器。
 
 本文將介紹使用 Docker 來架設 Jenkins 的方法。選擇 Docker 的原因有三：
 - **環境一致性**：無論在 Windows、macOS 或 Linux 上都能獲得相同的執行環境
@@ -146,7 +146,7 @@ cat ~/jenkins_home/secrets/initialAdminPassword
 - **易於維護**：可以輕鬆備份、還原或升級
 
 ### 下一步
-現在你已經有了一個運行中的 Jenkins 伺服器，接下來我們將學習如何配置憑證系統，讓 Jenkins 能夠安全地從 Git 倉庫拉取程式碼。這是實現自動化建置流程的關鍵步驟。
+現在你已經有了一個運行中的 Jenkins 伺服器，接下來我們將學習[如何配置憑證系統](/zh/blog/2024/jenkins-3-configure-credentials-ssh/)，讓 Jenkins 能夠安全地從 Git 倉庫拉取程式碼。這是實現自動化建置流程的關鍵步驟。
 
 準備好進入下一個階段了嗎？讓我們繼續探索 Jenkins 的強大功能！
 
@@ -154,9 +154,14 @@ cat ~/jenkins_home/secrets/initialAdminPassword
 
 ## Jenkins 系列文章導覽
 
-1. **Jenkins (1) - 什麼是 Jenkins** - Jenkins 基本概念與核心功能介紹
-2. **Jenkins (2) - 如何架設 Jenkins 伺服器** ← 你正在閱讀
-3. **Jenkins (3) - 如何配置 Credentials 以透過 SSH 從 git 上拉取程式碼** - 下一步：設定安全的程式碼存取
+1. **[Jenkins（1）什麼是 Jenkins](/zh/blog/2024/jenkins-1-what-is-jenkins/)** - Jenkins 基本概念與核心功能介紹 ✅
+2. **Jenkins（2）伺服器架設完全指南** ← 你正在閱讀 ✅
+3. **[Jenkins（3）SSH 憑證配置完全指南](/zh/blog/2024/jenkins-3-configure-credentials-ssh/)** - 下一步：設定安全的程式碼存取
+
+### 相關技術文章推薦
+- [GitHub Container Registry 入門](/zh/blog/2024/getting-started-with-github-container-registry/) - 容器化部署進階應用
+- [使用 SSH 管理多個 GitHub 帳號](/zh/blog/2025/how-to-use-multiple-github-accounts-using-ssh/) - Git 多帳號管理技巧
+- [在新 macOS 上設定開發環境](/zh/blog/2024/setup-development-environment-on-a-new-macos/) - 完整開發環境建置指南
 
 > ##### TIP
 >

@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (5) - Simple Factory Pattern (簡單工廠模式)
+title: 設計模式（5）簡單工廠模式 Simple Factory Pattern 完整教學：封裝物件創建邏輯
 date: 2024-07-06 23:00:00 +0800
-description: 通過飲料點餐系統案例，學習如何使用簡單工廠模式提升程式碼的可讀性和維護性。
-tags: [Simple Factory Pattern]
+description: 從飲料店點餐系統實例學會簡單工廠模式的核心概念。深入了解如何封裝物件創建邏輯、減少程式碼重複、提升可維護性。包含 UML 設計、Swift/Kotlin 實作與最佳實踐。
+tags: [Simple Factory Pattern, Factory Pattern, Creational Pattern, Object Creation, Design Pattern, Software Architecture, OOP Design, Programming]
 categories: [Design Pattern]
 toc:
   #   beginning: true

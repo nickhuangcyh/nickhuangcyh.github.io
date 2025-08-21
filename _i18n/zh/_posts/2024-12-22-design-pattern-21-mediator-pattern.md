@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (21) - Mediator Pattern (中介者模式)
+title: 設計模式（21）中介者模式：智慧家居系統元件協調，降低物件間複雜耦合關係
 date: 2024-12-22 14:00:00 +0800
-description: 了解中介者模式如何協調物件之間的交互，減少物件之間的耦合性並促進系統的可擴展性。
-tags: [Mediator Pattern]
+description: 全面解析中介者模式（Mediator Pattern）設計原理，透過智慧家居控制系統範例，學習如何優雅協調多個物件間的複雜互動，實現低耦合高內聚的系統架構。
+tags: [Mediator Pattern, Design Patterns, Behavioral Patterns, Object Coordination, Smart Home System, Low Coupling]
 categories: [Design Pattern]
 toc:
   #   beginning: true

@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (16) - Flyweight Pattern (享元模式)
+title: "設計模式（16）享元模式：記憶體優化與效能提升指南 Flyweight Pattern"
 date: 2024-12-14 15:00:00 +0800
-description: 探索享元模式如何透過共享技術有效減少記憶體使用，提升應用效能。
-tags: [Flyweight Pattern]
+description: "深入解析享元模式 Flyweight Pattern 實作技巧，學習透過物件共享技術大幅減少記憶體使用，掌握大量物件管理與效能優化的結構型設計模式核心概念。"
+tags: [Design Patterns, Flyweight Pattern, Structural Patterns, Memory Optimization, Performance, Software Architecture, OOP, Kotlin, Java]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -185,3 +185,23 @@ Drawing tree: Oak, color: Green, texture: Rough at (10, 20)
 - **圖形渲染**：重複的圖形元素或材質
 
 **設計時的關鍵考量**：使用享元模式時，最重要的是正確區分內部狀態與外部狀態。內部狀態必須是可以安全共享的不變資料，而外部狀態則是每個物件實例的獨特資訊。只有清楚掌握這個區別，才能確保系統設計的正確性與靈活性。
+
+## 系列文章導覽
+
+### 結構型設計模式系列
+- [適配器模式 (Adapter Pattern)](/zh/blog/2024/design-pattern-11-adapter-pattern/) - 讓不相容的介面能夠協同工作
+- [橋接模式 (Bridge Pattern)](/zh/blog/2024/design-pattern-12-bridge-pattern/) - 將抽象與實作分離，支援獨立演化
+- [組合模式 (Composite Pattern)](/zh/blog/2024/design-pattern-13-composite-pattern/) - 統一處理個別物件與物件組合
+- [裝飾者模式 (Decorator Pattern)](/zh/blog/2024/design-pattern-14-decorator-pattern/) - 動態增加物件功能而不修改結構
+- [外觀模式 (Facade Pattern)](/zh/blog/2024/design-pattern-15-facade-pattern/) - 提供統一介面簡化複雜子系統
+- [代理模式 (Proxy Pattern)](/zh/blog/2024/design-pattern-17-proxy-pattern/) - 透過智慧代理物件控制資源存取
+
+### 行為型設計模式系列
+- [責任鏈模式 (Chain of Responsibility)](/zh/blog/2024/design-pattern-18-chain-of-responsibility-pattern/) - 建立動態請求處理鏈
+- [命令模式 (Command Pattern)](/zh/blog/2024/design-pattern-19-command-pattern/) - 將請求封裝為物件實現撤銷重做
+
+### 創建型設計模式基礎
+- [單例模式 (Singleton Pattern)](/zh/blog/2024/design-pattern-10-singleton-pattern/) - 確保類別只有一個實例
+- [設計原則](/zh/blog/2024/design-pattern-2-design-principle/) - 掌握 SOLID 原則與設計基礎
+
+透過享元模式，我們學會了如何透過物件共享技術有效管理大量相似物件，在下一篇代理模式中，我們將探討另一種控制物件存取的結構型設計技巧。

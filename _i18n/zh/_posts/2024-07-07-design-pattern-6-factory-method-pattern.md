@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (6) - Factory Method Pattern (工廠方法模式)
+title: 設計模式（6）工廠方法模式 Factory Method Pattern 完整教學：可擴展物件創建
 date: 2024-07-07 23:00:00 +0800
-description: 深入探討工廠方法模式，通過實例展示其應用，提升程式碼的靈活性和可擴展性。
-tags: [Factory Method Pattern]
+description: 學會 Factory Method Pattern 如何解決 Simple Factory 的擴展性問題。從全球飲料連鎖店實例深入了解如何設計可擴展的物件創建系統。包含 UML 設計、實作範例與最佳實踐。
+tags: [Factory Method Pattern, Design Pattern, Creational Pattern, Polymorphism, Extensibility, Object Creation, Software Architecture, OOP]
 categories: [Design Pattern]
 toc:
   #   beginning: true

@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (23) - Observer Pattern (觀察者模式)
+title: 設計模式（23）觀察者模式：智慧安全系統一對多通知機制，實現即時警報推送
 date: 2024-12-22 14:00:00 +0800
-description: 透過觀察者模式，實現安全系統主機的警報通知機制，當警報觸發時，主機自動通知平板、iOS 和 Android 手機。
-tags: [Observer Pattern]
+description: 深入探討觀察者模式（Observer Pattern）核心原理，透過智慧安全系統警報機制實例，學習如何建構鬆耦合的一對多通知系統，提升系統擴展性與維護性。
+tags: [Observer Pattern, Design Patterns, Behavioral Patterns, Notification System, Security System, Event Handling]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -62,7 +62,9 @@ thumbnail: /assets/img/design_patterns.jpg
 
 {% include figure.liquid path="assets/img/design_pattern_observer_pattern_uml_2.png" title="design_pattern_observer_pattern_uml_2" %}
 
-觀察者模式提供了一個優雅的一對多通知機制。當主體（Subject）的狀態發生改變時，會自動通知所有已訂閱的觀察者（Observer）。
+**觀察者模式**提供了一個優雅的一對多通知機制。當主體（Subject）的狀態發生改變時，會自動通知所有已訂閱的觀察者（Observer）。
+
+觀察者模式與[策略模式]({% post_url 2024-12-26-design-pattern-25-strategy-pattern %})和[狀態模式]({% post_url 2024-12-25-design-pattern-24-state-pattern %})都屬於行為型設計模式，但觀察者模式專注於物件間的通信與事件處理機制。
 
 讓我們了解各個角色的職責：
 
@@ -239,3 +241,5 @@ Observer Pattern 在現實世界中有廣泛的應用，特別適合以下場景
 - **數據監控系統**：當數據發生變化時，需要更新多個顯示元件
 
 這個模式的核心價值在於建立了一個標準化的通訊機制，讓系統能夠優雅地處理一對多的通知需求。
+
+在行為型設計模式的學習路徑中，觀察者模式與[命令模式]({% post_url 2024-12-21-design-pattern-19-command-pattern %})、[中介者模式]({% post_url 2024-12-22-design-pattern-21-mediator-pattern %})等模式相互配合，共同構建了完整的物件互動與通信框架。掌握觀察者模式，將大幅提升您設計即時響應系統的能力。

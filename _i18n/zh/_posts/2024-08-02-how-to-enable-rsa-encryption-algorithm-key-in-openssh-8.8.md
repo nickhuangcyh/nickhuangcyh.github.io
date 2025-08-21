@@ -1,9 +1,9 @@
 ---
 layout: post
-title: How to Enable RSA Encryption Algorithm Key in OpenSSH 8.8
+title: OpenSSH 8.8 RSA 加密支援完整教學：解決相容性問題與安全配置
 date: 2024-08-02 19:50:00 +0800
-description: 如何在 OpenSSH 8.8 中重新啟用 RSA 加密支援，確保可以繼續使用 RSA 金鑰。
-tags: [RSA Encryption, OpenSSH 8.8, Encryption Support]
+description: 學會如何解決 OpenSSH 8.8 版本中 RSA 加密算法被禁用的問題。詳細解析安全性考量、相容性解決方案與最佳實踐。包含 Jenkins CI/CD、Docker 環境與 GitLab 整合等實用情境。
+tags: [OpenSSH Security, RSA Encryption, SSH Configuration, System Administration, DevOps, Jenkins CI/CD, Docker Security, GitLab Integration]
 categories: [Cryptography, OpenSSH, Security]
 toc:
   #   beginning: true

@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (9) - Prototype Pattern (原型模式)
+title: 設計模式（9）原型模式 Prototype Pattern 完整教學：物件複製與效能優化
 date: 2024-07-21 23:00:00 +0800
-description: 深入原型模式：探索如何透過物件複製技術，有效提升軟體開發中的資源管理與設計模式的靈活性。
-tags: [Prototype Pattern]
+description: 學會 Prototype Pattern 如何透過物件複製解決性能問題。從遊戲角色創建系統實例深入了解淺層與深層複製概念、Cloneable 介面實作與最佳實踐。包含 UML 設計與範例程式碼。
+tags: [Prototype Pattern, Design Pattern, Creational Pattern, Object Cloning, Performance Optimization, Deep Copy, Shallow Copy, Software Architecture]
 categories: [Design Pattern]
 toc:
   #   beginning: true

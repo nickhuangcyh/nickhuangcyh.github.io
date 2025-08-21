@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Jenkins (3) - 如何配置 Credentials 以透過 SSH 從 git 上拉取程式碼
+title: "Jenkins（3）SSH 憑證配置完全指南：安全連接 Git 倉庫實作教學"
 date: 2024-12-09 20:00:00 +0800
-description: 學習如何在 Jenkins 中配置憑證（Credentials），以便透過 SSH 安全地拉取程式碼。
-tags: [Jenkins, CI/CD, DevOps, Credentials, SSH]
+description: "深入解析 Jenkins SSH 憑證配置技巧，學習如何安全地透過 SSH 金鑰連接 GitHub GitLab 等 Git 倉庫，掌握 CI/CD 流程中的身份驗證與程式碼拉取最佳實踐方法。"
+tags: [Jenkins, CI/CD, DevOps, SSH Keys, Git Integration, Credentials Management, GitHub, GitLab, Automation, Security]
 categories: [DevOps]
 toc:
   #   beginning: true
@@ -13,7 +13,7 @@ thumbnail: /assets/img/jenkins.jpg
 
 ## 如何配置 Credentials 以透過 SSH 從 git 上拉取程式碼
 
-在前面的文章中，我們學習了 Jenkins 的基本概念，並成功架設了 Jenkins 伺服器。現在我們要踏入實際應用的重要環節：讓 Jenkins 能夠安全地從 Git 倉庫拉取程式碼。
+在前面的文章中，我們學習了 [Jenkins 的基本概念](/zh/blog/2024/jenkins-1-what-is-jenkins/)，並[成功架設了 Jenkins 伺服器](/zh/blog/2024/jenkins-2-how-to-setup-jenkins-server/)。現在我們要踏入實際應用的重要環節：讓 Jenkins 能夠安全地從 Git 倉庫拉取程式碼。
 
 ### 為什麼需要 SSH 憑證？
 
@@ -251,11 +251,17 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
 
 恭喜你完成了 Jenkins 系列教學的基礎三部曲！
 
-1. **Jenkins (1) - 什麼是 Jenkins** - Jenkins 基本概念與核心功能介紹 ✅
-2. **Jenkins (2) - 如何架設 Jenkins 伺服器** - 使用 Docker 快速建立 Jenkins 環境 ✅
-3. **Jenkins (3) - 如何配置 Credentials 以透過 SSH 從 git 上拉取程式碼** ← 你正在閱讀 ✅
+1. **[Jenkins（1）什麼是 Jenkins](/zh/blog/2024/jenkins-1-what-is-jenkins/)** - Jenkins 基本概念與核心功能介紹 ✅
+2. **[Jenkins（2）如何設定 Jenkins 伺服器](/zh/blog/2024/jenkins-2-how-to-setup-jenkins-server/)** - 使用 Docker 快速建立 Jenkins 環境 ✅  
+3. **Jenkins（3）SSH 憑證配置完全指南** ← 你正在閱讀 ✅
 
-現在你已經具備了使用 Jenkins 進行基本 CI/CD 的所有必要技能。未來如果有更進階的主題，我們會持續更新這個系列。
+### 相關技術文章推薦
+- [使用 SSH 管理多個 GitHub 帳號](/zh/blog/2025/how-to-use-multiple-github-accounts-using-ssh/) - 進階 SSH 金鑰管理技巧
+- [GitHub Container Registry 入門](/zh/blog/2024/getting-started-with-github-container-registry/) - 容器化部署整合
+- [在 OpenSSH 8.8 中啟用 RSA 加密演算法](/zh/blog/2024/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8/) - SSH 兼容性問題解決
+- [設計模式系列](/zh/blog/2024/design-pattern-2-design-principle/) - 軟體設計最佳實踐
+
+現在你已經具備了使用 Jenkins 進行基本 CI/CD 的所有必要技能。這套完整的 Jenkins 基礎教學為你奠定了堅實的 DevOps 自動化基礎。
 
 > ##### TIP
 >

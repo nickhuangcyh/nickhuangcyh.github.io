@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (14) - Decorator Pattern (裝飾者模式)
+title: "設計模式（14）裝飾者模式：動態功能擴展與組合設計指南 Decorator Pattern"
 date: 2024-12-11 23:30:00 +0800
-description: 深入了解裝飾者模式如何動態為物件增加功能，同時保持系統的靈活性與開放性。
-tags: [Decorator Pattern]
+description: "深入解析裝飾者模式 Decorator Pattern 實作技巧，學習如何透過物件包裝技術動態擴展功能，掌握結構型設計模式的組合式功能增強與靈活系統設計方法。"
+tags: [Design Patterns, Decorator Pattern, Structural Patterns, Dynamic Enhancement, Software Architecture, OOP, Kotlin, Java, Flexible Design]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -13,7 +13,7 @@ thumbnail: /assets/img/design_patterns.jpg
 
 > 您可於此 [design_pattern repo](https://github.com/nickhuangcyh/design_pattern) 下載 Design Pattern 系列程式碼。
 
-在學習了 Adapter、Bridge 和 Composite Pattern 後，我們已經掌握了結構型模式的多個重要概念。現在讓我們探討一個能夠 **動態擴展物件功能** 的模式：Decorator Pattern（裝飾者模式）。
+在學習了[適配器模式](/zh/blog/2024/design-pattern-11-adapter-pattern/)、[橋接模式](/zh/blog/2024/design-pattern-12-bridge-pattern/) 和[組合模式](/zh/blog/2024/design-pattern-13-composite-pattern/) 後，我們已經掌握了結構型模式的多個重要概念。現在讓我們探討一個能夠 **動態擴展物件功能** 的模式：Decorator Pattern（裝飾者模式）。
 
 ## 需求
 
@@ -292,3 +292,23 @@ Decorator Pattern 與我們之前學習的模式相輔相成：
 - **與 Bridge Pattern**：都關注彈性設計，但解決不同的問題
 
 透過 Decorator Pattern，我們學會了如何優雅地處理動態功能擴展，這種設計思維為我們後續學習更複雜的設計模式提供了堅實的基礎。
+
+## 系列文章導覽
+
+### 結構型設計模式系列
+- [適配器模式 (Adapter Pattern)](/zh/blog/2024/design-pattern-11-adapter-pattern/) - 讓不相容的介面能夠協同工作
+- [橋接模式 (Bridge Pattern)](/zh/blog/2024/design-pattern-12-bridge-pattern/) - 將抽象與實作分離，支援獨立演化
+- [組合模式 (Composite Pattern)](/zh/blog/2024/design-pattern-13-composite-pattern/) - 統一處理個別物件與物件組合
+- [外觀模式 (Facade Pattern)](/zh/blog/2024/design-pattern-15-facade-pattern/) - 提供統一介面簡化複雜子系統
+- [享元模式 (Flyweight Pattern)](/zh/blog/2024/design-pattern-16-flyweight-pattern/) - 有效管理大量相似物件的記憶體使用
+- [代理模式 (Proxy Pattern)](/zh/blog/2024/design-pattern-17-proxy-pattern/) - 透過智慧代理物件控制資源存取
+
+### 行為型設計模式系列
+- [責任鏈模式 (Chain of Responsibility)](/zh/blog/2024/design-pattern-18-chain-of-responsibility-pattern/) - 建立動態請求處理鏈
+- [命令模式 (Command Pattern)](/zh/blog/2024/design-pattern-19-command-pattern/) - 將請求封裝為物件實現撤銷重做
+
+### 創建型設計模式基礎
+- [單例模式 (Singleton Pattern)](/zh/blog/2024/design-pattern-10-singleton-pattern/) - 確保類別只有一個實例
+- [設計原則](/zh/blog/2024/design-pattern-2-design-principle/) - 掌握 SOLID 原則與設計基礎
+
+透過裝飾者模式，我們掌握了動態功能擴展的核心技巧，在下一篇外觀模式中，我們將探討如何透過統一介面簡化複雜子系統的存取方法。

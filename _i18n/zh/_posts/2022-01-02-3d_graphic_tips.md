@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 3D Graphic Engine Tips - 三角形 x UV mapping x Vertices & Indices
+title: 3D 圖形開發基礎教學：三角網格、UV 映射與頂點索引完整解析
 date: 2022-01-02 10:04:00 +0800
-description: 寫 3D 繪圖程式必需要知道的知識，這篇帶你快速掌握基本建模邏輯與映射概念。
-tags: [iOS, Android, 3D, OpenGL, ARKit, ARCore, Sceneform, SceneKit]
+description: 學會 3D 圖形程式設計的核心概念與實作技巧。深入了解三角網格建模、UV 紋理映射、頂點與索引管理等核心技術。適用於 OpenGL、ARKit、ARCore 等平台開發者。
+tags: [3D Graphics Programming, OpenGL Development, UV Mapping, Triangle Mesh, Vertex Buffer, Mobile 3D, ARKit Development, Computer Graphics]
 categories: [Mobile]
 toc:
   #   beginning: true

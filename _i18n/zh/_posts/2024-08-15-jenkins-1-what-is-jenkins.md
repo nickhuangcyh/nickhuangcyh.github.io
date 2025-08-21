@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Jenkins (1) - 什麼是 Jenkins
+title: "Jenkins（1）什麼是 Jenkins：DevOps 自動化入門完全指南"
 date: 2024-08-15 15:00:00 +0800
-description: 了解Jenkins這個強大的自動化伺服器，如何幫助開發團隊實現持續整合與持續交付，提升軟體開發效率。
-tags: [Jenkins, CI/CD, DevOps]
+description: "完整解析 Jenkins 自動化伺服器核心概念，學習 CI/CD 持續整合持續交付基礎知識，掌握 DevOps 工具選擇與 Pipeline 流水線設計，開發團隊效率提升必備技能。"
+tags: [Jenkins, CI/CD, DevOps, Continuous Integration, Continuous Delivery, Automation Server, Pipeline, Build Tools, Software Development]
 categories: [DevOps]
 toc:
   #   beginning: true
@@ -76,11 +76,16 @@ Jenkins 的主要價值在於：
 
 這是 Jenkins 系列教學的第一篇文章，後續文章將帶你從零開始建立完整的 CI/CD 環境：
 
-1. **Jenkins (1) - 什麼是 Jenkins** ← 你正在閱讀
-2. **Jenkins (2) - 如何架設 Jenkins 伺服器** - 使用 Docker 快速建立 Jenkins 環境
-3. **Jenkins (3) - 如何配置 Credentials 以透過 SSH 從 git 上拉取程式碼** - 設定安全的程式碼存取
+1. **Jenkins（1）什麼是 Jenkins** ← 你正在閱讀 ✅
+2. **[Jenkins（2）伺服器架設完全指南](/zh/blog/2024/jenkins-2-how-to-setup-jenkins-server/)** - 使用 Docker 快速建立 Jenkins 環境
+3. **[Jenkins（3）SSH 憑證配置完全指南](/zh/blog/2024/jenkins-3-configure-credentials-ssh/)** - 設定安全的程式碼存取
 
-建議依序閱讀，每一篇都會為下一步的實作奠定基礎。
+### 相關技術文章推薦
+- [GitHub Container Registry 入門](/zh/blog/2024/getting-started-with-github-container-registry/) - 容器化部署與 CI/CD 整合
+- [使用 SSH 管理多個 GitHub 帳號](/zh/blog/2025/how-to-use-multiple-github-accounts-using-ssh/) - Git 帳號管理進階技巧
+- [設計模式系列](/zh/blog/2024/design-pattern-2-design-principle/) - 軟體架構設計最佳實踐
+
+建議依序閱讀 Jenkins 系列文章，每一篇都會為下一步的實作奠定堅實基礎。
 
 > ##### TIP
 >

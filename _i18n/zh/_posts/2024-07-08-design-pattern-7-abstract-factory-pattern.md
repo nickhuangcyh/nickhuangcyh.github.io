@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (7) - Abstract Factory Pattern (抽象工廠模式)
+title: 設計模式（7）拽象工廠模式 Abstract Factory Pattern 完整教學：產品系列統一創建
 date: 2024-07-08 23:00:00 +0800
-description: 探索如何使用抽象工廠模式創建一系列相關或依賴的物件，提升設計靈活性。
-tags: [Abstract Factory Pattern]
+description: 學會 Abstract Factory Pattern 如何解決相關物件群的創建問題。從飲料店主題套裝實例深入了解如何設計統一的產品系列創建介面。包含 UML 設計、實作範例與最佳實踐。
+tags: [Abstract Factory Pattern, Design Pattern, Creational Pattern, Product Family, Object Creation, Software Architecture, OOP, Interface Design]
 categories: [Design Pattern]
 toc:
   #   beginning: true

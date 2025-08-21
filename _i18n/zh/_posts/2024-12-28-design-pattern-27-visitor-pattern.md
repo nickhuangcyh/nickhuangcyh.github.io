@@ -3,8 +3,9 @@ layout: post
 title: Design Pattern (27) - Visitor Pattern (訪問者模式)
 date: 2024-12-28 21:30:00 +0800
 description: 訪問者模式提供了一種方式，讓我們能在不修改物件結構的前提下，為其增加新的操作邏輯，實現高擴展性。
-tags: [Visitor Pattern]
-categories: [Design Pattern]
+excerpt: 深入探討訪問者模式（Visitor Pattern）在 IoT 應用開發中的實際應用：如何統一處理多品牌 IPCam 設備。完整 Kotlin 程式碼範例，展示如何在不修改物件結構的前提下新增操作。適用於軟體架構設計、物件導向程式設計、行為型設計模式學習。實現高度可擴展且符合開放關閉原則的系統架構，提升程式碼可維護性和系統穩定性。
+tags: [visitor-pattern, design-patterns, behavioral-patterns, iot-development, software-architecture, object-oriented-programming, kotlin, mobile-app-development, system-design, code-maintainability]
+categories: [design-patterns, software-engineering, iot, mobile-development]
 toc:
   #   beginning: true
   sidebar: right
@@ -17,7 +18,7 @@ thumbnail: /assets/img/design_patterns.jpg
 
 ## 需求
 
-在設計一個 **IoT App 整合多品牌 IPCam 的功能** 時，我們面臨一個常見的軟體設計挑戰：如何統一處理不同廠商的產品。讓我們來看看具體的需求：
+在開發現代 **IoT 智慧家庭應用程式整合多品牌 IPCam 監控系統** 時，我們面臨一個在軟體架構設計中常見的挑戰：如何使用訪問者模式統一處理不同廠商的產品。這種情境在物聯網（IoT）和嵌入式系統開發中非常常見。讓我們來看看具體的需求：
 
 ### 1. 多品牌支援
 我們需要支援多種 IPCam 品牌，而每個品牌都有自己獨特的接口方式：

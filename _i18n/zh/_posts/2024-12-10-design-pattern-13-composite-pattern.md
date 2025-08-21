@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (13) - Composite Pattern (組合模式)
+title: "設計模式（13）組合模式：樹狀結構統一操作設計指南 Composite Pattern"
 date: 2024-12-10 22:28:00 +0800
-description: 深入了解組合模式如何以一致的方式操作單個物件與物件集合，實現對樹狀結構的靈活管理。
-tags: [Composite Pattern]
+description: "深入解析組合模式 Composite Pattern 實作技巧，學習如何統一處理個別物件與物件集合，掌握樹狀結構管理與遞迴操作的結構型設計模式核心應用技術。"
+tags: [Design Patterns, Composite Pattern, Structural Patterns, Tree Structure, Software Architecture, OOP, Kotlin, Java, Hierarchical Design]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -165,3 +165,23 @@ fun main() {
 ## 結論
 
 通過套用 Composite Pattern，我們成功實現了單一檔案與目錄集合的統一操作。有效降低了系統的耦合性，並且提供了高效的擴展性，當需要新增新的檔案類型或目錄結構時，無需大幅修改現有程式碼。透過此模式，開發者能夠以簡潔且一致的方式處理樹狀結構的邏輯，提升了程式的靈活性與可維護性。
+
+## 系列文章導覽
+
+### 結構型設計模式系列
+- [適配器模式 (Adapter Pattern)](/zh/blog/2024/design-pattern-11-adapter-pattern/) - 讓不相容的介面能夠協同工作
+- [橋接模式 (Bridge Pattern)](/zh/blog/2024/design-pattern-12-bridge-pattern/) - 將抽象與實作分離，支援獨立演化
+- [裝飾者模式 (Decorator Pattern)](/zh/blog/2024/design-pattern-14-decorator-pattern/) - 動態增加物件功能而不修改結構
+- [外觀模式 (Facade Pattern)](/zh/blog/2024/design-pattern-15-facade-pattern/) - 提供統一介面簡化複雜子系統
+- [享元模式 (Flyweight Pattern)](/zh/blog/2024/design-pattern-16-flyweight-pattern/) - 有效管理大量相似物件的記憶體使用
+- [代理模式 (Proxy Pattern)](/zh/blog/2024/design-pattern-17-proxy-pattern/) - 透過智慧代理物件控制資源存取
+
+### 行為型設計模式系列
+- [責任鏈模式 (Chain of Responsibility)](/zh/blog/2024/design-pattern-18-chain-of-responsibility-pattern/) - 建立動態請求處理鏈
+- [命令模式 (Command Pattern)](/zh/blog/2024/design-pattern-19-command-pattern/) - 將請求封裝為物件實現撤銷重做
+
+### 創建型設計模式基礎
+- [單例模式 (Singleton Pattern)](/zh/blog/2024/design-pattern-10-singleton-pattern/) - 確保類別只有一個實例
+- [設計原則](/zh/blog/2024/design-pattern-2-design-principle/) - 掌握 SOLID 原則與設計基礎
+
+透過組合模式，我們掌握了樹狀結構的統一操作技巧，在下一篇裝飾者模式中，我們將探討如何透過包裝技術動態擴展物件功能。

@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (19) - Command Pattern (命令模式)
+title: 設計模式（19）命令模式：智慧家電遙控系統，實現操作封裝與復原機制
 date: 2024-12-21 15:00:00 +0800
-description: 了解命令模式如何將操作與執行解耦，讓程式具備更高的靈活性與可擴展性。
-tags: [Command Pattern]
+description: 深度剖析命令模式（Command Pattern）核心概念，透過智慧家電遙控器實例，學習如何將操作請求封裝成物件，實現復原功能與操作歷史管理。
+tags: [Command Pattern, Design Patterns, Behavioral Patterns, Smart Home, Remote Control, Undo Functionality]
 categories: [Design Pattern]
 toc:
   #   beginning: true

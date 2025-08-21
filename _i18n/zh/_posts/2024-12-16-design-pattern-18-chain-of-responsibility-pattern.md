@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (18) - Chain of Responsibility Pattern (責任鏈模式)
+title: "設計模式（18）責任鏈模式：動態日誌處理系統設計指南 Chain of Responsibility Pattern"
 date: 2024-12-16 23:00:00 +0800
-description: 探索責任鏈模式如何讓請求能被多個處理者動態處理，正式進入行為型模式的學習。
-tags: [Chain of Responsibility Pattern]
+description: "完整解析責任鏈模式 Chain of Responsibility Pattern 實作技巧，學習透過動態處理鏈設計靈活的日誌系統，掌握行為型設計模式的核心應用與最佳實踐方法。"
+tags: [Design Patterns, Chain of Responsibility, Behavioral Patterns, Software Architecture, OOP, Kotlin, Java, Logging System, Design Principles]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -17,9 +17,9 @@ thumbnail: /assets/img/design_patterns.jpg
 
 ## 進入行為型模式的世界
 
-歡迎來到 Design Pattern 系列的一個重要里程碑！在前面的文章中，我們深入探索了結構型模式，包括享元模式 (Flyweight) 和代理模式 (Proxy)。這些模式主要關注物件和類別如何組合成更大的結構。
+歡迎來到 Design Pattern 系列的一個重要里程碑！在前面的文章中，我們深入探索了結構型模式，包括[享元模式 (Flyweight)](/zh/blog/2024/design-pattern-16-flyweight-pattern/) 和[代理模式 (Proxy)](/zh/blog/2024/design-pattern-17-proxy-pattern/)。這些模式主要關注物件和類別如何組合成更大的結構。
 
-從今天開始，我們正式進入 **行為型模式 (Behavioral Patterns)** 的學習。與結構型模式不同，行為型模式不關注物件的結構。相反地，它專注於物件之間如何交互、溝通和協作來完成複雜的任務。
+從今天開始，我們正式進入 **行為型模式 (Behavioral Patterns)** 的學習。與[結構型模式](/zh/blog/2024/design-pattern-11-adapter-pattern/)不同，行為型模式不關注物件的結構。相反地，它專注於物件之間如何交互、溝通和協作來完成複雜的任務。
 
 ## 我們的需求：智慧型日誌處理系統
 
@@ -295,3 +295,21 @@ GUI 中的滑鼠事件、鍵盤事件在組件層次中的傳遞。事件會沿�
 **模式的普遍價值**
 
 這些應用場景都體現了責任鏈模式的核心優勢：將複雜的處理邏輯分解成多個獨立的處理者。通過鏈式結構實現靈活的協作，為系統設計提供強大的可維護性和可擴展性。
+
+## 系列文章導覽
+
+### 行為型設計模式系列
+- [命令模式 (Command Pattern)](/zh/blog/2024/design-pattern-19-command-pattern/) - 將請求封裝為物件，支援操作的撤銷與重做
+- [迭代器模式 (Iterator Pattern)](/zh/blog/2024/design-pattern-20-iterator-pattern/) - 提供循序訪問聚合物件的標準方法
+- [中介者模式 (Mediator Pattern)](/zh/blog/2024/design-pattern-21-mediator-pattern/) - 定義物件間的互動方式，降低耦合度
+- [觀察者模式 (Observer Pattern)](/zh/blog/2024/design-pattern-23-observer-pattern/) - 實作事件驅動的通知機制
+
+### 結構型設計模式系列
+- [適配器模式 (Adapter Pattern)](/zh/blog/2024/design-pattern-11-adapter-pattern/) - 讓不相容的介面能夠協同工作
+- [橋接模式 (Bridge Pattern)](/zh/blog/2024/design-pattern-12-bridge-pattern/) - 將抽象與實作分離，支援獨立演化
+
+### 創建型設計模式基礎
+- [設計模式概念](/zh/blog/2024/design-pattern-3-design-pattern/) - 了解設計模式的基本概念
+- [設計原則](/zh/blog/2024/design-pattern-2-design-principle/) - 掌握 SOLID 原則與設計基礎
+
+透過責任鏈模式，我們學會了如何設計動態且靈活的請求處理機制。在下一篇文章中，我們將探討另一個重要的行為型模式，繼續深入學習物件間的協作設計技巧。

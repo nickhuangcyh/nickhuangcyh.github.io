@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (26) - Template Method Pattern (模板方法模式)
+title: 設計模式（26）模板方法模式：定義演算法骨架，提升程式碼復用性與系統擴展能力
 date: 2024-12-28 19:30:00 +0800
-description: 模板方法模式提供了一個框架，允許子類別重新定義特定步驟的實作，保持核心流程的一致性，實現高復用性與靈活性。
-tags: [Template Method Pattern]
+description: 深入解析模板方法模式（Template Method Pattern），學習如何定義演算法骨架、實現程式碼復用，並透過資料格式轉換系統實例，掌握行為型設計模式的核心應用技巧。
+tags: [Template Method Pattern, Design Patterns, Behavioral Patterns, Code Reusability, Algorithm Structure, Software Architecture]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -70,9 +70,9 @@ thumbnail: /assets/img/design_patterns.jpg
 
 ### Template Method Pattern 基本概念
 
-Template Method Pattern 是一種行為型設計模式。它定義了一個演算法的骨架，讓子類別能夠覆寫特定步驟，而不改變演算法的整體結構。
+**模板方法模式**（Template Method Pattern）是一種重要的行為型設計模式。它定義了一個演算法的骨架，讓子類別能夠覆寫特定步驟，而不改變演算法的整體結構。
 
-這個模式的核心思想是「在父類別中定義不變的流程，在子類別中實作變化的細節」。
+這個模式的核心思想是「在父類別中定義不變的流程，在子類別中實作變化的細節」，與[策略模式]({% post_url 2024-12-26-design-pattern-25-strategy-pattern %})和[狀態模式]({% post_url 2024-12-25-design-pattern-24-state-pattern %})共同構成行為型模式的重要組成部分。
 
 讓我們先了解 Template Method Pattern 的標準結構：
 
@@ -240,6 +240,8 @@ Template Method Pattern 特別適合以下業務場景：
 
 ### 總結
 
-Template Method Pattern 提供了一個優雅且實用的解決方案。它不僅確保了系統核心流程的一致性，更為實現靈活且高效的功能擴展奠定了穩固的架構基礎。
+**模板方法模式**提供了一個優雅且實用的解決方案。它不僅確保了系統核心流程的一致性，更為實現靈活且高效的功能擴展奠定了穩固的架構基礎。
 
 這個模式的核心價值在於「定義骨架，靈活填充」，讓開發者能夠在保持系統穩定性的前提下，快速響應業務變化的需求。
+
+在行為型設計模式中，模板方法模式與[觀察者模式]({% post_url 2024-12-24-design-pattern-23-observer-pattern %})、[命令模式]({% post_url 2024-12-21-design-pattern-19-command-pattern %})等模式相輔相成，共同構建了完善的軟體架構設計體系。掌握模板方法模式，將為您的軟體開發技能增添重要的設計工具。

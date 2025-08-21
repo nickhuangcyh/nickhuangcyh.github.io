@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (2) - Design Principles (設計原則)
+title: 設計模式（2）設計原則 SOLID Principles 完整教學：提升程式碼品質的五大原則
 date: 2024-07-03 23:00:00 +0800
-description: 學習如何透過單一職責和開放封閉等設計原則提升程式碼質量，打造靈活、可維護的軟體系統。
-tags: [Design Principle]
+description: 深入解析 SOLID 五大設計原則：單一職責、開放封閉、里氏替換、介面隔離與依賴反轉。透過實用範例與程式碼演示，學會如何設計穩健、可維護的軟體系統。
+tags: [Design Principles, SOLID Principles, Object-Oriented Design, Software Architecture, Clean Code, Design Pattern, Software Development, Code Quality]
 categories: [Design Pattern]
 toc:
   #   beginning: true

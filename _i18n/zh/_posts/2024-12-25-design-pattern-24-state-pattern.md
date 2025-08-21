@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (24) - State Pattern (狀態模式)
+title: 設計模式（24）狀態模式：智慧飲水機狀態管理，實現物件行為動態切換
 date: 2024-12-22 15:00:00 +0800
-description: 透過狀態模式，設計一個飲水機的運作機制，根據不同狀態執行加熱、冷卻或待機的行為。
-tags: [State Pattern]
+description: 深度解析狀態模式（State Pattern）核心概念，透過智慧飲水機系統實例，學習如何優雅管理物件狀態轉換，降低程式耦合度並提升系統擴展性。
+tags: [State Pattern, Design Patterns, Behavioral Patterns, State Management, Object Behavior, Software Architecture]
 categories: [Design Pattern]
 toc:
   #   beginning: true
@@ -72,7 +72,9 @@ thumbnail: /assets/img/design_patterns.jpg
 
 ### State Pattern 的解決方案
 
-狀態模式的核心思想是將每個狀態的邏輯封裝成獨立的類別。這樣做可以將複雜的狀態管理問題分解成更小、更易管理的部分。
+**狀態模式**的核心思想是將每個狀態的邏輯封裝成獨立的類別。這樣做可以將複雜的狀態管理問題分解成更小、更易管理的部分。
+
+狀態模式與[策略模式]({% post_url 2024-12-26-design-pattern-25-strategy-pattern %})有相似的結構，但兩者的應用場景不同：狀態模式著重於狀態的轉換與管理，而策略模式專注於演算法的選擇與替換。
 
 {% include figure.liquid path="assets/img/design_pattern_state_pattern_uml_2.png" title="design_pattern_state_pattern_uml_2" %}
 
@@ -255,6 +257,8 @@ fun main() {
 
 ### 最終總結
 
-狀態模式為我們提供了一種優雅且強大的方式來管理物件的狀態相關行為。它不僅讓程式結構更具彈性和可維護性，更是開發複雜狀態機制應用時的最佳選擇。
+**狀態模式**為我們提供了一種優雅且強大的方式來管理物件的狀態相關行為。它不僅讓程式結構更具彈性和可維護性，更是開發複雜狀態機制應用時的最佳選擇。
 
 當你的系統需要根據物件的內部狀態來改變行為，且這些狀態轉換邏輯較為複雜時，狀態模式將是你最可靠的設計夥伴！
+
+在行為型設計模式系列中，狀態模式與[觀察者模式]({% post_url 2024-12-24-design-pattern-23-observer-pattern %})、[命令模式]({% post_url 2024-12-21-design-pattern-19-command-pattern %})等模式共同構成了完整的行為管理工具庫。掌握狀態模式，將為您的軟體架構設計增添重要的技術基石。

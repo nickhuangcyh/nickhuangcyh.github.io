@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 搞懂 P2P 技術 (2) - STUN x TURN x ICE
+title: P2P 技術（2）STUN、TURN、ICE 協定完整教學：NAT 穿透解決方案深入解析
 date: 2022-01-04 15:09:00 +0800
-description: 解析 STUN、TURN 與 ICE 協議，搞懂 P2P 穿透技術，突破 NAT 限制建立穩定連線，打造強大 iOS / Android 即時通訊架構。
-tags: [iOS, Android, STUN, TURN, ICE, NAT Traversal]
+description: 深入學習 STUN、TURN、ICE 三大協定如何解決 NAT 穿透問題。從伺服器反射、中繼傳輸到連線候選收集等細節，掌握如何建立穩定的 P2P 連線，打造高效率即時通訊系統。
+tags: [STUN Protocol, TURN Protocol, ICE Protocol, P2P Technology, NAT Traversal, Real-time Communication, Network Protocol, WebRTC]
 categories: [P2P]
 toc:
   #   beginning: true

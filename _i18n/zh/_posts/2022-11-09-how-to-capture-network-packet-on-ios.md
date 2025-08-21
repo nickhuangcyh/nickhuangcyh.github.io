@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 如何抓取 iOS 的網路封包
+title: iOS 網路封包捕獲完整教學：使用 rvictl 與 Wireshark 除錯技巧
 date: 2022-11-09 11:30:00 +0800
-description: 教你如何使用 rvictl 與 Wireshark 抓取 iOS 裝置封包，快速分析連線問題，是 iOS 與 IoT 開發必備技巧！
-tags: [iOS, Network, Packet, Wireshark, rvictl]
+description: 學會在 iOS 裝置上捕獲與分析網路封包的完整流程。詳細解析 rvictl 虛擬網路介面設定、Wireshark 封包分析與常見問題排除。適用於 iOS App 開發、IoT 除錯與網路安全分析。
+tags: [iOS Network Analysis, Packet Capture, Wireshark Analysis, rvictl Tool, Network Debugging, iOS Development, Mobile Network, Traffic Analysis]
 categories: [Tools]
 toc:
   #   beginning: true

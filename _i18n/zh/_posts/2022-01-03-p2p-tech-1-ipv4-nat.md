@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 搞懂 P2P 技術 (1) - P2P x IPv4 x NAT
+title: P2P 技術（1）IPv4 與 NAT 穿透完整解析：網路架構與連線原理深入教學
 date: 2022-01-03 23:45:03 +0800
-description: 深入解析 P2P 穿透技術、NAT 類型與通訊限制，掌握物聯網與分佈式架構下的網路連線原理。
-tags: [iOS, Android, IPv4, NAT, P2P, NAT Traversal]
+description: 學會 P2P 網路通訊的核心概念與 IPv4/NAT 架構限制。深入了解四種 NAT 類型、穿透挑戰與解決方案。從 IPCam 影音串流實例學習物聯網裝置通訊原理，為後續 STUN/TURN/ICE 協定奠基礎。
+tags: [P2P Technology, IPv4 Network, NAT Traversal, Network Architecture, IoT Communication, Distributed Systems, Network Protocol, Real-time Communication]
 categories: [P2P]
 toc:
   #   beginning: true

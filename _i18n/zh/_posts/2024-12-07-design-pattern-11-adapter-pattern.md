@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (11) - Adapter Pattern (轉接器模式)
+title: 設計模式（11）轉接器模式 Adapter Pattern 完整教學：解決介面不相容問題
 date: 2024-12-07 23:00:00 +0800
-description: 了解如何使用轉接器模式來解決介面不兼容問題，讓不同類別無縫合作，增強程式設計靈活性。
-tags: [Adapter Pattern]
+description: 學會 Adapter Pattern 如何解決系統整合中的介面不相容問題。從股票數據 XML-JSON 轉換實例學會設計模式核心概念、UML架構、Kotlin實作、適用情境與最佳實踐。
+tags: [Adapter Pattern, Design Pattern, System Integration, Structural Pattern, OOP Design, Interface Compatibility, Kotlin Programming, Enterprise Development]
 categories: [Design Pattern]
 toc:
   #   beginning: true

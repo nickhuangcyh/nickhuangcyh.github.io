@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Design Pattern (3) - Design Patterns (設計模式)
+title: 設計模式（3）設計模式核心概念 Design Pattern 完整入門：四大要素與分類系統
 date: 2024-07-04 23:00:00 +0800
-description: 深入探討設計模式的概念及其應用步驟，助你高效解決軟體問題。
-tags: [Design Pattern]
+description: 學會 Design Pattern 的定義、目的與結構化思維。深入了解設計模式的四大要素：Context、Forces、Problem與Solution，以及創建型、結構型和行為型模式的完整分類系統。
+tags: [Design Pattern, Software Design, Gang of Four, Creational Pattern, Structural Pattern, Behavioral Pattern, Software Architecture, Programming]
 categories: [Design Pattern]
 toc:
   #   beginning: true

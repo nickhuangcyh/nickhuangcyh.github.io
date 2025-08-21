@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 使用 Jekyll + minimal-mistakes 在 GitHub Pages 上架設自己的部落格
+title: Jekyll 建站完整教學：使用 Minimal Mistakes 主題在 GitHub Pages 架設部落格
 date: 2021-12-29 15:45:03 +0800
-description: 原來架設 Blog 也能如此輕鬆簡單！這篇文章手把手教你從 0 開始，用 Jekyll + Minimal Mistakes 架站。
-tags: [Jekyll, Minimal-Mistakes, GitHub Pages, Theme]
+description: 學會從零開始使用 Jekyll 與 Minimal Mistakes 主題建置個人部落格。詳細解析 GitHub Pages 部署、主題客製化、網站配置與內容管理流程。包含 Ruby 環境設定、Markdown 寫作與 SEO 優化。
+tags: [Jekyll Tutorial, Minimal Mistakes Theme, GitHub Pages, Static Site Generator, Blog Setup, Ruby Development, Markdown Writing, Website Deployment]
 categories: [Blog]
 toc:
   #   beginning: true
