@@ -51,37 +51,37 @@
 | 2024-12-12-design-pattern-15-facade-pattern.md | 2024-12-12 | 設計模式（15）外觀模式 | ✅ | ✅ | ⏳ | 設計模式 | SEO優化完成 |
 | 2024-12-11-design-pattern-14-decorator-pattern.md | 2024-12-11 | 設計模式（14）裝飾者模式 | ✅ | ✅ | ⏳ | 設計模式 | SEO優化完成 |
 | 2024-12-10-design-pattern-13-composite-pattern.md | 2024-12-10 | 設計模式（13）組合模式 | ✅ | ✅ | ⏳ | 設計模式 | SEO優化完成 |
-| 2024-12-08-design-pattern-12-bridge-pattern.md | 2024-12-08 | 設計模式（12）橋接模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
-| 2024-12-07-design-pattern-11-adapter-pattern.md | 2024-12-07 | 設計模式（11）適配器模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
+| 2024-12-08-design-pattern-12-bridge-pattern.md | 2024-12-08 | 設計模式（12）橋接模式 | ✅ | ✅ | ⏳ | 設計模式 | |
+| 2024-12-07-design-pattern-11-adapter-pattern.md | 2024-12-07 | 設計模式（11）適配器模式 | ✅ | ✅ | ⏳ | 設計模式 | |
 | 2024-12-01-google-adsense.md | 2024-12-01 | Google AdSense 申請與設定 | ✅ | ✅ | ⏳ | Google 服務 | |
 | 2024-08-16-jenkins-3-configure-credentials-ssh.md | 2024-08-16 | Jenkins（3）配置 SSH 憑證 | ✅ | ✅ | ⏳ | Jenkins 系列 | SEO優化完成 |
 | 2024-08-15-jenkins-2-how-to-setup-jenkins-server.md | 2024-08-15 | Jenkins（2）如何設定 Jenkins 伺服器 | ✅ | ✅ | ⏳ | Jenkins 系列 | SEO優化完成 |
 | 2024-08-15-jenkins-1-what-is-jenkins.md | 2024-08-15 | Jenkins（1）什麼是 Jenkins | ✅ | ✅ | ⏳ | Jenkins 系列 | SEO優化完成 |
 | 2024-08-10-design-pattern-10-singleton-pattern.md | 2024-08-10 | 設計模式（10）單例模式 | ✅ | ✅ | ⏳ | 設計模式 | |
-| 2024-08-02-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8.md | 2024-08-02 | 在 OpenSSH 8.8 中啟用 RSA 加密演算法 | ✅ | ⏳ | ⏳ | 安全性 | |
-| 2024-07-23-getting-started-with-github-container-registry.md | 2024-07-23 | GitHub Container Registry 入門 | ✅ | ⏳ | ⏳ | GitHub 工具 | |
-| 2024-07-19-design-pattern-9-prototype-pattern.md | 2024-07-19 | 設計模式（9）原型模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
-| 2024-07-16-how-to-build-chiptool-for-android.md | 2024-07-16 | 如何為 Android 建置 ChipTool | ✅ | ⏳ | ⏳ | Android 開發 | |
-| 2024-07-09-design-pattern-8-builder-pattern.md | 2024-07-09 | 設計模式（8）建造者模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
-| 2024-07-08-design-pattern-7-abstract-factory-pattern.md | 2024-07-08 | 設計模式（7）抽象工廠模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
-| 2024-07-07-design-pattern-6-factory-method-pattern.md | 2024-07-07 | 設計模式（6）工廠方法模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
-| 2024-07-06-design-pattern-5-simple-factory-pattern.md | 2024-07-06 | 設計模式（5）簡單工廠模式 | ✅ | ⏳ | ⏳ | 設計模式 | |
-| 2024-07-05-google-wallet-smart-tap-exploring.md | 2024-07-05 | Google Wallet Smart Tap 深入探索 | ✅ | ⏳ | ⏳ | Google 服務 | |
-| 2024-07-05-design-pattern-4-uml.md | 2024-07-05 | 設計模式（4）UML 統一建模語言 | ✅ | ⏳ | ⏳ | 設計模式 | |
-| 2024-07-04-design-pattern-3-design-pattern.md | 2024-07-04 | 設計模式（3）設計模式概念 | ✅ | ⏳ | ⏳ | 設計模式 | |
-| 2024-07-03-design-pattern-2-design-principle.md | 2024-07-03 | 設計模式（2）設計原則 | ✅ | ⏳ | ⏳ | 設計模式 | |
-| 2024-07-02-design-pattern-1-object-oriented-concepts.md | 2024-07-02 | 設計模式（1）物件導向概念 | ✅ | ⏳ | ⏳ | 設計模式 | |
-| 2024-01-11-setup-development-environment-on-a-new-macos.md | 2024-01-11 | 在新 macOS 上設定開發環境 | ✅ | ⏳ | ⏳ | 開發環境 | |
-| 2022-11-09-how-to-capture-network-packet-on-ios.md | 2022-11-09 | 如何在 iOS 上捕獲網路封包 | ✅ | ⏳ | ⏳ | iOS 開發 | |
-| 2022-11-06-how-to-capture-network-packet-on-android-using-tcpdump.md | 2022-11-06 | 使用 tcpdump 在 Android 上捕獲網路封包 | ✅ | ⏳ | ⏳ | Android 開發 | |
-| 2022-01-04-p2p-tech-3-webrtc-kvs.md | 2022-01-04 | P2P 技術（3）WebRTC 與 KVS | ✅ | ⏳ | ⏳ | P2P 系列 | |
-| 2022-01-04-p2p-tech-2-stun-turn-ice.md | 2022-01-04 | P2P 技術（2）STUN、TURN、ICE | ✅ | ⏳ | ⏳ | P2P 系列 | |
-| 2022-01-03-p2p-tech-1-ipv4-nat.md | 2022-01-03 | P2P 技術（1）IPv4 與 NAT | ✅ | ⏳ | ⏳ | P2P 系列 | |
-| 2022-01-02-3d_graphic_tips.md | 2022-01-02 | 3D 圖形開發技巧 | ✅ | ⏳ | ⏳ | 圖形開發 | |
-| 2021-12-31-how-to-add-your-jekyll-blog-website-to-google-search-console.md | 2021-12-31 | 將 Jekyll 網站新增到 Google Search Console | ✅ | ⏳ | ⏳ | Jekyll SEO | |
-| 2021-12-30-creating_a_github_pages_with_jekyll_and_minimal_mistakes.md | 2021-12-30 | 使用 Jekyll 與 Minimal Mistakes 建立 GitHub Pages | ✅ | ⏳ | ⏳ | Jekyll 教學 | |
+| 2024-08-02-how-to-enable-rsa-encryption-algorithm-key-in-openssh-8.8.md | 2024-08-02 | 在 OpenSSH 8.8 中啟用 RSA 加密演算法 | ✅ | ✅ | ⏳ | 安全性 | |
+| 2024-07-23-getting-started-with-github-container-registry.md | 2024-07-23 | GitHub Container Registry 入門 | ✅ | ✅ | ⏳ | GitHub 工具 | |
+| 2024-07-19-design-pattern-9-prototype-pattern.md | 2024-07-19 | 設計模式（9）原型模式 | ✅ | ✅ | ⏳ | 設計模式 | |
+| 2024-07-16-how-to-build-chiptool-for-android.md | 2024-07-16 | 如何為 Android 建置 ChipTool | ✅ | ✅ | ⏳ | Android 開發 | |
+| 2024-07-09-design-pattern-8-builder-pattern.md | 2024-07-09 | 設計模式（8）建造者模式 | ✅ | ✅ | ⏳ | 設計模式 | |
+| 2024-07-08-design-pattern-7-abstract-factory-pattern.md | 2024-07-08 | 設計模式（7）抽象工廠模式 | ✅ | ✅ | ⏳ | 設計模式 | |
+| 2024-07-07-design-pattern-6-factory-method-pattern.md | 2024-07-07 | 設計模式（6）工廠方法模式 | ✅ | ✅ | ⏳ | 設計模式 | |
+| 2024-07-06-design-pattern-5-simple-factory-pattern.md | 2024-07-06 | 設計模式（5）簡單工廠模式 | ✅ | ✅ | ⏳ | 設計模式 | |
+| 2024-07-05-google-wallet-smart-tap-exploring.md | 2024-07-05 | Google Wallet Smart Tap 深入探索 | ✅ | ✅ | ⏳ | Google 服務 | |
+| 2024-07-05-design-pattern-4-uml.md | 2024-07-05 | 設計模式（4）UML 統一建模語言 | ✅ | ✅ | ⏳ | 設計模式 | |
+| 2024-07-04-design-pattern-3-design-pattern.md | 2024-07-04 | 設計模式（3）設計模式概念 | ✅ | ✅ | ⏳ | 設計模式 | |
+| 2024-07-03-design-pattern-2-design-principle.md | 2024-07-03 | 設計模式（2）設計原則 | ✅ | ✅ | ⏳ | 設計模式 | |
+| 2024-07-02-design-pattern-1-object-oriented-concepts.md | 2024-07-02 | 設計模式（1）物件導向概念 | ✅ | ✅ | ⏳ | 設計模式 | |
+| 2024-01-11-setup-development-environment-on-a-new-macos.md | 2024-01-11 | 在新 macOS 上設定開發環境 | ✅ | ✅ | ⏳ | 開發環境 | |
+| 2022-11-09-how-to-capture-network-packet-on-ios.md | 2022-11-09 | 如何在 iOS 上捕獲網路封包 | ✅ | ✅ | ⏳ | iOS 開發 | |
+| 2022-11-06-how-to-capture-network-packet-on-android-using-tcpdump.md | 2022-11-06 | 使用 tcpdump 在 Android 上捕獲網路封包 | ✅ | ✅ | ⏳ | Android 開發 | |
+| 2022-01-04-p2p-tech-3-webrtc-kvs.md | 2022-01-04 | P2P 技術（3）WebRTC 與 KVS | ✅ | ✅ | ⏳ | P2P 系列 | |
+| 2022-01-04-p2p-tech-2-stun-turn-ice.md | 2022-01-04 | P2P 技術（2）STUN、TURN、ICE | ✅ | ✅ | ⏳ | P2P 系列 | |
+| 2022-01-03-p2p-tech-1-ipv4-nat.md | 2022-01-03 | P2P 技術（1）IPv4 與 NAT | ✅ | ✅ | ⏳ | P2P 系列 | |
+| 2022-01-02-3d_graphic_tips.md | 2022-01-02 | 3D 圖形開發技巧 | ✅ | ✅ | ⏳ | 圖形開發 | |
+| 2021-12-31-how-to-add-your-jekyll-blog-website-to-google-search-console.md | 2021-12-31 | 將 Jekyll 網站新增到 Google Search Console | ✅ | ✅ | ⏳ | Jekyll SEO | |
+| 2021-12-30-creating_a_github_pages_with_jekyll_and_minimal_mistakes.md | 2021-12-30 | 使用 Jekyll 與 Minimal Mistakes 建立 GitHub Pages | ✅ | ✅ | ⏳ | Jekyll 教學 | |
 | 2020-09-10-octopress-setup.md | 2020-09-10 | Octopress 設定教學 | ✅ | ⏳ | ⏳ | Octopress | |
-| 2020-09-10-how-to-add-your-octopress-blog-website-to-google-search-console.md | 2020-09-10 | 將 Octopress 網站新增到 Google Search Console | ✅ | ⏳ | ⏳ | Octopress SEO | |
+| 2020-09-10-how-to-add-your-octopress-blog-website-to-google-search-console.md | 2020-09-10 | 將 Octopress 網站新增到 Google Search Console | ✅ | ✅ | ⏳ | Octopress SEO | |
 
 ## 系列文章統計
 
