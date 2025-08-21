@@ -63,7 +63,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/ai/machine-learning/developer-tools/programming/intro-to-ai-agents-mcp-rag-llm/";
+            window.location.href = "/blog/ai/machine-learning/developer-tools/programming/intro-to-ai-agents-mcp-rag-llm/";
           
         },
       },{id: "post-一台電腦操作多個-github-帳號-最簡單快速的-ssh-設定方法",
@@ -74,7 +74,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/devops/git/github/developer-tools/how-to-use-multiple-github-accounts-using-ssh/";
+            window.location.href = "/blog/devops/git/github/developer-tools/how-to-use-multiple-github-accounts-using-ssh/";
           
         },
       },{id: "post-如何使用-excalidraw-ai-快速生成專業級圖表-提升工作效率",
@@ -85,7 +85,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/ai-tools/visualization/productivity/design/ai-tools-excalidraw-chart-guide/";
+            window.location.href = "/blog/ai-tools/visualization/productivity/design/ai-tools-excalidraw-chart-guide/";
           
         },
       },{id: "post-macos-開發環境完整設定教學-行動裝置開發工具鏈配置指南",
@@ -96,7 +96,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/setup%20guide/setup-development-environment-on-a-new-macos/";
+            window.location.href = "/blog/setup%20guide/setup-development-environment-on-a-new-macos/";
           
         },
       },{id: "post-design-pattern-28-interpreter-pattern-解譯器模式",
@@ -107,7 +107,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design-patterns/software-engineering/programming/object-oriented-design/design-pattern-28-interpreter-pattern/";
+            window.location.href = "/blog/design-patterns/software-engineering/programming/object-oriented-design/design-pattern-28-interpreter-pattern/";
           
         },
       },{id: "post-design-pattern-27-visitor-pattern-訪問者模式",
@@ -118,7 +118,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design-patterns/software-engineering/iot/mobile-development/design-pattern-27-visitor-pattern/";
+            window.location.href = "/blog/design-patterns/software-engineering/iot/mobile-development/design-pattern-27-visitor-pattern/";
           
         },
       },{id: "post-設計模式-26-模板方法模式-定義演算法骨架-提升程式碼復用性與系統擴展能力",
@@ -129,7 +129,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-26-template-method-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-26-template-method-pattern/";
           
         },
       },{id: "post-設計模式-25-策略模式-動態演算法切換-打造高擴展性電商運費系統",
@@ -140,7 +140,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-25-strategy-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-25-strategy-pattern/";
           
         },
       },{id: "post-設計模式-24-狀態模式-智慧飲水機狀態管理-實現物件行為動態切換",
@@ -151,7 +151,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-24-state-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-24-state-pattern/";
           
         },
       },{id: "post-設計模式-23-觀察者模式-智慧安全系統一對多通知機制-實現即時警報推送",
@@ -162,7 +162,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-23-observer-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-23-observer-pattern/";
           
         },
       },{id: "post-設計模式-22-備忘錄模式-實現文字編輯器復原功能-完美封裝物件狀態快照",
@@ -173,7 +173,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-22-memento-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-22-memento-pattern/";
           
         },
       },{id: "post-設計模式-21-中介者模式-智慧家居系統元件協調-降低物件間複雜耦合關係",
@@ -184,7 +184,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-21-mediator-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-21-mediator-pattern/";
           
         },
       },{id: "post-設計模式-20-迭代器模式-統一資料遍歷介面-優雅存取多種集合結構",
@@ -195,7 +195,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-20-iterator-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-20-iterator-pattern/";
           
         },
       },{id: "post-設計模式-19-命令模式-智慧家電遙控系統-實現操作封裝與復原機制",
@@ -206,7 +206,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-19-command-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-19-command-pattern/";
           
         },
       },{id: "post-設計模式-18-責任鏈模式-動態日誌處理系統設計指南-chain-of-responsibility-pattern",
@@ -294,7 +294,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-12-bridge-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-12-bridge-pattern/";
           
         },
       },{id: "post-設計模式-11-轉接器模式-adapter-pattern-完整教學-解決介面不相容問題",
@@ -305,7 +305,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-11-adapter-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-11-adapter-pattern/";
           
         },
       },{id: "post-google-adsense-申請與設定完整教學-讓網站開始獲利",
@@ -316,7 +316,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/digital-marketing/monetization/google-services/web-development/google-adsense/";
+            window.location.href = "/blog/digital-marketing/monetization/google-services/web-development/google-adsense/";
           
         },
       },{id: "post-jenkins-2-伺服器架設完全指南-docker-環境快速部署教學",
@@ -360,7 +360,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/cryptography/openssh/security/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8/";
+            window.location.href = "/blog/cryptography/openssh/security/how-to-enable-rsa-encryption-algorithm-key-in-openssh-8-8/";
           
         },
       },{id: "post-github-container-registry-完整教學-容器映像管理與-ci-cd-部署指南",
@@ -371,7 +371,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/devops/getting-started-with-github-container-registry/";
+            window.location.href = "/blog/devops/getting-started-with-github-container-registry/";
           
         },
       },{id: "post-設計模式-9-原型模式-prototype-pattern-完整教學-物件複製與效能優化",
@@ -393,7 +393,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/tools/how-to-build-chiptool-for-android/";
+            window.location.href = "/blog/tools/how-to-build-chiptool-for-android/";
           
         },
       },{id: "post-設計模式-8-建造者模式-builder-pattern-完整教學-分步構建複雜物件",
@@ -448,7 +448,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-4-uml/";
+            window.location.href = "/blog/design%20pattern/design-pattern-4-uml/";
           
         },
       },{id: "post-深入解析-google-wallet-smart-tap-未來的支付方式",
@@ -459,7 +459,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/pay/technology/google-wallet-smart-tap-exploring/";
+            window.location.href = "/blog/pay/technology/google-wallet-smart-tap-exploring/";
           
         },
       },{id: "post-設計模式-3-設計模式核心概念-design-pattern-完整入門-四大要素與分類系統",
@@ -470,7 +470,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-3-design-pattern/";
+            window.location.href = "/blog/design%20pattern/design-pattern-3-design-pattern/";
           
         },
       },{id: "post-設計模式-2-設計原則-solid-principles-完整教學-提升程式碼品質的五大原則",
@@ -481,7 +481,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-2-design-principle/";
+            window.location.href = "/blog/design%20pattern/design-pattern-2-design-principle/";
           
         },
       },{id: "post-設計模式-1-物件導向概念-oop-concepts-完整教學-封裝繼承多型抽象核心原理",
@@ -492,7 +492,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/design%20pattern/design-pattern-1-object-oriented-concepts/";
+            window.location.href = "/blog/design%20pattern/design-pattern-1-object-oriented-concepts/";
           
         },
       },{id: "post-ios-網路封包捕獲完整教學-使用-rvictl-與-wireshark-除錯技巧",
@@ -503,7 +503,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/tools/how-to-capture-network-packet-on-ios/";
+            window.location.href = "/blog/tools/how-to-capture-network-packet-on-ios/";
           
         },
       },{id: "post-android-網路封包分析完整教學-使用-tcpdump-與-wireshark-除錯實戰",
@@ -514,7 +514,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/tools/how-to-capture-network-packet-on-android-using-tcpdump/";
+            window.location.href = "/blog/tools/how-to-capture-network-packet-on-android-using-tcpdump/";
           
         },
       },{id: "post-p2p-技術-3-webrtc-與-aws-kvs-完整實作-即時通訊與串流技術深入教學",
@@ -558,7 +558,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/mobile/3d-graphic-tips/";
+            window.location.href = "/blog/mobile/3d-graphic-tips/";
           
         },
       },{id: "post-jekyll-seo-完整教學-google-search-console-與-sitemap-配置指南",
@@ -569,7 +569,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/blog/how-to-add-your-jekyll-blog-website-to-google-search-console/";
+            window.location.href = "/blog/blog/how-to-add-your-jekyll-blog-website-to-google-search-console/";
           
         },
       },{id: "post-jekyll-建站完整教學-使用-minimal-mistakes-主題在-github-pages-架設部落格",
@@ -580,7 +580,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/blog/creating-a-github-pages-with-jekyll-and-minimal-mistakes/";
+            window.location.href = "/blog/blog/creating-a-github-pages-with-jekyll-and-minimal-mistakes/";
           
         },
       },{id: "post-octopress-seo-完整教學-google-search-console-與搜尋引擎索引優化",
@@ -591,7 +591,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/blog/how-to-add-your-octopress-blog-website-to-google-search-console/";
+            window.location.href = "/blog/blog/how-to-add-your-octopress-blog-website-to-google-search-console/";
           
         },
       },{id: "post-octopress-靜態部落格完整教學-github-pages-部署與主題客製化指南",
@@ -602,7 +602,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/zh/blog/blog/octopress-setup/";
+            window.location.href = "/blog/blog/octopress-setup/";
           
         },
       },{id: "books-die-kunst-über-geld-nachzudenken",
