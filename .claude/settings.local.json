@@ -1,6 +1,12 @@
 {
   "permissions": {
-    "allow": ["Bash(mkdir:*)", "WebFetch(domain:www.anthropic.com)", "WebFetch(domain:docs.anthropic.com)"],
+    "allow": [
+      "Bash(mkdir:*)",
+      "WebFetch(domain:www.anthropic.com)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:nickhuangcyh.github.io)",
+      "Bash(curl:*)"
+    ],
     "deny": [],
     "ask": []
   }
