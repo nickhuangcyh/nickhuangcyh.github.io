@@ -44,11 +44,11 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-claude-code-使用技巧與最佳實踐-tips-and-best-practices",
+        },{id: "post-claude-code-教學完整指南-30-實用技巧提升-ai-開發效率-2025最新",
         
-          title: "Claude Code 使用技巧與最佳實踐 - Tips and Best Practices",
+          title: "Claude Code 教學完整指南：30+ 實用技巧提升 AI 開發效率【2025最新】",
         
-        description: "探索 Claude Code 的最佳使用方式，從基礎操作到進階工作流程，提升 AI 輔助開發的效率與品質。",
+        description: "掌握 Claude Code 從入門到進階的完整教學。涵蓋記憶系統、工作流程優化、自定義指令等 30+ 實用技巧。讓 AI 成為你的高效開發助手，提升 10 倍生產力！",
         section: "Posts",
         handler: () => {
           
