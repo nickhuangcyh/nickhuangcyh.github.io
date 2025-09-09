@@ -63,6 +63,7 @@ thumbnail: /assets/img/design_patterns.jpg
 模板方法模式的核心組件包括：
 
 1. **AbstractClass (抽象類別)**
+
    - 定義模板方法 (Template Method)，封裝核心流程。
    - 提供部分步驟的預設實作，或將其標記為抽象，由子類別實現。
 
@@ -165,9 +166,11 @@ CSV Output: name=John\nage=30\ncity=New York
 透過 Template Method Pattern，我們成功將資料格式轉換的通用邏輯與變化邏輯分離，並實現以下優勢：
 
 1. **程式碼復用性高**
+
    - 通用的轉換流程邏輯在抽象類別中實現，避免重複。
 
 2. **易於擴展**
+
    - 新增格式只需繼承抽象類別並實現特定步驟。
 
 3. **符合設計原則**

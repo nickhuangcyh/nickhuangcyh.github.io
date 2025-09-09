@@ -34,9 +34,11 @@ thumbnail: /assets/img/design_patterns.jpg
 在未使用設計模式的情況下，我們可能面臨以下挑戰：
 
 1. **高耦合性 (High Coupling)**：
+
    - 客戶端需要直接操作每個具體設備的功能，導致耦合度過高，不利於系統擴展。
 
 2. **缺乏靈活性 (Lack of Flexibility)**：
+
    - 如果需要新增設備或操作，客戶端需要修改大量程式碼，增加了維護成本。
 
 3. **撤銷/重做困難 (Undo/Redo Complexity)**：

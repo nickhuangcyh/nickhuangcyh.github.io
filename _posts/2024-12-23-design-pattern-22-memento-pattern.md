@@ -32,9 +32,11 @@ thumbnail: /assets/img/design_patterns.jpg
 在未使用設計模式的情況下，我們可能面臨以下挑戰：
 
 1. **資料喪失風險 (Data Loss Risk)**：
+
    - 如果我們僅保留當前狀態，將無法回復到之前的狀態。
 
 2. **高耦合性 (High Coupling)**：
+
    - 客戶端需要直接操作狀態管理邏輯，導致複雜性增加。
 
 3. **難以擴展 (Hard to Extend)**：

@@ -44,6 +44,7 @@ Official Links:
 I independently **planned and implemented the entire BUS communication module**, including:
 
 - Developed **custom RS485 protocol**:
+
   - Handshake & Acknowledgment
   - Encrypted packet structure
   - Custom packet framing & error detection (like TCP/UDP)

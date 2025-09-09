@@ -32,9 +32,11 @@ thumbnail: /assets/img/design_patterns.jpg
 在未使用設計模式的情況下，我們可能面臨以下挑戰：
 
 1. **高頻寬消耗 (High Bandwidth Usage)**：
+
    - 如果每次播放影片都重新下載，將導致不必要的頻寬浪費。
 
 2. **延遲時間 (High Latency)**：
+
    - 每次下載影片會增加播放前的等待時間，影響用戶體驗。
 
 3. **客戶端耦合 (Client Coupling)**：

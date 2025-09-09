@@ -31,9 +31,11 @@ Memory stores learned knowledge and decisions, preventing Claude Code from const
 Anthropic officially recommends combining rules and memory to enable Claude Code, this AI development tool, to stably participate in long-term projects and continuously improve development efficiency.
 
 **Poor approach:**
+
 - Simply telling the AI "please use correct indentation" may confuse the AI
 
 **Correct approach:**
+
 - Clearly write "consistently use 2-space indentation" in `CLAUDE.md`, and the AI can maintain consistency long-term
 
 👉 **Pro tip:**  
@@ -50,11 +52,13 @@ This is Claude Code's "core brain" and the key to improving AI development effic
 ### Memory File Content Structure
 
 **Basic Information:**
+
 - **Common Commands**: `npm run build`, `npm test`
 - **Code Style**: Indentation rules, naming conventions
 - **Architecture Patterns**: Unique design decisions of the project
 
 **Advanced Information:**
+
 - **Workflows**: PR processes, testing and deployment strategies
 - **Domain Knowledge**: Business logic, API specifications
 - **Debugging Records**: Common issues and solutions
@@ -71,12 +75,12 @@ The memory system is not just a single file, but a complete hierarchical archite
 
 Different levels of memory have different priorities and applicable scopes. Understanding this hierarchical structure helps you better organize project knowledge.
 
-| Memory Type            | Scope          | Location                                                                                                                                            | Priority | Description                                    | Sharing Scope                    |
-| ---------------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ---------------------------------------------- | -------------------------------- |
-| Enterprise Policy      | Enterprise     | macOS: `/Library/Application Support/ClaudeCode/CLAUDE.md`<br>Linux: `/etc/claude-code/CLAUDE.md`<br>Windows: `C:\ProgramData\ClaudeCode\CLAUDE.md` | Highest  | Enterprise coding standards, security policies, compliance requirements | All users within the organization |
-| Project Memory         | Team Shared    | `./CLAUDE.md`                                                                                                                                       | High     | Project architecture, coding standards, shared workflows | Shared with team via version control |
-| User Memory            | Personal Preference | `~/.claude/CLAUDE.md`                                                                                                                               | Medium   | Code style preferences, personal tool shortcuts | All personal projects             |
-| Project Memory (Local) | Local Project  | `./CLAUDE.local.md`                                                                                                                                 | Low      | Personal project-specific preferences (deprecated) | Only current personal project     |
+| Memory Type            | Scope               | Location                                                                                                                                            | Priority | Description                                                             | Sharing Scope                        |
+| ---------------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------------------------------------------- | ------------------------------------ |
+| Enterprise Policy      | Enterprise          | macOS: `/Library/Application Support/ClaudeCode/CLAUDE.md`<br>Linux: `/etc/claude-code/CLAUDE.md`<br>Windows: `C:\ProgramData\ClaudeCode\CLAUDE.md` | Highest  | Enterprise coding standards, security policies, compliance requirements | All users within the organization    |
+| Project Memory         | Team Shared         | `./CLAUDE.md`                                                                                                                                       | High     | Project architecture, coding standards, shared workflows                | Shared with team via version control |
+| User Memory            | Personal Preference | `~/.claude/CLAUDE.md`                                                                                                                               | Medium   | Code style preferences, personal tool shortcuts                         | All personal projects                |
+| Project Memory (Local) | Local Project       | `./CLAUDE.local.md`                                                                                                                                 | Low      | Personal project-specific preferences (deprecated)                      | Only current personal project        |
 
 ---
 
@@ -150,6 +154,7 @@ Defining repetitive prompts as slash commands can greatly improve work efficienc
 **Practical Case: Unit Test Workflow**
 
 1. **Define Test Commands:**
+
    - `/generate-unit-test` - Generate unit tests
    - `/update-unit-test-guidelines` - Update test guidelines
 
@@ -236,30 +241,35 @@ Create a project-specific `docs/` folder to store various guidelines. Let Claude
 
 ### Feature Comparison Table
 
-| Feature | Claude Code | GitHub Copilot | ChatGPT | Cursor |
-|---------|-------------|----------------|---------|--------|
-| Project Memory System | ✅ Complete hierarchical memory | ❌ | ❌ | ✅ Basic memory |
-| Custom Commands | ✅ Slash Commands | ❌ | ❌ | ✅ |
-| Subagents Division | ✅ | ❌ | ❌ | ❌ |
-| Plan Mode | ✅ | ❌ | ❌ | ❌ |
-| File System Operations | ✅ Full support | ❌ | ❌ | ✅ |
-| Development Efficiency Boost | 10x | 3x | 2x | 5x |
+| Feature                      | Claude Code                     | GitHub Copilot | ChatGPT | Cursor          |
+| ---------------------------- | ------------------------------- | -------------- | ------- | --------------- |
+| Project Memory System        | ✅ Complete hierarchical memory | ❌             | ❌      | ✅ Basic memory |
+| Custom Commands              | ✅ Slash Commands               | ❌             | ❌      | ✅              |
+| Subagents Division           | ✅                              | ❌             | ❌      | ❌              |
+| Plan Mode                    | ✅                              | ❌             | ❌      | ❌              |
+| File System Operations       | ✅ Full support                 | ❌             | ❌      | ✅              |
+| Development Efficiency Boost | 10x                             | 3x             | 2x      | 5x              |
 
 ## Frequently Asked Questions (FAQ)
 
 ### Q1: Who is Claude Code suitable for?
+
 **A:** Claude Code is suitable for developers of all levels, from beginners to senior engineers. Beginners can use it to learn best practices, while senior developers can significantly improve development efficiency through it, saving 80% of repetitive work time.
 
 ### Q2: How to get started with Claude Code?
+
 **A:** First install Claude Code CLI, then execute the `/init` command in the project root directory to create the `CLAUDE.md` memory file. Then set up your development rules and workflows, and you can start using this powerful AI development tool.
 
 ### Q3: Will Claude Code replace programmers?
+
 **A:** No. Claude Code is designed to assist rather than replace developers. It handles tedious repetitive work, allowing developers to focus on high-level tasks that require creativity and experiential judgment, such as architectural design and business logic.
 
 ### Q4: Does using Claude Code require payment?
+
 **A:** Claude Code offers both free and paid versions. The free version can already meet most development needs, while the paid version provides larger context windows, faster response speeds, and advanced features.
 
 ### Q5: What programming languages does Claude Code support?
+
 **A:** Claude Code supports all mainstream programming languages, including but not limited to JavaScript, Python, Java, C++, Go, Rust, TypeScript, etc. It can also handle various frameworks and toolchains.
 
 ## Conclusion: AI as Capable Assistant, Not Replacement
