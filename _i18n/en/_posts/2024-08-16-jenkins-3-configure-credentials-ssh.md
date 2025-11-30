@@ -88,12 +88,10 @@ Select and copy the entire content (from `ssh-rsa` to your email).
 Next, configure on GitHub:
 
 1. **Enter GitHub Settings**
-
    - Log into your GitHub account
    - Click your profile picture in the top right corner, select "Settings"
 
 2. **Find SSH Settings Page**
-
    - Click "SSH and GPG keys" in the left sidebar
 
 3. **Add SSH Key**
@@ -119,12 +117,10 @@ Now we need to add the private key to Jenkins' credential system. This is the co
 #### Enter Jenkins Credentials Management Interface
 
 1. **Log into Jenkins**
-
    - Open `http://localhost:8080/` in your browser
    - Log in using the administrator account you created during initial setup
 
 2. **Enter Credentials Management**
-
    - Click "Manage Jenkins" in the left sidebar
    - Click "Credentials" in the system configuration section
 
@@ -184,7 +180,6 @@ Now that the credentials are set up, let's create a test Job to verify that the 
 #### Create New Jenkins Job
 
 1. **Return to Jenkins Homepage**
-
    - Click the "Jenkins" logo in the top left to return to the main page
 
 2. **Create New Job**
@@ -198,11 +193,9 @@ Now that the credentials are set up, let's create a test Job to verify that the 
 In the Job configuration page:
 
 1. **Find Source Code Management Section**
-
    - Select the "Git" option
 
 2. **Set Repository Information**
-
    - **Repository URL**: Enter SSH format Git repository link
 
    ```bash
@@ -212,7 +205,6 @@ In the Job configuration page:
    Note: SSH format URLs are characterized by starting with `git@`, not `https://`
 
 3. **Select Credentials**
-
    - In the "Credentials" dropdown menu, select the SSH credential you just created
    - If configured correctly, you should see an option like "github-ssh-key (GitHub SSH Key for Jenkins)"
 
@@ -223,11 +215,9 @@ In the Job configuration page:
 #### Test Connection
 
 1. **Save Settings**
-
    - Click the "Save" button at the bottom of the page
 
 2. **Execute Build**
-
    - Click "Build Now" to start the first build
 
 3. **Check Results**

@@ -32,11 +32,9 @@ thumbnail: /assets/img/design_patterns.jpg
 在未使用設計模式的情況下，我們可能面臨以下挑戰：
 
 1. **高耦合性 (High Coupling)**：
-
    - 如果客戶端需要直接控制每個日誌處理器，將導致代碼過於複雜且難以維護。
 
 2. **缺乏靈活性 (Lack of Flexibility)**：
-
    - 無法輕鬆地調整處理器的執行順序或新增處理器。
 
 3. **違反開放關閉原則 (Violates OCP)**：
