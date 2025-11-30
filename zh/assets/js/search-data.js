@@ -692,7 +692,7 @@ ninja.data = [{
         title: 'LinkedIn',
         section: 'Socials',
         handler: () => {
-          window.open("https://www.linkedin.com/in/nick-huang-5485b315a", "_blank");
+          window.open("https://www.linkedin.com/in/nickhuangcyh", "_blank");
         },
       },{
         id: 'social-facebook',
