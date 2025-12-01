@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-claude-code-complete-tutorial-30-practical-tips-to-boost-ai-development-efficiency-2025-latest",
+        },{id: "post-devfest-2025-notes-developer-evolution-in-the-era-of-ai-agents",
+        
+          title: "DevFest 2025 Notes: Developer Evolution in the Era of AI Agents",
+        
+        description: "Highlights from DevFest 2025. Deep dive into how AI Agents, Gemini CLI, Google ADK, and MCP protocols are transforming software development. From ezBundle&#39;s practical experience to enterprise-grade Agentic architecture, recording the shifting role of developers in the AI era.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/conference/devfest-2025-notes/";
+          
+        },
+      },{id: "post-claude-code-complete-tutorial-30-practical-tips-to-boost-ai-development-efficiency-2025-latest",
         
           title: "Claude Code Complete Tutorial: 30+ Practical Tips to Boost AI Development Efficiency【2025 Latest】...",
         

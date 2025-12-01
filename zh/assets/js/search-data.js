@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-claude-code-教學完整指南-30-實用技巧提升-ai-開發效率-2025最新",
+        },{id: "post-devfest-2025-筆記-ai-agent-時代的開發者進化論",
+        
+          title: "DevFest 2025 筆記：AI Agent 時代的開發者進化論",
+        
+        description: "DevFest 2025 精彩回顧。深入探討 AI Agent、Gemini CLI、Google ADK 與 MCP 協議如何改變軟體開發。從 ezBundle 的實戰經驗到企業級 Agentic 架構，紀錄開發者在 AI 時代的角色轉變。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/conference/devfest-2025-notes/";
+          
+        },
+      },{id: "post-claude-code-教學完整指南-30-實用技巧提升-ai-開發效率-2025最新",
         
           title: "Claude Code 教學完整指南：30+ 實用技巧提升 AI 開發效率【2025最新】",
         
