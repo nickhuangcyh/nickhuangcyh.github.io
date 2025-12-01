@@ -44,11 +44,11 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-devfest-2025-notes-developer-evolution-in-the-era-of-ai-agents",
+        },{id: "post-devfest-2025-notes-developer-evolution-in-the-age-of-ai-agents",
         
-          title: "DevFest 2025 Notes: Developer Evolution in the Era of AI Agents",
+          title: "DevFest 2025 Notes: Developer Evolution in the Age of AI Agents",
         
-        description: "Highlights from DevFest 2025. Deep dive into how AI Agents, Gemini CLI, Google ADK, and MCP protocols are transforming software development. From ezBundle&#39;s practical experience to enterprise-grade Agentic architecture, recording the shifting role of developers in the AI era.",
+        description: "DevFest 2025 Recap. Deep dive into how AI Agents, Gemini CLI, Google ADK, and the MCP Protocol are transforming software development. From ezBundle&#39;s practical experience to enterprise-grade Agentic architecture, recording the shift in developer roles in the AI era.",
         section: "Posts",
         handler: () => {
           
