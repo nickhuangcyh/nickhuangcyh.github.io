@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Building an AI Code Review Agent from Scratch: Simultaneously Boosting Team Efficiency and Code Quality"
-date: 2025-12-28 22:00:00 +0800
+date: 2025-12-29 22:00:00 +0800
 description: "This article shares how to build an AI Code Review system using AI Agents, implementing precise code quality detection through custom rule manuals to effectively improve team development efficiency and reduce manual review burden."
 tags: [AI, Code Review, LLM, Agent, Automation, Software Quality]
 categories: [AI, Software Engineering]
@@ -104,12 +104,10 @@ This is the soul of the entire system. I took the standards I frequently mention
 I divided the rules into three levels:
 
 - 🔴 **Critical (RULE-C###):** Leads to Crashes (NPE), Memory Leaks, security vulnerabilities, or severe violations of the MVP architecture.
-
   - Example `RULE-C001`: Prohibit use of `!!`.
   - Example `RULE-C004`: Prohibit use of `GlobalScope`.
 
 - 🟡 **Important (RULE-I###):** Affects maintainability, performance, or DRY principles.
-
   - Example `RULE-I001`: UI initialization must happen before Coroutines (to avoid flickering).
   - Example `RULE-I005`: Avoid redundant Flavor check logic.
 
