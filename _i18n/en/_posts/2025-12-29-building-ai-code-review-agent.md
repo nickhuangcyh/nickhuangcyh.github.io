@@ -240,46 +240,6 @@ For instance, in `bad-examples.md`, I specifically pointed out common MVP archit
 
 > **Presenter holding Context:** This is a major cause of memory leaks. If the AI sees a Context passed into a Presenter constructor, it will immediately flag it.
 
-## Practical Workflow
-
-Before a developer submits a PR, they simply run a command in the CLI:
-
-```bash
-kiro-cli chat --agent code-reviewer
-> Please review the differences between feature/login-page and develop
-```
-
-The Agent performs the following steps:
-
-1. Calls `git diff` to get the changes.
-2. Reads `rules.md` to load the rules.
-3. Scans the diff line-by-line, matching against violations.
-4. Generates a structured Markdown report.
-
-The output report looks like this:
-
-```markdown
-# Code Review Report
-
-## 🔴 Critical Issues (Must Fix)
-
-### [RULE-C001] LoginPresenter.kt:45
-
-**Issue**: Using !! for forced unwrapping
-**Code**: `val token = user!!.token`
-**Suggested Fix**: `val token = user?.token ?: ""`
-
-## 🟡 Important Issues (Should Fix)
-
-### [RULE-I001] LoginActivity.kt:20
-
-**Issue**: UI initialization after Coroutine may cause display delay.
-
-## ✅ Good Practices
-
-- Correctly handled lifecycle using `viewBinding`.
-```
-
 [`good-examples.md`]
 
 ````markdown
@@ -356,6 +316,46 @@ class LoginPresenter(
 }
 ```
 ````
+
+## Practical Workflow
+
+Before a developer submits a PR, they simply run a command in the CLI:
+
+```bash
+kiro-cli chat --agent code-reviewer
+> Please review the differences between feature/login-page and develop
+```
+
+The Agent performs the following steps:
+
+1. Calls `git diff` to get the changes.
+2. Reads `rules.md` to load the rules.
+3. Scans the diff line-by-line, matching against violations.
+4. Generates a structured Markdown report.
+
+The output report looks like this:
+
+```markdown
+# Code Review Report
+
+## 🔴 Critical Issues (Must Fix)
+
+### [RULE-C001] LoginPresenter.kt:45
+
+**Issue**: Using !! for forced unwrapping
+**Code**: `val token = user!!.token`
+**Suggested Fix**: `val token = user?.token ?: ""`
+
+## 🟡 Important Issues (Should Fix)
+
+### [RULE-I001] LoginActivity.kt:20
+
+**Issue**: UI initialization after Coroutine may cause display delay.
+
+## ✅ Good Practices
+
+- Correctly handled lifecycle using `viewBinding`.
+```
 
 ## The Impact of Changes
 

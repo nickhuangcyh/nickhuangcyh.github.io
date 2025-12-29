@@ -249,46 +249,6 @@ fun loadData() {
 
 > Presenter 持有 Context：這是導致記憶體洩漏的元兇，AI 只要看到 Presenter 建構子傳入 Context，就會立刻報警。
 
-## 實際運作流程
-
-當開發者準備提交 PR 前，只需要在 CLI 下指令：
-
-```bash
-kiro-cli chat --agent code-reviewer
-> 請 review feature/login-page 和 develop 的差異
-```
-
-Agent 會執行以下步驟：
-
-1. 呼叫 git diff 取得變更內容。
-2. 讀取 rules.md 載入規則。
-3. 逐行掃描 diff，比對違規事項。
-4. 產出一份結構化的 Markdown 報告。
-
-輸出的報告長這樣：
-
-```markdown
-# Code Review Report
-
-## 🔴 Critical Issues (必須修正)
-
-### [RULE-C001] LoginPresenter.kt:45
-
-**問題**: 使用 !! 強制解包
-**程式碼**: `val token = user!!.token`
-**建議修改**: `val token = user?.token ?: ""`
-
-## 🟡 Important Issues (應該修正)
-
-### [RULE-I001] LoginActivity.kt:20
-
-**問題**: UI 初始化在 Coroutine 之後，可能導致畫面延遲顯示。
-
-## ✅ Good Practices
-
-- 使用了 `viewBinding` 正確處理生命週期。
-```
-
 [`good-examples.md`]
 
 ````markdown
@@ -365,6 +325,46 @@ class LoginPresenter(
 }
 ```
 ````
+
+## 實際運作流程
+
+當開發者準備提交 PR 前，只需要在 CLI 下指令：
+
+```bash
+kiro-cli chat --agent code-reviewer
+> 請 review feature/login-page 和 develop 的差異
+```
+
+Agent 會執行以下步驟：
+
+1. 呼叫 git diff 取得變更內容。
+2. 讀取 rules.md 載入規則。
+3. 逐行掃描 diff，比對違規事項。
+4. 產出一份結構化的 Markdown 報告。
+
+輸出的報告長這樣：
+
+```markdown
+# Code Review Report
+
+## 🔴 Critical Issues (必須修正)
+
+### [RULE-C001] LoginPresenter.kt:45
+
+**問題**: 使用 !! 強制解包
+**程式碼**: `val token = user!!.token`
+**建議修改**: `val token = user?.token ?: ""`
+
+## 🟡 Important Issues (應該修正)
+
+### [RULE-I001] LoginActivity.kt:20
+
+**問題**: UI 初始化在 Coroutine 之後，可能導致畫面延遲顯示。
+
+## ✅ Good Practices
+
+- 使用了 `viewBinding` 正確處理生命週期。
+```
 
 ## 帶來的改變
 
