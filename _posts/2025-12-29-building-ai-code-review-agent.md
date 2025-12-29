@@ -21,6 +21,7 @@ thumbnail: /assets/img/ai_code_review_agent.png
 1. 重複瑣碎的糾錯：每次都要提醒同事「這裡命名要用駝峰」、「這邊會造成 Memory Leak、Thread Safety 問題」、「不要用 !! 強制解包」。
 2. 標準不一致：資深 A 說可以，資深 B 說不行，新人夾在中間不知所措。
 3. 人眼遺漏：看了幾百行 Code 後，疲勞導致漏看了明顯的 Memory Leak 或 Thread 安全問題。
+4. **互相卡住的進度瓶頸**：當自身專案時程緊迫，卻遇上同事其他產品線的大型發版請求。大量的 Review 工作不僅佔用開發時間，拖慢了自己，也因為來不及看而卡住了別人的發版進度。
 
 最近我在 Android TouchPad 專案中實作了一個 Code Review Agent，目標很簡單：把「規則明確」的檢查交給 AI，把「架構邏輯」的討論留給人類。
 

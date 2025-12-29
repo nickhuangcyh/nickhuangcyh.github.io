@@ -21,6 +21,7 @@ Have you ever encountered these scenarios?
 1.  **Repetitive, trivial corrections:** Having to remind colleagues every time about "camelCase naming here," "this will cause a Memory Leak or Thread Safety issue," or "don't use `!!` for forced unwrapping."
 2.  **Inconsistent standards:** Senior A says it's fine, Senior B says it's not, and the newcomer is caught in the middle, confused.
 3.  **Human oversight:** After looking at hundreds of lines of code, fatigue leads to missing obvious Memory Leaks or Thread Safety problems.
+4.  **The Bottleneck Cycle:** When your project schedule is tight, but you're hit with a massive review request for another product's release. This stalls your progress as you spend time reviewing, and simultaneously blocks their release because you can't review fast enough.
 
 Recently, I implemented a Code Review Agent in the Android TouchPad project. The goal was simple: delegate "well-defined rule" checks to AI and leave "architectural logic" discussions to humans.
 
