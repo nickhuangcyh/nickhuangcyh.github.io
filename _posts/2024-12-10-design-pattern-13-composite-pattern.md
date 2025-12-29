@@ -34,9 +34,11 @@ thumbnail: /assets/img/design_patterns.jpg
 1. **高耦合性 (Tight Coupling)**：
    - 單一檔案和目錄集合的操作邏輯分散在多個類別中，導致系統維護困難。
 2. **重複代碼 (Code Duplication)**：
+
    - 每次操作目錄內容時，需分別處理檔案與子目錄，導致相似邏輯多處重複。
 
 3. **難以擴展 (Difficulty in Extending)**：
+
    - 新增檔案或目錄類型時，需大幅修改程式碼，影響系統穩定性。
 
 4. **靈活性差 (Lack of Flexibility)**：

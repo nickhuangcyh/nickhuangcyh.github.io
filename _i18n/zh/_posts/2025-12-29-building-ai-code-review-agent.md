@@ -30,20 +30,22 @@ thumbnail: /assets/img/ai_code_review_agent.png
 
 很多人會直接把程式碼丟給 ChatGPT 叫它 Review，但效果通常不穩定：
 
-* 幻覺 (Hallucination)：AI 喜歡無中生有，建議一些不存在的最佳實踐。
-* 缺乏上下文：它不知道你們專案是用 MVP 或 MVVM，不知道你們對 Flavor 的隔離規範。
-* 過度解釋：寫了一堆廢話，重點卻沒講到。
+- 幻覺 (Hallucination)：AI 喜歡無中生有，建議一些不存在的最佳實踐。
+- 缺乏上下文：它不知道你們專案是用 MVP 或 MVVM，不知道你們對 Flavor 的隔離規範。
+- 過度解釋：寫了一堆廢話，重點卻沒講到。
 
 為了解決這些問題，我採用了 RAG (Retrieval-Augmented Generation) 的概念，將「團隊規範」變成 AI 的知識庫。
 
 ## 核心架構：Agent 的大腦與守則
 
 我的 Code Review Agent 由三個核心部分組成：
+
 1. Agent 定義檔 (code-reviewer.json)
 2. 規則法典 (rules.md)
 3. 實例教學 (bad-examples.md / good-examples.md)
 
 下面是我的目錄結構
+
 ```bash
 .
 ├── .kiro/
@@ -64,11 +66,11 @@ thumbnail: /assets/img/ai_code_review_agent.png
 
 這是在 Kiro CLI 中的設定檔，它定義了 AI 的人設與行為模式。我在 Prompt 中下了幾個關鍵指令：
 
-* 精確檢測：只報告明確違反 `rules.md` 的程式碼，減少誤報。
-* 引用規則：每個問題都要帶上編號（例如 `RULE-C001`），有憑有據。
-* 分層報告：將問題分為 Critical (致命)、Important (重要)、Minor (輕微)。
+- 精確檢測：只報告明確違反 `rules.md` 的程式碼，減少誤報。
+- 引用規則：每個問題都要帶上編號（例如 `RULE-C001`），有憑有據。
+- 分層報告：將問題分為 Critical (致命)、Important (重要)、Minor (輕微)。
 
-```json
+````json
 {
   "name": "code-reviewer",
   "description": "Android Code Review Agent - 精確檢測違反規則的程式碼。支援 git diff、commit hash、branch name 輸入。",
@@ -99,7 +101,7 @@ thumbnail: /assets/img/ai_code_review_agent.png
   "useLegacyMcpJson": false,
   "model": "claude-sonnet-4.5"
 }
-```
+````
 
 注意到了嗎？我把規則文件直接掛載 (resources) 給 Agent，讓它閱讀。
 
@@ -109,16 +111,18 @@ thumbnail: /assets/img/ai_code_review_agent.png
 
 我將規則分為三個等級：
 
-* 🔴 Critical (RULE-C###)：會導致 Crash (NPE)、Memory Leak、資安問題或嚴重違反 MVP 架構。
-  * 例子 `RULE-C001`：禁止使用 !!。
-  * 例子 `RULE-C004`：禁止使用 GlobalScope。
+- 🔴 Critical (RULE-C###)：會導致 Crash (NPE)、Memory Leak、資安問題或嚴重違反 MVP 架構。
 
-* 🟡 Important (RULE-I###)：影響可維護性、效能或 DRY 原則。
-  * 例子 `RULE-I001`：UI 初始化必須在 Coroutine 之前（避免閃爍）。
-  * 例子 `RULE-I005`：避免重複的 Flavor 判斷邏輯。
+  - 例子 `RULE-C001`：禁止使用 !!。
+  - 例子 `RULE-C004`：禁止使用 GlobalScope。
 
-* 🔵 Minor (RULE-M###)：命名風格、格式問題。
-  * 例子 `RULE-M001`：if 後面要有空格。
+- 🟡 Important (RULE-I###)：影響可維護性、效能或 DRY 原則。
+
+  - 例子 `RULE-I001`：UI 初始化必須在 Coroutine 之前（避免閃爍）。
+  - 例子 `RULE-I005`：避免重複的 Flavor 判斷邏輯。
+
+- 🔵 Minor (RULE-M###)：命名風格、格式問題。
+  - 例子 `RULE-M001`：if 後面要有空格。
 
 每一條規則都包含了原因、檢測模式以及正確/錯誤範例：
 
@@ -126,8 +130,9 @@ thumbnail: /assets/img/ai_code_review_agent.png
 # Code Review Rules
 
 > 本檔案定義所有 Code Review 規則，供 AI Agent 精確檢測違規程式碼。
-> 
+>
 > **規則編號說明**:
+>
 > - `RULE-C###`: Critical - 必須修正（crash、記憶體洩漏、安全、架構違反）
 > - `RULE-I###`: Important - 應該修正（可維護性、效能）
 > - `RULE-M###`: Minor - 建議改善（格式、風格）
@@ -137,6 +142,7 @@ thumbnail: /assets/img/ai_code_review_agent.png
 ## 🔴 Critical Rules (必須修正)
 
 ### RULE-C001: 禁止使用 !! 強制解包
+
 - **類別**: Null Safety
 - **原因**: 可能導致 NullPointerException crash
 - **檢測模式**: `!!` 出現在程式碼中
@@ -146,14 +152,18 @@ thumbnail: /assets/img/ai_code_review_agent.png
 ---
 
 ### RULE-C005: 禁止硬編碼敏感資料
+
 - **類別**: Security
 - **原因**: 安全風險，敏感資料可能外洩
 - **檢測模式**: 程式碼中包含 API key、密碼、token 等字串常數
 - **錯誤範例**:
+
 ```kotlin
 const val API_KEY = "sk_live_abc123xyz"
 ```
+
 - **正確範例**:
+
 ```kotlin
 val apiKey = BuildConfig.API_KEY
 ```
@@ -163,10 +173,12 @@ val apiKey = BuildConfig.API_KEY
 ## 🟡 Important Rules (應該修正)
 
 ### RULE-I001: UI 初始化應在 Coroutine 之前
+
 - **類別**: Performance
 - **原因**: UI 初始化放在 coroutine 後面會導致延遲顯示
 - **檢測模式**: `launch { }` 區塊後面有 `view?.update` 或 `visibility` 設定
 - **錯誤範例**:
+
 ```kotlin
 override fun onViewCreated() {
     launch {
@@ -175,11 +187,13 @@ override fun onViewCreated() {
     view?.updateButtonVisibility(true)
 }
 ```
+
 - **正確範例**:
+
 ```kotlin
 override fun onViewCreated() {
     view?.updateButtonVisibility(true)
-    
+
     launch {
         val data = interactor?.getData()
     }
@@ -189,17 +203,21 @@ override fun onViewCreated() {
 ---
 
 ### RULE-I007: 主執行緒禁止執行耗時操作
+
 - **類別**: Performance
 - **原因**: 阻塞主執行緒會導致 ANR
 - **檢測模式**: 在非 coroutine 區塊中直接呼叫 database、network、file 操作
 - **錯誤範例**:
+
 ```kotlin
 fun loadData() {
     val data = database.query(...)  // 阻塞主執行緒
     textView.text = data
 }
 ```
+
 - **正確範例**:
+
 ```kotlin
 fun loadData() {
     viewModelScope.launch {
@@ -216,6 +234,7 @@ fun loadData() {
 ## 🔵 Minor Rules (建議改善)
 
 ### RULE-M001: if 後面應有空格
+
 - **類別**: Formatting
 - **原因**: 符合 Kotlin 編碼風格
 - **檢測模式**: `if(` 沒有空格
@@ -241,6 +260,7 @@ kiro-cli chat --agent code-reviewer
 ```
 
 Agent 會執行以下步驟：
+
 1. 呼叫 git diff 取得變更內容。
 2. 讀取 rules.md 載入規則。
 3. 逐行掃描 diff，比對違規事項。
@@ -252,21 +272,29 @@ Agent 會執行以下步驟：
 # Code Review Report
 
 ## 🔴 Critical Issues (必須修正)
+
 ### [RULE-C001] LoginPresenter.kt:45
+
 **問題**: 使用 !! 強制解包
 **程式碼**: `val token = user!!.token`
 **建議修改**: `val token = user?.token ?: ""`
 
 ## 🟡 Important Issues (應該修正)
+
 ### [RULE-I001] LoginActivity.kt:20
+
 **問題**: UI 初始化在 Coroutine 之後，可能導致畫面延遲顯示。
+
 ## ✅ Good Practices
+
 - 使用了 `viewBinding` 正確處理生命週期。
 ```
 
 [`good-examples.md`]
+
 ````markdown
 ### Nullable 安全處理
+
 ```kotlin
 // ✅ 使用 let 處理 nullable drawable
 val customDividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
@@ -282,13 +310,16 @@ val length = text?.length ?: 0
 val city = user?.address?.city?.name
 
 ...
+```
 ````
 
 [`bad-examples.md`]
+
 ````markdown
 ## MVP 架構違反
 
 ### Presenter 持有 Context
+
 ```kotlin
 // ❌ Bad - 記憶體洩漏風險
 class LoginPresenter(
@@ -310,6 +341,7 @@ class LoginPresenter(
 ```
 
 ### Presenter 直接操作 View
+
 ```kotlin
 // ❌ Bad
 class LoginPresenter(
@@ -332,6 +364,7 @@ class LoginPresenter(
         view.showLoading()
     }
 }
+```
 ````
 
 ## 帶來的改變

@@ -32,9 +32,11 @@ thumbnail: /assets/img/design_patterns.jpg
 在未使用設計模式的情況下，我們可能面臨以下挑戰：
 
 1. **高耦合性 (High Coupling)**：
+
    - 客戶端需要直接操作每種搜尋方式的實現細節，導致代碼臃腫且難以維護。
 
 2. **缺乏一致性 (Lack of Consistency)**：
+
    - 不同搜尋方式的結果訪問方式可能不一致。
 
 3. **違反開放關閉原則 (Violates OCP)**：

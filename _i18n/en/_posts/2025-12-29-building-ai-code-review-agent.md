@@ -30,20 +30,22 @@ In this article, I'll break down how I designed this Agent and how it operates.
 
 Many people directly paste code into ChatGPT and ask for a review, but the results are usually inconsistent:
 
-*   **Hallucination:** AI loves to make things up, suggesting non-existent "best practices."
-*   **Lack of Context:** It doesn't know if your project uses MVP or MVVM, nor does it know your specific isolation rules for Flavors.
-*   **Over-explanation:** Writing a wall of text while missing the actual point.
+- **Hallucination:** AI loves to make things up, suggesting non-existent "best practices."
+- **Lack of Context:** It doesn't know if your project uses MVP or MVVM, nor does it know your specific isolation rules for Flavors.
+- **Over-explanation:** Writing a wall of text while missing the actual point.
 
 To solve these problems, I adopted the concept of RAG (Retrieval-Augmented Generation) to turn "team standards" into the AI's knowledge base.
 
 ## Core Architecture: The Agent's Brain and Rules
 
 My Code Review Agent consists of three core components:
+
 1.  **Agent Definition File** (code-reviewer.json)
 2.  **The Rulebook** (rules.md)
 3.  **Example-based Learning** (bad-examples.md / good-examples.md)
 
 Here is my directory structure:
+
 ```bash
 .
 ├── .kiro/
@@ -64,22 +66,17 @@ Here is my directory structure:
 
 This is the configuration file in Kiro CLI, which defines the AI's persona and behavior. I included several key instructions in the Prompt:
 
-*   **Precise Detection:** Only report code that clearly violates `rules.md` to reduce false positives.
-*   **Cite Rules:** Every issue must include a rule ID (e.g., `RULE-C001`) for accountability.
-*   **Tiered Reporting:** Categorize issues into Critical, Important, and Minor.
+- **Precise Detection:** Only report code that clearly violates `rules.md` to reduce false positives.
+- **Cite Rules:** Every issue must include a rule ID (e.g., `RULE-C001`) for accountability.
+- **Tiered Reporting:** Categorize issues into Critical, Important, and Minor.
 
-```json
+````json
 {
   "name": "code-reviewer",
   "description": "Android Code Review Agent - Precisely detects code violating rules. Supports git diff, commit hash, and branch name inputs.",
   "prompt": "You are the Code Review Agent for the TouchPad project, specialized in precisely identifying code that violates rules.\n\n## Core Principles\n\n1. **Precise Detection**: Only report code that clearly violates rules defined in rules.md.\n2. **Cite Rules**: Every issue must cite a rule ID (e.g., RULE-C001).\n3. **Provide Line Numbers**: Indicate the file and line number where the issue occurs.\n4. **Tiered Reporting**: Report in the order of Critical → Important → Minor.\n5. **Reduce False Positives**: Categorize uncertain issues as 'Suggestions' rather than 'Violations'.\n\n## Detection Process\n\n1. **Get Code Changes**\n   - If user provides branch name: Run `git diff {base_branch} {feature_branch}`\n   - If user provides commit hash: Run `git diff {commit1} {commit2}`\n   - If user pastes diff: Analyze directly\n\n2. **Compare Against Rules**\n   - Read all rules in rules.md\n   - For each changed line, check if it violates any rules\n   - Only report added or modified code (lines starting with +)\n\n3. **Generate Report**\n   - Categorize issues by priority\n   - Provide specific fix suggestions\n\n## Output Format\n\n```markdown\n# Code Review Report\n\n## 📊 Summary\n- Files Checked: X\n- Issues Found: Critical: X, Important: X, Minor: X\n- Overall Assessment: [PASS/NEEDS_WORK/CRITICAL_ISSUES]\n\n## 🔴 Critical Issues (Must Fix)\n\n### [RULE-C001] filename:line_number\n**Issue**: Using !! for forced unwrapping\n**Code**:\n```\n\n## Important Notes\n\n1. **Check Only Added/Modified Code**: Do not report existing issues.\n2. **Do Not Over-interpret**: If unsure, put it in Suggestions.\n3. **Provide Actionable Advice**: Each issue must have a specific fix plan.\n4. **Be Constructive**: Maintain a friendly tone; the focus is on helping improve the code.\n\n## Rule Priority Levels\n\n- **Critical (RULE-C###)**: Causes crashes, memory leaks, security risks, or architecture violations.\n- **Important (RULE-I###)**: Affects maintainability, performance, or DRY principles.\n- **Minor (RULE-M###)**: Formatting, naming, and style issues.",
   "mcpServers": {},
-  "tools": [
-    "execute_bash",
-    "fs_read",
-    "grep",
-    "glob"
-  ],
+  "tools": ["execute_bash", "fs_read", "grep", "glob"],
   "toolAliases": {},
   "allowedTools": [],
   "resources": [
@@ -95,7 +92,7 @@ This is the configuration file in Kiro CLI, which defines the AI's persona and b
   "useLegacyMcpJson": false,
   "model": "claude-sonnet-4.5"
 }
-```
+````
 
 Notice that I directly mount the rule documents as `resources` for the Agent to read.
 
@@ -105,16 +102,18 @@ This is the soul of the entire system. I took the standards I frequently mention
 
 I divided the rules into three levels:
 
-*   🔴 **Critical (RULE-C###):** Leads to Crashes (NPE), Memory Leaks, security vulnerabilities, or severe violations of the MVP architecture.
-    *   Example `RULE-C001`: Prohibit use of `!!`.
-    *   Example `RULE-C004`: Prohibit use of `GlobalScope`.
+- 🔴 **Critical (RULE-C###):** Leads to Crashes (NPE), Memory Leaks, security vulnerabilities, or severe violations of the MVP architecture.
 
-*   🟡 **Important (RULE-I###):** Affects maintainability, performance, or DRY principles.
-    *   Example `RULE-I001`: UI initialization must happen before Coroutines (to avoid flickering).
-    *   Example `RULE-I005`: Avoid redundant Flavor check logic.
+  - Example `RULE-C001`: Prohibit use of `!!`.
+  - Example `RULE-C004`: Prohibit use of `GlobalScope`.
 
-*   🔵 **Minor (RULE-M###):** Naming style and formatting issues.
-    *   Example `RULE-M001`: Space required after `if`.
+- 🟡 **Important (RULE-I###):** Affects maintainability, performance, or DRY principles.
+
+  - Example `RULE-I001`: UI initialization must happen before Coroutines (to avoid flickering).
+  - Example `RULE-I005`: Avoid redundant Flavor check logic.
+
+- 🔵 **Minor (RULE-M###):** Naming style and formatting issues.
+  - Example `RULE-M001`: Space required after `if`.
 
 Each rule includes the reason, detection pattern, and correct/incorrect examples:
 
@@ -122,8 +121,9 @@ Each rule includes the reason, detection pattern, and correct/incorrect examples
 # Code Review Rules
 
 > This file defines all Code Review rules for precise detection by the AI Agent.
-> 
+>
 > **Rule ID Guide**:
+>
 > - `RULE-C###`: Critical - Must fix (crashes, memory leaks, security, architecture violations)
 > - `RULE-I###`: Important - Should fix (maintainability, performance)
 > - `RULE-M###`: Minor - Suggested improvement (formatting, style)
@@ -133,6 +133,7 @@ Each rule includes the reason, detection pattern, and correct/incorrect examples
 ## 🔴 Critical Rules (Must Fix)
 
 ### RULE-C001: No !! Forced Unwrapping
+
 - **Category**: Null Safety
 - **Reason**: Can lead to NullPointerException crashes.
 - **Detection Pattern**: `!!` appearing in the code.
@@ -142,14 +143,18 @@ Each rule includes the reason, detection pattern, and correct/incorrect examples
 ---
 
 ### RULE-C005: No Hardcoded Sensitive Data
+
 - **Category**: Security
 - **Reason**: Security risk; sensitive data could be leaked.
 - **Detection Pattern**: String constants containing API keys, passwords, tokens, etc.
 - **Bad Example**:
+
 ```kotlin
 const val API_KEY = "sk_live_abc123xyz"
 ```
+
 - **Good Example**:
+
 ```kotlin
 val apiKey = BuildConfig.API_KEY
 ```
@@ -159,10 +164,12 @@ val apiKey = BuildConfig.API_KEY
 ## 🟡 Important Rules (Should Fix)
 
 ### RULE-I001: UI Initialization Before Coroutines
+
 - **Category**: Performance
 - **Reason**: UI initialization after a coroutine leads to delayed display.
 - **Detection Pattern**: `view?.update` or `visibility` settings following a `launch { }` block.
 - **Bad Example**:
+
 ```kotlin
 override fun onViewCreated() {
     launch {
@@ -171,11 +178,13 @@ override fun onViewCreated() {
     view?.updateButtonVisibility(true)
 }
 ```
+
 - **Good Example**:
+
 ```kotlin
 override fun onViewCreated() {
     view?.updateButtonVisibility(true)
-    
+
     launch {
         val data = interactor?.getData()
     }
@@ -184,19 +193,22 @@ override fun onViewCreated() {
 
 ---
 
-
 ### RULE-I007: No Blocking Operations on Main Thread
+
 - **Category**: Performance
 - **Reason**: Blocking the main thread causes ANR (App Not Responding).
 - **Detection Pattern**: Direct database, network, or file operations outside of coroutine blocks.
 - **Bad Example**:
+
 ```kotlin
 fun loadData() {
     val data = database.query(...)  // Blocks main thread
     textView.text = data
 }
 ```
+
 - **Good Example**:
+
 ```kotlin
 fun loadData() {
     viewModelScope.launch {
@@ -213,6 +225,7 @@ fun loadData() {
 ## 🔵 Minor Rules (Suggested Improvement)
 
 ### RULE-M001: Space After 'if'
+
 - **Category**: Formatting
 - **Reason**: Follows Kotlin coding style.
 - **Detection Pattern**: `if(` without a space.
@@ -238,6 +251,7 @@ kiro-cli chat --agent code-reviewer
 ```
 
 The Agent performs the following steps:
+
 1. Calls `git diff` to get the changes.
 2. Reads `rules.md` to load the rules.
 3. Scans the diff line-by-line, matching against violations.
@@ -249,22 +263,29 @@ The output report looks like this:
 # Code Review Report
 
 ## 🔴 Critical Issues (Must Fix)
+
 ### [RULE-C001] LoginPresenter.kt:45
+
 **Issue**: Using !! for forced unwrapping
 **Code**: `val token = user!!.token`
 **Suggested Fix**: `val token = user?.token ?: ""`
 
 ## 🟡 Important Issues (Should Fix)
+
 ### [RULE-I001] LoginActivity.kt:20
+
 **Issue**: UI initialization after Coroutine may cause display delay.
 
 ## ✅ Good Practices
+
 - Correctly handled lifecycle using `viewBinding`.
 ```
 
 [`good-examples.md`]
+
 ````markdown
 ### Nullable Safe Handling
+
 ```kotlin
 // ✅ Use 'let' to handle nullable drawable
 val customDividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
@@ -280,13 +301,16 @@ val length = text?.length ?: 0
 val city = user?.address?.city?.name
 
 ...
+```
 ````
 
 [`bad-examples.md`]
+
 ````markdown
 ## MVP Architecture Violations
 
 ### Presenter Holding Context
+
 ```kotlin
 // ❌ Bad - Memory leak risk
 class LoginPresenter(
@@ -308,6 +332,7 @@ class LoginPresenter(
 ```
 
 ### Presenter Directly Manipulating View
+
 ```kotlin
 // ❌ Bad
 class LoginPresenter(
@@ -330,6 +355,7 @@ class LoginPresenter(
         view.showLoading()
     }
 }
+```
 ````
 
 ## The Impact of Changes

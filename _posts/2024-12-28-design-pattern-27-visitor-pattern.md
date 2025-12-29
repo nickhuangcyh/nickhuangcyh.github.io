@@ -59,12 +59,15 @@ thumbnail: /assets/img/design_patterns.jpg
 訪問者模式的核心組件包括：
 
 1. **Visitor (訪問者介面)**
+
    - 定義對每種類型物件的操作方法。
 
 2. **ConcreteVisitor (具體訪問者)**
+
    - 實現特定操作邏輯。
 
 3. **Element (元素介面)**
+
    - 定義接受訪問者的方法 (`accept`)，並將訪問者傳遞給自己。
 
 4. **ConcreteElement (具體元素)**
@@ -182,9 +185,11 @@ Snapshot: Dahua Snapshot
 透過 Visitor Pattern，我們成功將不同品牌 IPCam 的操作邏輯與物件結構分離，並實現以下優勢：
 
 1. **易於擴展新品牌**
+
    - 新增品牌只需實作新的 `ConcreteElement` 類別，並在訪問者中新增相應的操作方法。
 
 2. **操作邏輯集中**
+
    - 不同品牌的操作邏輯集中於訪問者中，便於維護與管理。
 
 3. **符合設計原則**

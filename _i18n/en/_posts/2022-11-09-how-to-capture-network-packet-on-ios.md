@@ -148,6 +148,7 @@ Now that the virtual network interface has been created, we can begin using Wire
 **Launch Wireshark and select interface:**
 
 1. **Open Wireshark application**
+
    - Start Wireshark (if not yet installed, please download from the [official website](https://www.wireshark.org/download.html) first)
 
 2. **Select monitoring interface**

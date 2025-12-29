@@ -154,6 +154,7 @@ Context 是 Claude Code 理解你需求的關鍵。適當的 context 管理，�
 **實際案例：Unit Test 工作流程**
 
 1. **定義測試指令：**
+
    - `/generate-unit-test` - 生成單元測試
    - `/update-unit-test-guidelines` - 更新測試準則
 

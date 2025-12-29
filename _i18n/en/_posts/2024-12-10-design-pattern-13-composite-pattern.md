@@ -32,12 +32,15 @@ After understanding the requirements, let's quickly implement object-oriented an
 Without using design patterns, the above requirements may encounter the following problems:
 
 1. **Tight Coupling**:
+
    - Operation logic for individual files and directory collections is scattered across multiple classes, making system maintenance difficult.
 
 2. **Code Duplication**:
+
    - Each time operating on directory contents, files and subdirectories need to be handled separately, causing similar logic to be repeated in multiple places.
 
 3. **Difficulty in Extending**:
+
    - When adding new file or directory types, major code modifications are needed, affecting system stability.
 
 4. **Lack of Flexibility**:
