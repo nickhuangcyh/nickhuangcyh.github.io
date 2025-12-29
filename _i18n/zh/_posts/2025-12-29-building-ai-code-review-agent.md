@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "從零打造 AI Code Review Agent：讓 AI 替你守護程式碼品質"
+title: "從零打造 AI Code Review Agent：同步提升團隊效率與程式碼品質"
 date: 2025-12-28 22:00:00 +0800
 description: "本文分享運用 AI Agent 打造 AI Code Review 系統，透過自定義規則手冊實作精確的程式碼品質檢測，有效提升團隊開發效率並降低人工審核負擔。"
 tags: [AI, Code Review, LLM, Agent, Automation, Software Quality]

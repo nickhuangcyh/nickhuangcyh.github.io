@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Building an AI Code Review Agent from Scratch: Let AI Guard Your Code Quality"
+title: "Building an AI Code Review Agent from Scratch: Simultaneously Boosting Team Efficiency and Code Quality"
 date: 2025-12-28 22:00:00 +0800
 description: "This article shares how to build an AI Code Review system using AI Agents, implementing precise code quality detection through custom rule manuals to effectively improve team development efficiency and reduce manual review burden."
 tags: [AI, Code Review, LLM, Agent, Automation, Software Quality]
