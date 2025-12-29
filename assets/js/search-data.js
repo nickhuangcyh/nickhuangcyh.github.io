@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-devfest-2025-notes-developer-evolution-in-the-age-of-ai-agents",
+        },{id: "post-building-an-ai-code-review-agent-from-scratch-let-ai-guard-your-code-quality",
+        
+          title: "Building an AI Code Review Agent from Scratch: Let AI Guard Your Code...",
+        
+        description: "This article shares how to build an AI Code Review system using AI Agents, implementing precise code quality detection through custom rule manuals to effectively improve team development efficiency and reduce manual review burden.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/ai/software%20engineering/building-ai-code-review-agent/";
+          
+        },
+      },{id: "post-devfest-2025-notes-developer-evolution-in-the-age-of-ai-agents",
         
           title: "DevFest 2025 Notes: Developer Evolution in the Age of AI Agents",
         
