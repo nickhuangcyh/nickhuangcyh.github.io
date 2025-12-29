@@ -44,9 +44,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-building-an-ai-code-review-agent-from-scratch-let-ai-guard-your-code-quality",
+        },{id: "post-building-an-ai-code-review-agent-from-scratch-simultaneously-boosting-team-efficiency-and-code-quality",
         
-          title: "Building an AI Code Review Agent from Scratch: Let AI Guard Your Code...",
+          title: "Building an AI Code Review Agent from Scratch: Simultaneously Boosting Team Efficiency and...",
         
         description: "This article shares how to build an AI Code Review system using AI Agents, implementing precise code quality detection through custom rule manuals to effectively improve team development efficiency and reduce manual review burden.",
         section: "Posts",

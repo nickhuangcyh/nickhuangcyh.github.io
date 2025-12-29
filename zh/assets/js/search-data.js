@@ -44,9 +44,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-從零打造-ai-code-review-agent-讓-ai-替你守護程式碼品質",
+        },{id: "post-從零打造-ai-code-review-agent-同步提升團隊效率與程式碼品質",
         
-          title: "從零打造 AI Code Review Agent：讓 AI 替你守護程式碼品質",
+          title: "從零打造 AI Code Review Agent：同步提升團隊效率與程式碼品質",
         
         description: "本文分享運用 AI Agent 打造 AI Code Review 系統，透過自定義規則手冊實作精確的程式碼品質檢測，有效提升團隊開發效率並降低人工審核負擔。",
         section: "Posts",
