@@ -34,11 +34,9 @@ thumbnail: /assets/img/design_patterns.jpg
 ### 察覺 Forces
 
 1. **複雜性增加**
-
    - 隨著運算符類型增加，手動解析邏輯會變得難以維護。
 
 2. **重複代碼**
-
    - 不同運算符的處理可能導致類似功能重複實現。
 
 3. **難以擴展**
@@ -57,11 +55,9 @@ thumbnail: /assets/img/design_patterns.jpg
 ### Interrepter Pattern 的組件
 
 1. **建立抽象表達式 (Expression)**
-
    - 定義所有表達式的通用介面，確保不同類型的表達式可以被統一處理。
 
 2. **設計終端表達式 (Terminal Expression)**
-
    - 負責處理語法中的基本單位（如布林值 `true` 和 `false`）。
 
 3. **設計非終端表達式 (Non-Terminal Expression)**
@@ -139,11 +135,9 @@ Result of the expression is: true
 透過解譯器模式，我們成功解決了布林運算系統的設計挑戰，並實現以下優勢：
 
 1. **結構清晰**
-
    - 將每個運算符和操作數封裝成表達式類別，便於組合與管理。
 
 2. **易於擴展**
-
    - 新增運算符只需實現新的表達式類別，符合開放關閉原則 (OCP)。
 
 3. **靈活性高**

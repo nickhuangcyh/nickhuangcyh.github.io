@@ -88,12 +88,10 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDTgvwj... your_email@example.com
 接下來在 GitHub 上進行設定：
 
 1. **進入 GitHub 設定**
-
    - 登入你的 GitHub 帳號
    - 點擊右上角的個人頭像，選擇「Settings」
 
 2. **找到 SSH 設定頁面**
-
    - 在左側選單中點擊「SSH and GPG keys」
 
 3. **新增 SSH 金鑰**
@@ -119,12 +117,10 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDTgvwj... your_email@example.com
 #### 進入 Jenkins 憑證管理介面
 
 1. **登入 Jenkins**
-
    - 在瀏覽器中開啟 `http://localhost:8080/`
    - 使用你在初始設定時建立的管理員帳號登入
 
 2. **進入憑證管理**
-
    - 點擊左側選單的「Manage Jenkins」
    - 在系統配置區塊中點擊「Credentials」
 
@@ -184,7 +180,6 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
 #### 建立新的 Jenkins Job
 
 1. **回到 Jenkins 首頁**
-
    - 點擊左上角的「Jenkins」標誌回到主頁面
 
 2. **建立新 Job**
@@ -198,11 +193,9 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
 在 Job 配置頁面中：
 
 1. **找到 Source Code Management 區塊**
-
    - 選擇「Git」選項
 
 2. **設定倉庫資訊**
-
    - **Repository URL**：輸入 SSH 格式的 Git 倉庫連結
 
    ```bash
@@ -212,7 +205,6 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
    注意：SSH 格式的 URL 特徵是以 `git@` 開頭，而不是 `https://`
 
 3. **選擇憑證**
-
    - 在「Credentials」下拉選單中選擇剛才建立的 SSH 憑證
    - 如果設定正確，你應該會看到類似「github-ssh-key (GitHub SSH Key for Jenkins)」的選項
 
@@ -223,11 +215,9 @@ b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAA...
 #### 測試連線
 
 1. **儲存設定**
-
    - 點擊頁面底部的「Save」按鈕
 
 2. **執行建置**
-
    - 點擊「Build Now」開始第一次建置
 
 3. **檢查結果**

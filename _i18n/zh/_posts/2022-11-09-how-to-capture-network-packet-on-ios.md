@@ -148,7 +148,6 @@ lo0 gif0 stf0 ... en10 rvi0
 **啟動 Wireshark 並選擇介面：**
 
 1. **開啟 Wireshark 應用程式**
-
    - 啟動 Wireshark（如果尚未安裝，請先從 [官方網站](https://www.wireshark.org/download.html) 下載）
 
 2. **選擇監控介面**

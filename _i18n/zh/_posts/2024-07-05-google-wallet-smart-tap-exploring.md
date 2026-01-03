@@ -428,7 +428,6 @@ Google Wallet API 是整個 Smart Tap 系統的基礎。沒有啟用這個 API�
 1. **登入管理平台**：前往 [Google Cloud Console](https://console.cloud.google.com/) 並使用您的 Google 帳號登入
 
 2. **建立或選擇專案**：
-
    - 如果您還沒有 Google Cloud 專案，請建立一個新專案
    - 詳細步驟可參考 [Google 官方文件](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
 
@@ -460,11 +459,9 @@ Google Wallet API 是整個 Smart Tap 系統的基礎。沒有啟用這個 API�
 **操作流程**
 
 1. **進入服務帳號頁面**：
-
    - 在 Google Cloud Console 中前往 [Service Accounts 頁面](https://console.cloud.google.com/iam-admin/serviceaccounts/create)
 
 2. **填寫帳號資訊**：
-
    - **服務帳號名稱**：建議使用有意義的名稱，如「wallet-smart-tap-service」
    - **服務帳號 ID**：系統會自動產生，您也可以自行修改
    - **描述**：簡述此帳號的用途，如「用於 Google Wallet Smart Tap API 存取」
@@ -484,12 +481,10 @@ Google Wallet API 是整個 Smart Tap 系統的基礎。沒有啟用這個 API�
 2. **進入金鑰管理**：點擊「**KEYS**」標籤頁
 
 3. **建立新金鑰**：
-
    - 點擊「**ADD KEY**」
    - 選擇「**Create new key**」
 
 4. **選擇格式**：
-
    - 選擇「**JSON**」格式（這是推薦格式）
    - 點擊「**CREATE**」
 
@@ -508,11 +503,9 @@ Google Wallet API 是整個 Smart Tap 系統的基礎。沒有啟用這個 API�
 **設定方法**
 
 1. **參考官方文件**：
-
    - 請依照 [Google Cloud 官方指南](https://cloud.google.com/docs/authentication/provide-credentials-adc#local-key) 設定環境變數
 
 2. **實際操作**：
-
    - 在終端機執行以下指令（請修改檔案路徑）：
 
    ```bash
@@ -520,7 +513,6 @@ Google Wallet API 是整個 Smart Tap 系統的基礎。沒有啟用這個 API�
    ```
 
 3. **永久設定**：
-
    - 若要永久生效，請將上述指令加入 `.bashrc` 或 `.zshrc` 檔案
 
 4. **驗證設定**：
@@ -544,12 +536,10 @@ Google Wallet API 是整個 Smart Tap 系統的基礎。沒有啟用這個 API�
 2. **進入使用者管理**：點擊「**Users**」選項
 
 3. **邀請服務帳號**：
-
    - 點擊「**Invite a user**」
    - 輸入服務帳號的 email 地址（格式通常為：`your-service-name@your-project.iam.gserviceaccount.com`）
 
 4. **設定權限等級**：
-
    - 從「**Access level**」下拉選單選擇「**Developer**」或「**Admin**」
    - **Developer**：適合一般開發需求
    - **Admin**：適合需要完整管理權限的情況
@@ -571,7 +561,6 @@ Google Wallet API 是整個 Smart Tap 系統的基礎。沒有啟用這個 API�
 1. **開啟管理控制台**：前往 [Google Pay & Wallet Console](https://pay.google.com/business/console)
 
 2. **建立發行者帳戶**：
-
    - 按照畫面上的指示逐步完成帳戶建立
    - 系統會引導您完成必要的資訊填寫
 
@@ -580,7 +569,6 @@ Google Wallet API 是整個 Smart Tap 系統的基礎。沒有啟用這個 API�
 4. **確認條款**：仔細閱讀並確認您了解服務條款和隱私政策
 
 5. **記錄重要資訊**：
-
    - **複製 Issuer ID**：這是您帳戶的唯一識別碼，請儲存在安全的地方
    - 這個 ID 在後續所有程式碼中都會用到
 
@@ -1185,7 +1173,6 @@ https://pay.google.com/gp/v/save/{JWT}
 **配置測試環境**
 
 1. **修改 Collector ID**：
-
    - 開啟 sample code
    - 將其中的 Collector ID 替換為您之前取得的 Collector ID
    - 這樣您的手機就會將這個應用程式識別為您的商家終端

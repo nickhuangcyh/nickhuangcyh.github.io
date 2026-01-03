@@ -53,12 +53,10 @@ Before starting design, we need to deeply understand the problem's essence. Let'
 During requirement analysis, we discovered several key design challenges:
 
 1. **Problem of Increasing Complexity**
-
    - When the system needs to support more operator types, traditional manual parsing logic becomes extremely complex.
    - Code readability and maintainability decline sharply as the number of operators increases.
 
 2. **Duplicate Code Troubles**
-
    - Processing logic for different operators often has similar patterns, leading to extensive duplicate code.
    - This duplication not only increases maintenance costs but also raises error risks.
 
@@ -85,12 +83,10 @@ Let's first understand the standard UML structure of Interpreter Pattern:
 The Interpreter Pattern mainly consists of the following three key components:
 
 1. **Abstract Expression (Expression)**
-
    - Defines common interface for all expressions, establishing unified processing specifications.
    - Ensures different types of expressions can be called and processed in the same way.
 
 2. **Terminal Expression**
-
    - Handles basic units in syntax, such as boolean values `true` and `false`.
    - These are leaf nodes in expression trees, containing no other sub-expressions.
 
@@ -194,12 +190,10 @@ Through this boolean operation system implementation, we deeply explored how the
 ### Core Advantages of Interpreter Pattern
 
 1. **Clear and Intuitive Structure**
-
    - Each operator and operand is encapsulated into independent expression classes.
    - This organization makes system architecture clear at a glance, easy to understand and maintain.
 
 2. **Excellent Extensibility**
-
    - When needing to add operators (like NOT, XOR), only need to implement new expression classes.
    - This fully complies with Open-Closed Principle (OCP), open for extension and closed for modification.
 

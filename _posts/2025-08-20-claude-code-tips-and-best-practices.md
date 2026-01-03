@@ -108,7 +108,6 @@ Anthropic 官方建議，把這兩者結合起來，才能讓 AI 穩定地參與
 **實際案例：Unit Test 工作流程**
 
 1. 定義測試指令：
-
    - `/generate-unit-test` - 生成單元測試
    - `/update-unit-test-guidelines` - 更新測試準則
 

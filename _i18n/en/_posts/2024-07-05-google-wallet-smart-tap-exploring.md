@@ -428,7 +428,6 @@ Google Wallet API is the foundation of the entire Smart Tap system. Without enab
 1. **Log in to management platform**: Go to [Google Cloud Console](https://console.cloud.google.com/) and log in with your Google account
 
 2. **Create or select project**:
-
    - If you don't have a Google Cloud project yet, please create a new project
    - Detailed steps can be found in [Google Official Documentation](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
 
@@ -460,11 +459,9 @@ When your application calls Google Wallet API, Google needs to verify the caller
 **Operation Process**
 
 1. **Enter service account page**:
-
    - In Google Cloud Console, go to [Service Accounts page](https://console.cloud.google.com/iam-admin/serviceaccounts/create)
 
 2. **Fill in account information**:
-
    - **Service account name**: Recommend using meaningful names like "wallet-smart-tap-service"
    - **Service account ID**: System will auto-generate, you can also modify it
    - **Description**: Brief description of this account's purpose, such as "For Google Wallet Smart Tap API access"
@@ -484,12 +481,10 @@ When your application calls Google Wallet API, Google needs to verify the caller
 2. **Enter key management**: Click the "**KEYS**" tab
 
 3. **Create new key**:
-
    - Click "**ADD KEY**"
    - Select "**Create new key**"
 
 4. **Select format**:
-
    - Choose "**JSON**" format (this is the recommended format)
    - Click "**CREATE**"
 
@@ -508,11 +503,9 @@ The `GOOGLE_APPLICATION_CREDENTIALS` environment variable tells Google SDK where
 **Setup Method**
 
 1. **Reference official documentation**:
-
    - Please follow [Google Cloud Official Guide](https://cloud.google.com/docs/authentication/provide-credentials-adc#local-key) to set environment variables
 
 2. **Actual operation**:
-
    - Execute the following command in terminal (please modify file path):
 
    ```bash
@@ -520,7 +513,6 @@ The `GOOGLE_APPLICATION_CREDENTIALS` environment variable tells Google SDK where
    ```
 
 3. **Permanent setup**:
-
    - To make it permanently effective, add the above command to `.bashrc` or `.zshrc` file
 
 4. **Verify setup**:
@@ -544,12 +536,10 @@ After creating the service account, you still need to grant it permissions to ma
 2. **Enter user management**: Click "**Users**" option
 
 3. **Invite service account**:
-
    - Click "**Invite a user**"
    - Enter the service account's email address (format usually: `your-service-name@your-project.iam.gserviceaccount.com`)
 
 4. **Set permission level**:
-
    - Select "**Developer**" or "**Admin**" from the "**Access level**" dropdown
    - **Developer**: Suitable for general development needs
    - **Admin**: Suitable for situations requiring full management permissions
@@ -571,7 +561,6 @@ Now we'll set up the Issuer account, which is the central control center for man
 1. **Open management console**: Go to [Google Pay & Wallet Console](https://pay.google.com/business/console)
 
 2. **Create issuer account**:
-
    - Follow the on-screen instructions to complete account creation step by step
    - The system will guide you through filling in necessary information
 
@@ -580,7 +569,6 @@ Now we'll set up the Issuer account, which is the central control center for man
 4. **Confirm terms**: Carefully read and confirm you understand the service terms and privacy policy
 
 5. **Record important information**:
-
    - **Copy Issuer ID**: This is your account's unique identifier, please store it in a secure place
    - This ID will be used in all subsequent code
 
@@ -1185,7 +1173,6 @@ Now let's test whether the entire Smart Tap system is working normally.
 **Configure Test Environment**
 
 1. **Modify Collector ID**:
-
    - Open sample code
    - Replace the Collector ID with the one you obtained earlier
    - This way your phone will recognize this application as your merchant terminal

@@ -22,18 +22,15 @@ Suppose we are developing an **e-commerce shipping calculation system**. As busi
 We need to meet the following core requirements:
 
 1. **Support Multiple Shipping Calculation Methods**, including:
-
    - **Regular Shipping**: Fixed shipping rate model
    - **Express Shipping**: Weight-based billing model
    - **International Shipping**: Dual billing model based on region and weight
 
 2. **System Extensibility Considerations**:
-
    - Need to easily add more shipping calculation methods in the future
    - Do not affect existing functionality stability
 
 3. **Code Quality Requirements**:
-
    - Avoid using extensive if-else or switch-case statements
    - Keep code clean and maintainable
 
@@ -53,13 +50,11 @@ Before diving into solutions, let's first perform object-oriented analysis. By a
 When we adopt traditional programming approaches, we usually centralize all shipping calculation logic in one class. This approach seems simple but actually creates many problems:
 
 1. **Maintenance Difficulties**
-
    - All shipping calculation logic is mixed in the main program
    - Modifying one calculation method easily affects other calculation logic accidentally
    - Code becomes lengthy and difficult to understand
 
 2. **Violates Open-Closed Principle (OCP)**
-
    - Every time we add shipping calculation methods, we need to modify core business logic
    - Cannot extend functionality without modifying existing code
 
@@ -86,12 +81,10 @@ First, let's understand the standard structure of Strategy Pattern:
 Strategy Pattern consists of three key components, each with clear responsibilities:
 
 1. **Strategy (Strategy Interface)**
-
    - Defines common behavioral specifications that all concrete strategies must implement
    - Ensures different strategies have the same interface for unified client invocation
 
 2. **ConcreteStrategy (Concrete Strategy)**
-
    - Implements behaviors defined in the strategy interface
    - Each concrete strategy encapsulates specific algorithm logic
    - Strategies are independent of each other and don't affect one another
@@ -209,13 +202,11 @@ Through implementing **Strategy Pattern**, we successfully solved challenges fac
 ### Core Advantage Analysis
 
 1. **Significantly Improved Extensibility**
-
    - When adding new shipping calculation methods, only need to implement new strategy classes
    - Completely no need to modify existing code, reducing risk of introducing errors
    - Complies with "open for extension, closed for modification" design philosophy
 
 2. **Low Coupling, High Cohesion**
-
    - Shipping calculation logic is completely separated from core business logic
    - Each strategy class focuses on single shipping calculation logic
    - System components have clear responsibilities and don't interfere with each other

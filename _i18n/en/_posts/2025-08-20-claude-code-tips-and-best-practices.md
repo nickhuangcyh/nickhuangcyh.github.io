@@ -154,7 +154,6 @@ Defining repetitive prompts as slash commands can greatly improve work efficienc
 **Practical Case: Unit Test Workflow**
 
 1. **Define Test Commands:**
-
    - `/generate-unit-test` - Generate unit tests
    - `/update-unit-test-guidelines` - Update test guidelines
 
