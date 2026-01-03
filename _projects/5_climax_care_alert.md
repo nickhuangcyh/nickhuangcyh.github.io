@@ -16,6 +16,8 @@ published: true
 > 🌍 This product is delivered through a B2B2C model, reaching users across **Europe**, **Japan**, and **Spain**.
 
 Official Website: [https://www.climax.com.tw/care_alert_platform.php](https://www.climax.com.tw/care_alert_platform.php)
+iOS App: [https://apps.apple.com/tw/developer/climax-technology-co-ltd/id438141751](https://apps.apple.com/tw/developer/climax-technology-co-ltd/id438141751)
+Android App: [https://play.google.com/store/apps/developer?id=Climax+Technology&hl=zh_TW&gl=US](https://play.google.com/store/apps/developer?id=Climax+Technology&hl=zh_TW&gl=US)
 
 ---
 

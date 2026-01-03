@@ -18,6 +18,8 @@ Unlike traditional web-based systems, Vesta Home 5 was built natively for iOS an
 > 💻 I also introduced and implemented a modern **CI/CD pipeline** using Docker, Jenkins, Fastlane, and Gradle.
 
 Official Website: [https://www.climax.com.tw/home_portal_server.php](https://www.climax.com.tw/home_portal_server.php)
+iOS App: [https://apps.apple.com/tw/developer/climax-technology-co-ltd/id438141751](https://apps.apple.com/tw/developer/climax-technology-co-ltd/id438141751)
+Android App: [https://play.google.com/store/apps/developer?id=Climax+Technology&hl=zh_TW&gl=US](https://play.google.com/store/apps/developer?id=Climax+Technology&hl=zh_TW&gl=US)
 
 ---
 

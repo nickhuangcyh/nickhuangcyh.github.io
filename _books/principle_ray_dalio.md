@@ -38,7 +38,7 @@ finished:
 released: 2017
 stars: 5
 goodreads_review: 34536488
-status: Reading
+status: Finished
 ---
 
 “Significant...The book is both instructive and surprisingly moving.” —The New York Times

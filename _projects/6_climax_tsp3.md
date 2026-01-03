@@ -15,8 +15,7 @@ published: true
 
 > 🛡️ With built-in camera intelligence and privacy controls, TSP-3 balances usability with safety.
 
-Official Product Page:  
-[Climax TSP-3 on SourceSecurity](https://www.sourcesecurity.com/climax-technology-tsp-3-audio-video-or-keypad-entry-technical-details.html)
+- [Official Website](https://www.climax.com.tw/tsp-3.php)
 
 ---
 

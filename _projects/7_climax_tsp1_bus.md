@@ -15,8 +15,7 @@ published: true
 
 Official Links:
 
-- [Product Page](https://www.climax.com.tw/tsp-1-bus.php)
-- [Wired BUS Security System Brochure (PDF)](https://www.climax.com.tw/new/downloads/Climax_Wired_BUS_Security_System_Brochure_20250304.pdf)
+- [Official Website](https://www.climax.com.tw/tsp-1-bus.php)
 
 ---
 
