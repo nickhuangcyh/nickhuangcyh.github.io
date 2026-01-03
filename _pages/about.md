@@ -34,7 +34,7 @@ Put your address / P. O. box / other info right below your picture. You can also
 
 Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them. -->
 
-Hey, I’m Nick — a software engineer in Taipei who likes building apps that make life a bit simpler. I mostly work on iOS and Android, and I've spent over 9 years coding in Swift and Objective-C, plus 6 years with Kotlin.
+Hey, I’m Nick — a software engineer in Taipei who likes building apps that make life a bit simpler. I mostly work on iOS and Android, and I've spent over 10+ years coding in Swift and Objective-C, plus 7+ years with Kotlin.
 
 By day, I work in the IoT space, building apps that connect the real world with the digital one. I’m also into network stuff like HTTP, MQTT, WebSocket, and RTSP, plus video streaming, AR, and automating boring tasks with tools like Docker, Jenkins, Fastlane, and Gradle.
 
@@ -44,7 +44,7 @@ Outside of work, I’m into psychology, running, and pushing my limits. I ran my
 
 If you're into thoughtful products or just want to chat, feel free to reach out!
 
-嗨，我叫 Nick，一位住在台北的軟體工程師，平常喜歡做些能讓生活更方便的應用程式。專長是 iOS 和 Android 開發，用 Swift 和 Objective-C 差不多有 9 年了，Kotlin 也用了超過 6 年。
+嗨，我叫 Nick，一位住在台北的軟體工程師，平常喜歡做些能讓生活更方便的應用程式。專長是 iOS 和 Android 開發，用 Swift 和 Objective-C 有 10 年以上經驗，Kotlin 也用了超過 7 年經驗。
 
 我目前在 IoT 領域工作，開發能把實體與數位世界連起來的 App。對網路協定像是 HTTP、MQTT、WebSocket、RTSP 都蠻有興趣，也有涉獵影像串流、AR，還有像 Docker、Jenkins、Fastlane、Gradle 這類工具，能自動化的事我都很愛搞定。
 
