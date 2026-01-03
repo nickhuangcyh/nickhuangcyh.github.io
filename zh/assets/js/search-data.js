@@ -705,7 +705,7 @@ ninja.data = [{
         title: 'YouTube',
         section: 'Socials',
         handler: () => {
-          window.open("https://youtube.com/@UC6Dnl0rB-HAhfL2XWRIZXmg", "_blank");
+          window.open("https://youtube.com/@nickhuangcyh", "_blank");
         },
       },{
         id: 'social-instagram',
