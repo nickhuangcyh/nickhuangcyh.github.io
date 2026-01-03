@@ -637,6 +637,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/principle_ray_dalio/";
+            },},{id: "books-zero-to-one",
+          title: 'Zero to One',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/zero_to_one/";
             },},{id: "news-a-simple-inline-announcement",
           title: 'A simple inline announcement.',
           description: "",
