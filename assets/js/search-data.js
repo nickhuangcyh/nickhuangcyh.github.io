@@ -704,6 +704,11 @@ ninja.data = [{
           description: "A 7&quot; high resolution color graphic touchscreen to control devices in the system via one single intuitive interface, with IP camera integration for real-time visual verification.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/8_climax_touchpanel_3/";
+            },},{id: "projects-tsp-1-rf-touchscreen-keypad",
+          title: 'TSP-1-RF Touchscreen Keypad',
+          description: "A wireless 7&quot; touchscreen keypad with Wi-Fi &amp; RF communication for smart home and security management",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/9_climax_tsp1_rf/";
             },},{
         id: 'social-github',
         title: 'GitHub',
