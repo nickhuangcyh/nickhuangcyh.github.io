@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-building-an-ai-code-review-agent-from-scratch-simultaneously-boosting-team-efficiency-and-code-quality",
+        },{id: "post-grpc-concepts-and-implementation-go-amp-python-building-high-performance-microservices",
+        
+          title: "gRPC Concepts and Implementation (Go &amp; Python) - Building High-Performance Microservices",
+        
+        description: "From environment setup to practical development, implementing gRPC&#39;s four communication patterns step-by-step using Go and Python: Unary, Server Streaming, Client Streaming, and Bidirectional Streaming.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/backend%20development/grpc-introduction-for-micro-service/";
+          
+        },
+      },{id: "post-building-an-ai-code-review-agent-from-scratch-simultaneously-boosting-team-efficiency-and-code-quality",
         
           title: "Building an AI Code Review Agent from Scratch: Simultaneously Boosting Team Efficiency and...",
         

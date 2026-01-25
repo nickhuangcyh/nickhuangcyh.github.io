@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-從零打造-ai-code-review-agent-同步提升團隊效率與程式碼品質",
+        },{id: "post-grpc-概念與實作-go-amp-python-打造高效能微服務",
+        
+          title: "gRPC 概念與實作 (Go &amp; Python) - 打造高效能微服務",
+        
+        description: "從環境建置到實戰開發，使用 Go 與 Python 一步步實作 gRPC 的四種通訊模式：Unary, Server Streaming, Client Streaming 與 Bidirectional Streaming。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/backend%20development/grpc-introduction-for-micro-service/";
+          
+        },
+      },{id: "post-從零打造-ai-code-review-agent-同步提升團隊效率與程式碼品質",
         
           title: "從零打造 AI Code Review Agent：同步提升團隊效率與程式碼品質",
         
