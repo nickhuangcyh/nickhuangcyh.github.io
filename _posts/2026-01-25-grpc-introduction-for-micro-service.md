@@ -10,6 +10,8 @@ toc:
 thumbnail: /assets/img/grpc_introduction.png
 ---
 
+{% include figure.liquid path="assets/img/grpc_introduction.png" title="grpc_introduction" %}
+
 > 您可於此 [grpc-demo repo](https://github.com/nickhuangcyh/grpc-demo) 下載本篇文章的完整程式碼。
 
 ## 什麼是 gRPC？

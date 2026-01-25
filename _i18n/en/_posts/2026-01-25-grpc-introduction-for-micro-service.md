@@ -10,6 +10,8 @@ toc:
 thumbnail: /assets/img/grpc_introduction.png
 ---
 
+{% include figure.liquid path="assets/img/grpc_introduction.png" title="grpc_introduction" %}
+
 > You can download the complete code for this article at [grpc-demo repo](https://github.com/nickhuangcyh/grpc-demo).
 
 ## What is gRPC?
