@@ -7,7 +7,7 @@ tags: [gRPC, Golang, Python, Backend]
 categories: [Backend Development]
 toc:
   sidebar: right
-thumbnail: /assets/img/grpc_introduction.jpg
+thumbnail: /assets/img/grpc_introduction.png
 ---
 
 > 您可於此 [grpc-demo repo](https://github.com/nickhuangcyh/grpc-demo) 下載本篇文章的完整程式碼。
