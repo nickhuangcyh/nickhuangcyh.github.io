@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-grpc-概念與實作-go-amp-python-打造高效能微服務",
+        },{id: "post-別再用-vibe-coding-寫玩具了-透過-sdd-開發模式利用-speckit-實作圍棋小遊戲-讓-ai-不再產生幻覺",
+        
+          title: "別再用 Vibe Coding 寫玩具了，透過 SDD 開發模式利用 SpecKit 實作圍棋小遊戲，讓 AI 不再產生幻覺",
+        
+        description: "探討工作上常見的 Spec 規劃痛點，並透過 Speckit 結合 SDD (Specification-Driven Development) 開發模式，精準引導 AI 實作圍棋與形勢判斷功能，告別 Vibe Coding 的幻覺問題。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/ai/software%20engineering/speckit-sdd-go-game/";
+          
+        },
+      },{id: "post-grpc-概念與實作-go-amp-python-打造高效能微服務",
         
           title: "gRPC 概念與實作 (Go &amp; Python) - 打造高效能微服務",
         

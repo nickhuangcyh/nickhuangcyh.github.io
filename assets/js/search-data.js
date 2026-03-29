@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-grpc-concepts-and-implementation-go-amp-python-building-high-performance-microservices",
+        },{id: "post-stop-writing-toys-with-vibe-coding-implementing-a-go-game-via-sdd-and-speckit-to-eliminate-ai-hallucinations",
+        
+          title: "Stop Writing Toys with Vibe Coding: Implementing a Go Game via SDD and...",
+        
+        description: "Exploring common pain points in specification planning and using SpecKit combined with SDD (Specification-Driven Development) to precisely guide AI in implementing Go game rules and territory estimation, eliminating Vibe Coding hallucinations.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/ai/software%20engineering/speckit-sdd-go-game/";
+          
+        },
+      },{id: "post-grpc-concepts-and-implementation-go-amp-python-building-high-performance-microservices",
         
           title: "gRPC Concepts and Implementation (Go &amp; Python) - Building High-Performance Microservices",
         
