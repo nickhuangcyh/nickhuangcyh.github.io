@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-別再用-vibe-coding-寫玩具了-透過-sdd-開發模式利用-speckit-實作圍棋小遊戲-讓-ai-不再產生幻覺",
+        },{id: "post-告別-vibe-coding-的架構崩壞-透過-openspec-的-構件驅動-實作-sec-追蹤器-讓-ai-成為你的資深架構師",
+        
+          title: "告別 Vibe Coding 的架構崩壞：透過 OpenSpec 的『構件驅動』實作 SEC 追蹤器，讓 AI 成為你的資深架構師",
+        
+        description: "延續 SDD (規格驅動開發) 的精神，這次我們進化到 OpenSpec 框架。透過 Proposal、Specs、Design 到 Tasks 的『構件驅動』工作流，以 SEC Insider Tracker 為例，示範如何讓 AI 穩定產出跨技術棧的複雜系統。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/ai/software%20engineering/openspec-sdd-insider-tracker/";
+          
+        },
+      },{id: "post-別再用-vibe-coding-寫玩具了-透過-sdd-開發模式利用-speckit-實作圍棋小遊戲-讓-ai-不再產生幻覺",
         
           title: "別再用 Vibe Coding 寫玩具了，透過 SDD 開發模式利用 SpecKit 實作圍棋小遊戲，讓 AI 不再產生幻覺",
         

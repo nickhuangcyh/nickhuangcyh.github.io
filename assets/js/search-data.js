@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-stop-writing-toys-with-vibe-coding-implementing-a-go-game-via-sdd-and-speckit-to-eliminate-ai-hallucinations",
+        },{id: "post-beyond-vibe-coding-39-s-architectural-chaos-building-an-sec-tracker-with-openspec-39-s-39-artifact-driven-39-workflow-turning-ai-into-your-senior-architect",
+        
+          title: "Beyond Vibe Coding&#39;s Architectural Chaos: Building an SEC Tracker with OpenSpec&#39;s &#39;Artifact-Driven&#39; Workflow,...",
+        
+        description: "Continuing the spirit of SDD (Specification-Driven Development), this time we level up to the OpenSpec framework. Using the Proposal → Specs → Design → Tasks &#39;artifact-driven&#39; workflow, we demonstrate how to make AI reliably produce complex cross-stack systems, with SEC Insider Tracker as our case study.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/ai/software%20engineering/openspec-sdd-insider-tracker/";
+          
+        },
+      },{id: "post-stop-writing-toys-with-vibe-coding-implementing-a-go-game-via-sdd-and-speckit-to-eliminate-ai-hallucinations",
         
           title: "Stop Writing Toys with Vibe Coding: Implementing a Go Game via SDD and...",
         
