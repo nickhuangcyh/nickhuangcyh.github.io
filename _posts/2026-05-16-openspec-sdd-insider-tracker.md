@@ -204,8 +204,6 @@ AI 幫我分析了 `edgartools` 庫的優缺點，並建議了 **「每日一檔
 
 **這種「暫停 -> 討論 -> 修改構件 -> 繼續實作」的流暢度，是傳統 Vibe Coding 完全無法比擬的。**
 
-{% include figure.liquid path="assets/img/openspec_apply.png" title="Task Execution" %}
-
 ---
 
 ### 第四步：`/opsx:archive` —— 規格即資產
@@ -213,8 +211,6 @@ AI 幫我分析了 `edgartools` 庫的優缺點，並建議了 **「每日一檔
 當任務全部打勾後，執行封存。OpenSpec 會做一件很酷的事：它會自動將這次開發中寫的 `specs` 合併回專案的主目錄。
 
 這意味著，隨着專案成長，你的規格書會自動變得豐富，**它是與代碼同步的、真實的開發紀錄，而不是寫完就過時的廢紙。**
-
-{% include figure.liquid path="assets/img/openspec_archive.png" title="Archiving the Change" %}
 
 {% include figure.liquid path="assets/img/openspec_insider_trading.png" title="Insider Trading" %}
 

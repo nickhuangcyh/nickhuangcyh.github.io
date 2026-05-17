@@ -214,8 +214,6 @@ Once all tasks are checked off, we archive. OpenSpec does something very cool: i
 
 This means that as your project grows, your specification library automatically becomes richer — **it's a living development record that stays in sync with the code, not documentation that becomes outdated the moment it's written.**
 
-{% include figure.liquid path="assets/img/openspec_archive.png" title="Archiving the Change" %}
-
 {% include figure.liquid path="assets/img/openspec_insider_trading.png" title="Insider Trading" %}
 
 ---
