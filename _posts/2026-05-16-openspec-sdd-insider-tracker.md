@@ -23,8 +23,9 @@ thumbnail: /assets/img/openspec_cover.png
 以下是我在這次實作中，感受到 OpenSpec 獨特的地方：
 
 - **強制分階段產出**：不能跳過 proposal 直接寫 code，每一步都有明確的交付物。
-- **構件間有依賴關係**：specs 依賴 proposal、design 依賴 specs、tasks 依賴 design，環環相扣。
+- **構件間有依賴關係**：specs 和 design 都依賴 proposal、tasks 依賴 specs + design，形成 DAG 結構。
 - **內建封存與同步機制**：完成的 change 會被歸檔，specs 自動合併成專案的 Source of Truth。
+- **流動式迭代**：在實作過程中隨時可以回頭修改任何 artifact，不像傳統瀑布模型被鎖死在某個階段。
 
 ### 從「規格驅動」到「構件驅動 (Artifact-driven)」
 
@@ -48,7 +49,7 @@ OpenSpec 最強大的地方在於它引入了「構件 (Artifacts)」的概念�
 ### 1. 安裝 OpenSpec
 
 ```bash
-npm install -g openspec-ai
+npm install -g @fission-ai/openspec@latest
 ```
 
 安裝完成後，確認版本：
@@ -155,7 +156,6 @@ rules:
 **`config.yaml` 的作用**：每次 AI 產出任何 artifact 時，`context` 會自動注入到指令中，讓 AI 知道你的技術棧和慣例，不用你每次重複說明。`rules` 則針對個別 artifact 設定額外規則，確保產出符合你的品質標準。
 
 > 💡 **簡單講：沒有 config → AI 亂猜你的 tech stack；有 config → AI 產出的東西直接符合你專案的慣例。**
-> {: .notice--info}
 
 ---
 
@@ -184,7 +184,6 @@ AI 幫我分析了 `edgartools` 庫的優缺點，並建議了 **「每日一檔
 3. **前端策略**：不使用複雜框架，用 Vanilla JS + Tailwind CDN，直接 fetch 靜態 JSON。
 
 > 💡 **這就是關鍵：** 所有的「未決問題」（例如是否要做分頁、過濾功能怎麼實現）都在 Design 階段就決定好了，這防止了 AI 在實作時「自作主張」。
-> {: .notice--info}
 
 {% include figure.liquid path="assets/img/openspec_new.png" title="New Change" %}
 
@@ -229,7 +228,6 @@ AI 幫我分析了 `edgartools` 庫的優缺點，並建議了 **「每日一檔
 如果是你，你會想用 OpenSpec 來設計什麼樣的自動化系統？是個人理財看板、自動化爬蟲、還是 AI 內容農場管理員？
 
 **在下方留言分享你的想法，讓我們一起探索 AI 工程化的極限！**
-{: .notice--success}
 
 ---
 

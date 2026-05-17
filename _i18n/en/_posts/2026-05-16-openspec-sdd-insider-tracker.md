@@ -23,8 +23,9 @@ This time I chose **OpenSpec** to implement a cross-stack integration system (Py
 Here's what stood out about OpenSpec during this implementation:
 
 - **Enforced phased delivery**: You cannot skip the proposal and jump straight to code — every step has an explicit deliverable.
-- **Inter-artifact dependencies**: Specs depend on the proposal, design depends on specs, tasks depend on design — each link in the chain builds upon the last.
+- **Inter-artifact dependencies**: Both specs and design depend on the proposal, while tasks depend on specs + design — forming a DAG structure.
 - **Built-in archival and sync mechanisms**: Completed changes are archived, and specs are automatically merged into the project's Source of Truth.
+- **Fluid iteration**: You can go back and modify any artifact at any time during implementation — no rigid phase gates locking you in.
 
 ### From "Specification-Driven" to "Artifact-Driven"
 
@@ -48,7 +49,7 @@ Before diving into the case study, let's get the tooling ready.
 ### 1. Install OpenSpec
 
 ```bash
-npm install -g openspec-ai
+npm install -g @fission-ai/openspec@latest
 ```
 
 After installation, verify the version:
@@ -155,7 +156,6 @@ rules:
 **What `config.yaml` does**: Every time AI produces any artifact, the `context` is automatically injected into its instructions, so AI knows your tech stack and conventions without you repeating them every time. The `rules` section sets additional constraints for individual artifacts, ensuring outputs meet your quality standards.
 
 > 💡 **In short: No config → AI guesses your tech stack; With config → AI outputs directly match your project's conventions.**
-> {: .notice--info}
 
 ---
 
@@ -184,7 +184,6 @@ Through `/opsx:new` and `/opsx:continue`, we progressively solidified our artifa
 3. **Frontend strategy**: No complex frameworks — use Vanilla JS + Tailwind CDN, directly fetching static JSON.
 
 > 💡 **This is the key:** All "open questions" (e.g., whether to implement pagination, how filtering works) are decided during the Design phase, preventing AI from "improvising" during implementation.
-> {: .notice--info}
 
 {% include figure.liquid path="assets/img/openspec_new.png" title="New Change" %}
 
@@ -203,8 +202,6 @@ Entering the implementation phase, OpenSpec's Agent reads all documents as conte
 During this process, we encountered an interesting challenge: SEC's API doesn't update on weekends, causing the script to time out when no data is available. Because we had rigorous `specs`, AI didn't guess blindly — it paused and discussed with me. We ultimately modified the logic: **"Automatically look back up to three days to find the most recent trading day with data."**
 
 **This fluidity of "pause → discuss → modify artifacts → continue implementation" is something traditional Vibe Coding simply cannot match.**
-
-{% include figure.liquid path="assets/img/openspec_apply.png" title="Task Execution" %}
 
 ---
 
@@ -231,7 +228,6 @@ Through the artifact-driven workflow, AI is no longer an unruly typist — it be
 If it were you, what kind of automated system would you want to design with OpenSpec? A personal finance dashboard, an automated scraper, or an AI content farm manager?
 
 **Share your thoughts in the comments below — let's explore the limits of AI engineering together!**
-{: .notice--success}
 
 ---
 
