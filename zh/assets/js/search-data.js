@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-告別-vibe-coding-的架構崩壞-透過-openspec-的-構件驅動-實作-sec-追蹤器-讓-ai-成為你的資深架構師",
+        },{id: "post-當-vibe-coding-擁有-superpowers-全自動精準開發方法論深度體驗-以-2048-遊戲實戰為例",
+        
+          title: "當 Vibe Coding 擁有 Superpowers：全自動精準開發方法論深度體驗，以 2048 遊戲實戰為例",
+        
+        description: "延續 SDD（Specification-Driven Development）精神，這次體驗 Superpowers 的全自動方法論。透過 Gemini CLI 實作 2048 遊戲，深入分析 subagent-driven development、強制 TDD 等機制的威力與代價。",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/ai/software%20engineering/superpowers-sdd-2048-game/";
+          
+        },
+      },{id: "post-告別-vibe-coding-的架構崩壞-透過-openspec-的-構件驅動-實作-sec-追蹤器-讓-ai-成為你的資深架構師",
         
           title: "告別 Vibe Coding 的架構崩壞：透過 OpenSpec 的『構件驅動』實作 SEC 追蹤器，讓 AI 成為你的資深架構師",
         

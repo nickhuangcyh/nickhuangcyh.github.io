@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "post-beyond-vibe-coding-39-s-architectural-chaos-building-an-sec-tracker-with-openspec-39-s-39-artifact-driven-39-workflow-turning-ai-into-your-senior-architect",
+        },{id: "post-when-vibe-coding-gets-superpowers-a-deep-dive-into-fully-automated-precision-development-building-2048-as-a-case-study",
+        
+          title: "When Vibe Coding Gets Superpowers: A Deep Dive into Fully Automated Precision Development,...",
+        
+        description: "Continuing the SDD (Specification-Driven Development) journey, this time experiencing Superpowers&#39; fully automated methodology. Building a 2048 game with Gemini CLI, analyzing the power and cost of subagent-driven development, enforced TDD, and more.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/ai/software%20engineering/superpowers-sdd-2048-game/";
+          
+        },
+      },{id: "post-beyond-vibe-coding-39-s-architectural-chaos-building-an-sec-tracker-with-openspec-39-s-39-artifact-driven-39-workflow-turning-ai-into-your-senior-architect",
         
           title: "Beyond Vibe Coding&#39;s Architectural Chaos: Building an SEC Tracker with OpenSpec&#39;s &#39;Artifact-Driven&#39; Workflow,...",
         
