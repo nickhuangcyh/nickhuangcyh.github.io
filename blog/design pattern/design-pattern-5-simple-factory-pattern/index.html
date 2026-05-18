@@ -1203,7 +1203,7 @@
 
 <p>The following code demonstrates the most straightforward implementation approach. We define a <code class="language-plaintext highlighter-rouge">Beverage</code> interface that includes the basic steps of beverage preparation, then have concrete beverage classes (like <code class="language-plaintext highlighter-rouge">BlackTea</code>, <code class="language-plaintext highlighter-rouge">GreenTea</code>) implement this interface.</p>
 
-<ul id="simple-factory-pattern-1" class="tab" data-tab="fdd29c57-bf65-4086-a95d-79e030ebe58f" data-name="simple-factory-pattern-1">
+<ul id="simple-factory-pattern-1" class="tab" data-tab="095c3eb1-cb5d-4c6c-9801-c0b8a3cad7f7" data-name="simple-factory-pattern-1">
   
       <li class="active" id="simple-factory-pattern-1-swift">
           <a href="#">Swift </a>
@@ -1214,7 +1214,7 @@
       </li>
   
 </ul>
-<ul class="tab-content" id="fdd29c57-bf65-4086-a95d-79e030ebe58f" data-name="simple-factory-pattern-1">
+<ul class="tab-content" id="095c3eb1-cb5d-4c6c-9801-c0b8a3cad7f7" data-name="simple-factory-pattern-1">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Beverage</span> <span class="p">{</span>
@@ -1344,7 +1344,7 @@
 
 <p>Every time we add a beverage item, this switch/when block must be modified:</p>
 
-<ul id="simple-factory-pattern-2" class="tab" data-tab="3143dbc9-b9d7-4e99-9475-664fcd457941" data-name="simple-factory-pattern-2">
+<ul id="simple-factory-pattern-2" class="tab" data-tab="1c372cd8-6e0b-4fae-9fb0-899fdcea8a28" data-name="simple-factory-pattern-2">
   
       <li class="active" id="simple-factory-pattern-2-swift">
           <a href="#">Swift </a>
@@ -1355,7 +1355,7 @@
       </li>
   
 </ul>
-<ul class="tab-content" id="3143dbc9-b9d7-4e99-9475-664fcd457941" data-name="simple-factory-pattern-2">
+<ul class="tab-content" id="1c372cd8-6e0b-4fae-9fb0-899fdcea8a28" data-name="simple-factory-pattern-2">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span> <span class="n">beverageName</span> <span class="p">{</span>
@@ -1388,7 +1388,7 @@
 
 <p>In contrast, the beverage preparation process is fixed. No matter how many types of beverages we add, these steps never change:</p>
 
-<ul id="simple-factory-pattern-3" class="tab" data-tab="09d3994c-9dd5-4313-88aa-7549f634192d" data-name="simple-factory-pattern-3">
+<ul id="simple-factory-pattern-3" class="tab" data-tab="2d040b61-571d-4ea2-83e6-ee6febf1e89f" data-name="simple-factory-pattern-3">
   
       <li class="active" id="simple-factory-pattern-3-swift">
           <a href="#">Swift </a>
@@ -1399,7 +1399,7 @@
       </li>
   
 </ul>
-<ul class="tab-content" id="09d3994c-9dd5-4313-88aa-7549f634192d" data-name="simple-factory-pattern-3">
+<ul class="tab-content" id="2d040b61-571d-4ea2-83e6-ee6febf1e89f" data-name="simple-factory-pattern-3">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">beverage</span><span class="p">?</span><span class="o">.</span><span class="nf">addSuger</span><span class="p">(</span><span class="nv">level</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
@@ -1492,7 +1492,7 @@
 <strong>Single Responsibility</strong>: Each class has a clear and single responsibility</li>
 </ol>
 
-<ul id="simple-factory-pattern-4" class="tab" data-tab="a1b1ed06-fb2e-44de-a2c5-40f31cb5a584" data-name="simple-factory-pattern-4">
+<ul id="simple-factory-pattern-4" class="tab" data-tab="82fbb7d3-febf-414c-9b29-f570a8f90101" data-name="simple-factory-pattern-4">
   
       <li class="active" id="simple-factory-pattern-4-swift">
           <a href="#">Swift </a>
@@ -1503,7 +1503,7 @@
       </li>
   
 </ul>
-<ul class="tab-content" id="a1b1ed06-fb2e-44de-a2c5-40f31cb5a584" data-name="simple-factory-pattern-4">
+<ul class="tab-content" id="82fbb7d3-febf-414c-9b29-f570a8f90101" data-name="simple-factory-pattern-4">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">BeverageFactory</span> <span class="p">{</span>
