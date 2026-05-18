@@ -1204,7 +1204,7 @@
 
 <p>下面的程式碼展示了最直接的實作方式。我們定義了一個 <code class="language-plaintext highlighter-rouge">Beverage</code> 介面，包含飲料製作的基本步驟，然後讓具體的飲料類別（如 <code class="language-plaintext highlighter-rouge">BlackTea</code>、<code class="language-plaintext highlighter-rouge">GreenTea</code>）實作這個介面。</p>
 
-<ul id="simple-factory-pattern-1" class="tab" data-tab="9a789634-c75f-4f0c-87c9-dbd47255d658" data-name="simple-factory-pattern-1">
+<ul id="simple-factory-pattern-1" class="tab" data-tab="288de9a5-5152-41fa-a10f-3fedac802cbf" data-name="simple-factory-pattern-1">
   
       <li class="active" id="simple-factory-pattern-1-swift">
           <a href="#">Swift </a>
@@ -1215,7 +1215,7 @@
       </li>
   
 </ul>
-<ul class="tab-content" id="9a789634-c75f-4f0c-87c9-dbd47255d658" data-name="simple-factory-pattern-1">
+<ul class="tab-content" id="288de9a5-5152-41fa-a10f-3fedac802cbf" data-name="simple-factory-pattern-1">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Beverage</span> <span class="p">{</span>
@@ -1345,7 +1345,7 @@
 
 <p>每當新增飲料品項時，這個 switch/when 區塊就必須被修改：</p>
 
-<ul id="simple-factory-pattern-2" class="tab" data-tab="2ac115e9-bb36-4d36-bf2d-b9af595529ee" data-name="simple-factory-pattern-2">
+<ul id="simple-factory-pattern-2" class="tab" data-tab="1ca23f18-ca79-486b-b6c1-21e30e2c9b32" data-name="simple-factory-pattern-2">
   
       <li class="active" id="simple-factory-pattern-2-swift">
           <a href="#">Swift </a>
@@ -1356,7 +1356,7 @@
       </li>
   
 </ul>
-<ul class="tab-content" id="2ac115e9-bb36-4d36-bf2d-b9af595529ee" data-name="simple-factory-pattern-2">
+<ul class="tab-content" id="1ca23f18-ca79-486b-b6c1-21e30e2c9b32" data-name="simple-factory-pattern-2">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">switch</span> <span class="n">beverageName</span> <span class="p">{</span>
@@ -1389,7 +1389,7 @@
 
 <p>相對地，飲料的製作流程是固定的，無論新增多少種飲料，這些步驟都不會改變：</p>
 
-<ul id="simple-factory-pattern-3" class="tab" data-tab="c954a440-e01e-43ea-b636-667065ee19ae" data-name="simple-factory-pattern-3">
+<ul id="simple-factory-pattern-3" class="tab" data-tab="1a47496f-6b49-4c97-879f-07ee81d4580c" data-name="simple-factory-pattern-3">
   
       <li class="active" id="simple-factory-pattern-3-swift">
           <a href="#">Swift </a>
@@ -1400,7 +1400,7 @@
       </li>
   
 </ul>
-<ul class="tab-content" id="c954a440-e01e-43ea-b636-667065ee19ae" data-name="simple-factory-pattern-3">
+<ul class="tab-content" id="1a47496f-6b49-4c97-879f-07ee81d4580c" data-name="simple-factory-pattern-3">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">beverage</span><span class="p">?</span><span class="o">.</span><span class="nf">addSuger</span><span class="p">(</span><span class="nv">level</span><span class="p">:</span> <span class="mi">5</span><span class="p">)</span>
@@ -1493,7 +1493,7 @@
 <strong>單一職責</strong>：每個類別都有明確且單一的職責</li>
 </ol>
 
-<ul id="simple-factory-pattern-4" class="tab" data-tab="b0035be3-f318-4f98-b27b-3b4fa94ef650" data-name="simple-factory-pattern-4">
+<ul id="simple-factory-pattern-4" class="tab" data-tab="29da1ad5-d5ab-4ddc-a721-909818ec01e0" data-name="simple-factory-pattern-4">
   
       <li class="active" id="simple-factory-pattern-4-swift">
           <a href="#">Swift </a>
@@ -1504,7 +1504,7 @@
       </li>
   
 </ul>
-<ul class="tab-content" id="b0035be3-f318-4f98-b27b-3b4fa94ef650" data-name="simple-factory-pattern-4">
+<ul class="tab-content" id="29da1ad5-d5ab-4ddc-a721-909818ec01e0" data-name="simple-factory-pattern-4">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">BeverageFactory</span> <span class="p">{</span>

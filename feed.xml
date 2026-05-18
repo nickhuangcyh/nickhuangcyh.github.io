@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://nickhuangcyh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://nickhuangcyh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-05-18T05:57:52+00:00</updated><id>https://nickhuangcyh.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://nickhuangcyh.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://nickhuangcyh.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2026-05-18T06:28:07+00:00</updated><id>https://nickhuangcyh.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry><title type="html">When Vibe Coding Gets Superpowers: A Deep Dive into Fully Automated Precision Development, Building 2048 as a Case Study</title><link href="https://nickhuangcyh.github.io/blog/ai/software%20engineering/superpowers-sdd-2048-game/" rel="alternate" type="text/html" title="When Vibe Coding Gets Superpowers: A Deep Dive into Fully Automated Precision Development, Building 2048 as a Case Study" /><published>2026-05-17T18:00:00+00:00</published><updated>2026-05-17T18:00:00+00:00</updated><id>https://nickhuangcyh.github.io/blog/ai/software%20engineering/superpowers-sdd-2048-game</id><content type="html" xml:base="https://nickhuangcyh.github.io/blog/ai/software%20engineering/superpowers-sdd-2048-game/"><![CDATA[<figure>
   <picture>
     <!-- Auto scaling with imagemagick -->
@@ -11,7 +11,7 @@
         <source class="responsive-img-srcset" srcset="/assets/img/superpowers_cover-480.webp 480w,/assets/img/superpowers_cover-800.webp 800w,/assets/img/superpowers_cover-1400.webp 1400w," type="image/webp" sizes="95vw" />
       
     
-    <img src="/assets/img/superpowers_cover.png" width="100%" height="auto" title="vibe with superpowers" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+    <img src="/assets/img/superpowers_cover.png" width="100%" height="auto" title="superpowers-cover" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
   </picture>
 
   
@@ -1103,7 +1103,7 @@ b822464 Initial commit
         <source class="responsive-img-srcset" srcset="/assets/img/openspec_cover-480.webp 480w,/assets/img/openspec_cover-800.webp 800w,/assets/img/openspec_cover-1400.webp 1400w," type="image/webp" sizes="95vw" />
       
     
-    <img src="/assets/img/openspec_cover.png" width="100%" height="auto" title="openspec-vs-vibe" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+    <img src="/assets/img/openspec_cover.png" width="100%" height="auto" title="openspec-cover" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
   </picture>
 
   
@@ -1499,10 +1499,10 @@ openspec init
     -->
     
       
-        <source class="responsive-img-srcset" srcset="/assets/img/vibe_coding_vs_sdd_speckit.svg" sizes="95vw" />
+        <source class="responsive-img-srcset" srcset="/assets/img/speckit_cover-480.webp 480w,/assets/img/speckit_cover-800.webp 800w,/assets/img/speckit_cover-1400.webp 1400w," type="image/webp" sizes="95vw" />
       
     
-    <img src="/assets/img/vibe_coding_vs_sdd_speckit.svg" width="100%" height="auto" title="vibe-vs-sdd" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
+    <img src="/assets/img/speckit_cover.png" width="100%" height="auto" title="speckit-cover" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();" />
   </picture>
 
   

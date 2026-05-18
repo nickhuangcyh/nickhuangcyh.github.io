@@ -1180,7 +1180,7 @@
 <p><strong>Practical Application Example</strong>:
 Let’s use a common login page functionality as an example. Beginners often put all related functions into the same class:</p>
 
-<ul id="srp-1" class="tab" data-tab="7406e8fd-0d92-4439-b9c9-40053e2278e9" data-name="srp-1">
+<ul id="srp-1" class="tab" data-tab="ea24eca7-eecc-46d8-b711-23fc432f487a" data-name="srp-1">
   
       <li class="active" id="srp-1-swift">
           <a href="#">Swift </a>
@@ -1191,7 +1191,7 @@ Let’s use a common login page functionality as an example. Beginners often put
       </li>
   
 </ul>
-<ul class="tab-content" id="7406e8fd-0d92-4439-b9c9-40053e2278e9" data-name="srp-1">
+<ul class="tab-content" id="ea24eca7-eecc-46d8-b711-23fc432f487a" data-name="srp-1">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">LoginViewController</span> <span class="p">{</span>
@@ -1245,7 +1245,7 @@ The above code violates the SRP principle because <code class="language-plaintex
 <p><strong>Solution</strong>:
 Following the Single Responsibility Principle, we should separate different responsibilities into their respective classes:</p>
 
-<ul id="srp-2" class="tab" data-tab="f9957ff0-8858-4e13-bb56-99f12c9f6f3f" data-name="srp-2">
+<ul id="srp-2" class="tab" data-tab="492f12ed-a415-46ca-8e39-e83afe23207f" data-name="srp-2">
   
       <li class="active" id="srp-2-swift">
           <a href="#">Swift </a>
@@ -1256,7 +1256,7 @@ Following the Single Responsibility Principle, we should separate different resp
       </li>
   
 </ul>
-<ul class="tab-content" id="f9957ff0-8858-4e13-bb56-99f12c9f6f3f" data-name="srp-2">
+<ul class="tab-content" id="492f12ed-a415-46ca-8e39-e83afe23207f" data-name="srp-2">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">ServerApiRequestService</span> <span class="p">{</span>
@@ -1362,7 +1362,7 @@ Some articles suggest splitting <code class="language-plaintext highlighter-roug
 <p><strong>Practical Application Example</strong>:
 During development, we often need to validate various user input data formats. Let’s design a generic validator:</p>
 
-<ul id="ocp-1" class="tab" data-tab="91357cd9-3393-44d9-b619-e8b294b41377" data-name="ocp-1">
+<ul id="ocp-1" class="tab" data-tab="c25f68ca-f8e9-4eb7-8fba-f9b0f1ab215b" data-name="ocp-1">
   
       <li class="active" id="ocp-1-swift">
           <a href="#">Swift </a>
@@ -1373,7 +1373,7 @@ During development, we often need to validate various user input data formats. L
       </li>
   
 </ul>
-<ul class="tab-content" id="91357cd9-3393-44d9-b619-e8b294b41377" data-name="ocp-1">
+<ul class="tab-content" id="c25f68ca-f8e9-4eb7-8fba-f9b0f1ab215b" data-name="ocp-1">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">enum</span> <span class="kt">ValidatorType</span> <span class="p">{</span>
@@ -1473,7 +1473,7 @@ The above design has a major problem: when clients request adding new validation
 <p><strong>Solution</strong>:
 We can solve this problem through abstraction and polymorphism, making the system open for extension and closed for modification:</p>
 
-<ul id="ocp-2" class="tab" data-tab="f6a77750-497d-4721-972c-d1338289097f" data-name="ocp-2">
+<ul id="ocp-2" class="tab" data-tab="5db9fe4f-3311-40b6-b504-5b8ed4deac24" data-name="ocp-2">
   
       <li class="active" id="ocp-2-swift">
           <a href="#">Swift </a>
@@ -1484,7 +1484,7 @@ We can solve this problem through abstraction and polymorphism, making the syste
       </li>
   
 </ul>
-<ul class="tab-content" id="f6a77750-497d-4721-972c-d1338289097f" data-name="ocp-2">
+<ul class="tab-content" id="5db9fe4f-3311-40b6-b504-5b8ed4deac24" data-name="ocp-2">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">ValidatorConvertible</span> <span class="p">{</span>
@@ -1577,7 +1577,7 @@ Now when we need to add Email, Phone Number, Device Mac format checks, we only n
 <p><strong>Practical Application Example</strong>:
 Let’s understand this principle through a classic geometric shape example. Suppose we need to calculate the area of squares and rectangles:</p>
 
-<ul id="lsp-1" class="tab" data-tab="e520ea0a-1a6e-4591-8993-636cfd8d57dc" data-name="lsp-1">
+<ul id="lsp-1" class="tab" data-tab="01f752fe-6446-4f0d-ad65-2991d7f2c411" data-name="lsp-1">
   
       <li class="active" id="lsp-1-swift">
           <a href="#">Swift </a>
@@ -1588,7 +1588,7 @@ Let’s understand this principle through a classic geometric shape example. Sup
       </li>
   
 </ul>
-<ul class="tab-content" id="e520ea0a-1a6e-4591-8993-636cfd8d57dc" data-name="lsp-1">
+<ul class="tab-content" id="01f752fe-6446-4f0d-ad65-2991d7f2c411" data-name="lsp-1">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Rectangle</span> <span class="p">{</span>
@@ -1676,7 +1676,7 @@ In the above example, we make Square inherit Rectangle, but Square’s <code cla
 <p><strong>Practical Application Example</strong>:
 Suppose we need to design a vehicle operation system that allows different types of users to operate cars:</p>
 
-<ul id="isp-1" class="tab" data-tab="dc7128d0-ae13-4017-9a37-1fd7c8eaec54" data-name="isp-1">
+<ul id="isp-1" class="tab" data-tab="b5ba5f39-bc1d-4d6e-a990-1b0c17184a45" data-name="isp-1">
   
       <li class="active" id="isp-1-swift">
           <a href="#">Swift </a>
@@ -1687,7 +1687,7 @@ Suppose we need to design a vehicle operation system that allows different types
       </li>
   
 </ul>
-<ul class="tab-content" id="dc7128d0-ae13-4017-9a37-1fd7c8eaec54" data-name="isp-1">
+<ul class="tab-content" id="b5ba5f39-bc1d-4d6e-a990-1b0c17184a45" data-name="isp-1">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">Car</span> <span class="p">{</span>
@@ -1780,7 +1780,7 @@ In the above design, all classes implementing the <code class="language-plaintex
 <p><strong>Solution</strong>:
 We should isolate <code class="language-plaintext highlighter-rouge">enableDebugMode()</code> into an independent interface, letting different roles only implement the functionality they truly need:</p>
 
-<ul id="isp-2" class="tab" data-tab="17ec1447-39bc-4764-9ce8-886bec83fca8" data-name="isp-2">
+<ul id="isp-2" class="tab" data-tab="72911ae3-4d76-4a13-93a4-6398461684f4" data-name="isp-2">
   
       <li class="active" id="isp-2-swift">
           <a href="#">Swift </a>
@@ -1791,7 +1791,7 @@ We should isolate <code class="language-plaintext highlighter-rouge">enableDebug
       </li>
   
 </ul>
-<ul class="tab-content" id="17ec1447-39bc-4764-9ce8-886bec83fca8" data-name="isp-2">
+<ul class="tab-content" id="72911ae3-4d76-4a13-93a4-6398461684f4" data-name="isp-2">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">Car1</span> <span class="p">{</span>
@@ -1901,7 +1901,7 @@ Now we have two independent interfaces:</p>
 <p><strong>Practical Application Example</strong>:
 Let’s design a smart home system that can manage IoT devices in different rooms. For example, the living room has smart speakers and temperature controllers, the kitchen has smoke detectors, etc.:</p>
 
-<ul id="dip-1" class="tab" data-tab="39129b64-3a94-4699-b8e9-2c6e780e7612" data-name="dip-1">
+<ul id="dip-1" class="tab" data-tab="efb9d784-6830-4826-944f-3535efeecdef" data-name="dip-1">
   
       <li class="active" id="dip-1-swift">
           <a href="#">Swift </a>
@@ -1912,7 +1912,7 @@ Let’s design a smart home system that can manage IoT devices in different room
       </li>
   
 </ul>
-<ul class="tab-content" id="39129b64-3a94-4699-b8e9-2c6e780e7612" data-name="dip-1">
+<ul class="tab-content" id="efb9d784-6830-4826-944f-3535efeecdef" data-name="dip-1">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="kt">Room</span> <span class="p">{</span>
@@ -2014,7 +2014,7 @@ In the above design, <code class="language-plaintext highlighter-rouge">RoomView
 <p><strong>Solution</strong>:
 By depending on abstractions rather than concrete implementations, we can make code very easy to swap and test:</p>
 
-<ul id="dip-2" class="tab" data-tab="d7da3d7d-69cc-43db-b8e8-599eb2fe5cd6" data-name="dip-2">
+<ul id="dip-2" class="tab" data-tab="e7c24254-3cf8-454a-8abc-d15a38354f01" data-name="dip-2">
   
       <li class="active" id="dip-2-swift">
           <a href="#">Swift </a>
@@ -2025,7 +2025,7 @@ By depending on abstractions rather than concrete implementations, we can make c
       </li>
   
 </ul>
-<ul class="tab-content" id="d7da3d7d-69cc-43db-b8e8-599eb2fe5cd6" data-name="dip-2">
+<ul class="tab-content" id="e7c24254-3cf8-454a-8abc-d15a38354f01" data-name="dip-2">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">protocol</span> <span class="kt">DataBaseService</span> <span class="p">{</span>
@@ -2218,7 +2218,7 @@ Now <code class="language-plaintext highlighter-rouge">Room2ViewController</code
 <p><strong>Practical Application Example</strong>:
 Suppose we want to design an ordering system for a pancake shop:</p>
 
-<ul id="encapsulate-what-varies-1" class="tab" data-tab="8a61a9f3-7bf8-4eb4-ad41-7d88a9fa9f30" data-name="encapsulate-what-varies-1">
+<ul id="encapsulate-what-varies-1" class="tab" data-tab="ba879ec0-7293-48de-a96c-9a82aaccaabc" data-name="encapsulate-what-varies-1">
   
       <li class="active" id="encapsulate-what-varies-1-swift">
           <a href="#">Swift </a>
@@ -2229,7 +2229,7 @@ Suppose we want to design an ordering system for a pancake shop:</p>
       </li>
   
 </ul>
-<ul class="tab-content" id="8a61a9f3-7bf8-4eb4-ad41-7d88a9fa9f30" data-name="encapsulate-what-varies-1">
+<ul class="tab-content" id="ba879ec0-7293-48de-a96c-9a82aaccaabc" data-name="encapsulate-what-varies-1">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">func</span> <span class="nf">orderPancake</span><span class="p">(</span><span class="nv">type</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="p">{</span>
@@ -2297,7 +2297,7 @@ In the above code, we can identify two different parts:</p>
 <p><strong>Solution</strong>:
 We should extract the varying code and encapsulate it, reducing impact on stable code:</p>
 
-<ul id="encapsulate-what-varies-2" class="tab" data-tab="8f6c12c1-5303-4a8a-b17f-d38654937b02" data-name="encapsulate-what-varies-2">
+<ul id="encapsulate-what-varies-2" class="tab" data-tab="e18e4436-6286-424f-9761-a48c78243866" data-name="encapsulate-what-varies-2">
   
       <li class="active" id="encapsulate-what-varies-2-swift">
           <a href="#">Swift </a>
@@ -2308,7 +2308,7 @@ We should extract the varying code and encapsulate it, reducing impact on stable
       </li>
   
 </ul>
-<ul class="tab-content" id="8f6c12c1-5303-4a8a-b17f-d38654937b02" data-name="encapsulate-what-varies-2">
+<ul class="tab-content" id="e18e4436-6286-424f-9761-a48c78243866" data-name="encapsulate-what-varies-2">
   
       <li class="active">
 <div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">SimplePancakeFactory</span> <span class="p">{</span>
