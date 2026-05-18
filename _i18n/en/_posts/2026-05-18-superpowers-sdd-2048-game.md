@@ -7,7 +7,7 @@ tags: [AI, SDD, Superpowers, React, LLM, Agent, Gemini]
 categories: [AI, Software Engineering]
 toc:
   sidebar: right
-thumbnail: /assets/img/superpowers_installation.png
+thumbnail: /assets/img/superpowers_cover.png
 ---
 
 {% include figure.liquid path="assets/img/superpowers_cover.png" title="vibe with superpowers" %}
