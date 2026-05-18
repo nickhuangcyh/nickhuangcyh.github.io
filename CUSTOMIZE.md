@@ -67,6 +67,18 @@ To create a new blog post, you can add a new Markdown file in the [\_posts](_pos
 
 If you want to create blog posts that are not ready to be published, but you want to track it with git, you can create a [\_drafts](https://jekyllrb.com/docs/posts/#drafts) directory and store them there.
 
+### Adding images to posts
+
+When you add new images (`.jpg`, `.jpeg`, `.png`, `.tiff`, `.gif`) to `assets/img/`, you need to generate the responsive WebP versions locally before committing:
+
+```bash
+./scripts/generate_responsive_images.sh
+```
+
+This script generates `-480.webp`, `-800.webp`, and `-1400.webp` variants for each image. It only processes images that don't already have WebP versions, so it's fast for incremental updates. Use `--force` to regenerate all images.
+
+Remember to commit both the original images and the generated `.webp` files together.
+
 Note that `posts` is also a collection, but it is a default collection created automatically by Jekyll. To access the posts, you can use the `site.posts` variable in your templates.
 
 ## Creating new projects
