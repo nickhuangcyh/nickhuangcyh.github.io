@@ -10,6 +10,8 @@ toc:
 thumbnail: /assets/img/superpowers_installation.png
 ---
 
+{% include figure.liquid path="assets/img/superpowers_cover.png" title="vibe with superpowers" %}
+
 ## 前言：從 Spec Kit 到 OpenSpec，再到 Superpowers
 
 在前兩篇文章中，我分別用 **Spec Kit** 做了圍棋引擎、用 **OpenSpec** 做了 SEC Insider Tracker。兩次體驗都驗證了同一件事：**SDD（Specification-Driven Development）能有效消除 AI 幻覺，產出高品質程式碼。**
@@ -18,7 +20,7 @@ thumbnail: /assets/img/superpowers_installation.png
 
 然後我看到了 **Superpowers** —— 一套在 GitHub 上擁有 195k Stars 的「AI 開發方法論框架」。它的核心承諾是：
 
-> 安裝後，你的 AI agent 會自動遵循嚴謹的軟體開發流程，可以自主運行數小時不偏離計畫。
+> 安裝後，你的 AI agent 會自動遵循嚴謹的軟體開發流程。以 Claude Code 為例，它可以自主運行數小時不偏離計畫。
 
 這聽起來太美好了。身為一個實測過多套 SDD 工具的開發者，我決定用一個中等複雜度的專案 —— **2048 遊戲** —— 來完整體驗 Superpowers 的全流程，並誠實記錄它的威力與代價。
 
@@ -28,7 +30,7 @@ thumbnail: /assets/img/superpowers_installation.png
 
 **Superpowers 不是一個程式庫，而是一套給 AI coding agent 使用的技能框架與軟體開發方法論。**
 
-它的核心設計哲學是：假設 AI agent 是一個「沒品味、沒判斷力但充滿熱情的 Junior Engineer」，所以用大量流程和 guardrails 來確保產出品質。
+它的核心設計哲學是：產出的實施計畫必須明確到連一個「充滿熱情但沒品味、沒判斷力、沒有專案上下文、且討厭寫測試的 Junior Engineer」都能照著走。因此用大量流程和 guardrails 來確保產出品質，並強調 TDD、YAGNI（You Aren't Gonna Need It）和 DRY 原則。
 
 ### 核心 Skills（技能）
 
@@ -43,16 +45,18 @@ thumbnail: /assets/img/superpowers_installation.png
 | **協作** | finishing-a-development-branch | 任務完成後決定 merge/PR/保留/捨棄       |
 | **測試** | test-driven-development        | 強制 RED-GREEN-REFACTOR                 |
 | **除錯** | systematic-debugging           | 4 階段根因分析                          |
-| **品質** | verification-before-completion | 完成前驗證                              |
-| **版控** | using-git-worktrees            | 隔離開發分支                            |
+| **除錯** | verification-before-completion | 完成前驗證                              |
+| **協作** | using-git-worktrees            | 隔離開發分支                            |
 
 ### 自動觸發機制
 
 Superpowers 的 skills 不需要你手動呼叫。Agent 會根據當前上下文**自動判斷**該啟用哪個 skill：
 
 - 看到你要建功能 → 自動觸發 `brainstorming`
-- 設計確認後 → 自動觸發 `writing-plans`
+- 設計確認後 → 自動觸發 `using-git-worktrees`（建立隔離 workspace）
+- 接著觸發 `writing-plans`
 - 開始實作 → 自動觸發 `test-driven-development`
+- Task 之間 → 自動觸發 `requesting-code-review`
 - 遇到 Bug → 自動觸發 `systematic-debugging`
 
 ---
@@ -614,7 +618,9 @@ Superpowers 專注在邏輯正確性（TDD 保障），但對 UI 的視覺細節
 
 ### 🎮 成果展示
 
-[**👉 2048 遊戲 GitHub Repo**](https://github.com/nickhuangcyh/2048-game)
+{% include figure.liquid path="assets/img/superpowers_2048_game.png" title="2048 遊戲成果畫面" %}
+
+[**👉 線上試玩 2048 遊戲**](https://nickhuangcyh.github.io/2048-game/) | [**GitHub Repo**](https://github.com/nickhuangcyh/2048-game)
 
 ### 📚 系列文章
 

@@ -10,6 +10,8 @@ toc:
 thumbnail: /assets/img/superpowers_installation.png
 ---
 
+{% include figure.liquid path="assets/img/superpowers_cover.png" title="vibe with superpowers" %}
+
 ## Preface: From Spec Kit to OpenSpec, and Now Superpowers
 
 In my previous two articles, I used **Spec Kit** to build a Go game engine, and **OpenSpec** to build an SEC Insider Tracker. Both experiences validated the same thing: **SDD (Specification-Driven Development) effectively eliminates AI hallucinations and produces high-quality code.**
@@ -18,7 +20,7 @@ But these two tools share a common trait: they both require **deep human involve
 
 Then I came across **Superpowers** — a "methodology framework for AI development" with 195k Stars on GitHub. Its core promise is:
 
-> Once installed, your AI agent will automatically follow rigorous software development processes, capable of running autonomously for hours without deviating from the plan.
+> Once installed, your AI agent will automatically follow rigorous software development processes. With Claude Code, for example, it's not uncommon for it to work autonomously for a couple hours at a time without deviating from the plan.
 
 This sounded too good to be true. As a developer who has hands-on tested multiple SDD tools, I decided to use a medium-complexity project — **the 2048 game** — to fully experience Superpowers' end-to-end workflow, and honestly document its strengths and costs.
 
@@ -28,31 +30,33 @@ This sounded too good to be true. As a developer who has hands-on tested multipl
 
 **Superpowers is not a library — it's a skills framework and software development methodology for AI coding agents.**
 
-Its core design philosophy assumes the AI agent is an "enthusiastic Junior Engineer with no taste, no judgment," and uses extensive processes and guardrails to ensure output quality.
+Its core design philosophy is: the implementation plan must be clear enough for "an enthusiastic junior engineer with poor taste, no judgment, no project context, and an aversion to testing" to follow. It uses extensive processes and guardrails to ensure output quality, emphasizing TDD, YAGNI (You Aren't Gonna Need It), and DRY principles.
 
 ### Core Skills
 
 Below are the main skills triggered during this hands-on experience (see [official docs](https://github.com/obra/superpowers) for the full list):
 
-| Category            | Skill                          | Purpose                                       |
-| ------------------- | ------------------------------ | --------------------------------------------- |
-| **Collaboration**   | brainstorming                  | Socratic design Q&A to clarify requirements   |
-| **Collaboration**   | writing-plans                  | Break design into 2-5 minute atomic tasks     |
-| **Collaboration**   | subagent-driven-development    | Dispatch subagent per task + two-stage review |
-| **Collaboration**   | executing-plans                | Batch execution with checkpoints              |
-| **Collaboration**   | finishing-a-development-branch | Decide merge/PR/keep/discard after completion |
-| **Testing**         | test-driven-development        | Enforced RED-GREEN-REFACTOR                   |
-| **Debugging**       | systematic-debugging           | 4-phase root cause analysis                   |
-| **Quality**         | verification-before-completion | Verify before declaring done                  |
-| **Version Control** | using-git-worktrees            | Isolated development branches                 |
+| Category          | Skill                          | Purpose                                       |
+| ----------------- | ------------------------------ | --------------------------------------------- |
+| **Collaboration** | brainstorming                  | Socratic design Q&A to clarify requirements   |
+| **Collaboration** | writing-plans                  | Break design into 2-5 minute atomic tasks     |
+| **Collaboration** | subagent-driven-development    | Dispatch subagent per task + two-stage review |
+| **Collaboration** | executing-plans                | Batch execution with checkpoints              |
+| **Collaboration** | finishing-a-development-branch | Decide merge/PR/keep/discard after completion |
+| **Testing**       | test-driven-development        | Enforced RED-GREEN-REFACTOR                   |
+| **Debugging**     | systematic-debugging           | 4-phase root cause analysis                   |
+| **Debugging**     | verification-before-completion | Verify before declaring done                  |
+| **Collaboration** | using-git-worktrees            | Isolated development branches                 |
 
 ### Auto-Trigger Mechanism
 
 Superpowers skills don't need manual invocation. The agent **automatically determines** which skill to activate based on current context:
 
 - Detects you want to build a feature → auto-triggers `brainstorming`
-- Design confirmed → auto-triggers `writing-plans`
+- Design confirmed → auto-triggers `using-git-worktrees` (creates isolated workspace)
+- Then triggers `writing-plans`
 - Implementation begins → auto-triggers `test-driven-development`
+- Between tasks → auto-triggers `requesting-code-review`
 - Bug encountered → auto-triggers `systematic-debugging`
 
 ---
@@ -616,7 +620,9 @@ Have you tried Superpowers? Do you think "fully automated" or "human-in-the-loop
 
 ### 🎮 Demo
 
-[**👉 2048 Game GitHub Repo**](https://github.com/nickhuangcyh/2048-game)
+{% include figure.liquid path="assets/img/superpowers_2048_game.png" title="2048 Game Result" %}
+
+[**👉 Play 2048 Online**](https://nickhuangcyh.github.io/2048-game/) | [**GitHub Repo**](https://github.com/nickhuangcyh/2048-game)
 
 ### 📚 Article Series
 
