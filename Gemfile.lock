@@ -54,7 +54,6 @@ GEM
       csl (~> 1.0)
     css_parser (1.21.1)
       addressable
-    cssminify2 (2.0.1)
     csv (3.3.3)
     date (3.4.1)
     deep_merge (1.2.2)
@@ -98,7 +97,6 @@ GEM
     html-pipeline (2.14.3)
       activesupport (>= 2)
       nokogiri (>= 1.4)
-    htmlcompressor (0.4.0)
     http_parser.rb (0.8.0)
     httparty (0.22.0)
       csv
@@ -137,12 +135,6 @@ GEM
     jekyll-jupyter-notebook (0.0.6)
       jekyll
     jekyll-link-attributes (1.0.1)
-    jekyll-minifier (0.1.10)
-      cssminify2 (~> 2.0)
-      htmlcompressor (~> 0.4)
-      jekyll (>= 3.5)
-      json-minify (~> 0.0.3)
-      uglifier (~> 4.1)
     jekyll-multiple-languages-plugin (1.8.0)
       jekyll (>= 2.0, < 5.0)
     jekyll-paginate-v2 (3.0.0)
@@ -170,8 +162,6 @@ GEM
       html-pipeline (~> 2.2)
       jekyll (>= 3.0, < 5.0)
     json (2.10.2)
-    json-minify (0.0.3)
-      json (> 0)
     kramdown (2.5.1)
       rexml (>= 3.3.9)
     kramdown-parser-gfm (1.1.0)
@@ -260,8 +250,6 @@ GEM
       date
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uglifier (4.2.1)
-      execjs (>= 0.3.0, < 3)
     unicode-display_width (2.6.0)
     uri (1.0.3)
     webrick (1.9.1)
@@ -293,7 +281,6 @@ DEPENDENCIES
   jekyll-get-json
   jekyll-jupyter-notebook
   jekyll-link-attributes
-  jekyll-minifier
   jekyll-multiple-languages-plugin
   jekyll-paginate-v2
   jekyll-regex-replace
