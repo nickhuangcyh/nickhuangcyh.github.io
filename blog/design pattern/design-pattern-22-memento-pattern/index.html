@@ -1,6 +1,97 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA"> <meta http-equiv="Permissions-Policy" content="interest-cohort=()"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Design Pattern (22) Memento Pattern: Implementing Text Editor Undo Functionality, Perfect Encapsulation of Object State Snapshots | Nick Huang </title> <meta name="author" content="Nick Huang"> <meta name="description" content="In-depth analysis of Memento Pattern core principles, through text editor undo functionality examples, learn how to safely save and restore object states, implementing complete state management systems."> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://nickhuangcyh.github.io/blog/design%20pattern/design-pattern-22-memento-pattern/"> <script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+  <!-- Website verification -->
+  
+    <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA">
+  
+  
+  <!--
+    Avoid warning on Google Chrome Error with Permissions-Policy header:
+    Origin trial controlled feature not enabled: 'interest-cohort'.
+    see https://stackoverflow.com/a/75119417
+  -->
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      Design Pattern (22) Memento Pattern: Implementing Text Editor Undo Functionality, Perfect Encapsulation of Object State Snapshots | Nick Huang
+    
+  
+</title>
+<meta name="author" content="Nick Huang">
+<meta name="description" content="In-depth analysis of Memento Pattern core principles, through text editor undo functionality examples, learn how to safely save and restore object states, implementing complete state management systems.">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
+<link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="https://nickhuangcyh.github.io/blog/design%20pattern/design-pattern-22-memento-pattern/">
+
+<!-- Dark Mode -->
+<script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script>
+
+  <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
+  <script>
     initTheme();
-  </script> <script src="/assets/js/language-detection.js?46ca8f84d79546f44766b63b6fc18648"></script> <script async src="https://www.googletagmanager.com/gtag/js?id=G-446Z2KNTGH"></script> <script>
+  </script>
+
+
+<!-- Language Detection -->
+<script src="/assets/js/language-detection.js?46ca8f84d79546f44766b63b6fc18648"></script>
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-446Z2KNTGH"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       dataLayer.push(arguments);
@@ -8,7 +99,1227 @@
     gtag('js', new Date());
 
     gtag('config', 'G-446Z2KNTGH');
-  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Nick</span> Huang </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item "> <a class="nav-link" href="/books/">bookshelf </a> </li> <li class="nav-item"> <button id="search-toggle" title="Search" onclick="openSearchModal()"> <span class="nav-link">ctrl k <i class="ti ti-search"></i></span> </button> </li> <li class="nav-item"> <div class="language-toggle"> <div class="dropdown"> <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-globe"></i> EN </button> <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle"> <li> <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('zh')"> <span class="flag">🇹🇼</span> 中文 </a> </li> </ul> </div> </div> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="ti ti-sun-moon" id="light-toggle-system"></i> <i class="ti ti-moon-filled" id="light-toggle-dark"></i> <i class="ti ti-sun-filled" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title">Design Pattern (22) Memento Pattern: Implementing Text Editor Undo Functionality, Perfect Encapsulation of Object State Snapshots</h1> <p class="post-meta"> Created on December 22, 2024 </p> <p class="post-tags"> <a href="/blog/2024"> <i class="fa-solid fa-calendar fa-sm"></i> 2024 </a>   ·   <a href="/blog/tag/memento-pattern"> <i class="fa-solid fa-hashtag fa-sm"></i> Memento Pattern</a>   <a href="/blog/tag/design-patterns"> <i class="fa-solid fa-hashtag fa-sm"></i> Design Patterns</a>   <a href="/blog/tag/behavioral-patterns"> <i class="fa-solid fa-hashtag fa-sm"></i> Behavioral Patterns</a>   <a href="/blog/tag/state-management"> <i class="fa-solid fa-hashtag fa-sm"></i> State Management</a>   <a href="/blog/tag/undo-functionality"> <i class="fa-solid fa-hashtag fa-sm"></i> Undo Functionality</a>   <a href="/blog/tag/text-editor"> <i class="fa-solid fa-hashtag fa-sm"></i> Text Editor</a>   ·   <a href="/blog/category/design-pattern"> <i class="fa-solid fa-tag fa-sm"></i> Design Pattern</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <blockquote> <p>You can download the Design Pattern series code from this <a href="https://github.com/nickhuangcyh/design_pattern" rel="external nofollow noopener" target="_blank">design_pattern repo</a>.</p> </blockquote> <h2 id="requirements">Requirements</h2> <p>Our task is to design a text editor with the following core requirements:</p> <ul> <li> <strong>State Editing Functionality</strong>: Users can input text and perform various text editing operations. The system needs to track each state change during the editing process.</li> <li> <strong>Undo Operation Support</strong>: Users can press <code class="language-plaintext highlighter-rouge">Ctrl+Z</code> at any time to revert to the previous state. The system must accurately restore to the previous text content.</li> <li> <strong>State History Management</strong>: The system needs to automatically save each editing history state to support multiple undo operations.</li> <li> <strong>Encapsulation Requirements</strong>: The client doesn’t need to understand internal implementation details of state saving and restoration, only needs to use simple APIs.</li> </ul> <p>Imagine when you use Word or Google Docs, after each text input or content deletion, you can easily press <code class="language-plaintext highlighter-rouge">Ctrl+Z</code> to return to the previous state. This seemingly simple functionality actually involves complex state management mechanisms.</p> <p>This is a typical <strong>behavioral design pattern</strong> application scenario, requiring management of object internal state saving and restoration mechanisms.</p> <h2 id="object-oriented-analysis-ooa">Object-Oriented Analysis (OOA)</h2> <p>After understanding the requirements, we perform object-oriented analysis. In this text editor scenario, the core challenge we face is how to effectively manage object state saving and restoration.</p> <p>From a system perspective, we can identify four key elements:</p> <ul> <li> <strong>Text Editor Object</strong>: As the state owner, responsible for text content processing</li> <li> <strong>Text Content State</strong>: Core data that needs to be saved and restored</li> <li> <strong>State Snapshot</strong>: Encapsulates states for convenient transmission and storage</li> <li> <strong>History Manager</strong>: Responsible for managing multiple state snapshots, providing undo functionality</li> </ul> <p>The core challenge here is: How can we safely save and restore object internal states without breaking object encapsulation? In other words, we need to allow external state saving while preventing direct access to internal implementation details.</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_memento_pattern_uml_1-480.webp 480w,/assets/img/design_pattern_memento_pattern_uml_1-800.webp 800w,/assets/img/design_pattern_memento_pattern_uml_1-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/design_pattern_memento_pattern_uml_1.png" width="100%" height="auto" title="design_pattern_memento_pattern_uml_1" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <h2 id="recognizing-forces">Recognizing Forces</h2> <p>In direct implementation without design patterns, we encounter the following core challenges:</p> <h3 id="1-state-management-complexity-state-management-complexity">1. State Management Complexity (State Management Complexity)</h3> <p>If we only keep the current state, we cannot implement undo functionality. But to save historical states creates complex management problems.</p> <p>We need to decide: Which state data needs to be saved? How to efficiently save it? When to clean up expired old states? These questions make code complex and difficult to maintain.</p> <h3 id="2-encapsulation-violation-encapsulation-violation">2. Encapsulation Violation (Encapsulation Violation)</h3> <p>To implement state saving, clients often need direct access to editor’s internal state data. This approach breaks object encapsulation principles.</p> <p>When editor’s internal implementation details are exposed externally, system coupling increases significantly. Any internal structural changes may affect code that uses it.</p> <h3 id="3-performance-and-memory-issues-performance-and-memory-issues">3. Performance and Memory Issues (Performance and Memory Issues)</h3> <p>When document content is large, directly copying entire object state consumes significant memory. Each state save requires copying complete data.</p> <p>Under frequent user operations, this full copying becomes a serious performance bottleneck and may even cause application crashes.</p> <h3 id="4-limited-extensibility-limited-extensibility">4. Limited Extensibility (Limited Extensibility)</h3> <p>When we want to add advanced features like redo operations, multi-step undo, or state persistent storage, we often need to significantly modify existing architecture.</p> <p>Such modifications have broad impact and may require redesigning the entire system, increasing development costs and risks.</p> <p><strong>The root of these problems lies in improper allocation of state saving responsibilities</strong>, and the system lacks unified and effective state management mechanisms.</p> <h2 id="applying-memento-pattern-to-solve-problems">Applying Memento Pattern to Solve Problems</h2> <p>After object-oriented analysis and recognizing system challenges, we can apply the Memento Pattern to solve these problems.</p> <p><strong>Memento Pattern</strong> is a behavioral design pattern. Its goal is to capture and save an object’s internal state without violating encapsulation, and be able to restore the object to its previous state later.</p> <h3 id="core-concepts-of-memento-pattern">Core Concepts of Memento Pattern</h3> <p>The core idea of Memento Pattern is quite intuitive: encapsulate object state snapshots in independent memento objects.</p> <p>This memento object has an important characteristic: only the original object can access its complete content, other objects cannot directly modify it. This design cleverly protects encapsulation while providing state saving capability.</p> <p>It’s like taking a “state photo” of the object, where only the object itself knows how to interpret and use this photo to restore state.</p> <h3 id="memento-pattern-uml-structure">Memento Pattern UML Structure</h3> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_memento_pattern_uml_2-480.webp 480w,/assets/img/design_pattern_memento_pattern_uml_2-800.webp 800w,/assets/img/design_pattern_memento_pattern_uml_2-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/design_pattern_memento_pattern_uml_2.png" width="100%" height="auto" title="design_pattern_memento_pattern_uml_2" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <h3 id="roles-and-responsibilities">Roles and Responsibilities</h3> <p>Memento Pattern solves system problems through the following three core roles:</p> <h4 id="1-originator---text-editor">1. Originator - Text Editor</h4> <p>This is the main object that owns internal state, responsible for creating memento snapshots and restoring state from mementos.</p> <p>In our example, the text editor is the originator. It knows how to save its own text content state and how to recover to previous states from snapshots.</p> <h4 id="2-memento---state-snapshot">2. Memento - State Snapshot</h4> <p>This is an immutable snapshot object specifically used to store the originator’s internal state at specific time points.</p> <p>The memento object design is clever: it provides a limited interface for caretakers to use, but simultaneously allows originators to access all necessary data to restore state. This “dual interface” ensures encapsulation.</p> <h4 id="3-caretaker---history-manager">3. Caretaker - History Manager</h4> <p>The caretaker is responsible for safekeeping all memento snapshots, but with an important principle: it never modifies or examines memento contents.</p> <p>The caretaker only needs to know “when” to save snapshots and “when” to execute restoration operations, but doesn’t need to know what the snapshot’s specific content is. This responsibility separation makes the system more robust.</p> <h3 id="application-to-text-editor">Application to Text Editor</h3> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_memento_pattern_uml_3-480.webp 480w,/assets/img/design_pattern_memento_pattern_uml_3-800.webp 800w,/assets/img/design_pattern_memento_pattern_uml_3-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/design_pattern_memento_pattern_uml_3.png" width="100%" height="auto" title="design_pattern_memento_pattern_uml_3" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <h2 id="object-oriented-programming-implementation">Object-Oriented Programming Implementation</h2> <p>Now we’ll transform Memento Pattern theory into actual code. Through clear responsibility division, each component plays a specific role, collectively forming a complete state management system.</p> <h3 id="originator---text-editor">Originator - Text Editor</h3> <p>The text editor, as the originator, is responsible for managing its own state and creating/restoring mementos. Let’s see its implementation:</p> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">TextEditor</span> <span class="p">{</span>
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+    <!-- Header -->
+    <header>
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/">
+          
+            
+              <span class="font-weight-bold">Nick</span>
+            
+            
+            Huang
+          
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">about
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog/">blog
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/cv/">cv
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/projects/">projects
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/repositories/">repositories
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/books/">bookshelf
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+          
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Language Toggle -->
+            <li class="nav-item">
+              
+<div class="language-toggle">
+  <div class="dropdown">
+    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-globe"></i>
+       EN 
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle">
+         
+      <li>
+        <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('zh')">
+           <span class="flag">🇹🇼</span> 中文 
+        </a>
+      </li>
+       
+    </ul>
+  </div>
+</div>
+
+
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="ti ti-sun-moon" id="light-toggle-system"></i>
+                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
+                <i class="ti ti-sun-filled" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row">
+            <!-- main content area -->
+            <div class="col-sm-9">
+
+
+
+
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">Design Pattern (22) Memento Pattern: Implementing Text Editor Undo Functionality, Perfect Encapsulation of Object State Snapshots</h1>
+    <p class="post-meta">
+      Created on December 22, 2024
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      
+        <a href="/blog/2024"> <i class="fa-solid fa-calendar fa-sm"></i> 2024 </a>
+      
+      
+          ·  
+        
+          
+            <a href="/blog/tag/memento-pattern"> <i class="fa-solid fa-hashtag fa-sm"></i> Memento Pattern</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/design-patterns"> <i class="fa-solid fa-hashtag fa-sm"></i> Design Patterns</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/behavioral-patterns"> <i class="fa-solid fa-hashtag fa-sm"></i> Behavioral Patterns</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/state-management"> <i class="fa-solid fa-hashtag fa-sm"></i> State Management</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/undo-functionality"> <i class="fa-solid fa-hashtag fa-sm"></i> Undo Functionality</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/text-editor"> <i class="fa-solid fa-hashtag fa-sm"></i> Text Editor</a>
+          
+          
+        
+      
+
+      
+          ·  
+        
+          
+            <a href="/blog/category/design-pattern"> <i class="fa-solid fa-tag fa-sm"></i> Design Pattern</a>
+          
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <blockquote>
+  <p>You can download the Design Pattern series code from this <a href="https://github.com/nickhuangcyh/design_pattern" rel="external nofollow noopener" target="_blank">design_pattern repo</a>.</p>
+</blockquote>
+
+<h2 id="requirements">Requirements</h2>
+
+<p>Our task is to design a text editor with the following core requirements:</p>
+
+<ul>
+  <li>
+<strong>State Editing Functionality</strong>: Users can input text and perform various text editing operations. The system needs to track each state change during the editing process.</li>
+  <li>
+<strong>Undo Operation Support</strong>: Users can press <code class="language-plaintext highlighter-rouge">Ctrl+Z</code> at any time to revert to the previous state. The system must accurately restore to the previous text content.</li>
+  <li>
+<strong>State History Management</strong>: The system needs to automatically save each editing history state to support multiple undo operations.</li>
+  <li>
+<strong>Encapsulation Requirements</strong>: The client doesn’t need to understand internal implementation details of state saving and restoration, only needs to use simple APIs.</li>
+</ul>
+
+<p>Imagine when you use Word or Google Docs, after each text input or content deletion, you can easily press <code class="language-plaintext highlighter-rouge">Ctrl+Z</code> to return to the previous state. This seemingly simple functionality actually involves complex state management mechanisms.</p>
+
+<p>This is a typical <strong>behavioral design pattern</strong> application scenario, requiring management of object internal state saving and restoration mechanisms.</p>
+
+<h2 id="object-oriented-analysis-ooa">Object-Oriented Analysis (OOA)</h2>
+
+<p>After understanding the requirements, we perform object-oriented analysis. In this text editor scenario, the core challenge we face is how to effectively manage object state saving and restoration.</p>
+
+<p>From a system perspective, we can identify four key elements:</p>
+
+<ul>
+  <li>
+<strong>Text Editor Object</strong>: As the state owner, responsible for text content processing</li>
+  <li>
+<strong>Text Content State</strong>: Core data that needs to be saved and restored</li>
+  <li>
+<strong>State Snapshot</strong>: Encapsulates states for convenient transmission and storage</li>
+  <li>
+<strong>History Manager</strong>: Responsible for managing multiple state snapshots, providing undo functionality</li>
+</ul>
+
+<p>The core challenge here is: How can we safely save and restore object internal states without breaking object encapsulation? In other words, we need to allow external state saving while preventing direct access to internal implementation details.</p>
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_memento_pattern_uml_1-480.webp 480w,/assets/img/design_pattern_memento_pattern_uml_1-800.webp 800w,/assets/img/design_pattern_memento_pattern_uml_1-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+      
+    
+    <img src="/assets/img/design_pattern_memento_pattern_uml_1.png" width="100%" height="auto" title="design_pattern_memento_pattern_uml_1" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+<h2 id="recognizing-forces">Recognizing Forces</h2>
+
+<p>In direct implementation without design patterns, we encounter the following core challenges:</p>
+
+<h3 id="1-state-management-complexity-state-management-complexity">1. State Management Complexity (State Management Complexity)</h3>
+
+<p>If we only keep the current state, we cannot implement undo functionality. But to save historical states creates complex management problems.</p>
+
+<p>We need to decide: Which state data needs to be saved? How to efficiently save it? When to clean up expired old states? These questions make code complex and difficult to maintain.</p>
+
+<h3 id="2-encapsulation-violation-encapsulation-violation">2. Encapsulation Violation (Encapsulation Violation)</h3>
+
+<p>To implement state saving, clients often need direct access to editor’s internal state data. This approach breaks object encapsulation principles.</p>
+
+<p>When editor’s internal implementation details are exposed externally, system coupling increases significantly. Any internal structural changes may affect code that uses it.</p>
+
+<h3 id="3-performance-and-memory-issues-performance-and-memory-issues">3. Performance and Memory Issues (Performance and Memory Issues)</h3>
+
+<p>When document content is large, directly copying entire object state consumes significant memory. Each state save requires copying complete data.</p>
+
+<p>Under frequent user operations, this full copying becomes a serious performance bottleneck and may even cause application crashes.</p>
+
+<h3 id="4-limited-extensibility-limited-extensibility">4. Limited Extensibility (Limited Extensibility)</h3>
+
+<p>When we want to add advanced features like redo operations, multi-step undo, or state persistent storage, we often need to significantly modify existing architecture.</p>
+
+<p>Such modifications have broad impact and may require redesigning the entire system, increasing development costs and risks.</p>
+
+<p><strong>The root of these problems lies in improper allocation of state saving responsibilities</strong>, and the system lacks unified and effective state management mechanisms.</p>
+
+<h2 id="applying-memento-pattern-to-solve-problems">Applying Memento Pattern to Solve Problems</h2>
+
+<p>After object-oriented analysis and recognizing system challenges, we can apply the Memento Pattern to solve these problems.</p>
+
+<p><strong>Memento Pattern</strong> is a behavioral design pattern. Its goal is to capture and save an object’s internal state without violating encapsulation, and be able to restore the object to its previous state later.</p>
+
+<h3 id="core-concepts-of-memento-pattern">Core Concepts of Memento Pattern</h3>
+
+<p>The core idea of Memento Pattern is quite intuitive: encapsulate object state snapshots in independent memento objects.</p>
+
+<p>This memento object has an important characteristic: only the original object can access its complete content, other objects cannot directly modify it. This design cleverly protects encapsulation while providing state saving capability.</p>
+
+<p>It’s like taking a “state photo” of the object, where only the object itself knows how to interpret and use this photo to restore state.</p>
+
+<h3 id="memento-pattern-uml-structure">Memento Pattern UML Structure</h3>
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_memento_pattern_uml_2-480.webp 480w,/assets/img/design_pattern_memento_pattern_uml_2-800.webp 800w,/assets/img/design_pattern_memento_pattern_uml_2-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+      
+    
+    <img src="/assets/img/design_pattern_memento_pattern_uml_2.png" width="100%" height="auto" title="design_pattern_memento_pattern_uml_2" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+<h3 id="roles-and-responsibilities">Roles and Responsibilities</h3>
+
+<p>Memento Pattern solves system problems through the following three core roles:</p>
+
+<h4 id="1-originator---text-editor">1. Originator - Text Editor</h4>
+
+<p>This is the main object that owns internal state, responsible for creating memento snapshots and restoring state from mementos.</p>
+
+<p>In our example, the text editor is the originator. It knows how to save its own text content state and how to recover to previous states from snapshots.</p>
+
+<h4 id="2-memento---state-snapshot">2. Memento - State Snapshot</h4>
+
+<p>This is an immutable snapshot object specifically used to store the originator’s internal state at specific time points.</p>
+
+<p>The memento object design is clever: it provides a limited interface for caretakers to use, but simultaneously allows originators to access all necessary data to restore state. This “dual interface” ensures encapsulation.</p>
+
+<h4 id="3-caretaker---history-manager">3. Caretaker - History Manager</h4>
+
+<p>The caretaker is responsible for safekeeping all memento snapshots, but with an important principle: it never modifies or examines memento contents.</p>
+
+<p>The caretaker only needs to know “when” to save snapshots and “when” to execute restoration operations, but doesn’t need to know what the snapshot’s specific content is. This responsibility separation makes the system more robust.</p>
+
+<h3 id="application-to-text-editor">Application to Text Editor</h3>
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_memento_pattern_uml_3-480.webp 480w,/assets/img/design_pattern_memento_pattern_uml_3-800.webp 800w,/assets/img/design_pattern_memento_pattern_uml_3-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+      
+    
+    <img src="/assets/img/design_pattern_memento_pattern_uml_3.png" width="100%" height="auto" title="design_pattern_memento_pattern_uml_3" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+<h2 id="object-oriented-programming-implementation">Object-Oriented Programming Implementation</h2>
+
+<p>Now we’ll transform Memento Pattern theory into actual code. Through clear responsibility division, each component plays a specific role, collectively forming a complete state management system.</p>
+
+<h3 id="originator---text-editor">Originator - Text Editor</h3>
+
+<p>The text editor, as the originator, is responsible for managing its own state and creating/restoring mementos. Let’s see its implementation:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">TextEditor</span> <span class="p">{</span>
     <span class="k">private</span> <span class="kd">var</span> <span class="py">text</span><span class="p">:</span> <span class="nc">String</span> <span class="p">=</span> <span class="s">""</span>
 
     <span class="k">fun</span> <span class="nf">type</span><span class="p">(</span><span class="n">newText</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
@@ -27,7 +1338,13 @@
         <span class="k">fun</span> <span class="nf">getText</span><span class="p">():</span> <span class="nc">String</span> <span class="p">=</span> <span class="n">state</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></div> <h3 id="caretaker---history-manager">Caretaker - History Manager</h3> <p>The history manager plays the role of snapshot keeper. Its responsibility is simple: save mementos and provide undo functionality, but never directly manipulate snapshot contents:</p> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">History</span> <span class="p">{</span>
+</code></pre></div></div>
+
+<h3 id="caretaker---history-manager">Caretaker - History Manager</h3>
+
+<p>The history manager plays the role of snapshot keeper. Its responsibility is simple: save mementos and provide undo functionality, but never directly manipulate snapshot contents:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">History</span> <span class="p">{</span>
     <span class="k">private</span> <span class="kd">val</span> <span class="py">mementos</span> <span class="p">=</span> <span class="n">mutableListOf</span><span class="p">&lt;</span><span class="nc">TextEditor</span><span class="p">.</span><span class="nc">Memento</span><span class="p">&gt;()</span>
 
     <span class="k">fun</span> <span class="nf">save</span><span class="p">(</span><span class="n">memento</span><span class="p">:</span> <span class="nc">TextEditor</span><span class="p">.</span><span class="nc">Memento</span><span class="p">)</span> <span class="p">{</span>
@@ -41,7 +1358,13 @@
         <span class="k">return</span> <span class="k">null</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div></div> <h3 id="client---client-usage-example">Client - Client Usage Example</h3> <p>Now let’s see how the client uses this system. Notice the client code is very concise, completely not needing to understand internal state management details:</p> <div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+</code></pre></div></div>
+
+<h3 id="client---client-usage-example">Client - Client Usage Example</h3>
+
+<p>Now let’s see how the client uses this system. Notice the client code is very concise, completely not needing to understand internal state management details:</p>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">val</span> <span class="py">textEditor</span> <span class="p">=</span> <span class="nc">TextEditor</span><span class="p">()</span>
     <span class="kd">val</span> <span class="py">history</span> <span class="p">=</span> <span class="nc">History</span><span class="p">()</span>
 
@@ -63,9 +1386,275 @@
     <span class="n">textEditor</span><span class="p">.</span><span class="nf">restore</span><span class="p">(</span><span class="n">history</span><span class="p">.</span><span class="nf">undo</span><span class="p">()</span><span class="o">!!</span><span class="p">)</span>
     <span class="nf">println</span><span class="p">(</span><span class="s">"Execute undo Text: ${textEditor.getText()}"</span><span class="p">)</span> <span class="c1">// Output: Hello</span>
 <span class="p">}</span>
-</code></pre></div></div> <h3 id="execution-results">Execution Results</h3> <p>Program execution output results are as follows:</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Current Text: Hello, World! This is Memento Pattern.
+</code></pre></div></div>
+
+<h3 id="execution-results">Execution Results</h3>
+
+<p>Program execution output results are as follows:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Current Text: Hello, World! This is Memento Pattern.
 Execute undo Text: Hello, World!
 Execute undo Text: Hello
-</code></pre></div></div> <h2 id="conclusion-and-benefits">Conclusion and Benefits</h2> <p>By applying the Memento Pattern, we successfully solved the core problems originally faced by the system. Let’s review the specific improvements this pattern brought.</p> <h3 id="main-improvement-effects">Main Improvement Effects</h3> <p><strong>1. Encapsulation Protection</strong> Object internal state receives complete protection, external objects cannot directly access or modify editor’s internal state. This ensures object integrity, any state changes must go through proper channels.</p> <p><strong>2. State Management Simplification</strong> Through memento objects encapsulating state snapshots, state saving and restoration becomes simple and reliable. Each snapshot is immutable, fundamentally avoiding state inconsistency problems.</p> <p><strong>3. Independent History Management</strong> History manager is completely separated from business logic, can be independently extended or modified. When we need to adjust undo strategies, it won’t affect text editor’s core functionality.</p> <p><strong>4. Safe State Rollback</strong> The system can safely rollback to any previously saved state without causing data inconsistency or corruption. This safety comes from memento’s immutable characteristics and clear responsibility division.</p> <h3 id="applicable-scenarios">Applicable Scenarios</h3> <p>Memento Pattern is particularly suitable for the following application scenarios:</p> <ul> <li> <strong>Text Editors</strong>: Implementing Undo/Redo functionality, supporting multi-step operation rollback</li> <li> <strong>Game Save Systems</strong>: Saving game states, allowing players to load previous save points</li> <li> <strong>Transaction Systems</strong>: Supporting transaction rollback mechanisms, ensuring data consistency and reliability</li> <li> <strong>Configuration Management</strong>: Saving system configuration snapshots, enabling quick configuration rollback when problems occur</li> <li> <strong>Web Browsers</strong>: Implementing back/forward functionality, remembering browsing history states</li> </ul> <h3 id="design-considerations-during-implementation">Design Considerations During Implementation</h3> <p>When implementing Memento Pattern, special attention should be paid to the following points:</p> <p><strong>Memory Usage Optimization</strong> For large state objects, directly copying entire state may cause memory problems. Consider using incremental snapshots or compressed storage methods for optimization.</p> <p><strong>Snapshot Quantity Limits</strong> Setting reasonable history record limits is important to avoid unlimited snapshot accumulation causing memory overflow. LRU (Least Recently Used) strategies can be adopted to manage snapshots.</p> <p><strong>Snapshot Immutability</strong> Ensure memento objects cannot be modified after creation, this is a key principle for maintaining system stability.</p> <p><strong>In summary, the core value of Memento Pattern lies in: providing safe state management mechanisms while maintaining encapsulation</strong>. It allows objects to support state saving and restoration without exposing internal implementation details, making it an elegant solution for state management problems.</p> </div> </article> <br> <hr> <br> <ul class="list-disc pl-8"></ul> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/superpowers-sdd-2048-game/">When Vibe Coding Gets Superpowers: A Deep Dive into Fully Automated Precision Development, Building 2048 as a Case Study</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/openspec-sdd-insider-tracker/">Beyond Vibe Coding's Architectural Chaos: Building an SEC Tracker with OpenSpec's 'Artifact-Driven' Workflow, Turning AI into Your Senior Architect</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/speckit-sdd-go-game/">Stop Writing Toys with Vibe Coding: Implementing a Go Game via SDD and SpecKit to Eliminate AI Hallucinations</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/backend%20development/grpc-introduction-for-micro-service/">gRPC Concepts and Implementation (Go &amp; Python) - Building High-Performance Microservices</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/building-ai-code-review-agent/">Building an AI Code Review Agent from Scratch: Simultaneously Boosting Team Efficiency and Code Quality</a> </li> </div> </div> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top"></nav> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Nick Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script> <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script> <script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script> <script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script> <script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script defer src="/assets/js/google-analytics-setup.js"></script> <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script> <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script> <script>
+</code></pre></div></div>
+
+<h2 id="conclusion-and-benefits">Conclusion and Benefits</h2>
+
+<p>By applying the Memento Pattern, we successfully solved the core problems originally faced by the system. Let’s review the specific improvements this pattern brought.</p>
+
+<h3 id="main-improvement-effects">Main Improvement Effects</h3>
+
+<p><strong>1. Encapsulation Protection</strong>
+Object internal state receives complete protection, external objects cannot directly access or modify editor’s internal state. This ensures object integrity, any state changes must go through proper channels.</p>
+
+<p><strong>2. State Management Simplification</strong>
+Through memento objects encapsulating state snapshots, state saving and restoration becomes simple and reliable. Each snapshot is immutable, fundamentally avoiding state inconsistency problems.</p>
+
+<p><strong>3. Independent History Management</strong>
+History manager is completely separated from business logic, can be independently extended or modified. When we need to adjust undo strategies, it won’t affect text editor’s core functionality.</p>
+
+<p><strong>4. Safe State Rollback</strong>
+The system can safely rollback to any previously saved state without causing data inconsistency or corruption. This safety comes from memento’s immutable characteristics and clear responsibility division.</p>
+
+<h3 id="applicable-scenarios">Applicable Scenarios</h3>
+
+<p>Memento Pattern is particularly suitable for the following application scenarios:</p>
+
+<ul>
+  <li>
+<strong>Text Editors</strong>: Implementing Undo/Redo functionality, supporting multi-step operation rollback</li>
+  <li>
+<strong>Game Save Systems</strong>: Saving game states, allowing players to load previous save points</li>
+  <li>
+<strong>Transaction Systems</strong>: Supporting transaction rollback mechanisms, ensuring data consistency and reliability</li>
+  <li>
+<strong>Configuration Management</strong>: Saving system configuration snapshots, enabling quick configuration rollback when problems occur</li>
+  <li>
+<strong>Web Browsers</strong>: Implementing back/forward functionality, remembering browsing history states</li>
+</ul>
+
+<h3 id="design-considerations-during-implementation">Design Considerations During Implementation</h3>
+
+<p>When implementing Memento Pattern, special attention should be paid to the following points:</p>
+
+<p><strong>Memory Usage Optimization</strong>
+For large state objects, directly copying entire state may cause memory problems. Consider using incremental snapshots or compressed storage methods for optimization.</p>
+
+<p><strong>Snapshot Quantity Limits</strong>
+Setting reasonable history record limits is important to avoid unlimited snapshot accumulation causing memory overflow. LRU (Least Recently Used) strategies can be adopted to manage snapshots.</p>
+
+<p><strong>Snapshot Immutability</strong>
+Ensure memento objects cannot be modified after creation, this is a key principle for maintaining system stability.</p>
+
+<p><strong>In summary, the core value of Memento Pattern lies in: providing safe state management mechanisms while maintaining encapsulation</strong>. It allows objects to support state saving and restoration without exposing internal implementation details, making it an elegant solution for state management problems.</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+  
+    
+    <br>
+    <hr>
+    <br>
+    <ul class="list-disc pl-8"></ul>
+
+    <!-- Adds related posts to the end of an article -->
+    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/superpowers-sdd-2048-game/">When Vibe Coding Gets Superpowers: A Deep Dive into Fully Automated Precision Development, Building 2048 as a Case Study</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/openspec-sdd-insider-tracker/">Beyond Vibe Coding's Architectural Chaos: Building an SEC Tracker with OpenSpec's 'Artifact-Driven' Workflow, Turning AI into Your Senior Architect</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/speckit-sdd-go-game/">Stop Writing Toys with Vibe Coding: Implementing a Go Game via SDD and SpecKit to Eliminate AI Hallucinations</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/backend%20development/grpc-introduction-for-micro-service/">gRPC Concepts and Implementation (Go &amp; Python) - Building High-Performance Microservices</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/building-ai-code-review-agent/">Building an AI Code Review Agent from Scratch: Simultaneously Boosting Team Efficiency and Code Quality</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+</div>
+</div>
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-sm-3">
+              <nav id="toc-sidebar" class="sticky-top"></nav>
+            </div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="fixed-bottom" role="contentinfo">
+    <div class="container mt-0">
+      
+  © Copyright 2026
+  Nick
+  
+  Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script>
+<script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script>
+<script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script>
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+  <!-- Analytics -->
+  <script defer src="/assets/js/google-analytics-setup.js"></script>
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
     addBackToTop();
-  </script> <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script> <script src="/assets/js/search-data.js"></script> <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script> </body> </html>
+  </script>
+
+
+
+  <!-- Search -->
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
+  <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script>
+
+
+
+
+  </body>
+</html>

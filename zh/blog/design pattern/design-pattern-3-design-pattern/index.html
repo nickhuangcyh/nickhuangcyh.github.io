@@ -1,6 +1,97 @@
-<!DOCTYPE html> <html lang="zh"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA"> <meta http-equiv="Permissions-Policy" content="interest-cohort=()"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> 設計模式（3）設計模式核心概念 Design Pattern 完整入門：四大要素與分類系統 | Nick Huang </title> <meta name="author" content="Nick Huang"> <meta name="description" content="學會 Design Pattern 的定義、目的與結構化思維。深入了解設計模式的四大要素：Context、Forces、Problem與Solution，以及創建型、結構型和行為型模式的完整分類系統。"> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://nickhuangcyh.github.io/blog/design%20pattern/design-pattern-3-design-pattern/"> <script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+<!DOCTYPE html>
+<html lang="zh">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+  <!-- Website verification -->
+  
+    <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA">
+  
+  
+  <!--
+    Avoid warning on Google Chrome Error with Permissions-Policy header:
+    Origin trial controlled feature not enabled: 'interest-cohort'.
+    see https://stackoverflow.com/a/75119417
+  -->
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      設計模式（3）設計模式核心概念 Design Pattern 完整入門：四大要素與分類系統 | Nick Huang
+    
+  
+</title>
+<meta name="author" content="Nick Huang">
+<meta name="description" content="學會 Design Pattern 的定義、目的與結構化思維。深入了解設計模式的四大要素：Context、Forces、Problem與Solution，以及創建型、結構型和行為型模式的完整分類系統。">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
+<link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="https://nickhuangcyh.github.io/blog/design%20pattern/design-pattern-3-design-pattern/">
+
+<!-- Dark Mode -->
+<script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script>
+
+  <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
+  <script>
     initTheme();
-  </script> <script src="/assets/js/language-detection.js?46ca8f84d79546f44766b63b6fc18648"></script> <script async src="https://www.googletagmanager.com/gtag/js?id=G-446Z2KNTGH"></script> <script>
+  </script>
+
+
+<!-- Language Detection -->
+<script src="/assets/js/language-detection.js?46ca8f84d79546f44766b63b6fc18648"></script>
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-446Z2KNTGH"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       dataLayer.push(arguments);
@@ -8,6 +99,1504 @@
     gtag('js', new Date());
 
     gtag('config', 'G-446Z2KNTGH');
-  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/zh/"> <span class="font-weight-bold">Nick</span> Huang </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item "> <a class="nav-link" href="/books/">bookshelf </a> </li> <li class="nav-item"> <button id="search-toggle" title="Search" onclick="openSearchModal()"> <span class="nav-link">ctrl k <i class="ti ti-search"></i></span> </button> </li> <li class="nav-item"> <div class="language-toggle"> <div class="dropdown"> <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-globe"></i> 中文 </button> <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle"> <li> <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('en')"> <span class="flag">🇺🇸</span> English </a> </li> </ul> </div> </div> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="ti ti-sun-moon" id="light-toggle-system"></i> <i class="ti ti-moon-filled" id="light-toggle-dark"></i> <i class="ti ti-sun-filled" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title">設計模式（3）設計模式核心概念 Design Pattern 完整入門：四大要素與分類系統</h1> <p class="post-meta"> Created on July 04, 2024 </p> <p class="post-tags"> <a href="/blog/2024"> <i class="fa-solid fa-calendar fa-sm"></i> 2024 </a>   ·   <a href="/blog/tag/design-pattern"> <i class="fa-solid fa-hashtag fa-sm"></i> Design Pattern</a>   <a href="/blog/tag/software-design"> <i class="fa-solid fa-hashtag fa-sm"></i> Software Design</a>   <a href="/blog/tag/gang-of-four"> <i class="fa-solid fa-hashtag fa-sm"></i> Gang of Four</a>   <a href="/blog/tag/creational-pattern"> <i class="fa-solid fa-hashtag fa-sm"></i> Creational Pattern</a>   <a href="/blog/tag/structural-pattern"> <i class="fa-solid fa-hashtag fa-sm"></i> Structural Pattern</a>   <a href="/blog/tag/behavioral-pattern"> <i class="fa-solid fa-hashtag fa-sm"></i> Behavioral Pattern</a>   <a href="/blog/tag/software-architecture"> <i class="fa-solid fa-hashtag fa-sm"></i> Software Architecture</a>   <a href="/blog/tag/programming"> <i class="fa-solid fa-hashtag fa-sm"></i> Programming</a>   ·   <a href="/blog/category/design-pattern"> <i class="fa-solid fa-tag fa-sm"></i> Design Pattern</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <blockquote> <p>您可於此 <a href="https://github.com/nickhuangcyh/design_pattern" rel="external nofollow noopener" target="_blank">design_pattern repo</a> 下載 Design Pattern 系列程式碼。</p> </blockquote> <h2 id="design-pattern-是什麼">Design Pattern 是什麼？</h2> <p>Design Pattern（設計模式）是軟體工程中一套久經考驗的問題解決方案。想像一下，當建築師設計房屋時，他們會運用已知的建築模式來解決常見的結構問題。同樣地，設計模式就是軟體開發者的「建築藍圖」。</p> <p>這些模式並非憑空創造，而是經過無數開發者在實際專案中反覆驗證的最佳實踐。每個設計模式都針對特定的設計問題提供標準化的解決方案，讓開發者不必重新發明輪子。</p> <p>更重要的是，設計模式提供了開發者之間的共通語言。當你說「我們用Observer Pattern來處理這個問題」時，有經驗的開發者立即就能理解你的設計思路和實作方向。</p> <h2 id="設計模式的組成要素">設計模式的組成要素</h2> <p>每個設計模式都由四個核心要素組成，這四個要素共同描述了模式的完整面貌。理解這些要素有助於我們正確地識別和應用設計模式。</p> <h3 id="context情境">Context（情境）</h3> <p>Context 是指設計模式應用的具體場景或環境背景。它回答了「在什麼情況下使用這個模式？」的問題。</p> <p>例如，當你需要確保某個類別在整個應用程式中只有一個實例時，這就是 Singleton Pattern 的典型 Context。</p> <h3 id="forces約束力">Forces（約束力）</h3> <p>Forces 是指在設計過程中需要平衡考量的各種因素和限制。這些因素往往相互衝突，需要找到最佳的平衡點。</p> <p>常見的 Forces 包括：</p> <ul> <li> <strong>性能需求</strong>：系統需要多快的響應速度？</li> <li> <strong>可擴展性</strong>：未來是否需要輕易添加新功能？</li> <li> <strong>維護性</strong>：程式碼是否容易理解和修改？</li> <li> <strong>記憶體使用</strong>：是否需要節省記憶體空間？</li> </ul> <h3 id="problem問題">Problem（問題）</h3> <p>Problem 是指在特定 Context 和 Forces 約束下，開發者面臨的具體設計挑戰。它清楚描述了需要解決的核心問題。</p> <p>這個問題通常表現為設計上的兩難：既要滿足功能需求，又要兼顧各種約束條件。</p> <h3 id="solution解決方案">Solution（解決方案）</h3> <p>Solution 是設計模式提供的具體解決方案。它不是程式碼的實作細節，而是一個可重複使用的設計結構，說明了類別之間的關係和協作方式。</p> <p>好的 Solution 會巧妙地平衡各種 Forces，提供一個經過驗證且優雅的解決方案。</p> <h2 id="設計模式的應用步驟">設計模式的應用步驟</h2> <p>成功應用設計模式需要遵循一個結構化的流程。這個七步驟方法確保我們能系統性地分析問題並選擇最適合的解決方案。</p> <h3 id="1-物件導向程式分析ooa">1. 物件導向程式分析（OOA）</h3> <p>從高層次分析和理解應用程式的需求與整體結構。這個階段需要繪製 UML 圖來視覺化系統的現狀，幫助我們掌握全局視野。</p> <h3 id="2-看清楚-context">2. 看清楚 Context</h3> <p>透過 UML 圖深入理解設計模式需要應用的具體場景和環境條件。明確回答「我們現在面臨什麼樣的情境？」</p> <h3 id="3-察覺-forces">3. 察覺 Forces</h3> <p>識別和分析影響設計決策的關鍵因素。這些因素可能包括性能要求、擴展性需求、維護難度等相互衝突的約束條件。</p> <h3 id="4-找到-problem">4. 找到 Problem</h3> <p>在特定 Context 和 Forces 的約束下，明確定義需要解決的核心設計問題。問題的描述應該具體且可操作。</p> <h3 id="5-套用模式">5. 套用模式</h3> <p>根據已識別的 Problem 和 Forces，從設計模式庫中選擇最適合的模式。這個選擇過程需要權衡各種取捨。</p> <h3 id="6-得到新的-resulting-context">6. 得到新的 Resulting Context</h3> <p>應用設計模式後，重新分析和檢視改進後的設計方案。同樣需要繪製新的 UML 圖來呈現改進後的系統架構。</p> <h3 id="7-物件導向程式設計oop">7. 物件導向程式設計（OOP）</h3> <p>基於新的 Resulting Context UML 圖，開始實際的程式碼撰寫和實作工作。此時的實作應該遵循 UML 圖所定義的結構。</p> <h2 id="設計模式的分類">設計模式的分類</h2> <p>設計模式根據其主要解決的問題類型，可以分為三大類別。每個類別針對軟體設計中的不同面向提供解決方案。</p> <h3 id="creational-創建型模式">Creational 創建型模式</h3> <p><strong>主要目的</strong>：解決物件創建過程中的各種問題，讓物件的創建更加靈活且可控。</p> <p>這類模式關注的是「如何創建物件」，而不是「創建什麼物件」。它們提供了創建物件的最佳方式，同時隱藏創建邏輯的複雜性。</p> <p><strong>常見模式</strong>：</p> <ul> <li> <strong>Factory Method Pattern</strong>：透過工廠方法創建物件</li> <li> <strong>Abstract Factory Pattern</strong>：創建相關物件家族</li> <li> <strong>Builder Pattern</strong>：逐步構建複雜物件</li> <li> <strong>Prototype Pattern</strong>：透過複製現有物件來創建新物件</li> <li> <strong>Singleton Pattern</strong>：確保類別只有一個實例</li> </ul> <h3 id="structural-結構型模式">Structural 結構型模式</h3> <p><strong>主要目的</strong>：解決類別和物件之間的組合問題，幫助不同的元件更好地協同工作。</p> <p>這類模式專注於如何將類別和物件組合成更大、更複雜的結構，同時保持結構的靈活性和效率。</p> <p><strong>常見模式</strong>：</p> <ul> <li> <strong>Adapter Pattern</strong>：讓不相容的介面可以協同工作</li> <li> <strong>Bridge Pattern</strong>：將抽象與實作分離</li> <li> <strong>Decorator Pattern</strong>：動態地為物件添加新功能</li> <li> <strong>Facade Pattern</strong>：為複雜子系統提供簡化介面</li> <li> <strong>Proxy Pattern</strong>：為其他物件提供代理或占位符</li> <li> <strong>Flyweight Pattern</strong>：有效地支援大量細粒度物件</li> <li> <strong>Composite Pattern</strong>：將物件組合成樹形結構</li> </ul> <h3 id="behavioural-行為型模式">Behavioural 行為型模式</h3> <p><strong>主要目的</strong>：解決物件之間的通訊和協作問題，定義物件間的交互方式和責任分配。</p> <p>這類模式關注的是演算法和物件間責任的分配，不僅描述物件或類別的模式，也描述它們之間的通訊方式。</p> <p><strong>常見模式</strong>：</p> <ul> <li> <strong>Chain of Responsibility Pattern</strong>：將請求沿著處理鏈傳遞</li> <li> <strong>Mediator Pattern</strong>：定義物件間如何交互</li> <li> <strong>Iterator Pattern</strong>：提供訪問集合元素的統一方式</li> <li> <strong>State Pattern</strong>：允許物件在內部狀態改變時改變行為</li> <li> <strong>Observer Pattern</strong>：定義一對多的依賴關係</li> <li> <strong>Command Pattern</strong>：將請求封裝為物件</li> <li> <strong>Strategy Pattern</strong>：定義演算法家族並使其可互換</li> <li> <strong>Template Method Pattern</strong>：定義演算法骨架</li> <li> <strong>Interpreter Pattern</strong>：為語言創建解釋器</li> <li> <strong>Memento Pattern</strong>：保存和恢復物件狀態</li> <li> <strong>Visitor Pattern</strong>：在不修改類別的前提下定義新操作</li> </ul> <h2 id="總結">總結</h2> <p>通過本篇文章，我們建立了對設計模式的全面理解。我們學習到設計模式不僅僅是程式碼範本，更是經過驗證的問題解決框架。</p> <h3 id="關鍵收穫">關鍵收穫</h3> <p><strong>理論基礎</strong>：我們掌握了設計模式的四大組成要素（Context、Forces、Problem、Solution），這些要素幫助我們系統性地分析和應用模式。</p> <p><strong>實踐方法</strong>：七步驟應用流程提供了從問題分析到程式碼實作的完整路徑，確保我們能正確地選擇和使用設計模式。</p> <p><strong>分類體系</strong>：三大類別（創建型、結構型、行為型）的分類方式讓我們能夠快速定位適合的模式類型，提高解決問題的效率。</p> <h3 id="設計模式的價值">設計模式的價值</h3> <p>設計模式的真正價值在於它提供了一套共同的詞彙和思維框架。當團隊成員都理解設計模式時，溝通變得更加高效，設計決策也更容易被理解和維護。</p> <p>更重要的是，設計模式教會我們如何在相互衝突的需求中找到平衡點，這正是軟體設計的核心挑戰。</p> <h3 id="下一步學習">下一步學習</h3> <p>在接下來的文章中，我們將深入探討 UML 圖的應用。UML（統一建模語言）是視覺化軟體設計的標準工具，它將幫助我們更清楚地表達和溝通設計想法。</p> <p>掌握 UML 圖的繪製和讀取技能，將讓我們能夠更有效地應用設計模式，並與其他開發者進行更精確的技術交流。</p> <blockquote> <p>下一篇：深入UML圖 - 設計模式的視覺化工具</p> </blockquote> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_design_principle_architecture-480.webp 480w,/assets/img/design_pattern_design_principle_architecture-800.webp 800w,/assets/img/design_pattern_design_principle_architecture-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/design_pattern_design_principle_architecture.png" width="100%" height="auto" title="design_pattern_design_principle_architecture" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <blockquote> <p>Object-Oriented Concepts -&gt; Design Principle -&gt; Design Pattern</p> </blockquote> <h2 id="參考">參考</h2> <ul> <li><a href="https://www.tenlong.com.tw/products/9789867794529" rel="external nofollow noopener" target="_blank">Head First Design Patterns</a></li> <li><a href="https://www.tenlong.com.tw/products/9789866761799" rel="external nofollow noopener" target="_blank">大話設計模式</a></li> <li><a href="https://www.linkedin.com/learning/advanced-design-patterns-design-principles/what-are-design-principles?autoAdvance=true&amp;autoSkip=false&amp;autoplay=true&amp;resume=true" rel="external nofollow noopener" target="_blank">Advanced Design Patterns: Design Principles</a></li> <li><a href="https://www.linkedin.com/learning/programming-foundations-design-patterns-2/trying-interfaces?autoAdvance=true&amp;autoSkip=false&amp;autoplay=true&amp;resume=true" rel="external nofollow noopener" target="_blank">Programming Foundations: Design Patterns</a></li> <li><a href="https://www.linkedin.com/learning/design-patterns-creational/think-about-how-you-create-objects?autoAdvance=true&amp;autoSkip=false&amp;autoplay=true&amp;resume=true" rel="external nofollow noopener" target="_blank">Design Patterns: Creational</a></li> <li><a href="https://www.youtube.com/watch?v=yOe-uywb2qs&amp;list=PLicQRHHL75d7EXEI9nWfUYJyrPdI79M70&amp;pp=iAQB" rel="external nofollow noopener" target="_blank">水球潘 - Design Pattern 之路</a></li> </ul> <p class="notice--success"><strong>Note:</strong> 如果有任何建議、問題或不同想法，歡迎留言或寄信給我，可以一起討論進步成長 🙂</p> </div> </article> <br> <hr> <br> <ul class="list-disc pl-8"></ul> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/superpowers-sdd-2048-game/">當 Vibe Coding 擁有 Superpowers：全自動精準開發方法論深度體驗，以 2048 遊戲實戰為例</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/openspec-sdd-insider-tracker/">告別 Vibe Coding 的架構崩壞：透過 OpenSpec 的『構件驅動』實作 SEC 追蹤器，讓 AI 成為你的資深架構師</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/speckit-sdd-go-game/">別再用 Vibe Coding 寫玩具了，透過 SDD 開發模式利用 SpecKit 實作圍棋小遊戲，讓 AI 不再產生幻覺</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/backend%20development/grpc-introduction-for-micro-service/">gRPC 概念與實作 (Go &amp; Python) - 打造高效能微服務</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/building-ai-code-review-agent/">從零打造 AI Code Review Agent：同步提升團隊效率與程式碼品質</a> </li> </div> </div> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top"></nav> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Nick Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script> <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script> <script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script> <script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script> <script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script defer src="/assets/js/google-analytics-setup.js"></script> <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script> <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script> <script>
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+    <!-- Header -->
+    <header>
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/zh/">
+          
+            
+              <span class="font-weight-bold">Nick</span>
+            
+            
+            Huang
+          
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">about
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog/">blog
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/cv/">cv
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/projects/">projects
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/repositories/">repositories
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/books/">bookshelf
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+          
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Language Toggle -->
+            <li class="nav-item">
+              
+<div class="language-toggle">
+  <div class="dropdown">
+    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-globe"></i>
+       中文 
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle">
+       
+      <li>
+        <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('en')">
+          
+          <span class="flag">🇺🇸</span> English 
+        </a>
+      </li>
+         
+    </ul>
+  </div>
+</div>
+
+
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="ti ti-sun-moon" id="light-toggle-system"></i>
+                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
+                <i class="ti ti-sun-filled" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row">
+            <!-- main content area -->
+            <div class="col-sm-9">
+
+
+
+
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">設計模式（3）設計模式核心概念 Design Pattern 完整入門：四大要素與分類系統</h1>
+    <p class="post-meta">
+      Created on July 04, 2024
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      
+        <a href="/blog/2024"> <i class="fa-solid fa-calendar fa-sm"></i> 2024 </a>
+      
+      
+          ·  
+        
+          
+            <a href="/blog/tag/design-pattern"> <i class="fa-solid fa-hashtag fa-sm"></i> Design Pattern</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/software-design"> <i class="fa-solid fa-hashtag fa-sm"></i> Software Design</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/gang-of-four"> <i class="fa-solid fa-hashtag fa-sm"></i> Gang of Four</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/creational-pattern"> <i class="fa-solid fa-hashtag fa-sm"></i> Creational Pattern</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/structural-pattern"> <i class="fa-solid fa-hashtag fa-sm"></i> Structural Pattern</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/behavioral-pattern"> <i class="fa-solid fa-hashtag fa-sm"></i> Behavioral Pattern</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/software-architecture"> <i class="fa-solid fa-hashtag fa-sm"></i> Software Architecture</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/programming"> <i class="fa-solid fa-hashtag fa-sm"></i> Programming</a>
+          
+          
+        
+      
+
+      
+          ·  
+        
+          
+            <a href="/blog/category/design-pattern"> <i class="fa-solid fa-tag fa-sm"></i> Design Pattern</a>
+          
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <blockquote>
+  <p>您可於此 <a href="https://github.com/nickhuangcyh/design_pattern" rel="external nofollow noopener" target="_blank">design_pattern repo</a> 下載 Design Pattern 系列程式碼。</p>
+</blockquote>
+
+<h2 id="design-pattern-是什麼">Design Pattern 是什麼？</h2>
+
+<p>Design Pattern（設計模式）是軟體工程中一套久經考驗的問題解決方案。想像一下，當建築師設計房屋時，他們會運用已知的建築模式來解決常見的結構問題。同樣地，設計模式就是軟體開發者的「建築藍圖」。</p>
+
+<p>這些模式並非憑空創造，而是經過無數開發者在實際專案中反覆驗證的最佳實踐。每個設計模式都針對特定的設計問題提供標準化的解決方案，讓開發者不必重新發明輪子。</p>
+
+<p>更重要的是，設計模式提供了開發者之間的共通語言。當你說「我們用Observer Pattern來處理這個問題」時，有經驗的開發者立即就能理解你的設計思路和實作方向。</p>
+
+<h2 id="設計模式的組成要素">設計模式的組成要素</h2>
+
+<p>每個設計模式都由四個核心要素組成，這四個要素共同描述了模式的完整面貌。理解這些要素有助於我們正確地識別和應用設計模式。</p>
+
+<h3 id="context情境">Context（情境）</h3>
+
+<p>Context 是指設計模式應用的具體場景或環境背景。它回答了「在什麼情況下使用這個模式？」的問題。</p>
+
+<p>例如，當你需要確保某個類別在整個應用程式中只有一個實例時，這就是 Singleton Pattern 的典型 Context。</p>
+
+<h3 id="forces約束力">Forces（約束力）</h3>
+
+<p>Forces 是指在設計過程中需要平衡考量的各種因素和限制。這些因素往往相互衝突，需要找到最佳的平衡點。</p>
+
+<p>常見的 Forces 包括：</p>
+
+<ul>
+  <li>
+<strong>性能需求</strong>：系統需要多快的響應速度？</li>
+  <li>
+<strong>可擴展性</strong>：未來是否需要輕易添加新功能？</li>
+  <li>
+<strong>維護性</strong>：程式碼是否容易理解和修改？</li>
+  <li>
+<strong>記憶體使用</strong>：是否需要節省記憶體空間？</li>
+</ul>
+
+<h3 id="problem問題">Problem（問題）</h3>
+
+<p>Problem 是指在特定 Context 和 Forces 約束下，開發者面臨的具體設計挑戰。它清楚描述了需要解決的核心問題。</p>
+
+<p>這個問題通常表現為設計上的兩難：既要滿足功能需求，又要兼顧各種約束條件。</p>
+
+<h3 id="solution解決方案">Solution（解決方案）</h3>
+
+<p>Solution 是設計模式提供的具體解決方案。它不是程式碼的實作細節，而是一個可重複使用的設計結構，說明了類別之間的關係和協作方式。</p>
+
+<p>好的 Solution 會巧妙地平衡各種 Forces，提供一個經過驗證且優雅的解決方案。</p>
+
+<h2 id="設計模式的應用步驟">設計模式的應用步驟</h2>
+
+<p>成功應用設計模式需要遵循一個結構化的流程。這個七步驟方法確保我們能系統性地分析問題並選擇最適合的解決方案。</p>
+
+<h3 id="1-物件導向程式分析ooa">1. 物件導向程式分析（OOA）</h3>
+
+<p>從高層次分析和理解應用程式的需求與整體結構。這個階段需要繪製 UML 圖來視覺化系統的現狀，幫助我們掌握全局視野。</p>
+
+<h3 id="2-看清楚-context">2. 看清楚 Context</h3>
+
+<p>透過 UML 圖深入理解設計模式需要應用的具體場景和環境條件。明確回答「我們現在面臨什麼樣的情境？」</p>
+
+<h3 id="3-察覺-forces">3. 察覺 Forces</h3>
+
+<p>識別和分析影響設計決策的關鍵因素。這些因素可能包括性能要求、擴展性需求、維護難度等相互衝突的約束條件。</p>
+
+<h3 id="4-找到-problem">4. 找到 Problem</h3>
+
+<p>在特定 Context 和 Forces 的約束下，明確定義需要解決的核心設計問題。問題的描述應該具體且可操作。</p>
+
+<h3 id="5-套用模式">5. 套用模式</h3>
+
+<p>根據已識別的 Problem 和 Forces，從設計模式庫中選擇最適合的模式。這個選擇過程需要權衡各種取捨。</p>
+
+<h3 id="6-得到新的-resulting-context">6. 得到新的 Resulting Context</h3>
+
+<p>應用設計模式後，重新分析和檢視改進後的設計方案。同樣需要繪製新的 UML 圖來呈現改進後的系統架構。</p>
+
+<h3 id="7-物件導向程式設計oop">7. 物件導向程式設計（OOP）</h3>
+
+<p>基於新的 Resulting Context UML 圖，開始實際的程式碼撰寫和實作工作。此時的實作應該遵循 UML 圖所定義的結構。</p>
+
+<h2 id="設計模式的分類">設計模式的分類</h2>
+
+<p>設計模式根據其主要解決的問題類型，可以分為三大類別。每個類別針對軟體設計中的不同面向提供解決方案。</p>
+
+<h3 id="creational-創建型模式">Creational 創建型模式</h3>
+
+<p><strong>主要目的</strong>：解決物件創建過程中的各種問題，讓物件的創建更加靈活且可控。</p>
+
+<p>這類模式關注的是「如何創建物件」，而不是「創建什麼物件」。它們提供了創建物件的最佳方式，同時隱藏創建邏輯的複雜性。</p>
+
+<p><strong>常見模式</strong>：</p>
+
+<ul>
+  <li>
+<strong>Factory Method Pattern</strong>：透過工廠方法創建物件</li>
+  <li>
+<strong>Abstract Factory Pattern</strong>：創建相關物件家族</li>
+  <li>
+<strong>Builder Pattern</strong>：逐步構建複雜物件</li>
+  <li>
+<strong>Prototype Pattern</strong>：透過複製現有物件來創建新物件</li>
+  <li>
+<strong>Singleton Pattern</strong>：確保類別只有一個實例</li>
+</ul>
+
+<h3 id="structural-結構型模式">Structural 結構型模式</h3>
+
+<p><strong>主要目的</strong>：解決類別和物件之間的組合問題，幫助不同的元件更好地協同工作。</p>
+
+<p>這類模式專注於如何將類別和物件組合成更大、更複雜的結構，同時保持結構的靈活性和效率。</p>
+
+<p><strong>常見模式</strong>：</p>
+
+<ul>
+  <li>
+<strong>Adapter Pattern</strong>：讓不相容的介面可以協同工作</li>
+  <li>
+<strong>Bridge Pattern</strong>：將抽象與實作分離</li>
+  <li>
+<strong>Decorator Pattern</strong>：動態地為物件添加新功能</li>
+  <li>
+<strong>Facade Pattern</strong>：為複雜子系統提供簡化介面</li>
+  <li>
+<strong>Proxy Pattern</strong>：為其他物件提供代理或占位符</li>
+  <li>
+<strong>Flyweight Pattern</strong>：有效地支援大量細粒度物件</li>
+  <li>
+<strong>Composite Pattern</strong>：將物件組合成樹形結構</li>
+</ul>
+
+<h3 id="behavioural-行為型模式">Behavioural 行為型模式</h3>
+
+<p><strong>主要目的</strong>：解決物件之間的通訊和協作問題，定義物件間的交互方式和責任分配。</p>
+
+<p>這類模式關注的是演算法和物件間責任的分配，不僅描述物件或類別的模式，也描述它們之間的通訊方式。</p>
+
+<p><strong>常見模式</strong>：</p>
+
+<ul>
+  <li>
+<strong>Chain of Responsibility Pattern</strong>：將請求沿著處理鏈傳遞</li>
+  <li>
+<strong>Mediator Pattern</strong>：定義物件間如何交互</li>
+  <li>
+<strong>Iterator Pattern</strong>：提供訪問集合元素的統一方式</li>
+  <li>
+<strong>State Pattern</strong>：允許物件在內部狀態改變時改變行為</li>
+  <li>
+<strong>Observer Pattern</strong>：定義一對多的依賴關係</li>
+  <li>
+<strong>Command Pattern</strong>：將請求封裝為物件</li>
+  <li>
+<strong>Strategy Pattern</strong>：定義演算法家族並使其可互換</li>
+  <li>
+<strong>Template Method Pattern</strong>：定義演算法骨架</li>
+  <li>
+<strong>Interpreter Pattern</strong>：為語言創建解釋器</li>
+  <li>
+<strong>Memento Pattern</strong>：保存和恢復物件狀態</li>
+  <li>
+<strong>Visitor Pattern</strong>：在不修改類別的前提下定義新操作</li>
+</ul>
+
+<h2 id="總結">總結</h2>
+
+<p>通過本篇文章，我們建立了對設計模式的全面理解。我們學習到設計模式不僅僅是程式碼範本，更是經過驗證的問題解決框架。</p>
+
+<h3 id="關鍵收穫">關鍵收穫</h3>
+
+<p><strong>理論基礎</strong>：我們掌握了設計模式的四大組成要素（Context、Forces、Problem、Solution），這些要素幫助我們系統性地分析和應用模式。</p>
+
+<p><strong>實踐方法</strong>：七步驟應用流程提供了從問題分析到程式碼實作的完整路徑，確保我們能正確地選擇和使用設計模式。</p>
+
+<p><strong>分類體系</strong>：三大類別（創建型、結構型、行為型）的分類方式讓我們能夠快速定位適合的模式類型，提高解決問題的效率。</p>
+
+<h3 id="設計模式的價值">設計模式的價值</h3>
+
+<p>設計模式的真正價值在於它提供了一套共同的詞彙和思維框架。當團隊成員都理解設計模式時，溝通變得更加高效，設計決策也更容易被理解和維護。</p>
+
+<p>更重要的是，設計模式教會我們如何在相互衝突的需求中找到平衡點，這正是軟體設計的核心挑戰。</p>
+
+<h3 id="下一步學習">下一步學習</h3>
+
+<p>在接下來的文章中，我們將深入探討 UML 圖的應用。UML（統一建模語言）是視覺化軟體設計的標準工具，它將幫助我們更清楚地表達和溝通設計想法。</p>
+
+<p>掌握 UML 圖的繪製和讀取技能，將讓我們能夠更有效地應用設計模式，並與其他開發者進行更精確的技術交流。</p>
+
+<blockquote>
+  <p>下一篇：深入UML圖 - 設計模式的視覺化工具</p>
+</blockquote>
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/design_pattern_design_principle_architecture-480.webp 480w,/assets/img/design_pattern_design_principle_architecture-800.webp 800w,/assets/img/design_pattern_design_principle_architecture-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+      
+    
+    <img src="/assets/img/design_pattern_design_principle_architecture.png" width="100%" height="auto" title="design_pattern_design_principle_architecture" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+<blockquote>
+  <p>Object-Oriented Concepts -&gt; Design Principle -&gt; Design Pattern</p>
+</blockquote>
+
+<h2 id="參考">參考</h2>
+
+<ul>
+  <li><a href="https://www.tenlong.com.tw/products/9789867794529" rel="external nofollow noopener" target="_blank">Head First Design Patterns</a></li>
+  <li><a href="https://www.tenlong.com.tw/products/9789866761799" rel="external nofollow noopener" target="_blank">大話設計模式</a></li>
+  <li><a href="https://www.linkedin.com/learning/advanced-design-patterns-design-principles/what-are-design-principles?autoAdvance=true&amp;autoSkip=false&amp;autoplay=true&amp;resume=true" rel="external nofollow noopener" target="_blank">Advanced Design Patterns: Design Principles</a></li>
+  <li><a href="https://www.linkedin.com/learning/programming-foundations-design-patterns-2/trying-interfaces?autoAdvance=true&amp;autoSkip=false&amp;autoplay=true&amp;resume=true" rel="external nofollow noopener" target="_blank">Programming Foundations: Design Patterns</a></li>
+  <li><a href="https://www.linkedin.com/learning/design-patterns-creational/think-about-how-you-create-objects?autoAdvance=true&amp;autoSkip=false&amp;autoplay=true&amp;resume=true" rel="external nofollow noopener" target="_blank">Design Patterns: Creational</a></li>
+  <li><a href="https://www.youtube.com/watch?v=yOe-uywb2qs&amp;list=PLicQRHHL75d7EXEI9nWfUYJyrPdI79M70&amp;pp=iAQB" rel="external nofollow noopener" target="_blank">水球潘 - Design Pattern 之路</a></li>
+</ul>
+
+<p class="notice--success"><strong>Note:</strong> 如果有任何建議、問題或不同想法，歡迎留言或寄信給我，可以一起討論進步成長 🙂</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+  
+    
+    <br>
+    <hr>
+    <br>
+    <ul class="list-disc pl-8"></ul>
+
+    <!-- Adds related posts to the end of an article -->
+    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/superpowers-sdd-2048-game/">當 Vibe Coding 擁有 Superpowers：全自動精準開發方法論深度體驗，以 2048 遊戲實戰為例</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/openspec-sdd-insider-tracker/">告別 Vibe Coding 的架構崩壞：透過 OpenSpec 的『構件驅動』實作 SEC 追蹤器，讓 AI 成為你的資深架構師</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/speckit-sdd-go-game/">別再用 Vibe Coding 寫玩具了，透過 SDD 開發模式利用 SpecKit 實作圍棋小遊戲，讓 AI 不再產生幻覺</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/backend%20development/grpc-introduction-for-micro-service/">gRPC 概念與實作 (Go &amp; Python) - 打造高效能微服務</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/building-ai-code-review-agent/">從零打造 AI Code Review Agent：同步提升團隊效率與程式碼品質</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+</div>
+</div>
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-sm-3">
+              <nav id="toc-sidebar" class="sticky-top"></nav>
+            </div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="fixed-bottom" role="contentinfo">
+    <div class="container mt-0">
+      
+  © Copyright 2026
+  Nick
+  
+  Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script>
+<script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script>
+<script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script>
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+  <!-- Analytics -->
+  <script defer src="/assets/js/google-analytics-setup.js"></script>
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
     addBackToTop();
-  </script> <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script> <script src="/assets/js/search-data.js"></script> <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script> </body> </html>
+  </script>
+
+
+
+  <!-- Search -->
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
+  <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script>
+
+
+
+
+  </body>
+</html>

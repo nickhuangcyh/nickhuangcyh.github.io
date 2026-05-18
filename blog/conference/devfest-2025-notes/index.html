@@ -1,6 +1,97 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA"> <meta http-equiv="Permissions-Policy" content="interest-cohort=()"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> DevFest 2025 Notes: Developer Evolution in the Age of AI Agents | Nick Huang </title> <meta name="author" content="Nick Huang"> <meta name="description" content="DevFest 2025 Recap. Deep dive into how AI Agents, Gemini CLI, Google ADK, and the MCP Protocol are transforming software development. From ezBundle's practical experience to enterprise-grade Agentic architecture, recording the shift in developer roles in the AI era."> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://nickhuangcyh.github.io/blog/conference/devfest-2025-notes/"> <script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+  <!-- Website verification -->
+  
+    <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA">
+  
+  
+  <!--
+    Avoid warning on Google Chrome Error with Permissions-Policy header:
+    Origin trial controlled feature not enabled: 'interest-cohort'.
+    see https://stackoverflow.com/a/75119417
+  -->
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      DevFest 2025 Notes: Developer Evolution in the Age of AI Agents | Nick Huang
+    
+  
+</title>
+<meta name="author" content="Nick Huang">
+<meta name="description" content="DevFest 2025 Recap. Deep dive into how AI Agents, Gemini CLI, Google ADK, and the MCP Protocol are transforming software development. From ezBundle's practical experience to enterprise-grade Agentic architecture, recording the shift in developer roles in the AI era.">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
+<link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="https://nickhuangcyh.github.io/blog/conference/devfest-2025-notes/">
+
+<!-- Dark Mode -->
+<script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script>
+
+  <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
+  <script>
     initTheme();
-  </script> <script src="/assets/js/language-detection.js?46ca8f84d79546f44766b63b6fc18648"></script> <script async src="https://www.googletagmanager.com/gtag/js?id=G-446Z2KNTGH"></script> <script>
+  </script>
+
+
+<!-- Language Detection -->
+<script src="/assets/js/language-detection.js?46ca8f84d79546f44766b63b6fc18648"></script>
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-446Z2KNTGH"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       dataLayer.push(arguments);
@@ -8,6 +99,1589 @@
     gtag('js', new Date());
 
     gtag('config', 'G-446Z2KNTGH');
-  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Nick</span> Huang </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item "> <a class="nav-link" href="/books/">bookshelf </a> </li> <li class="nav-item"> <button id="search-toggle" title="Search" onclick="openSearchModal()"> <span class="nav-link">ctrl k <i class="ti ti-search"></i></span> </button> </li> <li class="nav-item"> <div class="language-toggle"> <div class="dropdown"> <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-globe"></i> EN </button> <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle"> <li> <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('zh')"> <span class="flag">🇹🇼</span> 中文 </a> </li> </ul> </div> </div> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="ti ti-sun-moon" id="light-toggle-system"></i> <i class="ti ti-moon-filled" id="light-toggle-dark"></i> <i class="ti ti-sun-filled" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title">DevFest 2025 Notes: Developer Evolution in the Age of AI Agents</h1> <p class="post-meta"> Created on December 01, 2025 </p> <p class="post-tags"> <a href="/blog/2025"> <i class="fa-solid fa-calendar fa-sm"></i> 2025 </a>   ·   <a href="/blog/tag/devfest-2025"> <i class="fa-solid fa-hashtag fa-sm"></i> DevFest 2025</a>   <a href="/blog/tag/ai-agents"> <i class="fa-solid fa-hashtag fa-sm"></i> AI Agents</a>   <a href="/blog/tag/gemini"> <i class="fa-solid fa-hashtag fa-sm"></i> Gemini</a>   <a href="/blog/tag/google-adk"> <i class="fa-solid fa-hashtag fa-sm"></i> Google ADK</a>   <a href="/blog/tag/mcp"> <i class="fa-solid fa-hashtag fa-sm"></i> MCP</a>   <a href="/blog/tag/software-engineering"> <i class="fa-solid fa-hashtag fa-sm"></i> Software Engineering</a>   <a href="/blog/tag/developer-tools"> <i class="fa-solid fa-hashtag fa-sm"></i> Developer Tools</a>   ·   <a href="/blog/category/conference"> <i class="fa-solid fa-tag fa-sm"></i> Conference</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <h2 id="foreword">Foreword</h2> <p>I recently attended DevFest 2025, and this year’s theme undoubtedly revolved around <strong>AI Agents</strong> and <strong>Agentic Workflows</strong>. From simple Prompt Engineering to giving AI “hands and feet” to execute tasks, the entire paradigm of software development is undergoing a massive shift.</p> <p>The agenda was packed, ranging from the practical experiences of independent developers to deep dives into Google’s official toolchain (Gemini CLI, ADK), and extending to enterprise-grade application architectures. I’ve compiled key notes from each session, recording the essence of this feast of knowledge, hoping to give friends who couldn’t attend a glimpse into the era of AI Agents.</p> <hr> <h2 id="1-a-geeks-romance-building-a-ticketing-system-for-your-own-conference-with-ai">1. A Geek’s Romance: Building a Ticketing System for Your Own Conference with AI</h2> <p><strong>Speaker: Amos (Ka-Kien Long)</strong></p> <p>This session left a deep impression on me. Amos shared how he started from “a geek’s romance” and used AI to assist himself in building a fully functional ticketing and sales system, <strong>ezBundle</strong>.</p> <p>The key takeaway is that while AI is powerful, it is ultimately an extension of the engineer’s will—<strong>fundamentals are king</strong>.</p> <h3 id="why-build-a-ticketing-system-from-scratch">Why Build a Ticketing System from Scratch?</h3> <p>Although there are excellent existing platforms like K or A, the speaker encountered some unsolvable pain points:</p> <ul> <li> <strong>Lack of Customization Flexibility</strong>: Existing platforms are difficult to customize for specific details.</li> <li> <strong>Cash Flow Needs</strong>: Organizing events often requires paying high venue fees in advance (e.g., the venue fee for WebConf 2025 was up to a million TWD). Existing platforms usually disburse funds only after the event ends, creating huge cash flow pressure for organizers.</li> <li> <strong>“Solving your own problem might solve others’ problems too”</strong>: The goal of ezBundle was not to replace major platforms, but to solve the actual problems encountered when organizing his own events.</li> </ul> <h3 id="real-productivity-of-ai-collaboration">Real Productivity of AI Collaboration</h3> <p>The ezBundle system proved that AI-written code is ready for production environments:</p> <ul> <li> <strong>Astonishing Results from a One-Man Army</strong>: This project was completed by 1 engineer (no PM, no designer) utilizing after-work hours and weekends.</li> <li> <strong>Maximized Efficiency</strong>: The entire project consists of about 290,000 lines of code. The speaker estimated that he personally wrote less than 1% of the code.</li> <li> <strong>Operational Track Record</strong>: Since its launch on 2025/9/1, membership has exceeded 1,000, and transaction volume is approaching NT$ 2.9 million.</li> <li> <strong>Extensive Functionality</strong>: The system handles not only ticketing but also sales of physical goods and digital content, and integrates multiple payment gateways (NewebPay, ECPay, LinePay), QR Code ticket verification, surveys, and check-in functions.</li> </ul> <h3 id="how-to-make-ai-behave-development-workflow-in-practice">How to Make AI “Behave”: Development Workflow in Practice</h3> <p>The biggest challenge in using AI-assisted development is quality control—avoiding the creation of “Tech Garbage.”</p> <p><strong>(A) Leverage CLI and Pipes</strong></p> <ul> <li> <strong>AI Should Not Be Held Hostage by Editors</strong>: CLI (Command-Line Interface) tools allow AI to operate on servers and provide great flexibility.</li> <li> <strong>Pipe Concept</strong>: Chain different AI models together, where the output of the previous model becomes the input for the next. For example: First ask Gemini to identify potential issues, then ask Claude to provide fix suggestions and modify the code.</li> </ul> <p><strong>(B) Master Specifications and Design</strong></p> <ul> <li> <strong>Avoid Vibe Coding</strong>: Wishing is not the same as building something usable. To get stable and expected results from AI, you must provide clear grounds.</li> <li> <strong>Few-Shot/One-Shot Examples</strong>: To ensure consistent visual style, use One Shot or Few Shot methods to give AI reference examples (e.g., ViewComponent previews) to “copy,” ensuring the design follows Design Guidelines.</li> <li> <strong>TDD (Test-Driven Development)</strong>: This is key to ensuring core functions (like checkout) don’t break. Even code written by AI must pass test verification.</li> </ul> <p><strong>(C) Maintain Strict Control</strong></p> <ul> <li> <strong>AI is a Collaborator, Not a Decision Maker</strong>: Engineers must still Code Review the output from AI.</li> <li> <strong>Control Git Permissions</strong>: Never let AI operate Git on your behalf. Although you can use <code class="language-plaintext highlighter-rouge">git auto-commit</code> to help AI generate Commit Messages, the ultimate permissions (including permission to install packages) must remain in your hands.</li> <li> <strong>Error Monitoring</strong>: Use tools like Sentry for monitoring to send immediate notifications upon errors. This is much more timely than discovering issues through user reports.</li> </ul> <blockquote> <h5 id="note">NOTE</h5> <p><strong>Conclusion: AI is a Capability Amplifier</strong></p> <p>Engineers will not be replaced by AI, but their roles will change.</p> <ul> <li> <strong>AI is an extension of the driver’s will</strong>: As long as the engineer’s own technical skills are strong enough, AI can amplify your capabilities many times over.</li> <li> <strong>Hone your fundamentals</strong>: AI amplifies your good habits and your bad habits. In the AI era, fundamentals become even more important; “the human must be fiercer than the car.”</li> <li> <strong>Role Transformation</strong>: Engineers will shift from “Code Producers” to “Code Reviewers” and “Architects + Product Thinkers.”</li> </ul> </blockquote> <hr> <h2 id="2-developing-agentic-applications-with-gemini-cli-and-adk">2. Developing Agentic Applications with Gemini CLI and ADK</h2> <p><strong>Speaker: Jimmy Liao (AI GDE, CTO &amp; Co-Founder)</strong></p> <p>The core of this session was how to leverage Google’s Agentic tech stack to solve pain points enterprises face when adopting AI, providing a practical path from rapid validation to formal deployment.</p> <h3 id="three-major-pain-points-of-enterprise-ai-adoption-">Three Major Pain Points of Enterprise AI Adoption 💥</h3> <ol> <li> <strong>Data Security</strong>: Sensitive data cannot be uploaded to external APIs; requires on-premise deployment or solutions with high data control.</li> <li> <strong>Tool Integration</strong>: Internal systems (like Jira, GitLab, internal APIs) operate in silos, lacking a unified integration standard.</li> <li> <strong>Developer Experience (DevX)</strong>: Existence of multiple AI interfaces (CLI, Web UI, API) causes development chaos.</li> </ol> <h3 id="core-tech-stack">Core Tech Stack</h3> <p>To solve the above pain points, the solution is based on three core components:</p> <table> <thead> <tr> <th style="text-align: left">Component Name</th> <th style="text-align: left">Positioning/Role</th> <th style="text-align: left">Note</th> </tr> </thead> <tbody> <tr> <td style="text-align: left"><strong>Gemini CLI</strong></td> <td style="text-align: left">Rapid Validation &amp; Iteration</td> <td style="text-align: left">Google’s official command-line tool, supporting the latest Gemini models with a free tier (50 req/min), suitable for rapid trial and error in Phase 1.</td> </tr> <tr> <td style="text-align: left"><strong>MCP Protocol</strong></td> <td style="text-align: left">Standardized Tool Integration</td> <td style="text-align: left">(Model Context Protocol) Like a “USB protocol” between LLMs and external tools; a tool only needs to be implemented once to be called by multiple Clients.</td> </tr> <tr> <td style="text-align: left"><strong>Google ADK</strong></td> <td style="text-align: left">Agent Automation Orchestration</td> <td style="text-align: left">(Agent Development Kit) Designed for Agent-first architectures, natively supporting MCP, excelling in automatic orchestration of multi-step tools and context memory.</td> </tr> </tbody> </table> <h3 id="demo--benefit-highlights-">Demo &amp; Benefit Highlights ✨</h3> <ul> <li> <strong>FastMCP Taiwan Stock Lookup</strong>: Used FastMCP (only 50 lines of code) to quickly wrap the Stock Exchange API into an MCP Server. Reduced manual query time from 5-10 minutes to under 5 seconds.</li> <li> <strong>Enterprise Document Compliance Check</strong>: Implemented a Document MCP to automatically scan documents for sensitive data (like PII), reducing manual auditing from 3-5 days to 5 seconds.</li> <li> <strong>Google ADK Investment Analysis</strong>: Combined multiple MCP Tools, performing automatic reasoning and complete investment analysis via an ADK Agent, with astonishing efficiency gains.</li> </ul> <blockquote> <h5 id="tip">TIP</h5> <p><strong>Practical Analogy</strong></p> <p>The entire enterprise Agentic development process is like building a corporate super toolbox:</p> <ul> <li> <strong>MCP</strong> is like the unified power socket specification (USB protocol), ensuring all your company’s tools (GitLab, Jira) can connect with AI models in a standardized way.</li> <li> <strong>Google ADK</strong> acts as a senior technician; it can automatically decide which tools to pick up based on your voice commands and complete complex tasks precisely in order.</li> </ul> </blockquote> <hr> <h2 id="3-adka2amcp-practical-analysis">3. ADK/A2A/MCP Practical Analysis</h2> <p><strong>Speaker: Edward Chuang</strong></p> <p>This session dove deep into architectural design in the <strong>AG (Agent)</strong> era. The core composition of an Agent includes: <strong>Runtime (R)</strong>, <strong>Model (Brain)</strong>, and <strong>Tools (Hands and Feet)</strong>.</p> <h3 id="adk-googles-agent-development-framework">ADK: Google’s Agent Development Framework</h3> <p><strong>ADK (Agent Development Kit)</strong> is an open-source framework launched by Google, supporting Single Agent and Multi-Agent (M-Agent) architectures.</p> <p><strong>Types of Tools:</strong> The Agent decides which tool to call based on user requests (Prompts) and its own instructions:</p> <ol> <li> <strong>Function Tool</strong>: User-defined functions.</li> <li> <strong>Building Tool</strong>: ADK built-in tools (like Google Search).</li> <li> <strong>Third-Party Tool / MCP Tool</strong>: Integrating external services, like GitHub API.</li> </ol> <h3 id="-agent-architecture-patterns">🧠 Agent Architecture Patterns</h3> <p><strong>1. Single Agent</strong> One Agent is responsible for judging and invoking multiple tools it possesses. Pros: Simple structure, low latency. Cons: Difficult to handle complex Workflows.</p> <p><strong>2. Multi-Agent</strong> Distributes tasks to multiple Sub-Agents via a <strong>Coordinator/Root Agent</strong>.</p> <ul> <li> <strong>Dispatcher / Coordinator</strong>: Root Agent decides the flow; high modularity.</li> <li> <strong>Sequential</strong>: Pre-defined fixed order (A -&gt; B). Predictable results, but latency stacks up.</li> <li> <strong>Parallel</strong>: Multiple Agents execute simultaneously. High efficiency, but increased complexity and harder debugging.</li> </ul> <p><strong>A2A (Agent-to-Agent) Protocol</strong> This is the “business card” between Agents, allowing one Agent to discover and understand the capabilities and communication methods of other Agents.</p> <blockquote> <h5 id="warning">WARNING</h5> <p><strong>Challenges and Advice</strong></p> <p class="block-warning">The main challenges of Agent systems lie in <strong>Predictability</strong> and <strong>Stability</strong>. It is recommended to start with the simplest architecture (Single Agent) and not over-engineer complex M-Agent Patterns from the start.</p> </blockquote> <hr> <h2 id="4-building-no-code-ai-agents-with-gemini-cli">4. Building No-Code AI Agents with Gemini CLI</h2> <p><strong>Speaker: Will</strong></p> <p>Who says playing with AI Agents requires writing SDKs and connecting APIs? This session demonstrated how to use <strong>Gemini CLI</strong> to transform complex AI applications into business design tasks.</p> <h3 id="core-positioning-of-gemini-cli">Core Positioning of Gemini CLI</h3> <p><strong>Gemini CLI</strong> allows users to interact directly with models via the terminal <strong>without writing code</strong>.</p> <ul> <li> <strong>Simplify Development</strong>: Drastically lowers the technical barrier, allowing focus on Agent design.</li> <li> <strong>Rapid Prototyping</strong>: Build interactive prototypes in minutes.</li> </ul> <h3 id="agent-practice-philosophy-tools-persona-testing">Agent Practice Philosophy: Tools, Persona, Testing</h3> <p>Three elements of building an AI Agent:</p> <ol> <li> <p><strong>Register External Tools (Tools)</strong> To give an Agent “superpowers,” the core lies in <strong>Tool Calling</strong>. Register local scripts (like Shell Scripts) as tools callable by Gemini CLI. <em>Philosophy: Follow the Single Responsibility Principle. Outsource complex execution details to independent CLI tools, letting the LLM focus on logic control.</em></p> </li> <li> <strong>Persona Setting and Prompt Optimization</strong> High-quality Agents rely on precise System Prompts: <ul> <li><strong>Persona Definition</strong></li> <li><strong>Task Instructions</strong></li> <li><strong>Behavioral Boundaries (Constraints)</strong></li> </ul> </li> <li> <strong>Testing and Iteration</strong> Don’t try to accomplish everything with one super-long Prompt. Proceed in <strong>stages</strong>, breaking complex processes down into multiple single-function nodes.</li> </ol> <hr> <h2 id="5-building-human-ai-agent-team-collaboration-models-with-google-adk-and-gemini-cli">5. Building Human-AI Agent Team Collaboration Models with Google ADK and Gemini CLI</h2> <p><strong>Speaker: Simon Liu</strong></p> <p>This session demonstrated a collaboration model for <strong>Human and Agent Teams</strong>. The architectural design follows the principle: “<strong>Large models do big things, small models do small things.</strong>”</p> <h3 id="architecture-planning">Architecture Planning</h3> <ul> <li> <strong>Gemini CLI / Main Agent</strong>: The main coordinator, receiving user commands and performing macro planning.</li> <li> <strong>Google ADK Agents / Sub Agents</strong>: Specialized sub-agents executing specific tasks.</li> <li> <strong>Gemini CLI Extension (adk-agent-extension)</strong>: The bridge connecting the two. The user issues commands via CLI, and the Main Agent calls remote ADK Agents via the Extension.</li> </ul> <h3 id="real-application-cases">Real Application Cases</h3> <ul> <li> <strong>HR Agent</strong>: Assists HR in organizing employee onboarding processes, with multiple sub-agents like Hiring, Salary, and Performance working together.</li> <li> <strong>Database Agent</strong>: Accurately retrieves database (DuckDB/PostgreSQL) data. Through natural language queries for data trends, the Agent automatically executes SQL and returns results.</li> <li> <strong>PM Agent</strong>: Writes PRDs and collaborates with a drawing Agent (Nano extension) to generate architecture diagrams.</li> </ul> <hr> <h2 id="6-the-mcp-workshop-turning-apis-into-ai-ready-tools">6. The MCP Workshop: Turning APIs into AI-Ready Tools</h2> <p><strong>Speaker: Tamas</strong></p> <p>This Workshop was very interesting. To wake everyone up at the start, Tamas led the whole room in some exercise. He asked everyone to raise their hands and clap fast. Just as everyone was seriously following along, he suddenly took out his phone, turned around, and took a selfie with everyone—a spontaneous move that was quite funny and instantly warmed up the atmosphere.</p> <p>After the relaxed opening, Tamas guided everyone step-by-step, from shallow to deep, in a hands-on tutorial on how to build a standard MCP Server.</p> <p>(The content was mainly hands-on, focusing on experiencing how to transform existing APIs into MCP Servers so AI can understand and use them.)</p> <hr> <h2 id="conclusion">Conclusion</h2> <p>After attending DevFest 2025, my deepest feeling is: <strong>The role of the engineer is evolving rapidly.</strong></p> <p>We are no longer just “Coders,” but are transforming into “AI Coordinators” and “Architects.” Tools like Gemini CLI, Google ADK, and the MCP protocol are paving the way for this new era.</p> <p>The future development model will be: <strong>Humans define goals, AI Agent teams collaborate to execute.</strong> Our core value will depend on how we design these Agents, how we define their communication methods, and how we ensure the quality and safety of their output.</p> <p>This is an exciting era; let’s embrace the change and dance with AI!</p> </div> </article> <br> <hr> <br> <ul class="list-disc pl-8"></ul> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/superpowers-sdd-2048-game/">When Vibe Coding Gets Superpowers: A Deep Dive into Fully Automated Precision Development, Building 2048 as a Case Study</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/openspec-sdd-insider-tracker/">Beyond Vibe Coding's Architectural Chaos: Building an SEC Tracker with OpenSpec's 'Artifact-Driven' Workflow, Turning AI into Your Senior Architect</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/speckit-sdd-go-game/">Stop Writing Toys with Vibe Coding: Implementing a Go Game via SDD and SpecKit to Eliminate AI Hallucinations</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/backend%20development/grpc-introduction-for-micro-service/">gRPC Concepts and Implementation (Go &amp; Python) - Building High-Performance Microservices</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/building-ai-code-review-agent/">Building an AI Code Review Agent from Scratch: Simultaneously Boosting Team Efficiency and Code Quality</a> </li> </div> </div> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top"></nav> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Nick Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script> <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script> <script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script> <script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script> <script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script defer src="/assets/js/google-analytics-setup.js"></script> <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script> <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script> <script>
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+    <!-- Header -->
+    <header>
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/">
+          
+            
+              <span class="font-weight-bold">Nick</span>
+            
+            
+            Huang
+          
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">about
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog/">blog
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/cv/">cv
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/projects/">projects
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/repositories/">repositories
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/books/">bookshelf
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+          
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Language Toggle -->
+            <li class="nav-item">
+              
+<div class="language-toggle">
+  <div class="dropdown">
+    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-globe"></i>
+       EN 
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle">
+         
+      <li>
+        <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('zh')">
+           <span class="flag">🇹🇼</span> 中文 
+        </a>
+      </li>
+       
+    </ul>
+  </div>
+</div>
+
+
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="ti ti-sun-moon" id="light-toggle-system"></i>
+                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
+                <i class="ti ti-sun-filled" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row">
+            <!-- main content area -->
+            <div class="col-sm-9">
+
+
+
+
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">DevFest 2025 Notes: Developer Evolution in the Age of AI Agents</h1>
+    <p class="post-meta">
+      Created on December 01, 2025
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      
+        <a href="/blog/2025"> <i class="fa-solid fa-calendar fa-sm"></i> 2025 </a>
+      
+      
+          ·  
+        
+          
+            <a href="/blog/tag/devfest-2025"> <i class="fa-solid fa-hashtag fa-sm"></i> DevFest 2025</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/ai-agents"> <i class="fa-solid fa-hashtag fa-sm"></i> AI Agents</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/gemini"> <i class="fa-solid fa-hashtag fa-sm"></i> Gemini</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/google-adk"> <i class="fa-solid fa-hashtag fa-sm"></i> Google ADK</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/mcp"> <i class="fa-solid fa-hashtag fa-sm"></i> MCP</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/software-engineering"> <i class="fa-solid fa-hashtag fa-sm"></i> Software Engineering</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/developer-tools"> <i class="fa-solid fa-hashtag fa-sm"></i> Developer Tools</a>
+          
+          
+        
+      
+
+      
+          ·  
+        
+          
+            <a href="/blog/category/conference"> <i class="fa-solid fa-tag fa-sm"></i> Conference</a>
+          
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <h2 id="foreword">Foreword</h2>
+
+<p>I recently attended DevFest 2025, and this year’s theme undoubtedly revolved around <strong>AI Agents</strong> and <strong>Agentic Workflows</strong>. From simple Prompt Engineering to giving AI “hands and feet” to execute tasks, the entire paradigm of software development is undergoing a massive shift.</p>
+
+<p>The agenda was packed, ranging from the practical experiences of independent developers to deep dives into Google’s official toolchain (Gemini CLI, ADK), and extending to enterprise-grade application architectures. I’ve compiled key notes from each session, recording the essence of this feast of knowledge, hoping to give friends who couldn’t attend a glimpse into the era of AI Agents.</p>
+
+<hr>
+
+<h2 id="1-a-geeks-romance-building-a-ticketing-system-for-your-own-conference-with-ai">1. A Geek’s Romance: Building a Ticketing System for Your Own Conference with AI</h2>
+
+<p><strong>Speaker: Amos (Ka-Kien Long)</strong></p>
+
+<p>This session left a deep impression on me. Amos shared how he started from “a geek’s romance” and used AI to assist himself in building a fully functional ticketing and sales system, <strong>ezBundle</strong>.</p>
+
+<p>The key takeaway is that while AI is powerful, it is ultimately an extension of the engineer’s will—<strong>fundamentals are king</strong>.</p>
+
+<h3 id="why-build-a-ticketing-system-from-scratch">Why Build a Ticketing System from Scratch?</h3>
+
+<p>Although there are excellent existing platforms like K or A, the speaker encountered some unsolvable pain points:</p>
+
+<ul>
+  <li>
+<strong>Lack of Customization Flexibility</strong>: Existing platforms are difficult to customize for specific details.</li>
+  <li>
+<strong>Cash Flow Needs</strong>: Organizing events often requires paying high venue fees in advance (e.g., the venue fee for WebConf 2025 was up to a million TWD). Existing platforms usually disburse funds only after the event ends, creating huge cash flow pressure for organizers.</li>
+  <li>
+<strong>“Solving your own problem might solve others’ problems too”</strong>: The goal of ezBundle was not to replace major platforms, but to solve the actual problems encountered when organizing his own events.</li>
+</ul>
+
+<h3 id="real-productivity-of-ai-collaboration">Real Productivity of AI Collaboration</h3>
+
+<p>The ezBundle system proved that AI-written code is ready for production environments:</p>
+
+<ul>
+  <li>
+<strong>Astonishing Results from a One-Man Army</strong>: This project was completed by 1 engineer (no PM, no designer) utilizing after-work hours and weekends.</li>
+  <li>
+<strong>Maximized Efficiency</strong>: The entire project consists of about 290,000 lines of code. The speaker estimated that he personally wrote less than 1% of the code.</li>
+  <li>
+<strong>Operational Track Record</strong>: Since its launch on 2025/9/1, membership has exceeded 1,000, and transaction volume is approaching NT$ 2.9 million.</li>
+  <li>
+<strong>Extensive Functionality</strong>: The system handles not only ticketing but also sales of physical goods and digital content, and integrates multiple payment gateways (NewebPay, ECPay, LinePay), QR Code ticket verification, surveys, and check-in functions.</li>
+</ul>
+
+<h3 id="how-to-make-ai-behave-development-workflow-in-practice">How to Make AI “Behave”: Development Workflow in Practice</h3>
+
+<p>The biggest challenge in using AI-assisted development is quality control—avoiding the creation of “Tech Garbage.”</p>
+
+<p><strong>(A) Leverage CLI and Pipes</strong></p>
+
+<ul>
+  <li>
+<strong>AI Should Not Be Held Hostage by Editors</strong>: CLI (Command-Line Interface) tools allow AI to operate on servers and provide great flexibility.</li>
+  <li>
+<strong>Pipe Concept</strong>: Chain different AI models together, where the output of the previous model becomes the input for the next. For example: First ask Gemini to identify potential issues, then ask Claude to provide fix suggestions and modify the code.</li>
+</ul>
+
+<p><strong>(B) Master Specifications and Design</strong></p>
+
+<ul>
+  <li>
+<strong>Avoid Vibe Coding</strong>: Wishing is not the same as building something usable. To get stable and expected results from AI, you must provide clear grounds.</li>
+  <li>
+<strong>Few-Shot/One-Shot Examples</strong>: To ensure consistent visual style, use One Shot or Few Shot methods to give AI reference examples (e.g., ViewComponent previews) to “copy,” ensuring the design follows Design Guidelines.</li>
+  <li>
+<strong>TDD (Test-Driven Development)</strong>: This is key to ensuring core functions (like checkout) don’t break. Even code written by AI must pass test verification.</li>
+</ul>
+
+<p><strong>(C) Maintain Strict Control</strong></p>
+
+<ul>
+  <li>
+<strong>AI is a Collaborator, Not a Decision Maker</strong>: Engineers must still Code Review the output from AI.</li>
+  <li>
+<strong>Control Git Permissions</strong>: Never let AI operate Git on your behalf. Although you can use <code class="language-plaintext highlighter-rouge">git auto-commit</code> to help AI generate Commit Messages, the ultimate permissions (including permission to install packages) must remain in your hands.</li>
+  <li>
+<strong>Error Monitoring</strong>: Use tools like Sentry for monitoring to send immediate notifications upon errors. This is much more timely than discovering issues through user reports.</li>
+</ul>
+
+<blockquote>
+  <h5 id="note">NOTE</h5>
+
+  <p><strong>Conclusion: AI is a Capability Amplifier</strong></p>
+
+  <p>Engineers will not be replaced by AI, but their roles will change.</p>
+
+  <ul>
+    <li>
+<strong>AI is an extension of the driver’s will</strong>: As long as the engineer’s own technical skills are strong enough, AI can amplify your capabilities many times over.</li>
+    <li>
+<strong>Hone your fundamentals</strong>: AI amplifies your good habits and your bad habits. In the AI era, fundamentals become even more important; “the human must be fiercer than the car.”</li>
+    <li>
+<strong>Role Transformation</strong>: Engineers will shift from “Code Producers” to “Code Reviewers” and “Architects + Product Thinkers.”</li>
+  </ul>
+</blockquote>
+
+<hr>
+
+<h2 id="2-developing-agentic-applications-with-gemini-cli-and-adk">2. Developing Agentic Applications with Gemini CLI and ADK</h2>
+
+<p><strong>Speaker: Jimmy Liao (AI GDE, CTO &amp; Co-Founder)</strong></p>
+
+<p>The core of this session was how to leverage Google’s Agentic tech stack to solve pain points enterprises face when adopting AI, providing a practical path from rapid validation to formal deployment.</p>
+
+<h3 id="three-major-pain-points-of-enterprise-ai-adoption-">Three Major Pain Points of Enterprise AI Adoption 💥</h3>
+
+<ol>
+  <li>
+<strong>Data Security</strong>: Sensitive data cannot be uploaded to external APIs; requires on-premise deployment or solutions with high data control.</li>
+  <li>
+<strong>Tool Integration</strong>: Internal systems (like Jira, GitLab, internal APIs) operate in silos, lacking a unified integration standard.</li>
+  <li>
+<strong>Developer Experience (DevX)</strong>: Existence of multiple AI interfaces (CLI, Web UI, API) causes development chaos.</li>
+</ol>
+
+<h3 id="core-tech-stack">Core Tech Stack</h3>
+
+<p>To solve the above pain points, the solution is based on three core components:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Component Name</th>
+      <th style="text-align: left">Positioning/Role</th>
+      <th style="text-align: left">Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Gemini CLI</strong></td>
+      <td style="text-align: left">Rapid Validation &amp; Iteration</td>
+      <td style="text-align: left">Google’s official command-line tool, supporting the latest Gemini models with a free tier (50 req/min), suitable for rapid trial and error in Phase 1.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>MCP Protocol</strong></td>
+      <td style="text-align: left">Standardized Tool Integration</td>
+      <td style="text-align: left">(Model Context Protocol) Like a “USB protocol” between LLMs and external tools; a tool only needs to be implemented once to be called by multiple Clients.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Google ADK</strong></td>
+      <td style="text-align: left">Agent Automation Orchestration</td>
+      <td style="text-align: left">(Agent Development Kit) Designed for Agent-first architectures, natively supporting MCP, excelling in automatic orchestration of multi-step tools and context memory.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="demo--benefit-highlights-">Demo &amp; Benefit Highlights ✨</h3>
+
+<ul>
+  <li>
+<strong>FastMCP Taiwan Stock Lookup</strong>: Used FastMCP (only 50 lines of code) to quickly wrap the Stock Exchange API into an MCP Server. Reduced manual query time from 5-10 minutes to under 5 seconds.</li>
+  <li>
+<strong>Enterprise Document Compliance Check</strong>: Implemented a Document MCP to automatically scan documents for sensitive data (like PII), reducing manual auditing from 3-5 days to 5 seconds.</li>
+  <li>
+<strong>Google ADK Investment Analysis</strong>: Combined multiple MCP Tools, performing automatic reasoning and complete investment analysis via an ADK Agent, with astonishing efficiency gains.</li>
+</ul>
+
+<blockquote>
+  <h5 id="tip">TIP</h5>
+
+  <p><strong>Practical Analogy</strong></p>
+
+  <p>The entire enterprise Agentic development process is like building a corporate super toolbox:</p>
+
+  <ul>
+    <li>
+<strong>MCP</strong> is like the unified power socket specification (USB protocol), ensuring all your company’s tools (GitLab, Jira) can connect with AI models in a standardized way.</li>
+    <li>
+<strong>Google ADK</strong> acts as a senior technician; it can automatically decide which tools to pick up based on your voice commands and complete complex tasks precisely in order.</li>
+  </ul>
+</blockquote>
+
+<hr>
+
+<h2 id="3-adka2amcp-practical-analysis">3. ADK/A2A/MCP Practical Analysis</h2>
+
+<p><strong>Speaker: Edward Chuang</strong></p>
+
+<p>This session dove deep into architectural design in the <strong>AG (Agent)</strong> era. The core composition of an Agent includes: <strong>Runtime (R)</strong>, <strong>Model (Brain)</strong>, and <strong>Tools (Hands and Feet)</strong>.</p>
+
+<h3 id="adk-googles-agent-development-framework">ADK: Google’s Agent Development Framework</h3>
+
+<p><strong>ADK (Agent Development Kit)</strong> is an open-source framework launched by Google, supporting Single Agent and Multi-Agent (M-Agent) architectures.</p>
+
+<p><strong>Types of Tools:</strong>
+The Agent decides which tool to call based on user requests (Prompts) and its own instructions:</p>
+
+<ol>
+  <li>
+<strong>Function Tool</strong>: User-defined functions.</li>
+  <li>
+<strong>Building Tool</strong>: ADK built-in tools (like Google Search).</li>
+  <li>
+<strong>Third-Party Tool / MCP Tool</strong>: Integrating external services, like GitHub API.</li>
+</ol>
+
+<h3 id="-agent-architecture-patterns">🧠 Agent Architecture Patterns</h3>
+
+<p><strong>1. Single Agent</strong>
+One Agent is responsible for judging and invoking multiple tools it possesses. Pros: Simple structure, low latency. Cons: Difficult to handle complex Workflows.</p>
+
+<p><strong>2. Multi-Agent</strong>
+Distributes tasks to multiple Sub-Agents via a <strong>Coordinator/Root Agent</strong>.</p>
+
+<ul>
+  <li>
+<strong>Dispatcher / Coordinator</strong>: Root Agent decides the flow; high modularity.</li>
+  <li>
+<strong>Sequential</strong>: Pre-defined fixed order (A -&gt; B). Predictable results, but latency stacks up.</li>
+  <li>
+<strong>Parallel</strong>: Multiple Agents execute simultaneously. High efficiency, but increased complexity and harder debugging.</li>
+</ul>
+
+<p><strong>A2A (Agent-to-Agent) Protocol</strong>
+This is the “business card” between Agents, allowing one Agent to discover and understand the capabilities and communication methods of other Agents.</p>
+
+<blockquote>
+  <h5 id="warning">WARNING</h5>
+
+  <p><strong>Challenges and Advice</strong></p>
+
+  <p class="block-warning">The main challenges of Agent systems lie in <strong>Predictability</strong> and <strong>Stability</strong>.
+It is recommended to start with the simplest architecture (Single Agent) and not over-engineer complex M-Agent Patterns from the start.</p>
+</blockquote>
+
+<hr>
+
+<h2 id="4-building-no-code-ai-agents-with-gemini-cli">4. Building No-Code AI Agents with Gemini CLI</h2>
+
+<p><strong>Speaker: Will</strong></p>
+
+<p>Who says playing with AI Agents requires writing SDKs and connecting APIs? This session demonstrated how to use <strong>Gemini CLI</strong> to transform complex AI applications into business design tasks.</p>
+
+<h3 id="core-positioning-of-gemini-cli">Core Positioning of Gemini CLI</h3>
+
+<p><strong>Gemini CLI</strong> allows users to interact directly with models via the terminal <strong>without writing code</strong>.</p>
+
+<ul>
+  <li>
+<strong>Simplify Development</strong>: Drastically lowers the technical barrier, allowing focus on Agent design.</li>
+  <li>
+<strong>Rapid Prototyping</strong>: Build interactive prototypes in minutes.</li>
+</ul>
+
+<h3 id="agent-practice-philosophy-tools-persona-testing">Agent Practice Philosophy: Tools, Persona, Testing</h3>
+
+<p>Three elements of building an AI Agent:</p>
+
+<ol>
+  <li>
+    <p><strong>Register External Tools (Tools)</strong>
+To give an Agent “superpowers,” the core lies in <strong>Tool Calling</strong>. Register local scripts (like Shell Scripts) as tools callable by Gemini CLI.
+<em>Philosophy: Follow the Single Responsibility Principle. Outsource complex execution details to independent CLI tools, letting the LLM focus on logic control.</em></p>
+  </li>
+  <li>
+<strong>Persona Setting and Prompt Optimization</strong>
+High-quality Agents rely on precise System Prompts:
+    <ul>
+      <li><strong>Persona Definition</strong></li>
+      <li><strong>Task Instructions</strong></li>
+      <li><strong>Behavioral Boundaries (Constraints)</strong></li>
+    </ul>
+  </li>
+  <li>
+<strong>Testing and Iteration</strong>
+Don’t try to accomplish everything with one super-long Prompt. Proceed in <strong>stages</strong>, breaking complex processes down into multiple single-function nodes.</li>
+</ol>
+
+<hr>
+
+<h2 id="5-building-human-ai-agent-team-collaboration-models-with-google-adk-and-gemini-cli">5. Building Human-AI Agent Team Collaboration Models with Google ADK and Gemini CLI</h2>
+
+<p><strong>Speaker: Simon Liu</strong></p>
+
+<p>This session demonstrated a collaboration model for <strong>Human and Agent Teams</strong>. The architectural design follows the principle: “<strong>Large models do big things, small models do small things.</strong>”</p>
+
+<h3 id="architecture-planning">Architecture Planning</h3>
+
+<ul>
+  <li>
+<strong>Gemini CLI / Main Agent</strong>: The main coordinator, receiving user commands and performing macro planning.</li>
+  <li>
+<strong>Google ADK Agents / Sub Agents</strong>: Specialized sub-agents executing specific tasks.</li>
+  <li>
+<strong>Gemini CLI Extension (adk-agent-extension)</strong>: The bridge connecting the two. The user issues commands via CLI, and the Main Agent calls remote ADK Agents via the Extension.</li>
+</ul>
+
+<h3 id="real-application-cases">Real Application Cases</h3>
+
+<ul>
+  <li>
+<strong>HR Agent</strong>: Assists HR in organizing employee onboarding processes, with multiple sub-agents like Hiring, Salary, and Performance working together.</li>
+  <li>
+<strong>Database Agent</strong>: Accurately retrieves database (DuckDB/PostgreSQL) data. Through natural language queries for data trends, the Agent automatically executes SQL and returns results.</li>
+  <li>
+<strong>PM Agent</strong>: Writes PRDs and collaborates with a drawing Agent (Nano extension) to generate architecture diagrams.</li>
+</ul>
+
+<hr>
+
+<h2 id="6-the-mcp-workshop-turning-apis-into-ai-ready-tools">6. The MCP Workshop: Turning APIs into AI-Ready Tools</h2>
+
+<p><strong>Speaker: Tamas</strong></p>
+
+<p>This Workshop was very interesting. To wake everyone up at the start, Tamas led the whole room in some exercise. He asked everyone to raise their hands and clap fast. Just as everyone was seriously following along, he suddenly took out his phone, turned around, and took a selfie with everyone—a spontaneous move that was quite funny and instantly warmed up the atmosphere.</p>
+
+<p>After the relaxed opening, Tamas guided everyone step-by-step, from shallow to deep, in a hands-on tutorial on how to build a standard MCP Server.</p>
+
+<p>(The content was mainly hands-on, focusing on experiencing how to transform existing APIs into MCP Servers so AI can understand and use them.)</p>
+
+<hr>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>After attending DevFest 2025, my deepest feeling is: <strong>The role of the engineer is evolving rapidly.</strong></p>
+
+<p>We are no longer just “Coders,” but are transforming into “AI Coordinators” and “Architects.” Tools like Gemini CLI, Google ADK, and the MCP protocol are paving the way for this new era.</p>
+
+<p>The future development model will be: <strong>Humans define goals, AI Agent teams collaborate to execute.</strong> Our core value will depend on how we design these Agents, how we define their communication methods, and how we ensure the quality and safety of their output.</p>
+
+<p>This is an exciting era; let’s embrace the change and dance with AI!</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+  
+    
+    <br>
+    <hr>
+    <br>
+    <ul class="list-disc pl-8"></ul>
+
+    <!-- Adds related posts to the end of an article -->
+    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/superpowers-sdd-2048-game/">When Vibe Coding Gets Superpowers: A Deep Dive into Fully Automated Precision Development, Building 2048 as a Case Study</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/openspec-sdd-insider-tracker/">Beyond Vibe Coding's Architectural Chaos: Building an SEC Tracker with OpenSpec's 'Artifact-Driven' Workflow, Turning AI into Your Senior Architect</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/speckit-sdd-go-game/">Stop Writing Toys with Vibe Coding: Implementing a Go Game via SDD and SpecKit to Eliminate AI Hallucinations</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/backend%20development/grpc-introduction-for-micro-service/">gRPC Concepts and Implementation (Go &amp; Python) - Building High-Performance Microservices</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/building-ai-code-review-agent/">Building an AI Code Review Agent from Scratch: Simultaneously Boosting Team Efficiency and Code Quality</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+</div>
+</div>
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-sm-3">
+              <nav id="toc-sidebar" class="sticky-top"></nav>
+            </div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="fixed-bottom" role="contentinfo">
+    <div class="container mt-0">
+      
+  © Copyright 2026
+  Nick
+  
+  Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script>
+<script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script>
+<script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script>
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+  <!-- Analytics -->
+  <script defer src="/assets/js/google-analytics-setup.js"></script>
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
     addBackToTop();
-  </script> <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script> <script src="/assets/js/search-data.js"></script> <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script> </body> </html>
+  </script>
+
+
+
+  <!-- Search -->
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
+  <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script>
+
+
+
+
+  </body>
+</html>

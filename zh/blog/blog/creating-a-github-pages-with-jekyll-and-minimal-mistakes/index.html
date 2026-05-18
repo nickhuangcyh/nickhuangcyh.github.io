@@ -1,6 +1,97 @@
-<!DOCTYPE html> <html lang="zh"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA"> <meta http-equiv="Permissions-Policy" content="interest-cohort=()"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Jekyll 建站完整教學：使用 Minimal Mistakes 主題在 GitHub Pages 架設部落格 | Nick Huang </title> <meta name="author" content="Nick Huang"> <meta name="description" content="學會從零開始使用 Jekyll 與 Minimal Mistakes 主題建置個人部落格。詳細解析 GitHub Pages 部署、主題客製化、網站配置與內容管理流程。包含 Ruby 環境設定、Markdown 寫作與 SEO 優化。"> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://nickhuangcyh.github.io/blog/blog/creating-a-github-pages-with-jekyll-and-minimal-mistakes/"> <script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+<!DOCTYPE html>
+<html lang="zh">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+  <!-- Website verification -->
+  
+    <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA">
+  
+  
+  <!--
+    Avoid warning on Google Chrome Error with Permissions-Policy header:
+    Origin trial controlled feature not enabled: 'interest-cohort'.
+    see https://stackoverflow.com/a/75119417
+  -->
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      Jekyll 建站完整教學：使用 Minimal Mistakes 主題在 GitHub Pages 架設部落格 | Nick Huang
+    
+  
+</title>
+<meta name="author" content="Nick Huang">
+<meta name="description" content="學會從零開始使用 Jekyll 與 Minimal Mistakes 主題建置個人部落格。詳細解析 GitHub Pages 部署、主題客製化、網站配置與內容管理流程。包含 Ruby 環境設定、Markdown 寫作與 SEO 優化。">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
+<link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="https://nickhuangcyh.github.io/blog/blog/creating-a-github-pages-with-jekyll-and-minimal-mistakes/">
+
+<!-- Dark Mode -->
+<script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script>
+
+  <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
+  <script>
     initTheme();
-  </script> <script src="/assets/js/language-detection.js?46ca8f84d79546f44766b63b6fc18648"></script> <script async src="https://www.googletagmanager.com/gtag/js?id=G-446Z2KNTGH"></script> <script>
+  </script>
+
+
+<!-- Language Detection -->
+<script src="/assets/js/language-detection.js?46ca8f84d79546f44766b63b6fc18648"></script>
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-446Z2KNTGH"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       dataLayer.push(arguments);
@@ -8,9 +99,1157 @@
     gtag('js', new Date());
 
     gtag('config', 'G-446Z2KNTGH');
-  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/zh/"> <span class="font-weight-bold">Nick</span> Huang </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item "> <a class="nav-link" href="/books/">bookshelf </a> </li> <li class="nav-item"> <button id="search-toggle" title="Search" onclick="openSearchModal()"> <span class="nav-link">ctrl k <i class="ti ti-search"></i></span> </button> </li> <li class="nav-item"> <div class="language-toggle"> <div class="dropdown"> <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-globe"></i> 中文 </button> <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle"> <li> <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('en')"> <span class="flag">🇺🇸</span> English </a> </li> </ul> </div> </div> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="ti ti-sun-moon" id="light-toggle-system"></i> <i class="ti ti-moon-filled" id="light-toggle-dark"></i> <i class="ti ti-sun-filled" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title">Jekyll 建站完整教學：使用 Minimal Mistakes 主題在 GitHub Pages 架設部落格</h1> <p class="post-meta"> Created on December 29, 2021 </p> <p class="post-tags"> <a href="/blog/2021"> <i class="fa-solid fa-calendar fa-sm"></i> 2021 </a>   ·   <a href="/blog/tag/jekyll-tutorial"> <i class="fa-solid fa-hashtag fa-sm"></i> Jekyll Tutorial</a>   <a href="/blog/tag/minimal-mistakes-theme"> <i class="fa-solid fa-hashtag fa-sm"></i> Minimal Mistakes Theme</a>   <a href="/blog/tag/github-pages"> <i class="fa-solid fa-hashtag fa-sm"></i> GitHub Pages</a>   <a href="/blog/tag/static-site-generator"> <i class="fa-solid fa-hashtag fa-sm"></i> Static Site Generator</a>   <a href="/blog/tag/blog-setup"> <i class="fa-solid fa-hashtag fa-sm"></i> Blog Setup</a>   <a href="/blog/tag/ruby-development"> <i class="fa-solid fa-hashtag fa-sm"></i> Ruby Development</a>   <a href="/blog/tag/markdown-writing"> <i class="fa-solid fa-hashtag fa-sm"></i> Markdown Writing</a>   <a href="/blog/tag/website-deployment"> <i class="fa-solid fa-hashtag fa-sm"></i> Website Deployment</a>   ·   <a href="/blog/category/blog"> <i class="fa-solid fa-tag fa-sm"></i> Blog</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <h2 id="為什麼寫-blog">為什麼寫 Blog？</h2> <p>在工作上，我經常從技術網站與部落格文章中獲得啟發與幫助。這些優質內容不僅解決了我的問題，也讓我學到了新技術。</p> <p>為了記錄自己所學的知識，也為了將來的複習查閱，我決定開始寫技術 Blog。同時，我也希望能透過分享經驗，幫助到其他開發者。</p> <hr> <h2 id="為什麼選擇-jekyll--minimal-mistakes">為什麼選擇 Jekyll + Minimal Mistakes？</h2> <p>在眾多部落格架設選擇中，Jekyll 搭配 Minimal Mistakes 主題是個絕佳組合。讓我們來看看它們各自的優勢。</p> <hr> <h3 id="jekyll-的優點">Jekyll 的優點：</h3> <ol> <li> <strong>簡單易用</strong>：支援 Markdown 寫作，自動轉換為 HTML 靜態頁面</li> <li> <strong>社群支持</strong>：社群活躍、主題豐富，遇到問題容易找到解決方案</li> <li> <strong>高度彈性</strong>：可高度自訂，滿足各種客製化需求</li> </ol> <hr> <h3 id="minimal-mistakes-的特色">Minimal Mistakes 的特色：</h3> <ol> <li> <strong>廣受歡迎</strong>：超過 9k GitHub stars，使用者眾多，代表品質可靠</li> <li> <strong>現代化設計</strong>：支援 Dark Mode（暗黑主題），符合當前設計趨勢</li> <li> <strong>優質體驗</strong>：圖片可放大功能，閱讀體驗類似 Medium 平台</li> </ol> <blockquote> <p><strong>個人經驗分享</strong><br> 我原先使用 Octopress，但因為已停止維護，加上主題較少，最終選擇 Jekyll 重建部落格 👉 <a href="http://octopress.org/" rel="external nofollow noopener" target="_blank">Octopress</a></p> </blockquote> <p>現在，讓我們一步步建置起自己的 Blog 吧！</p> <hr> <h2 id="為什麼選用-github-pages">為什麼選用 GitHub Pages？</h2> <p>GitHub Pages 是架設靜態網站的絕佳選擇，主要有以下優勢：</p> <p><strong>完全免費</strong>：不需要花費任何費用，也不需要自行管理伺服器或 SSL 憑證。只需要將程式碼 Push 到 GitHub，GitHub Pages 就會自動幫你建置和部署網站。</p> <p><strong>擴展性佳</strong>：未來如果你想要使用自己的網域名稱，也可以輕鬆綁定自訂網域與 SSL 憑證。</p> <hr> <h2 id="事前準備">事前準備</h2> <p>在開始架設部落格之前，我們需要先準備好開發環境。這個章節會帶你逐步安裝所有必要的工具和軟體。</p> <hr> <h3 id="註冊-github-帳號">註冊 GitHub 帳號</h3> <p>首先，你需要一個 GitHub 帳號來託管你的部落格程式碼。</p> <p>👉 <a href="https://github.com" rel="external nofollow noopener" target="_blank">前往註冊</a></p> <p>如果你已經有 GitHub 帳號，可以直接跳過這個步驟。</p> <hr> <h3 id="安裝-git-做版本控管">安裝 Git 做版本控管</h3> <p>Git 是必要的版本控制工具，用來管理你的程式碼變更。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>git
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+    <!-- Header -->
+    <header>
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/zh/">
+          
+            
+              <span class="font-weight-bold">Nick</span>
+            
+            
+            Huang
+          
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">about
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog/">blog
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/cv/">cv
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/projects/">projects
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/repositories/">repositories
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/books/">bookshelf
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+          
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Language Toggle -->
+            <li class="nav-item">
+              
+<div class="language-toggle">
+  <div class="dropdown">
+    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-globe"></i>
+       中文 
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle">
+       
+      <li>
+        <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('en')">
+          
+          <span class="flag">🇺🇸</span> English 
+        </a>
+      </li>
+         
+    </ul>
+  </div>
+</div>
+
+
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="ti ti-sun-moon" id="light-toggle-system"></i>
+                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
+                <i class="ti ti-sun-filled" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row">
+            <!-- main content area -->
+            <div class="col-sm-9">
+
+
+
+
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">Jekyll 建站完整教學：使用 Minimal Mistakes 主題在 GitHub Pages 架設部落格</h1>
+    <p class="post-meta">
+      Created on December 29, 2021
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      
+        <a href="/blog/2021"> <i class="fa-solid fa-calendar fa-sm"></i> 2021 </a>
+      
+      
+          ·  
+        
+          
+            <a href="/blog/tag/jekyll-tutorial"> <i class="fa-solid fa-hashtag fa-sm"></i> Jekyll Tutorial</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/minimal-mistakes-theme"> <i class="fa-solid fa-hashtag fa-sm"></i> Minimal Mistakes Theme</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/github-pages"> <i class="fa-solid fa-hashtag fa-sm"></i> GitHub Pages</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/static-site-generator"> <i class="fa-solid fa-hashtag fa-sm"></i> Static Site Generator</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/blog-setup"> <i class="fa-solid fa-hashtag fa-sm"></i> Blog Setup</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/ruby-development"> <i class="fa-solid fa-hashtag fa-sm"></i> Ruby Development</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/markdown-writing"> <i class="fa-solid fa-hashtag fa-sm"></i> Markdown Writing</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/website-deployment"> <i class="fa-solid fa-hashtag fa-sm"></i> Website Deployment</a>
+          
+          
+        
+      
+
+      
+          ·  
+        
+          
+            <a href="/blog/category/blog"> <i class="fa-solid fa-tag fa-sm"></i> Blog</a>
+          
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <h2 id="為什麼寫-blog">為什麼寫 Blog？</h2>
+
+<p>在工作上，我經常從技術網站與部落格文章中獲得啟發與幫助。這些優質內容不僅解決了我的問題，也讓我學到了新技術。</p>
+
+<p>為了記錄自己所學的知識，也為了將來的複習查閱，我決定開始寫技術 Blog。同時，我也希望能透過分享經驗，幫助到其他開發者。</p>
+
+<hr>
+
+<h2 id="為什麼選擇-jekyll--minimal-mistakes">為什麼選擇 Jekyll + Minimal Mistakes？</h2>
+
+<p>在眾多部落格架設選擇中，Jekyll 搭配 Minimal Mistakes 主題是個絕佳組合。讓我們來看看它們各自的優勢。</p>
+
+<hr>
+
+<h3 id="jekyll-的優點">Jekyll 的優點：</h3>
+
+<ol>
+  <li>
+<strong>簡單易用</strong>：支援 Markdown 寫作，自動轉換為 HTML 靜態頁面</li>
+  <li>
+<strong>社群支持</strong>：社群活躍、主題豐富，遇到問題容易找到解決方案</li>
+  <li>
+<strong>高度彈性</strong>：可高度自訂，滿足各種客製化需求</li>
+</ol>
+
+<hr>
+
+<h3 id="minimal-mistakes-的特色">Minimal Mistakes 的特色：</h3>
+
+<ol>
+  <li>
+<strong>廣受歡迎</strong>：超過 9k GitHub stars，使用者眾多，代表品質可靠</li>
+  <li>
+<strong>現代化設計</strong>：支援 Dark Mode（暗黑主題），符合當前設計趨勢</li>
+  <li>
+<strong>優質體驗</strong>：圖片可放大功能，閱讀體驗類似 Medium 平台</li>
+</ol>
+
+<blockquote>
+  <p><strong>個人經驗分享</strong><br>
+我原先使用 Octopress，但因為已停止維護，加上主題較少，最終選擇 Jekyll 重建部落格 👉 <a href="http://octopress.org/" rel="external nofollow noopener" target="_blank">Octopress</a></p>
+</blockquote>
+
+<p>現在，讓我們一步步建置起自己的 Blog 吧！</p>
+
+<hr>
+
+<h2 id="為什麼選用-github-pages">為什麼選用 GitHub Pages？</h2>
+
+<p>GitHub Pages 是架設靜態網站的絕佳選擇，主要有以下優勢：</p>
+
+<p><strong>完全免費</strong>：不需要花費任何費用，也不需要自行管理伺服器或 SSL 憑證。只需要將程式碼 Push 到 GitHub，GitHub Pages 就會自動幫你建置和部署網站。</p>
+
+<p><strong>擴展性佳</strong>：未來如果你想要使用自己的網域名稱，也可以輕鬆綁定自訂網域與 SSL 憑證。</p>
+
+<hr>
+
+<h2 id="事前準備">事前準備</h2>
+
+<p>在開始架設部落格之前，我們需要先準備好開發環境。這個章節會帶你逐步安裝所有必要的工具和軟體。</p>
+
+<hr>
+
+<h3 id="註冊-github-帳號">註冊 GitHub 帳號</h3>
+
+<p>首先，你需要一個 GitHub 帳號來託管你的部落格程式碼。</p>
+
+<p>👉 <a href="https://github.com" rel="external nofollow noopener" target="_blank">前往註冊</a></p>
+
+<p>如果你已經有 GitHub 帳號，可以直接跳過這個步驟。</p>
+
+<hr>
+
+<h3 id="安裝-git-做版本控管">安裝 Git 做版本控管</h3>
+
+<p>Git 是必要的版本控制工具，用來管理你的程式碼變更。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>git
 git <span class="nt">--version</span>
-</code></pre></div></div> <p>執行 <code class="language-plaintext highlighter-rouge">git --version</code> 確認安裝成功，應該會顯示 Git 的版本號。</p> <hr> <h3 id="安裝-rbenvruby-版本管理工具">安裝 rbenv（Ruby 版本管理工具）</h3> <p>rbenv 可以幫你管理不同版本的 Ruby，避免版本衝突問題。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>rbenv
+</code></pre></div></div>
+
+<p>執行 <code class="language-plaintext highlighter-rouge">git --version</code> 確認安裝成功，應該會顯示 Git 的版本號。</p>
+
+<hr>
+
+<h3 id="安裝-rbenvruby-版本管理工具">安裝 rbenv（Ruby 版本管理工具）</h3>
+
+<p>rbenv 可以幫你管理不同版本的 Ruby，避免版本衝突問題。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew <span class="nb">install </span>rbenv
 rbenv init
 
 <span class="c"># 若使用 Zsh，加入到 ~/.zshrc</span>
@@ -18,49 +1257,696 @@ rbenv init
 <span class="nb">echo</span> <span class="s1">'eval "$(rbenv init -)"'</span> <span class="o">&gt;&gt;</span> ~/.zshrc
 
 rbenv <span class="nt">-v</span>
-</code></pre></div></div> <p>安裝完成後，重新載入終端機設定或重開終端機。</p> <hr> <h3 id="安裝-ruby">安裝 Ruby</h3> <p>Jekyll 需要 Ruby 環境才能運行，我們使用 rbenv 來安裝特定版本的 Ruby。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv <span class="nb">install </span>3.0.0
+</code></pre></div></div>
+
+<p>安裝完成後，重新載入終端機設定或重開終端機。</p>
+
+<hr>
+
+<h3 id="安裝-ruby">安裝 Ruby</h3>
+
+<p>Jekyll 需要 Ruby 環境才能運行，我們使用 rbenv 來安裝特定版本的 Ruby。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rbenv <span class="nb">install </span>3.0.0
 rbenv global 3.0.0
 rbenv rehash
-</code></pre></div></div> <p>這個步驟可能需要幾分鐘時間，請耐心等待編譯完成。</p> <hr> <h3 id="檢查-rubygems-是否正常">檢查 RubyGems 是否正常</h3> <p>RubyGems 是 Ruby 的套件管理系統，確保它運作正常。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem update <span class="nt">--system</span>
+</code></pre></div></div>
+
+<p>這個步驟可能需要幾分鐘時間，請耐心等待編譯完成。</p>
+
+<hr>
+
+<h3 id="檢查-rubygems-是否正常">檢查 RubyGems 是否正常</h3>
+
+<p>RubyGems 是 Ruby 的套件管理系統，確保它運作正常。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gem update <span class="nt">--system</span>
 gem <span class="nt">-v</span>
-</code></pre></div></div> <p>如果顯示版本號，代表 RubyGems 已經準備就緒。</p> <hr> <h3 id="確認-gcc--make-安裝狀態">確認 GCC / Make 安裝狀態</h3> <p>這些編譯工具是安裝某些 Ruby gems 時所必需的。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc <span class="nt">-v</span>
+</code></pre></div></div>
+
+<p>如果顯示版本號，代表 RubyGems 已經準備就緒。</p>
+
+<hr>
+
+<h3 id="確認-gcc--make-安裝狀態">確認 GCC / Make 安裝狀態</h3>
+
+<p>這些編譯工具是安裝某些 Ruby gems 時所必需的。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc <span class="nt">-v</span>
 g++ <span class="nt">-v</span>
 make <span class="nt">-v</span>
-</code></pre></div></div> <p>每個指令都應該顯示對應的版本資訊。</p> <blockquote> <h5 id="重要提醒">重要提醒</h5> <p class="block-warning">上述環境若有任何缺漏，可能導致 Jekyll 安裝過程中發生錯誤。建議在繼續下一步之前，確保所有工具都已正確安裝。</p> </blockquote> <hr> <h2 id="建立-jekyll-blog-網站">建立 Jekyll Blog 網站</h2> <p>現在環境準備完成，我們可以開始建立 Jekyll 網站了。這個章節會按照 GitHub 官方建議的方式來建置網站。</p> <p>參考官方教學：<a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll" rel="external nofollow noopener" target="_blank">Creating a GitHub Pages site with Jekyll</a></p> <hr> <h3 id="切換到你的開發資料夾">切換到你的開發資料夾</h3> <p>首先，移動到你想要存放專案的目錄。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>PARENT-FOLDER
-</code></pre></div></div> <p>請將 <code class="language-plaintext highlighter-rouge">PARENT-FOLDER</code> 替換成你實際的專案目錄路徑。</p> <hr> <h3 id="初始化-git-專案">初始化 Git 專案</h3> <p>建立一個新的 Git 專案資料夾，並進入該目錄。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init blog
+</code></pre></div></div>
+
+<p>每個指令都應該顯示對應的版本資訊。</p>
+
+<blockquote>
+  <h5 id="重要提醒">重要提醒</h5>
+
+  <p class="block-warning">上述環境若有任何缺漏，可能導致 Jekyll 安裝過程中發生錯誤。建議在繼續下一步之前，確保所有工具都已正確安裝。</p>
+</blockquote>
+
+<hr>
+
+<h2 id="建立-jekyll-blog-網站">建立 Jekyll Blog 網站</h2>
+
+<p>現在環境準備完成，我們可以開始建立 Jekyll 網站了。這個章節會按照 GitHub 官方建議的方式來建置網站。</p>
+
+<p>參考官方教學：<a href="https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll" rel="external nofollow noopener" target="_blank">Creating a GitHub Pages site with Jekyll</a></p>
+
+<hr>
+
+<h3 id="切換到你的開發資料夾">切換到你的開發資料夾</h3>
+
+<p>首先，移動到你想要存放專案的目錄。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd </span>PARENT-FOLDER
+</code></pre></div></div>
+
+<p>請將 <code class="language-plaintext highlighter-rouge">PARENT-FOLDER</code> 替換成你實際的專案目錄路徑。</p>
+
+<hr>
+
+<h3 id="初始化-git-專案">初始化 Git 專案</h3>
+
+<p>建立一個新的 Git 專案資料夾，並進入該目錄。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git init blog
 <span class="nb">cd </span>blog
-</code></pre></div></div> <p>這會建立一個名為 <code class="language-plaintext highlighter-rouge">blog</code> 的資料夾，你也可以改成其他你喜歡的名稱。</p> <hr> <h3 id="建立-gh-pages-branch作為-github-pages-的來源">建立 gh-pages branch（作為 GitHub Pages 的來源）</h3> <p>GitHub Pages 可以從 <code class="language-plaintext highlighter-rouge">gh-pages</code> 分支自動部署網站。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">--orphan</span> gh-pages
-</code></pre></div></div> <p>這個指令會建立一個全新的分支，沒有任何歷史記錄。</p> <hr> <h3 id="建立-jekyll-網站跳過初次-bundle">建立 Jekyll 網站（跳過初次 bundle）</h3> <p>使用 Jekyll 命令建立基本的網站結構。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll new <span class="nt">--skip-bundle</span> <span class="nb">.</span>
-</code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">--skip-bundle</code> 參數讓我們稍後再安裝 gem 套件，避免版本衝突。</p> <hr> <h3 id="修改-gemfile加入-github-pages-gem">修改 Gemfile，加入 GitHub Pages gem</h3> <p>編輯 <code class="language-plaintext highlighter-rouge">Gemfile</code> 檔案，註解掉原本的 jekyll gem，改用 github-pages。</p> <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># gem "jekyll"</span>
+</code></pre></div></div>
+
+<p>這會建立一個名為 <code class="language-plaintext highlighter-rouge">blog</code> 的資料夾，你也可以改成其他你喜歡的名稱。</p>
+
+<hr>
+
+<h3 id="建立-gh-pages-branch作為-github-pages-的來源">建立 gh-pages branch（作為 GitHub Pages 的來源）</h3>
+
+<p>GitHub Pages 可以從 <code class="language-plaintext highlighter-rouge">gh-pages</code> 分支自動部署網站。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">--orphan</span> gh-pages
+</code></pre></div></div>
+
+<p>這個指令會建立一個全新的分支，沒有任何歷史記錄。</p>
+
+<hr>
+
+<h3 id="建立-jekyll-網站跳過初次-bundle">建立 Jekyll 網站（跳過初次 bundle）</h3>
+
+<p>使用 Jekyll 命令建立基本的網站結構。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>jekyll new <span class="nt">--skip-bundle</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">--skip-bundle</code> 參數讓我們稍後再安裝 gem 套件，避免版本衝突。</p>
+
+<hr>
+
+<h3 id="修改-gemfile加入-github-pages-gem">修改 Gemfile，加入 GitHub Pages gem</h3>
+
+<p>編輯 <code class="language-plaintext highlighter-rouge">Gemfile</code> 檔案，註解掉原本的 jekyll gem，改用 github-pages。</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># gem "jekyll"</span>
 <span class="n">gem</span> <span class="s2">"github-pages"</span><span class="p">,</span> <span class="s2">"~&gt; GITHUB-PAGES-VERSION"</span><span class="p">,</span> <span class="ss">group: :jekyll_plugins</span>
-</code></pre></div></div> <blockquote> <p>⚠️ <strong>版本號更新</strong><br> 請將 <code class="language-plaintext highlighter-rouge">GITHUB-PAGES-VERSION</code> 替換為 <a href="https://pages.github.com/versions/" rel="external nofollow noopener" target="_blank">這裡</a> 所列的最新版本號</p> </blockquote> <hr> <h3 id="安裝所有-gem-套件">安裝所有 gem 套件</h3> <p>執行 bundle install 來安裝所有相依的套件。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
-</code></pre></div></div> <p>這個步驟會下載並安裝 Jekyll 和相關的 gem 套件。</p> <hr> <h3 id="修改-_configyml">修改 <code class="language-plaintext highlighter-rouge">_config.yml</code> </h3> <p>編輯 Jekyll 的主要設定檔，加入你的網站資訊。</p> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">domain</span><span class="pi">:</span> <span class="s">my-site.github.io</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>⚠️ <strong>版本號更新</strong><br>
+請將 <code class="language-plaintext highlighter-rouge">GITHUB-PAGES-VERSION</code> 替換為 <a href="https://pages.github.com/versions/" rel="external nofollow noopener" target="_blank">這裡</a> 所列的最新版本號</p>
+</blockquote>
+
+<hr>
+
+<h3 id="安裝所有-gem-套件">安裝所有 gem 套件</h3>
+
+<p>執行 bundle install 來安裝所有相依的套件。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>這個步驟會下載並安裝 Jekyll 和相關的 gem 套件。</p>
+
+<hr>
+
+<h3 id="修改-_configyml">修改 <code class="language-plaintext highlighter-rouge">_config.yml</code>
+</h3>
+
+<p>編輯 Jekyll 的主要設定檔，加入你的網站資訊。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">domain</span><span class="pi">:</span> <span class="s">my-site.github.io</span>
 <span class="na">url</span><span class="pi">:</span> <span class="s">https://my-site.github.io</span>
 <span class="na">baseurl</span><span class="pi">:</span> <span class="s">/blog/</span>
-</code></pre></div></div> <p>請將 <code class="language-plaintext highlighter-rouge">my-site</code> 替換成你的 GitHub 使用者名稱，<code class="language-plaintext highlighter-rouge">blog</code> 替換成你的專案名稱。</p> <hr> <h3 id="加入-webrick-gem避免-serve-出錯">加入 webrick gem（避免 serve 出錯）</h3> <p>在較新版本的 Ruby 中，webrick 不再是預設套件，需要手動加入。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle add webrick
-</code></pre></div></div> <p>這個步驟可以避免執行 <code class="language-plaintext highlighter-rouge">jekyll serve</code> 時出現錯誤。</p> <hr> <h3 id="避免-faviconico-錯誤訊息">避免 favicon.ico 錯誤訊息</h3> <p>建立一個空的 favicon.ico 檔案，避免瀏覽器找不到圖示時出現錯誤訊息。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch </span>favicon.ico
-</code></pre></div></div> <p>這是一個小細節，但可以讓網站更加完整。</p> <hr> <h2 id="在本地測試-jekyll-網站">在本地測試 Jekyll 網站</h2> <p>完成基本設定後，讓我們在本地環境測試網站是否正常運作。這是一個重要步驟，可以在上傳到 GitHub 之前確認一切運作正常。</p> <p>首先，確保所有套件都已安裝，然後啟動本地伺服器：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
+</code></pre></div></div>
+
+<p>請將 <code class="language-plaintext highlighter-rouge">my-site</code> 替換成你的 GitHub 使用者名稱，<code class="language-plaintext highlighter-rouge">blog</code> 替換成你的專案名稱。</p>
+
+<hr>
+
+<h3 id="加入-webrick-gem避免-serve-出錯">加入 webrick gem（避免 serve 出錯）</h3>
+
+<p>在較新版本的 Ruby 中，webrick 不再是預設套件，需要手動加入。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle add webrick
+</code></pre></div></div>
+
+<p>這個步驟可以避免執行 <code class="language-plaintext highlighter-rouge">jekyll serve</code> 時出現錯誤。</p>
+
+<hr>
+
+<h3 id="避免-faviconico-錯誤訊息">避免 favicon.ico 錯誤訊息</h3>
+
+<p>建立一個空的 favicon.ico 檔案，避免瀏覽器找不到圖示時出現錯誤訊息。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch </span>favicon.ico
+</code></pre></div></div>
+
+<p>這是一個小細節，但可以讓網站更加完整。</p>
+
+<hr>
+
+<h2 id="在本地測試-jekyll-網站">在本地測試 Jekyll 網站</h2>
+
+<p>完成基本設定後，讓我們在本地環境測試網站是否正常運作。這是一個重要步驟，可以在上傳到 GitHub 之前確認一切運作正常。</p>
+
+<p>首先，確保所有套件都已安裝，然後啟動本地伺服器：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install
 </span>bundle <span class="nb">exec </span>jekyll serve
-</code></pre></div></div> <p>Jekyll 會編譯你的網站，並啟動一個本地伺服器。終端機會顯示類似以下的資訊：</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Server address: http://127.0.0.1:4000/
-</code></pre></div></div> <p>在瀏覽器中開啟這個網址，就可以看到你的網站畫面了！如果一切正常，你會看到 Jekyll 的預設首頁。</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/jekyll_local_test-480.webp 480w,/assets/img/jekyll_local_test-800.webp 800w,/assets/img/jekyll_local_test-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/jekyll_local_test.png" width="100%" height="auto" title="本地測試 Jekyll 網站" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <hr> <h2 id="上傳-github讓-github-pages-自動建置-blog">上傳 GitHub，讓 GitHub Pages 自動建置 Blog</h2> <p>本地測試成功後，現在我們要將網站部署到 GitHub Pages。這個過程包含三個主要步驟：建立 GitHub repository、連結本地專案，以及設定 GitHub Pages。</p> <hr> <h3 id="1️⃣-建立一個-github-repository">1️⃣ 建立一個 GitHub Repository</h3> <p>登入你的 GitHub 帳號，建立一個新的 repository。</p> <p><strong>Repository 設定建議：</strong></p> <ul> <li>選擇 <strong>Public</strong>（公開），這樣才能使用免費的 GitHub Pages 服務</li> <li>Repository 名稱可以自由命名，例如：<code class="language-plaintext highlighter-rouge">blog</code> 或 <code class="language-plaintext highlighter-rouge">my-website</code> </li> <li>不需要初始化 README、.gitignore 或 license（因為我們已經有本地專案了）</li> </ul> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/create_a_new_repo_on_github-480.webp 480w,/assets/img/create_a_new_repo_on_github-800.webp 800w,/assets/img/create_a_new_repo_on_github-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/create_a_new_repo_on_github.png" width="100%" height="auto" title="在 GitHub 建立新 repo" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <hr> <h3 id="2️⃣-將本地專案與-github-repo-連結">2️⃣ 將本地專案與 GitHub repo 連結</h3> <p>建立 repository 後，我們需要將本地的程式碼推送到 GitHub。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>Jekyll 會編譯你的網站，並啟動一個本地伺服器。終端機會顯示類似以下的資訊：</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Server address: http://127.0.0.1:4000/
+</code></pre></div></div>
+
+<p>在瀏覽器中開啟這個網址，就可以看到你的網站畫面了！如果一切正常，你會看到 Jekyll 的預設首頁。</p>
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/jekyll_local_test-480.webp 480w,/assets/img/jekyll_local_test-800.webp 800w,/assets/img/jekyll_local_test-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+      
+    
+    <img src="/assets/img/jekyll_local_test.png" width="100%" height="auto" title="本地測試 Jekyll 網站" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+<hr>
+
+<h2 id="上傳-github讓-github-pages-自動建置-blog">上傳 GitHub，讓 GitHub Pages 自動建置 Blog</h2>
+
+<p>本地測試成功後，現在我們要將網站部署到 GitHub Pages。這個過程包含三個主要步驟：建立 GitHub repository、連結本地專案，以及設定 GitHub Pages。</p>
+
+<hr>
+
+<h3 id="1️⃣-建立一個-github-repository">1️⃣ 建立一個 GitHub Repository</h3>
+
+<p>登入你的 GitHub 帳號，建立一個新的 repository。</p>
+
+<p><strong>Repository 設定建議：</strong></p>
+
+<ul>
+  <li>選擇 <strong>Public</strong>（公開），這樣才能使用免費的 GitHub Pages 服務</li>
+  <li>Repository 名稱可以自由命名，例如：<code class="language-plaintext highlighter-rouge">blog</code> 或 <code class="language-plaintext highlighter-rouge">my-website</code>
+</li>
+  <li>不需要初始化 README、.gitignore 或 license（因為我們已經有本地專案了）</li>
+</ul>
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/create_a_new_repo_on_github-480.webp 480w,/assets/img/create_a_new_repo_on_github-800.webp 800w,/assets/img/create_a_new_repo_on_github-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+      
+    
+    <img src="/assets/img/create_a_new_repo_on_github.png" width="100%" height="auto" title="在 GitHub 建立新 repo" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+<hr>
+
+<h3 id="2️⃣-將本地專案與-github-repo-連結">2️⃣ 將本地專案與 GitHub repo 連結</h3>
+
+<p>建立 repository 後，我們需要將本地的程式碼推送到 GitHub。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
 git commit <span class="nt">-m</span> <span class="s2">"[feature] Initial GitHub Pages site with Jekyll"</span>
 git remote add origin https://github.com/USERNAME/REPOSITORY.git
 git push <span class="nt">-u</span> origin gh-pages
-</code></pre></div></div> <p>請記得將 <code class="language-plaintext highlighter-rouge">USERNAME</code> 替換成你的 GitHub 使用者名稱，<code class="language-plaintext highlighter-rouge">REPOSITORY</code> 替換成你剛才建立的 repository 名稱。</p> <blockquote> <p><strong>重要提醒</strong><br> 確保你推送到的是 <code class="language-plaintext highlighter-rouge">gh-pages</code> 分支，因為我們稍後會設定 GitHub Pages 從這個分支部署網站。</p> </blockquote> <hr> <h3 id="3️⃣-開啟網址預覽網站">3️⃣ 開啟網址預覽網站</h3> <p>程式碼推送成功後，需要在 GitHub 上啟用 Pages 功能。</p> <p><strong>設定步驟：</strong></p> <ol> <li>回到 GitHub 專案頁面</li> <li>點選頂部的 <strong>Settings</strong> 選項</li> <li>在左側選單找到並點選 <strong>Pages</strong> </li> <li>在 Source 設定中選擇 <code class="language-plaintext highlighter-rouge">gh-pages</code> 分支</li> <li>儲存設定後，GitHub 會顯示你的網站網址</li> </ol> <p>預設的網站網址格式會是：</p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://USERNAME.github.io/REPOSITORY/
-</code></pre></div></div> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/jekyll_github_pages-480.webp 480w,/assets/img/jekyll_github_pages-800.webp 800w,/assets/img/jekyll_github_pages-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/jekyll_github_pages.png" width="100%" height="auto" title="成功部署 Jekyll 網站至 GitHub Pages" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <p>GitHub Pages 建置過程可能需要幾分鐘時間。建置完成後，你就可以透過上述網址存取你的網站了！</p> <p>🎉 恭喜你，網站已正式上線！</p> <hr> <h2 id="美化-blog安裝-minimal-mistakes-主題">美化 Blog：安裝 Minimal Mistakes 主題</h2> <p>到目前為止，我們已經成功建立了一個基本的 Jekyll 網站。但預設的樣式比較簡陋，現在讓我們安裝 Minimal Mistakes 主題來美化網站。</p> <p>Minimal Mistakes 是一款設計現代、功能強大的 Jekyll 主題。我們將使用「Remote Theme」的方式來安裝，這種方法比較簡單，也方便日後更新主題。</p> <p>📚 官方文件：<a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" rel="external nofollow noopener" target="_blank">Minimal Mistakes Quick-Start Guide</a></p> <hr> <h3 id="1️⃣-編輯-gemfile">1️⃣ 編輯 <code class="language-plaintext highlighter-rouge">Gemfile</code> </h3> <p>首先，我們需要修改 <code class="language-plaintext highlighter-rouge">Gemfile</code> 來加入必要的 gem 套件。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> <span class="s2">"https://rubygems.org"</span>
+</code></pre></div></div>
+
+<p>請記得將 <code class="language-plaintext highlighter-rouge">USERNAME</code> 替換成你的 GitHub 使用者名稱，<code class="language-plaintext highlighter-rouge">REPOSITORY</code> 替換成你剛才建立的 repository 名稱。</p>
+
+<blockquote>
+  <p><strong>重要提醒</strong><br>
+確保你推送到的是 <code class="language-plaintext highlighter-rouge">gh-pages</code> 分支，因為我們稍後會設定 GitHub Pages 從這個分支部署網站。</p>
+</blockquote>
+
+<hr>
+
+<h3 id="3️⃣-開啟網址預覽網站">3️⃣ 開啟網址預覽網站</h3>
+
+<p>程式碼推送成功後，需要在 GitHub 上啟用 Pages 功能。</p>
+
+<p><strong>設定步驟：</strong></p>
+
+<ol>
+  <li>回到 GitHub 專案頁面</li>
+  <li>點選頂部的 <strong>Settings</strong> 選項</li>
+  <li>在左側選單找到並點選 <strong>Pages</strong>
+</li>
+  <li>在 Source 設定中選擇 <code class="language-plaintext highlighter-rouge">gh-pages</code> 分支</li>
+  <li>儲存設定後，GitHub 會顯示你的網站網址</li>
+</ol>
+
+<p>預設的網站網址格式會是：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>https://USERNAME.github.io/REPOSITORY/
+</code></pre></div></div>
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/jekyll_github_pages-480.webp 480w,/assets/img/jekyll_github_pages-800.webp 800w,/assets/img/jekyll_github_pages-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+      
+    
+    <img src="/assets/img/jekyll_github_pages.png" width="100%" height="auto" title="成功部署 Jekyll 網站至 GitHub Pages" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+<p>GitHub Pages 建置過程可能需要幾分鐘時間。建置完成後，你就可以透過上述網址存取你的網站了！</p>
+
+<p>🎉 恭喜你，網站已正式上線！</p>
+
+<hr>
+
+<h2 id="美化-blog安裝-minimal-mistakes-主題">美化 Blog：安裝 Minimal Mistakes 主題</h2>
+
+<p>到目前為止，我們已經成功建立了一個基本的 Jekyll 網站。但預設的樣式比較簡陋，現在讓我們安裝 Minimal Mistakes 主題來美化網站。</p>
+
+<p>Minimal Mistakes 是一款設計現代、功能強大的 Jekyll 主題。我們將使用「Remote Theme」的方式來安裝，這種方法比較簡單，也方便日後更新主題。</p>
+
+<p>📚 官方文件：<a href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/" rel="external nofollow noopener" target="_blank">Minimal Mistakes Quick-Start Guide</a></p>
+
+<hr>
+
+<h3 id="1️⃣-編輯-gemfile">1️⃣ 編輯 <code class="language-plaintext highlighter-rouge">Gemfile</code>
+</h3>
+
+<p>首先，我們需要修改 <code class="language-plaintext highlighter-rouge">Gemfile</code> 來加入必要的 gem 套件。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> <span class="s2">"https://rubygems.org"</span>
 
 gem <span class="s2">"github-pages"</span>, group: :jekyll_plugins
 gem <span class="s2">"jekyll-include-cache"</span>, group: :jekyll_plugins
-</code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">jekyll-include-cache</code> 是 Minimal Mistakes 主題所需要的套件，可以提升網站效能。</p> <hr> <h3 id="2️⃣-編輯-_configyml">2️⃣ 編輯 <code class="language-plaintext highlighter-rouge">_config.yml</code> </h3> <p>接下來，修改 Jekyll 的設定檔來啟用 Minimal Mistakes 主題。</p> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">remote_theme</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mmistakes/minimal-mistakes@4.24.0"</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">jekyll-include-cache</code> 是 Minimal Mistakes 主題所需要的套件，可以提升網站效能。</p>
+
+<hr>
+
+<h3 id="2️⃣-編輯-_configyml">2️⃣ 編輯 <code class="language-plaintext highlighter-rouge">_config.yml</code>
+</h3>
+
+<p>接下來，修改 Jekyll 的設定檔來啟用 Minimal Mistakes 主題。</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">remote_theme</span><span class="pi">:</span> <span class="s2">"</span><span class="s">mmistakes/minimal-mistakes@4.24.0"</span>
 
 <span class="na">plugins</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="s">jekyll-include-cache</span>
-</code></pre></div></div> <p>在 <code class="language-plaintext highlighter-rouge">_config.yml</code> 中加入上述設定。記住以下重要事項：</p> <blockquote> <p><strong>重要提醒</strong></p> <ul> <li>移除其他 <code class="language-plaintext highlighter-rouge">theme:</code> 或 <code class="language-plaintext highlighter-rouge">remote_theme:</code> 設定，避免衝突</li> <li>保留你先前設定的 <code class="language-plaintext highlighter-rouge">domain</code>, <code class="language-plaintext highlighter-rouge">url</code>, <code class="language-plaintext highlighter-rouge">baseurl</code> 等基本設定</li> </ul> </blockquote> <hr> <h3 id="3️⃣-抓取並安裝所有-gem">3️⃣ 抓取並安裝所有 gem</h3> <p>執行 bundle install 來安裝新增的套件。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
-</code></pre></div></div> <p>這個步驟會下載 Minimal Mistakes 主題以及相關的依賴套件。</p> <hr> <h3 id="4️⃣-調整必要檔案結構">4️⃣ 調整必要檔案結構</h3> <p>為了讓主題正常運作，我們需要調整一些檔案：</p> <p><strong>調整首頁：</strong></p> <ul> <li>將 <code class="language-plaintext highlighter-rouge">index.md</code> 替換為 Minimal Mistakes 提供的範本，或根據主題文件建立新的首頁</li> </ul> <p><strong>修改文章格式：</strong></p> <ul> <li>編輯 <code class="language-plaintext highlighter-rouge">_posts/0000-00-00-welcome-to-jekyll.md</code>（日期可能不同）</li> <li>確保文章的 frontmatter 包含正確的 layout： <div class="language-yaml highlighter-rouge"> <div class="highlight"><pre class="highlight"><code><span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
-</code></pre></div> </div> </li> </ul> <p><strong>清理不需要的檔案：</strong></p> <ul> <li>刪除 <code class="language-plaintext highlighter-rouge">about.md</code>（如果你不打算使用預設的關於頁面）</li> </ul> <hr> <h3 id="-再次啟動網站檢查效果">🔁 再次啟動網站，檢查效果！</h3> <p>現在讓我們測試主題是否成功安裝。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
-</code></pre></div></div> <p>如果一切順利，你會看到網站已經套用了 Minimal Mistakes 的現代化設計。主題包含響應式設計、深色模式支援，以及許多實用功能。</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/jekyll_with_minimal_mistakes_theme_local_test-480.webp 480w,/assets/img/jekyll_with_minimal_mistakes_theme_local_test-800.webp 800w,/assets/img/jekyll_with_minimal_mistakes_theme_local_test-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/jekyll_with_minimal_mistakes_theme_local_test.png" width="100%" height="auto" title="Minimal Mistakes 主題成功套用" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <hr> <h3 id="-最後再次上傳-github">✅ 最後再次上傳 GitHub</h3> <p>本地測試成功後，將變更推送到 GitHub，讓線上網站也套用新主題。</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>在 <code class="language-plaintext highlighter-rouge">_config.yml</code> 中加入上述設定。記住以下重要事項：</p>
+
+<blockquote>
+  <p><strong>重要提醒</strong></p>
+
+  <ul>
+    <li>移除其他 <code class="language-plaintext highlighter-rouge">theme:</code> 或 <code class="language-plaintext highlighter-rouge">remote_theme:</code> 設定，避免衝突</li>
+    <li>保留你先前設定的 <code class="language-plaintext highlighter-rouge">domain</code>, <code class="language-plaintext highlighter-rouge">url</code>, <code class="language-plaintext highlighter-rouge">baseurl</code> 等基本設定</li>
+  </ul>
+</blockquote>
+
+<hr>
+
+<h3 id="3️⃣-抓取並安裝所有-gem">3️⃣ 抓取並安裝所有 gem</h3>
+
+<p>執行 bundle install 來安裝新增的套件。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">install</span>
+</code></pre></div></div>
+
+<p>這個步驟會下載 Minimal Mistakes 主題以及相關的依賴套件。</p>
+
+<hr>
+
+<h3 id="4️⃣-調整必要檔案結構">4️⃣ 調整必要檔案結構</h3>
+
+<p>為了讓主題正常運作，我們需要調整一些檔案：</p>
+
+<p><strong>調整首頁：</strong></p>
+
+<ul>
+  <li>將 <code class="language-plaintext highlighter-rouge">index.md</code> 替換為 Minimal Mistakes 提供的範本，或根據主題文件建立新的首頁</li>
+</ul>
+
+<p><strong>修改文章格式：</strong></p>
+
+<ul>
+  <li>編輯 <code class="language-plaintext highlighter-rouge">_posts/0000-00-00-welcome-to-jekyll.md</code>（日期可能不同）</li>
+  <li>確保文章的 frontmatter 包含正確的 layout：
+    <div class="language-yaml highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code><span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p><strong>清理不需要的檔案：</strong></p>
+
+<ul>
+  <li>刪除 <code class="language-plaintext highlighter-rouge">about.md</code>（如果你不打算使用預設的關於頁面）</li>
+</ul>
+
+<hr>
+
+<h3 id="-再次啟動網站檢查效果">🔁 再次啟動網站，檢查效果！</h3>
+
+<p>現在讓我們測試主題是否成功安裝。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>bundle <span class="nb">exec </span>jekyll serve
+</code></pre></div></div>
+
+<p>如果一切順利，你會看到網站已經套用了 Minimal Mistakes 的現代化設計。主題包含響應式設計、深色模式支援，以及許多實用功能。</p>
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/jekyll_with_minimal_mistakes_theme_local_test-480.webp 480w,/assets/img/jekyll_with_minimal_mistakes_theme_local_test-800.webp 800w,/assets/img/jekyll_with_minimal_mistakes_theme_local_test-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+      
+    
+    <img src="/assets/img/jekyll_with_minimal_mistakes_theme_local_test.png" width="100%" height="auto" title="Minimal Mistakes 主題成功套用" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+<hr>
+
+<h3 id="-最後再次上傳-github">✅ 最後再次上傳 GitHub</h3>
+
+<p>本地測試成功後，將變更推送到 GitHub，讓線上網站也套用新主題。</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git add <span class="nb">.</span>
 git commit <span class="nt">-m</span> <span class="s2">"[feature] Add Minimal Mistakes theme to Jekyll"</span>
 git push origin gh-pages
-</code></pre></div></div> <p>等待 GitHub Pages 重新建置完成（通常需要幾分鐘），然後重新整理你的網站頁面。</p> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/jekyll_with_minimal_mistakes_theme_github_pages-480.webp 480w,/assets/img/jekyll_with_minimal_mistakes_theme_github_pages-800.webp 800w,/assets/img/jekyll_with_minimal_mistakes_theme_github_pages-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/jekyll_with_minimal_mistakes_theme_github_pages.png" width="100%" height="auto" title="部署後的新外觀！" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <hr> <h2 id="完成">完成！</h2> <p>🎉🎉🎉 恭喜你！你已經成功使用 Jekyll + Minimal Mistakes 在 GitHub Pages 上架設了一個現代化的技術 Blog！</p> <p><strong>你現在擁有的功能：</strong></p> <ul> <li>響應式設計，在手機和電腦上都有良好體驗</li> <li>支援深色模式切換</li> <li>圖片放大功能</li> <li>完整的 SEO 優化</li> <li>文章分類和標籤系統</li> <li>評論功能（可選）</li> </ul> <p><strong>下一步建議：</strong></p> <ul> <li>開始撰寫你的第一篇技術文章</li> <li>根據需求客製化主題設定</li> <li>加入 Google Analytics 追蹤網站流量</li> <li>設定自訂網域名稱</li> </ul> <blockquote> <p><strong>需要幫助嗎？</strong><br> 如果你有不同的實作方法、遇到技術問題，或想進一步客製化佈景主題，歡迎留言或寄信給我。我們一起成長與交流！ 🙂</p> </blockquote> </div> </article> <br> <hr> <br> <ul class="list-disc pl-8"></ul> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/superpowers-sdd-2048-game/">當 Vibe Coding 擁有 Superpowers：全自動精準開發方法論深度體驗，以 2048 遊戲實戰為例</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/openspec-sdd-insider-tracker/">告別 Vibe Coding 的架構崩壞：透過 OpenSpec 的『構件驅動』實作 SEC 追蹤器，讓 AI 成為你的資深架構師</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/speckit-sdd-go-game/">別再用 Vibe Coding 寫玩具了，透過 SDD 開發模式利用 SpecKit 實作圍棋小遊戲，讓 AI 不再產生幻覺</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/backend%20development/grpc-introduction-for-micro-service/">gRPC 概念與實作 (Go &amp; Python) - 打造高效能微服務</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/building-ai-code-review-agent/">從零打造 AI Code Review Agent：同步提升團隊效率與程式碼品質</a> </li> </div> </div> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top"></nav> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Nick Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script> <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script> <script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script> <script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script> <script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script defer src="/assets/js/google-analytics-setup.js"></script> <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script> <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script> <script>
+</code></pre></div></div>
+
+<p>等待 GitHub Pages 重新建置完成（通常需要幾分鐘），然後重新整理你的網站頁面。</p>
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/jekyll_with_minimal_mistakes_theme_github_pages-480.webp 480w,/assets/img/jekyll_with_minimal_mistakes_theme_github_pages-800.webp 800w,/assets/img/jekyll_with_minimal_mistakes_theme_github_pages-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+      
+    
+    <img src="/assets/img/jekyll_with_minimal_mistakes_theme_github_pages.png" width="100%" height="auto" title="部署後的新外觀！" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+<hr>
+
+<h2 id="完成">完成！</h2>
+
+<p>🎉🎉🎉 恭喜你！你已經成功使用 Jekyll + Minimal Mistakes 在 GitHub Pages 上架設了一個現代化的技術 Blog！</p>
+
+<p><strong>你現在擁有的功能：</strong></p>
+
+<ul>
+  <li>響應式設計，在手機和電腦上都有良好體驗</li>
+  <li>支援深色模式切換</li>
+  <li>圖片放大功能</li>
+  <li>完整的 SEO 優化</li>
+  <li>文章分類和標籤系統</li>
+  <li>評論功能（可選）</li>
+</ul>
+
+<p><strong>下一步建議：</strong></p>
+
+<ul>
+  <li>開始撰寫你的第一篇技術文章</li>
+  <li>根據需求客製化主題設定</li>
+  <li>加入 Google Analytics 追蹤網站流量</li>
+  <li>設定自訂網域名稱</li>
+</ul>
+
+<blockquote>
+  <p><strong>需要幫助嗎？</strong><br>
+如果你有不同的實作方法、遇到技術問題，或想進一步客製化佈景主題，歡迎留言或寄信給我。我們一起成長與交流！ 🙂</p>
+</blockquote>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+  
+    
+    <br>
+    <hr>
+    <br>
+    <ul class="list-disc pl-8"></ul>
+
+    <!-- Adds related posts to the end of an article -->
+    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/superpowers-sdd-2048-game/">當 Vibe Coding 擁有 Superpowers：全自動精準開發方法論深度體驗，以 2048 遊戲實戰為例</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/openspec-sdd-insider-tracker/">告別 Vibe Coding 的架構崩壞：透過 OpenSpec 的『構件驅動』實作 SEC 追蹤器，讓 AI 成為你的資深架構師</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/speckit-sdd-go-game/">別再用 Vibe Coding 寫玩具了，透過 SDD 開發模式利用 SpecKit 實作圍棋小遊戲，讓 AI 不再產生幻覺</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/backend%20development/grpc-introduction-for-micro-service/">gRPC 概念與實作 (Go &amp; Python) - 打造高效能微服務</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/building-ai-code-review-agent/">從零打造 AI Code Review Agent：同步提升團隊效率與程式碼品質</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+</div>
+</div>
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-sm-3">
+              <nav id="toc-sidebar" class="sticky-top"></nav>
+            </div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="fixed-bottom" role="contentinfo">
+    <div class="container mt-0">
+      
+  © Copyright 2026
+  Nick
+  
+  Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script>
+<script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script>
+<script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script>
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+  <!-- Analytics -->
+  <script defer src="/assets/js/google-analytics-setup.js"></script>
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
     addBackToTop();
-  </script> <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script> <script src="/assets/js/search-data.js"></script> <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script> </body> </html>
+  </script>
+
+
+
+  <!-- Search -->
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
+  <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script>
+
+
+
+
+  </body>
+</html>

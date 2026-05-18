@@ -1,6 +1,97 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA"> <meta http-equiv="Permissions-Policy" content="interest-cohort=()"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> P2P Technology (3) Complete Implementation of WebRTC and AWS KVS - In-depth Tutorial on Real-time Communication and Streaming Technology | Nick Huang </title> <meta name="author" content="Nick Huang"> <meta name="description" content="Learn how WebRTC integrates STUN/TURN/ICE technologies for real-time communication. Deep dive into Signaling Server design, SDP exchange process, AWS Kinesis Video Streams cloud streaming service. From theory to practice, build complete P2P communication systems."> <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website"> <link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5"> <link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e"> <link rel="canonical" href="https://nickhuangcyh.github.io/blog/p2p/aws/p2p-tech-3-webrtc-kvs/"> <script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark"> <script>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Head -->
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <!-- Metadata, OpenGraph and Schema.org -->
+
+  <!-- Website verification -->
+  
+    <meta name="google-site-verification" content="lVcd9atVoPU3GSNMsnC51ujUaw2jaVDe6t-zZn2LeBA">
+  
+  
+  <!--
+    Avoid warning on Google Chrome Error with Permissions-Policy header:
+    Origin trial controlled feature not enabled: 'interest-cohort'.
+    see https://stackoverflow.com/a/75119417
+  -->
+  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
+
+
+
+
+<!-- Standard metadata -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>
+  
+  
+    
+      P2P Technology (3) Complete Implementation of WebRTC and AWS KVS - In-depth Tutorial on Real-time Communication and Streaming Technology | Nick Huang
+    
+  
+</title>
+<meta name="author" content="Nick Huang">
+<meta name="description" content="Learn how WebRTC integrates STUN/TURN/ICE technologies for real-time communication. Deep dive into Signaling Server design, SDP exchange process, AWS Kinesis Video Streams cloud streaming service. From theory to practice, build complete P2P communication systems.">
+
+  <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+
+
+
+
+
+
+
+
+
+
+<!-- Bootstrap & MDB -->
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css?a4b3f509e79c54a512b890d73235ef04">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous">
+
+
+
+<!-- Fonts & Icons -->
+<link defer rel="stylesheet" href="/assets/css/academicons.min.css?f0b7046b84e425c55f3463ac249818f5">
+<link defer rel="stylesheet" href="/assets/css/scholar-icons.css?62b2ac103a88034e6882a5be5f3e2772">
+<link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap">
+
+<!-- Code Syntax Highlighting -->
+<link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light">
+
+
+  <!-- Sidebar Table of Contents -->
+  <link defer href="/assets/css/bootstrap-toc.min.css?6f5af0bb9aab25d79b2448143cbeaa88" rel="stylesheet">
+
+
+<!-- Styles -->
+
+
+
+
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%80&lt;/text&gt;&lt;/svg&gt;">
+
+<link rel="stylesheet" href="/assets/css/main.css?d41d8cd98f00b204e9800998ecf8427e">
+<link rel="canonical" href="https://nickhuangcyh.github.io/blog/p2p/aws/p2p-tech-3-webrtc-kvs/">
+
+<!-- Dark Mode -->
+<script src="/assets/js/theme.js?a81d82887dd692e91686b43de4542f18"></script>
+
+  <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-native.css?5847e5ed4a4568527aa6cfab446049ca" media="none" id="highlight_theme_dark">
+  <script>
     initTheme();
-  </script> <script src="/assets/js/language-detection.js?46ca8f84d79546f44766b63b6fc18648"></script> <script async src="https://www.googletagmanager.com/gtag/js?id=G-446Z2KNTGH"></script> <script>
+  </script>
+
+
+<!-- Language Detection -->
+<script src="/assets/js/language-detection.js?46ca8f84d79546f44766b63b6fc18648"></script>
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-446Z2KNTGH"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       dataLayer.push(arguments);
@@ -8,7 +99,1132 @@
     gtag('js', new Date());
 
     gtag('config', 'G-446Z2KNTGH');
-  </script> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> <span class="font-weight-bold">Nick</span> Huang </a> <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse text-right" id="navbarNav"> <ul class="navbar-nav ml-auto flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item active"> <a class="nav-link" href="/blog/">blog </a> </li> <li class="nav-item "> <a class="nav-link" href="/cv/">cv </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item "> <a class="nav-link" href="/repositories/">repositories </a> </li> <li class="nav-item "> <a class="nav-link" href="/books/">bookshelf </a> </li> <li class="nav-item"> <button id="search-toggle" title="Search" onclick="openSearchModal()"> <span class="nav-link">ctrl k <i class="ti ti-search"></i></span> </button> </li> <li class="nav-item"> <div class="language-toggle"> <div class="dropdown"> <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fas fa-globe"></i> EN </button> <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle"> <li> <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('zh')"> <span class="flag">🇹🇼</span> 中文 </a> </li> </ul> </div> </div> </li> <li class="toggle-container"> <button id="light-toggle" title="Change theme"> <i class="ti ti-sun-moon" id="light-toggle-system"></i> <i class="ti ti-moon-filled" id="light-toggle-dark"></i> <i class="ti ti-sun-filled" id="light-toggle-light"></i> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="row"> <div class="col-sm-9"> <div class="post"> <header class="post-header"> <h1 class="post-title">P2P Technology (3) Complete Implementation of WebRTC and AWS KVS - In-depth Tutorial on Real-time Communication and Streaming Technology</h1> <p class="post-meta"> Created on January 04, 2022 </p> <p class="post-tags"> <a href="/blog/2022"> <i class="fa-solid fa-calendar fa-sm"></i> 2022 </a>   ·   <a href="/blog/tag/webrtc-technology"> <i class="fa-solid fa-hashtag fa-sm"></i> WebRTC Technology</a>   <a href="/blog/tag/aws-kvs"> <i class="fa-solid fa-hashtag fa-sm"></i> AWS KVS</a>   <a href="/blog/tag/real-time-communication"> <i class="fa-solid fa-hashtag fa-sm"></i> Real-time Communication</a>   <a href="/blog/tag/p2p-streaming"> <i class="fa-solid fa-hashtag fa-sm"></i> P2P Streaming</a>   <a href="/blog/tag/signaling-server"> <i class="fa-solid fa-hashtag fa-sm"></i> Signaling Server</a>   <a href="/blog/tag/sdp-protocol"> <i class="fa-solid fa-hashtag fa-sm"></i> SDP Protocol</a>   <a href="/blog/tag/iot-communication"> <i class="fa-solid fa-hashtag fa-sm"></i> IoT Communication</a>   <a href="/blog/tag/cloud-streaming"> <i class="fa-solid fa-hashtag fa-sm"></i> Cloud Streaming</a>   ·   <a href="/blog/category/p2p"> <i class="fa-solid fa-tag fa-sm"></i> P2P</a>   <a href="/blog/category/aws"> <i class="fa-solid fa-tag fa-sm"></i> AWS</a> </p> </header> <article class="post-content"> <div id="markdown-content"> <h2 id="what-is-webrtc">What is WebRTC?</h2> <p>WebRTC (Web Real-Time Communication) is an open-source standard led by Google, and also a collection of APIs native to browsers. Its goal is to enable developers to implement real-time voice, video, and data communication functions in browsers without installing any plugins.</p> <p>In the previous two articles, we learned the theoretical foundations of P2P and core technologies like STUN, TURN, and ICE. WebRTC is the practical framework that integrates these technologies. Its underlying layer is based on protocols like ICE, SDP, STUN, and TURN for NAT traversal, ultimately establishing reliable P2P connections.</p> <p>📖 <a href="https://zh.wikipedia.org/wiki/WebRTC" rel="external nofollow noopener" target="_blank">WebRTC Wiki</a></p> <hr> <h2 id="what-does-signaling-server-do">What Does Signaling Server Do?</h2> <p>In the WebRTC architecture, the Signaling Server plays the role of a “matchmaker” or “introducer”. Its main task is to help two endpoints exchange the basic information needed to establish P2P connections.</p> <p><strong>Information that Signaling Server is responsible for exchanging includes:</strong></p> <ul> <li> <strong>SDP</strong> (Session Description Protocol): Session description protocol defining media formats and transport parameters</li> <li> <strong>ICE Candidates</strong>: Various possible connection path information</li> <li> <strong>Control Signals</strong>: Call start, end, and other state management</li> </ul> <p><strong>Important Concept:</strong> Signaling Server only participates in the preliminary work of connection establishment. Once P2P connection is successfully established, actual audio and video data will be transmitted directly between the two endpoints, no longer going through the Signaling Server.</p> <p>Regarding implementation technology, the WebRTC standard does not mandate specific Signaling implementation methods. You can freely choose protocols like WebSocket, HTTP, or MQTT for implementation.</p> <blockquote> <h5 id="tip">TIP</h5> <p class="block-tip">Signaling Server does not participate in audio/video data transmission, only handles connection information exchange, so communication protocols can be chosen based on requirements.</p> </blockquote> <hr> <h2 id="what-is-sdp">What is SDP?</h2> <p>SDP (Session Description Protocol) is a session description protocol (RFC 2327), like the “communication rules” that two people who want to talk agree on beforehand.</p> <p>SDP’s main function is to define all parameters of media streams in detail, including:</p> <ul> <li> <strong>Media Formats</strong>: Which audio and video codecs are supported</li> <li> <strong>Transport Parameters</strong>: Network protocols and port ranges used</li> <li> <strong>Connection Information</strong>: IP addresses, ports, and other network connection details</li> <li> <strong>Media Attributes</strong>: Whether bidirectional communication is supported, can receive or only send</li> </ul> <p>Simply put, SDP allows two endpoints that want to conduct WebRTC communication to understand each other: “What can you support? What can I support? How should we communicate?”</p> <p>Here’s an SDP example:</p> <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">v</span><span class="o">=</span>0
+  </script>
+
+
+
+
+
+
+
+
+
+
+  </head>
+
+  <!-- Body -->
+  <body class="fixed-top-nav ">
+    <!-- Header -->
+    <header>
+  <!-- Nav Bar -->
+  <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation">
+    <div class="container">
+      
+        <a class="navbar-brand title font-weight-lighter" href="/">
+          
+            
+              <span class="font-weight-bold">Nick</span>
+            
+            
+            Huang
+          
+        </a>
+      
+      <!-- Navbar Toggle -->
+      <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar top-bar"></span>
+        <span class="icon-bar middle-bar"></span>
+        <span class="icon-bar bottom-bar"></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-right" id="navbarNav">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+          
+
+          <!-- About -->
+          <li class="nav-item ">
+            <a class="nav-link" href="/">about
+              
+            </a>
+          </li>
+
+          <!-- Other pages -->
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item active">
+                  <a class="nav-link" href="/blog/">blog
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/cv/">cv
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/projects/">projects
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/repositories/">repositories
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/books/">bookshelf
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+          
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
+              </button>
+            </li>
+          
+          
+            <!-- Language Toggle -->
+            <li class="nav-item">
+              
+<div class="language-toggle">
+  <div class="dropdown">
+    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="languageToggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-globe"></i>
+       EN 
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="languageToggle">
+         
+      <li>
+        <a class="dropdown-item" href="javascript:void(0)" onclick="switchLanguage('zh')">
+           <span class="flag">🇹🇼</span> 中文 
+        </a>
+      </li>
+       
+    </ul>
+  </div>
+</div>
+
+
+            </li>
+          
+          
+            <!-- Toogle theme mode -->
+            <li class="toggle-container">
+              <button id="light-toggle" title="Change theme">
+                <i class="ti ti-sun-moon" id="light-toggle-system"></i>
+                <i class="ti ti-moon-filled" id="light-toggle-dark"></i>
+                <i class="ti ti-sun-filled" id="light-toggle-light"></i>
+              </button>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+    <!-- Scrolling Progress Bar -->
+    <progress id="progress" value="0">
+      <div class="progress-container">
+        <span class="progress-bar"></span>
+      </div>
+    </progress>
+  
+</header>
+
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      
+        
+          <div class="row">
+            <!-- main content area -->
+            <div class="col-sm-9">
+
+
+
+
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">P2P Technology (3) Complete Implementation of WebRTC and AWS KVS - In-depth Tutorial on Real-time Communication and Streaming Technology</h1>
+    <p class="post-meta">
+      Created on January 04, 2022
+      
+      
+      
+    </p>
+    <p class="post-tags">
+      
+        <a href="/blog/2022"> <i class="fa-solid fa-calendar fa-sm"></i> 2022 </a>
+      
+      
+          ·  
+        
+          
+            <a href="/blog/tag/webrtc-technology"> <i class="fa-solid fa-hashtag fa-sm"></i> WebRTC Technology</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/aws-kvs"> <i class="fa-solid fa-hashtag fa-sm"></i> AWS KVS</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/real-time-communication"> <i class="fa-solid fa-hashtag fa-sm"></i> Real-time Communication</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/p2p-streaming"> <i class="fa-solid fa-hashtag fa-sm"></i> P2P Streaming</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/signaling-server"> <i class="fa-solid fa-hashtag fa-sm"></i> Signaling Server</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/sdp-protocol"> <i class="fa-solid fa-hashtag fa-sm"></i> SDP Protocol</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/iot-communication"> <i class="fa-solid fa-hashtag fa-sm"></i> IoT Communication</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/tag/cloud-streaming"> <i class="fa-solid fa-hashtag fa-sm"></i> Cloud Streaming</a>
+          
+          
+        
+      
+
+      
+          ·  
+        
+          
+            <a href="/blog/category/p2p"> <i class="fa-solid fa-tag fa-sm"></i> P2P</a>
+          
+          
+             
+          
+        
+          
+            <a href="/blog/category/aws"> <i class="fa-solid fa-tag fa-sm"></i> AWS</a>
+          
+          
+        
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    
+    <div id="markdown-content">
+      <h2 id="what-is-webrtc">What is WebRTC?</h2>
+
+<p>WebRTC (Web Real-Time Communication) is an open-source standard led by Google, and also a collection of APIs native to browsers. Its goal is to enable developers to implement real-time voice, video, and data communication functions in browsers without installing any plugins.</p>
+
+<p>In the previous two articles, we learned the theoretical foundations of P2P and core technologies like STUN, TURN, and ICE. WebRTC is the practical framework that integrates these technologies. Its underlying layer is based on protocols like ICE, SDP, STUN, and TURN for NAT traversal, ultimately establishing reliable P2P connections.</p>
+
+<p>📖 <a href="https://zh.wikipedia.org/wiki/WebRTC" rel="external nofollow noopener" target="_blank">WebRTC Wiki</a></p>
+
+<hr>
+
+<h2 id="what-does-signaling-server-do">What Does Signaling Server Do?</h2>
+
+<p>In the WebRTC architecture, the Signaling Server plays the role of a “matchmaker” or “introducer”. Its main task is to help two endpoints exchange the basic information needed to establish P2P connections.</p>
+
+<p><strong>Information that Signaling Server is responsible for exchanging includes:</strong></p>
+
+<ul>
+  <li>
+<strong>SDP</strong> (Session Description Protocol): Session description protocol defining media formats and transport parameters</li>
+  <li>
+<strong>ICE Candidates</strong>: Various possible connection path information</li>
+  <li>
+<strong>Control Signals</strong>: Call start, end, and other state management</li>
+</ul>
+
+<p><strong>Important Concept:</strong> Signaling Server only participates in the preliminary work of connection establishment. Once P2P connection is successfully established, actual audio and video data will be transmitted directly between the two endpoints, no longer going through the Signaling Server.</p>
+
+<p>Regarding implementation technology, the WebRTC standard does not mandate specific Signaling implementation methods. You can freely choose protocols like WebSocket, HTTP, or MQTT for implementation.</p>
+
+<blockquote>
+  <h5 id="tip">TIP</h5>
+
+  <p class="block-tip">Signaling Server does not participate in audio/video data transmission, only handles connection information exchange, so communication protocols can be chosen based on requirements.</p>
+</blockquote>
+
+<hr>
+
+<h2 id="what-is-sdp">What is SDP?</h2>
+
+<p>SDP (Session Description Protocol) is a session description protocol (RFC 2327), like the “communication rules” that two people who want to talk agree on beforehand.</p>
+
+<p>SDP’s main function is to define all parameters of media streams in detail, including:</p>
+
+<ul>
+  <li>
+<strong>Media Formats</strong>: Which audio and video codecs are supported</li>
+  <li>
+<strong>Transport Parameters</strong>: Network protocols and port ranges used</li>
+  <li>
+<strong>Connection Information</strong>: IP addresses, ports, and other network connection details</li>
+  <li>
+<strong>Media Attributes</strong>: Whether bidirectional communication is supported, can receive or only send</li>
+</ul>
+
+<p>Simply put, SDP allows two endpoints that want to conduct WebRTC communication to understand each other: “What can you support? What can I support? How should we communicate?”</p>
+
+<p>Here’s an SDP example:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">v</span><span class="o">=</span>0
 <span class="nv">o</span><span class="o">=</span>mhandley 2890844526 2890842807 IN IP4 126.16.64.4
 <span class="nv">s</span><span class="o">=</span>SDP Seminar
 <span class="nv">i</span><span class="o">=</span>A Seminar on the session description protocol
@@ -21,13 +1237,525 @@
 <span class="nv">m</span><span class="o">=</span>video 51372 RTP/AVP 31
 <span class="nv">m</span><span class="o">=</span>application 32416 udp wb
 <span class="nv">a</span><span class="o">=</span>orient:portrait
-</code></pre></div></div> <hr> <h2 id="what-is-ice-candidate">What is ICE Candidate?</h2> <p>ICE Candidate is a very important concept in WebRTC, representing “candidate connection paths”. You can think of it as various different route choices from your home to a friend’s house.</p> <p><strong>Information contained in ICE Candidate:</strong></p> <ul> <li> <strong>IP Address</strong>: Could be internal IP, public IP, or TURN server IP</li> <li> <strong>Port Number</strong>: Port used for connection</li> <li> <strong>Transport Protocol</strong>: Different transport methods like UDP, TCP</li> <li> <strong>Candidate Type</strong>: host (local), srflx (obtained via STUN), relay (TURN relay)</li> </ul> <p><strong>Generation Process:</strong></p> <p>Each time WebRTC initiates a connection, it automatically generates multiple Candidates for each network interface (network card), including local network, public addresses obtained via STUN, TURN relay addresses, etc. After two endpoints exchange their respective Candidate lists, they perform connection testing and ultimately select the best transmission path.</p> <p><strong>ICE Candidate Format Example:</strong></p> <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+</code></pre></div></div>
+
+<hr>
+
+<h2 id="what-is-ice-candidate">What is ICE Candidate?</h2>
+
+<p>ICE Candidate is a very important concept in WebRTC, representing “candidate connection paths”. You can think of it as various different route choices from your home to a friend’s house.</p>
+
+<p><strong>Information contained in ICE Candidate:</strong></p>
+
+<ul>
+  <li>
+<strong>IP Address</strong>: Could be internal IP, public IP, or TURN server IP</li>
+  <li>
+<strong>Port Number</strong>: Port used for connection</li>
+  <li>
+<strong>Transport Protocol</strong>: Different transport methods like UDP, TCP</li>
+  <li>
+<strong>Candidate Type</strong>: host (local), srflx (obtained via STUN), relay (TURN relay)</li>
+</ul>
+
+<p><strong>Generation Process:</strong></p>
+
+<p>Each time WebRTC initiates a connection, it automatically generates multiple Candidates for each network interface (network card), including local network, public addresses obtained via STUN, TURN relay addresses, etc. After two endpoints exchange their respective Candidate lists, they perform connection testing and ultimately select the best transmission path.</p>
+
+<p><strong>ICE Candidate Format Example:</strong></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"sdpMLineIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sdpMid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"candidate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a=candidate:2999745851 1 udp 2113937151 192.168.56.1 51411 typ host generation 0"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div></div> <p>Let’s parse this candidate string:</p> <ul> <li> <code class="language-plaintext highlighter-rouge">2999745851</code>: candidate ID</li> <li> <code class="language-plaintext highlighter-rouge">1</code>: component ID (usually 1 is RTP, 2 is RTCP)</li> <li> <code class="language-plaintext highlighter-rouge">udp</code>: transport protocol</li> <li> <code class="language-plaintext highlighter-rouge">2113937151</code>: priority (higher number = higher priority)</li> <li> <code class="language-plaintext highlighter-rouge">192.168.56.1</code>: IP address</li> <li> <code class="language-plaintext highlighter-rouge">51411</code>: Port</li> <li> <code class="language-plaintext highlighter-rouge">typ host</code>: candidate type (host = local address)</li> </ul> <p><strong>Exchange and Selection Process:</strong></p> <ol> <li>Two endpoints exchange their respective Candidate lists through Signaling Server</li> <li>WebRTC uses ICE mechanism to perform connection testing on all possible paths</li> <li>Finally select the communication method with lowest latency and best stability</li> </ol> <p>This process is like finding the fastest and most stable route among multiple roads to reach the destination.</p> <hr> <h2 id="webrtc-connection-establishment-flow">WebRTC Connection Establishment Flow</h2> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/p2p_webrtc-480.webp 480w,/assets/img/p2p_webrtc-800.webp 800w,/assets/img/p2p_webrtc-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/p2p_webrtc.png" width="100%" height="auto" title="Complete WebRTC Connection Flow Diagram" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> <p>The WebRTC connection establishment process seems complex but can be organized into the following four clear phases:</p> <h3 id="phase-1-message-exchange-signaling">Phase 1: Message Exchange (Signaling)</h3> <ul> <li>Both endpoints connect to Signaling Server</li> <li>Exchange SDP information (media capabilities and desired communication parameters)</li> <li>Exchange ICE Candidates (various possible connection paths)</li> </ul> <h3 id="phase-2-network-discovery">Phase 2: Network Discovery</h3> <ul> <li>Each endpoint queries its Public IP and NAT type from STUN Server</li> <li>Collect local network interfaces, public addresses obtained via STUN, etc.</li> </ul> <h3 id="phase-3-connectivity-checks">Phase 3: Connectivity Checks</h3> <ul> <li>ICE mechanism performs connection testing on all Candidate combinations</li> <li>Prioritize direct P2P connections (via STUN)</li> <li>If P2P fails, try TURN relay connections</li> </ul> <h3 id="phase-4-connection-establishment">Phase 4: Connection Establishment</h3> <ul> <li>Select the best path from all successful connections</li> <li>Establish stable bidirectional communication channel</li> <li>Begin media stream transmission (audio, video, data)</li> </ul> <p>The entire process is designed to ensure connections can be established in various network environments while prioritizing the most efficient communication methods.</p> <hr> <h2 id="what-is-aws-kvs">What is AWS KVS?</h2> <p>AWS Kinesis Video Streams for WebRTC (abbreviated as KVS) is Amazon’s fully managed WebRTC cloud solution. Its emergence solves various challenges developers face when building WebRTC infrastructure themselves.</p> <p><strong>Core Advantages of KVS:</strong></p> <h3 id="complete-infrastructure">Complete Infrastructure</h3> <ul> <li> <strong>Signaling Server</strong>: Built-in WebSocket-based signaling server</li> <li> <strong>STUN/TURN Services</strong>: Globally distributed NAT traversal infrastructure</li> <li> <strong>Load Balancing</strong>: Automatically handles high-concurrency connection requests</li> </ul> <h3 id="enterprise-grade-security">Enterprise-grade Security</h3> <ul> <li> <strong>IAM Integration</strong>: Seamless integration with AWS identity authentication system</li> <li> <strong>Data Encryption</strong>: Supports end-to-end encrypted transmission</li> <li> <strong>Access Control</strong>: Fine-grained permission management</li> </ul> <h3 id="multi-platform-support">Multi-platform Support</h3> <ul> <li> <strong>Web</strong>: Native JavaScript SDK</li> <li> <strong>iOS</strong>: Native Swift/Objective-C SDK</li> <li> <strong>Android</strong>: Native Java/Kotlin SDK</li> </ul> <p><strong>Use Cases:</strong></p> <p>KVS is particularly suitable for scenarios requiring quick deployment without maintaining complex infrastructure, such as remote monitoring, IoT device control, online education platforms, etc. You just need to integrate the corresponding SDK to establish stable bidirectional audio-video streaming services in a short time.</p> <p><a href="https://docs.aws.amazon.com/zh_tw/kinesisvideostreams-webrtc-dg/latest/devguide/what-is-kvswebrtc.html" rel="external nofollow noopener" target="_blank">📖 AWS Official Documentation</a></p> <blockquote> <h5 id="tip-1">TIP</h5> <p class="block-tip">KVS is suitable for IoT, remote monitoring, IPCam and other scenarios. No need to maintain signaling or relay servers yourself, saving significant development and operational costs.</p> </blockquote> <hr> <h2 id="results-demonstration">Results Demonstration</h2> <p>Below are the streaming results on iOS and Android after successful implementation:</p> <div class="row mt-3"> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/ios_webrtc-480.webp 480w,/assets/img/ios_webrtc-800.webp 800w,/assets/img/ios_webrtc-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/ios_webrtc.png" width="100%" height="auto" title="iOS WebRTC Demo" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/android_webrtc-480.webp 480w,/assets/img/android_webrtc-800.webp 800w,/assets/img/android_webrtc-1400.webp 1400w," type="image/webp" sizes="95vw"></source> <img src="/assets/img/android_webrtc.png" width="100%" height="auto" title="Android WebRTC Demo" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <hr> <h2 id="practical-gotcha-notes">Practical Gotcha Notes</h2> <p>During development, I encountered some technical issues worth sharing, hoping to help other developers avoid the same troubles.</p> <h3 id="aws-kvs-webrtc-android-sdk-issue">AWS KVS WebRTC Android SDK Issue</h3> <p><strong>Problem Description:</strong> When implementing AWS KVS WebRTC for Android, replacing the WebSocket connection library from the officially recommended tyrus to the commonly used okhttp resulted in a 403 Forbidden error during runtime.</p> <p><strong>Root Cause:</strong> After investigation, the problem was due to double URL encoding. When using okhttp, it automatically encodes URLs, but AWS’s Signature V4 signing is already calculated based on the original URL, causing signature verification to fail after double encoding.</p> <p><strong>Solution:</strong> Need to specially handle URL encoding issues when using okhttp, or stick with the officially recommended tyrus library.</p> <p><strong>Related Resources:</strong> 🔗 <a href="https://github.com/awslabs/amazon-kinesis-video-streams-webrtc-sdk-android/issues/74" rel="external nofollow noopener" target="_blank">GitHub Issue #74</a></p> <p>This example reminds us that when using third-party libraries, we need to pay special attention to their internal implementation details, which may affect cloud service authentication mechanisms.</p> <hr> <h2 id="series-summary-complete-p2p-technology-map">Series Summary: Complete P2P Technology Map</h2> <p>Through three in-depth articles, we have established a complete P2P technology knowledge system:</p> <h3 id="first-article-basic-architecture-and-nat-problems">First Article: Basic Architecture and NAT Problems</h3> <ul> <li>Understood the differences between centralized, decentralized, and distributed architectures</li> <li>Grasped the relationship between IPv4 address scarcity and NAT technology</li> <li>Learned characteristics and limitations of various NAT types</li> </ul> <h3 id="second-article-core-nat-traversal-technologies">Second Article: Core NAT Traversal Technologies</h3> <ul> <li>STUN: Solves device discovery problems, letting devices know their public IP</li> <li>TURN: Provides relay services, solving connection issues in strict NAT environments</li> <li>ICE: Integration framework, intelligently selecting optimal communication paths</li> </ul> <h3 id="third-article-practical-frameworks-and-cloud-services">Third Article: Practical Frameworks and Cloud Services</h3> <ul> <li>WebRTC: Mainstream standard implementation for modern P2P communication</li> <li>SDP and ICE Candidates: Core information exchange mechanisms for connection establishment</li> <li>AWS KVS: Commercial-grade WebRTC cloud solution</li> </ul> <p><strong>Technology Development Context:</strong></p> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>P2P Requirements → NAT Problems → STUN/TURN/ICE → WebRTC → Cloud Services
+</span></code></pre></div></div>
+
+<p>Let’s parse this candidate string:</p>
+
+<ul>
+  <li>
+<code class="language-plaintext highlighter-rouge">2999745851</code>: candidate ID</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">1</code>: component ID (usually 1 is RTP, 2 is RTCP)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">udp</code>: transport protocol</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">2113937151</code>: priority (higher number = higher priority)</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">192.168.56.1</code>: IP address</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">51411</code>: Port</li>
+  <li>
+<code class="language-plaintext highlighter-rouge">typ host</code>: candidate type (host = local address)</li>
+</ul>
+
+<p><strong>Exchange and Selection Process:</strong></p>
+
+<ol>
+  <li>Two endpoints exchange their respective Candidate lists through Signaling Server</li>
+  <li>WebRTC uses ICE mechanism to perform connection testing on all possible paths</li>
+  <li>Finally select the communication method with lowest latency and best stability</li>
+</ol>
+
+<p>This process is like finding the fastest and most stable route among multiple roads to reach the destination.</p>
+
+<hr>
+
+<h2 id="webrtc-connection-establishment-flow">WebRTC Connection Establishment Flow</h2>
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/p2p_webrtc-480.webp 480w,/assets/img/p2p_webrtc-800.webp 800w,/assets/img/p2p_webrtc-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+      
+    
+    <img src="/assets/img/p2p_webrtc.png" width="100%" height="auto" title="Complete WebRTC Connection Flow Diagram" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+<p>The WebRTC connection establishment process seems complex but can be organized into the following four clear phases:</p>
+
+<h3 id="phase-1-message-exchange-signaling">Phase 1: Message Exchange (Signaling)</h3>
+
+<ul>
+  <li>Both endpoints connect to Signaling Server</li>
+  <li>Exchange SDP information (media capabilities and desired communication parameters)</li>
+  <li>Exchange ICE Candidates (various possible connection paths)</li>
+</ul>
+
+<h3 id="phase-2-network-discovery">Phase 2: Network Discovery</h3>
+
+<ul>
+  <li>Each endpoint queries its Public IP and NAT type from STUN Server</li>
+  <li>Collect local network interfaces, public addresses obtained via STUN, etc.</li>
+</ul>
+
+<h3 id="phase-3-connectivity-checks">Phase 3: Connectivity Checks</h3>
+
+<ul>
+  <li>ICE mechanism performs connection testing on all Candidate combinations</li>
+  <li>Prioritize direct P2P connections (via STUN)</li>
+  <li>If P2P fails, try TURN relay connections</li>
+</ul>
+
+<h3 id="phase-4-connection-establishment">Phase 4: Connection Establishment</h3>
+
+<ul>
+  <li>Select the best path from all successful connections</li>
+  <li>Establish stable bidirectional communication channel</li>
+  <li>Begin media stream transmission (audio, video, data)</li>
+</ul>
+
+<p>The entire process is designed to ensure connections can be established in various network environments while prioritizing the most efficient communication methods.</p>
+
+<hr>
+
+<h2 id="what-is-aws-kvs">What is AWS KVS?</h2>
+
+<p>AWS Kinesis Video Streams for WebRTC (abbreviated as KVS) is Amazon’s fully managed WebRTC cloud solution. Its emergence solves various challenges developers face when building WebRTC infrastructure themselves.</p>
+
+<p><strong>Core Advantages of KVS:</strong></p>
+
+<h3 id="complete-infrastructure">Complete Infrastructure</h3>
+
+<ul>
+  <li>
+<strong>Signaling Server</strong>: Built-in WebSocket-based signaling server</li>
+  <li>
+<strong>STUN/TURN Services</strong>: Globally distributed NAT traversal infrastructure</li>
+  <li>
+<strong>Load Balancing</strong>: Automatically handles high-concurrency connection requests</li>
+</ul>
+
+<h3 id="enterprise-grade-security">Enterprise-grade Security</h3>
+
+<ul>
+  <li>
+<strong>IAM Integration</strong>: Seamless integration with AWS identity authentication system</li>
+  <li>
+<strong>Data Encryption</strong>: Supports end-to-end encrypted transmission</li>
+  <li>
+<strong>Access Control</strong>: Fine-grained permission management</li>
+</ul>
+
+<h3 id="multi-platform-support">Multi-platform Support</h3>
+
+<ul>
+  <li>
+<strong>Web</strong>: Native JavaScript SDK</li>
+  <li>
+<strong>iOS</strong>: Native Swift/Objective-C SDK</li>
+  <li>
+<strong>Android</strong>: Native Java/Kotlin SDK</li>
+</ul>
+
+<p><strong>Use Cases:</strong></p>
+
+<p>KVS is particularly suitable for scenarios requiring quick deployment without maintaining complex infrastructure, such as remote monitoring, IoT device control, online education platforms, etc. You just need to integrate the corresponding SDK to establish stable bidirectional audio-video streaming services in a short time.</p>
+
+<p><a href="https://docs.aws.amazon.com/zh_tw/kinesisvideostreams-webrtc-dg/latest/devguide/what-is-kvswebrtc.html" rel="external nofollow noopener" target="_blank">📖 AWS Official Documentation</a></p>
+
+<blockquote>
+  <h5 id="tip-1">TIP</h5>
+
+  <p class="block-tip">KVS is suitable for IoT, remote monitoring, IPCam and other scenarios. No need to maintain signaling or relay servers yourself, saving significant development and operational costs.</p>
+</blockquote>
+
+<hr>
+
+<h2 id="results-demonstration">Results Demonstration</h2>
+
+<p>Below are the streaming results on iOS and Android after successful implementation:</p>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/ios_webrtc-480.webp 480w,/assets/img/ios_webrtc-800.webp 800w,/assets/img/ios_webrtc-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+      
+    
+    <img src="/assets/img/ios_webrtc.png" width="100%" height="auto" title="iOS WebRTC Demo" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        
+
+
+
+<figure>
+  <picture>
+    <!-- Auto scaling with imagemagick -->
+    <!--
+      See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
+      https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
+    -->
+    
+      
+        <source class="responsive-img-srcset" srcset="/assets/img/android_webrtc-480.webp 480w,/assets/img/android_webrtc-800.webp 800w,/assets/img/android_webrtc-1400.webp 1400w," type="image/webp" sizes="95vw"></source>
+      
+    
+    <img src="/assets/img/android_webrtc.png" width="100%" height="auto" title="Android WebRTC Demo" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+  </picture>
+
+  
+</figure>
+
+    </div>
+</div>
+
+<hr>
+
+<h2 id="practical-gotcha-notes">Practical Gotcha Notes</h2>
+
+<p>During development, I encountered some technical issues worth sharing, hoping to help other developers avoid the same troubles.</p>
+
+<h3 id="aws-kvs-webrtc-android-sdk-issue">AWS KVS WebRTC Android SDK Issue</h3>
+
+<p><strong>Problem Description:</strong>
+When implementing AWS KVS WebRTC for Android, replacing the WebSocket connection library from the officially recommended tyrus to the commonly used okhttp resulted in a 403 Forbidden error during runtime.</p>
+
+<p><strong>Root Cause:</strong>
+After investigation, the problem was due to double URL encoding. When using okhttp, it automatically encodes URLs, but AWS’s Signature V4 signing is already calculated based on the original URL, causing signature verification to fail after double encoding.</p>
+
+<p><strong>Solution:</strong>
+Need to specially handle URL encoding issues when using okhttp, or stick with the officially recommended tyrus library.</p>
+
+<p><strong>Related Resources:</strong>
+🔗 <a href="https://github.com/awslabs/amazon-kinesis-video-streams-webrtc-sdk-android/issues/74" rel="external nofollow noopener" target="_blank">GitHub Issue #74</a></p>
+
+<p>This example reminds us that when using third-party libraries, we need to pay special attention to their internal implementation details, which may affect cloud service authentication mechanisms.</p>
+
+<hr>
+
+<h2 id="series-summary-complete-p2p-technology-map">Series Summary: Complete P2P Technology Map</h2>
+
+<p>Through three in-depth articles, we have established a complete P2P technology knowledge system:</p>
+
+<h3 id="first-article-basic-architecture-and-nat-problems">First Article: Basic Architecture and NAT Problems</h3>
+
+<ul>
+  <li>Understood the differences between centralized, decentralized, and distributed architectures</li>
+  <li>Grasped the relationship between IPv4 address scarcity and NAT technology</li>
+  <li>Learned characteristics and limitations of various NAT types</li>
+</ul>
+
+<h3 id="second-article-core-nat-traversal-technologies">Second Article: Core NAT Traversal Technologies</h3>
+
+<ul>
+  <li>STUN: Solves device discovery problems, letting devices know their public IP</li>
+  <li>TURN: Provides relay services, solving connection issues in strict NAT environments</li>
+  <li>ICE: Integration framework, intelligently selecting optimal communication paths</li>
+</ul>
+
+<h3 id="third-article-practical-frameworks-and-cloud-services">Third Article: Practical Frameworks and Cloud Services</h3>
+
+<ul>
+  <li>WebRTC: Mainstream standard implementation for modern P2P communication</li>
+  <li>SDP and ICE Candidates: Core information exchange mechanisms for connection establishment</li>
+  <li>AWS KVS: Commercial-grade WebRTC cloud solution</li>
+</ul>
+
+<p><strong>Technology Development Context:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>P2P Requirements → NAT Problems → STUN/TURN/ICE → WebRTC → Cloud Services
 Basic Architecture   Traversal Challenges   Core Technologies   Practical Framework   Commercial Applications
-</code></pre></div></div> <p>This technology stack forms a complete P2P communication solution from underlying network principles to cloud service applications. Understanding the development context of these technologies helps in choosing appropriate technical solutions for different scenarios.</p> <blockquote> <h5 id="tip-2">TIP</h5> <p class="block-tip">If you encounter implementation bottlenecks while developing WebRTC or integrating AWS KVS, feel free to comment or email for discussion. I will continue to organize practical experience to help more developers.</p> </blockquote> <hr> <h2 id="reference-resources">Reference Resources</h2> <ul> <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/WebRTC_API" rel="external nofollow noopener" target="_blank">WebRTC API - MDN</a></li> <li><a href="https://zh.wikipedia.org/wiki/WebRTC" rel="external nofollow noopener" target="_blank">WebRTC Wiki</a></li> <li><a href="https://zh.wikipedia.org/wiki/%E4%BC%9A%E8%AF%9D%E6%8F%8F%E8%BF%B0%E5%8D%8F%E8%AE%AE" rel="external nofollow noopener" target="_blank">SDP Wiki</a></li> <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate" rel="external nofollow noopener" target="_blank">RTCIceCandidate - MDN</a></li> <li><a href="https://docs.aws.amazon.com/zh_tw/kinesisvideostreams-webrtc-dg/latest/devguide/what-is-kvswebrtc.html" rel="external nofollow noopener" target="_blank">Amazon Kinesis Video Streams for WebRTC</a></li> <li><a href="http://www.52im.net/thread-50-1-1.html" rel="external nofollow noopener" target="_blank">P2P Technology Detailed Explanation Series</a></li> <li><a href="https://leesonhsu.blogspot.com/2018/07/socketwebsocketsocketio.html" rel="external nofollow noopener" target="_blank">WebSocket vs Socket.IO</a></li> <li><a href="https://www.flaticon.com/" rel="external nofollow noopener" target="_blank">Flaticon</a></li> </ul> </div> </article> <br> <hr> <br> <ul class="list-disc pl-8"></ul> <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2> <p class="mb-2">Here are some more articles you might like to read next:</p> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/superpowers-sdd-2048-game/">When Vibe Coding Gets Superpowers: A Deep Dive into Fully Automated Precision Development, Building 2048 as a Case Study</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/openspec-sdd-insider-tracker/">Beyond Vibe Coding's Architectural Chaos: Building an SEC Tracker with OpenSpec's 'Artifact-Driven' Workflow, Turning AI into Your Senior Architect</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/speckit-sdd-go-game/">Stop Writing Toys with Vibe Coding: Implementing a Go Game via SDD and SpecKit to Eliminate AI Hallucinations</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/backend%20development/grpc-introduction-for-micro-service/">gRPC Concepts and Implementation (Go &amp; Python) - Building High-Performance Microservices</a> </li> <li class="my-2"> <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/building-ai-code-review-agent/">Building an AI Code Review Agent from Scratch: Simultaneously Boosting Team Efficiency and Code Quality</a> </li> </div> </div> <div class="col-sm-3"> <nav id="toc-sidebar" class="sticky-top"></nav> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Nick Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>. </div> </footer> <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> <script src="/assets/js/bootstrap.bundle.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script> <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script> <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script> <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script> <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script> <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script> <script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script> <script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script> <script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script> <script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script> <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script> <script async src="https://badge.dimensions.ai/badge.js"></script> <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script> <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script> <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script> <script defer src="/assets/js/google-analytics-setup.js"></script> <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script> <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script> <script>
+</code></pre></div></div>
+
+<p>This technology stack forms a complete P2P communication solution from underlying network principles to cloud service applications. Understanding the development context of these technologies helps in choosing appropriate technical solutions for different scenarios.</p>
+
+<blockquote>
+  <h5 id="tip-2">TIP</h5>
+
+  <p class="block-tip">If you encounter implementation bottlenecks while developing WebRTC or integrating AWS KVS, feel free to comment or email for discussion. I will continue to organize practical experience to help more developers.</p>
+</blockquote>
+
+<hr>
+
+<h2 id="reference-resources">Reference Resources</h2>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/zh-TW/docs/Web/API/WebRTC_API" rel="external nofollow noopener" target="_blank">WebRTC API - MDN</a></li>
+  <li><a href="https://zh.wikipedia.org/wiki/WebRTC" rel="external nofollow noopener" target="_blank">WebRTC Wiki</a></li>
+  <li><a href="https://zh.wikipedia.org/wiki/%E4%BC%9A%E8%AF%9D%E6%8F%8F%E8%BF%B0%E5%8D%8F%E8%AE%AE" rel="external nofollow noopener" target="_blank">SDP Wiki</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCIceCandidate" rel="external nofollow noopener" target="_blank">RTCIceCandidate - MDN</a></li>
+  <li><a href="https://docs.aws.amazon.com/zh_tw/kinesisvideostreams-webrtc-dg/latest/devguide/what-is-kvswebrtc.html" rel="external nofollow noopener" target="_blank">Amazon Kinesis Video Streams for WebRTC</a></li>
+  <li><a href="http://www.52im.net/thread-50-1-1.html" rel="external nofollow noopener" target="_blank">P2P Technology Detailed Explanation Series</a></li>
+  <li><a href="https://leesonhsu.blogspot.com/2018/07/socketwebsocketsocketio.html" rel="external nofollow noopener" target="_blank">WebSocket vs Socket.IO</a></li>
+  <li><a href="https://www.flaticon.com/" rel="external nofollow noopener" target="_blank">Flaticon</a></li>
+</ul>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+    
+      
+
+  
+    
+    <br>
+    <hr>
+    <br>
+    <ul class="list-disc pl-8"></ul>
+
+    <!-- Adds related posts to the end of an article -->
+    <h2 class="text-3xl font-semibold mb-4 mt-12">Enjoy Reading This Article?</h2>
+    <p class="mb-2">Here are some more articles you might like to read next:</p>
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/superpowers-sdd-2048-game/">When Vibe Coding Gets Superpowers: A Deep Dive into Fully Automated Precision Development, Building 2048 as a Case Study</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/openspec-sdd-insider-tracker/">Beyond Vibe Coding's Architectural Chaos: Building an SEC Tracker with OpenSpec's 'Artifact-Driven' Workflow, Turning AI into Your Senior Architect</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/speckit-sdd-go-game/">Stop Writing Toys with Vibe Coding: Implementing a Go Game via SDD and SpecKit to Eliminate AI Hallucinations</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/backend%20development/grpc-introduction-for-micro-service/">gRPC Concepts and Implementation (Go &amp; Python) - Building High-Performance Microservices</a>
+    
+  </li>
+
+  
+
+  <li class="my-2">
+    
+      <a class="text-pink-700 underline font-semibold hover:text-pink-800" href="/blog/ai/software%20engineering/building-ai-code-review-agent/">Building an AI Code Review Agent from Scratch: Simultaneously Boosting Team Efficiency and Code Quality</a>
+    
+  </li>
+
+
+
+    
+  
+
+  
+  
+</div>
+</div>
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-sm-3">
+              <nav id="toc-sidebar" class="sticky-top"></nav>
+            </div>
+          </div>
+        
+      
+    </div>
+
+    <!-- Footer -->
+    
+
+
+  <footer class="fixed-bottom" role="contentinfo">
+    <div class="container mt-0">
+      
+  © Copyright 2026
+  Nick
+  
+  Huang. Powered by <a href="https://jekyllrb.com/" target="_blank" rel="external nofollow noopener">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio" rel="external nofollow noopener" target="_blank">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Photos from <a href="https://unsplash.com" target="_blank" rel="external nofollow noopener">Unsplash</a>.
+
+  
+  
+
+    </div>
+  </footer>
+
+
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Bootsrap & MDB scripts -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+
+  <!-- Masonry & imagesLoaded -->
+  <script defer src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha256-Nn1q/fx0H7SNLZMQ5Hw5JLaTRZp0yILA/FRexe19VdI=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/imagesloaded@5.0.0/imagesloaded.pkgd.min.js" integrity="sha256-htrLFfZJ6v5udOG+3kNLINIKh2gvoKqwEhHYfTTMICc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/masonry.js?a0db7e5d5c70cc3252b3138b0c91dcaf" type="text/javascript"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Medium Zoom JS -->
+  <script defer src="https://cdn.jsdelivr.net/npm/medium-zoom@1.1.0/dist/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script defer src="/assets/js/zoom.js?85ddb88934d28b74e78031fd54cf8308"></script>
+
+
+
+  <!-- Sidebar Table of Contents -->
+  <script defer src="/assets/js/bootstrap-toc.min.js?c82ff4de8b0955d6ff14f5b05eed7eb6"></script>
+
+
+
+
+<!-- Load Common JS -->
+<script src="/assets/js/no_defer.js?2781658a0a2b13ed609542042a859126"></script>
+<script defer src="/assets/js/common.js?e0514a05c5c95ac1a93a8dfd5249b92e"></script>
+<script defer src="/assets/js/copy_code.js?c8a01c11a92744d44b093fc3bda915df" type="text/javascript"></script>
+
+<!-- Jupyter Open External Links New Tab -->
+<script defer src="/assets/js/jupyter_new_tab.js?d9f17b6adc2311cbabd747f4538bb15f"></script>
+
+<!-- Badges -->
+
+  <script async src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"></script>
+
+
+  <script async src="https://badge.dimensions.ai/badge.js"></script>
+
+
+
+  <!-- MathJax -->
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI=" crossorigin="anonymous"></script>
+  
+    <script src="/assets/js/mathjax-setup.js?a5bb4e6a542c546dd929b24b8b236dfd"></script>
+    <script defer src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6" crossorigin="anonymous"></script>
+  
+
+
+
+  <!-- Analytics -->
+  <script defer src="/assets/js/google-analytics-setup.js"></script>
+
+
+
+
+
+
+
+  <!-- Scrolling Progress Bar -->
+  <script defer src="/assets/js/progress-bar.js?2f30e0e6801ea8f5036fa66e1ab0a71a" type="text/javascript"></script>
+
+
+
+
+
+
+
+  <!-- Back to Top -->
+  <script src="/assets/js/vanilla-back-to-top.min.js?f40d453793ff4f64e238e420181a1d17"></script>
+  <script>
     addBackToTop();
-  </script> <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script> <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys> <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script> <script src="/assets/js/search-data.js"></script> <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script> </body> </html>
+  </script>
+
+
+
+  <!-- Search -->
+  <script type="module" src="/assets/js/search/ninja-keys.min.js?a3446f084dcaecc5f75aa1757d087dcf"></script>
+  <ninja-keys hidebreadcrumbs noautoloadmdicons placeholder="Type to start searching"></ninja-keys>
+  <script src="/assets/js/search-setup.js?6c304f7b1992d4b60f7a07956e52f04a"></script>
+  <script src="/assets/js/search-data.js"></script>
+  <script src="/assets/js/shortcut-key.js?6f508d74becd347268a7f822bca7309d"></script>
+
+
+
+
+  </body>
+</html>
