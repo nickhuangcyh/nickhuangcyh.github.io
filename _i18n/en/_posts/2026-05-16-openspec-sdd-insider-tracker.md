@@ -10,7 +10,7 @@ toc:
 thumbnail: /assets/img/openspec_cover.png
 ---
 
-{% include figure.liquid path="assets/img/openspec_cover.png" title="openspec-vs-vibe" %}
+{% include figure.liquid path="assets/img/openspec_cover.png" title="openspec-cover" %}
 
 ## Introduction: Same Philosophy, Different Tools
 

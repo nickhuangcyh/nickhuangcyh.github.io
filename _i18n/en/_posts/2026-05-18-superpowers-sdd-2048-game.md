@@ -10,7 +10,7 @@ toc:
 thumbnail: /assets/img/superpowers_cover.png
 ---
 
-{% include figure.liquid path="assets/img/superpowers_cover.png" title="vibe with superpowers" %}
+{% include figure.liquid path="assets/img/superpowers_cover.png" title="superpowers-cover" %}
 
 ## Preface: From Spec Kit to OpenSpec, and Now Superpowers
 

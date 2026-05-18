@@ -7,10 +7,10 @@ tags: [AI, SDD, Speckit, React, LLM, Agent]
 categories: [AI, Software Engineering]
 toc:
   sidebar: right
-thumbnail: /assets/img/vibe_coding_vs_sdd_speckit.svg
+thumbnail: /assets/img/speckit_cover.png
 ---
 
-{% include figure.liquid path="assets/img/vibe_coding_vs_sdd_speckit.svg" title="vibe-vs-sdd" %}
+{% include figure.liquid path="assets/img/speckit_cover.png" title="speckit-cover" %}
 
 ## 前言：為什麼我們需要 SDD？
 
